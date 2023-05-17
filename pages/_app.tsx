@@ -5,6 +5,8 @@ import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 
+import { MANTINE_THEME } from '../themes/Mantine/theme';
+
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
@@ -14,7 +16,8 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     setColorScheme(nextColorScheme);
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
-
+  let currentTheme = MANTINE_THEME;
+  currentTheme.colorScheme;
   return (
     <>
       <Head>
@@ -24,7 +27,12 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       </Head>
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-        <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <MantineProvider
+          theme={{ ...currentTheme, colorScheme }}
+          withGlobalStyles
+          withNormalizeCSS
+          withCSSVariables
+        >
           <Component {...pageProps} />
           <Notifications />
         </MantineProvider>
