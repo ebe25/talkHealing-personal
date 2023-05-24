@@ -5,8 +5,9 @@ import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 
+//importing theme file
 import { MANTINE_THEME } from '../themes/Mantine/theme';
-
+import "../themes/Mantine/WebFonts/stylesheet.css";
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);

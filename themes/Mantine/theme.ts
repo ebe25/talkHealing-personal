@@ -74,7 +74,8 @@ export const MANTINE_THEME: MantineThemeOverride = {
 
   headings: {
     fontFamily:
-      '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
+      //'-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
+      'PlusJakartaSans-Bold',
     fontWeight: 700,
     sizes: {
       h1: { fontSize: '2.125rem', lineHeight: 1.3, fontWeight: undefined },
