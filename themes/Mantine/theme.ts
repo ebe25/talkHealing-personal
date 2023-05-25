@@ -74,9 +74,9 @@ export const MANTINE_THEME: MantineThemeOverride = {
 
   headings: {
     fontFamily:
-      //'-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
-      'PlusJakartaSans-Bold',
-    fontWeight: 700,
+      '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
+      //'PlusJakartaSans-Bold',
+    fontWeight: 400,
     sizes: {
       h1: { fontSize: '2.125rem', lineHeight: 1.3, fontWeight: undefined },
       h2: { fontSize: '1.625rem', lineHeight: 1.35, fontWeight: undefined },
@@ -87,7 +87,27 @@ export const MANTINE_THEME: MantineThemeOverride = {
     },
   },
 
-  other: {},
+  other: {
+    webFontFamily: {
+      "PlusJakartaSans-Bold": "PlusJakartaSans-Bold",
+      "PlusJakartaSans-BoldItalic": "PlusJakartaSans-BoldItalic",
+      "PlusJakartaSans-ExtraBold": "PlusJakartaSans-ExtraBold",
+      "PlusJakartaSans-ExtraLight": "PlusJakartaSans-ExtraLight",
+      "PlusJakartaSans-SemiBoldItalic": "PlusJakartaSans-SemiBoldItalic",
+      "PlusJakartaSans-SemiBold": "PlusJakartaSans-SemiBold",
+      "PlusJakartaSans-ExtraLightItalic": "PlusJakartaSans-ExtraLightItalic",
+      "PlusJakartaSans-Light": "PlusJakartaSans-Light",
+      "PlusJakartaSans-Italic": "PlusJakartaSans-Italic",
+      "PlusJakartaSans-LightItalic": "PlusJakartaSans-LightItalic",
+      "PlusJakartaSansMedium-Italic": "PlusJakartaSansMedium-Italic",
+      "PlusJakartaSansExtraBold-Italic": "PlusJakartaSansExtraBold-Italic",
+      "PlusJakartaSans-Medium": "'PlusJakartaSans-Medium",
+      "PlusJakartaSans-Regular": "PlusJakartaSans-Regular",
+      "HelveticaNeueLTArabic55-Roman": "HelveticaNeueLTArabic55-Roman",
+      "HelveticaNeueLTArabic45-Light": "HelveticaNeueLTArabic45-Light",
+      "HelveticaNeueLTArabic75-Bold": "HelveticaNeueLTArabic75-Bold",
+    },
+  },
   components: {},
   activeStyles: { transform: 'translateY(0.0625rem)' },
   datesLocale: 'en',
