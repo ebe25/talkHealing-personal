@@ -35,12 +35,22 @@
     "@next/bundle-analyzer": "^13.1.6",
     "@tabler/icons": "^1.107.0",
     "@tabler/icons-react": "^2.4.0",
+    "@types/i18n-js": "^3.8.4",
+    "apisauce": "^3.0.0",
     "cookies-next": "^2.1.1",
     "dayjs": "^1.11.6",
     "embla-carousel-react": "^7.0.3",
+    "framer-motion": "^10.12.16",
+    "i18n-js": "3.9.2",
+    "localforage": "^1.10.0",
+    "lodash": "^4.17.21",
+    "mobx": "^6.9.0",
+    "mobx-state-tree": "^5.1.8",
+    "moment": "^2.29.4",
     "next": "13.2.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "rtl-detect": "^1.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

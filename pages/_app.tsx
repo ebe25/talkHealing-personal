@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
@@ -6,8 +6,12 @@ import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core
 import { Notifications } from '@mantine/notifications';
 
 //importing theme file
-import { MANTINE_THEME } from '../themes/Mantine/theme';
-import "../themes/Mantine/WebFonts/stylesheet.css";
+import { MANTINE_THEME } from '@/themes/Mantine/theme';
+//import "@/themes/Mantine/WebFonts/stylesheet.css";
+
+//setting up store
+import { i18nx } from "../i18n";
+import { RootStore, RootStoreProvider, setupRootStore } from "@/models";
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
@@ -19,8 +23,26 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   };
   let currentTheme = MANTINE_THEME;
   currentTheme.colorScheme;
+  const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined);
+
+  useEffect(() => {
+    (async () => {
+      setupRootStore().then(setRootStore);
+    })();
+  }, []);
+  if (!rootStore) return null;
+  if (rootStore.i18nStore.appLanguage)
+    i18nx.locale = rootStore.i18nStore.appLanguage;
+  else {
+    rootStore.i18nStore.setSystemDefault();
+  }
+  if (rootStore.i18nStore.appLanguage)
+    i18nx.locale = rootStore.i18nStore.appLanguage;
+  else {
+    rootStore.i18nStore.setSystemDefault();
+  }
   return (
-    <>
+    <RootStoreProvider value={rootStore}>
       <Head>
         <title>Mantine next example</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
@@ -38,7 +60,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           <Notifications />
         </MantineProvider>
       </ColorSchemeProvider>
-    </>
+    </RootStoreProvider>
   );
 }
 

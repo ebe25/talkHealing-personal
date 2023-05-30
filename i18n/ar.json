@@ -1,0 +1,286 @@
+{
+  "global": {
+    "playwheel":"دولاب اللعب",
+    "label": {
+      "label1": "اسم",
+      "label2": "البريد الإلكتروني",
+      "label3": "كلمة المرور",
+      "label4": "تأكيد كلمة المرور"
+    },
+    "button": {
+      "english": "English",
+      "arabic": "ةيب رعلا",
+      "start": "بداية",
+      "primary": "ModalButton",
+      "no": "رقم",
+      "ok": "موافق",
+      "mayBe": "ربما",
+      "yes": "نعم",
+      "apply": "يتقدم",
+      "pay": "ادفع الآن",
+      "continue": "تؤكد",
+      "cancel": "إلغاء",
+      "update": "تحديث",
+      "confirm": "يتأكد",
+      "signup": "اشتراك",
+      "login": "تسجيل الدخول",
+      "next": "التالي",
+      "visitorView": "عرض الزائر",
+      "upload": "تحميل",
+      "select": "يختار",
+      "submit": "إرسال",
+      "save": "يحفظ",
+      "see details": "انظر التفاصيل",
+      "buy now": "اشتري الآن",
+      "available seat": "مقعد متاح:"
+    }
+  },
+  "card": {
+    "heading": "طَرد",
+    "availableSeats": "المقاعد المتاحة:",
+    "buyNow": "اشتري الآن",
+    "seeDetails": "انظر التفاصيل",
+    "moreDetail": "تفاصيل اكثر"
+  },
+  "premiumCard": {
+    "premiumCardTitle": "شهريا ، تدفع سنويا"
+  },
+  "header": {
+    "booking": "الحجز للحدث",
+    "play": "اللعب المفتوح",
+    "shop": "ورش عمل",
+    "gallery": "صالة عرض",
+    "contact": "اتصل بنا"
+  },
+  "authentication": {
+    "invalidEmail": "بريد إلكتروني خاطئ",
+    "strings": {
+      "incChar": "يتألف من 6 أحرف على الأقل",
+      "incNum": "يشمل الرقم",
+      "incLower": "يتضمن حرفًا صغيرًا",
+      "incUpper": "يتضمن حرف كبير",
+      "incSym": "يتضمن رمزًا خاصًا"
+    },
+    "formText": {
+      "signUp": "اشتراك",
+      "name": "اسم",
+      "email": "بريد إلكتروني",
+      "phone number": "رقم التليفون",
+      "continue": "يكمل",
+      "forgetPassword": "هل نسيت كلمة السر",
+      "newUser": "ليس لديك حساب؟",
+      "login": "تسجيل الدخول",
+      "agreeText": "أنا أوافق على",
+      "termsAndConditions": "الأحكام والشروط",
+      "invalidNumber": "رقم غير صالح",
+      "namePlaceholder": "اكتب الرقم",
+      "emailPlaceholder": "اكتب بريدا الكترونيا",
+      "errorMessage":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
+    },
+    "signupVerification": {
+      "verificationText": "تَحَقّق",
+      "verificationCodeText": "الرجاء كتابة الرمز المرسل إلى ",
+      "createPasswordText": "أنشئ كلمة مرور",
+      "password": " كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "includedText": "يجب أن يحتوي على حرف واحد كبير ورقمي وحرف خاص على الأقل",
+      "backButton": "خلف",
+      "continue": "يكمل",
+      "passwordPlaceholder": "اكتب كلمة المرور",
+      "newKid": "أضف تفاصيل أطفال جديدة",
+      "kidName": "ما اسمك يا فتى",
+      "skip": "تخطي في الوقت الراهن",
+      "kidInfoPlaceholder": "اسم الطفل",
+      "kidDOB": "ما هو تاريخ ميلاد طفلك",
+      "previousButtonText": "سابق",
+      "datePlaceholder": "DD",
+      "monthPlaceholder": "MM",
+      "yearPlaceholder": "YYYY"
+    }
+  },
+  "dataBox": {
+    "selectThisDetails": "حدد هذه التفاصيل",
+    "addKidDetails": "أضف تفاصيل طفل جديد",
+    "selectedData": "المحدد"
+  },
+  "footer": {
+    "welcome": "مرحبًا بكم في Playwheel ،",
+    "paragraph": "أبجد هوز دولور الجلوس امات. يجب أن يكون الأمر كذلك نتيجة لذلك. Hic nemo repudiandae aut maiores praesentium nam enim error ut numquam gentissimos. .",
+    "story": "قصتنا",
+    "contact": "اتصل بنا",
+    "location": "لوريم إيبسوم ، س ص دولور الجلوس اميت.",
+    "email": "Info@blohel.com",
+    "privacy": "سياسة الخصوصية",
+    "condition": "البنود و الظروف",
+    "policy": "سياسة ملفات الارتباط",
+    "question": "هل لديك أسئلة؟",
+    "faqQuestion": "تحقق من الأسئلة الشائعة أو اتصل بنا",
+    "copyRight": "حقوق النشر © 2022 دولاب اللعب. كل الحقوق محفوظة"
+  },
+  "sidebar": {
+    "useProfile": "استخدام الملف الشخصي",
+    "userStatus": "حالة المستخدم",
+    "accountDetails": "Account details",
+    "changePassword": "تفاصيل الحساب",
+    "kidDetails": "تفاصيل الأطفال",
+    "termsAndConditions": "البنود و الظروف",
+    "becomeMember": "كن عضوا",
+    "logOut": "تسجيل خروج"
+  },
+  "homePage": {
+    "playWheelPara": "Playwheel، مكان مليء بالمرح للجميع للاستمتاع به",
+    "playWheelParaSec": "كل زيارة فريدة من نوعها ، والأشخاص من جميع الأعمار موضع ترحيب.   نحن نعد أنه جو مريح من أجل المتعة الجيدة.  لا يوجد حقًا أي صواب أو خطأ ، فقط إمكانيات ومغامرات لا حصر لها!",
+    "homesecondFragment": {
+      "heading": "تحقق من Open Play",
+      "para": "أحضر أطفالك إلى اللعب المفتوح لدينا لتجربة آمنة وممتعة مليئة بمجموعة متنوعة من الأنشطة والألعاب. يتضمن اللعب المفتوح لدينا هياكل التسلق والشرائح والمحطات التفاعلية والطاولات الحرفية للترفيه عن الأطفال من جميع الأعمار. موظفينا الودودين وذوي الخبرة موجودون دائمًا لضمان تجربة آمنة وممتعة.",
+      "checkAvailability": "التحقق من الصلاحية",
+      "learnMore": "يتعلم أكثر"
+    },
+    "childInfoFragment": {
+      "heading": "ورشة عمل",
+      "seeAll": "اظهار الكل"
+    },
+    "bookingForEventsFragment": {
+      "heading": "الحجز للأحداث",
+      "para": "احجز مجموعة متنوعة من الأحداث المثيرة للأطفال على موقعنا الإلكتروني ، بما في ذلك حفلات أعياد الميلاد وورش العمل التعليمية. مع وجود شيء يناسب اهتمامات كل طفل وفئته العمرية ، فإن عملية الحجز لدينا سريعة وسهلة. امنح طفلك تجربة لن ينساها أبدًا من خلال حجز حدث اليوم.",
+      "bookNow": "احجز الآن",
+      "aboutPackageParagraphFirst":"لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
+      "aboutPackageParagraphSecond":"لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
+      "aboutPackageParagraphThird":"لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني."
+    }
+  },
+  "signUp": {
+    "login": "تسجيل الدخول",
+    "forgetPassword": "هل نسيت كلمة السر",
+    "newUser": "ليس لديك حساب",
+    "signUp": "اشتراك",
+    "loginButtonText": "تسجيل الدخول",
+    "subText": "سنقوم بإرسال بريد إلكتروني لإعادة تعيين كلمة المرور الخاصة بك",
+    "backToLogin": "العودة إلى تسجيل الدخول",
+    "continue": "يكمل",
+    "passwordLength": "يجب ألا يقل عن 8 أحرف",
+    "errorMessage": "لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
+  },
+  "footerPages": {
+    "privacyPolicy": "سياسة الخصوصية",
+    "cookiesPolicy": "سياسة ملفات الارتباط",
+    "ourStory": "قصتنا",
+    "faqQuestion": "أسئلة مكررة"
+  },
+  "paymentModal": {
+    "buttonText": "منتهي",
+    "paymentStatus": "دفعتك ناجحة",
+    "item": "أغراض:",
+    "totalItem": "المجموع:"
+  },
+  "cartPage": {
+    "heading": "عربتك",
+    "placeholder": "أضف رمز القسيمة",
+    "itemPrice": "سعر العناصر",
+    "totalAmount": "السعر الكلي",
+    "buttonText": "الشروع في دفع"
+  },
+  "userProfile": {
+    "accountDetails": {
+      "name": "اسم",
+      "placeholder": "اسم المستخدم",
+      "email": "بريد إلكتروني",
+      "emailPlaceholder": "John.doe@gmail.com",
+      "phoneNumber": "رقم التليفون",
+      "saveChanges": "احفظ التغييرات",
+      "changeAvatar": "تغيير الصورة الرمزية"
+    },
+    "changePassword":{
+      "currentPassword":"كلمة السر الحالية",
+      "newPassword":"كلمة المرور الجديدة",
+      "confirmNewPassword":"تأكيد كلمة المرور الجديدة",
+      "passwordSame":"كلمة المرور ليست هي نفسها",
+      "placeholder":"اكتب كلمة المرور",
+      "saveCanges":"احفظ التغييرات"
+    }
+  },
+  "contactUs": {
+    "imageHeading": "ابقى على تواصل",
+    "imageParagraph": "يسعدنا أن نسمع منك",
+    "contactTitle": "بيانات المتصل",
+    "contactDetails": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
+    "location": "خريطة الموقع",
+    "buttonAboveHeadingOne": "تصفح الأسئلة الشائعة",
+    "buttonAboveHeadingTwo": "ابق على تواصل معنا",
+    "buttonText1": "تصفح الأسئلة الشائعة",
+    "buttonText2": "ارسل رأيك"
+  },
+  "termsAndConditions": {
+    "condition": "أحكام وشروط"
+  },
+  "userStatus": {
+    "InvoicesTitle": "الفواتير",
+    "userId": "هوية صوتية",
+    "userDecription": "حجز تذكره",
+    "planDate": "تاريخ",
+    "amount": "كمية",
+    "booking": "الحجوزات",
+    "promos": "الملل"
+  },
+  "becomeMember": {
+    "playWheelMember": "كن عضوًا في Playwheel",
+    "memberParagraph": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ أن تم تعميمه في الستينيات مع إصدار أوراق Letraset التي تحتوي على."
+  },
+  "bookingForEvent": {
+    "aboutMultipurposeText": "حول القاعة متعددة الأغراض والخدمات",
+    "galleryText": "صالة عرض",
+    "bookingForEventText": "الحجز للأحداث",
+    "packagePriceText": "سعر الطرد",
+    "addToCartText": "أضف إلى السلة",
+    "checkOutNowText": "الخروج الآن",
+    "totalPriceText": "السعر الكلي",
+    "addOnPriceText": "سعر الإضافات",
+    "addOnsText": "الإضافات",
+    "addOnNameText": "اسم الوظيفة الإضافية",
+    "chooseDateText": "اختر التاريخ والوقت",
+    "checkoutText": "الدفع",
+    "addCouponText": "أضف رمز القسيمة",
+    "paymentProceedButtonText": "الشروع في دفع",
+    "bookingForEventHeading": "كتاب للأحداث"
+  },
+  "kidZone": {
+    "heading": "اللعب المفتوح",
+    "availableAndTiming": "التوفر والتوقيت",
+    "timing": "المواعيد:",
+    "availableSlots": "فتحات متاحة",
+    "services": "خدمات",
+    "selectDate":"حدد تاريخ"
+  },
+  "addKidDetails": {
+    "kidName": "اسم الطفل",
+    "kidNamePlaceholder": "اكتب الاسم",
+    "kidDateOfBirthText": "تاريخ ميلاد الطفل",
+    "kidFavouriteColor": "اللون المفضل",
+    "kidFavouriteColorPlaceholder": "اكتب اللون",
+    "previousButtonText": "سابق",
+    "saveButtonText": "يحفظ",
+    "nextButton": "التالي",
+    "editKidDetails": "تحرير تفاصيل الطفل"
+  },
+  "workshop": {
+    "workshopHeadingOne": "ورشة عمل مستمرة",
+    "workshopHeadingTwo": "ورش العمل القادمة",
+    "aboutWorkShop": "حول ورشة العمل",
+    "aboutOrganizer": "حول المنظم",
+    "workshopCardHeading": "اسم الورشة",
+    "buttonText": "اشتري الآن",
+    "progressbarText": "المقعد متاح",
+    "bookingWorkshop": "الحجز لورشة العمل",
+    "choosekidDetails": "اختر تفاصيل الأطفال",
+    "addKidDetails": "أضف تفاصيل طفل جديد",
+    "workshopName": "اسم الورشة هنا",
+    "buttonTextOne": "أضف إلى السلة",
+    "buttonTextTwo": "الخروج الآن",
+    "workshopImageHeading": "ورش عمل",
+    "calenderButtonText": "اختر من التقويم",
+    "workshopParagraphFirst": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني",
+    "workshopParagraphSecond": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
+    "workshopParagraphThird": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
+    "selectDate":"اختر من التقويم"
+  }
+}
