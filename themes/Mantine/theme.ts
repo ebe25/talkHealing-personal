@@ -1,6 +1,9 @@
 import { MantineThemeOverride } from '@mantine/core';
 import { COLORS } from './colors';
 
+import { webFontFamily } from './fonts';
+import { typography } from './typography';
+
 export const MANTINE_COLORS = Object.keys(COLORS);
 export const MANTINE_SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
@@ -86,27 +89,9 @@ export const MANTINE_THEME: MantineThemeOverride = {
       h6: { fontSize: '0.875rem', lineHeight: 1.5, fontWeight: undefined },
     },
   },
-
   other: {
-    webFontFamily: {
-      "PlusJakartaSans-Bold": "PlusJakartaSans-Bold",
-      "PlusJakartaSans-BoldItalic": "PlusJakartaSans-BoldItalic",
-      "PlusJakartaSans-ExtraBold": "PlusJakartaSans-ExtraBold",
-      "PlusJakartaSans-ExtraLight": "PlusJakartaSans-ExtraLight",
-      "PlusJakartaSans-SemiBoldItalic": "PlusJakartaSans-SemiBoldItalic",
-      "PlusJakartaSans-SemiBold": "PlusJakartaSans-SemiBold",
-      "PlusJakartaSans-ExtraLightItalic": "PlusJakartaSans-ExtraLightItalic",
-      "PlusJakartaSans-Light": "PlusJakartaSans-Light",
-      "PlusJakartaSans-Italic": "PlusJakartaSans-Italic",
-      "PlusJakartaSans-LightItalic": "PlusJakartaSans-LightItalic",
-      "PlusJakartaSansMedium-Italic": "PlusJakartaSansMedium-Italic",
-      "PlusJakartaSansExtraBold-Italic": "PlusJakartaSansExtraBold-Italic",
-      "PlusJakartaSans-Medium": "'PlusJakartaSans-Medium",
-      "PlusJakartaSans-Regular": "PlusJakartaSans-Regular",
-      "HelveticaNeueLTArabic55-Roman": "HelveticaNeueLTArabic55-Roman",
-      "HelveticaNeueLTArabic45-Light": "HelveticaNeueLTArabic45-Light",
-      "HelveticaNeueLTArabic75-Bold": "HelveticaNeueLTArabic75-Bold",
-    },
+    webFontFamily: webFontFamily,
+    typography:typography
   },
   components: {},
   activeStyles: { transform: 'translateY(0.0625rem)' },

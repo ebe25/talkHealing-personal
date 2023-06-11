@@ -7,7 +7,7 @@ import { Notifications } from '@mantine/notifications';
 
 //importing theme file
 import { MANTINE_THEME } from '@/themes/Mantine/theme';
-//import "@/themes/Mantine/WebFonts/stylesheet.css";
+import "@/themes/Mantine/WebFonts/stylesheet.css";
 
 //setting up store
 import { i18nx } from "../i18n";
@@ -23,6 +23,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   };
   let currentTheme = MANTINE_THEME;
   currentTheme.colorScheme;
+  
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined);
 
   useEffect(() => {

@@ -1,34 +1,19 @@
-import localFont from 'next/font/local';
-
-export const PlusJakartaSansBold = localFont({
-    src: [
-        {
-            path: './WebFonts/PlusJakartaSans-Bold.woff2',
-            weight: 'bold',
-            style: 'normal',
-        },
-        {
-            path: './WebFonts/PlusJakartaSans-Bold.woff',
-            weight: 'bold',
-            style: 'normal',
-        },
-    ],
-    display: 'swap'
-})
-
-export const PlusJakartaSansBoldItalic = localFont({
-    src: [
-        {
-            path: './WebFonts/PlusJakartaSans-BoldItalic.woff2',
-            weight: 'bold',
-            style: 'italic',
-        },
-        {
-            path: './WebFonts/PlusJakartaSans-BoldItalic.woff',
-            weight: 'bold',
-            style: 'italic',
-        },
-    ],
-    display: 'swap'
-})
-
+export const webFontFamily= {
+    "PlusJakartaSans-Bold": "PlusJakartaSans-Bold",
+    "PlusJakartaSans-BoldItalic": "PlusJakartaSans-BoldItalic",
+    "PlusJakartaSans-ExtraBold": "PlusJakartaSans-ExtraBold",
+    "PlusJakartaSans-ExtraLight": "PlusJakartaSans-ExtraLight",
+    "PlusJakartaSans-SemiBoldItalic": "PlusJakartaSans-SemiBoldItalic",
+    "PlusJakartaSans-SemiBold": "PlusJakartaSans-SemiBold",
+    "PlusJakartaSans-ExtraLightItalic": "PlusJakartaSans-ExtraLightItalic",
+    "PlusJakartaSans-Light": "PlusJakartaSans-Light",
+    "PlusJakartaSans-Italic": "PlusJakartaSans-Italic",
+    "PlusJakartaSans-LightItalic": "PlusJakartaSans-LightItalic",
+    "PlusJakartaSansMedium-Italic": "PlusJakartaSansMedium-Italic",
+    "PlusJakartaSansExtraBold-Italic": "PlusJakartaSansExtraBold-Italic",
+    "PlusJakartaSans-Medium": "'PlusJakartaSans-Medium",
+    "PlusJakartaSans-Regular": "PlusJakartaSans-Regular",
+    "HelveticaNeueLTArabic55-Roman": "HelveticaNeueLTArabic55-Roman",
+    "HelveticaNeueLTArabic45-Light": "HelveticaNeueLTArabic45-Light",
+    "HelveticaNeueLTArabic75-Bold": "HelveticaNeueLTArabic75-Bold",
+  }

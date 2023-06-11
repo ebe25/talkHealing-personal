@@ -9,7 +9,7 @@ module.exports = {
     }
     return config;
   },
-  stories: ['.../**/*.story.mdx', '../**/*.story.@(js|jsx|ts|tsx)'],
+  stories: ['../**/*.story.mdx', '../**/*.story.@(js|jsx|ts|tsx)'],
   addons: [
     'storybook-dark-mode',
     '@storybook/addon-links',
