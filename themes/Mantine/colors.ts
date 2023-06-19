@@ -15,7 +15,7 @@ export const COLORS = {
   ],
 
   gray: [
-    '#f8f9fa',
+    '#8F918F',
     '#f1f3f5',
     '#e9ecef',
     '#dee2e6',
@@ -28,9 +28,9 @@ export const COLORS = {
   ],
 
   red: [
-    '#fff5f5',
-    '#ffe3e3',
-    '#ffc9c9',
+    '#F14336',
+    '#EF1D1D',
+    '#FF4D4D',
     '#ffa8a8',
     '#ff8787',
     '#ff6b6b',
@@ -80,7 +80,7 @@ export const COLORS = {
   ],
 
   indigo: [
-    '#edf2ff',
+    '#9EB7F8',
     '#dbe4ff',
     '#bac8ff',
     '#91a7ff',
@@ -93,12 +93,12 @@ export const COLORS = {
   ],
 
   blue: [
-    '#e7f5ff',
-    '#d0ebff',
-    '#a5d8ff',
-    '#74c0fc',
-    '#4dabf7',
-    '#339af0',
+    '#789CF7',
+    '#2B5BD4',
+    '#3E71F3',
+    '#5280F5',
+    '#3673CE',
+    '#528CE4',
     '#228be6',
     '#1c7ed6',
     '#1971c2',
@@ -106,7 +106,7 @@ export const COLORS = {
   ],
 
   cyan: [
-    '#e3fafc',
+    '#CFAA72',
     '#c5f6fa',
     '#99e9f2',
     '#66d9e8',
@@ -132,7 +132,7 @@ export const COLORS = {
   ],
 
   green: [
-    '#ebfbee',
+    '#28B446',
     '#d3f9d8',
     '#b2f2bb',
     '#8ce99a',
@@ -158,7 +158,7 @@ export const COLORS = {
   ],
 
   yellow: [
-    '#fff9db',
+    '#FFCC16',
     '#fff3bf',
     '#ffec99',
     '#ffe066',
@@ -171,11 +171,11 @@ export const COLORS = {
   ],
 
   orange: [
+    '#FFDE67',
+    '#F6B100',
     '#fff4e6',
-    '#ffe8cc',
-    '#ffd8a8',
-    '#ffc078',
-    '#ffa94d',
+    '#FFA230',
+    '#EE8539',
     '#ff922b',
     '#fd7e14',
     '#f76707',
