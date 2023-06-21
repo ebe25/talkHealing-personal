@@ -28,26 +28,6 @@ const meta: Meta<typeof BaseButton> = {
         fifth: 'xl',
       },
     },
-    radius: {
-      control: {
-        type: 'select',
-        labels: {
-          first: 'xs',
-          second: 'sm',
-          third: 'md',
-          fourth: 'lg',
-          fifth: 'xl',
-        },
-      },
-      options: ['first', 'second', 'third', 'fourth', 'fifth'],
-      mapping: {
-        first: 'xs',
-        second: 'sm',
-        third: 'md',
-        fourth: 'lg',
-        fifth: 'xl',
-      },
-    },
     variant: {
       control: {
         type: 'select',
@@ -65,6 +45,26 @@ const meta: Meta<typeof BaseButton> = {
         second: 'light',
         third: 'outline',
         fourth: 'default',
+        fifth: 'subtle',
+      },
+    },
+    colorvariant: {
+      control: {
+        type: 'select',
+        labels: {
+          first: 'filled_blue',
+          second: 'filled_red',
+          third: 'outline',
+          fourth: 'disabled',
+          fifth: 'subtle',
+        },
+      },
+      options: ['first', 'second', 'third', 'fourth', 'fifth'],
+      mapping: {
+        first: 'filled_blue',
+        second: 'filled_red',
+        third: 'outline',
+        fourth: 'disabled',
         fifth: 'subtle',
       },
     },

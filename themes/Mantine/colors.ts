@@ -17,10 +17,11 @@ export const COLORS = {
   gray: [
     '#f1f3f5',
     '#e9ecef',
+    '#E9EAE9',
     '#dee2e6',
     '#ced4da',
     '#adb5bd',
-    '#8F918F',
+    // '#8F918F',
     '#868e96',
     '#495057',
     '#343a40',
@@ -132,7 +133,8 @@ export const COLORS = {
   ],
 
   green: [
-    '#d3f9d8',
+    '#ECF1FE',
+    // '#d3f9d8',
     '#b2f2bb',
     '#8ce99a',
     '#69db7c',
