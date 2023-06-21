@@ -258,7 +258,7 @@ export const typography = {
       } as React.CSSProperties,
     },
   } ,
-  inputfieldText: {
+  inputFieldText: {
     en: {
       i1: {
         fontFamily: webFontFamily['PlusJakartaSans-Regular'],
