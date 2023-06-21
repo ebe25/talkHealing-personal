@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, ButtonProps } from '@mantine/core';
 import useStyles from './BaseButton.styles';
 import { PolymorphicComponentProps } from '@mantine/utils';
-import { ClassNamesProps } from '@emotion/react';
 
 interface BaseButtonProps extends PolymorphicComponentProps<'button', ButtonProps> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';

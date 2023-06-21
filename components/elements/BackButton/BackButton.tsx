@@ -1,34 +1,18 @@
 import React from 'react';
-import { Flex, Image, ButtonProps } from '@mantine/core';
-// import { Images } from "../../../public/index";
-// import { useTheme } from 'native-base';
-// import { useStores } from '../../../models';
-import { BaseText } from '../BaseText/BaseText';
-// import { getStyle } from '../../../utils/style';
-// import { useRouter } from 'next/router';
-// import { useMediaQuery } from '@mantine/hooks';
-// import useStyles from './BackButton.style';
+import { Flex, ButtonProps } from '@mantine/core';
 import { PolymorphicComponentProps } from '@mantine/utils';
 import { IconArrowLeft } from '@tabler/icons-react';
+// import useStyles from './BackButton.style';
+
 
 interface BaseButtonProps extends PolymorphicComponentProps<'div', ButtonProps> {
-  heading?: string;
+  colorvariant? : any;
 }
 
 
-export const BackButton = (props: 
-    BaseButtonProps
-    // navigationLink?:any
-) => {
-
-    // const { i18nStore } = useStores();
-    // const router = useRouter();
-//   const { classes } = useStyles();
-
-    
-    // const theme = useTheme();
-    // const style = getStyle(theme);
-    // const sm = useMediaQuery("(max-width:640px)")
+export const BackButton = (props: BaseButtonProps) => {
+    // const { classes } = useStyles();
+    let buttonClass = props.colorvariant as never;
 
     return (
         <Flex align={"center"}
@@ -43,10 +27,7 @@ export const BackButton = (props:
                     minWidth:"60px",
                     cursor:"pointer"
                 }}
-                // className={classes.title}
-                // onClick={()=>{
-                //     router.back()
-                // }}
+                // className={classes[buttonClass]}
             >
                 {/* <Image
                 style={{
@@ -59,10 +40,7 @@ export const BackButton = (props:
                 /> */}
                 <IconArrowLeft />
             </Flex>
-            <BaseText
-            // className={classes.title}
-            > {props.heading} </BaseText>
+            {props.children}
         </Flex>
-
     )
 }

@@ -12,6 +12,6 @@ type Story = StoryObj<typeof BackButton>;
 
 export const backButton: Story = {
   args: {
-    heading: 'Checkout',
+    children: 'Checkout',
   },
 };
