@@ -4,7 +4,7 @@ import { PolymorphicComponentProps } from '@mantine/utils';
 import { useDisclosure } from '@mantine/hooks';
 
 interface BaseModalProps extends PolymorphicComponentProps<'div', ModalProps> {
-  Modal_heading?: string;
+  title?: string;
   ButtonText?: string;
 }
 
@@ -12,9 +12,9 @@ export const BaseModal = (props: BaseModalProps) => {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <>
-      <Modal opened={opened} onClose={close} title={props.Modal_heading}  centered>
+      <Modal {...props} opened={opened} onClose={close} title={props.title} centered>
         {props.children}
-        </Modal>
+      </Modal>
 
       <Group position="center">
         <Button onClick={open}>{props.ButtonText}</Button>
