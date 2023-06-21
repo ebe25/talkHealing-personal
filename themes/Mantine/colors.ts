@@ -15,12 +15,12 @@ export const COLORS = {
   ],
 
   gray: [
-    '#f8f9fa',
     '#f1f3f5',
     '#e9ecef',
     '#dee2e6',
     '#ced4da',
     '#adb5bd',
+    '#8F918F',
     '#868e96',
     '#495057',
     '#343a40',
@@ -28,15 +28,15 @@ export const COLORS = {
   ],
 
   red: [
-    '#fff5f5',
-    '#ffe3e3',
-    '#ffc9c9',
     '#ffa8a8',
     '#ff8787',
     '#ff6b6b',
+    '#FF4D4D',
     '#fa5252',
     '#f03e3e',
+    '#F14336',
     '#e03131',
+    '#EF1D1D',
     '#c92a2a',
   ],
 
@@ -80,27 +80,27 @@ export const COLORS = {
   ],
 
   indigo: [
-    '#edf2ff',
     '#dbe4ff',
     '#bac8ff',
     '#91a7ff',
     '#748ffc',
     '#5c7cfa',
     '#4c6ef5',
-    '#4263eb',
     '#3b5bdb',
+    '#4263eb',
+    '#2B5BD4',
     '#364fc7',
   ],
-
+  
   blue: [
-    '#e7f5ff',
-    '#d0ebff',
-    '#a5d8ff',
-    '#74c0fc',
-    '#4dabf7',
-    '#339af0',
+    '#9EB7F8',
+    '#789CF7',
+    '#528CE4',
+    '#5280F5',
+    '#3E71F3',
     '#228be6',
     '#1c7ed6',
+    '#3673CE',
     '#1971c2',
     '#1864ab',
   ],
@@ -132,7 +132,6 @@ export const COLORS = {
   ],
 
   green: [
-    '#ebfbee',
     '#d3f9d8',
     '#b2f2bb',
     '#8ce99a',
@@ -140,6 +139,7 @@ export const COLORS = {
     '#51cf66',
     '#40c057',
     '#37b24d',
+    '#28B446',
     '#2f9e44',
     '#2b8a3e',
   ],
@@ -158,11 +158,11 @@ export const COLORS = {
   ],
 
   yellow: [
-    '#fff9db',
     '#fff3bf',
     '#ffec99',
     '#ffe066',
     '#ffd43b',
+    '#FFCC16',
     '#fcc419',
     '#fab005',
     '#f59f00',
@@ -172,11 +172,11 @@ export const COLORS = {
 
   orange: [
     '#fff4e6',
-    '#ffe8cc',
-    '#ffd8a8',
-    '#ffc078',
-    '#ffa94d',
+    '#FFDE67',
+    '#F6B100',
+    '#FFA230',
     '#ff922b',
+    '#EE8539',
     '#fd7e14',
     '#f76707',
     '#e8590c',
