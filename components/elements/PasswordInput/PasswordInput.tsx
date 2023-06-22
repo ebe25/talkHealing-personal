@@ -19,6 +19,7 @@ export const BasePasswordInput = (
       {...props}
       onClick={() => setToggle(!toggle)}
       className={classes.PasswordInput}
+      radius="xl"
         // styles={{
         //   innerInput: style.inputText[i18nStore.getCurrentLanguage()].intxt1,
         // }}

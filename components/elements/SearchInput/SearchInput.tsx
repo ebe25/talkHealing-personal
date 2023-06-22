@@ -1,20 +1,22 @@
-import { Input ,TextInputProps} from '@mantine/core';
+import { Input, TextInputProps } from '@mantine/core';
 import { PolymorphicComponentProps } from '@mantine/utils';
 import { IconSearch } from '@tabler/icons-react';
+import useStyles from './SearchInput.style';
 
 interface BaseSearchInput extends PolymorphicComponentProps<'input', TextInputProps> {
-  placeholder?:string;
+  placeholder?: string;
   // style?: any;
 }
 
-export const SearchInput = (props: BaseSearchInput ) => {
-  
-    return (
+export const SearchInput = (props: BaseSearchInput) => {
+  const { classes } = useStyles();
+  return (
     <Input
-      icon={<IconSearch />}
+      className={classes.mainBox}
+      icon={<IconSearch width={22} height={22} />}
       placeholder={props.placeholder}
-      radius="md"
+      radius="lg"
       {...props}
     />
   );
-}
+};
