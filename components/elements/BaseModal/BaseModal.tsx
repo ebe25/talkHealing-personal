@@ -12,7 +12,8 @@ export const BaseModal = (props: BaseModalProps) => {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <>
-      <Modal {...props} opened={opened} onClose={close} title={props.title} centered>
+      <Modal {...props} opened={opened} onClose={close} title={props.title} 
+       centered>
         {props.children}
       </Modal>
 

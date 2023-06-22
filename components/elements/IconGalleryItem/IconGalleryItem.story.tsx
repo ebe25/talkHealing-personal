@@ -16,7 +16,7 @@ type Story = StoryObj<typeof IconGalleryItem>;
 
 export const iconGalleryItem: Story = {
   args: {
-    heading: 'card',
+    // heading: 'card',
     img: galleryImage
     // img: 'https://media.istockphoto.com/id/1281240685/photo/portrait-of-a-crawling-baby.jpg?s=1024x1024&w=is&k=20&c=xujC1CSOMgWVJKAev6un9rNEoYOfEryxf0KM9bQ0Efo='
   },

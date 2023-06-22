@@ -2,6 +2,8 @@ import React from 'react';
 import { Text, TextProps } from '@mantine/core';
 import { translate, TxKeyPath } from '../../../i18n';
 import { PolymorphicComponentProps } from '@mantine/utils';
+import { useStores } from '@/models';
+
 
 interface BaseTextProps extends PolymorphicComponentProps<'div', TextProps> {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';

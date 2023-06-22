@@ -165,7 +165,7 @@ export const typography = {
         lineHeight: '15px',
       } as React.CSSProperties,
       b3: {
-        fontFamily: 'Inter',
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
         fontStyle: 'Regular',
         fontSize: '14px',
         lineHeight: '17px',

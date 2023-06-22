@@ -1,7 +1,7 @@
 import { Ratings } from './Ratings';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Images } from '../../../public/index';
-import StartImage from '../../../public/image/Star.png'
+import StartImage from '../../../public/image/Start.png'
 
 const meta: Meta<typeof Ratings> = {
     title: 'Elements/Ratings',
