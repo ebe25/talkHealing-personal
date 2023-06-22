@@ -13,6 +13,7 @@ export const BaseCheckbox = (props:BaseCheckboxProps) => {
         <Checkbox
         className={classes[checkboxClass]}
         labelPosition="left"
+        radius="xl"
         label={props.label}
         {...props}
       />
