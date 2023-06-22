@@ -25,9 +25,9 @@ export const BasePasswordInput = (
 
       visibilityToggleIcon={({ reveal }) =>
         reveal ? (
-          <Image src={Images.dark_eye_icon} alt="dark_eye_icon" width="16px" height={'12px'} />
+          <Image src={Images.dark_eye_icon} alt="dark_eye_icon" width="18px" height={'10px'} />
         ) : (
-          <Image src={Images.light_eye_icon} alt="light_eye_icon" width="12px" height={'10px'} />
+          <Image src={Images.light_eye_icon} alt="light_eye_icon" width="18px" height={'10px'} />
         )
       }
     />
