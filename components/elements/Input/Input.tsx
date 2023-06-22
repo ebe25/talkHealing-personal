@@ -8,7 +8,7 @@ import { PolymorphicComponentProps } from '@mantine/utils';
 
 
 interface BaseTextInputProps extends PolymorphicComponentProps<'TextInput', TextInputProps> {
-  style?: any;
+  styleName?: 'inputText1' | 'inputText2' ;
 }
 
 export const Input = (props: BaseTextInputProps) => {
@@ -16,13 +16,14 @@ export const Input = (props: BaseTextInputProps) => {
 //   const theme = useTheme();
 //   const style = getStyle(theme);
 
-// const { classes } = useStyles();
-  // let inputClass = props.style as never;
+const { classes } = useStyles();
+  let inputClass = props.styleName as never;
 
   return (
     <TextInput
       {...props}
-      // className={classes[inputClass]}
+      className={classes[inputClass]}
+      radius="xl"
     //   styles={{
     //     input: style.inputText[i18nStore.getCurrentLanguage()].intxt1,
     //   }}
