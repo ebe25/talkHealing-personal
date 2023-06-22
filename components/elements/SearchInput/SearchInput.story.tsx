@@ -10,5 +10,7 @@ export default meta;
 type Story = StoryObj<typeof SearchInput>;
 
 export const input: Story = {
-  args: {},
+  args: {
+    placeholder :'your email'
+  },
 };
