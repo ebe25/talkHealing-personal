@@ -4,6 +4,7 @@ import { PasswordInput, PasswordInputProps, Image } from '@mantine/core';
 // import { getStyle } from "../../../utils/style";
 // import { useStores } from "../../../models/root-store/root-store-context";
 import { Images } from '../../../public';
+import useStyles from './PasswordInput.style'
 
 export const BasePasswordInput = (
   props: PasswordInputProps & React.RefAttributes<HTMLInputElement>
@@ -11,15 +12,16 @@ export const BasePasswordInput = (
   //   const { i18nStore } = useStores();
   //   const theme = useTheme();
   const [toggle, setToggle] = useState(false);
-  //   const style = getStyle(theme);
+  const { classes } = useStyles();
 
   return (
     <PasswordInput
       {...props}
       onClick={() => setToggle(!toggle)}
-      //   styles={{
-      //     innerInput: style.inputText[i18nStore.getCurrentLanguage()].intxt1,
-      //   }}
+      className={classes.PasswordInput}
+        // styles={{
+        //   innerInput: style.inputText[i18nStore.getCurrentLanguage()].intxt1,
+        // }}
 
       visibilityToggleIcon={({ reveal }) =>
         reveal ? (
