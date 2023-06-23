@@ -12,7 +12,8 @@ type Story = StoryObj<typeof BaseModal>;
 
 export const baseModal: Story = {
   args: {
-    title: 'Modal',
-    ButtonText: 'Open centered Modal'
+    children: 'Open centered Modal',
+    opened: true,
+    title: 'Modal'
   },
 };
