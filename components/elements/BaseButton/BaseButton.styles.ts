@@ -50,6 +50,6 @@ export const createStyle = (
         ...typography.buttonText[langCode].b3,
         background : "transparent",
         borderRadius: '42px',
-        border:`1px solid ${theme.colors.green[0]}`,
+        border:`1px solid ${theme.colors[props.color_variant][0]}`,
       }
 }))};
