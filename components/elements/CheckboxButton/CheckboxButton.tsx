@@ -7,7 +7,7 @@ interface BaseCheckboxProps  {
 }
 
 export const BaseCheckbox = (props:BaseCheckboxProps) => {
-  const useStyles = createStyle('en');
+  const useStyles = createStyle('en','gray');
   const { classes } = useStyles();
   let checkboxClass = props.colorvariant as never;
     return (

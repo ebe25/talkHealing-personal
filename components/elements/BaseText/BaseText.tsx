@@ -25,8 +25,8 @@ type sizeMap = Record<keyof typeof FONTWEIGHT_VARIANTS, number>;
 
 interface BaseTextProps extends PolymorphicComponentProps<'div', TextProps> {
   // size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  size_variant: keyof typeof SIZE_VARIANTS;
-  fontWeight_variant: keyof typeof FONTWEIGHT_VARIANTS;
+  size_variant?: keyof typeof SIZE_VARIANTS;
+  fontWeight_variant?: keyof typeof FONTWEIGHT_VARIANTS;
   color?: string;
   // fontWeight?: 400 | 500 | 600 | 700;
   txtkey?: TxKeyPath;
