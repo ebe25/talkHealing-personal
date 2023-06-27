@@ -11,7 +11,6 @@ export const BaseButton = (props: BaseButtonProps) => {
     <Button
       {...props}
       className={classes[props.style_variant]}
-      style={{ textAlign: 'center' }}
     >
       {props.children}
     </Button>

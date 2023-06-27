@@ -30,17 +30,7 @@ export const BackButton = (props: BaseButtonProps) => {
                     minWidth:"60px",
                     cursor:"pointer"
                 }}
-                // className={classes[buttonClass]}
             >
-                {/* <Image
-                style={{
-                     scale: i18nStore.isRTL?"-1":"1"
-                 }}
-                    src={Images.chevron_prev_icon}
-                    alt="icon"
-                    width={"14px"}
-                    height={"25px"}
-                /> */}
                 <IconArrowLeft />
             </Flex>
             {props.children}
