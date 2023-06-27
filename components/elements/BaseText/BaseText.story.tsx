@@ -8,11 +8,11 @@ const meta: Meta<typeof BaseText> = {
   title: 'Elements/Text',
   component: BaseText,
   argTypes: {
-    style_variant: {
+    size_variant: {
       options:Object.keys( SIZE_VARIANTS),
       control: { type: 'select' },
     },
-    color_variant: {
+    fontWeight_variant: {
       options:Object.keys( FONTWEIGHT_VARIANTS),
       control: { type: 'select' },
     },  
