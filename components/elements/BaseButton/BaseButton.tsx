@@ -1,24 +1,16 @@
 import React from 'react';
-import { Button, ButtonProps } from '@mantine/core';
-import useStyles from './BaseButton.styles';
-import { PolymorphicComponentProps } from '@mantine/utils';
-
-interface BaseButtonProps extends PolymorphicComponentProps<'button', ButtonProps> {
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'filled' | 'light' | 'outline' | 'default' | 'subtle';
-  colorvariant?: 'filled_blue' | 'filled_red' | 'outline' | 'disabled' | 'subtle' ;
-}
+import { Button } from '@mantine/core';
+import { createStyle } from './BaseButton.styles';
+import { BaseButtonProps } from './BaseButton.styles';
 
 export const BaseButton = (props: BaseButtonProps) => {
+  const useStyles = createStyle('en', props);
   const { classes } = useStyles();
-  let buttonClass = props.colorvariant as never;
 
   return (
     <Button
       {...props}
-      className={classes[buttonClass]}
-      size={props.size}
-      variant={props.variant}
+      className={classes[props.style_variant]}
       style={{ textAlign: 'center' }}
     >
       {props.children}

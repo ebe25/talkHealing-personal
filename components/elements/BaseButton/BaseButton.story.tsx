@@ -1,73 +1,20 @@
 import React from 'react';
 import { BaseButton } from './BaseButton';
 import type { Meta, StoryObj } from '@storybook/react';
+import { COLOR_VARIANTS, STYLE_VARIANTS } from './BaseButton.styles';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof BaseButton> = {
   title: 'Elements/Button',
   component: BaseButton,
   argTypes: {
-    onClick: { action: 'Base Button' },
-    size: {
-      control: {
-        type: 'select',
-        labels: {
-          first: 'xs',
-          second: 'sm',
-          third: 'md',
-          fourth: 'lg',
-          fifth: 'xl',
-        },
-      },
-      options: ['first', 'second', 'third', 'fourth', 'fifth'],
-      mapping: {
-        first: 'xs',
-        second: 'sm',
-        third: 'md',
-        fourth: 'lg',
-        fifth: 'xl',
-      },
+    style_variant: {
+      options:Object.keys( STYLE_VARIANTS),
+      control: { type: 'select' },
     },
-    variant: {
-      control: {
-        type: 'select',
-        labels: {
-          first: 'Filled',
-          second: 'Light',
-          third: 'Outline',
-          fourth: 'Default',
-          fifth: 'Subtle',
-        },
-      },
-      options: ['first', 'second', 'third', 'fourth', 'fifth'],
-      mapping: {
-        first: 'filled',
-        second: 'light',
-        third: 'outline',
-        fourth: 'default',
-        fifth: 'subtle',
-      },
-    },
-    colorvariant: {
-      control: {
-        type: 'select',
-        labels: {
-          first: 'filled_blue',
-          second: 'filled_red',
-          third: 'outline',
-          fourth: 'disabled',
-          fifth: 'subtle',
-        },
-      },
-      options: ['first', 'second', 'third', 'fourth', 'fifth'],
-      mapping: {
-        first: 'filled_blue',
-        second: 'filled_red',
-        third: 'outline',
-        fourth: 'disabled',
-        fifth: 'subtle',
-      },
-    },
+    color_variant: {
+      options:Object.keys( COLOR_VARIANTS),
+      control: { type: 'select' },
+    },  
   },
 };
 
@@ -76,9 +23,8 @@ type Story = StoryObj<typeof BaseButton>;
 
 export const baseButton: Story = {
   args: {
-    size: 'xs',
-    disabled: false,
-    radius: 'xs',
-    children: 'Button',
+    style_variant:STYLE_VARIANTS.filled as keyof typeof STYLE_VARIANTS,
+    color_variant:COLOR_VARIANTS.blue  as keyof typeof COLOR_VARIANTS,
+    children: "Button"
   },
 };

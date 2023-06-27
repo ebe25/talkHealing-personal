@@ -1,32 +1,55 @@
 import { createStyles } from '@mantine/core';
-import {typography } from "@/themes/Mantine/typography";
+import { ButtonProps } from '@mantine/core';
+import { typography } from "@/themes/Mantine/typography";
+import { PolymorphicComponentProps } from "@mantine/utils";
 
-export default createStyles((theme) => ({
-      filled_blue: {
-        ...typography.buttonText.en.b2,
-        background : theme.colors.blue[5],
-        borderRadius: '44px',
-      },
-      filled_red: {
-        ...typography.buttonText.en.b2,
-        background : theme.colors.red[8],
+export const STYLE_VARIANTS = {
+  filled: "filled",
+  outline: "outline",
+  subtle: "subtle",
+  disabled: "disabled"
+};
+//Color variant
+export const COLOR_VARIANTS = {
+  blue: "blue",
+  red: "red",
+  gray: "gray",
+  green: "green"
+};
+type VariantMap = Record<keyof typeof STYLE_VARIANTS, React.CSSProperties>;
+type ColorMap = Record<keyof typeof COLOR_VARIANTS, string>;
+
+export interface BaseButtonProps
+  extends PolymorphicComponentProps<"button", ButtonProps> {
+  style_variant: keyof typeof STYLE_VARIANTS;
+  color_variant: keyof typeof COLOR_VARIANTS;
+}
+
+export const createStyle = (
+  langCode: "en" | "ar",
+  props: BaseButtonProps
+) => {
+
+  return createStyles((theme) => ({
+    [STYLE_VARIANTS.filled]: {
+        ...typography.buttonText[langCode].b2,
+        background : theme.colors[props.color_variant][5],
         borderRadius: '44px',
       },
       subtle: {
-        ...typography.buttonText.en.b4,
-        background : theme.white,
+        ...typography.buttonText[langCode].b4,
+        background : "white",
         borderRadius: '44px',
       },
       disabled: {
-        ...typography.buttonText.en.b2,
+        ...typography.buttonText[langCode].b2,
         background : theme.colors.gray[2],
         borderRadius: '44px',
       },
       outline:{
-        ...typography.buttonText.en.b3,
-        background : theme.colors.blue[4],
+        ...typography.buttonText[langCode].b3,
+        background : "transparent",
         borderRadius: '42px',
-        borderColor: theme.colors.green[0],
-        borderWidth: 1,
+        border:`1px solid ${theme.colors.green[0]}`,
       }
-}));
+}))};

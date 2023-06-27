@@ -6,12 +6,24 @@ import { IconGalleryItem } from '@/components/elements/IconGalleryItem/IconGalle
 import { Input } from '@/components/elements/Input/Input';
 import { Selectbox } from '@/components/elements/Selectbox/Selectbox';
 import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
+import { Ratings } from '@/components/elements/Ratings/Ratings';
+import { BackButton } from '@/components/elements/BackButton/BackButton';
+import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
+import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
+import CheckboxButtonStyle from '@/components/elements/CheckboxButton/CheckboxButton.style';
+import { BaseCheckbox } from '@/components/elements/CheckboxButton/CheckboxButton';
+import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
+import { useDisclosure } from '@mantine/hooks';
+import { BaseRadioButton } from '@/components/elements/BaseRadioButton/RadioButton';
 
-let data = ['cv','vffv']
+
+let data = ['cv', 'vffv'];
 
 export function Welcome() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
+  const [opened, { open, close }] = useDisclosure(false);
+
   return (
     <>
       <Title className={classes.title} align="center" mt={100}>
@@ -28,11 +40,22 @@ export function Welcome() {
         </Anchor>
         . To get started edit index.tsx file.
       </Text>
-        <BaseText color={"red"} txtkey="addKidDetails.editKidDetails" />
-        <IconGalleryItem heading={"heade"} />
-        <Selectbox data={data} />
-        <SearchInput style={{width:"549px"}}/>
-        {/* <Input  /> */}
+      <BaseButton style_variant={'filled'} color_variant={'blue'}> <BaseText txtkey="addKidDetails.editKidDetails" /></BaseButton>
+      <BaseText color={'red'} txtkey="addKidDetails.editKidDetails" />
+      <BasePasswordInput />
+      <IconGalleryItem heading={"authentication.formText.name"} />
+      <Selectbox data={data} />
+      <SearchInput style={{ width: '549px' }} />
+      <Ratings heading={'addKidDetails.kidDateOfBirthText'} />
+      <BaseCheckbox ></BaseCheckbox>
+      <BackButton> <BaseText txtkey="global.button.back" />  </BackButton>
+      <BaseButton onClick={open} style_variant={'filled'} color_variant={'red'}> <BaseText txtkey="addKidDetails.nextButton" /></BaseButton>
+       <BaseModal  withCloseButton={false} opened={opened} onClose={close}><BaseText txtkey="bookingForEvent.paymentProceedButtonText" /> </BaseModal>
+      <Input component={"input"} type='text' styleName={'inputText1'} style={{width:"300px"}} />
+      <form style={{display:"flex"}}>
+        <label><BaseText txtkey="bookingForEvent.addOnPriceText" /></label>
+      <BaseRadioButton />
+      </form>
     </>
   );
 }
