@@ -1,7 +1,11 @@
 import { createStyles } from '@mantine/core';
 import {typography } from "@/themes/Mantine/typography";
 
-export default createStyles((theme) => ({
+export const createStyle = (
+  langCode: "en" | "ar",
+) => {
+
+  return createStyles((theme) => ({
       mainBox: {
         width:"170px",
         height:"100px" ,
@@ -9,8 +13,8 @@ export default createStyles((theme) => ({
         justifyContent:"center"
       },
       text:{
-        ...typography.label.en.l1,
+        ...typography.label[langCode].l1,
         color: theme.colors.dark[7],
       }
     }
-))
+))}

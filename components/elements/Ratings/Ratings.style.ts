@@ -1,10 +1,14 @@
 import { createStyles } from '@mantine/core';
 import {typography } from "@/themes/Mantine/typography";
 
-export default createStyles((theme) => ({
+export const createStyle = (
+  langCode: "en" | "ar",
+) => {
+
+  return createStyles((theme) => ({
       text: {
-        ...typography.paragraph.en.p2,
+        ...typography.paragraph[langCode].p2,
         color: theme.colors.dark[7],
       },
     }
-))
+))}

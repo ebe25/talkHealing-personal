@@ -3,19 +3,19 @@ import { Box, Flex, Image } from '@mantine/core';
 import { PolymorphicComponentProps } from '@mantine/utils';
 import { BaseText } from '../BaseText/BaseText';
 import { Images } from '../../../public/index';
-import useStyles from './IconGalleryItem.style';
+import {createStyle} from './IconGalleryItem.style';
 import { useStores } from '@/models';
 import { TxKeyPath } from '@/i18n';
 
 interface IconGalleryItemProps {
   img?: string;
   heading?: TxKeyPath;
-  // style?: any;
 }
 
 export const IconGalleryItem = (props: IconGalleryItemProps) => {
+  const useStyles = createStyle('en');
   const { classes } = useStyles();
-  // let buttonClass = props.style as never;
+ 
   return (
     <Flex direction={'column'} className={classes.mainBox} {...props}>
       <Image

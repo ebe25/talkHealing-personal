@@ -1,7 +1,7 @@
 import { Input, TextInputProps } from '@mantine/core';
 import { PolymorphicComponentProps } from '@mantine/utils';
 import { IconSearch } from '@tabler/icons-react';
-import useStyles from './SearchInput.style';
+import { createStyle } from './SearchInput.style';
 
 interface BaseSearchInput extends PolymorphicComponentProps<'input', TextInputProps> {
   placeholder?: string;
@@ -9,6 +9,7 @@ interface BaseSearchInput extends PolymorphicComponentProps<'input', TextInputPr
 }
 
 export const SearchInput = (props: BaseSearchInput) => {
+  const useStyles = createStyle('en');
   const { classes } = useStyles();
   return (
     <Input

@@ -3,7 +3,7 @@ import { Box, Flex, Image } from '@mantine/core';
 import { PolymorphicComponentProps } from '@mantine/utils';
 import { BaseText } from '../BaseText/BaseText';
 import { Images } from '../../../public/index';
-import useStyles from './Ratings.style';
+import { createStyle } from './Ratings.style';
 import { useStores } from '@/models';
 import { TxKeyPath } from '@/i18n';
 
@@ -13,6 +13,7 @@ interface RatingsProps {
 }
 
 export const Ratings = (props: RatingsProps) => {
+  const useStyles = createStyle('en');
   const { classes } = useStyles();
   const { i18nStore } = useStores();
   return (
