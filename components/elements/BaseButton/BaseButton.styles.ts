@@ -36,17 +36,17 @@ export const createStyle = (
         background : theme.colors[props.color_variant][5],
         borderRadius: '44px',
       },
-      subtle: {
+      [STYLE_VARIANTS.subtle]: {
         ...typography.buttonText[langCode].b4,
         background : "white",
         borderRadius: '44px',
       },
-      disabled: {
+      [STYLE_VARIANTS.disabled]: {
         ...typography.buttonText[langCode].b2,
         background : theme.colors.gray[2],
         borderRadius: '44px',
       },
-      outline:{
+      [STYLE_VARIANTS.outline]:{
         ...typography.buttonText[langCode].b3,
         background : "transparent",
         borderRadius: '42px',

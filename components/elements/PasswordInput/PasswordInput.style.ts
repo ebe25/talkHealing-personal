@@ -7,7 +7,7 @@ export const createStyle = (
 
   return createStyles((theme) => ({
   PasswordInput: {
-    width:"370px",
+    // width:"370px",
     height: "44px",
     borderRadius: "34px",
     ...typography.paragraph[langCode].p2,

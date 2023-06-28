@@ -8,7 +8,7 @@ export const createStyle = (
   return createStyles((theme) => ({
       mainBox: {
        background:theme.colors.gray[2],
-       width:"320px",
+      //  width:"320px",
        border : 'none',
        borderRadius: '34px',
        ...typography.inputFieldText[langCode].i2,

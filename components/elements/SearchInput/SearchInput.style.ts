@@ -7,7 +7,7 @@ export const createStyle = (
 
   return createStyles((theme) => ({
       mainBox: {
-        width: "631px",
+        // width: "631px",
         height: "34px",
         color: theme.colors.gray[6],
         ...typography.paragraph[langCode].p2,
