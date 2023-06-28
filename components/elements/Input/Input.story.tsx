@@ -20,5 +20,6 @@ type Story = StoryObj<typeof Input>;
 export const input: Story = {
   args: {
     style_variant:STYLE_VARIANTS.inputText1 as keyof typeof STYLE_VARIANTS,
+    placeholder: "Input"
   },
 };

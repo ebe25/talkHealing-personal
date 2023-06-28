@@ -11,6 +11,7 @@ type VariantMap = Record<keyof typeof STYLE_VARIANTS, string>;
 
 export interface BaseTextInputProps extends PolymorphicComponentProps<'TextInput', TextInputProps> {
   style_variant: keyof typeof STYLE_VARIANTS;
+  placeholder:string
 }
 
 export const createStyle = (

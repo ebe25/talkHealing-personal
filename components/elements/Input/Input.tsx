@@ -7,5 +7,11 @@ export const Input = (props: BaseTextInputProps) => {
   const useStyles = createStyle('en',props);
   const { classes } = useStyles();
 
-  return <TextInput {...props} className={classes[props.style_variant]} radius="xl" />;
+  return (
+   <TextInput
+   {...props} 
+   className={classes[props.style_variant]}
+   placeholder={props.placeholder}
+   radius="xl" />
+  );
 };

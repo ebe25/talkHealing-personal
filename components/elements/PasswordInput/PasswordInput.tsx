@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { PasswordInput, PasswordInputProps, Image } from '@mantine/core';
 import { Images } from '../../../public';
+import { PolymorphicComponentProps } from '@mantine/utils';
 import {createStyle} from './PasswordInput.style'
 
+interface BaseSearchInput extends PolymorphicComponentProps<'input', PasswordInputProps> {
+  placeholder?: string;
+}
+
 export const BasePasswordInput = (
-  props: PasswordInputProps & React.RefAttributes<HTMLInputElement>
+  props: BaseSearchInput
 ) => {
   const [toggle, setToggle] = useState(false);
   const useStyles = createStyle('en');
@@ -15,6 +20,7 @@ export const BasePasswordInput = (
       {...props}
       onClick={() => setToggle(!toggle)}
       className={classes.PasswordInput}
+      placeholder={props.placeholder}
       radius="xl"
       visibilityToggleIcon={({ reveal }) =>
         reveal ? (

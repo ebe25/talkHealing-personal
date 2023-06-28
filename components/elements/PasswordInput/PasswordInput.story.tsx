@@ -10,5 +10,7 @@ export default meta;
 type Story = StoryObj<typeof BasePasswordInput>;
 
 export const passwordInput: Story = {
-  args: {},
+  args: {
+    placeholder :'Password'
+  },
 };
