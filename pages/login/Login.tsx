@@ -9,12 +9,14 @@ import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
 import { useMediaQuery } from '@mantine/hooks';
 import { SocialMedia } from '@/components/elements/SocialMedia/SocialMedia';
+import useStyles from './Login.style';
 
 interface LoginProps {
   img?: string;
 }
 
 export const Login = (props: LoginProps) => {
+  const { classes } = useStyles();
   const theme = useMantineTheme();
   const isIPhone = useMediaQuery('(max-width:400px)');
   const isPhone = useMediaQuery('(max-width:600px)');
@@ -23,17 +25,9 @@ export const Login = (props: LoginProps) => {
     <>
       <Box
         style={{
-          width: '100%',
-          height: '100vh',
-          // padding: '231px 135px 213px 135px',
           padding: `${isPhone ? '50px' : ''}`,
-          display: 'flex',
-          // flexDirection : "column",
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundImage: 'url( ' + `${Images.bg_Img}` + '  )',
-          backgroundSize: '100%',
         }}
+        className={classes.Container}
       >
         <Flex
           justify="center"
