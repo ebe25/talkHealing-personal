@@ -9,6 +9,7 @@
     },
     "button": {
       "login": "Login",
+      "back" : "Checkout",
       "english": "English",
       "arabic": "ةيب رعلا",
       "start": "Start",

@@ -9,7 +9,7 @@ export default function HomePage() {
     "kaushalv568@gmail.com","admin@123"
   ).then(({ok})=>{
     userStore.getLoginUserData().then((res)=>{
-      console.log(userStore.toJSON())
+      // console.log(userStore.toJSON())
 
     })
   })

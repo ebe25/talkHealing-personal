@@ -165,11 +165,18 @@ export const typography = {
         lineHeight: '15px',
       } as React.CSSProperties,
       b3: {
-        fontFamily: 'Inter',
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
         fontStyle: 'Regular',
         fontSize: '14px',
         lineHeight: '17px',
         fontWeight: 400,
+      } as React.CSSProperties,
+      b4: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '15px',
+        fontWeight: 600,
+        lineHeight: '15px',
       } as React.CSSProperties,
     },
     ar: {
@@ -193,6 +200,13 @@ export const typography = {
         fontSize: '16px',
         lineHeight: '20px',
         fontWeight: 700,
+      } as React.CSSProperties,
+      b4: {
+        fontFamily: webFontFamily['PlusJakartaSans-Bold'],
+        fontStyle: 'Bold',
+        fontSize: '14px',
+        lineHeight: '30px',
+        fontWeight: 600,
       } as React.CSSProperties,
     },
   },

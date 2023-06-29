@@ -3,27 +3,30 @@ import type { Tuple } from '@mantine/styles/lib/theme/types';
 export const COLORS = {
   dark: [
     '#C1C2C5',
+    '#BDBEBD',
     '#A6A7AB',
     '#909296',
     '#5c5f66',
     '#373A40',
     '#2C2E33',
     '#25262b',
+    '#202420',
     '#1A1B1E',
-    '#141517',
-    '#101113',
+    // '#141517',
+    // '#101113',
   ],
 
   gray: [
     '#f1f3f5',
     '#e9ecef',
+    '#E9EAE9',
     '#dee2e6',
     '#ced4da',
     '#adb5bd',
     '#8F918F',
     '#868e96',
     '#495057',
-    '#343a40',
+    // '#343a40',
     '#212529',
   ],
 
@@ -132,7 +135,8 @@ export const COLORS = {
   ],
 
   green: [
-    '#d3f9d8',
+    '#ECF1FE',
+    // '#d3f9d8',
     '#b2f2bb',
     '#8ce99a',
     '#69db7c',

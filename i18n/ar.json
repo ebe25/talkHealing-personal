@@ -9,6 +9,7 @@
     },
     "button": {
       "english": "English",
+      "back" : "الدفع",
       "arabic": "ةيب رعلا",
       "start": "بداية",
       "primary": "ModalButton",
