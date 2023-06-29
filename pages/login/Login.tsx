@@ -6,10 +6,9 @@ import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordI
 import { Box, Center, Flex, Image } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
-import Images1 from '../../public/image/bgImage.png';
-import Images2 from '../../public/image/Logins.png';
 import { Images } from '../../public/index';
 import { useMediaQuery } from '@mantine/hooks';
+import { SocialMedia } from '@/components/elements/SocialMedia/SocialMedia';
 
 interface LoginProps {
   img?: string;
@@ -17,7 +16,9 @@ interface LoginProps {
 
 export const Login = (props: LoginProps) => {
   const theme = useMantineTheme();
-  const isPhone = useMediaQuery('(max-width:375px)');
+  const isIPhone = useMediaQuery('(max-width:400px)');
+  const isPhone = useMediaQuery('(max-width:600px)');
+  const isMiniLaptop = useMediaQuery('(max-width:1200px)');
   return (
     <>
       <Box
@@ -25,29 +26,38 @@ export const Login = (props: LoginProps) => {
           width: '100%',
           height: '100vh',
           // padding: '231px 135px 213px 135px',
+          padding: `${isPhone ? '50px' : ''}`,
           display: 'flex',
           // flexDirection : "column",
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundImage: 'url( ' + `${Images.bg_Icon}` + '  )',
+          backgroundImage: 'url( ' + `${Images.bg_Img}` + '  )',
           backgroundSize: '100%',
         }}
       >
-        <Flex justify="center" align="center" gap={100} wrap="wrap">
+        <Flex
+          justify="center"
+          style={{ width: '100%' }}
+          align="center"
+          gap={isMiniLaptop ? '' : 100}
+          wrap="wrap"
+        >
           <Image
-            src={props.img ? props.img : Images.Login_Icon}
-            style={{ maxWidth: '700px', maxHeight: '437px' }}
+            src={props.img ? props.img : Images.LoginIner_Icon}
+            style={{ maxWidth: `${isMiniLaptop ? '550px' : '700px'}`, maxHeight: '437px' }}
             alt="icon"
           />
-          <Box style={{ maxWidth: '370px', maxHeight: '456px' }}>
-            <BaseText
-              style={typography.headings.en.h2}
-              color={theme.colors.dark[8]}
-              txtkey={'header.Login'}
-            />
-            <Flex>
-              <Image />
-              <Image />
+          <Box style={{ maxWidth: `${isIPhone ? '280px' : '370px'}`, maxHeight: '456px' }}>
+            <Box style={{ width: '100%', textAlign: 'center' }}>
+              <BaseText
+                style={typography.headings.en.h2}
+                color={theme.colors.dark[8]}
+                txtkey={'header.Login'}
+              />
+            </Box>
+            <Flex justify="center" align="center" gap={32} style={{ marginTop: '32px' }}>
+              <SocialMedia Icon={Images.facebook_Icon} />
+              <SocialMedia Icon={Images.google_Icon} />
             </Flex>
             <Flex direction={'column'} gap={10} style={{ padding: '20px 0 0 0' }}>
               <BaseText
@@ -82,7 +92,11 @@ export const Login = (props: LoginProps) => {
               />
             </Box>
             <BaseButton
-              style={{ width: '370px', maxHeight: '39px', margin: '40px 0 26px 0' }}
+              style={{
+                width: `${isIPhone ? '280px' : '370px'}`,
+                maxHeight: '39px',
+                margin: '40px 0 26px 0',
+              }}
               style_variant={'disabled'}
               color_variant={'gray'}
             >
@@ -92,14 +106,14 @@ export const Login = (props: LoginProps) => {
                 txtkey={'signUpForm.login'}
               />
             </BaseButton>
-            <Flex justify="center" align="center">
+            <Flex justify="center" align="center" gap={5}>
               <BaseText
                 style={typography.label.en.l1}
                 color={theme.colors.gray[6]}
                 txtkey={'signUpForm.newUser'}
               />
               <BaseText
-                style={typography.label.en.l1}
+                style={typography.headings.en.h7}
                 color={theme.colors.blue[4]}
                 txtkey={'authentication.formText.signUp'}
               />
