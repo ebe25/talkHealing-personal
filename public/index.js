@@ -53,7 +53,9 @@ export const Images = {
   whatsapp_icon:"./icons/whatsapp_icon.png",
   gallery_item:"./image/GalleryItem.png",
   start_Icon:"./image/Start.png",
-  Login_Icon:"./image/Logins.png",
-  bg_Icon:"./image/bgImage.png",
+  LoginIner_Icon:"./image/LoginInear.png",
+  bg_Img:"./image/LoginBg.png",
+  facebook_Icon:"./image/facebook.png",
+  google_Icon:"./image/google.png"
 }
 
