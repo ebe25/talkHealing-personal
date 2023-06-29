@@ -39,7 +39,6 @@ export const BaseText = (props: BaseTextProps) => {
       fw={props.fontWeight_variant}
       c={props.color}
       {...props}
-      style={{ textAlign: 'center' }}
     >
       {props.txtkey ? translate(props.txtkey) : props.children}
     </Text>
