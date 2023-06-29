@@ -1,5 +1,6 @@
 import { Login } from './Login';
 import type { Meta, StoryObj } from '@storybook/react';
+import LoginIcon from '../../public/image/LoginInear.png'
 
 const meta: Meta<typeof Login> = {
   title: 'Page/Login',
@@ -13,5 +14,7 @@ export default meta;
 type Story = StoryObj<typeof Login>;
 
 export const login: Story = {
-  args: {},
+  args: {
+    img : LoginIcon
+  },
 };
