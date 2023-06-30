@@ -21,6 +21,8 @@ export const Login = (props: LoginProps) => {
   const isIPhone = useMediaQuery('(max-width:400px)');
   const isPhone = useMediaQuery('(max-width:600px)');
   const isMiniLaptop = useMediaQuery('(max-width:1200px)');
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return (
     <>
       <Box
@@ -100,7 +102,14 @@ export const Login = (props: LoginProps) => {
                 txtkey={'signUpForm.login'}
               />
             </BaseButton>
-            <Flex justify="center" align="center" gap={5}>
+            <Flex
+              justify="center"
+              style={{
+                margin: '0 0 6px 0',
+              }}
+              align="center"
+              gap={5}
+            >
               <BaseText
                 style={typography.label.en.l1}
                 color={theme.colors.gray[6]}
