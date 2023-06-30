@@ -81,7 +81,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                     cursor: 'pointer',
                     height: '100px',
                     borderRadius: '100%',
-                    background: `${selectEmail ? theme.colors.green[6] : theme.colors.gray[1]}`,
+                    background: `${selectEmail ? theme.colors.blue[4] : theme.colors.gray[1]}`,
                   }}
                 >
                   <Image width={60} style={{ margin: 'auto' }} src={Images.email} />
@@ -95,7 +95,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                     cursor: 'pointer',
                     height: '100px',
                     borderRadius: '100%',
-                    background: `${selectPhone ? theme.colors.green[6] : theme.colors.gray[1]}`,
+                    background: `${selectPhone ? theme.colors.blue[4] : theme.colors.gray[1]}`,
                   }}
                 >
                   <Image width={60} style={{ margin: 'auto' }} src={Images.phone} />
@@ -153,7 +153,10 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
               <BaseButton
                 style_variant={'filled'}
                 color_variant={'gray'}
-                style={{ width: `${isPhone ? '100%' : '47%'}` }}
+                style={{
+                  width: `${isPhone ? '100%' : '47%'}`,
+                  background: `${selectEmail || selectPhone ? 'red' : ''}`,
+                }}
                 onClick={() => Contine()}
               >
                 <BaseText txtkey={'global.button.confirm'} />
