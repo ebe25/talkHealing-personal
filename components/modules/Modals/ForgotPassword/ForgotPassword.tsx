@@ -155,7 +155,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 color_variant={'gray'}
                 style={{
                   width: `${isPhone ? '100%' : '47%'}`,
-                  background: `${selectEmail || selectPhone ? 'red' : ''}`,
+                  background: `${selectEmail || selectPhone ? theme.colors.blue[4] : ''}`,
                 }}
                 onClick={() => Contine()}
               >
