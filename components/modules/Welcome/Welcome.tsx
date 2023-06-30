@@ -16,6 +16,7 @@ import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordI
 import { useDisclosure } from '@mantine/hooks';
 // import { BaseRadioButton } from '@/components/elements/BaseRadioButton/RadioButton';
 import { IconArrowLeft } from '@tabler/icons-react';
+import { ForgotPassword } from '../Modals/ForgotPassword/ForgotPassword';
 
 
 
@@ -57,12 +58,13 @@ export function Welcome() {
       {/* <BaseCheckbox ></BaseCheckbox> */}
       {/* <BackButton> <BaseText txtkey="global.button.back" />  </BackButton> */}
       <BaseButton onClick={open} style_variant={'filled'} color_variant={'red'}> <BaseText txtkey="addKidDetails.nextButton" /></BaseButton>
-       <BaseModal  withCloseButton={false} opened={opened} onClose={close}><BaseText txtkey="bookingForEvent.paymentProceedButtonText" /> </BaseModal>
+       {/* <BaseModal  withCloseButton={false} opened={opened} onClose={close}><BaseText txtkey="bookingForEvent.paymentProceedButtonText" /> </BaseModal> */}
       <Input component={"input"} type='text' styleName={'inputText1'} style={{width:"300px"}} />
       <form style={{display:"flex"}}>
         <label><BaseText txtkey="bookingForEvent.addOnPriceText" /></label>
       {/* <BaseRadioButton /> */}
       </form>
+      <ForgotPassword opened={opened} close={close}/>
     </>
   );
 }

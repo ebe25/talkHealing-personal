@@ -18,23 +18,30 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
   const isPhone = useMediaQuery('(max-width:600px)');
   const isTablet = useMediaQuery('(max-width:900px)');
   const [opened, { open, close }] = useDisclosure(false);
-  const [email, setEmail] = useState(false);
   const [selectEmail, setSelectEmail] = useState(false);
-  const [selectPassword, setSelectPassword] = useState(false);
+  const [selectPhone, setSelectPhone] = useState(false);
+  const [next, setNext] = useState(false);
   const theme = useMantineTheme();
 
   const Select = (type: string) => {
     if (type == 'email' && selectEmail == true) {
       setSelectEmail(false);
-    } else if (type == 'phone' && selectPassword == true) {
-      setSelectPassword(false);
+    } else if (type == 'phone' && selectPhone == true) {
+      setSelectPhone(false);
     } else if (type == 'email') {
       setSelectEmail(true);
-      setSelectPassword(false);
+      setSelectPhone(false);
     } else if (type == 'phone') {
-      setSelectPassword(true);
+      setSelectPhone(true);
       setSelectEmail(false);
     }
+  };
+
+  const Contine = () => {
+    selectEmail || selectPhone ? setNext(true) : null;
+    console.log(selectEmail);
+    console.log(selectPhone);
+    console.log(next);
   };
 
   return (
@@ -46,7 +53,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         opened={props.opened}
         onClose={props.close}
       >
-        <Flex direction={'column'} gap={10} style={{ padding: '25px' }}>
+        <Flex direction={'column'} gap={30} style={{ padding: '25px' }}>
           <Flex justify={'space-between'}>
             <BaseText
               style={typography.headings.en.h6}
@@ -57,42 +64,77 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
           </Flex>
 
           <Flex direction={'column'} gap={20}>
-            <Flex
-              wrap={'wrap'}
-              gap={20}
-              style={{ width: '100%', padding: '10px' }}
-              align={'center'}
-              justify={isPhone ? 'center' : 'space-between'}
-            >
+            {!next ? (
               <Flex
-                onClick={() => {
-                  Select('email');
-                }}
-                style={{
-                  width: '100px',
-                  cursor: 'pointer',
-                  height: '100px',
-                  borderRadius: '100%',
-                  background: `${selectEmail ? theme.colors.green[6] : theme.colors.gray[1]}`,
-                }}
+                wrap={'wrap'}
+                gap={20}
+                style={{ width: '100%', padding: '10px' }}
+                align={'center'}
+                justify={isPhone ? 'center' : 'space-between'}
               >
-                <Image width={60} style={{ margin: 'auto' }} src={Images.email} />
+                <Flex
+                  onClick={() => {
+                    Select('email');
+                  }}
+                  style={{
+                    width: '100px',
+                    cursor: 'pointer',
+                    height: '100px',
+                    borderRadius: '100%',
+                    background: `${selectEmail ? theme.colors.green[6] : theme.colors.gray[1]}`,
+                  }}
+                >
+                  <Image width={60} style={{ margin: 'auto' }} src={Images.email} />
+                </Flex>
+                <Flex
+                  onClick={() => {
+                    Select('phone');
+                  }}
+                  style={{
+                    width: '100px',
+                    cursor: 'pointer',
+                    height: '100px',
+                    borderRadius: '100%',
+                    background: `${selectPhone ? theme.colors.green[6] : theme.colors.gray[1]}`,
+                  }}
+                >
+                  <Image width={60} style={{ margin: 'auto' }} src={Images.phone} />
+                </Flex>
               </Flex>
-              <Flex
-                onClick={() => {
-                  Select('phone');
-                }}
-                style={{
-                  width: '100px',
-                  cursor: 'pointer',
-                  height: '100px',
-                  borderRadius: '100%',
-                  background: `${selectPassword ? theme.colors.green[6] : theme.colors.gray[1]}`,
-                }}
-              >
-                <Image width={60} style={{ margin: 'auto' }} src={Images.phone} />
+            ) : null}
+
+            {selectEmail && next ? (
+              <Flex direction={'column'} gap={10} style={{ width: '100%' }}>
+                <BaseText
+                  style={typography.label.en.l1}
+                  color={theme.colors.gray[6]}
+                  txtkey={'authentication.formText.email'}
+                />
+                <Input
+                  component={'input'}
+                  type="text"
+                  placeholder="Email"
+                  style_variant={'inputText1'}
+                />
               </Flex>
-            </Flex>
+            ) : null}
+
+            {selectPhone && next ? (
+              <Flex direction={'column'} gap={10} style={{ width: '100%' }}>
+                <BaseText
+                  style={typography.label.en.l1}
+                  color={theme.colors.gray[6]}
+                  txtkey={'authentication.formText.phoneNumber'}
+                />
+                <Input
+                  component={'input'}
+                  type="number"
+                  placeholder="Number"
+                  style_variant={'inputText1'}
+                />
+              </Flex>
+            ) : null}
+
             <Flex
               wrap={'wrap'}
               gap={10}
@@ -112,52 +154,12 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 style_variant={'filled'}
                 color_variant={'gray'}
                 style={{ width: `${isPhone ? '100%' : '47%'}` }}
+                onClick={() => Contine()}
               >
                 <BaseText txtkey={'global.button.confirm'} />
               </BaseButton>
             </Flex>
           </Flex>
-        </Flex>
-      </BaseModal>
-      {}
-      <BaseModal
-        radius={32}
-        size="45%"
-        withCloseButton={false}
-        opened={opened}
-        onClose={() => {
-          close();
-          props.close();
-        }}
-      >
-        <Flex direction={'column'} gap={50} style={{ padding: '25px' }}>
-          <Flex justify={'space-between'}>
-            <BaseText
-              style={typography.headings.en.h6}
-              color={theme.colors.dark[8]}
-              txtkey={'authentication.formText.forgetPassword'}
-            />
-            <CloseButton
-              onClick={() => {
-                close();
-                props.close();
-              }}
-              aria-label="Close modal"
-              iconSize={20}
-            />
-          </Flex>
-          <Flex direction={'column'} style={{ width: '100%' }}>
-            <BaseText txtkey={'authentication.formText.email'} />
-            <Input
-              component={'input'}
-              type="text"
-              placeholder="Email"
-              style_variant={'inputText1'}
-            />
-          </Flex>
-          <BaseButton style_variant={'filled'} color_variant={'blue'} style={{ width: '100%' }}>
-            <BaseText txtkey={'authentication.formText.email'} />
-          </BaseButton>
         </Flex>
       </BaseModal>
     </>
