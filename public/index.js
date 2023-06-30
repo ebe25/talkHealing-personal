@@ -52,6 +52,8 @@ export const Images = {
   datePoint: "./icons/datePoint.png",
   whatsapp_icon:"./icons/whatsapp_icon.png",
   gallery_item:"./image/GalleryItem.png",
-  start_Icon:"./image/Start.png"
+  start_Icon:"./image/Start.png",
+  email: "./image/email.png",
+  phone: "./image/phone.png",
 }
 
