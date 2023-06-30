@@ -46,7 +46,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         opened={props.opened}
         onClose={props.close}
       >
-        <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
+        <Flex direction={'column'} gap={10} style={{ padding: '25px' }}>
           <Flex justify={'space-between'}>
             <BaseText
               style={typography.headings.en.h6}
@@ -56,15 +56,13 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
             <CloseButton onClick={props.close} aria-label="Close modal" iconSize={20} />
           </Flex>
 
-        
-
-          <Box>
+          <Flex direction={'column'} gap={20}>
             <Flex
               wrap={'wrap'}
-              gap={10}
+              gap={20}
               style={{ width: '100%', padding: '10px' }}
               align={'center'}
-              justify={'space-between'}
+              justify={isPhone ? 'center' : 'space-between'}
             >
               <Flex
                 onClick={() => {
@@ -118,7 +116,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 <BaseText txtkey={'global.button.confirm'} />
               </BaseButton>
             </Flex>
-          </Box>
+          </Flex>
         </Flex>
       </BaseModal>
       {}
