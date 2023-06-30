@@ -52,6 +52,7 @@
     },
     "header":{
       "booking":"BOOKING FOR EVENT",
+      "signUp": "Create account",
       "play":"OPEN PLAY",
       "shop":"WORKSHOPS",
       "gallery":"GALLERY",
@@ -172,6 +173,8 @@
     "login": "Log in",
     "forgetPassword": "Forgot Password",
     "newUser": "Don't have an account? ",
+    "oldUser": "Already have account? ",
+    "signIn": "Log in",
     "signUp": "Sign up",
     "loginButtonText": "Login",
     "subText": "We'll send a E-Mail to reset your password",
