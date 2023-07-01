@@ -96,6 +96,7 @@ export const UserStore = types
           is_terms_agreed: is_terms_agreed
         }
       );
+      console.log("this is sign up response ", response)
       let error = null;
       switch (response.status) {
         case 201:
