@@ -29,10 +29,9 @@ export const Login = (props: LoginProps) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const handleLogin = () => {
-    console.log("email and password ", email, password)
     userStore.loginUser(email, password).then((res) => {
       if (res) {
-        // console.log("user logged in successfully!")
+        console.log("user logged in successfully!")
       }
     })
   }
