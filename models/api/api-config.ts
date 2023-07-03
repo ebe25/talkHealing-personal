@@ -31,5 +31,5 @@ export interface ApiConfig {
 export const DEFAULT_API_CONFIG: ApiConfig = {
     url: API_URL,
     timeout: 100000,
-    token_key: "key",
+    token_key: "access",
 }

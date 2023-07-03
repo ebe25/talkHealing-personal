@@ -1,13 +1,13 @@
 import React from 'react';
 import { Box, Image } from '@mantine/core';
 import { Images } from '../../../public/index';
-import { createStyle } from './SocialMedia.style';
+import { createStyle } from './CircularIcon.style';
 
-interface BaseSocialMeadia {
+interface BaseCircularIcon {
   Icon?: string;
 }
 
-export const SocialMedia = (props: BaseSocialMeadia) => {
+export const CircularIcon = (props: BaseCircularIcon) => {
   const useStyles = createStyle('en');
   const { classes } = useStyles();
 

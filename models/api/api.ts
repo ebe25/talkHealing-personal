@@ -60,7 +60,7 @@ export class Api {
     const token = await storage.getItem(this.config.token_key);
     if (token) {
       //console.log("token", token)
-      this.apisauce.setHeader("Authorization", "Token " + token);
+      this.apisauce.setHeader("Authorization", "Bearer " + token);
     }
     headers = {
       ...this.apisauce.headers,

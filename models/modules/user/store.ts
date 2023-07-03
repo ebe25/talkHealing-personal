@@ -36,6 +36,7 @@ export const UserStore = types
           password: password,
         }
       );
+      console.log("this is log in response ", response)
       switch (response.status) {
         case 200:
           self.loggedInUserData = null;
@@ -50,7 +51,8 @@ export const UserStore = types
           );
           return ACTION_RESPONSES.success;
         case 400:
-          return ACTION_RESPONSES.failure;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.non_field_errors[0]
+          };
         case 401:
           return ACTION_RESPONSES.failure;
         case 500:

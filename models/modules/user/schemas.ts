@@ -69,8 +69,8 @@ export interface UserType extends Instance<typeof User> { }
 // logged in user schema
 export const LoggedInUser = types.model({
   user: User,
-  access_token: types.string,
-  refresh_token: types.string,
+  access: types.maybeNull(types.string),
+  refresh: types.maybeNull(types.string),
 })
 
 export interface LoggedInUserType extends Instance<typeof LoggedInUser> { }
