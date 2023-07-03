@@ -8,7 +8,7 @@ import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
 import { useMediaQuery } from '@mantine/hooks';
-import { SocialMedia } from '@/components/elements/SocialMedia/SocialMedia';
+import { CircularIcon } from '../../components/elements/CircularIcon/CircularIcon';
 import useStyles from './SignUp.style';
 
 interface SignUpProps {
@@ -50,8 +50,8 @@ export const SignUp = (props: SignUpProps) => {
               />
             </Box>
             <Flex justify="center" align="center" gap={32} style={{ marginTop: '32px' }}>
-              <SocialMedia Icon={Images.facebook_Icon} />
-              <SocialMedia Icon={Images.google_Icon} />
+              <CircularIcon Icon={Images.facebook_Icon} />
+              <CircularIcon Icon={Images.google_Icon} />
             </Flex>
             <Flex direction={'column'} gap={10} style={{ padding: '20px 0 0 0' }}>
               <BaseText
