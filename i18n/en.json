@@ -1,6 +1,6 @@
 {
   "global": {
-    "playwheel":"Playwheel",
+    "playwheel": "Playwheel",
     "label": {
       "label1": "Package",
       "label2": "Email",
@@ -9,7 +9,7 @@
     },
     "button": {
       "login": "Login",
-      "back" : "Checkout",
+      "back": "Checkout",
       "english": "English",
       "arabic": "ةيب رعلا",
       "start": "Start",
@@ -39,30 +39,31 @@
       "workShops": "Workshops",
       "booking": "Booking"
     }
-},
-    "card":{
-      "heading":"Package",
-      "availableSeats":"Available Seats:",
-      "buyNow":"Buy now",
-      "seeDetails":"See details",
-      "moreDetail": "More details"
-    },
-    "premiumCard": {
-      "premiumCardTitle": "Per month, billed annually"
-    },
-    "header":{
-      "booking":"BOOKING FOR EVENT",
-      "signUp": "Create account",
-      "play":"OPEN PLAY",
-      "shop":"WORKSHOPS",
-      "gallery":"GALLERY",
-      "contact":"CONTACT US",
-      "visit":"VISIT",
-      "save": "Save",
-      "see details": "See details",
-      "buy now": "Buy now",
-      "available seat": "Available seat:"
-    },
+  },
+  "card": {
+    "heading": "Package",
+    "availableSeats": "Available Seats:",
+    "buyNow": "Buy now",
+    "seeDetails": "See details",
+    "moreDetail": "More details"
+  },
+  "premiumCard": {
+    "premiumCardTitle": "Per month, billed annually"
+  },
+  "header": {
+    "booking": "BOOKING FOR EVENT",
+    "signUp": "Create account",
+    "Login": "Login to your account",
+    "play": "OPEN PLAY",
+    "shop": "WORKSHOPS",
+    "gallery": "GALLERY",
+    "contact": "CONTACT US",
+    "visit": "VISIT",
+    "save": "Save",
+    "see details": "See details",
+    "buy now": "Buy now",
+    "available seat": "Available seat:"
+  },
   "authentication": {
     "invalidEmail": "Invalid email",
     "strings": {
@@ -72,47 +73,47 @@
       "incUpper": "Includes uppercase letter",
       "incSym": "Includes special symbol"
     },
-    "formText":{
-      "signUp":"Sign up",
+    "formText": {
+      "signUp": "Sign up now",
       "name": "Name",
       "email": "Email",
       "phoneNumber": "Phone Number",
       "continue": "Continue",
-      "forgetPassword":"Forgot Password",
-      "newUser":"Don't have an account?",
+      "forgetPassword": "Forgot Password",
+      "newUser": "Don't have an account?",
       "login": "Login",
-      "agreeText":"I agree to the ",
+      "agreeText": "I agree to the ",
       "termsAndConditions": "Terms and Conditions",
       "invalidNumber": "Invalid number",
       "namePlaceholder": "Name",
       "emailPlaceholder": "Email",
-      "errorMessage":"This email or password is incorrect, please try again"
+      "errorMessage": "This email or password is incorrect, please try again"
     },
-    "signupVerification":{
+    "signupVerification": {
       "verificationText": "Verification",
-      "verificationCodeText":"Please type the code sent to ",
+      "verificationCodeText": "Please type the code sent to ",
       "createPasswordText": "Create password",
       "password": "Password",
       "confirmPassword": "Confirm password",
       "includedText": "Must contain at least 1 upper case, numeric, and special character",
-      "backButton":"Back",
-      "continue":"Continue",
+      "backButton": "Back",
+      "continue": "Continue",
       "passwordPlaceholder": "Write password",
-      "newKid":"Add new Kids Detail",
-      "kidName":"What’s you Kid’s name",
-      "skip" :"Skip for now",
-      "kidInfoPlaceholder":"Kid's name",
+      "newKid": "Add new Kids Detail",
+      "kidName": "What’s you Kid’s name",
+      "skip": "Skip for now",
+      "kidInfoPlaceholder": "Kid's name",
       "kidDOB": "What's your Kid's Date of Birth",
       "previousButtonText": "Previous",
-      "datePlaceholder":"DD",
-      "monthPlaceholder":"MM",
-      "yearPlaceholder":"YYYY"
+      "datePlaceholder": "DD",
+      "monthPlaceholder": "MM",
+      "yearPlaceholder": "YYYY"
     }
   },
   "dataBox": {
     "selectThisDetails": "Select this details",
     "addKidDetails": "Add new kid’s details",
-    "selectedData" : "Selected"
+    "selectedData": "Selected"
   },
   "sidebar": {
     "useProfile": "User profile",
@@ -160,9 +161,9 @@
       "heading": "Booking For Events",
       "para": "Book a variety of exciting events for kids on our website, including birthday parties and educational workshops. With something for every child's interests and age group, our booking process is quick and easy. Give your child an experience they'll never forget by booking an event today.",
       "bookNow": "Book Now",
-      "aboutPackageParagraphFirst":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
-      "aboutPackageParagraphSecond":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
-      "aboutPackageParagraphThird":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting."
+      "aboutPackageParagraphFirst": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+      "aboutPackageParagraphSecond": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+      "aboutPackageParagraphThird": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting."
     },
     "visitCarouselFragment": {
       "heading": "Visit",
@@ -171,7 +172,7 @@
   },
   "signUpForm": {
     "login": "Log in",
-    "forgetPassword": "Forgot Password",
+    "forgetPassword": "Forgot password?",
     "newUser": "Don't have an account? ",
     "oldUser": "Already have account? ",
     "signIn": "Log in",
@@ -214,45 +215,45 @@
     "planDate": "Date",
     "amount": "Amount"
   },
-  "userProfile":{
-    "accountDetails":{
-      "name":"Name",
-      "placeholder":"User name",
-      "email":"Email",
-      "emailPlaceholder":"John.doe@gmail.com",
-      "phoneNumber":"Phone number",
-      "saveChanges":"Save changes",
-      "changeAvatar":"Change avatar"
-     },
-     "changePassword":{
-      "currentPassword":"Current password",
-      "newPassword":"New password",
-      "confirmNewPassword":"Confirm new password",
-      "passwordSame":"Passwords are not same",
-      "placeholder":"Write password",
-      "saveCanges":"Save changes"
+  "userProfile": {
+    "accountDetails": {
+      "name": "Name",
+      "placeholder": "User name",
+      "email": "Email",
+      "emailPlaceholder": "John.doe@gmail.com",
+      "phoneNumber": "Phone number",
+      "saveChanges": "Save changes",
+      "changeAvatar": "Change avatar"
+    },
+    "changePassword": {
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmNewPassword": "Confirm new password",
+      "passwordSame": "Passwords are not same",
+      "placeholder": "Write password",
+      "saveCanges": "Save changes"
     }
   },
-  "contactUs":{
-    "imageHeading":"Get in touch",
-    "imageParagraph":"We’d love to hear from you",
-    "contactTitle":"Contact details",
-    "contactDetails":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
-    "location":"Location map",
-    "buttonAboveHeadingOne":"Browse our FAQs",
-    "buttonAboveHeadingTwo":"Get in touch with us",
-    "buttonText1":"Browse FAQs",
-    "buttonText2":"Send feedbacks"
+  "contactUs": {
+    "imageHeading": "Get in touch",
+    "imageParagraph": "We’d love to hear from you",
+    "contactTitle": "Contact details",
+    "contactDetails": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+    "location": "Location map",
+    "buttonAboveHeadingOne": "Browse our FAQs",
+    "buttonAboveHeadingTwo": "Get in touch with us",
+    "buttonText1": "Browse FAQs",
+    "buttonText2": "Send feedbacks"
   },
-  "becomeMember":{
-    "playWheelMember":"Become Playwheel member",
-    "memberParagraph":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the was popularised in the 1960s with the release of Letraset sheets containing."
+  "becomeMember": {
+    "playWheelMember": "Become Playwheel member",
+    "memberParagraph": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the was popularised in the 1960s with the release of Letraset sheets containing."
   },
-  "bookingForEvent":{
+  "bookingForEvent": {
     "aboutMultipurposeText": "About multipurpose hall & services",
     "galleryText": "Gallery",
-    "bookingForEventText":"Booking for events",
-    "packagePriceText":  "Package price",
+    "bookingForEventText": "Booking for events",
+    "packagePriceText": "Package price",
     "addToCartText": "Add to cart",
     "checkOutNowText": "Check out now",
     "totalPriceText": "Total price",
@@ -262,48 +263,47 @@
     "chooseDateText": "Choose date and time",
     "checkoutText": "Checkout",
     "addCouponText": "Add coupon code",
-    "paymentProceedButtonText":"Proceed to payment",
-    "bookingForEventHeading":"Book For Events"
-
+    "paymentProceedButtonText": "Proceed to payment",
+    "bookingForEventHeading": "Book For Events"
   },
-  "kidZone":{
-    "heading":"Open Play",
-    "availableAndTiming":"Availability & Timings",
-    "timing":"Timings:",
-    "availableSlots":"Available slots",
-    "services":"Services",
-    "selectDate":"Select date"
-    },
+  "kidZone": {
+    "heading": "Open Play",
+    "availableAndTiming": "Availability & Timings",
+    "timing": "Timings:",
+    "availableSlots": "Available slots",
+    "services": "Services",
+    "selectDate": "Select date"
+  },
   "addKidDetails": {
     "kidName": "Kid’s name",
-    "kidNamePlaceholder":"Write name",
-    "kidDateOfBirthText":"Kid's Date of Birth",
-    "kidFavouriteColor":"Favorite color",
-    "kidFavouriteColorPlaceholder":"Write color",
-    "nextButton":"Next ",
-    "previousButtonText" : "Previous",
-    "saveButtonText" : "Save",
+    "kidNamePlaceholder": "Write name",
+    "kidDateOfBirthText": "Kid's Date of Birth",
+    "kidFavouriteColor": "Favorite color",
+    "kidFavouriteColorPlaceholder": "Write color",
+    "nextButton": "Next ",
+    "previousButtonText": "Previous",
+    "saveButtonText": "Save",
     "editKidDetails": "Edit kid’s detail"
   },
-  "workshop":{
-    "workshopHeadingOne":"Ongoing Workshop",
-    "workshopHeadingTwo":"Upcoming workshops",
-    "aboutWorkshop":"About workshop",
-    "aboutOrganizer":"About organizer",
-    "workshopCardHeading":"Name of the workshop",
-    "buttonText":"Buy now",
-    "progressbarText":"Seat available",
-     "bookingWorkshop":"Booking for workshop",
-     "choosekidDetails":"Choose kids details",
-     "addKidDetails":"Add new kid’s details",
-     "workshopName":"Workshop name here",
-     "buttonTextOne":"Add to cart",
-     "buttonTextTwo":"Check out now",
-     "workshopImageHeading":"Workshops",
-     "calenderButtonText":"Select from calendar",
-     "workshopParagraphFirst":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
-     "workshopParagraphSecond":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
-     "workshopParagraphThird":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
-     "selectDate":"Select from calendar"
-}
+  "workshop": {
+    "workshopHeadingOne": "Ongoing Workshop",
+    "workshopHeadingTwo": "Upcoming workshops",
+    "aboutWorkshop": "About workshop",
+    "aboutOrganizer": "About organizer",
+    "workshopCardHeading": "Name of the workshop",
+    "buttonText": "Buy now",
+    "progressbarText": "Seat available",
+    "bookingWorkshop": "Booking for workshop",
+    "choosekidDetails": "Choose kids details",
+    "addKidDetails": "Add new kid’s details",
+    "workshopName": "Workshop name here",
+    "buttonTextOne": "Add to cart",
+    "buttonTextTwo": "Check out now",
+    "workshopImageHeading": "Workshops",
+    "calenderButtonText": "Select from calendar",
+    "workshopParagraphFirst": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+    "workshopParagraphSecond": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+    "workshopParagraphThird": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+    "selectDate": "Select from calendar"
+  }
 }

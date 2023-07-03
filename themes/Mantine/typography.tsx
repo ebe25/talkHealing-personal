@@ -53,6 +53,13 @@ export const typography = {
         lineHeight: '15px',
         fontWeight: 500,
       } as React.CSSProperties,
+      h8: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '16px',
+        lineHeight: '15px',
+        fontWeight: 400,
+      } as React.CSSProperties,
     },
     ar: {
       h1: {
@@ -83,7 +90,6 @@ export const typography = {
         lineHeight: '28px',
         fontWeight: 700,
       } as React.CSSProperties,
-
       h5: {
         fontFamily: webFontFamily['PlusJakartaSans-Bold'],
         fontStyle: 'normal',
