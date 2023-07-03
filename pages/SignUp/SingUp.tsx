@@ -104,6 +104,17 @@ export const SignUp = (props: SignUpProps) => {
                 placeholder={'Write your password'}
               />
             </Flex>
+            <Flex direction={'column'} gap={10} style={{ padding: '20px 0 0 0' }}>
+              <BaseText
+                style={typography.label.en.l1}
+                color={theme.colors.gray[6]}
+                txtkey={'global.label.label4'}
+              />
+              <BasePasswordInput
+                style={{ maxWidth: '370', maxHeight: '44' }}
+                placeholder={'Write your password'}
+              />
+            </Flex>
             <BaseButton
               style={{
                 width: `${isIPhone ? '280px' : '370px'}`,
