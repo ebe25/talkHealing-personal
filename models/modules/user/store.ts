@@ -85,7 +85,9 @@ export const UserStore = types
       email: string,
       full_name: string,
       phone: string,
-      is_terms_agreed: boolean
+      password1: string,
+      password2: string,
+      // is_terms_agreed: boolean
     ) {
       storage.clear();
       self.is_logged_in = false;
@@ -95,7 +97,9 @@ export const UserStore = types
           email: email,
           full_name: full_name,
           phone: phone,
-          is_terms_agreed: is_terms_agreed
+          password1: password1,
+          password2: password2,
+          // is_terms_agreed: is_terms_agreed
         }
       );
       console.log("this is sign up response ", response)
@@ -103,9 +107,9 @@ export const UserStore = types
       switch (response.status) {
         case 201:
           return ACTION_RESPONSES.success;
-        case 400:
-          error = response.data;
-          break;
+          case 400:
+            return { ...ACTION_RESPONSES.failure, code: response.status , error : response
+            };
         default:
           console.error("UNHANDLED ERROR");
           break;

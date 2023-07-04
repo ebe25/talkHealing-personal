@@ -29,7 +29,7 @@ export const API_ENDPOINTS = {
         url: "/auth/registration/",
         method: REQUEST_METHOD.POST,
         response: null,
-        transformer: null,
+        transformer: TRANSFORMERS.userPaginatedTransformer,
     }),
     loginUser: new API_ENDPOINT({
         url: "/auth/login/",
