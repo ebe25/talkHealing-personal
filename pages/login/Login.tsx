@@ -73,7 +73,7 @@ export const Login = (props: LoginProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError("Paaword wrong")
+            setError("password wrong")
             setTimeout(() => {
               setError("")
             }, 5000)
@@ -99,7 +99,7 @@ export const Login = (props: LoginProps) => {
           wrap="wrap"
         >
           <Image
-            src={props.img ? props.img : Images.LoginIner_Icon}
+            src={props.img ? props.img : Images.login_icon}
             style={{ maxWidth: `${isMiniLaptop ? '550px' : '700px'}`, maxHeight: '437px' }}
             alt="icon"
           />
