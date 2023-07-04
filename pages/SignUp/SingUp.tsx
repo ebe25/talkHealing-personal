@@ -81,7 +81,7 @@ export const SignUp = (props: SignUpProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError("Paaword not same")
+            setError("Password not same")
             setTimeout(() => {
               setError("")
             }, 5000)
@@ -107,7 +107,7 @@ export const SignUp = (props: SignUpProps) => {
           wrap="wrap"
         >
           <Image
-            src={props.img ? props.img : Images.LoginIner_Icon}
+            src={props.img ? props.img : Images.login_icon}
             style={{ maxWidth: `${isMiniLaptop ? '550px' : '700px'}`, maxHeight: '437px' }}
             alt="icon"
           />

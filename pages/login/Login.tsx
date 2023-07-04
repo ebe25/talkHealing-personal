@@ -99,7 +99,7 @@ export const Login = (props: LoginProps) => {
           wrap="wrap"
         >
           <Image
-            src={props.img ? props.img : Images.LoginIner_Icon}
+            src={props.img ? props.img : Images.login_icon}
             style={{ maxWidth: `${isMiniLaptop ? '550px' : '700px'}`, maxHeight: '437px' }}
             alt="icon"
           />
