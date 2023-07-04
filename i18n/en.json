@@ -50,6 +50,11 @@
     "premiumCard": {
       "premiumCardTitle": "Per month, billed annually"
     },
+    "modal":{
+      "forgotPassword":{
+        "text":"Please enter your registered email or phone number to receive the reset link."
+      }
+    },
     "header":{
       "booking":"BOOKING FOR EVENT",
       "play":"OPEN PLAY",

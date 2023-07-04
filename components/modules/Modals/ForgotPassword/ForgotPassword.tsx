@@ -54,53 +54,58 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         onClose={props.close}
       >
         <Flex direction={'column'} gap={30} style={{ padding: '25px' }}>
-          <Flex justify={'space-between'}>
-            <BaseText
-              style={typography.headings.en.h6}
-              color={theme.colors.dark[8]}
-              txtkey={'authentication.formText.forgetPassword'}
-            />
-            <CloseButton onClick={props.close} aria-label="Close modal" iconSize={20} />
+          <Flex direction={'column'} gap={8}>
+            <Flex justify={'space-between'}>
+              <BaseText
+                style={typography.headings.en.h3}
+                color={theme.colors.dark[7]}
+                txtkey={'authentication.formText.forgetPassword'}
+              />
+              <CloseButton onClick={props.close} aria-label="Close modal" iconSize={20} />
+            </Flex>
+            <BaseText style={typography.paragraph.en.p2} txtkey={"modal.forgotPassword.text"} />
           </Flex>
 
           <Flex direction={'column'} gap={20}>
             {!next ? (
-              <Flex
-                wrap={'wrap'}
-                gap={20}
-                style={{ width: '100%', padding: '10px' }}
-                align={'center'}
-                justify={isPhone ? 'center' : 'space-between'}
-              >
+              <>
                 <Flex
-                  onClick={() => {
-                    Select('email');
-                  }}
-                  style={{
-                    width: '100px',
-                    cursor: 'pointer',
-                    height: '100px',
-                    borderRadius: '100%',
-                    background: `${selectEmail ? theme.colors.blue[4] : theme.colors.gray[1]}`,
-                  }}
+                  wrap={'wrap'}
+                  gap={20}
+                  style={{ width: '100%', padding: '10px' }}
+                  align={'center'}
+                  justify={isPhone ? 'center' : 'space-between'}
                 >
-                  <Image width={60} style={{ margin: 'auto' }} src={Images.email} />
+                  <Flex
+                    onClick={() => {
+                      Select('email');
+                    }}
+                    style={{
+                      width: '100px',
+                      cursor: 'pointer',
+                      height: '100px',
+                      borderRadius: '100%',
+                      background: `${selectEmail ? theme.colors.blue[4] : theme.colors.gray[1]}`,
+                    }}
+                  >
+                    <Image width={60} style={{ margin: 'auto' }} src={Images.email} />
+                  </Flex>
+                  <Flex
+                    onClick={() => {
+                      Select('phone');
+                    }}
+                    style={{
+                      width: '100px',
+                      cursor: 'pointer',
+                      height: '100px',
+                      borderRadius: '100%',
+                      background: `${selectPhone ? theme.colors.blue[4] : theme.colors.gray[1]}`,
+                    }}
+                  >
+                    <Image width={60} style={{ margin: 'auto' }} src={Images.phone} />
+                  </Flex>
                 </Flex>
-                <Flex
-                  onClick={() => {
-                    Select('phone');
-                  }}
-                  style={{
-                    width: '100px',
-                    cursor: 'pointer',
-                    height: '100px',
-                    borderRadius: '100%',
-                    background: `${selectPhone ? theme.colors.blue[4] : theme.colors.gray[1]}`,
-                  }}
-                >
-                  <Image width={60} style={{ margin: 'auto' }} src={Images.phone} />
-                </Flex>
-              </Flex>
+              </>
             ) : null}
 
             {selectEmail && next ? (
