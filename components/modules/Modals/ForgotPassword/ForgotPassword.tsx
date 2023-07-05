@@ -10,6 +10,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import { useStores } from '@/models';
 import { Images } from '../../../../public/index';
 import { useForm } from "@mantine/form";
+import { Loader } from '@mantine/core';
 
 interface ForgotPasswordProps {
   opened: boolean;
@@ -148,6 +149,11 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         opened={props.opened}
         onClose={props.close}
       >
+        {loader ? (
+          <Flex justify={"center"}>
+            <Loader style={{ position: "absolute", width: "40%", height: "40%" }} color="indigo" size="xl" variant="bars" />
+          </Flex>
+        ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
           <Flex direction={'column'} gap={8}>
             <Flex justify={'space-between'}>
