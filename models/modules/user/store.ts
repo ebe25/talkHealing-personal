@@ -466,6 +466,27 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
+    smsPasswordReset: flow(function* (
+      phone: string,
+    ) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.smsPasswordReset, {
+        phone: phone,
+      });
+      let error = null;
+      switch (response.status) {
+        case 200:
+          return ACTION_RESPONSES.success;
+        case 400:
+          return {...ACTION_RESPONSES.failure, code: response.status , error : response.data};
+        case 401:
+          return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
     resetPasswordConfirm: flow(function* (
       new_password1: string,
       new_password2: string,

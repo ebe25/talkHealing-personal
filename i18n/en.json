@@ -52,7 +52,9 @@
     },
     "modal":{
       "forgotPassword":{
-        "text":"Please enter your registered email or phone number to receive the reset link."
+        "text":"Please enter your registered email or phone number to receive the reset link.",
+        "phone":"phone number not found",
+        "email":"email not found"
       }
     },
     "header":{
