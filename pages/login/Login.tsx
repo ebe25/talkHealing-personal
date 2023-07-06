@@ -3,7 +3,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Center, Flex, Image } from '@mantine/core';
+import { Flex, Image } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
@@ -21,15 +21,9 @@ export const Login = (props: LoginProps) => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const { userStore } = useStores()
-  const isIPhone = useMediaQuery('(max-width:400px)');
   const isPhone = useMediaQuery('(max-width:600px)');
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState("")
-  const isMiniLaptop = useMediaQuery('(max-width:1200px)');
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const loginForm = useForm({
     initialValues: {
@@ -47,14 +41,9 @@ export const Login = (props: LoginProps) => {
     },
   });
 
-  let filled = () => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(loginForm.values.email) && loginForm.values.password.length > 6
 
   const handleLogin = () => {
-    // if (
-    //   !filled()
-    //   ) {
-    //     return;
-    //   }
+    
     setLoader(true)
 
     let results = loginForm.validate();
