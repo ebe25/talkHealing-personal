@@ -85,78 +85,75 @@ export const Login = (props: LoginProps) => {
 
   return (
     <>
-      <Box
-        style={{
-          padding: `${isPhone ? '50px' : ''}`,
-        }}
+      <Flex
+        justify="center"
+        align="center"
+        gap={isPhone ? 10 : 100}
+        wrap="wrap"
         className={classes.Container}
+        px={50}
       >
-        <Flex
-          justify="center"
-          style={{ width: '100%' }}
-          align="center"
-          gap={isMiniLaptop ? '' : 100}
-          wrap="wrap"
-        >
-          <Image
-            src={props.img ? props.img : Images.login_icon}
-            style={{ maxWidth: `${isMiniLaptop ? '550px' : '700px'}`, maxHeight: '437px' }}
-            alt="icon"
-          />
-          <Box style={{ maxWidth: `${isIPhone ? '280px' : '370px'}`, maxHeight: '456px' }}>
-            <Box style={{ width: '100%', textAlign: 'center' }}>
-              <BaseText
-                style={typography.headings.en.h2}
-                color={theme.colors.dark[8]}
-                txtkey={'header.Login'}
-              />
-            </Box>
-            <Flex justify="center" align="center" gap={32} style={{ marginTop: '32px' }}>
-              <CircularIcon Icon={Images.facebook_Icon} />
-              <CircularIcon Icon={Images.google_Icon} />
-            </Flex>
-            <form onSubmit={loginForm.onSubmit((values) => console.log("aaaaaa", values))}>
-              <Flex direction={'column'} gap={10} style={{ padding: '20px 0 0 0' }}>
+        <Image
+          src={props.img ? props.img : Images.login_icon}
+          maw={'700px'}
+          mah={isPhone ? '300px' : '437px'}
+          alt="icon"
+        />
+        <Flex gap={26} direction={'column'} maw={isPhone ? '300px' : '370px'}>
+          <form onSubmit={loginForm.onSubmit((values) => console.log(values))}>
+            <Flex direction={'column'} gap={20}>
+              <Flex w={'100%'} justify={'center'}>
+                <BaseText
+                  style={typography.headings.en.h2}
+                  color={theme.colors.dark[8]}
+                  txtkey={'header.signUp'}
+                />
+              </Flex>
+              <Flex justify="center" align="center" gap={32}
+              >
+                <CircularIcon Icon={Images.facebook_Icon} />
+                <CircularIcon Icon={Images.google_Icon} />
+              </Flex>
+              <Flex direction={'column'} gap={10} >
                 <BaseText
                   style={typography.label.en.l1}
                   color={theme.colors.gray[6]}
                   txtkey={'global.label.label2'}
                 />
                 <Input
-                  // onChange={(e) => { setEmail(e.target.value) }}
-                  style={{ maxWidth: '370', maxHeight: '44' }}
+                  maw={isPhone ? '280px' : '370px'}
+                  mah={'44px'}
                   component={'input'}
                   placeholder="Write your email"
                   style_variant={'inputText1'}
                   {...loginForm.getInputProps('email')}
                 />
               </Flex>
-              <Flex direction={'column'} gap={10} style={{ padding: '20px 0 16px 0' }}>
+              <Flex direction={'column'} gap={10} >
                 <BaseText
                   style={typography.label.en.l1}
                   color={theme.colors.gray[6]}
                   txtkey={'global.label.label3'}
                 />
                 <BasePasswordInput
-                  // onChange={(event:any) => setPassword(event.currentTarget.value)}
-                  style={{ maxWidth: '370', maxHeight: '44' }}
+                  maw={isPhone ? '280px' : '370px'}
+                  mah={'44px'}
                   placeholder={'Write your password'}
                   {...loginForm.getInputProps('password')}
-                // value={password}
                 />
                 {error ?
                   <BaseText style={typography.label.en.l1}
                     color={theme.colors.red[7]} txtkey={'authentication.formText.errorMessage'} />
                   : null}
               </Flex>
-              <Box style={{ width: '100%', textAlign: 'center' }}>
+              <Flex w={'100%'} justify={'center'}>
                 <BaseText
                   ta="center"
                   style={typography.label.en.l1}
                   color={theme.colors.dark[8]}
                   txtkey={'signUpForm.forgetPassword'}
                 />
-              </Box>
+              </Flex>
               <BaseButton
                 onClick={(e) => {
                   e.preventDefault()
@@ -165,12 +162,8 @@ export const Login = (props: LoginProps) => {
                   else
                     console.log("email or password is empty")
                 }}
-                style={{
-                  width: `${isIPhone ? '280px' : '370px'}`,
-                  maxHeight: '39px',
-                  margin: '40px 0 26px 0',
-                  color: 'white'
-                }}
+                w={isPhone ? '280px' : '370px'}
+                mah={'39px'}
                 style_variant={loginForm.values.email.length && loginForm.values.password.length ? 'filled' : 'disabled'}
                 color_variant={loginForm.values.email.length && loginForm.values.password.length ? 'blue' : 'gray'}
               >
@@ -180,29 +173,24 @@ export const Login = (props: LoginProps) => {
                   txtkey={'signUpForm.login'}
                 />
               </BaseButton>
-            </form>
-            <Flex
-              justify="center"
-              style={{
-                margin: '0 0 6px 0',
-              }}
-              align="center"
-              gap={5}
-            >
-              <BaseText
-                style={typography.label.en.l1}
-                color={theme.colors.gray[6]}
-                txtkey={'signUpForm.newUser'}
-              />
-              <BaseText
-                style={typography.headings.en.h7}
-                color={theme.colors.blue[4]}
-                txtkey={'authentication.formText.signUp'}
-              />
             </Flex>
-          </Box>
+          </form>
+
+          <Flex
+            justify="center" align="center" gap={5}>
+            <BaseText
+              style={typography.label.en.l1}
+              color={theme.colors.gray[6]}
+              txtkey={'signUpForm.newUser'}
+            />
+            <BaseText
+              style={typography.headings.en.h7}
+              color={theme.colors.blue[4]}
+              txtkey={'authentication.formText.signUp'}
+            />
+          </Flex>
         </Flex>
-      </Box>
+      </Flex>
     </>
   );
 };

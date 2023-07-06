@@ -24,9 +24,7 @@ export const SignUp = (props: SignUpProps) => {
   const theme = useMantineTheme();
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState("")
-  const isIPhone = useMediaQuery('(max-width:400px)');
   const isPhone = useMediaQuery('(max-width:600px)');
-  const isMiniLaptop = useMediaQuery('(max-width:1200px)');
 
   const signUpForm = useForm({
     initialValues: {
@@ -93,73 +91,77 @@ export const SignUp = (props: SignUpProps) => {
 
   return (
     <>
-      <Box
-        style={{
-          padding: `${isPhone ? '30px' : ''}`,
-        }}
+      <Flex
+        justify="center"
+        align="center"
+        gap={isPhone ? '' : 100}
+        wrap="wrap"
         className={classes.Container}
+        px={50}
       >
-        <Flex
-          justify="center"
-          style={{ width: '100%', height: '100%' }}
-          align="center"
-          gap={isMiniLaptop ? '' : 100}
-          wrap="wrap"
-        >
-          <Image
-            src={props.img ? props.img : Images.login_icon}
-            style={{ maxWidth: `${isMiniLaptop ? '550px' : '700px'}`, maxHeight: '437px' }}
-            alt="icon"
-          />
-          <Box style={{ maxWidth: `${isIPhone ? '280px' : '370px'}` }}>
-            <form onSubmit={signUpForm.onSubmit((values) => console.log(values))}>
-              <Box style={{ width: '100%', textAlign: 'center' }}>
+        <Image
+          src={props.img ? props.img : Images.login_icon}
+          maw={'700px'}
+          mah={'437px'}
+          alt="icon"
+        />
+        <Flex gap={26} direction={'column'} maw={isPhone ? '300px' : '370px'}>
+          <form onSubmit={signUpForm.onSubmit((values) => console.log(values))}>
+            <Flex direction={'column'} gap={20}>
+              <Flex w={'100%'} justify={'center'}>
                 <BaseText
                   style={typography.headings.en.h2}
                   color={theme.colors.dark[8]}
                   txtkey={'header.signUp'}
                 />
-              </Box>
-              <Flex justify="center" align="center" gap={32} style={{ marginTop: '32px' }}>
+              </Flex>
+              <Flex justify="center" align="center" gap={32}
+              >
                 <CircularIcon Icon={Images.facebook_Icon} />
                 <CircularIcon Icon={Images.google_Icon} />
               </Flex>
-              <Flex direction={'column'} gap={10} style={{ padding: '20px 0 0 0' }}>
+              <Flex direction={'column'} gap={10}
+              >
                 <BaseText
                   style={typography.label.en.l1}
                   color={theme.colors.gray[6]}
                   txtkey={'userProfile.accountDetails.name'}
                 />
                 <Input
-                  style={{ maxWidth: '370', maxHeight: '44' }}
+                  maw={isPhone ? '280px' : '370px'}
+                  mah={'44px'}
                   component={'input'}
                   placeholder="Write your name"
                   style_variant={'inputText1'}
                   {...signUpForm.getInputProps('full_name')}
                 />
               </Flex>
-              <Flex direction={'column'} gap={10} style={{ padding: '20px 0 0 0' }}>
+              <Flex direction={'column'} gap={10}
+              >
                 <BaseText
                   style={typography.label.en.l1}
                   color={theme.colors.gray[6]}
                   txtkey={'global.label.label2'}
                 />
                 <Input
-                  style={{ maxWidth: '370', maxHeight: '44' }}
+                  maw={isPhone ? '280px' : '370px'}
+                  mah={'44px'}
                   component={'input'}
                   placeholder="Write your email"
                   style_variant={'inputText1'}
                   {...signUpForm.getInputProps('email')}
                 />
               </Flex>
-              <Flex direction={'column'} gap={10} style={{ padding: '20px 0 0 0' }}>
+              <Flex direction={'column'} gap={10}
+              >
                 <BaseText
                   style={typography.label.en.l1}
                   color={theme.colors.gray[6]}
                   txtkey={'userProfile.accountDetails.phoneNumber'}
                 />
                 <Input
-                  style={{ maxWidth: '370', maxHeight: '44' }}
+                  maw={isPhone ? '280px' : '370px'}
+                  mah={'44px'}
                   component={'input'}
                   type="number"
                   placeholder="Write your number"
@@ -167,26 +169,30 @@ export const SignUp = (props: SignUpProps) => {
                   {...signUpForm.getInputProps('phone')}
                 />
               </Flex>
-              <Flex direction={'column'} gap={10} style={{ padding: '20px 0 0 0' }}>
+              <Flex direction={'column'} gap={10}
+              >
                 <BaseText
                   style={typography.label.en.l1}
                   color={theme.colors.gray[6]}
                   txtkey={'global.label.label3'}
                 />
                 <BasePasswordInput
-                  style={{ maxWidth: '370', maxHeight: '44' }}
+                  maw={isPhone ? '280px' : '370px'}
+                  mah={'44px'}
                   placeholder={'Write your password'}
                   {...signUpForm.getInputProps('password1')}
                 />
               </Flex>
-              <Flex direction={'column'} gap={10} style={{ padding: '20px 0 0 0' }}>
+              <Flex direction={'column'} gap={10}
+              >
                 <BaseText
                   style={typography.label.en.l1}
                   color={theme.colors.gray[6]}
                   txtkey={'global.label.label4'}
                 />
                 <BasePasswordInput
-                  style={{ maxWidth: '370', maxHeight: '44' }}
+                  maw={isPhone ? '280px' : '370px'}
+                  mah={'44px'}
                   placeholder={'Write your password'}
                   {...signUpForm.getInputProps('password2')}
                 />
@@ -203,11 +209,8 @@ export const SignUp = (props: SignUpProps) => {
                   else
                     console.log("email or password is empty")
                 }}
-                style={{
-                  width: `${isIPhone ? '280px' : '370px'}`,
-                  maxHeight: '39px',
-                  margin: '40px 0 26px 0',
-                }}
+                w={isPhone ? '280px' : '370px'}
+                mah={'39px'}
                 style_variant={signUpForm.values.email.length
                   && signUpForm.values.password1.length
                   && signUpForm.values.password2.length
@@ -231,22 +234,23 @@ export const SignUp = (props: SignUpProps) => {
                   txtkey={'signUpForm.login'}
                 />
               </BaseButton>
-            </form>
-            <Flex style={{ marginBottom: '10px' }} justify="center" align="center" gap={5}>
-              <BaseText
-                style={typography.label.en.l1}
-                color={theme.colors.gray[6]}
-                txtkey={'signUpForm.oldUser'}
-              />
-              <BaseText
-                style={typography.headings.en.h7}
-                color={theme.colors.blue[4]}
-                txtkey={'signUpForm.signIn'}
-              />
             </Flex>
-          </Box>
+          </form>
+          <Flex
+            justify="center" align="center" gap={5}>
+            <BaseText
+              style={typography.label.en.l1}
+              color={theme.colors.gray[6]}
+              txtkey={'signUpForm.oldUser'}
+            />
+            <BaseText
+              style={typography.headings.en.h7}
+              color={theme.colors.blue[4]}
+              txtkey={'signUpForm.signIn'}
+            />
+          </Flex>
         </Flex>
-      </Box>
+      </Flex>
     </>
   );
 };
