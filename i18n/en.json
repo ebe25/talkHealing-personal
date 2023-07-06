@@ -52,6 +52,7 @@
     },
     "header":{
       "booking":"BOOKING FOR EVENT",
+      "signUp": "Create account",
       "Login": "Login to your account",
       "play":"OPEN PLAY",
       "shop":"WORKSHOPS",
