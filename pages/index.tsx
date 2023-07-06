@@ -23,7 +23,7 @@ export default function HomePage() {
       {/* <ColorSchemeToggle /> */}
     {/* <Login /> */}
       {/* <Welcome /> */}
-      <ColorSchemeToggle />
+      {/* <ColorSchemeToggle /> */}
     </>
   );
 }
