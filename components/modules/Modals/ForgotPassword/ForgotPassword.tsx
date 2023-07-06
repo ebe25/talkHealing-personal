@@ -179,7 +179,8 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   <Flex
                     wrap={'wrap'}
                     gap={20}
-                    style={{ width: '100%', padding: '10px' }}
+                    w={'100%'}
+                    style={{ padding: '10px' }}
                     align={'center'}
                     justify={isPhone ? 'center' : 'space-between'}
                   >
@@ -187,10 +188,10 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                       onClick={() => {
                         Select('email');
                       }}
+                      w={'100px'}
+                      h={'100px'}
                       style={{
-                        width: '100px',
                         cursor: 'pointer',
-                        height: '100px',
                         borderRadius: '100%',
                         background: `${selectEmail ? theme.colors.blue[4] : theme.colors.gray[1]}`,
                       }}
@@ -201,10 +202,10 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                       onClick={() => {
                         Select('phone');
                       }}
+                      w={'100px'}
+                      h={'100px'}
                       style={{
-                        width: '100px',
                         cursor: 'pointer',
-                        height: '100px',
                         borderRadius: '100%',
                         background: `${selectPhone ? theme.colors.blue[4] : theme.colors.gray[1]}`,
                       }}
@@ -216,7 +217,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
               ) : null}
 
               {selectEmail && next ? (
-                <Flex direction={'column'} gap={10} style={{ width: '100%' }}>
+                <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
                     style={typography.label.en.l1}
                     color={theme.colors.gray[6]}
@@ -237,7 +238,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
               ) : null}
 
               {selectPhone && next ? (
-                <Flex direction={'column'} gap={10} style={{ width: '100%' }}>
+                <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
                     style={typography.label.en.l1}
                     color={theme.colors.gray[6]}
@@ -260,7 +261,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
               <Flex
                 wrap={'wrap'}
                 gap={10}
-                style={{ width: '100%' }}
+                w={'100%'}
                 align={'center'}
                 justify={'space-between'}
               >
@@ -273,17 +274,15 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   }}
                   style_variant={'filled'}
                   color_variant={'gray'}
-                  style={{ width: `${isPhone ? '100%' : '47%'}` }}
+                  w={isPhone ? '100%' : '47%'}
                 >
                   <BaseText txtkey={'global.button.cancel'} />
                 </BaseButton>
                 <BaseButton
                   style_variant={'filled'}
                   color_variant={'gray'}
-                  style={{
-                    width: `${isPhone ? '100%' : '47%'}`,
-                    background: `${selectEmail || selectPhone ? theme.colors.blue[4] : ''}`,
-                  }}
+                  w={isPhone ? '100%' : '47%'}
+                  bg={selectEmail || selectPhone ? theme.colors.blue[4] : ''}
                   onClick={(e) => {
                     Contine()
                     e.preventDefault()
