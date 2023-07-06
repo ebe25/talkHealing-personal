@@ -75,7 +75,6 @@ export const Login = (props: LoginProps) => {
   return (
     <>
       <Grid
-        // gutter={isPhone ? '0' : '50px'}
         className={classes.Container}
         justify="center" align="center" >
         <Grid.Col
