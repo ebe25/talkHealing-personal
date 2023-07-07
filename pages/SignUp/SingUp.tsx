@@ -7,7 +7,6 @@ import { Flex, Grid, Image } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
-import { useMediaQuery } from '@mantine/hooks';
 import { CircularIcon } from '../../components/elements/CircularIcon/CircularIcon';
 import { useStores } from '@/models';
 import useStyles from './SignUp.style';
@@ -24,7 +23,6 @@ export const SignUp = (props: SignUpProps) => {
   const theme = useMantineTheme();
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState("")
-  const isPhone = useMediaQuery('(max-width:600px)');
 
   const signUpForm = useForm({
     initialValues: {
@@ -94,9 +92,9 @@ export const SignUp = (props: SignUpProps) => {
         className={classes.Container}
         justify="center" align="center" >
         <Grid.Col
-          w={'700px'}
-          miw={'300px'}
-          mah={isPhone ? '300px' : '437px'}
+          maw={'700px'}
+          miw={'280px'}
+          mah={'437px'}
           span={5}
         >
           <Image
@@ -104,8 +102,8 @@ export const SignUp = (props: SignUpProps) => {
             alt="icon"
           />
         </Grid.Col>
-        <Grid.Col maw={isPhone ? '300px' : '370px'} span={5}>
-          <Flex gap={26} direction={'column'} maw={isPhone ? '300px' : '370px'}>
+        <Grid.Col maw={'370px'} span={5}>
+          <Flex gap={26} direction={'column'} maw={'370px'}>
             <form onSubmit={signUpForm.onSubmit((values) => console.log(values))}>
               <Flex direction={'column'} gap={20}>
                 <Flex w={'100%'} justify={'center'}>
@@ -128,7 +126,7 @@ export const SignUp = (props: SignUpProps) => {
                     txtkey={'userProfile.accountDetails.name'}
                   />
                   <Input
-                    maw={isPhone ? '280px' : '370px'}
+                    maw={'370px'}
                     mah={'44px'}
                     component={'input'}
                     placeholder="Write your name"
@@ -144,7 +142,7 @@ export const SignUp = (props: SignUpProps) => {
                     txtkey={'global.label.label2'}
                   />
                   <Input
-                    maw={isPhone ? '280px' : '370px'}
+                    maw={'370px'}
                     mah={'44px'}
                     component={'input'}
                     placeholder="Write your email"
@@ -160,7 +158,7 @@ export const SignUp = (props: SignUpProps) => {
                     txtkey={'userProfile.accountDetails.phoneNumber'}
                   />
                   <Input
-                    maw={isPhone ? '280px' : '370px'}
+                    maw={'370px'}
                     mah={'44px'}
                     component={'input'}
                     type="number"
@@ -177,7 +175,7 @@ export const SignUp = (props: SignUpProps) => {
                     txtkey={'global.label.label3'}
                   />
                   <BasePasswordInput
-                    maw={isPhone ? '280px' : '370px'}
+                    maw={'370px'}
                     mah={'44px'}
                     placeholder={'Write your password'}
                     {...signUpForm.getInputProps('password1')}
@@ -191,7 +189,7 @@ export const SignUp = (props: SignUpProps) => {
                     txtkey={'global.label.label4'}
                   />
                   <BasePasswordInput
-                    maw={isPhone ? '280px' : '370px'}
+                    maw={'370px'}
                     mah={'44px'}
                     placeholder={'Write your password'}
                     {...signUpForm.getInputProps('password2')}
@@ -209,7 +207,8 @@ export const SignUp = (props: SignUpProps) => {
                     else
                       console.log("email or password is empty")
                   }}
-                  w={isPhone ? '280px' : '370px'}
+                  maw={'370px'}
+                  miw={'280px'}
                   mah={'39px'}
                   style_variant={signUpForm.values.email.length
                     && signUpForm.values.password1.length
