@@ -7,7 +7,6 @@ import { Flex, Grid, Image } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
-import { useMediaQuery } from '@mantine/hooks';
 import { CircularIcon } from '../../components/elements/CircularIcon/CircularIcon';
 import useStyles from './Login.style';
 import { useStores } from '@/models';
@@ -21,7 +20,6 @@ export const Login = (props: LoginProps) => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const { userStore } = useStores()
-  const isPhone = useMediaQuery('(max-width:600px)');
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState("")
 
@@ -78,9 +76,9 @@ export const Login = (props: LoginProps) => {
         className={classes.Container}
         justify="center" align="center" >
         <Grid.Col
-          w={'700px'}
-          miw={'300px'}
-          mah={isPhone ? '300px' : '437px'}
+          maw={'700px'}
+          miw={'280px'}
+          mah={'437px'}
           span={5}
         >
           <Image
@@ -88,8 +86,8 @@ export const Login = (props: LoginProps) => {
             alt="icon"
           />
         </Grid.Col>
-        <Grid.Col maw={isPhone ? '300px' : '370px'} span={5}>
-          <Flex gap={26} direction={'column'} maw={isPhone ? '300px' : '370px'}>
+        <Grid.Col maw={'370px'} span={5}>
+          <Flex gap={26} direction={'column'} maw={'370px'}>
             <form onSubmit={loginForm.onSubmit((values) => console.log(values))}>
               <Flex direction={'column'} gap={20}>
                 <Flex w={'100%'} align={'center'} justify={'center'}>
@@ -111,7 +109,7 @@ export const Login = (props: LoginProps) => {
                     txtkey={'global.label.label2'}
                   />
                   <Input
-                    w={isPhone ? '280px' : '370px'}
+                    maw={'370px'}
                     h={'44px'}
                     component={'input'}
                     placeholder="Write your email"
@@ -126,7 +124,7 @@ export const Login = (props: LoginProps) => {
                     txtkey={'global.label.label3'}
                   />
                   <BasePasswordInput
-                    w={isPhone ? '280px' : '370px'}
+                    maw={'370px'}
                     h={'44px'}
                     placeholder={'Write your password'}
                     {...loginForm.getInputProps('password')}
@@ -152,7 +150,8 @@ export const Login = (props: LoginProps) => {
                     else
                       console.log("email or password is empty")
                   }}
-                  w={isPhone ? '280px' : '370px'}
+                  maw={'370px'}
+                  miw={'280px'}
                   mah={'39px'}
                   style_variant={loginForm.values.email.length && loginForm.values.password.length ? 'filled' : 'disabled'}
                   color_variant={loginForm.values.email.length && loginForm.values.password.length ? 'blue' : 'gray'}
