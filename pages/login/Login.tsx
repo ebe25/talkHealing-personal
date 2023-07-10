@@ -29,7 +29,6 @@ export const Login = (props: LoginProps) => {
       password: '',
       termsOfService: false,
     },
-
     validate: {
       email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : 'Invalid email'),
       password: (value) => {
@@ -41,9 +40,7 @@ export const Login = (props: LoginProps) => {
 
 
   const handleLogin = () => {
-
     setLoader(true)
-
     let results = loginForm.validate();
 
     if (results.hasErrors) return setLoader(false);
@@ -60,7 +57,7 @@ export const Login = (props: LoginProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError("Paaword wrong")
+            setError("Password wrong")
             setTimeout(() => {
               setError("")
             }, 5000)
