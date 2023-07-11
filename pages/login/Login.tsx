@@ -3,7 +3,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Flex, Grid, Image } from '@mantine/core';
+import { Box, Center, Container, Flex, Grid, Image } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
@@ -73,43 +73,44 @@ export const Login = (props: LoginProps) => {
   }
 
   return (
-    <Grid
-      className={classes.container}
-      gutter="100px"
-      m={0}
+    <Container
+      maw={"1400px"}
     >
-      <Grid.Col
-        sm={12}
-        xs={12}
-        md={8}
-        lg={6}
-        xl={6}
+      <Grid
+        className={classes.container}
+        gutter="100px"
+        m={0}
       >
-        <Image
-          src={props.img ? props.img : Images.login_icon}
-          alt="icon"
-        />
-      </Grid.Col>
-      <Grid.Col
-        sm={12}
-        xs={12}
-        md={8}
-        lg={4}
-        xl={4}
-      >
-        <Flex gap={26}
-          direction={'column'}
+        <Grid.Col
+          sm={12}
+          xs={12}
+          md={8}
+          lg={7}
+          xl={7}
+        >
+          <Image
+            w={"100%"}
+            src={props.img ? props.img : Images.login_icon}
+            alt="icon"
+          />
+        </Grid.Col>
+        <Grid.Col
+          sm={12}
+          xs={12}
+          md={4}
+          lg={5}
+          xl={5}
         >
           <form onSubmit={loginForm.onSubmit((values) => console.log(values))}>
-            <Flex direction={'column'} gap={20}>
-              <Flex w={'100%'} align={'center'} justify={'center'}>
+            <Flex direction={'column'} gap={20} w={"100%"} >
+              <Center>
                 <BaseText
                   ta={'center'}
                   style={typography.headings.en.h2}
                   color={theme.colors.dark[8]}
                   txtkey={'header.Login'}
                 />
-              </Flex>
+              </Center>
               {/* Social Media Login */}
               <Flex justify="center" align="center" gap={32}
               >
@@ -121,7 +122,7 @@ export const Login = (props: LoginProps) => {
                 </Box>
               </Flex>
               {/* Email Input */}
-              <Flex direction={'column'} gap={10} >
+              <Flex direction={'column'} w={"100%"} gap={10} >
                 <BaseText
                   style={typography.label.en.l1}
                   color={theme.colors.gray[6]}
@@ -155,7 +156,7 @@ export const Login = (props: LoginProps) => {
                   : null}
               </Flex>
               {/* ForgetPassword */}
-              <Flex w={'100%'} justify={'center'}>
+              <Center>
                 <Link className={classes.link} href={'/'}>
                   <BaseText
                     ta="center"
@@ -164,7 +165,7 @@ export const Login = (props: LoginProps) => {
                     txtkey={'signUpForm.forgetPassword'}
                   />
                 </Link>
-              </Flex>
+              </Center>
               {/* Login Button */}
               <BaseButton
                 onClick={(e) => {
@@ -189,6 +190,7 @@ export const Login = (props: LoginProps) => {
           </form>
           {/* Sign Up */}
           <Flex
+            mt={theme.spacing.xl}
             justify="center" align="center" gap={5}>
             <BaseText
               style={typography.label.en.l1}
@@ -203,8 +205,8 @@ export const Login = (props: LoginProps) => {
               />
             </Link>
           </Flex>
-        </Flex>
-      </Grid.Col>
-    </Grid>
+        </Grid.Col>
+      </Grid>
+    </Container>
   );
 };
