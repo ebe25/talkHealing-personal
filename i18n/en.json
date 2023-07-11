@@ -66,6 +66,11 @@
   },
   "authentication": {
     "invalidEmail": "Invalid email",
+    "invalidOtp": "Invalid otp",
+    "invalidPassword": "Invalid password",
+    "invalidNumber": "Invalid phone number",
+    "passwordLength": "Password length too short.",
+    "passwordNotMatched":"Password not matched",
     "strings": {
       "incChar": "Includes at least 6 characters",
       "incNum": "Includes number",
@@ -75,6 +80,8 @@
     },
     "formText": {
       "signUp": "Sign up now",
+      "WriteEmail": "Write your email",
+      "WritePassword": "Write your password",
       "name": "Name",
       "email": "Email",
       "phoneNumber": "Phone Number",
@@ -107,7 +114,16 @@
       "previousButtonText": "Previous",
       "datePlaceholder": "DD",
       "monthPlaceholder": "MM",
-      "yearPlaceholder": "YYYY"
+      "yearPlaceholder": "YYYY",
+      "DidNotGetTheCode": "Didn’t get the code?",
+      "ResendCode": "Resend Code",
+      "OtpInYourEmail":"We have sent the OTP in your email.",
+      "ForTheVerification":"Please enter the OTP for the verification.",
+      "VerifyEmail": "Verify Email",
+      "MobileNumber": "Enter Mobile Number",
+      "CountryCode": "Select Country Code",
+      "VerifyMobileNumber": "Verify Mobile Number",
+      "OtpInYourNumber":"We have sent the OTP in your mobile number."
     }
   },
   "dataBox": {
@@ -182,7 +198,9 @@
     "backToLogin": "Back to Login",
     "continue": "Continue",
     "passwordLength": "must be at least 8 characters",
-    "errorMessage": "This email can’t be found, make sure email is incorrect"
+    "errorMessage": "This email can’t be found, make sure email is incorrect",
+    "otpError": "Not Found",
+    "numberError": "Invalid phone number"
   },
   "footerPages": {
     "privacyPolicy": "Privacy policy",

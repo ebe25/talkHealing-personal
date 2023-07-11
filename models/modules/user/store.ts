@@ -84,7 +84,6 @@ export const UserStore = types
     signupUser: flow(function* (
       email: string,
       full_name: string,
-      phone: string,
       password1: string,
       password2: string,
       // is_terms_agreed: boolean
@@ -96,7 +95,6 @@ export const UserStore = types
         {
           email: email,
           full_name: full_name,
-          phone: phone,
           password1: password1,
           password2: password2,
           // is_terms_agreed: is_terms_agreed
@@ -106,6 +104,16 @@ export const UserStore = types
       let error = null;
       switch (response.status) {
         case 201:
+          self.loggedInUserData = null;
+          yield storage.clear();
+          self.is_logged_in = true;
+          self.loggedInUserData = UserSchemas.LoggedInUser.create(
+            response.data
+          );
+          yield storage.setItem(
+            self.environment.api.config.token_key,
+            response.data[self.environment.api.config.token_key]
+          );
           return ACTION_RESPONSES.success;
           case 400:
             return { ...ACTION_RESPONSES.failure, code: response.status , error : response
@@ -116,26 +124,21 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    verifyEmail: flow(function* (key: string) {
+    verifyEmail: flow(function* (otp: string) {
       const response = yield self.environment.api.call(
         API_ENDPOINTS.verifyEmail,
         {
-          key: key,
+          otp: otp,
         }
       );
       console.log("response", response);
       switch (response.status) {
         case 200:
-          self.verfyEmailData = UserSchemas.LoggedInUser.create(
-            response.data
-          );
-          yield storage.setItem(
-            self.environment.api.config.token_key,
-            response.data[self.environment.api.config.token_key]
-          );
           return ACTION_RESPONSES.success;
         case 400:
           return ACTION_RESPONSES.failure;
+        case 404:
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data }
         default:
           console.error("UNHANDLED ERROR");
           break;
@@ -157,7 +160,7 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    verifyPhoneNumber: flow(function* (otp: number) {
+    verifyPhoneNumber: flow(function* (otp: string) {
       const response = yield self.environment.api.call(
         API_ENDPOINTS.verifyPhoneNumber,
         {
@@ -168,7 +171,7 @@ export const UserStore = types
         case 200:
           return ACTION_RESPONSES.success;
         case 400:
-          return ACTION_RESPONSES.failure;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data };
         default:
           console.error("UNHANDLED ERROR");
       }
@@ -283,7 +286,7 @@ export const UserStore = types
           // self.loggedInUserData.user = UserSchemas.User.create(response.data);
           return ACTION_RESPONSES.success;
         case 400:
-          return { ...ACTION_RESPONSES.failure, code: response.status };
+          return  { ...ACTION_RESPONSES.failure, code: response.status , error : response.data }
         case 401:
           return ACTION_RESPONSES.failure;
         default:

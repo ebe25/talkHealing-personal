@@ -3,7 +3,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Flex, Grid, Image } from '@mantine/core';
+import { Box, Center, Container, Flex, Grid, Image } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
@@ -11,6 +11,8 @@ import { CircularIcon } from '../../components/elements/CircularIcon/CircularIco
 import useStyles from './Login.style';
 import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
+import Link from 'next/link';
+import { translate } from '@/i18n';
 
 interface LoginProps {
   img?: string;
@@ -21,7 +23,7 @@ export const Login = (props: LoginProps) => {
   const theme = useMantineTheme();
   const { userStore } = useStores()
   const [loader, setLoader] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState<any>("")
 
   const loginForm = useForm({
     initialValues: {
@@ -29,21 +31,21 @@ export const Login = (props: LoginProps) => {
       password: '',
       termsOfService: false,
     },
-
     validate: {
-      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : 'Invalid email'),
+      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
       password: (value) => {
         if (value.trim().length < 6)
-          return 'Invalid password';
+          return translate('authentication.invalidPassword');
       },
     },
   });
 
+  // Check Length
+  const loginButtonShow = (loginForm.values.email.length && loginForm.values.password.length)
 
+  //  Login Api Call
   const handleLogin = () => {
-
     setLoader(true)
-
     let results = loginForm.validate();
 
     if (results.hasErrors) return setLoader(false);
@@ -60,7 +62,7 @@ export const Login = (props: LoginProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError("Paaword wrong")
+            setError(translate("authentication.formText.errorMessage"))
             setTimeout(() => {
               setError("")
             }, 5000)
@@ -71,116 +73,140 @@ export const Login = (props: LoginProps) => {
   }
 
   return (
-    <>
+    <Container
+      maw={"1400px"}
+    >
       <Grid
-        className={classes.Container}
-        justify="center" align="center" >
+        className={classes.container}
+        gutter="100px"
+        m={0}
+      >
         <Grid.Col
-          maw={'700px'}
-          miw={'280px'}
-          mah={'437px'}
-          span={5}
+          sm={12}
+          xs={12}
+          md={8}
+          lg={7}
+          xl={7}
         >
           <Image
+            w={"100%"}
             src={props.img ? props.img : Images.login_icon}
             alt="icon"
           />
         </Grid.Col>
-        <Grid.Col maw={'370px'} span={5}>
-          <Flex gap={26} direction={'column'} maw={'370px'}>
-            <form onSubmit={loginForm.onSubmit((values) => console.log(values))}>
-              <Flex direction={'column'} gap={20}>
-                <Flex w={'100%'} align={'center'} justify={'center'}>
-                  <BaseText
-                    style={typography.headings.en.h2}
-                    color={theme.colors.dark[8]}
-                    txtkey={'header.Login'}
-                  />
-                </Flex>
-                <Flex justify="center" align="center" gap={32}
-                >
+        <Grid.Col
+          sm={12}
+          xs={12}
+          md={4}
+          lg={5}
+          xl={5}
+        >
+          <form onSubmit={loginForm.onSubmit((values) => console.log(values))}>
+            <Flex direction={'column'} gap={20} w={"100%"} >
+              <Center>
+                <BaseText
+                  ta={'center'}
+                  style={typography.headings.en.h2}
+                  color={theme.colors.dark[8]}
+                  txtkey={'header.Login'}
+                />
+              </Center>
+              {/* Social Media Login */}
+              <Flex justify="center" align="center" gap={32}
+              >
+                <Box className={classes.link}>
                   <CircularIcon Icon={Images.facebook_Icon} />
+                </Box>
+                <Box className={classes.link}>
                   <CircularIcon Icon={Images.google_Icon} />
-                </Flex>
-                <Flex direction={'column'} gap={10} >
-                  <BaseText
-                    style={typography.label.en.l1}
-                    color={theme.colors.gray[6]}
-                    txtkey={'global.label.label2'}
-                  />
-                  <Input
-                    maw={'370px'}
-                    h={'44px'}
-                    component={'input'}
-                    placeholder="Write your email"
-                    style_variant={'inputText1'}
-                    {...loginForm.getInputProps('email')}
-                  />
-                </Flex>
-                <Flex direction={'column'} gap={10} >
-                  <BaseText
-                    style={typography.label.en.l1}
-                    color={theme.colors.gray[6]}
-                    txtkey={'global.label.label3'}
-                  />
-                  <BasePasswordInput
-                    maw={'370px'}
-                    h={'44px'}
-                    placeholder={'Write your password'}
-                    {...loginForm.getInputProps('password')}
-                  />
-                  {error ?
-                    <BaseText style={typography.label.en.l1}
-                      color={theme.colors.red[7]} txtkey={'authentication.formText.errorMessage'} />
-                    : null}
-                </Flex>
-                <Flex w={'100%'} justify={'center'}>
+                </Box>
+              </Flex>
+              {/* Email Input */}
+              <Flex direction={'column'} w={"100%"} gap={10} >
+                <BaseText
+                  style={typography.label.en.l1}
+                  color={theme.colors.gray[6]}
+                  txtkey={'global.label.label2'}
+                />
+                <Input
+                  h={'44px'}
+                  w={"100%"}
+                  component={'input'}
+                  placeholder={`${translate("authentication.formText.WriteEmail")}`}
+                  style_variant={'inputText1'}
+                  {...loginForm.getInputProps('email')}
+                />
+              </Flex>
+              {/* Password Input */}
+              <Flex direction={'column'} gap={10} >
+                <BaseText
+                  style={typography.label.en.l1}
+                  color={theme.colors.gray[6]}
+                  txtkey={'global.label.label3'}
+                />
+                <BasePasswordInput
+                  w={"100%"}
+                  h={'44px'}
+                  placeholder={`${translate("authentication.formText.WritePassword")}`}
+                  {...loginForm.getInputProps('password')}
+                />
+                {error ?
+                  <BaseText style={typography.label.en.l1}
+                    color={theme.colors.red[7]} txtkey={'authentication.formText.errorMessage'} />
+                  : null}
+              </Flex>
+              {/* ForgetPassword */}
+              <Center>
+                <Link className={classes.link} href={'/'}>
                   <BaseText
                     ta="center"
                     style={typography.label.en.l1}
                     color={theme.colors.dark[8]}
                     txtkey={'signUpForm.forgetPassword'}
                   />
-                </Flex>
-                <BaseButton
-                  onClick={(e) => {
-                    e.preventDefault()
-                    if (loginForm.values.email && loginForm.values.password)
-                      handleLogin()
-                    else
-                      console.log("email or password is empty")
-                  }}
-                  maw={'370px'}
-                  miw={'280px'}
-                  mah={'39px'}
-                  style_variant={loginForm.values.email.length && loginForm.values.password.length ? 'filled' : 'disabled'}
-                  color_variant={loginForm.values.email.length && loginForm.values.password.length ? 'blue' : 'gray'}
-                >
-                  <BaseText
-                    style={typography.buttonText.en.b2}
-                    color={loginForm.values.email.length && loginForm.values.password.length ? theme.white : theme.colors.dark[1]}
-                    txtkey={'signUpForm.login'}
-                  />
-                </BaseButton>
-              </Flex>
-            </form>
-
-            <Flex
-              justify="center" align="center" gap={5}>
-              <BaseText
-                style={typography.label.en.l1}
-                color={theme.colors.gray[6]}
-                txtkey={'signUpForm.newUser'}
-              />
+                </Link>
+              </Center>
+              {/* Login Button */}
+              <BaseButton
+                onClick={(e) => {
+                  e.preventDefault()
+                  if (loginButtonShow)
+                    handleLogin()
+                  else
+                    console.log("email or password is empty")
+                }}
+                w={"100%"}
+                mah={'39px'}
+                style_variant={loginButtonShow ? 'filled' : 'disabled'}
+                color_variant={loginButtonShow ? 'blue' : 'gray'}
+              >
+                <BaseText
+                  style={typography.buttonText.en.b2}
+                  color={loginButtonShow ? theme.white : theme.colors.dark[1]}
+                  txtkey={'signUpForm.login'}
+                />
+              </BaseButton>
+            </Flex>
+          </form>
+          {/* Sign Up */}
+          <Flex
+            mt={theme.spacing.xl}
+            justify="center" align="center" gap={5}>
+            <BaseText
+              style={typography.label.en.l1}
+              color={theme.colors.gray[6]}
+              txtkey={'signUpForm.newUser'}
+            />
+            <Link className={classes.link} href={'/'}>
               <BaseText
                 style={typography.headings.en.h7}
                 color={theme.colors.blue[4]}
                 txtkey={'authentication.formText.signUp'}
               />
-            </Flex>
+            </Link>
           </Flex>
         </Grid.Col>
       </Grid>
-    </>
+    </Container>
   );
 };

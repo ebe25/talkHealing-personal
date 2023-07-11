@@ -57,6 +57,11 @@
   },
   "authentication": {
     "invalidEmail": "بريد إلكتروني خاطئ",
+    "invalidOtp": "otp غير صالح",
+    "invalidPassword": "رمز مرور خاطئ",
+    "invalidNumber": "رقم الهاتف غير صحيح",
+    "passwordLength": "طول كلمة المرور قصير جدًا.",
+    "passwordNotMatched":"كلمة المرور غير متطابقة",
     "strings": {
       "incChar": "يتألف من 6 أحرف على الأقل",
       "incNum": "يشمل الرقم",
@@ -66,6 +71,8 @@
     },
     "formText": {
       "signUp": "اشتراك",
+      "WriteEmail": "اكتب بريدك الإلكتروني",
+      "WritePassword": "اكتب كلمة المرور الخاصة بك",
       "name": "اسم",
       "email": "بريد إلكتروني",
       "phone number": "رقم التليفون",
@@ -98,7 +105,16 @@
       "previousButtonText": "سابق",
       "datePlaceholder": "DD",
       "monthPlaceholder": "MM",
-      "yearPlaceholder": "YYYY"
+      "yearPlaceholder": "YYYY",
+      "DidNotGetTheCode": "ألم تحصل على الرمز؟",
+      "ResendCode": "أعد إرسال الرمز",
+      "OtpInYourEmail":"لقد أرسلنا OTP في بريدك الإلكتروني",
+      "ForTheVerification":"الرجاء إدخال OTP للتحقق.",
+      "VerifyEmail": "التحقق من البريد الإلكتروني",
+      "MobileNumber": "أدخل رقم الهاتف المتحرك",
+      "CountryCode": "حدد رمز الدولة",
+      "VerifyMobileNumber": "تحقق من رقم الهاتف المحمول",
+      "OtpInYourNumber":"لقد أرسلنا OTP في رقم هاتفك المحمول."
     }
   },
   "dataBox": {
@@ -164,7 +180,9 @@
     "backToLogin": "العودة إلى تسجيل الدخول",
     "continue": "يكمل",
     "passwordLength": "يجب ألا يقل عن 8 أحرف",
-    "errorMessage": "لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
+    "errorMessage": "لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح ",
+    "otpError": "غير معثور عليه",
+    "numberError": "Invalid phone number"
   },
   "footerPages": {
     "privacyPolicy": "سياسة الخصوصية",

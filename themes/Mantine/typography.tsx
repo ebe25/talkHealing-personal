@@ -17,6 +17,7 @@ export const typography = {
         fontWeight: 600,
         fontSize: '25px',
         lineHeight: '30px',
+        letterSpacing: '0.62px',
       } as React.CSSProperties,
       h3: {
         fontFamily: webFontFamily['PlusJakartaSans-Bold'],
@@ -52,6 +53,7 @@ export const typography = {
         fontSize: '16px',
         lineHeight: '15px',
         fontWeight: 500,
+        letterSpacing: '0.13px',
       } as React.CSSProperties,
       h8: {
         fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
@@ -245,6 +247,7 @@ export const typography = {
         fontSize: '14px',
         lineHeight: '17px',
         fontWeight: 400,
+        letterSpacing: '0.36px',
       } as React.CSSProperties,
       l2: {
         fontFamily: webFontFamily['PlusJakartaSans-Regular'],
