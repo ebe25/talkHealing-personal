@@ -66,6 +66,7 @@
     },
   "authentication": {
     "invalidEmail": "Invalid email",
+    "invalidPassword": "Invalid password",
     "strings": {
       "incChar": "Includes at least 6 characters",
       "incNum": "Includes number",
@@ -75,6 +76,8 @@
     },
     "formText":{
       "signUp":"Sign up now",
+      "WriteEmail": "Write your email",
+      "WritePassword": "Write your password",
       "name": "Name",
       "email": "Email",
       "phoneNumber": "Phone Number",

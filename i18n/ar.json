@@ -57,6 +57,7 @@
   },
   "authentication": {
     "invalidEmail": "بريد إلكتروني خاطئ",
+    "invalidPassword": "رمز مرور خاطئ",
     "strings": {
       "incChar": "يتألف من 6 أحرف على الأقل",
       "incNum": "يشمل الرقم",
@@ -66,6 +67,8 @@
     },
     "formText": {
       "signUp": "اشتراك",
+      "WriteEmail": "اكتب بريدك الإلكتروني",
+      "WritePassword": "اكتب كلمة المرور الخاصة بك",
       "name": "اسم",
       "email": "بريد إلكتروني",
       "phone number": "رقم التليفون",
