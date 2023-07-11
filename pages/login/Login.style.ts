@@ -12,7 +12,7 @@ export default createStyles((theme) => ({
     backgroundImage: 'url( ' + `${Images.bg_Img}` + '  )',
     backgroundSize: '100%',
     [theme.fn.smallerThan('md')]: {
-      padding: 20,
+      padding: '20px',
     },
   },
   link: {

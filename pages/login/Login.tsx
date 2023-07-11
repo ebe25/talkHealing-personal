@@ -81,7 +81,7 @@ export const Login = (props: LoginProps) => {
       <Grid.Col
         sm={12}
         xs={12}
-        md={12}
+        md={8}
         lg={6}
         xl={6}
       >
@@ -93,7 +93,7 @@ export const Login = (props: LoginProps) => {
       <Grid.Col
         sm={12}
         xs={12}
-        md={12}
+        md={8}
         lg={4}
         xl={4}
       >
@@ -104,6 +104,7 @@ export const Login = (props: LoginProps) => {
             <Flex direction={'column'} gap={20}>
               <Flex w={'100%'} align={'center'} justify={'center'}>
                 <BaseText
+                  ta={'center'}
                   style={typography.headings.en.h2}
                   color={theme.colors.dark[8]}
                   txtkey={'header.Login'}
