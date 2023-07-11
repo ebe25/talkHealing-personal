@@ -5,12 +5,14 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { typography } from '@/themes/Mantine/typography';
 import { Input } from '@/components/elements/Input/Input';
-import { useDisclosure } from '@mantine/hooks';
 import { useMediaQuery } from '@mantine/hooks';
 import { useStores } from '@/models';
 import { Images } from '../../../../public/index';
 import { useForm } from "@mantine/form";
 import { Loader } from '@mantine/core';
+import { translate } from '@/i18n';
+import useStyles from './ForgotPassword.style';
+
 
 interface ForgotPasswordProps {
   opened: boolean;
@@ -20,14 +22,14 @@ interface ForgotPasswordProps {
 export const ForgotPassword = (props: ForgotPasswordProps) => {
   const isPhone = useMediaQuery('(max-width:600px)');
   const isTablet = useMediaQuery('(max-width:900px)');
+  const { classes } = useStyles();
   const { userStore } = useStores()
-  const [opened, { open, close }] = useDisclosure(false);
   const [selectEmail, setSelectEmail] = useState(false);
   const [selectPhone, setSelectPhone] = useState(false);
   const [next, setNext] = useState(false);
   const theme = useMantineTheme();
   const [loader, setLoader] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState<any>("");
 
   const Select = (type: string) => {
     if (type == 'email' && selectEmail == true) {
@@ -58,7 +60,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     },
 
     validate: {
-      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : 'Invalid email'),
+      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
     },
   });
 
@@ -85,7 +87,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError("Invalid email")
+            setError(translate("authentication.invalidEmail"))
             setTimeout(() => {
               setError("")
             }, 5000)
@@ -103,7 +105,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     },
 
     validate: {
-      phone: (value) => (/^\+?[1-9]\d{1,14}$/.test(value) ? null : 'Invalid phone')
+      phone: (value) => (/^\+?[1-9]\d{1,14}$/.test(value) ? null : translate("authentication.InvalidPhone"))
     },
   });
 
@@ -130,7 +132,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError("Invalid phone number")
+            setError(translate("authentication.InvalidPhone"))
             setTimeout(() => {
               setError("")
             }, 5000)
@@ -151,7 +153,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
       >
         {loader ? (
           <Flex justify={"center"}>
-            <Loader style={{ position: "absolute", width: "40%", height: "40%" }} color="indigo" size="xl" variant="bars" />
+            <Loader className={classes.loader} color="indigo" size="xl" variant="bars" />
           </Flex>
         ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
@@ -216,6 +218,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 </>
               ) : null}
 
+              {/* Add Email */}
               {selectEmail && next ? (
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
@@ -226,7 +229,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   <Input
                     component={'input'}
                     type="text"
-                    placeholder="Email"
+                    placeholder={`${translate("footer.email")}`}
                     style_variant={'inputText1'}
                     {...resetPasswordEmail.getInputProps('email')}
                   />
@@ -237,6 +240,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 </Flex>
               ) : null}
 
+              {/* Add Mobile Number */}
               {selectPhone && next ? (
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
@@ -247,7 +251,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   <Input
                     component={'input'}
                     type="number"
-                    placeholder="Number"
+                    placeholder={`${translate("authentication.formText.phoneNumber")}`}
                     style_variant={'inputText1'}
                     {...resetPasswordPhone.getInputProps('phone')}
                   />
@@ -258,6 +262,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 </Flex>
               ) : null}
 
+              {/* Confirm or Cancel Button */}
               <Flex
                 wrap={'wrap'}
                 gap={10}
