@@ -43,7 +43,7 @@ export const SignUp = (props: SignUpProps) => {
 
     validate: {
       email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
-      password1: (value) => (/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value) ? null : translate("authentication.invalidPassword")),
+      password1: (value) => (/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value) ? null : translate("authentication.invalidPassword")),
       password2: (value) => {
         if (value != signUpForm.values.password1)
           return translate("authentication.passwordNotMatched");
@@ -56,7 +56,7 @@ export const SignUp = (props: SignUpProps) => {
   });
 
   let filled = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(signUpForm.values.email))
-    && (/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(signUpForm.values.password1)
+    && (/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(signUpForm.values.password1)
       && signUpForm.values.password2 == signUpForm.values.password1
       && signUpForm.values.full_name
     )
