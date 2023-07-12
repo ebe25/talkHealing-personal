@@ -27,6 +27,8 @@ export const AddNumber = (props: { phoneNumberOtp: Function }) => {
 
     });
 
+    const submitButtonShow = (addNumberFrom.values.number && addNumberFrom.values.countriesCode)
+
 
     // Add number api
     const handleAddNumber = () => {
@@ -117,27 +119,29 @@ export const AddNumber = (props: { phoneNumberOtp: Function }) => {
                             style_variant={'inputText1'}
                             {...addNumberFrom.getInputProps('number')}
                         />
-                        {error ?
-                            <BaseText style={typography.label.en.l1}
-                                color={theme.colors.red[7]} txtkey={'authentication.invalidNumber'} />
-                            : null}
+                        <Center>
+                            {error ?
+                                <BaseText style={typography.label.en.l1}
+                                    color={theme.colors.red[7]} txtkey={'authentication.invalidNumber'} />
+                                : null}
+                        </Center>
                     </Flex>
                     <BaseButton
                         onClick={(e) => {
                             e.preventDefault()
-                            if (addNumberFrom.values.number && addNumberFrom.values.countriesCode)
+                            if (submitButtonShow)
                                 handleAddNumber()
                             else
                                 console.log("email or password is empty")
                         }}
                         w={'100%'}
                         mah={'39px'}
-                        style_variant={addNumberFrom.values.number.length && addNumberFrom.values.countriesCode.length ? 'filled' : 'disabled'}
-                        color_variant={addNumberFrom.values.number.length && addNumberFrom.values.countriesCode.length ? 'blue' : 'gray'}
+                        style_variant={submitButtonShow ? 'filled' : 'disabled'}
+                        color_variant={submitButtonShow ? 'blue' : 'gray'}
                     >
                         <BaseText
                             style={typography.buttonText.en.b2}
-                            color={addNumberFrom.values.number.length ? theme.white : theme.colors.dark[1]}
+                            color={submitButtonShow ? theme.white : theme.colors.dark[1]}
                             txtkey={'signUpForm.login'}
                         />
                     </BaseButton>

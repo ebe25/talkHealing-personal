@@ -51,7 +51,8 @@ export const UserStore = types
           );
           return ACTION_RESPONSES.success;
         case 400:
-          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.non_field_errors[0]
+          return {
+            ...ACTION_RESPONSES.failure, code: response.status, error: response.data.non_field_errors[0]
           };
         case 401:
           return ACTION_RESPONSES.failure;
@@ -115,9 +116,10 @@ export const UserStore = types
             response.data[self.environment.api.config.token_key]
           );
           return ACTION_RESPONSES.success;
-          case 400:
-            return { ...ACTION_RESPONSES.failure, code: response.status , error : response
-            };
+        case 400:
+          return {
+            ...ACTION_RESPONSES.failure, code: response.status, error: response.data
+          };
         default:
           console.error("UNHANDLED ERROR");
           break;
@@ -138,16 +140,19 @@ export const UserStore = types
         case 400:
           return ACTION_RESPONSES.failure;
         case 404:
-          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data }
+          return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data }
         default:
           console.error("UNHANDLED ERROR");
           break;
       }
       return ACTION_RESPONSES.failure;
     }),
-    resendVerificationEmail: flow(function* () {
+    resendVerificationEmail: flow(function* (email: string) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.resendVerificationEmail
+        API_ENDPOINTS.resendVerificationEmail,
+        {
+          email: email,
+        }
       );
       switch (response.status) {
         case 200:
@@ -171,7 +176,7 @@ export const UserStore = types
         case 200:
           return ACTION_RESPONSES.success;
         case 400:
-          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data };
+          return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data };
         default:
           console.error("UNHANDLED ERROR");
       }
@@ -286,7 +291,7 @@ export const UserStore = types
           // self.loggedInUserData.user = UserSchemas.User.create(response.data);
           return ACTION_RESPONSES.success;
         case 400:
-          return  { ...ACTION_RESPONSES.failure, code: response.status , error : response.data }
+          return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data }
         case 401:
           return ACTION_RESPONSES.failure;
         default:

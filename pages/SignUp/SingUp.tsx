@@ -3,7 +3,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Center, Container, Flex, Grid, Image, Loader } from '@mantine/core';
+import { Box, Center, Container, Flex, Grid, Image, Loader, Text } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
@@ -43,16 +43,24 @@ export const SignUp = (props: SignUpProps) => {
 
     validate: {
       email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
-      password1: (value) => {
-        if (value.trim().length < 6)
-          return translate("authentication.passwordLength");
-      },
+      password1: (value) => (/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value) ? null : translate("authentication.invalidPassword")),
       password2: (value) => {
         if (value != signUpForm.values.password1)
           return translate("authentication.passwordNotMatched");
       },
+      full_name: (value) => {
+        if (value.trim().length < 1)
+          return translate('authentication.formText.WriteName');
+      },
     },
   });
+
+  let filled = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(signUpForm.values.email))
+    && (/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(signUpForm.values.password1)
+      && signUpForm.values.password2 == signUpForm.values.password1
+      && signUpForm.values.full_name
+    )
+
 
   const SignUpLength = (signUpForm.values.email.length
     && signUpForm.values.password1.length
@@ -76,7 +84,6 @@ export const SignUp = (props: SignUpProps) => {
         if (res.ok) {
           console.log("user logged in successfully!")
           signUpForm.setValues({
-            email: "",
             full_name: "",
             password1: "",
             password2: "",
@@ -87,7 +94,8 @@ export const SignUp = (props: SignUpProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError(translate("authentication.passwordNotMatched"))
+            if (res.error && res.error.email)
+              setError(res.error?.email?.toString())
             setTimeout(() => {
               setError("")
             }, 5000)
@@ -175,7 +183,7 @@ export const SignUp = (props: SignUpProps) => {
                       w={'100%'}
                       mah={'44px'}
                       component={'input'}
-                      placeholder="Write your name"
+                      placeholder={`${translate('authentication.formText.WriteName')}`}
                       style_variant={'inputText1'}
                       {...signUpForm.getInputProps('full_name')}
                     />
@@ -191,7 +199,7 @@ export const SignUp = (props: SignUpProps) => {
                       w={'100%'}
                       mah={'44px'}
                       component={'input'}
-                      placeholder="Write your email"
+                      placeholder={`${translate('authentication.formText.WriteEmail')}`}
                       style_variant={'inputText1'}
                       {...signUpForm.getInputProps('email')}
                     />
@@ -206,7 +214,7 @@ export const SignUp = (props: SignUpProps) => {
                     <BasePasswordInput
                       w={'100%'}
                       mah={'44px'}
-                      placeholder={'Write your password'}
+                      placeholder={`${translate('authentication.formText.WritePassword')}`}
                       {...signUpForm.getInputProps('password1')}
                     />
                   </Flex>
@@ -220,30 +228,31 @@ export const SignUp = (props: SignUpProps) => {
                     <BasePasswordInput
                       w={'100%'}
                       mah={'44px'}
-                      placeholder={'Write your password'}
+                      placeholder={`${translate('authentication.formText.WritePassword')}`}
                       {...signUpForm.getInputProps('password2')}
                     />
-                    {error ?
-                      <BaseText style={typography.label.en.l1}
-                        color={theme.colors.red[7]} txtkey={'authentication.formText.errorMessage'} />
-                      : null}
+                    {/* error message */}
+                    <Text ta={'center'} style={typography.label.en.l1}
+                      color={theme.colors.red[7]}>{error}</Text>
                   </Flex>
                   <BaseButton
                     onClick={(e) => {
                       e.preventDefault()
                       if (signUpForm.values.email && signUpForm.values.password1)
                         handleSignUp()
-                      else
+                      else {
                         console.log("email or password is empty")
+                        signUpForm.validate()
+                      }
                     }}
                     w={'100%'}
                     mah={'39px'}
-                    style_variant={SignUpLength ? 'filled' : 'disabled'}
-                    color_variant={SignUpLength ? 'blue' : 'gray'}
+                    style_variant={filled() ? 'filled' : 'disabled'}
+                    color_variant={filled() ? 'blue' : 'gray'}
                   >
                     <BaseText
                       style={typography.buttonText.en.b2}
-                      color={SignUpLength ? theme.white : theme.colors.dark[1]}
+                      color={filled() ? theme.white : theme.colors.dark[1]}
                       txtkey={'signUpForm.login'}
                     />
                   </BaseButton>
@@ -270,7 +279,7 @@ export const SignUp = (props: SignUpProps) => {
 
           {/* Email Otp */}
           {emailOtp && !enternNumber && !numberOtp ? (
-            <EmailOtp addNumber={addNumber} />
+            <EmailOtp email={signUpForm.values.email} addNumber={addNumber} />
           ) : null}
 
           {/* Add number */}

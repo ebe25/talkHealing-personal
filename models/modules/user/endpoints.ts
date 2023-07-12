@@ -44,8 +44,8 @@ export const API_ENDPOINTS = {
         transformer: TRANSFORMERS.userPaginatedTransformer,
     }),
     resendVerificationEmail: new API_ENDPOINT({
-        url: "/auth/onboarding/verify-email/resend/",
-        method: REQUEST_METHOD.GET,
+        url: "/auth/registration/resend-email/",
+        method: REQUEST_METHOD.POST,
         response: null,
         transformer: TRANSFORMERS.userPaginatedTransformer,
     }),

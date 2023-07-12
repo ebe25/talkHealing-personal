@@ -9,7 +9,7 @@ import { useForm } from "@mantine/form";
 import { PinInput } from '@mantine/core';
 import { translate } from "../../../../i18n";
 
-export const EmailOtp = (props: { addNumber: Function }) => {
+export const EmailOtp = (props: { addNumber: Function, email: string }) => {
     const { userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
@@ -23,7 +23,11 @@ export const EmailOtp = (props: { addNumber: Function }) => {
         },
 
         validate: {
-            email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail"))
+            email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
+            emailOtp: (value) => {
+                if (value.trim().length < 4)
+                    return translate('authentication.invalidOtp');
+            },
         },
     });
 
@@ -58,7 +62,9 @@ export const EmailOtp = (props: { addNumber: Function }) => {
     const handleResendVerificationEmail = () => {
         setLoader(true)
 
-        userStore.resendVerificationEmail().then((res) => {
+        userStore.resendVerificationEmail(
+            props.email
+        ).then((res) => {
             if (res.ok) {
                 console.log("user resendVerificationEmail in successfully!")
                 emailOtpFrom.setValues({
@@ -98,8 +104,10 @@ export const EmailOtp = (props: { addNumber: Function }) => {
                             />
                         </Flex>
                         <PinInput  {...emailOtpFrom.getInputProps('emailOtp')} radius={"5px"} spacing={'28px'} size={"xl"} placeholder="" variant='filled' type="number" />
-                        {error ? (<BaseText style={typography.label.en.l1}
-                            color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
+                        <Center>
+                            {error ? (<BaseText style={typography.label.en.l1}
+                                color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
+                        </Center>
                     </Flex>
                     <Flex
                         justify="center" align="center" gap={5}>
@@ -123,11 +131,13 @@ export const EmailOtp = (props: { addNumber: Function }) => {
                                 handleEmailOtp()
                                 console.log("value", emailOtpFrom.values.emailOtp)
                             }
-                            else
+                            else {
                                 console.log("email or password is empty")
+                                emailOtpFrom.validate()
+                            }
                         }}
                         w={'100%'}
-                        h={'59px'}
+                        h={'50px'}
                         style_variant={emailOtpLength ? 'filled' : 'disabled'}
                         color_variant={emailOtpLength ? 'blue' : 'gray'}
                     >

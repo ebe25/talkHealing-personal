@@ -24,6 +24,13 @@ export const PhoneNumberOtp = () => {
             termsOfService: false,
         },
 
+        validate: {
+            numberOtp: (value) => {
+                if (value.trim().length < 4)
+                    return translate('authentication.invalidOtp');
+            },
+        },
+
     });
 
 
@@ -100,8 +107,10 @@ export const PhoneNumberOtp = () => {
                             />
                         </Flex>
                         <PinInput  {...numberOtpFrom.getInputProps('numberOtp')} radius={"5px"} spacing={'28px'} size={"xl"} placeholder="" variant='filled' type="number" />
-                        {error ? (<BaseText style={typography.label.en.l1}
-                            color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
+                        <Center>
+                            {error ? (<BaseText style={typography.label.en.l1}
+                                color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
+                        </Center>
                     </Flex>
                     <Flex
                         justify="center" align="center" gap={5}>
@@ -126,8 +135,10 @@ export const PhoneNumberOtp = () => {
                                 handleNumberOtp()
                                 console.log("value", numberOtpFrom.values.numberOtp)
                             }
-                            else
+                            else {
                                 console.log("email or password is empty")
+                                numberOtpFrom.validate()
+                            }
                         }}
                         w={'100%'}
                         h={'59px'}
