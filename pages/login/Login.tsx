@@ -152,6 +152,7 @@ export const Login = (props: LoginProps) => {
                   placeholder={`${translate("authentication.formText.WritePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
+                {/* error message */}
                 <Text ta={'center'} style={typography.label.en.l1}
                   color={theme.colors.red[7]}>{error}</Text>
               </Flex>
