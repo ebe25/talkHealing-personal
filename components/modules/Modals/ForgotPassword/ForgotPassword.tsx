@@ -227,11 +227,10 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 <>
                   <Flex
                     wrap={'wrap'}
-                    gap={20}
+                    gap={isPhone ? '' : '90px'}
                     w={'100%'}
-                    style={{ padding: '10px' }}
                     align={'center'}
-                    justify={isPhone ? 'center' : 'space-between'}
+                    justify={'center'}
                   >
                     <Flex
                       onClick={() => {
@@ -241,10 +240,10 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                       w={'100px'}
                       h={'100px'}
                       style={{
-                        background: `${selectEmail ? theme.colors.blue[4] : theme.colors.gray[1]}`,
+                        background: `${selectEmail ? theme.colors.blue[4] : theme.colors.gray[4]}`,
                       }}
                     >
-                      <Image width={60} style={{ margin: 'auto' }} src={Images.email} />
+                      <Image width={50} style={{ margin: 'auto' }} src={Images.email} />
                     </Flex>
                     <Flex
                       onClick={() => {
@@ -254,10 +253,10 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                       h={'100px'}
                       className={classes.iconBox}
                       style={{
-                        background: `${selectPhone ? theme.colors.blue[4] : theme.colors.gray[1]}`,
+                        background: `${selectPhone ? theme.colors.blue[4] : theme.colors.gray[4]}`,
                       }}
                     >
-                      <Image width={60} style={{ margin: 'auto' }} src={Images.phone} />
+                      <Image width={50} style={{ margin: 'auto' }} src={Images.phone} />
                     </Flex>
                   </Flex>
                 </>
