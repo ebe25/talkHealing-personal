@@ -62,11 +62,6 @@ export const SignUp = (props: SignUpProps) => {
     )
 
 
-  const SignUpLength = (signUpForm.values.email.length
-    && signUpForm.values.password1.length
-    && signUpForm.values.password2.length
-    && signUpForm.values.full_name.length)
-
   // SignUp api
   const handleSignUp = () => {
     setLoader(true)
