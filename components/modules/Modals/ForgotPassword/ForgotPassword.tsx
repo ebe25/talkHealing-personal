@@ -68,6 +68,21 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     })
   }
 
+  // close Modal 
+  const CloseModal = () => {
+    props.close()
+    setSelectPhone(false);
+    setSelectEmail(false);
+    setNext(false);
+    resetPasswordPhone.setValues({
+      phone: "",
+      countriesCode: "",
+    });
+    resetPasswordEmail.setValues({
+      email: "",
+    });
+  }
+
 
   const Contine = () => {
     selectEmail || selectPhone ? setNext(true) : null;
@@ -97,14 +112,8 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
       ).then((res) => {
         if (res.ok) {
           console.log("email link send successfully!")
-          resetPasswordEmail.setValues({
-            email: "",
-          });
           setLoader(false)
-          props.close()
-          setSelectPhone(false);
-          setSelectEmail(false);
-          setNext(false);
+          CloseModal()
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -141,6 +150,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     },
   });
 
+
   // let filledPhone = () => (/^\?[1-9]\d{1,14}$/.test(resetPasswordPhone.values.phone) && resetPasswordPhone.values.countriesCode)
   let filledPhone = () => (resetPasswordPhone.values.phone && resetPasswordPhone.values.countriesCode)
 
@@ -157,15 +167,8 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
       ).then((res) => {
         if (res.ok) {
           console.log("phone link send successfully!")
-          resetPasswordPhone.setValues({
-            phone: "",
-            countriesCode: "",
-          });
           setLoader(false)
-          props.close()
-          setSelectPhone(false);
-          setSelectEmail(false);
-          setNext(false);
+          CloseModal()
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -197,7 +200,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
       >
         {loader ? (
           <Flex justify={"center"}>
-            <Loader className={classes.loader} color="indigo" size="xl" variant="bars" />
+            <Loader className={classes.loader} color="indigo" size="xl" variant="oval" />
           </Flex>
         ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
@@ -209,10 +212,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 txtkey={'authentication.formText.forgetPassword'}
               />
               <CloseButton onClick={() => {
-                props.close()
-                setSelectPhone(false);
-                setSelectEmail(false);
-                setNext(false);
+                CloseModal()
               }} aria-label="Close modal" iconSize={20} />
             </Flex>
             <BaseText style={typography.paragraph.en.p2} txtkey={"modal.forgotPassword.text"} />
@@ -333,10 +333,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
               >
                 <BaseButton
                   onClick={() => {
-                    props.close()
-                    setSelectPhone(false);
-                    setSelectEmail(false);
-                    setNext(false);
+                    CloseModal()
                   }}
                   style_variant={'filled'}
                   color_variant={'gray'}
