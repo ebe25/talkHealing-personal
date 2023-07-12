@@ -3,7 +3,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Center, Container, Flex, Grid, Image } from '@mantine/core';
+import { Box, Center, Container, Flex, Grid, Image, Text } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
@@ -34,14 +34,16 @@ export const Login = (props: LoginProps) => {
     validate: {
       email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
       password: (value) => {
-        if (value.trim().length < 6)
+        if (value.trim().length < 8)
           return translate('authentication.invalidPassword');
       },
     },
   });
 
+  let filled = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(loginForm.values.email) && loginForm.values.password.length > 8)
+
   // Check Length
-  const loginButtonShow = (loginForm.values.email.length && loginForm.values.password.length)
+  const loginButtonShow = (loginForm.values.email && loginForm.values.password)
 
   //  Login Api Call
   const handleLogin = () => {
@@ -62,7 +64,7 @@ export const Login = (props: LoginProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError(translate("authentication.formText.errorMessage"))
+            setError(res.error)
             setTimeout(() => {
               setError("")
             }, 5000)
@@ -150,10 +152,8 @@ export const Login = (props: LoginProps) => {
                   placeholder={`${translate("authentication.formText.WritePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
-                {error ?
-                  <BaseText style={typography.label.en.l1}
-                    color={theme.colors.red[7]} txtkey={'authentication.formText.errorMessage'} />
-                  : null}
+                <Text ta={'center'} style={typography.label.en.l1}
+                  color={theme.colors.red[7]}>{error}</Text>
               </Flex>
               {/* ForgetPassword */}
               <Center>
@@ -172,39 +172,42 @@ export const Login = (props: LoginProps) => {
                   e.preventDefault()
                   if (loginButtonShow)
                     handleLogin()
-                  else
+                  else {
                     console.log("email or password is empty")
+                    loginForm.validate()
+                  }
                 }}
                 w={"100%"}
                 mah={'39px'}
-                style_variant={loginButtonShow ? 'filled' : 'disabled'}
-                color_variant={loginButtonShow ? 'blue' : 'gray'}
+                style_variant={filled() ? 'filled' : 'disabled'}
+                color_variant={filled() ? 'blue' : 'gray'}
               >
                 <BaseText
                   style={typography.buttonText.en.b2}
-                  color={loginButtonShow ? theme.white : theme.colors.dark[1]}
+                  color={filled() ? theme.white : theme.colors.dark[1]}
                   txtkey={'signUpForm.login'}
                 />
               </BaseButton>
             </Flex>
           </form>
           {/* Sign Up */}
-          <Flex
+          <Center
             mt={theme.spacing.xl}
-            justify="center" align="center" gap={5}>
+          >
             <BaseText
               style={typography.label.en.l1}
               color={theme.colors.gray[6]}
               txtkey={'signUpForm.newUser'}
             />
-            <Link className={classes.link} href={'/'}>
+            &nbsp;
+            <Link className={classes.link} href={'/'} >
               <BaseText
                 style={typography.headings.en.h7}
                 color={theme.colors.blue[4]}
                 txtkey={'authentication.formText.signUp'}
               />
             </Link>
-          </Flex>
+          </Center>
         </Grid.Col>
       </Grid>
     </Container>
