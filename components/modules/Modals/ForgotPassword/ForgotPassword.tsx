@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, CloseButton, Flex, Image, useMantineTheme } from '@mantine/core';
+import { Center, CloseButton, Flex, Image, useMantineTheme, Select } from '@mantine/core';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -11,6 +11,8 @@ import { Images } from '../../../../public/index';
 import { useForm } from "@mantine/form";
 import { Loader } from '@mantine/core';
 import { translate } from '@/i18n';
+import { countries } from "countries-list"
+import { IconChevronDown } from '@tabler/icons-react';
 import useStyles from './ForgotPassword.style';
 
 
@@ -29,9 +31,9 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
   const [next, setNext] = useState(false);
   const theme = useMantineTheme();
   const [loader, setLoader] = useState(false);
-  const [error, setError] = useState<any>("");
+  const [error, setError] = useState(false);
 
-  const Select = (type: string) => {
+  const SelectType = (type: string) => {
     if (type == 'email' && selectEmail == true) {
       setSelectEmail(false);
     } else if (type == 'phone' && selectPhone == true) {
@@ -47,6 +49,24 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
       setSelectEmail(false);
     }
   };
+
+  // countriesCode
+  let testItems: any = []
+  {
+    Object.keys(countries).map((key, id) => {
+      testItems.push({
+        label: countries[key]["name"] + "(+" + countries[key]["phone"] + ")",
+        value: "+" + countries[key]["phone"],
+      })
+      testItems.sort((a, b) => {
+        if (a['label'][0] < b['label'][0])
+          return -1
+        else if (a['label'][0] > b['label'][0])
+          return 1
+        else return 0
+      })
+    })
+  }
 
 
   const Contine = () => {
@@ -64,7 +84,9 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     },
   });
 
-  const handleresetPasswordEmail = () => {
+  let filledEmail = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(resetPasswordEmail.values.email))
+
+  const handleResetPasswordByEmail = () => {
     setLoader(true)
     let results = resetPasswordEmail.validate();
 
@@ -87,11 +109,17 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError(translate("authentication.invalidEmail"))
+            setError(true)
             setTimeout(() => {
-              setError("")
+              setError(false)
             }, 5000)
           }
+        }
+        else {
+          setLoader(false)
+          resetPasswordEmail.setValues({
+            email: "",
+          });
         }
       })
     }
@@ -101,27 +129,37 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
   const resetPasswordPhone = useForm({
     initialValues: {
       phone: '',
+      countriesCode: '',
       termsOfService: false,
     },
 
     validate: {
-      phone: (value) => (/^\+?[1-9]\d{1,14}$/.test(value) ? null : translate("authentication.InvalidPhone"))
+      phone: (value) => {
+        if (value.trim().length < 1)
+          return translate("authentication.InvalidPhone");
+      }
     },
   });
 
-  const handleresetPasswordPhone = () => {
+  // let filledPhone = () => (/^\?[1-9]\d{1,14}$/.test(resetPasswordPhone.values.phone) && resetPasswordPhone.values.countriesCode)
+  let filledPhone = () => (resetPasswordPhone.values.phone && resetPasswordPhone.values.countriesCode)
+
+  const showButton = ((selectEmail && !next) || (selectPhone && !next) || (selectEmail && filledEmail()) || (selectPhone && filledPhone()))
+
+  const handleResetPasswordByPhone = () => {
     setLoader(true)
     let results = resetPasswordPhone.validate();
 
     if (results.hasErrors) return setLoader(false);
     if (!results.hasErrors) {
       userStore.smsPasswordReset(
-        resetPasswordPhone.values.phone
+        `${resetPasswordPhone.values.countriesCode}${resetPasswordPhone.values.phone}`
       ).then((res) => {
         if (res.ok) {
           console.log("phone link send successfully!")
           resetPasswordPhone.setValues({
             phone: "",
+            countriesCode: "",
           });
           setLoader(false)
           props.close()
@@ -132,11 +170,17 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError(translate("authentication.InvalidPhone"))
+            setError(true)
             setTimeout(() => {
-              setError("")
+              setError(false)
             }, 5000)
           }
+        }
+        else {
+          setLoader(false)
+          resetPasswordPhone.setValues({
+            phone: "",
+          });
         }
       })
     }
@@ -174,7 +218,10 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
             <BaseText style={typography.paragraph.en.p2} txtkey={"modal.forgotPassword.text"} />
           </Flex>
 
-          <form onSubmit={resetPasswordEmail.onSubmit((values) => console.log(values))}>
+          <form onSubmit={
+            resetPasswordEmail.onSubmit((values) => console.log(values)) ||
+            resetPasswordPhone.onSubmit((values) => console.log(values))
+          }>
             <Flex direction={'column'} gap={20}>
               {!next ? (
                 <>
@@ -188,13 +235,12 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   >
                     <Flex
                       onClick={() => {
-                        Select('email');
+                        SelectType('email');
                       }}
+                      className={classes.iconBox}
                       w={'100px'}
                       h={'100px'}
                       style={{
-                        cursor: 'pointer',
-                        borderRadius: '100%',
                         background: `${selectEmail ? theme.colors.blue[4] : theme.colors.gray[1]}`,
                       }}
                     >
@@ -202,13 +248,12 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                     </Flex>
                     <Flex
                       onClick={() => {
-                        Select('phone');
+                        SelectType('phone');
                       }}
                       w={'100px'}
                       h={'100px'}
+                      className={classes.iconBox}
                       style={{
-                        cursor: 'pointer',
-                        borderRadius: '100%',
                         background: `${selectPhone ? theme.colors.blue[4] : theme.colors.gray[1]}`,
                       }}
                     >
@@ -229,14 +274,17 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   <Input
                     component={'input'}
                     type="text"
-                    placeholder={`${translate("footer.email")}`}
+                    placeholder={`${translate('authentication.formText.email')}`}
                     style_variant={'inputText1'}
                     {...resetPasswordEmail.getInputProps('email')}
                   />
-                  {error ?
-                    <BaseText style={typography.label.en.l1}
-                      color={theme.colors.red[7]} txtkey={'modal.forgotPassword.email'} />
-                    : null}
+                  {/* error message */}
+                  <Center>
+                    {error ?
+                      <BaseText style={typography.label.en.l1}
+                        color={theme.colors.red[7]} txtkey={'modal.forgotPassword.email'} />
+                      : null}
+                  </Center>
                 </Flex>
               ) : null}
 
@@ -248,6 +296,15 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                     color={theme.colors.gray[6]}
                     txtkey={'authentication.formText.phoneNumber'}
                   />
+                  <Select
+                    placeholder="+914"
+                    rightSection={<IconChevronDown size="1rem" />}
+                    rightSectionWidth={30}
+                    radius="xl"
+                    styles={{ rightSection: { pointerEvents: 'none' } }}
+                    data={testItems}
+                    {...resetPasswordPhone.getInputProps('countriesCode')}
+                  />
                   <Input
                     component={'input'}
                     type="number"
@@ -255,10 +312,14 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                     style_variant={'inputText1'}
                     {...resetPasswordPhone.getInputProps('phone')}
                   />
-                  {error ?
-                    <BaseText style={typography.label.en.l1}
-                      color={theme.colors.red[7]} txtkey={'modal.forgotPassword.phone'} />
-                    : null}
+                  {/* error message */}
+                  <Center>
+                    {error ?
+                      <BaseText style={typography.label.en.l1}
+                        color={theme.colors.red[7]} txtkey={'modal.forgotPassword.phone'} />
+                      : null
+                    }
+                  </Center>
                 </Flex>
               ) : null}
 
@@ -287,18 +348,19 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   style_variant={'filled'}
                   color_variant={'gray'}
                   w={isPhone ? '100%' : '47%'}
-                  bg={selectEmail || selectPhone ? theme.colors.blue[4] : ''}
+                  bg={showButton ? theme.colors.blue[4] : ''}
                   onClick={(e) => {
                     Contine()
                     e.preventDefault()
                     if (resetPasswordEmail.values.email) {
-                      handleresetPasswordEmail()
+                      handleResetPasswordByEmail()
                     }
                     else if (resetPasswordPhone.values.phone) {
-                      handleresetPasswordPhone()
+                      handleResetPasswordByPhone()
                     }
-                    else
+                    else {
                       console.log("email or password is empty")
+                    }
                   }}
                 >
                   <BaseText txtkey={'global.button.confirm'} />

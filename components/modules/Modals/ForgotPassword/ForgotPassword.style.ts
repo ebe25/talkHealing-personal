@@ -6,5 +6,9 @@ export default createStyles((theme) => ({
     position: "absolute",
      width: "40%",
     height: "40%"
+  },
+  iconBox :{
+    cursor: 'pointer',
+    borderRadius: '100%',
   }
 }));
