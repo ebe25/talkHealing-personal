@@ -68,17 +68,17 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     })
   }
 
-  // close Modal 
+  // close Modal function
   const CloseModal = () => {
     props.close()
     setSelectPhone(false);
     setSelectEmail(false);
     setNext(false);
-    resetPasswordPhone.setValues({
+    resetPasswordByPhone.setValues({
       phone: "",
       countriesCode: "",
     });
-    resetPasswordEmail.setValues({
+    resetPasswordByEmail.setValues({
       email: "",
     });
   }
@@ -88,7 +88,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     selectEmail || selectPhone ? setNext(true) : null;
   };
 
-  const resetPasswordEmail = useForm({
+  const resetPasswordByEmail = useForm({
     initialValues: {
       email: '',
       termsOfService: false,
@@ -99,16 +99,17 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     },
   });
 
-  let filledEmail = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(resetPasswordEmail.values.email))
+  let filledEmail = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(resetPasswordByEmail.values.email))
 
+  // ResetPassword By Email Api call
   const handleResetPasswordByEmail = () => {
     setLoader(true)
-    let results = resetPasswordEmail.validate();
+    let results = resetPasswordByEmail.validate();
 
     if (results.hasErrors) return setLoader(false);
     if (!results.hasErrors) {
       userStore.resetPassword(
-        resetPasswordEmail.values.email
+        resetPasswordByEmail.values.email
       ).then((res) => {
         if (res.ok) {
           console.log("email link send successfully!")
@@ -126,7 +127,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         }
         else {
           setLoader(false)
-          resetPasswordEmail.setValues({
+          resetPasswordByEmail.setValues({
             email: "",
           });
         }
@@ -134,8 +135,8 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     }
   }
 
-
-  const resetPasswordPhone = useForm({
+  // ResetPassword By Phone Number Api call
+  const resetPasswordByPhone = useForm({
     initialValues: {
       phone: '',
       countriesCode: '',
@@ -151,19 +152,19 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
   });
 
 
-  // let filledPhone = () => (/^\?[1-9]\d{1,14}$/.test(resetPasswordPhone.values.phone) && resetPasswordPhone.values.countriesCode)
-  let filledPhone = () => (resetPasswordPhone.values.phone && resetPasswordPhone.values.countriesCode)
+  let filledPhone = () => (resetPasswordByPhone.values.phone && resetPasswordByPhone.values.countriesCode)
 
   const showButton = ((selectEmail && !next) || (selectPhone && !next) || (selectEmail && filledEmail()) || (selectPhone && filledPhone()))
 
+  // smsPasswordReset By Phone Number Api
   const handleResetPasswordByPhone = () => {
     setLoader(true)
-    let results = resetPasswordPhone.validate();
+    let results = resetPasswordByPhone.validate();
 
     if (results.hasErrors) return setLoader(false);
     if (!results.hasErrors) {
       userStore.smsPasswordReset(
-        `${resetPasswordPhone.values.countriesCode}${resetPasswordPhone.values.phone}`
+        `${resetPasswordByPhone.values.countriesCode}${resetPasswordByPhone.values.phone}`
       ).then((res) => {
         if (res.ok) {
           console.log("phone link send successfully!")
@@ -181,7 +182,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
         }
         else {
           setLoader(false)
-          resetPasswordPhone.setValues({
+          resetPasswordByPhone.setValues({
             phone: "",
           });
         }
@@ -219,8 +220,8 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
           </Flex>
 
           <form onSubmit={
-            resetPasswordEmail.onSubmit((values) => console.log(values)) ||
-            resetPasswordPhone.onSubmit((values) => console.log(values))
+            resetPasswordByEmail.onSubmit((values) => console.log(values)) ||
+            resetPasswordByPhone.onSubmit((values) => console.log(values))
           }>
             <Flex direction={'column'} gap={20}>
               {!next ? (
@@ -232,6 +233,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                     align={'center'}
                     justify={'center'}
                   >
+                    {/* Email Icon */}
                     <Flex
                       onClick={() => {
                         SelectType('email');
@@ -245,6 +247,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                     >
                       <Image width={50} style={{ margin: 'auto' }} src={Images.email} />
                     </Flex>
+                    {/* Phone Icon */}
                     <Flex
                       onClick={() => {
                         SelectType('phone');
@@ -262,7 +265,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 </>
               ) : null}
 
-              {/* Add Email */}
+              {/* Add Email Box */}
               {selectEmail && next ? (
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
@@ -275,7 +278,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                     type="text"
                     placeholder={`${translate('authentication.formText.email')}`}
                     style_variant={'inputText1'}
-                    {...resetPasswordEmail.getInputProps('email')}
+                    {...resetPasswordByEmail.getInputProps('email')}
                   />
                   {/* error message */}
                   <Center>
@@ -287,7 +290,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 </Flex>
               ) : null}
 
-              {/* Add Mobile Number */}
+              {/* Add Mobile Number Box */}
               {selectPhone && next ? (
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
@@ -302,14 +305,14 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                     radius="xl"
                     styles={{ rightSection: { pointerEvents: 'none' } }}
                     data={testItems}
-                    {...resetPasswordPhone.getInputProps('countriesCode')}
+                    {...resetPasswordByPhone.getInputProps('countriesCode')}
                   />
                   <Input
                     component={'input'}
                     type="number"
                     placeholder={`${translate("authentication.formText.phoneNumber")}`}
                     style_variant={'inputText1'}
-                    {...resetPasswordPhone.getInputProps('phone')}
+                    {...resetPasswordByPhone.getInputProps('phone')}
                   />
                   {/* error message */}
                   <Center>
@@ -348,10 +351,10 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   onClick={(e) => {
                     Contine()
                     e.preventDefault()
-                    if (resetPasswordEmail.values.email) {
+                    if (resetPasswordByEmail.values.email) {
                       handleResetPasswordByEmail()
                     }
-                    else if (resetPasswordPhone.values.phone) {
+                    else if (resetPasswordByPhone.values.phone) {
                       handleResetPasswordByPhone()
                     }
                     else {
