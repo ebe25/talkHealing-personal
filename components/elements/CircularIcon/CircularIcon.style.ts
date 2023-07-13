@@ -1,12 +1,10 @@
 import { createStyles } from '@mantine/core';
 import {typography } from "@/themes/Mantine/typography";
 
-export const createStyle = (
-  langCode: "en" | "ar",
-) => {
+export const createStyle = () => {
 
   return createStyles((theme) => ({
-  Container: {
+  container: {
     width:"44px",
     height: "44px",
     borderRadius: "100%",

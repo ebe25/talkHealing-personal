@@ -11,7 +11,7 @@ import { translate } from "../../../../i18n";
 import swal from 'sweetalert';
 
 export const EmailOtp = (props: { addNumberFragment: Function, email: string }) => {
-    const { userStore } = useStores();
+    const { i18nStore , userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
@@ -85,7 +85,7 @@ export const EmailOtp = (props: { addNumberFragment: Function, email: string }) 
                 <Flex justify={'center'} align={'center'} direction={'column'} gap={30}>
                     <Center>
                         <BaseText
-                            style={typography.headings.en.h2}
+                            style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                             color={theme.colors.dark[8]}
                             txtkey={'authentication.signupVerification.VerifyEmail'}
                         />
@@ -95,12 +95,12 @@ export const EmailOtp = (props: { addNumberFragment: Function, email: string }) 
                         <Flex justify={'center'} direction={'column'} gap={20}
                         >
                             <BaseText
-                                style={typography.label.en.l1}
+                                style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                 color={theme.colors.gray[6]}
                                 txtkey={'authentication.signupVerification.OtpInYourEmail'}
                             />
                             <BaseText
-                                style={typography.label.en.l1}
+                                style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                 color={theme.colors.gray[6]}
                                 txtkey={'authentication.signupVerification.ForTheVerification'}
                             />
@@ -109,7 +109,7 @@ export const EmailOtp = (props: { addNumberFragment: Function, email: string }) 
                         <PinInput  {...emailOtpFrom.getInputProps('emailOtp')} radius={"5px"} spacing={'28px'} size={"xl"} placeholder="" variant='filled' type="number" />
                         {/* Error Message */}
                         <Center>
-                            {error ? (<BaseText style={typography.label.en.l1}
+                            {error ? (<BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                 color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
                             {loader ? <Loader /> : null}
                         </Center>
@@ -118,13 +118,13 @@ export const EmailOtp = (props: { addNumberFragment: Function, email: string }) 
                     <Flex
                         justify="center" align="center" gap={5}>
                         <BaseText
-                            style={typography.label.en.l1}
+                            style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
                             txtkey={'authentication.signupVerification.DidNotGetTheCode'}
                         />
                         <Box style={{ cursor: "pointer" }} onClick={() => handleResendVerificationEmail()}>
                             <BaseText
-                                style={typography.headings.en.h7}
+                                style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                                 color={theme.colors.blue[4]}
                                 txtkey={'authentication.signupVerification.ResendCode'}
                             />
@@ -148,7 +148,7 @@ export const EmailOtp = (props: { addNumberFragment: Function, email: string }) 
                         color_variant={emailOtpLength ? 'blue' : 'gray'}
                     >
                         <BaseText
-                            style={typography.buttonText.en.b2}
+                            style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
                             color={emailOtpLength ? theme.white : theme.colors.dark[1]}
                             txtkey={'global.button.continue'}
                         />

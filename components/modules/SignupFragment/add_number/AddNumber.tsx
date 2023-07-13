@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { translate } from "../../../../i18n";
 
 export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
-    const { userStore } = useStores();
+    const { i18nStore , userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
@@ -83,7 +83,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                 <Flex direction={'column'} gap={50}>
                     <Center>
                         <BaseText
-                            style={typography.headings.en.h2}
+                            style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                             color={theme.colors.dark[8]}
                             txtkey={'authentication.signupVerification.MobileNumber'}
                         />
@@ -91,7 +91,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                     {/* Select CountriesCode */}
                     <Flex direction={'column'} gap={10} >
                         <BaseText
-                            style={typography.label.en.l1}
+                            style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
                             txtkey={'authentication.signupVerification.CountryCode'}
                         />
@@ -108,7 +108,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                     {/* Phone Number Input Box */}
                     <Flex direction={'column'} gap={10} >
                         <BaseText
-                            style={typography.label.en.l1}
+                            style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
                             txtkey={'authentication.signupVerification.MobileNumber'}
                         />
@@ -124,7 +124,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                         {/* Error Message */}
                         <Center>
                             {error ?
-                                <BaseText style={typography.label.en.l1}
+                                <BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                     color={theme.colors.red[7]} txtkey={'authentication.invalidNumber'} />
                                 : null}
                         </Center>
@@ -144,7 +144,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                         color_variant={submitButtonShow ? 'blue' : 'gray'}
                     >
                         <BaseText
-                            style={typography.buttonText.en.b2}
+                            style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
                             color={submitButtonShow ? theme.white : theme.colors.dark[1]}
                             txtkey={'signUpForm.login'}
                         />
@@ -155,13 +155,13 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
             <Flex
                 justify="center" align="center" gap={5}>
                 <BaseText
-                    style={typography.label.en.l1}
+                    style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.gray[6]}
                     txtkey={'signUpForm.oldUser'}
                 />
                 <Link style={{ textDecoration: "none" }} href='/login'>
                     <BaseText
-                        style={typography.headings.en.h7}
+                        style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                         color={theme.colors.blue[4]}
                         txtkey={'signUpForm.login'}
                     />

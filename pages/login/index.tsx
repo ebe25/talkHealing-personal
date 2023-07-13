@@ -21,7 +21,7 @@ interface LoginProps {
 export const Login = (props: LoginProps) => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const { userStore } = useStores()
+  const { i18nStore , userStore } = useStores()
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState<any>("")
 
@@ -108,7 +108,7 @@ export const Login = (props: LoginProps) => {
               <Center>
                 <BaseText
                   ta={'center'}
-                  style={typography.headings.en.h2}
+                  style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                   color={theme.colors.dark[8]}
                   txtkey={'header.Login'}
                 />
@@ -117,16 +117,16 @@ export const Login = (props: LoginProps) => {
               <Flex justify="center" align="center" gap={32}
               >
                 <Box className={classes.link}>
-                  <CircularIcon Icon={Images.facebook_Icon} />
+                  <CircularIcon Icon={Images.facebook_icon} />
                 </Box>
                 <Box className={classes.link}>
-                  <CircularIcon Icon={Images.google_Icon} />
+                  <CircularIcon Icon={Images.google_icon} />
                 </Box>
               </Flex>
               {/* Email Input */}
               <Flex direction={'column'} w={"100%"} gap={10} >
                 <BaseText
-                  style={typography.label.en.l1}
+                  style={typography.label[i18nStore.getCurrentLanguage()].l1}
                   color={theme.colors.gray[6]}
                   txtkey={'global.label.label2'}
                 />
@@ -142,7 +142,7 @@ export const Login = (props: LoginProps) => {
               {/* Password Input */}
               <Flex direction={'column'} gap={10} >
                 <BaseText
-                  style={typography.label.en.l1}
+                  style={typography.label[i18nStore.getCurrentLanguage()].l1}
                   color={theme.colors.gray[6]}
                   txtkey={'global.label.label3'}
                 />
@@ -152,7 +152,7 @@ export const Login = (props: LoginProps) => {
                   placeholder={`${translate("authentication.formText.WritePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
-                <Text ta={'center'} style={typography.label.en.l1}
+                <Text ta={'center'} style={typography.label[i18nStore.getCurrentLanguage()].l1}
                   color={theme.colors.red[7]}>{error}</Text>
               </Flex>
               {/* ForgetPassword */}
@@ -160,7 +160,7 @@ export const Login = (props: LoginProps) => {
                 <Link className={classes.link} href={'/'}>
                   <BaseText
                     ta="center"
-                    style={typography.label.en.l1}
+                    style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.dark[8]}
                     txtkey={'signUpForm.forgetPassword'}
                   />
@@ -183,7 +183,7 @@ export const Login = (props: LoginProps) => {
                 color_variant={filled() ? 'blue' : 'gray'}
               >
                 <BaseText
-                  style={typography.buttonText.en.b2}
+                  style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
                   color={filled() ? theme.white : theme.colors.dark[1]}
                   txtkey={'signUpForm.login'}
                 />
@@ -195,14 +195,14 @@ export const Login = (props: LoginProps) => {
             mt={theme.spacing.xl}
           >
             <BaseText
-              style={typography.label.en.l1}
+              style={typography.label[i18nStore.getCurrentLanguage()].l1}
               color={theme.colors.gray[6]}
               txtkey={'signUpForm.newUser'}
             />
             &nbsp;
             <Link className={classes.link} href={'/sign_up'} >
               <BaseText
-                style={typography.headings.en.h7}
+                style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                 color={theme.colors.blue[4]}
                 txtkey={'authentication.formText.signUp'}
               />

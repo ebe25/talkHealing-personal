@@ -1,7 +1,7 @@
 import React from 'react';
 import { webFontFamily } from './fonts';
 
-export const typography = {
+export const typography : any = {
   headings: {
     en: {
       h1: {
