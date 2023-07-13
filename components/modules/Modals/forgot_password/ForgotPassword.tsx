@@ -25,7 +25,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
   const isPhone = useMediaQuery('(max-width:600px)');
   const isTablet = useMediaQuery('(max-width:900px)');
   const { classes } = useStyles();
-  const { userStore } = useStores()
+  const { i18nStore , userStore } = useStores()
   const [selectEmail, setSelectEmail] = useState(false);
   const [selectPhone, setSelectPhone] = useState(false);
   const [next, setNext] = useState(false);
@@ -208,7 +208,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
           <Flex direction={'column'} gap={8}>
             <Flex justify={'space-between'}>
               <BaseText
-                style={typography.headings.en.h3}
+                style={typography.headings[i18nStore.getCurrentLanguage()].h3}
                 color={theme.colors.dark[7]}
                 txtkey={'authentication.formText.forgetPassword'}
               />
@@ -216,7 +216,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                 CloseModal()
               }} aria-label="Close modal" iconSize={20} />
             </Flex>
-            <BaseText style={typography.paragraph.en.p2} txtkey={"modal.forgotPassword.text"} />
+            <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p2} txtkey={"modal.forgotPassword.text"} />
           </Flex>
 
           <form onSubmit={
@@ -269,7 +269,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
               {selectEmail && next ? (
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
-                    style={typography.label.en.l1}
+                    style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.gray[6]}
                     txtkey={'authentication.formText.email'}
                   />
@@ -283,7 +283,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   {/* error message */}
                   <Center>
                     {error ?
-                      <BaseText style={typography.label.en.l1}
+                      <BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
                         color={theme.colors.red[7]} txtkey={'modal.forgotPassword.email'} />
                       : null}
                   </Center>
@@ -294,7 +294,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
               {selectPhone && next ? (
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
-                    style={typography.label.en.l1}
+                    style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.gray[6]}
                     txtkey={'authentication.formText.phoneNumber'}
                   />
@@ -317,7 +317,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   {/* error message */}
                   <Center>
                     {error ?
-                      <BaseText style={typography.label.en.l1}
+                      <BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
                         color={theme.colors.red[7]} txtkey={'modal.forgotPassword.phone'} />
                       : null
                     }
