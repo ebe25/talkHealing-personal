@@ -303,3 +303,5 @@ export const SignUp = (props: SignUpProps) => {
     </Container>
   );
 };
+
+export default SignUp;

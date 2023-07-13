@@ -2,8 +2,8 @@ import { Welcome } from '../components/modules/Welcome/Welcome';
 import { ColorSchemeToggle } from '../components/elements/ColorSchemeToggle/ColorSchemeToggle';
 
 import { useStores } from "@/models";
-import { SignUp } from './SignUp/SingUp';
-import { Login } from './login/Login';
+import { SignUp } from './signUp';
+import { Login } from './login';
 
 export default function HomePage() {
   const {userStore}=useStores()
