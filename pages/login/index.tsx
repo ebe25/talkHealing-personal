@@ -200,7 +200,7 @@ export const Login = (props: LoginProps) => {
               txtkey={'signUpForm.newUser'}
             />
             &nbsp;
-            <Link className={classes.link} href={'/signUp'} >
+            <Link className={classes.link} href={'/sign_up'} >
               <BaseText
                 style={typography.headings.en.h7}
                 color={theme.colors.blue[4]}
