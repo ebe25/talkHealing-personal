@@ -12,7 +12,7 @@ import { IconChevronDown } from '@tabler/icons-react';
 import Link from 'next/link';
 import { translate } from "../../../../i18n";
 
-export const AddNumber = (props: { phoneNumberOtp: Function }) => {
+export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
     const { userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
@@ -42,7 +42,7 @@ export const AddNumber = (props: { phoneNumberOtp: Function }) => {
                     countriesCode: ""
                 });
                 setLoader(false)
-                props.phoneNumberOtp()
+                props.phoneNumberOtpFragment()
             }
             else if (res.code == 400) {
                 if (res.error) {

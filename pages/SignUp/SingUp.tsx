@@ -55,6 +55,7 @@ export const SignUp = (props: SignUpProps) => {
     },
   });
 
+
   let filled = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(signUpForm.values.email))
     && (/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(signUpForm.values.password1)
       && signUpForm.values.password2 == signUpForm.values.password1
@@ -100,11 +101,11 @@ export const SignUp = (props: SignUpProps) => {
     }
   }
 
-  const addNumber = () => {
+  const addNumberFragment = () => {
     setEnterNumber(true)
   }
 
-  const phoneNumberOtp = () => {
+  const phoneNumberOtpFragment = () => {
     setNumberOtp(true)
   }
 
@@ -281,13 +282,13 @@ export const SignUp = (props: SignUpProps) => {
 
           {/* Email Otp Fragment */}
           {emailOtp && !enternNumber && !numberOtp ? (
-            <EmailOtp email={signUpForm.values.email} addNumber={addNumber} />
+            <EmailOtp email={signUpForm.values.email} addNumberFragment={addNumberFragment} />
           ) : null}
 
           {/* Add number Fragment */}
           {enternNumber && emailOtp && !numberOtp ?
             (
-              <AddNumber phoneNumberOtp={phoneNumberOtp} />
+              <AddNumber phoneNumberOtpFragment={phoneNumberOtpFragment} />
             )
             : null}
 

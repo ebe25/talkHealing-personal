@@ -9,7 +9,7 @@ import { useForm } from "@mantine/form";
 import { PinInput } from '@mantine/core';
 import { translate } from "../../../../i18n";
 
-export const EmailOtp = (props: { addNumber: Function, email: string }) => {
+export const EmailOtp = (props: { addNumberFragment: Function, email: string }) => {
     const { userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
@@ -45,7 +45,7 @@ export const EmailOtp = (props: { addNumber: Function, email: string }) => {
                     emailOtp: "",
                 });
                 setLoader(false)
-                props.addNumber()
+                props.addNumberFragment()
             }
             else if (res.code == 404) {
                 if (res.error) {
