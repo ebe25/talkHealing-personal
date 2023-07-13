@@ -62,7 +62,10 @@
     "save": "Save",
     "see details": "See details",
     "buy now": "Buy now",
-    "available seat": "Available seat:"
+    "available seat": "Available seat:",
+    "resendVerification": "Resend Verification",
+    "emailSuccessfully": "user resendVerificationEmail in successfully!",
+    "numberSuccessfully": "user resendVerificationNumber in successfully!"
   },
   "authentication": {
     "invalidEmail": "Invalid email",

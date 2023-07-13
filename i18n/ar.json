@@ -53,7 +53,15 @@
     "play": "اللعب المفتوح",
     "shop": "ورش عمل",
     "gallery": "صالة عرض",
-    "contact": "اتصل بنا"
+    "contact": "اتصل بنا",
+    "visit": "يزور",
+    "save": "يحفظ",
+    "see details": "انظر التفاصيل",
+    "buy now": "اشتري الآن",
+    "available seat": "مقعد متاح:",
+    "resendVerification": "إعادة التحقق",
+    "emailSuccessfully": "إعادة إرسال المستخدم التحقق",
+    "numberSuccessfully": "المستخدم إعادة إرسال رقم التحقق بنجاح!"
   },
   "authentication": {
     "invalidEmail": "بريد إلكتروني خاطئ",

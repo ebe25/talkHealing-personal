@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Center, Flex } from '@mantine/core';
+import { Box, Center, Flex, Loader } from '@mantine/core';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -8,6 +8,7 @@ import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import { PinInput } from '@mantine/core';
 import { translate } from "../../../../i18n";
+import swal from 'sweetalert';
 
 export const EmailOtp = (props: { addNumberFragment: Function, email: string }) => {
     const { userStore } = useStores();
@@ -71,6 +72,7 @@ export const EmailOtp = (props: { addNumberFragment: Function, email: string }) 
                     emailOtp: "",
                 });
                 setLoader(false)
+                swal(`${translate("header.resendVerification")}`, `${translate("header.emailSuccessfully")}`, "success")
             }
         })
     }
@@ -109,6 +111,7 @@ export const EmailOtp = (props: { addNumberFragment: Function, email: string }) 
                         <Center>
                             {error ? (<BaseText style={typography.label.en.l1}
                                 color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
+                            {loader ? <Loader /> : null}
                         </Center>
                     </Flex>
                     {/* Resend Otp Button */}
