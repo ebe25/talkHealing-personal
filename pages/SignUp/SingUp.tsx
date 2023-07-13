@@ -158,6 +158,7 @@ export const SignUp = (props: SignUpProps) => {
                       txtkey={'header.signUp'}
                     />
                   </Center>
+                  {/* Social Media Login */}
                   <Flex justify="center" align="center" gap={32}
                   >
                     <Box className={classes.link}>
@@ -167,6 +168,7 @@ export const SignUp = (props: SignUpProps) => {
                       <CircularIcon Icon={Images.google_Icon} />
                     </Box>
                   </Flex>
+                  {/* FullName Input Box */}
                   <Flex direction={'column'} gap={10}
                   >
                     <BaseText
@@ -183,6 +185,7 @@ export const SignUp = (props: SignUpProps) => {
                       {...signUpForm.getInputProps('full_name')}
                     />
                   </Flex>
+                  {/* Email Input Box */}
                   <Flex direction={'column'} gap={10}
                   >
                     <BaseText
@@ -199,6 +202,7 @@ export const SignUp = (props: SignUpProps) => {
                       {...signUpForm.getInputProps('email')}
                     />
                   </Flex>
+                  {/* Password Input Box */}
                   <Flex direction={'column'} gap={10}
                   >
                     <BaseText
@@ -213,6 +217,7 @@ export const SignUp = (props: SignUpProps) => {
                       {...signUpForm.getInputProps('password1')}
                     />
                   </Flex>
+                  {/* Confirm Password Input Box */}
                   <Flex direction={'column'} gap={10}
                   >
                     <BaseText
@@ -230,6 +235,7 @@ export const SignUp = (props: SignUpProps) => {
                     <Text ta={'center'} style={typography.label.en.l1}
                       color={theme.colors.red[7]}>{error}</Text>
                   </Flex>
+                  {/* SignUp Form Submit Button */}
                   <BaseButton
                     onClick={(e) => {
                       e.preventDefault()
@@ -253,6 +259,7 @@ export const SignUp = (props: SignUpProps) => {
                   </BaseButton>
                 </Flex>
               </form>
+              {/* Already have account then login page link */}
               <Flex
                 justify="center" align="center" gap={5}>
                 <BaseText
@@ -272,19 +279,19 @@ export const SignUp = (props: SignUpProps) => {
           ) : null}
 
 
-          {/* Email Otp */}
+          {/* Email Otp Fragment */}
           {emailOtp && !enternNumber && !numberOtp ? (
             <EmailOtp email={signUpForm.values.email} addNumber={addNumber} />
           ) : null}
 
-          {/* Add number */}
+          {/* Add number Fragment */}
           {enternNumber && emailOtp && !numberOtp ?
             (
               <AddNumber phoneNumberOtp={phoneNumberOtp} />
             )
             : null}
 
-          {/* Number Otp */}
+          {/* Number Otp Fragment */}
           {numberOtp && emailOtp && enternNumber ?
             (
               <PhoneNumberOtp />

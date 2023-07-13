@@ -40,7 +40,7 @@ export const EmailOtp = (props: { addNumber: Function, email: string }) => {
             emailOtpFrom.values.emailOtp,
         ).then((res) => {
             if (res.ok) {
-                console.log("user logged in successfully!")
+                console.log("user verifyEmail in successfully!")
                 emailOtpFrom.setValues({
                     emailOtp: "",
                 });
@@ -103,12 +103,15 @@ export const EmailOtp = (props: { addNumber: Function, email: string }) => {
                                 txtkey={'authentication.signupVerification.ForTheVerification'}
                             />
                         </Flex>
+                        {/* Otp Enter */}
                         <PinInput  {...emailOtpFrom.getInputProps('emailOtp')} radius={"5px"} spacing={'28px'} size={"xl"} placeholder="" variant='filled' type="number" />
+                        {/* Error Message */}
                         <Center>
                             {error ? (<BaseText style={typography.label.en.l1}
                                 color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
                         </Center>
                     </Flex>
+                    {/* Resend Otp Button */}
                     <Flex
                         justify="center" align="center" gap={5}>
                         <BaseText
@@ -124,12 +127,12 @@ export const EmailOtp = (props: { addNumber: Function, email: string }) => {
                             />
                         </Box>
                     </Flex>
+                    {/* Otp Submit Button */}
                     <BaseButton
                         onClick={(e) => {
                             e.preventDefault()
                             if (emailOtpLength) {
                                 handleEmailOtp()
-                                console.log("value", emailOtpFrom.values.emailOtp)
                             }
                             else {
                                 console.log("email or password is empty")

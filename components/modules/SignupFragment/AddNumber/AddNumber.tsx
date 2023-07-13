@@ -36,7 +36,7 @@ export const AddNumber = (props: { phoneNumberOtp: Function }) => {
 
         userStore.editUser({ phone: `${addNumberFrom.values.countriesCode}${addNumberFrom.values.number}` }).then((res) => {
             if (res.ok) {
-                console.log("user resendVerificationEmail in successfully!")
+                console.log("user add number in successfully!")
                 addNumberFrom.setValues({
                     number: "",
                     countriesCode: ""
@@ -88,6 +88,7 @@ export const AddNumber = (props: { phoneNumberOtp: Function }) => {
                             txtkey={'authentication.signupVerification.MobileNumber'}
                         />
                     </Center>
+                    {/* Select CountriesCode */}
                     <Flex direction={'column'} gap={10} >
                         <BaseText
                             style={typography.label.en.l1}
@@ -104,6 +105,7 @@ export const AddNumber = (props: { phoneNumberOtp: Function }) => {
                             {...addNumberFrom.getInputProps('countriesCode')}
                         />
                     </Flex>
+                    {/* Phone Number Input Box */}
                     <Flex direction={'column'} gap={10} >
                         <BaseText
                             style={typography.label.en.l1}
@@ -119,6 +121,7 @@ export const AddNumber = (props: { phoneNumberOtp: Function }) => {
                             style_variant={'inputText1'}
                             {...addNumberFrom.getInputProps('number')}
                         />
+                        {/* Error Message */}
                         <Center>
                             {error ?
                                 <BaseText style={typography.label.en.l1}
@@ -126,6 +129,7 @@ export const AddNumber = (props: { phoneNumberOtp: Function }) => {
                                 : null}
                         </Center>
                     </Flex>
+                    {/* Number Add Button */}
                     <BaseButton
                         onClick={(e) => {
                             e.preventDefault()
@@ -147,7 +151,7 @@ export const AddNumber = (props: { phoneNumberOtp: Function }) => {
                     </BaseButton>
                 </Flex>
             </form>
-
+            {/* Already have account then login page link */}
             <Flex
                 justify="center" align="center" gap={5}>
                 <BaseText

@@ -42,7 +42,7 @@ export const PhoneNumberOtp = () => {
             numberOtpFrom.values.numberOtp,
         ).then((res) => {
             if (res.ok) {
-                console.log("user logged in successfully!")
+                console.log("user verifyPhoneNumber in successfully!")
                 numberOtpFrom.setValues({
                     numberOtp: "",
                 });
@@ -69,7 +69,7 @@ export const PhoneNumberOtp = () => {
 
         userStore.resendVerificationSMS().then((res) => {
             if (res.ok) {
-                console.log("user resendVerificationEmail in successfully!")
+                console.log("user resendVerificationNumber in successfully!")
                 numberOtpFrom.setValues({
                     numberOtp: "",
                 });
@@ -106,12 +106,15 @@ export const PhoneNumberOtp = () => {
                                 txtkey={'authentication.signupVerification.ForTheVerification'}
                             />
                         </Flex>
+                        {/* Otp Enter */}
                         <PinInput  {...numberOtpFrom.getInputProps('numberOtp')} radius={"5px"} spacing={'28px'} size={"xl"} placeholder="" variant='filled' type="number" />
+                        {/* Error Message */}
                         <Center>
                             {error ? (<BaseText style={typography.label.en.l1}
                                 color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
                         </Center>
                     </Flex>
+                    {/* Resend Otp Button */}
                     <Flex
                         justify="center" align="center" gap={5}>
                         <BaseText
@@ -128,12 +131,12 @@ export const PhoneNumberOtp = () => {
                             />
                         </Box>
                     </Flex>
+                    {/* Otp Submit Button */}
                     <BaseButton
                         onClick={(e) => {
                             e.preventDefault()
                             if (numberOtpLength) {
                                 handleNumberOtp()
-                                console.log("value", numberOtpFrom.values.numberOtp)
                             }
                             else {
                                 console.log("email or password is empty")
