@@ -84,7 +84,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
   }
 
 
-  const Contine = () => {
+  const ContinueButton = () => {
     selectEmail || selectPhone ? setNext(true) : null;
   };
 
@@ -99,7 +99,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
     },
   });
 
-  let filledEmail = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(resetPasswordByEmail.values.email))
+  let isEmailValid = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(resetPasswordByEmail.values.email))
 
   // ResetPassword By Email Api call
   const handleResetPasswordByEmail = () => {
@@ -152,9 +152,9 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
   });
 
 
-  let filledPhone = () => (resetPasswordByPhone.values.phone && resetPasswordByPhone.values.countriesCode)
+  let isNumberValid = () => (resetPasswordByPhone.values.phone && resetPasswordByPhone.values.countriesCode)
 
-  const showButton = ((selectEmail && !next) || (selectPhone && !next) || (selectEmail && filledEmail()) || (selectPhone && filledPhone()))
+  const showButton = ((selectEmail && !next) || (selectPhone && !next) || (selectEmail && isEmailValid()) || (selectPhone && isNumberValid()))
 
   // smsPasswordReset By Phone Number Api
   const handleResetPasswordByPhone = () => {
@@ -349,7 +349,7 @@ export const ForgotPassword = (props: ForgotPasswordProps) => {
                   w={isPhone ? '100%' : '47%'}
                   bg={showButton ? theme.colors.blue[4] : ''}
                   onClick={(e) => {
-                    Contine()
+                    ContinueButton()
                     e.preventDefault()
                     if (resetPasswordByEmail.values.email) {
                       handleResetPasswordByEmail()
