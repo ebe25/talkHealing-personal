@@ -16,7 +16,7 @@ import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordI
 import { useDisclosure } from '@mantine/hooks';
 // import { BaseRadioButton } from '@/components/elements/BaseRadioButton/RadioButton';
 import { IconArrowLeft } from '@tabler/icons-react';
-import { ForgotPassword } from '../Modals/ForgotPassword/ForgotPassword';
+import { ForgotPassword } from '../Modals/forgot_password/ForgotPassword';
 
 
 
