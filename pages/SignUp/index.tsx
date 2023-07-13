@@ -255,7 +255,7 @@ export const SignUp = (props: SignUpProps) => {
                     <BaseText
                       style={typography.buttonText.en.b2}
                       color={filled() ? theme.white : theme.colors.dark[1]}
-                      txtkey={'signUpForm.login'}
+                      txtkey={'signUpForm.signUp'}
                     />
                   </BaseButton>
                 </Flex>
