@@ -55,7 +55,7 @@ export const Images = {
   start_Icon:"./image/Start.png",
   login_icon:"./image/LoginInear.png",
   bg_Img:"./image/LoginBg.png",
-  facebook_Icon:"./image/facebook.png",
-  google_Icon:"./image/google.png"
+  facebook_icon:"./image/facebook.png",
+  google_icon:"./image/google.png"
 }
 
