@@ -146,7 +146,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     validate: {
       phone: (value) => {
         if (value.trim().length < 1)
-          return translate("authentication.InvalidPhone");
+          return translate("authentication.invalidPhone");
       }
     },
   });

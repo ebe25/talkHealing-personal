@@ -55,8 +55,8 @@
         "text":"Please enter your registered email or phone number to receive the reset link.",
         "phone":"phone number not found",
         "email":"email not found",
-        "InvalidEmail" : "Invalid email",
-        "InvalidNumber" : "Invalid phone number"
+        "invalidEmail" : "Invalid email",
+        "invalidNumber" : "Invalid phone number"
       }
     },
     "header":{
@@ -73,7 +73,7 @@
     },
   "authentication": {
     "invalidEmail": "Invalid email",
-    "InvalidPhone" : "Invalid phone",
+    "invalidPhone" : "Invalid phone",
     "strings": {
       "incChar": "Includes at least 6 characters",
       "incNum": "Includes number",
@@ -213,7 +213,7 @@
     "condition": "Terms and condition"
   },
   "userStatus": {
-    "InvoicesTitle": "Invoices",
+    "invoicesTitle": "Invoices",
     "userId": "Invoice ID",
     "promos": "Promos",
     "booking": "Bookings",

@@ -51,8 +51,8 @@
       "text":"يرجى إدخال بريدك الإلكتروني المسجل أو رقم هاتفك لتلقي رابط إعادة التعيين.",
       "phone":"رقم الهاتف غير موجود",
       "email":"البريد الإلكتروني غير موجود",
-      "InvalidEmail" : "بريد إلكتروني خاطئ",
-      "InvalidNumber" : "رقم الهاتف غير صحيح"
+      "invalidEmail" : "بريد إلكتروني خاطئ",
+      "invalidNumber" : "رقم الهاتف غير صحيح"
     }
   },
   "header": {
@@ -64,7 +64,7 @@
   },
   "authentication": {
     "invalidEmail": "بريد إلكتروني خاطئ",
-    "InvalidPhone" : "رقم الهاتف غير صالح",
+    "invalidPhone" : "رقم الهاتف غير صالح",
     "strings": {
       "incChar": "يتألف من 6 أحرف على الأقل",
       "incNum": "يشمل الرقم",
@@ -225,7 +225,7 @@
     "condition": "أحكام وشروط"
   },
   "userStatus": {
-    "InvoicesTitle": "الفواتير",
+    "invoicesTitle": "الفواتير",
     "userId": "هوية صوتية",
     "userDecription": "حجز تذكره",
     "planDate": "تاريخ",
