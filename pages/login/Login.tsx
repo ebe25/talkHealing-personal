@@ -110,7 +110,7 @@ export const Login = (props: loginProps) => {
                   ta={'center'}
                   style={typography.headings[i18nStore.getCurrentLanguage()].h1}
                   color={theme.colors.dark[8]}
-                  txtkey={'header.Login'}
+                  txtkey={'header.login'}
                 />
               </Center>
               {/* Social Media Login */}
