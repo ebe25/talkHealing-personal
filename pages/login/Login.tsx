@@ -14,11 +14,11 @@ import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '@/i18n';
 
-interface LoginProps {
+interface loginProps {
   img?: string;
 }
 
-export const Login = (props: LoginProps) => {
+export const Login = (props: loginProps) => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const { i18nStore, userStore } = useStores()
