@@ -134,7 +134,7 @@ export const Login = (props: LoginProps) => {
                   h={'44px'}
                   w={"100%"}
                   component={'input'}
-                  placeholder={`${translate("authentication.formText.WriteEmail")}`}
+                  placeholder={`${translate("authentication.formText.writeEmail")}`}
                   style_variant={'inputText1'}
                   {...loginForm.getInputProps('email')}
                 />
@@ -149,7 +149,7 @@ export const Login = (props: LoginProps) => {
                 <BasePasswordInput
                   w={"100%"}
                   h={'44px'}
-                  placeholder={`${translate("authentication.formText.WritePassword")}`}
+                  placeholder={`${translate("authentication.formText.writePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
                 <Text ta={'center'} style={typography.label[i18nStore.getCurrentLanguage()].l1}

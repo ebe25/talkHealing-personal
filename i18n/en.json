@@ -83,9 +83,9 @@
     },
     "formText": {
       "signUp": "Sign up now",
-      "WriteEmail": "Write your email",
-      "WritePassword": "Write your password",
-      "WriteName": "Write your name",
+      "writeEmail": "Write your email",
+      "writePassword": "Write your password",
+      "writeName": "Write your name",
       "name": "Name",
       "email": "Email",
       "phoneNumber": "Phone Number",
@@ -119,15 +119,15 @@
       "datePlaceholder": "DD",
       "monthPlaceholder": "MM",
       "yearPlaceholder": "YYYY",
-      "DidNotGetTheCode": "Didn’t get the code?",
-      "ResendCode": "Resend Code",
-      "OtpInYourEmail":"We have sent the OTP in your email.",
-      "ForTheVerification":"Please enter the OTP for the verification.",
-      "VerifyEmail": "Verify Email",
-      "MobileNumber": "Enter Mobile Number",
-      "CountryCode": "Select Country Code",
-      "VerifyMobileNumber": "Verify Mobile Number",
-      "OtpInYourNumber":"We have sent the OTP in your mobile number."
+      "didNotGetTheCode": "Didn’t get the code?",
+      "resendCode": "Resend Code",
+      "otpInYourEmail":"We have sent the OTP in your email.",
+      "forTheVerification":"Please enter the OTP for the verification.",
+      "verifyEmail": "Verify Email",
+      "mobileNumber": "Enter Mobile Number",
+      "countryCode": "Select Country Code",
+      "verifyMobileNumber": "Verify Mobile Number",
+      "otpInYourNumber":"We have sent the OTP in your mobile number."
     }
   },
   "dataBox": {

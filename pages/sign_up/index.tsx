@@ -50,7 +50,7 @@ export const SignUp = (props: SignUpProps) => {
       },
       full_name: (value) => {
         if (value.trim().length < 1)
-          return translate('authentication.formText.WriteName');
+          return translate('authentication.formText.writeName');
       },
     },
   });
@@ -181,7 +181,7 @@ export const SignUp = (props: SignUpProps) => {
                       w={'100%'}
                       mah={'44px'}
                       component={'input'}
-                      placeholder={`${translate('authentication.formText.WriteName')}`}
+                      placeholder={`${translate('authentication.formText.writeName')}`}
                       style_variant={'inputText1'}
                       {...signUpForm.getInputProps('full_name')}
                     />
@@ -198,7 +198,7 @@ export const SignUp = (props: SignUpProps) => {
                       w={'100%'}
                       mah={'44px'}
                       component={'input'}
-                      placeholder={`${translate('authentication.formText.WriteEmail')}`}
+                      placeholder={`${translate('authentication.formText.writeEmail')}`}
                       style_variant={'inputText1'}
                       {...signUpForm.getInputProps('email')}
                     />
@@ -214,7 +214,7 @@ export const SignUp = (props: SignUpProps) => {
                     <BasePasswordInput
                       w={'100%'}
                       mah={'44px'}
-                      placeholder={`${translate('authentication.formText.WritePassword')}`}
+                      placeholder={`${translate('authentication.formText.writePassword')}`}
                       {...signUpForm.getInputProps('password1')}
                     />
                   </Flex>
@@ -229,7 +229,7 @@ export const SignUp = (props: SignUpProps) => {
                     <BasePasswordInput
                       w={'100%'}
                       mah={'44px'}
-                      placeholder={`${translate('authentication.formText.WritePassword')}`}
+                      placeholder={`${translate('authentication.formText.writePassword')}`}
                       {...signUpForm.getInputProps('password2')}
                     />
                     {/* error message */}

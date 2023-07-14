@@ -85,7 +85,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                         <BaseText
                             style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                             color={theme.colors.dark[8]}
-                            txtkey={'authentication.signupVerification.MobileNumber'}
+                            txtkey={'authentication.signupVerification.mobileNumber'}
                         />
                     </Center>
                     {/* Select CountriesCode */}
@@ -93,7 +93,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                         <BaseText
                             style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
-                            txtkey={'authentication.signupVerification.CountryCode'}
+                            txtkey={'authentication.signupVerification.countryCode'}
                         />
                         <Select
                             placeholder="+914"
@@ -110,7 +110,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                         <BaseText
                             style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
-                            txtkey={'authentication.signupVerification.MobileNumber'}
+                            txtkey={'authentication.signupVerification.mobileNumber'}
                         />
                         <Input
                             w={'100%'}

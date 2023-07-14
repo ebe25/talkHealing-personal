@@ -90,7 +90,7 @@ export const PhoneNumberOtp = () => {
                         <BaseText
                             style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                             color={theme.colors.dark[8]}
-                            txtkey={'authentication.signupVerification.VerifyMobileNumber'}
+                            txtkey={'authentication.signupVerification.verifyMobileNumber'}
                         />
                     </Center>
                     <Flex justify={'center'} direction={'column'} gap={39}
@@ -100,12 +100,12 @@ export const PhoneNumberOtp = () => {
                             <BaseText
                                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                 color={theme.colors.gray[6]}
-                                txtkey={'authentication.signupVerification.OtpInYourNumber'}
+                                txtkey={'authentication.signupVerification.otpInYourNumber'}
                             />
                             <BaseText
                                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                 color={theme.colors.gray[6]}
-                                txtkey={'authentication.signupVerification.ForTheVerification'}
+                                txtkey={'authentication.signupVerification.forTheVerification'}
                             />
                         </Flex>
                         {/* Otp Enter */}
@@ -123,14 +123,14 @@ export const PhoneNumberOtp = () => {
                         <BaseText
                             style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
-                            txtkey={'authentication.signupVerification.DidNotGetTheCode'}
+                            txtkey={'authentication.signupVerification.didNotGetTheCode'}
                         />
                         <Box style={{ cursor: "pointer" }}>
                             <BaseText
                                 onClick={() => handleResendVerificationNumber()}
                                 style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                                 color={theme.colors.blue[4]}
-                                txtkey={'authentication.signupVerification.ResendCode'}
+                                txtkey={'authentication.signupVerification.resendCode'}
                             />
                         </Box>
                     </Flex>

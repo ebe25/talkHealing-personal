@@ -79,9 +79,9 @@
     },
     "formText": {
       "signUp": "اشتراك",
-      "WriteEmail": "اكتب بريدك الإلكتروني",
-      "WritePassword": "اكتب كلمة المرور الخاصة بك",
-      "WriteName": "اكتب اسمك",
+      "writeEmail": "اكتب بريدك الإلكتروني",
+      "writePassword": "اكتب كلمة المرور الخاصة بك",
+      "writeName": "اكتب اسمك",
       "name": "اسم",
       "email": "بريد إلكتروني",
       "phone number": "رقم التليفون",
@@ -115,15 +115,15 @@
       "datePlaceholder": "DD",
       "monthPlaceholder": "MM",
       "yearPlaceholder": "YYYY",
-      "DidNotGetTheCode": "ألم تحصل على الرمز؟",
-      "ResendCode": "أعد إرسال الرمز",
-      "OtpInYourEmail":"لقد أرسلنا OTP في بريدك الإلكتروني",
-      "ForTheVerification":"الرجاء إدخال OTP للتحقق.",
-      "VerifyEmail": "التحقق من البريد الإلكتروني",
-      "MobileNumber": "أدخل رقم الهاتف المتحرك",
-      "CountryCode": "حدد رمز الدولة",
-      "VerifyMobileNumber": "تحقق من رقم الهاتف المحمول",
-      "OtpInYourNumber":"لقد أرسلنا OTP في رقم هاتفك المحمول."
+      "didNotGetTheCode": "ألم تحصل على الرمز؟",
+      "resendCode": "أعد إرسال الرمز",
+      "otpInYourEmail":"لقد أرسلنا OTP في بريدك الإلكتروني",
+      "forTheVerification":"الرجاء إدخال OTP للتحقق.",
+      "verifyEmail": "التحقق من البريد الإلكتروني",
+      "mobileNumber": "أدخل رقم الهاتف المتحرك",
+      "countryCode": "حدد رمز الدولة",
+      "verifyMobileNumber": "تحقق من رقم الهاتف المحمول",
+      "otpInYourNumber":"لقد أرسلنا OTP في رقم هاتفك المحمول."
     }
   },
   "dataBox": {
