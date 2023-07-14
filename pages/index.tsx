@@ -2,6 +2,7 @@ import { Welcome } from '../components/modules/Welcome/Welcome';
 import { ColorSchemeToggle } from '../components/elements/ColorSchemeToggle/ColorSchemeToggle';
 
 import { useStores } from "@/models";
+import Profile from './profile';
 
 export default function HomePage() {
   const {userStore}=useStores()
@@ -16,8 +17,9 @@ export default function HomePage() {
   
   return (
     <>
-      <Welcome />
-      <ColorSchemeToggle />
+      <Profile/>
+      {/* <Welcome />
+      <ColorSchemeToggle /> */}
     </>
   );
 }
