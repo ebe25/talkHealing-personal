@@ -25,7 +25,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   const isPhone = useMediaQuery('(max-width:600px)');
   const isTablet = useMediaQuery('(max-width:900px)');
   const { classes } = useStyles();
-  const { i18nStore , userStore } = useStores()
+  const { i18nStore, userStore } = useStores()
   const [selectEmail, setSelectEmail] = useState(false);
   const [selectPhone, setSelectPhone] = useState(false);
   const [next, setNext] = useState(false);
@@ -194,7 +194,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     <>
       <BaseModal
         radius={32}
-        size={isPhone ? '100%' : isTablet ? '70%' : ''}
+        size={isPhone ? '100%' : isTablet ? '70%' : '40%'}
         withCloseButton={false}
         opened={props.opened}
         onClose={props.close}
@@ -223,15 +223,16 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
             resetPasswordByEmail.onSubmit((values) => console.log(values)) ||
             resetPasswordByPhone.onSubmit((values) => console.log(values))
           }>
-            <Flex direction={'column'} gap={20}>
+            <Flex direction={'column'} gap={30}>
               {!next ? (
                 <>
                   <Flex
                     wrap={'wrap'}
-                    gap={isPhone ? '' : '90px'}
+                    gap={'10px'}
+                    px={'10px'}
                     w={'100%'}
                     align={'center'}
-                    justify={'center'}
+                    justify={'space-around'}
                   >
                     {/* Email Icon */}
                     <Flex
@@ -245,7 +246,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                         background: `${selectEmail ? theme.colors.blue[4] : theme.colors.gray[4]}`,
                       }}
                     >
-                      <Image width={50} style={{ margin: 'auto' }} src={Images.email} />
+                      <Image width={50} alt='email_icon' style={{ margin: 'auto' }} src={Images.email} />
                     </Flex>
                     {/* Phone Icon */}
                     <Flex
@@ -259,7 +260,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                         background: `${selectPhone ? theme.colors.blue[4] : theme.colors.gray[4]}`,
                       }}
                     >
-                      <Image width={50} style={{ margin: 'auto' }} src={Images.phone} />
+                      <Image width={50} alt='phone_icon' style={{ margin: 'auto' }} src={Images.phone} />
                     </Flex>
                   </Flex>
                 </>
@@ -340,6 +341,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   style_variant={'filled'}
                   color_variant={'gray'}
                   w={isPhone ? '100%' : '47%'}
+                  h={'45px'}
                 >
                   <BaseText txtkey={'global.button.cancel'} />
                 </BaseButton>
@@ -347,6 +349,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   style_variant={'filled'}
                   color_variant={'gray'}
                   w={isPhone ? '100%' : '47%'}
+                  h={'45px'}
                   bg={showButton ? theme.colors.blue[4] : ''}
                   onClick={(e) => {
                     ContinueButton()
