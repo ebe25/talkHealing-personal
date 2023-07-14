@@ -7,4 +7,11 @@ export default createStyles((theme) => ({
     padding: "40px",
     borderRadius: "20px",
   },
+  mantineInputRightSection:{
+    cursor: "pointer",
+    marginRight: "50px",
+  },
+  passwordInput:{
+    borderRadius: "34px",
+  }
 }));

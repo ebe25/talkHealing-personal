@@ -10,7 +10,7 @@ export const createStyle = (
     // width:"370px",
     height: "44px",
     borderRadius: "34px",
-    ...typography.paragraph[langCode].p2,
+    ...typography.inputFieldText[langCode].i1,
     color: theme.colors.gray[1]
   },
 }))};

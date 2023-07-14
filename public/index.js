@@ -7,5 +7,6 @@ export const Images = {
   person_icon: "./icons/PersonIcon.png",
   start_Icon:"./image/Start.png",
   profile_image: "/image/profile_image.png",
+  close_modal_icon: "/icons/close_modal_icon.png",
 }
 

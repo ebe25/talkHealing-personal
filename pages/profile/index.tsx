@@ -83,7 +83,7 @@ const Profile = () => {
   const { classes } = useStyles();
 
   return (
-    <Container maw={'1205px'}>
+    <Container maw={'1000px'}>
       <BaseText className={classes.title} txtkey="profile.heading" />
       <StyledTabs defaultValue="Account" >
         <Tabs.List>

@@ -4,7 +4,7 @@ import { PolymorphicComponentProps } from '@mantine/utils';
 import { useDisclosure } from '@mantine/hooks';
 
 interface BaseModalProps extends PolymorphicComponentProps<'div', ModalProps> {
-  title?: string;
+  title?: string | null ;
 }
 
 export const BaseModal = (props: BaseModalProps) => {
