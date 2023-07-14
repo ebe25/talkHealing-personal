@@ -36,7 +36,6 @@ export const UserStore = types
           password: password,
         }
       );
-      console.log("this is log in response ", response)
       switch (response.status) {
         case 200:
           self.loggedInUserData = null;
