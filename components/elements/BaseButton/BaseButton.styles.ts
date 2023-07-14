@@ -31,25 +31,40 @@ export const createStyle = (
 ) => {
 
   return createStyles((theme) => ({
-    [STYLE_VARIANTS.filled]: {
+      [STYLE_VARIANTS.filled]: {
         ...typography.buttonText[langCode].b2,
         background : theme.colors[props.color_variant][5],
         borderRadius: '44px',
+        '&:not([data-disabled]):hover': {
+          background : theme.colors[props.color_variant][5],
+          borderColor: "none",
+        }
       },
       [STYLE_VARIANTS.subtle]: {
         ...typography.buttonText[langCode].b4,
-        background : "white",
+        background : "transparent",
         borderRadius: '44px',
+        '&:not([data-disabled]):hover': {
+          background : "transparent",
+          borderColor: "none",
+        }
       },
       [STYLE_VARIANTS.disabled]: {
         ...typography.buttonText[langCode].b2,
         background : theme.colors.gray[2],
         borderRadius: '44px',
+        '&:not([data-disabled]):hover': {
+          background : theme.colors.gray[2],
+          borderColor: "none",
+        }
       },
       [STYLE_VARIANTS.outline]:{
         ...typography.buttonText[langCode].b3,
         background : "transparent",
         borderRadius: '42px',
         border:`1px solid ${theme.colors[props.color_variant][0]}`,
+        '&:not([data-disabled]):hover': {
+          background : "transparent",
+        }
       }
 }))};
