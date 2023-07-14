@@ -16,12 +16,12 @@ import { IconChevronDown } from '@tabler/icons-react';
 import useStyles from './ForgotPassword.style';
 
 
-interface ForgotPasswordProps {
+interface forgotPasswordProps {
   opened: boolean;
   close: any;
 }
 
-export const ForgotPassword = (props: ForgotPasswordProps) => {
+export const ForgotPassword = (props: forgotPasswordProps) => {
   const isPhone = useMediaQuery('(max-width:600px)');
   const isTablet = useMediaQuery('(max-width:900px)');
   const { classes } = useStyles();
