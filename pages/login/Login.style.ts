@@ -7,8 +7,6 @@ export default createStyles((theme) => ({
     width: '100%',
     height: '100vh',
     alignItems: 'center',
-    // justifyContent: 'center',
-    // padding:"100px",
     backgroundImage: 'url( ' + `${Images.bg_Img}` + '  )',
     backgroundSize: '100%',
     [theme.fn.smallerThan('md')]: {
