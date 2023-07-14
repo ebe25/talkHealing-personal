@@ -18,11 +18,11 @@ import { AddNumber } from "../../components/modules/SignupFragment/add_number/Ad
 import { PhoneNumberOtp } from "../../components/modules/SignupFragment/phone_number_otp/PhoneNumberOtp"
 
 
-interface SignUpProps {
+interface signUpProps {
   img?: string;
 }
 
-export const SignUp = (props: SignUpProps) => {
+export const SignUp = (props: signUpProps) => {
   const { classes } = useStyles();
   const { i18nStore ,userStore } = useStores();
   const theme = useMantineTheme();
