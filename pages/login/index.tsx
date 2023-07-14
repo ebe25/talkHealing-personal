@@ -21,7 +21,7 @@ interface loginProps {
 export const Login = (props: loginProps) => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const { i18nStore , userStore } = useStores()
+  const { i18nStore, userStore } = useStores()
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState<any>("")
 
@@ -65,6 +65,17 @@ export const Login = (props: loginProps) => {
           if (res.error) {
             setLoader(false)
             setError(res.error)
+            setTimeout(() => {
+              setError("")
+            }, 5000)
+          }
+        }
+        else if (res.code == 401) {
+          if (res.error) {
+            setLoader(false)
+            setError(res.error)
+            if (res.error && res.error.detail)
+              setError(res.error?.detail?.toString())
             setTimeout(() => {
               setError("")
             }, 5000)
