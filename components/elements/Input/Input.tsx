@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, TextInputProps } from '@mantine/core';
+import { TextInput } from '@mantine/core';
 import { createStyle } from './Input.style';
 import { BaseTextInputProps } from './Input.style';
 
@@ -12,6 +12,6 @@ export const Input = (props: BaseTextInputProps) => {
    {...props} 
    className={classes[props.style_variant]}
    placeholder={props.placeholder}
-   radius="xl" />
+/>
   );
 };
