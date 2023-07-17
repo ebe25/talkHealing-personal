@@ -43,7 +43,7 @@ export const Login = (props: loginProps) => {
   let filled = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(loginForm.values.email) && loginForm.values.password.length > 8)
 
   // Check Length
-  const loginButtonShow = (loginForm.values.email && loginForm.values.password)
+  let showLoginButton = (loginForm.values.email && loginForm.values.password)
 
   //  Login Api Call
   const handleLogin = () => {
@@ -134,7 +134,7 @@ export const Login = (props: loginProps) => {
                   h={'44px'}
                   w={"100%"}
                   component={'input'}
-                  placeholder={`${translate("authentication.formText.WriteEmail")}`}
+                  placeholder={`${translate("authentication.formText.writeEmail")}`}
                   style_variant={'inputText1'}
                   {...loginForm.getInputProps('email')}
                 />
@@ -149,7 +149,7 @@ export const Login = (props: loginProps) => {
                 <BasePasswordInput
                   w={"100%"}
                   h={'44px'}
-                  placeholder={`${translate("authentication.formText.WritePassword")}`}
+                  placeholder={`${translate("authentication.formText.writePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
                 {/* error message */}
@@ -171,7 +171,7 @@ export const Login = (props: loginProps) => {
               <BaseButton
                 onClick={(e) => {
                   e.preventDefault()
-                  if (loginButtonShow)
+                  if (showLoginButton)
                     handleLogin()
                   else {
                     console.log("email or password is empty")

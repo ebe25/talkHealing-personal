@@ -76,8 +76,8 @@
     },
     "formText":{
       "signUp":"Sign up now",
-      "WriteEmail": "Write your email",
-      "WritePassword": "Write your password",
+      "writeEmail": "Write your email",
+      "writePassword": "Write your password",
       "name": "Name",
       "email": "Email",
       "phoneNumber": "Phone Number",

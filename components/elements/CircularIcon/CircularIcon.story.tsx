@@ -12,6 +12,6 @@ const meta: Meta<typeof CircularIcon> = {
 export default meta;
 type Story = StoryObj<typeof CircularIcon>;
 
-export const socialMedia: Story = {
+export const circularIcon: Story = {
   args: {},
 };
