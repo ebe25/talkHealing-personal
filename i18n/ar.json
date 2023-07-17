@@ -43,6 +43,14 @@
     "name":"اسم",
     "email":"بريد إلكتروني",
     "phoneNumber":"رقم التليفون",
-    "password":"كلمة المرور"
+    "password":"كلمة المرور",
+    "change":"يتغير",
+    "modal":{
+      "changePasswordHeading":"تغيير كلمة المرور",
+      "currentPassword":"كلمة السر الحالية",
+      "newPassword":"كلمة المرور الجديدة",
+      "confirmPassword":"تأكيد كلمة المرور",
+      "passwordLength": "يجب ألا يقل عن 8 أحرف"
+    }
   }
 }

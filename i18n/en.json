@@ -47,6 +47,14 @@
     "name":"Name",
     "email":"Email",
     "phoneNumber":"Phone Number",
-    "password":"Password"
+    "password":"Password",
+    "change":"Change",
+    "modal":{
+      "changePasswordHeading":"Change password",
+      "currentPassword":"Current password",
+      "newPassword":"New password",
+      "confirmPassword":"Confirm password",
+      "passwordLength": "must be at least 8 characters"
+    }
   }
 }
