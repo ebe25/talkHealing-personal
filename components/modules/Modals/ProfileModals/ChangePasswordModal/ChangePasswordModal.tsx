@@ -8,42 +8,18 @@ import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordI
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
-import { typography } from '../../../../themes/Mantine/typography';
+import { typography } from '../../../../../themes/Mantine/typography';
 // stores import
 import { useStores } from '@/models';
 // others import
 import { Images } from '@/public';
 import { translate } from '@/i18n';
-
-const PasswordSucessful = (props: { i18: any }) => {
-  return (
-    <Flex direction={'column'} justify={'space-between'} align={'center'} w={'100%'} mt={'26px'}>
-      <Stack>
-        <Flex w={'100%'} justify={'center'}>
-          <Image
-            src={Images.successful_password__modal_img}
-            width="226px"
-            height="190px"
-            alt="successful_password__modal_img"
-          />
-        </Flex>
-        <BaseText
-          ta={'center'}
-          mt={'30px'}
-          txtkey="profile.modal.passwordSuccessful"
-          style={typography.headings[props.i18.getCurrentLanguage()].h6}
-        />
-      </Stack>
-      <BaseButton w={'100%'} h={'40px'} mt={'40px'} style_variant={'filled'} color_variant={'blue'}>
-        <BaseText txtkey="global.button.ok" />
-      </BaseButton>
-    </Flex>
-  );
-};
+import { useDisclosure } from '@mantine/hooks';
+import { FinalModal } from '../FinalModal/FinalModal';
 
 export const ChangePassword = (props: { opened?: boolean; onClose?: any }) => {
   const { i18nStore } = useStores();
-  const [showFragment, setShowFragment] = useState(false);
+  const [opened, { open, close }] = useDisclosure(false); 
   const theme = useMantineTheme();
   const changepassword = useForm({
     initialValues: {
@@ -68,10 +44,15 @@ export const ChangePassword = (props: { opened?: boolean; onClose?: any }) => {
     let results = changepassword.validate();
     if (results.hasErrors) return;
     if (!changepassword.isValid()) return;
-    else setShowFragment(true);
+    else{
+      props.onClose();
+      changepassword.reset();
+      open()
+    }
   };
 
   return (
+    <>
     <BaseModal
       size={'sm'}
       padding={'30px'}
@@ -80,30 +61,11 @@ export const ChangePassword = (props: { opened?: boolean; onClose?: any }) => {
       onClose={() => {
         props.onClose();
         changepassword.reset();
-        setShowFragment(false);
       }}
       withCloseButton={false}
     >
       <form onSubmit={changepassword.onSubmit((values) => console.log(values))}>
-          {showFragment ? 
-          <Flex
-            justify={"flex-end"}
-          >
-
-            <Image
-            onClick={() => {
-              props.onClose();
-              changepassword.reset();
-              setShowFragment(false);
-            }}
-            src={Images.close_modal_icon}
-            alt="close_modal_icon"
-            width={'14px'}
-            height={'14px'}
-          />
-          </Flex>
-
-           : 
+          
         <Flex justify={'space-between'} align={'center'}>
             <BaseText
               txtkey="profile.modal.changePasswordHeading"
@@ -115,18 +77,13 @@ export const ChangePassword = (props: { opened?: boolean; onClose?: any }) => {
             onClick={() => {
               props.onClose();
               changepassword.reset();
-              setShowFragment(false);
             }}
             src={Images.close_modal_icon}
             alt="close_modal_icon"
             width={'14px'}
             height={'14px'}
           />
-        </Flex>}
-        {showFragment ? (
-          <PasswordSucessful i18={i18nStore} />
-        ) : (
-          <>
+        </Flex>
             <Stack mt={'34px'}>
               <BaseText
                 txtkey="profile.modal.currentPassword"
@@ -170,9 +127,13 @@ export const ChangePassword = (props: { opened?: boolean; onClose?: any }) => {
             >
               <BaseText txtkey="global.button.save" />
             </BaseButton>
-          </>
-        )}
       </form>
     </BaseModal>
+    <FinalModal
+        opened={opened}
+        onClose={close}
+        para="profile.modal.passwordSuccessful"
+    />
+    </>
   );
 };

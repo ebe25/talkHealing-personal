@@ -6,7 +6,8 @@ import { useDisclosure } from '@mantine/hooks';
 // styles import
 import useStyles from './Account.styles';
 // component
-import { ChangePassword } from '../Modals/ChangePasswordModal/ChangePasswordModal';
+import { ChangePassword } from '../Modals/ProfileModals/ChangePasswordModal/ChangePasswordModal';
+import { EmailChangeModal } from '../Modals/ProfileModals/EmailChangeModal/EmailChangeModal';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -22,12 +23,13 @@ export const Account = () => {
     const { classes } = useStyles();
     const theme = useMantineTheme()
     const [opened, { open, close }] = useDisclosure(false);
-    const [images, setImages] = useState<any>(null);
-    const onImageChange = (event: any) => {
-        if (event.target.files && event.target.files[0]) {
-        setImages(URL.createObjectURL(event.target.files[0]));
-        }
-    };
+    const emailChangeModal = useDisclosure(false);
+    // const [images, setImages] = useState<any>(null);
+    // const onImageChange = (event: any) => {
+    //     if (event.target.files && event.target.files[0]) {
+    //     setImages(URL.createObjectURL(event.target.files[0]));
+    //     }
+    // };
 
     return (
         <Box
@@ -36,13 +38,17 @@ export const Account = () => {
             <Flex
                 align={"center"}
                 justify={"space-between"}
+                wrap={"wrap"}
             >
+                <div className={classes.imageFlex}
+                >
                 <Image
                     src={Images.profile_image}
                     width={"120px"}
                     height={"120px"}
                     alt='profile_image'
-                />
+                    />
+                </div>
                 <Flex
                     gap={"18px"}
                 >
@@ -68,7 +74,7 @@ export const Account = () => {
                     </BaseButton>
                 </Flex>
             </Flex>
-            <Grid mt={"48px"} >
+            <Grid className={classes.grid} >
                 <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6} >
                     <BaseText
                         txtkey='profile.name'
@@ -97,6 +103,7 @@ export const Account = () => {
                         variant='filled'
                         rightSection={
                             <BaseText
+                                onClick={emailChangeModal[1].open}
                                 className={classes.mantineInputRightSection}
                                 txtkey='profile.change'
                                 color={theme.colors.blue[4]}
@@ -106,7 +113,7 @@ export const Account = () => {
                     />
                 </Grid.Col>
             </Grid>
-            <Grid mt={"48px"} >
+            <Grid className={classes.grid} >
                 <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6} >
                     <BaseText
                         txtkey='profile.phoneNumber'
@@ -154,6 +161,10 @@ export const Account = () => {
             <ChangePassword
                 opened={opened}
                 onClose={close}
+            />
+            <EmailChangeModal
+                opened={emailChangeModal[0]}
+                onClose={emailChangeModal[1].close}
             />
         </Box>
     )
