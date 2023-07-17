@@ -2,6 +2,9 @@ import { Welcome } from '../components/modules/Welcome/Welcome';
 import { ColorSchemeToggle } from '../components/elements/ColorSchemeToggle/ColorSchemeToggle';
 
 import { useStores } from "@/models";
+import TermsAndCondition from './terms_and_condition';
+import PrivacyPolicy from './privacy_policy';
+import CookiePolicy from './cookie_policy';
 
 export default function HomePage() {
   const {userStore}=useStores()
@@ -16,8 +19,11 @@ export default function HomePage() {
   
   return (
     <>
-      <Welcome />
-      <ColorSchemeToggle />
+    <TermsAndCondition />
+    {/* <PrivacyPolicy /> */}
+    {/* <CookiePolicy /> */}
+      {/* <Welcome /> */}
+      {/* <ColorSchemeToggle /> */}
     </>
   );
 }

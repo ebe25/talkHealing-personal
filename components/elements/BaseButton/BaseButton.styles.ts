@@ -35,21 +35,33 @@ export const createStyle = (
         ...typography.buttonText[langCode].b2,
         background : theme.colors[props.color_variant][5],
         borderRadius: '44px',
+        '&:not([data-disabled]):hover': { 
+        background : theme.colors[props.color_variant][5],
+        }
       },
       [STYLE_VARIANTS.subtle]: {
         ...typography.buttonText[langCode].b4,
         background : "white",
         borderRadius: '44px',
+        '&:not([data-disabled]):hover': { 
+        background : "white",
+        }
       },
       [STYLE_VARIANTS.disabled]: {
         ...typography.buttonText[langCode].b2,
         background : theme.colors.gray[2],
         borderRadius: '44px',
+        '&:not([data-disabled]):hover': { 
+        background : theme.colors.gray[2],
+        }
       },
       [STYLE_VARIANTS.outline]:{
         ...typography.buttonText[langCode].b3,
         background : "transparent",
         borderRadius: '42px',
         border:`1px solid ${theme.colors[props.color_variant][0]}`,
+        '&:not([data-disabled]):hover': {
+        background : "transparent",
+        }
       }
 }))};
