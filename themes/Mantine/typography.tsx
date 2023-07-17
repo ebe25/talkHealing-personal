@@ -1,7 +1,7 @@
 import React from 'react';
 import { webFontFamily } from './fonts';
 
-export const typography = {
+export const typography : any = {
   headings: {
     en: {
       h1: {
@@ -116,6 +116,13 @@ export const typography = {
         lineHeight: '27px',
         fontWeight: 400,
       } as React.CSSProperties,
+      p5: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '16px',
+        lineHeight: '31px',
+      } as React.CSSProperties,
     },
     ar: {
       p1: {
@@ -145,6 +152,13 @@ export const typography = {
         fontSize: '18px',
         lineHeight: '31px',
         fontWeight: 500,
+      } as React.CSSProperties,
+      p5: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '12px',
+        lineHeight: '31px',
       } as React.CSSProperties,
     },
   } ,
