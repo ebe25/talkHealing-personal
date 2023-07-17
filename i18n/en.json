@@ -54,7 +54,8 @@
       "currentPassword":"Current password",
       "newPassword":"New password",
       "confirmPassword":"Confirm password",
-      "passwordLength": "must be at least 8 characters"
+      "passwordLength": "must be at least 8 characters",
+      "passwordSuccessful":"Password has successfully been changed"
     }
   }
 }

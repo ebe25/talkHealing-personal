@@ -8,5 +8,6 @@ export const Images = {
   start_Icon:"./image/Start.png",
   profile_image: "/image/profile_image.png",
   close_modal_icon: "/icons/close_modal_icon.png",
+  successful_password__modal_img: "/image/successful_password__modal_img.png"
 }
 

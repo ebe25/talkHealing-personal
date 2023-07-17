@@ -50,7 +50,8 @@
       "currentPassword":"كلمة السر الحالية",
       "newPassword":"كلمة المرور الجديدة",
       "confirmPassword":"تأكيد كلمة المرور",
-      "passwordLength": "يجب ألا يقل عن 8 أحرف"
+      "passwordLength": "يجب ألا يقل عن 8 أحرف",
+      "passwordSuccessful":"تم تغيير كلمة المرور بنجاح"
     }
   }
 }
