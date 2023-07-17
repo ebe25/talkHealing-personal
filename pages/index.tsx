@@ -1,5 +1,6 @@
 import { Welcome } from '../components/modules/Welcome/Welcome';
 import { ColorSchemeToggle } from '../components/elements/ColorSchemeToggle/ColorSchemeToggle';
+import FaqQuestionsAnswers from './faq_questions_answers/index';
 
 import { useStores } from "@/models";
 
@@ -16,8 +17,9 @@ export default function HomePage() {
   
   return (
     <>
-      <Welcome />
-      <ColorSchemeToggle />
+      {/* <Welcome /> */}
+      {/* <ColorSchemeToggle /> */}
+      <FaqQuestionsAnswers />
     </>
   );
 }

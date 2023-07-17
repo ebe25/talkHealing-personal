@@ -1,4 +1,11 @@
 {
+  "frequentlyAskedQuestions" : {
+    "heading": "Frequently asked questions",
+    "search": "Search",
+    "loremIpsum": "Lorem ipsum dolor sit amet",
+    "faqQuestion": "What is FAQ Questions?",
+    "faqAns": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+  },
   "global": {
     "playwheel":"Playwheel",
     "label": {
