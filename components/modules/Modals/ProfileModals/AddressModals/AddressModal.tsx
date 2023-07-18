@@ -16,8 +16,9 @@ import { Images } from '@/public';
 import { translate } from '@/i18n';
 import { useDisclosure } from '@mantine/hooks';
 import { FinalModal } from '../FinalModal/FinalModal';
+import { Input } from '@/components/elements/Input/Input';
 
-export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
+export const AddressModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false); 
   const theme = useMantineTheme();
@@ -64,10 +65,11 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
       }}
       withCloseButton={false}
     >
+      <form onSubmit={changepassword.onSubmit((values) => console.log(values))}>
           
         <Flex justify={'space-between'} align={'center'}>
             <BaseText
-              txtkey="profile.modal.changePasswordHeading"
+              txtkey="profile.addressButton"
               style={typography.headings[i18nStore.getCurrentLanguage()].h6}
               color={theme.colors.dark[8]}
             />
@@ -83,44 +85,67 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
             height={'14px'}
           />
         </Flex>
-              <form onSubmit={changepassword.onSubmit((values) => console.log(values))}>
             <Stack mt={'34px'}>
               <BaseText
-                txtkey="profile.modal.currentPassword"
+                txtkey="profile.addressModal.label1"
                 color={theme.colors.gray[6]}
                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
               />
-              <BasePasswordInput
-                placeholder={`${translate('profile.modal.currentPassword')}`}
-                {...changepassword.getInputProps('currentPassword')}
-                autoComplete="on"
+              <Input 
+                placeholder={`${translate("profile.addressModal.label1")}`} 
+                style_variant={'inputText2'} 
+                component={'input'}              
               />
             </Stack>
-            <Stack my={'24px'}>
+            <Stack mt={'34px'}>
               <BaseText
-                txtkey="profile.modal.newPassword"
+                txtkey="profile.addressModal.label2"
                 color={theme.colors.gray[6]}
                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
               />
-              <BasePasswordInput
-                placeholder={`${translate('profile.modal.newPassword')}`}
-                {...changepassword.getInputProps('newPassword')}
-                autoComplete="on"
+              <Input 
+                placeholder={`${translate("profile.addressModal.label2")}`} 
+                style_variant={'inputText2'} 
+                component={'input'}              
               />
             </Stack>
-            <Stack>
+            <Stack mt={'34px'}>
               <BaseText
-                txtkey="profile.modal.confirmPassword"
+                txtkey="profile.addressModal.country"
                 color={theme.colors.gray[6]}
                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
               />
-              <BasePasswordInput
-                placeholder={`${translate('profile.modal.confirmPassword')}`}
-                {...changepassword.getInputProps('confirmNewPassword')}
-                autoComplete="on"
+              <Input 
+                placeholder={`${translate("profile.addressModal.country")}`} 
+                style_variant={'inputText2'} 
+                component={'input'}              
               />
             </Stack>
-            </form>
+            <Stack mt={'34px'}>
+              <BaseText
+                txtkey="profile.addressModal.state"
+                color={theme.colors.gray[6]}
+                style={typography.label[i18nStore.getCurrentLanguage()].l1}
+              />
+              <Input 
+                placeholder={`${translate("profile.addressModal.state")}`} 
+                style_variant={'inputText2'} 
+                component={'input'}              
+              />
+            </Stack>
+            <Stack mt={'34px'}>
+              <BaseText
+                txtkey="profile.addressModal.district"
+                color={theme.colors.gray[6]}
+                style={typography.label[i18nStore.getCurrentLanguage()].l1}
+              />
+              <Input 
+                placeholder={`${translate("profile.addressModal.district")}`} 
+                style_variant={'inputText2'} 
+                component={'input'}              
+              />
+            </Stack>
+            
             <BaseButton
               mt={'30px'}
               w={'100%'}
@@ -131,6 +156,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
             >
               <BaseText txtkey="global.button.save" />
             </BaseButton>
+      </form>
     </BaseModal>
     <FinalModal
         opened={opened}

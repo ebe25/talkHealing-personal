@@ -1,5 +1,5 @@
 //React and next imports
-import React, { useState } from 'react'
+import React from 'react'
 // mantine component imports
 import { Box, Flex, Grid, Image, TextInput, useMantineTheme } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks';
