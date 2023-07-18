@@ -185,18 +185,35 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     }
   }
 
-  const CancelButton = () => (
-    <BaseButton
-      onClick={() => {
-        CloseModal()
-      }}
-      style_variant={'filled'}
-      color_variant={'gray'}
-      w={isPhone ? '100%' : '47%'}
-      h={'45px'}
+  const CancelAndConfirmButton = (props: any) => (
+    <Flex
+      wrap={'wrap'}
+      gap={10}
+      w={'100%'}
+      align={'center'}
+      justify={'space-between'}
     >
-      <BaseText txtkey={'global.button.cancel'} />
-    </BaseButton>
+      <BaseButton
+        onClick={() => {
+          CloseModal()
+        }}
+        style_variant={'filled'}
+        color_variant={'gray'}
+        w={isPhone ? '100%' : '47%'}
+        h={'45px'}
+      >
+        <BaseText txtkey={'global.button.cancel'} />
+      </BaseButton>
+      <BaseButton
+        style_variant={'filled'}
+        color_variant={'gray'}
+        w={isPhone ? '100%' : '47%'}
+        h={'45px'}
+        {...props}
+      >
+        <BaseText txtkey={'global.button.confirm'} />
+      </BaseButton>
+    </Flex>
   )
 
 
@@ -272,27 +289,10 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   <Image width={50} alt='phone_icon' style={{ margin: 'auto' }} src={Images.phone} />
                 </Flex>
               </Flex>
-              <Flex
-                wrap={'wrap'}
-                gap={10}
-                w={'100%'}
-                align={'center'}
-                justify={'space-between'}
-              >
-                <CancelButton />
-                <BaseButton
-                  style_variant={'filled'}
-                  color_variant={'gray'}
-                  w={isPhone ? '100%' : '47%'}
-                  h={'45px'}
-                  bg={selectedPasswordForgotType ? theme.colors.blue[4] : ''}
-                  onClick={(e) => {
-                    ContinueButton()
-                  }}
-                >
-                  <BaseText txtkey={'global.button.confirm'} />
-                </BaseButton>
-              </Flex>
+              <CancelAndConfirmButton bg={selectedPasswordForgotType ? theme.colors.blue[4] : ''}
+                onClick={() => {
+                  ContinueButton()
+                }} />
             </Flex>
           ) : null}
 
@@ -325,33 +325,17 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                       : null}
                   </Center>
                 </Flex>
-                <Flex
-                  wrap={'wrap'}
-                  gap={10}
-                  w={'100%'}
-                  align={'center'}
-                  justify={'space-between'}
-                >
-                  <CancelButton />
-                  <BaseButton
-                    style_variant={'filled'}
-                    color_variant={'gray'}
-                    w={isPhone ? '100%' : '47%'}
-                    h={'45px'}
-                    bg={resetPasswordByEmail.isValid() ? theme.colors.blue[4] : ''}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      if (resetPasswordByEmail.isValid()) {
-                        handleResetPasswordByEmail()
-                      }
-                      else {
-                        console.log("email or password is empty")
-                      }
-                    }}
-                  >
-                    <BaseText txtkey={'global.button.confirm'} />
-                  </BaseButton>
-                </Flex>
+                <CancelAndConfirmButton bg={resetPasswordByEmail.isValid() ? theme.colors.blue[4] : ''}
+                  onClick={(e: any) => {
+                    e.preventDefault()
+                    if (resetPasswordByEmail.isValid()) {
+                      handleResetPasswordByEmail()
+                    }
+                    else {
+                      console.log("email or password is empty")
+                    }
+                  }}
+                />
               </Flex>
             </form>
           ) : null}
@@ -395,33 +379,16 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     }
                   </Center>
                 </Flex>
-                <Flex
-                  wrap={'wrap'}
-                  gap={10}
-                  w={'100%'}
-                  align={'center'}
-                  justify={'space-between'}
-                >
-                  <CancelButton />
-                  <BaseButton
-                    style_variant={'filled'}
-                    color_variant={'gray'}
-                    w={isPhone ? '100%' : '47%'}
-                    h={'45px'}
-                    bg={resetPasswordByPhone.isValid() ? theme.colors.blue[4] : ''}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      if (resetPasswordByPhone.isValid()) {
-                        handleResetPasswordByPhone()
-                      }
-                      else {
-                        console.log("email or password is empty")
-                      }
-                    }}
-                  >
-                    <BaseText txtkey={'global.button.confirm'} />
-                  </BaseButton>
-                </Flex>
+                <CancelAndConfirmButton bg={resetPasswordByPhone.isValid() ? theme.colors.blue[4] : ''}
+                  onClick={(e: any) => {
+                    e.preventDefault()
+                    if (resetPasswordByPhone.isValid()) {
+                      handleResetPasswordByPhone()
+                    }
+                    else {
+                      console.log("email or password is empty")
+                    }
+                  }} />
               </Flex>
             </form>
           ) : null}
