@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, Container, Flex } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
-import useStyles from './Cookie_policy.style';
+import useStyles from './CookiePolicy.style';
 import { useStores } from '@/models';
 
 export const CookiePolicy = () => {

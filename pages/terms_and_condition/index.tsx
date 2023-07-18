@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, Container, useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
-import useStyles from './Terms_and_condition.style';
+import useStyles from './TermsAndCondition.style';
 import { useStores } from '@/models';
 
 export const TermsAndConditionAndPolicy = () => {
