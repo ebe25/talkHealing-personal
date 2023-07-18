@@ -31,8 +31,8 @@
       "select": "يختار",
       "submit": "إرسال",
       "save": "يحفظ",
-      "see details": "انظر التفاصيل",
-      "buy now": "اشتري الآن",
+      "seeDetails": "انظر التفاصيل",
+      "buyNow": "اشتري الآن",
       "available seat": "مقعد متاح:"
     }
   },
@@ -84,7 +84,7 @@
       "writeName": "اكتب اسمك",
       "name": "اسم",
       "email": "بريد إلكتروني",
-      "phone number": "رقم التليفون",
+      "phoneNumber": "رقم التليفون",
       "continue": "يكمل",
       "forgetPassword": "هل نسيت كلمة السر",
       "newUser": "ليس لديك حساب؟",
