@@ -12,7 +12,7 @@ import { IconChevronDown } from '@tabler/icons-react';
 import Link from 'next/link';
 import { translate } from "../../../../i18n";
 
-export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
+export const AddNumber = (props: { incrementTimelineStep: Function }) => {
     const { i18nStore , userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
@@ -27,7 +27,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
 
     });
 
-    const submitButtonShow = (addNumberFrom.values.number && addNumberFrom.values.countriesCode)
+    let showSubmitButton = (addNumberFrom.values.number && addNumberFrom.values.countriesCode)
 
 
     // Add number api
@@ -42,7 +42,7 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                     countriesCode: ""
                 });
                 setLoader(false)
-                props.phoneNumberOtpFragment()
+                props.incrementTimelineStep()
             }
             else if (res.code == 400) {
                 if (res.error) {
@@ -133,19 +133,19 @@ export const AddNumber = (props: { phoneNumberOtpFragment: Function }) => {
                     <BaseButton
                         onClick={(e) => {
                             e.preventDefault()
-                            if (submitButtonShow)
+                            if (showSubmitButton)
                                 handleAddNumber()
                             else
                                 console.log("email or password is empty")
                         }}
                         w={'100%'}
                         mah={'39px'}
-                        style_variant={submitButtonShow ? 'filled' : 'disabled'}
-                        color_variant={submitButtonShow ? 'blue' : 'gray'}
+                        style_variant={showSubmitButton ? 'filled' : 'disabled'}
+                        color_variant={showSubmitButton ? 'blue' : 'gray'}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                            color={submitButtonShow ? theme.white : theme.colors.dark[1]}
+                            color={showSubmitButton ? theme.white : theme.colors.dark[1]}
                             txtkey={'signUpForm.login'}
                         />
                     </BaseButton>

@@ -24,13 +24,22 @@ interface signUpProps {
 
 export const SignUp = (props: signUpProps) => {
   const { classes } = useStyles();
-  const { i18nStore ,userStore } = useStores();
+  const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState<any>("");
-  const [emailOtp, setEmailOtp] = useState(false);
-  const [numberOtp, setNumberOtp] = useState(false);
-  const [enternNumber, setEnterNumber] = useState(false);
+  const MAX_TIMELINE_STEP = 3;
+  const MIN_TIMELINE_STEP = 0;
+  const [timelineStep, setTimelinestep] = useState(MIN_TIMELINE_STEP);
+
+  const incrementTimelineStep = () => {
+    setTimelinestep((prev: any) => {
+      if (prev < MAX_TIMELINE_STEP) {
+        return prev + 1;
+      } else prev;
+    });
+  };
+
 
   const signUpForm = useForm({
     initialValues: {
@@ -84,8 +93,9 @@ export const SignUp = (props: signUpProps) => {
             password1: "",
             password2: "",
           });
+          incrementTimelineStep()
           setLoader(false)
-          setEmailOtp(true)
+          // setEmailOtp(true)
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -101,13 +111,6 @@ export const SignUp = (props: signUpProps) => {
     }
   }
 
-  const addNumberFragment = () => {
-    setEnterNumber(true)
-  }
-
-  const phoneNumberOtpFragment = () => {
-    setNumberOtp(true)
-  }
 
   return (
     <Container
@@ -146,7 +149,7 @@ export const SignUp = (props: signUpProps) => {
           xl={5}
         >
           {/* SignUp page */}
-          {!emailOtp ? (
+          {timelineStep == 0 ? (
             <Flex gap={26}
               direction={'column'}
             >
@@ -281,19 +284,19 @@ export const SignUp = (props: signUpProps) => {
 
 
           {/* Email Otp Fragment */}
-          {emailOtp && !enternNumber && !numberOtp ? (
-            <EmailOtp email={signUpForm.values.email} addNumberFragment={addNumberFragment} />
+          {timelineStep == 1 ? (
+            <EmailOtp email={signUpForm.values.email} incrementTimelineStep={incrementTimelineStep} />
           ) : null}
 
           {/* Add number Fragment */}
-          {enternNumber && emailOtp && !numberOtp ?
+          {timelineStep == 2 ?
             (
-              <AddNumber phoneNumberOtpFragment={phoneNumberOtpFragment} />
+              <AddNumber incrementTimelineStep={incrementTimelineStep} />
             )
             : null}
 
           {/* Number Otp Fragment */}
-          {numberOtp && emailOtp && enternNumber ?
+          {timelineStep == 3 ?
             (
               <PhoneNumberOtp />
             ) : null}

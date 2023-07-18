@@ -10,7 +10,7 @@ import { PinInput } from '@mantine/core';
 import { translate } from "../../../../i18n";
 import swal from 'sweetalert';
 
-export const EmailOtp = (props: { addNumberFragment: Function, email: string }) => {
+export const EmailOtp = (props: { incrementTimelineStep: Function, email: string }) => {
     const { i18nStore , userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
@@ -46,7 +46,7 @@ export const EmailOtp = (props: { addNumberFragment: Function, email: string }) 
                     emailOtp: "",
                 });
                 setLoader(false)
-                props.addNumberFragment()
+                props.incrementTimelineStep()
             }
             else if (res.code == 404) {
                 if (res.error) {
