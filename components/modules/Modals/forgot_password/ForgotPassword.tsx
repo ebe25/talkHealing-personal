@@ -31,10 +31,11 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     Phone: "Phone"
   }
   const [selectedPasswordForgotType, setSelectedPasswordForgotType] = useState<string>();
-  const [next, setNext] = useState(false);
   const theme = useMantineTheme();
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+  const [showEmailField, setShowEmailField] = useState(false);
+  const [showPhoneNumberField, setShowPhoneNumberField] = useState(false);
 
   const methodHandler = (type: string) => {
     setSelectedPasswordForgotType("")
@@ -66,7 +67,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   const CloseModal = () => {
     props.close();
     setSelectedPasswordForgotType("")
-    setNext(false);
+    setShowEmailField(false)
+    setShowPhoneNumberField(false)
     resetPasswordByPhone.setValues({
       phone: "",
       countriesCode: "",
@@ -78,10 +80,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
 
   const ContinueButton = () => {
-    (
-      (selectedPasswordForgotType === passwordForgotWays.Email) ||
-      (selectedPasswordForgotType === passwordForgotWays.Phone)
-    ) ? setNext(true) : null;
+    (selectedPasswordForgotType === passwordForgotWays.Email) ? setShowEmailField(true) : null;
+    (selectedPasswordForgotType === passwordForgotWays.Phone) ? setShowPhoneNumberField(true) : null;
   };
 
   const resetPasswordByEmail = useForm({
@@ -95,7 +95,6 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     },
   });
 
-  let isEmailValid = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(resetPasswordByEmail.values.email))
 
   // ResetPassword By Email Api call
   const handleResetPasswordByEmail = () => {
@@ -143,19 +142,14 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
       phone: (value) => {
         if (value.trim().length < 1)
           return translate("authentication.invalidPhone");
+      },
+      countriesCode: (value) => {
+        if (value.trim().length < 1)
+          return translate("authentication.invalidPhone");
       }
     },
   });
 
-
-  let isNumberValid = () => (resetPasswordByPhone.values.phone && resetPasswordByPhone.values.countriesCode)
-
-  let showConfirmButton = (
-    (selectedPasswordForgotType === passwordForgotWays.Email && !next)
-    || (selectedPasswordForgotType === passwordForgotWays.Phone && !next)
-    || (selectedPasswordForgotType === passwordForgotWays.Email && isEmailValid())
-    || (selectedPasswordForgotType === passwordForgotWays.Phone && isNumberValid())
-  )
 
   // smsPasswordReset By Phone Number Api
   const handleResetPasswordByPhone = () => {
@@ -191,6 +185,21 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     }
   }
 
+  const CancelButton = () => (
+    <BaseButton
+      onClick={() => {
+        CloseModal()
+      }}
+      style_variant={'filled'}
+      color_variant={'gray'}
+      w={isPhone ? '100%' : '47%'}
+      h={'45px'}
+    >
+      <BaseText txtkey={'global.button.cancel'} />
+    </BaseButton>
+  )
+
+
   return (
     <>
       <BaseModal
@@ -201,8 +210,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         onClose={props.close}
       >
         {loader ? (
-          <Flex justify={"center"}>
-            <Loader className={classes.loader} color="indigo" size="xl" variant="oval" />
+          <Flex h={'100%'} justify={"center"}>
+            <Loader className={classes.loader} color="indigo" size="sm" variant="oval" />
           </Flex>
         ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
@@ -220,57 +229,81 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
             <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p2} txtkey={"modal.forgotPassword.text"} />
           </Flex>
 
-          <form onSubmit={
-            resetPasswordByEmail.onSubmit((values) => console.log(values)) ||
-            resetPasswordByPhone.onSubmit((values) => console.log(values))
-          }>
-            <Flex direction={'column'} gap={30}>
-              {!next ? (
-                <>
-                  <Flex
-                    wrap={'wrap'}
-                    gap={'10px'}
-                    px={'10px'}
-                    w={'100%'}
-                    align={'center'}
-                    justify={'space-around'}
-                  >
-                    {/* Email Icon */}
-                    <Flex
-                      onClick={() => {
-                        methodHandler(passwordForgotWays.Email);
-                      }}
-                      className={classes.iconBox}
-                      w={'100px'}
-                      h={'100px'}
-                      style={{
-                        background: `${selectedPasswordForgotType === passwordForgotWays.Email ?
-                          theme.colors.blue[4] : theme.colors.gray[4]}`,
-                      }}
-                    >
-                      <Image width={50} alt='email_icon' style={{ margin: 'auto' }} src={Images.email} />
-                    </Flex>
-                    {/* Phone Icon */}
-                    <Flex
-                      onClick={() => {
-                        methodHandler(passwordForgotWays.Phone)
-                      }}
-                      w={'100px'}
-                      h={'100px'}
-                      className={classes.iconBox}
-                      style={{
-                        background: `${selectedPasswordForgotType === passwordForgotWays.Phone ?
-                          theme.colors.blue[4] : theme.colors.gray[4]}`,
-                      }}
-                    >
-                      <Image width={50} alt='phone_icon' style={{ margin: 'auto' }} src={Images.phone} />
-                    </Flex>
-                  </Flex>
-                </>
-              ) : null}
 
-              {/* Add Email Box */}
-              {(selectedPasswordForgotType === passwordForgotWays.Email) && next ? (
+
+          {!showEmailField && !showPhoneNumberField ? (
+            <Flex direction={'column'} gap={30}>
+              <Flex
+                wrap={'wrap'}
+                gap={'10px'}
+                px={'10px'}
+                w={'100%'}
+                align={'center'}
+                justify={'space-around'}
+              >
+                {/* Email Icon */}
+                <Flex
+                  onClick={() => {
+                    methodHandler(passwordForgotWays.Email);
+                  }}
+                  className={classes.iconBox}
+                  w={'100px'}
+                  h={'100px'}
+                  style={{
+                    background: `${selectedPasswordForgotType === passwordForgotWays.Email ?
+                      theme.colors.blue[4] : theme.colors.gray[4]}`,
+                  }}
+                >
+                  <Image width={50} alt='email_icon' style={{ margin: 'auto' }} src={Images.email} />
+                </Flex>
+                {/* Phone Icon */}
+                <Flex
+                  onClick={() => {
+                    methodHandler(passwordForgotWays.Phone)
+                  }}
+                  w={'100px'}
+                  h={'100px'}
+                  className={classes.iconBox}
+                  style={{
+                    background: `${selectedPasswordForgotType === passwordForgotWays.Phone ?
+                      theme.colors.blue[4] : theme.colors.gray[4]}`,
+                  }}
+                >
+                  <Image width={50} alt='phone_icon' style={{ margin: 'auto' }} src={Images.phone} />
+                </Flex>
+              </Flex>
+              <Flex
+                wrap={'wrap'}
+                gap={10}
+                w={'100%'}
+                align={'center'}
+                justify={'space-between'}
+              >
+                <CancelButton />
+                <BaseButton
+                  style_variant={'filled'}
+                  color_variant={'gray'}
+                  w={isPhone ? '100%' : '47%'}
+                  h={'45px'}
+                  bg={selectedPasswordForgotType ? theme.colors.blue[4] : ''}
+                  onClick={(e) => {
+                    ContinueButton()
+                  }}
+                >
+                  <BaseText txtkey={'global.button.confirm'} />
+                </BaseButton>
+              </Flex>
+            </Flex>
+          ) : null}
+
+
+
+          {/* Reset Password By Email */}
+          {showEmailField ? (
+            <form onSubmit={
+              resetPasswordByEmail.onSubmit((values) => console.log(values))
+            }>
+              <Flex direction={'column'} gap={30}>
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -292,10 +325,45 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                       : null}
                   </Center>
                 </Flex>
-              ) : null}
+                <Flex
+                  wrap={'wrap'}
+                  gap={10}
+                  w={'100%'}
+                  align={'center'}
+                  justify={'space-between'}
+                >
+                  <CancelButton />
+                  <BaseButton
+                    style_variant={'filled'}
+                    color_variant={'gray'}
+                    w={isPhone ? '100%' : '47%'}
+                    h={'45px'}
+                    bg={resetPasswordByEmail.isValid() ? theme.colors.blue[4] : ''}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      if (resetPasswordByEmail.isValid()) {
+                        handleResetPasswordByEmail()
+                      }
+                      else {
+                        console.log("email or password is empty")
+                      }
+                    }}
+                  >
+                    <BaseText txtkey={'global.button.confirm'} />
+                  </BaseButton>
+                </Flex>
+              </Flex>
+            </form>
+          ) : null}
 
-              {/* Add Mobile Number Box */}
-              {(selectedPasswordForgotType === passwordForgotWays.Phone) && next ? (
+
+
+          {/* Reset Password By Phone */}
+          {showPhoneNumberField ? (
+            <form onSubmit={
+              resetPasswordByPhone.onSubmit((values) => console.log(values))
+            }>
+              <Flex direction={'column'} gap={30}>
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -327,52 +395,38 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     }
                   </Center>
                 </Flex>
-              ) : null}
-
-              {/* Confirm or Cancel Button */}
-              <Flex
-                wrap={'wrap'}
-                gap={10}
-                w={'100%'}
-                align={'center'}
-                justify={'space-between'}
-              >
-                <BaseButton
-                  onClick={() => {
-                    CloseModal()
-                  }}
-                  style_variant={'filled'}
-                  color_variant={'gray'}
-                  w={isPhone ? '100%' : '47%'}
-                  h={'45px'}
+                <Flex
+                  wrap={'wrap'}
+                  gap={10}
+                  w={'100%'}
+                  align={'center'}
+                  justify={'space-between'}
                 >
-                  <BaseText txtkey={'global.button.cancel'} />
-                </BaseButton>
-                <BaseButton
-                  style_variant={'filled'}
-                  color_variant={'gray'}
-                  w={isPhone ? '100%' : '47%'}
-                  h={'45px'}
-                  bg={showConfirmButton ? theme.colors.blue[4] : ''}
-                  onClick={(e) => {
-                    ContinueButton()
-                    e.preventDefault()
-                    if (resetPasswordByEmail.values.email) {
-                      handleResetPasswordByEmail()
-                    }
-                    else if (resetPasswordByPhone.values.phone) {
-                      handleResetPasswordByPhone()
-                    }
-                    else {
-                      console.log("email or password is empty")
-                    }
-                  }}
-                >
-                  <BaseText txtkey={'global.button.confirm'} />
-                </BaseButton>
+                  <CancelButton />
+                  <BaseButton
+                    style_variant={'filled'}
+                    color_variant={'gray'}
+                    w={isPhone ? '100%' : '47%'}
+                    h={'45px'}
+                    bg={resetPasswordByPhone.isValid() ? theme.colors.blue[4] : ''}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      if (resetPasswordByPhone.isValid()) {
+                        handleResetPasswordByPhone()
+                      }
+                      else {
+                        console.log("email or password is empty")
+                      }
+                    }}
+                  >
+                    <BaseText txtkey={'global.button.confirm'} />
+                  </BaseButton>
+                </Flex>
               </Flex>
-            </Flex>
-          </form>
+            </form>
+          ) : null}
+
+
         </Flex>
       </BaseModal>
     </>

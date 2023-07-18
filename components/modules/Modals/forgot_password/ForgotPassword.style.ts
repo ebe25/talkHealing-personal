@@ -4,8 +4,9 @@ import {typography } from "@/themes/Mantine/typography";
 export default createStyles((theme) => ({
   loader :{
     position: "absolute",
-     width: "40%",
-    height: "40%"
+    margin:"auto",
+    width: "20%",
+    height: "20%"
   },
   iconBox :{
     cursor: 'pointer',
