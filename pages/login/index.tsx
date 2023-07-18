@@ -40,10 +40,6 @@ export const Login = (props: loginProps) => {
     },
   });
 
-  let filled = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(loginForm.values.email) && loginForm.values.password.length > 8)
-
-  // Check Length
-  let showLoginButton = (loginForm.values.email && loginForm.values.password)
 
   //  Login Api Call
   const handleLogin = () => {
@@ -171,7 +167,7 @@ export const Login = (props: loginProps) => {
               <BaseButton
                 onClick={(e) => {
                   e.preventDefault()
-                  if (showLoginButton)
+                  if (loginForm.isValid())
                     handleLogin()
                   else {
                     console.log("email or password is empty")
@@ -180,12 +176,12 @@ export const Login = (props: loginProps) => {
                 }}
                 w={"100%"}
                 mah={'39px'}
-                style_variant={filled() ? 'filled' : 'disabled'}
-                color_variant={filled() ? 'blue' : 'gray'}
+                style_variant={loginForm.isValid() ? 'filled' : 'disabled'}
+                color_variant={loginForm.isValid() ? 'blue' : 'gray'}
               >
                 <BaseText
                   style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                  color={filled() ? theme.white : theme.colors.dark[1]}
+                  color={loginForm.isValid() ? theme.white : theme.colors.dark[1]}
                   txtkey={'signUpForm.login'}
                 />
               </BaseButton>
