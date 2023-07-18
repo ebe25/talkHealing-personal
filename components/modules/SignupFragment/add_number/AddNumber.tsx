@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { translate } from "../../../../i18n";
 
 export const AddNumber = (props: { incrementTimelineStep: Function }) => {
-    const { i18nStore , userStore } = useStores();
+    const { i18nStore, userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
@@ -24,10 +24,18 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
             countriesCode: '',
             termsOfService: false,
         },
+        validate: {
+            number: (value) => {
+                if (value.trim().length < 1)
+                    return translate('authentication.invalidNumber');
+            },
+            countriesCode: (value) => {
+                if (value.trim().length < 1)
+                    return translate('authentication.invalidNumber');
+            },
+        },
 
     });
-
-    let showSubmitButton = (addNumberFrom.values.number && addNumberFrom.values.countriesCode)
 
 
     // Add number api
@@ -133,19 +141,19 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                     <BaseButton
                         onClick={(e) => {
                             e.preventDefault()
-                            if (showSubmitButton)
+                            if (addNumberFrom.isValid())
                                 handleAddNumber()
                             else
-                                console.log("email or password is empty")
+                                console.log("phone number is empty")
                         }}
                         w={'100%'}
                         mah={'39px'}
-                        style_variant={showSubmitButton ? 'filled' : 'disabled'}
-                        color_variant={showSubmitButton ? 'blue' : 'gray'}
+                        style_variant={addNumberFrom.isValid() ? 'filled' : 'disabled'}
+                        color_variant={addNumberFrom.isValid() ? 'blue' : 'gray'}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                            color={showSubmitButton ? theme.white : theme.colors.dark[1]}
+                            color={addNumberFrom.isValid() ? theme.white : theme.colors.dark[1]}
                             txtkey={'signUpForm.login'}
                         />
                     </BaseButton>

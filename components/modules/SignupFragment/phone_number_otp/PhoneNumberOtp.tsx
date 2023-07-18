@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 
 
 export const PhoneNumberOtp = () => {
-    const { i18nStore , userStore } = useStores();
+    const { i18nStore, userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
@@ -61,8 +61,6 @@ export const PhoneNumberOtp = () => {
             }
         })
     }
-
-    const numberOtpLength = (numberOtpFrom.values.numberOtp.length == 4)
 
     // Resend Otp in Number api
     const handleResendVerificationNumber = () => {
@@ -138,7 +136,7 @@ export const PhoneNumberOtp = () => {
                     <BaseButton
                         onClick={(e) => {
                             e.preventDefault()
-                            if (numberOtpLength) {
+                            if (numberOtpFrom.isValid()) {
                                 handleNumberOtp()
                             }
                             else {
@@ -148,12 +146,12 @@ export const PhoneNumberOtp = () => {
                         }}
                         w={'100%'}
                         h={'59px'}
-                        style_variant={numberOtpLength ? 'filled' : 'disabled'}
-                        color_variant={numberOtpLength ? 'blue' : 'gray'}
+                        style_variant={numberOtpFrom.isValid() ? 'filled' : 'disabled'}
+                        color_variant={numberOtpFrom.isValid() ? 'blue' : 'gray'}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                            color={numberOtpLength ? theme.white : theme.colors.dark[1]}
+                            color={numberOtpFrom.isValid() ? theme.white : theme.colors.dark[1]}
                             txtkey={'global.button.continue'}
                         />
                     </BaseButton>

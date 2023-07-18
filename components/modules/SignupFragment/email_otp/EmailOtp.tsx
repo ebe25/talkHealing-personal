@@ -11,7 +11,7 @@ import { translate } from "../../../../i18n";
 import swal from 'sweetalert';
 
 export const EmailOtp = (props: { incrementTimelineStep: Function, email: string }) => {
-    const { i18nStore , userStore } = useStores();
+    const { i18nStore, userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
@@ -24,7 +24,6 @@ export const EmailOtp = (props: { incrementTimelineStep: Function, email: string
         },
 
         validate: {
-            email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
             emailOtp: (value) => {
                 if (value.trim().length < 4)
                     return translate('authentication.invalidOtp');
@@ -32,7 +31,6 @@ export const EmailOtp = (props: { incrementTimelineStep: Function, email: string
         },
     });
 
-    const emailOtpLength = (emailOtpFrom.values.emailOtp.length == 4)
 
     const handleEmailOtp = () => {
         setLoader(true)
@@ -134,22 +132,22 @@ export const EmailOtp = (props: { incrementTimelineStep: Function, email: string
                     <BaseButton
                         onClick={(e) => {
                             e.preventDefault()
-                            if (emailOtpLength) {
+                            if (emailOtpFrom.isValid()) {
                                 handleEmailOtp()
                             }
                             else {
-                                console.log("email or password is empty")
+                                console.log("otp is empty")
                                 emailOtpFrom.validate()
                             }
                         }}
                         w={'100%'}
                         h={'50px'}
-                        style_variant={emailOtpLength ? 'filled' : 'disabled'}
-                        color_variant={emailOtpLength ? 'blue' : 'gray'}
+                        style_variant={emailOtpFrom.isValid() ? 'filled' : 'disabled'}
+                        color_variant={emailOtpFrom.isValid() ? 'blue' : 'gray'}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                            color={emailOtpLength ? theme.white : theme.colors.dark[1]}
+                            color={emailOtpFrom.isValid() ? theme.white : theme.colors.dark[1]}
                             txtkey={'global.button.continue'}
                         />
                     </BaseButton>

@@ -65,13 +65,6 @@ export const SignUp = (props: signUpProps) => {
   });
 
 
-  let filled = () => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(signUpForm.values.email))
-    && (/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(signUpForm.values.password1)
-      && signUpForm.values.password2 == signUpForm.values.password1
-      && signUpForm.values.full_name
-    )
-
-
   // SignUp api
   const handleSignUp = () => {
     setLoader(true)
@@ -243,7 +236,7 @@ export const SignUp = (props: signUpProps) => {
                   <BaseButton
                     onClick={(e) => {
                       e.preventDefault()
-                      if (signUpForm.values.email && signUpForm.values.password1)
+                      if (signUpForm.isValid())
                         handleSignUp()
                       else {
                         console.log("email or password is empty")
@@ -252,12 +245,12 @@ export const SignUp = (props: signUpProps) => {
                     }}
                     w={'100%'}
                     mah={'39px'}
-                    style_variant={filled() ? 'filled' : 'disabled'}
-                    color_variant={filled() ? 'blue' : 'gray'}
+                    style_variant={signUpForm.isValid() ? 'filled' : 'disabled'}
+                    color_variant={signUpForm.isValid() ? 'blue' : 'gray'}
                   >
                     <BaseText
                       style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                      color={filled() ? theme.white : theme.colors.dark[1]}
+                      color={signUpForm.isValid() ? theme.white : theme.colors.dark[1]}
                       txtkey={'signUpForm.signUp'}
                     />
                   </BaseButton>
