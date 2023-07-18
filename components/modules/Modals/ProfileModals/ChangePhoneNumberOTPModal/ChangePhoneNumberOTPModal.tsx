@@ -3,7 +3,6 @@ import React from 'react';
 // mantine component
 import { Flex, Image, PinInput, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { useForm } from '@mantine/form';
 // style import
 // internals components
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -13,10 +12,11 @@ import { typography } from '../../../../../themes/Mantine/typography';
 // stores import
 import { useStores } from '@/models';
 // others import
+import { useForm } from '@mantine/form';
 import { Images } from '@/public';
 import { FinalModal } from '../FinalModal/FinalModal';
 
-export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => {
+export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
   const theme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false); 
@@ -59,7 +59,7 @@ export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => 
         <Flex direction={'column'} justify={'space-between'} w={'100%'} h={"350px"} >
           <Flex justify={'space-between'} align={'center'}>
             <BaseText
-              txtkey="profile.modal.verifyOtp"
+              txtkey="profile.modal.verifyNumber"
               style={typography.headings[i18nStore.getCurrentLanguage()].h6}
               color={theme.colors.dark[8]}
             />
@@ -75,7 +75,7 @@ export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => 
             />
           </Flex>
             <BaseText
-              txtkey="profile.modal.emailOtpPara"
+              txtkey="profile.modal.verifyNumberOtpPara"
               my={"36px"}
               color={theme.colors.gray[6]}
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -124,7 +124,7 @@ export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => 
     <FinalModal
         opened={opened}
         onClose={close}
-        para="profile.modal.passwordSuccessful"
+        para="profile.modal.afterPhoneNumberVerifypara"
     />
     </>
   );
