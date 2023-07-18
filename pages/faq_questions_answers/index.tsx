@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Accordion, Box, Container, Flex, useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
-import useStyles from './faq_questions_answers.style';
+import useStyles from './FaqQuestionsAnswers.style';
 import { useStores } from '@/models';
 import { Input } from '@/components/elements/Input/Input';
 import { translate } from "../../i18n";
