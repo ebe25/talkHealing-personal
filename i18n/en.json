@@ -37,7 +37,8 @@
       "available seat": "Available seat:",
       "openPlay": "Open play",
       "workShops": "Workshops",
-      "booking": "Booking"
+      "booking": "Booking",
+      "verify":"Verify"
     }
   },
   "profile":{
@@ -55,7 +56,22 @@
       "newPassword":"New password",
       "confirmPassword":"Confirm password",
       "passwordLength": "must be at least 8 characters",
-      "passwordSuccessful":"Password has successfully been changed"
+      "passwordSuccessful":"Password has successfully been changed",
+      "changeEmail":"Change Email",
+      "emailPara":"Please enter the new email address you would like to change.",
+      "email":"Email",
+      "verifyOtp":"Verify Email",
+      "emailOtpPara":"We have sent the OTP in your email. Please enter the OTP for the verification.",
+      "resendCode":"Didn’t get the code?",
+      "resendText":"Resend Code",
+      "emailChanged":"Email address has successfully been changed.",
+      "phoneChanged":"Phone number has successfully been changed.",
+      "paraPhoneNumber":"Please enter the new phone number you would like to change.",
+      "changePhoneNumber":"Change Phone Number",
+      "countryCode":"Select Country Code"
+    },
+    "error":{
+      "mailError":"Email is not valid."
     }
   }
 }

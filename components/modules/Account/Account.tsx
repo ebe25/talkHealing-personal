@@ -17,6 +17,7 @@ import { useStores } from '@/models';
 // other import
 import { Images } from '@/public';
 import { translate } from '@/i18n';
+import { ChangePhoneNumberModal } from '../Modals/ProfileModals/ChangePhoneNumberModal/ChangePhoneNumberModal';
 
 export const Account = () => {
     const { i18nStore } = useStores();
@@ -24,6 +25,7 @@ export const Account = () => {
     const theme = useMantineTheme()
     const [opened, { open, close }] = useDisclosure(false);
     const emailChangeModal = useDisclosure(false);
+    const phoneNumberChangeModal = useDisclosure(false);
     // const [images, setImages] = useState<any>(null);
     // const onImageChange = (event: any) => {
     //     if (event.target.files && event.target.files[0]) {
@@ -128,6 +130,7 @@ export const Account = () => {
                         variant='filled'
                         rightSection={
                             <BaseText
+                                onClick={phoneNumberChangeModal[1].open}
                                 className={classes.mantineInputRightSection}
                                 txtkey='profile.change'
                                 color={theme.colors.blue[4]}
@@ -165,6 +168,10 @@ export const Account = () => {
             <EmailChangeModal
                 opened={emailChangeModal[0]}
                 onClose={emailChangeModal[1].close}
+            />
+            <ChangePhoneNumberModal
+                opened={phoneNumberChangeModal[0]}
+                onClose={phoneNumberChangeModal[1].close}
             />
         </Box>
     )

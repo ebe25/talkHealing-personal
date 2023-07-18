@@ -98,7 +98,7 @@ export const typography:any = {
       "p1.5": {
         fontFamily: webFontFamily['PlusJakartaSans-Regular'],
         fontStyle: 'Regular',
-        fontSize: '18px',
+        fontSize: '16px',
         lineHeight: '21px',
         fontWeight: 400,
       } as React.CSSProperties,
@@ -135,7 +135,7 @@ export const typography:any = {
       "p1.5": {
         fontFamily: webFontFamily['PlusJakartaSans-Regular'],
         fontStyle: 'Regular',
-        fontSize: '18px',
+        fontSize: '16px',
         lineHeight: '21px',
         fontWeight: 400,
       } as React.CSSProperties,
