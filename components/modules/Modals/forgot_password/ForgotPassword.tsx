@@ -26,28 +26,22 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   const isTablet = useMediaQuery('(max-width:900px)');
   const { classes } = useStyles();
   const { i18nStore, userStore } = useStores()
-  const [selectEmail, setSelectEmail] = useState(false);
-  const [selectPhone, setSelectPhone] = useState(false);
+  const passwordForgotWays = {
+    Email: "Email",
+    Phone: "Phone"
+  }
+  const [selectedPasswordForgotType, setSelectedPasswordForgotType] = useState<string>();
   const [next, setNext] = useState(false);
   const theme = useMantineTheme();
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
 
-  const SelectType = (type: string) => {
-    if (type == 'email' && selectEmail == true) {
-      setSelectEmail(false);
-    } else if (type == 'phone' && selectPhone == true) {
-      setSelectPhone(false);
-    } else if (type == 'email') {
-      setSelectEmail(true);
-      setSelectPhone(false);
-    } else if (type == 'phone') {
-      setSelectPhone(true);
-      setSelectEmail(false);
-    } else {
-      setSelectPhone(false);
-      setSelectEmail(false);
-    }
+  const methodHandler = (type: string) => {
+    setSelectedPasswordForgotType("")
+    if (type == passwordForgotWays.Email)
+      setSelectedPasswordForgotType(passwordForgotWays.Email)
+    if (type == passwordForgotWays.Phone)
+      setSelectedPasswordForgotType(passwordForgotWays.Phone)
   };
 
   // countriesCode
@@ -70,9 +64,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
   // close Modal function
   const CloseModal = () => {
-    props.close()
-    setSelectPhone(false);
-    setSelectEmail(false);
+    props.close();
+    setSelectedPasswordForgotType("")
     setNext(false);
     resetPasswordByPhone.setValues({
       phone: "",
@@ -85,7 +78,10 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
 
   const ContinueButton = () => {
-    selectEmail || selectPhone ? setNext(true) : null;
+    (
+      (selectedPasswordForgotType === passwordForgotWays.Email) ||
+      (selectedPasswordForgotType === passwordForgotWays.Phone)
+    ) ? setNext(true) : null;
   };
 
   const resetPasswordByEmail = useForm({
@@ -154,7 +150,12 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
   let isNumberValid = () => (resetPasswordByPhone.values.phone && resetPasswordByPhone.values.countriesCode)
 
-  const showButton = ((selectEmail && !next) || (selectPhone && !next) || (selectEmail && isEmailValid()) || (selectPhone && isNumberValid()))
+  let showConfirmButton = (
+    (selectedPasswordForgotType === passwordForgotWays.Email && !next)
+    || (selectedPasswordForgotType === passwordForgotWays.Phone && !next)
+    || (selectedPasswordForgotType === passwordForgotWays.Email && isEmailValid())
+    || (selectedPasswordForgotType === passwordForgotWays.Phone && isNumberValid())
+  )
 
   // smsPasswordReset By Phone Number Api
   const handleResetPasswordByPhone = () => {
@@ -237,13 +238,14 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     {/* Email Icon */}
                     <Flex
                       onClick={() => {
-                        SelectType('email');
+                        methodHandler(passwordForgotWays.Email);
                       }}
                       className={classes.iconBox}
                       w={'100px'}
                       h={'100px'}
                       style={{
-                        background: `${selectEmail ? theme.colors.blue[4] : theme.colors.gray[4]}`,
+                        background: `${selectedPasswordForgotType === passwordForgotWays.Email ?
+                          theme.colors.blue[4] : theme.colors.gray[4]}`,
                       }}
                     >
                       <Image width={50} alt='email_icon' style={{ margin: 'auto' }} src={Images.email} />
@@ -251,13 +253,14 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     {/* Phone Icon */}
                     <Flex
                       onClick={() => {
-                        SelectType('phone');
+                        methodHandler(passwordForgotWays.Phone)
                       }}
                       w={'100px'}
                       h={'100px'}
                       className={classes.iconBox}
                       style={{
-                        background: `${selectPhone ? theme.colors.blue[4] : theme.colors.gray[4]}`,
+                        background: `${selectedPasswordForgotType === passwordForgotWays.Phone ?
+                          theme.colors.blue[4] : theme.colors.gray[4]}`,
                       }}
                     >
                       <Image width={50} alt='phone_icon' style={{ margin: 'auto' }} src={Images.phone} />
@@ -267,7 +270,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
               ) : null}
 
               {/* Add Email Box */}
-              {selectEmail && next ? (
+              {(selectedPasswordForgotType === passwordForgotWays.Email) && next ? (
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -292,7 +295,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
               ) : null}
 
               {/* Add Mobile Number Box */}
-              {selectPhone && next ? (
+              {(selectedPasswordForgotType === passwordForgotWays.Phone) && next ? (
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -350,7 +353,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   color_variant={'gray'}
                   w={isPhone ? '100%' : '47%'}
                   h={'45px'}
-                  bg={showButton ? theme.colors.blue[4] : ''}
+                  bg={showConfirmButton ? theme.colors.blue[4] : ''}
                   onClick={(e) => {
                     ContinueButton()
                     e.preventDefault()

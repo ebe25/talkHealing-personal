@@ -53,8 +53,8 @@
     "modal":{
       "forgotPassword":{
         "text":"Please enter your registered email or phone number to receive the reset link.",
-        "phone":"phone number not found",
-        "email":"email not found",
+        "phone":"Phone number not found",
+        "email":"Email not found",
         "invalidEmail" : "Invalid email",
         "invalidNumber" : "Invalid phone number"
       }
