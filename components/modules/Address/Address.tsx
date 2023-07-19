@@ -12,15 +12,12 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 //stores
 import { AddressModal } from '../Modals/ProfileModals/AddressModals/AddressModal';
 //external
-import { Country, State, City }  from 'country-state-city';
 
 export const Address = () => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false); 
-  console.log("===",Country.getAllCountries())
-  console.log("State===",State.getStatesOfCountry("IN"))
-  console.log("City===",City.getCitiesOfState("IN", "DL"))
+  
   const AddresData = [
     {
       name: 'Andrew White',
