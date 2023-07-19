@@ -17,42 +17,48 @@ import { useDisclosure } from '@mantine/hooks';
 import { FinalModal } from '../FinalModal/FinalModal';
 import { Input } from '@/components/elements/Input/Input';
 //external
-import { Country, State, City }  from 'country-state-city';
+import { Country, State, City } from 'country-state-city';
 
-export const AddressModal = (props: { opened?: any; onClose?: any }) => {
+export const AddressModal = (props: { 
+  opened?: any; 
+  onClose?: any 
+  modalHeading?: any
+}) => {
   const { i18nStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const address = useForm({
     initialValues: {
-      addressOne:"",
-      addressTwo:"",
-      country:"",
-      state:"",
-      district:"",
-      code:""
+      addressOne: '',
+      addressTwo: '',
+      country: '',
+      state: '',
+      district: '',
+      code: '',
     },
     validate: {
       addressOne: (value) => {
-        if (value.trim().length >0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
       },
       addressTwo: (value) => {
-        if (value.trim().length > 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
       },
       country: (value) => {
-        if (value.trim().length > 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
       },
       state: (value) => {
-        if (value.trim().length > 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
       },
       district: (value) => {
-        if (value.trim().length > 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
       },
       code: (value) => {
-        if (value.trim().length > 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
       },
     },
   });
+
+  console.log(address.values.addressOne,address.values.addressTwo, address.values.code, address.values.country, address.values.district, address.values.state);
 
   const handlePasswordChange = () => {
     let results = address.validate();
@@ -65,8 +71,8 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
     }
   };
 
-  let countryLists: any = []
-  
+  let countryLists: any = [];
+
   {
     Country.getAllCountries().map((key) => {
       countryLists.push({
@@ -75,13 +81,14 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
       });
     });
   }
-  const countryCode = Country.getAllCountries().filter((country) => {
-    if(country.name === address.values.country)
-    return(country.isoCode
-      )
-    }).map((country)=>country.isoCode)
 
-  let stateLists: any = []
+  const countryCode = Country.getAllCountries()
+    .filter((country) => {
+      if (country.name === address.values.country) return country.isoCode;
+    })
+    .map((country) => country.isoCode);
+
+  let stateLists: any = [];
   {
     State.getStatesOfCountry(countryCode[0]).map((key) => {
       stateLists.push({
@@ -90,11 +97,14 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
       });
     });
   }
-  const countryStateCode = State.getStatesOfCountry(countryCode[0]).filter((country) => {
-    if(country.name === address.values.state )
-    return(country.isoCode)
-  }).map((code)=>code.isoCode)
-  let stateCityLists: any = []
+
+  const countryStateCode = State.getStatesOfCountry(countryCode[0])
+    .filter((country) => {
+      if (country.name === address.values.state) return country.isoCode;
+    })
+    .map((code) => code.isoCode);
+
+  let stateCityLists: any = [];
   {
     City.getCitiesOfState(countryCode[0], countryStateCode[0]).map((key) => {
       stateCityLists.push({
@@ -102,8 +112,8 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
         value: key.name,
       });
     });
-  } 
-  
+  }
+
   return (
     <>
       <BaseModal
@@ -120,7 +130,7 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
         <form onSubmit={address.onSubmit((values) => console.log(values))}>
           <Flex justify={'space-between'} align={'center'}>
             <BaseText
-              txtkey="profile.addressButton"
+              txtkey={props.modalHeading}
               style={typography.headings[i18nStore.getCurrentLanguage()].h6}
               color={theme.colors.dark[8]}
             />
@@ -144,19 +154,18 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
             <Select
-                  mt={"xs"}
-                  searchable
-                  hoverOnSearchChange={false}
-                  placeholder={`${translate('profile.addressModal.country')}`}
-                  style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                  styles={{ rightSection: { pointerEvents: "none" } }}
-                  w={"100%"}
-                  variant='default'
-                  radius={"xl"}
-                  // size="lg"
-                  data={countryLists} 
-                  {...address.getInputProps("country")}
-                />
+              mt={'xs'}
+              searchable
+              hoverOnSearchChange={false}
+              placeholder={`${translate('profile.addressModal.country')}`}
+              style={typography.label[i18nStore.getCurrentLanguage()].l1}
+              styles={{ rightSection: { pointerEvents: 'none' } }}
+              w={'100%'}
+              variant="default"
+              radius={'xl'}
+              data={countryLists}
+              {...address.getInputProps('country')}
+            />
           </Box>
           <Box mt={'20px'}>
             <BaseText
@@ -164,28 +173,20 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
               color={theme.colors.gray[6]}
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
-                <Select
-                  mt={"xs"}
-                  searchable
-                  hoverOnSearchChange={false}
-                  placeholder={`${translate("profile.addressModal.state")}`}
-                  style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                  // rightSection={
-                  //   <Image
-                  //     src={Images.signup_chevron_icon}
-                  //     height={"6px"}
-                  //     width={"11px"}
-                  //     alt="image"
-                  //   />
-                  // }
-                  styles={{ rightSection: { pointerEvents: "none" } }}
-                  w={"100%"}
-                  variant='default'
-                  radius={"xl"}
-                  // size="lg"
-                  data={stateLists}
-                  {...address.getInputProps("state")}
-                />
+            <Select
+              mt={'xs'}
+              searchable
+              hoverOnSearchChange={false}
+              placeholder={`${translate('profile.addressModal.state')}`}
+              style={typography.label[i18nStore.getCurrentLanguage()].l1}
+              styles={{ rightSection: { pointerEvents: 'none' } }}
+              w={'100%'}
+              variant="default"
+              radius={'xl'}
+              // size="lg"
+              data={stateLists}
+              {...address.getInputProps('state')}
+            />
           </Box>
           <Box mt={'20px'}>
             <BaseText
@@ -194,27 +195,19 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
             <Select
-                  mt={"xs"}
-                  searchable
-                  hoverOnSearchChange={false}
-                  placeholder={`${translate("profile.addressModal.district")}`}
-                  style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                  // rightSection={
-                  //   <Image
-                  //     src={Images.signup_chevron_icon}
-                  //     height={"6px"}
-                  //     width={"11px"}
-                  //     alt="image"
-                  //   />
-                  // }
-                  styles={{ rightSection: { pointerEvents: "none" } }}
-                  w={"100%"}
-                  variant='default'
-                  radius={"xl"}
-                  // size="lg"
-                  data={stateCityLists}
-                  {...address.getInputProps("district")}
-                />
+              mt={'xs'}
+              searchable
+              hoverOnSearchChange={false}
+              placeholder={`${translate('profile.addressModal.district')}`}
+              style={typography.label[i18nStore.getCurrentLanguage()].l1}
+              styles={{ rightSection: { pointerEvents: 'none' } }}
+              w={'100%'}
+              variant="default"
+              radius={'xl'}
+              // size="lg"
+              data={stateCityLists}
+              {...address.getInputProps('district')}
+            />
           </Box>
           <Box mt={'20px'}>
             <BaseText
@@ -223,8 +216,8 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
             <Input
-              mt={"xs"}
-              inputMode='numeric'
+              mt={'xs'}
+              inputMode="numeric"
               placeholder={`${translate('profile.addressModal.code')}`}
               style_variant={'inputText2'}
               component={'input'}
@@ -238,7 +231,7 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
             <Input
-              mt={"xs"}
+              mt={'xs'}
               placeholder={`${translate('profile.addressModal.label1')}`}
               style_variant={'inputText2'}
               component={'input'}
@@ -252,7 +245,7 @@ export const AddressModal = (props: { opened?: any; onClose?: any }) => {
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
             <Input
-              mt={"xs"}
+              mt={'xs'}
               placeholder={`${translate('profile.addressModal.label2')}`}
               style_variant={'inputText2'}
               component={'input'}

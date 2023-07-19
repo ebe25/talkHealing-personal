@@ -1,5 +1,5 @@
 // react and next import
-import React from 'react';
+import React, { useState } from 'react';
 //styles
 import useStyles from './Address.styles';
 //mantine component
@@ -11,12 +11,15 @@ import { IconCirclePlus, IconMapPinFilled } from '@tabler/icons-react';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 //stores
 import { AddressModal } from '../Modals/ProfileModals/AddressModals/AddressModal';
+import { DeleteAddressModal } from '../Modals/ProfileModals/DeleteAddressModal/DeleteAddressModal';
 //external
 
 export const Address = () => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false); 
+  const address = useDisclosure(false); 
+  const [ modalHeading, setModalHeading ] = useState<any>();
   
   const AddresData = [
     {
@@ -39,7 +42,10 @@ export const Address = () => {
         className={classes.addNewAddressButton}
         variant="outline"
         rightIcon={<IconCirclePlus color={theme.colors.blue[5]} />}
-        onClick={open}
+        onClick={()=>{
+          setModalHeading("profile.addressButton");
+          open()
+        }}
       >
         <BaseText txtkey="profile.addressButton" color={theme.colors.blue[5]} />
       </Button>
@@ -63,6 +69,10 @@ export const Address = () => {
               <BaseButton
                 style_variant='outline'
                 color_variant='blue'
+                onClick={()=>{
+                  setModalHeading("profile.addressDetails")
+                  open()
+                }}
               >
                 <BaseText
                   txtkey='profile.editAddress'
@@ -72,6 +82,9 @@ export const Address = () => {
               <BaseButton
                 style_variant='outline'
                 color_variant='red'
+                onClick={()=>{
+                  address[1].open()
+                }}
               >
                 <BaseText
                   txtkey='profile.delete'
@@ -85,6 +98,11 @@ export const Address = () => {
       <AddressModal
         opened={opened}
         onClose={close}
+        modalHeading={modalHeading}
+      />
+      <DeleteAddressModal
+        opened={address[0]}
+        onClose={address[1].close}
       />
     </Box>
   );

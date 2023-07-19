@@ -45,6 +45,12 @@
     "phoneNumber":"رقم التليفون",
     "password":"كلمة المرور",
     "change":"يتغير",
+    "addressButton":"أضف عنوان جديد",
+    "editAddress":"تعديل العنوان",
+    "delete":"يمسح",
+    "addressDetails":"تفاصيل العنوان",
+    "deleteAddress":"حذف العنوان",
+    "deletePara":"هل أنت متأكد أنك تريد حذف هذا العنوان؟",
     "modal":{
       "changePasswordHeading":"تغيير كلمة المرور",
       "currentPassword":"كلمة السر الحالية",
@@ -60,7 +66,19 @@
       "resendCode":"ألم تحصل على الرمز؟",
       "resendText":"أعد إرسال الرمز",
       "emailChanged":"تم تغيير عنوان البريد الإلكتروني بنجاح.",
-      "phoneChanged":"تم تغيير رقم الهاتف بنجاح."
+      "phoneChanged":"تم تغيير رقم الهاتف بنجاح.",
+      "verifyNumber":"تحقق من رقم الهاتف",
+      "verifyNumberOtpPara":"لقد أرسلنا OTP في بريدك الإلكتروني. الرجاء إدخال OTP للتحقق.",
+      "phoneNumberLengthError":"الرجاء إدخال رقم",
+      "afterPhoneNumberVerifypara":"تم تغيير رقم الهاتف بنجاح."
+    },
+    "addressModal":{
+      "label1":"العنوان الأول",
+      "label2":"العنوان الثاني",
+      "country":"دولة",
+      "state":"ولاية",
+      "district":"يصرف",
+      "code":"رمز بريدي"
     },
     "error":{
       "mailError":"البريد الإلكتروني غير صالح."

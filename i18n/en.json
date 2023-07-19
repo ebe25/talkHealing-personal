@@ -50,6 +50,12 @@
     "phoneNumber":"Phone Number",
     "password":"Password",
     "change":"Change",
+    "addressButton":"Add new address",
+    "editAddress":"Edit address",
+    "delete":"Delete",
+    "addressDetails":"Address details",
+    "deleteAddress":"Delete address",
+    "deletePara":"Are you sure you want to delete this address?",
     "modal":{
       "changePasswordHeading":"Change password",
       "currentPassword":"Current password",
@@ -68,7 +74,19 @@
       "phoneChanged":"Phone number has successfully been changed.",
       "paraPhoneNumber":"Please enter the new phone number you would like to change.",
       "changePhoneNumber":"Change Phone Number",
-      "countryCode":"Select Country Code"
+      "countryCode":"Select Country Code",
+      "verifyNumber":"Verify Phone Number",
+      "verifyNumberOtpPara":"We have sent the OTP in your email. Please enter the OTP for the verification.",
+      "phoneNumberLengthError":"Please enter a number",
+      "afterPhoneNumberVerifypara":"Phone number has successfully been changed."
+    },
+    "addressModal":{
+      "label1":"Address One",
+      "label2":"Address Two",
+      "country":"Country",
+      "state":"State",
+      "district":"District",
+      "code":"Postal code"
     },
     "error":{
       "mailError":"Email is not valid."

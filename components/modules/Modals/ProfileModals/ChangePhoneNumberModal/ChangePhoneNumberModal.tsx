@@ -2,23 +2,22 @@
 import React from 'react';
 // mantine component
 import { Flex, Image, Select, Stack, useMantineTheme } from '@mantine/core';
-//external 
-import { countries } from "countries-list";
+import { useDisclosure } from '@mantine/hooks';
+import { useForm } from '@mantine/form';
 // internals components
+import { ChangePhoneNumberOTPModal } from '../ChangePhoneNumberOTPModal/ChangePhoneNumberOTPModal';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
+import { Input } from '@/components/elements/Input/Input';
 import { typography } from '../../../../../themes/Mantine/typography';
 // stores import
 import { useStores } from '@/models';
 // others import
 import { Images } from '@/public';
 import { translate } from '@/i18n';
-import { useDisclosure } from '@mantine/hooks';
-import { FinalModal } from '../FinalModal/FinalModal';
-import { Input } from '@/components/elements/Input/Input';
-import { useForm } from '@mantine/form';
-import { ChangePhoneNumberOTPModal } from '../ChangePhoneNumberOTPModal/ChangePhoneNumberOTPModal';
+// external 
+import { Country }  from 'country-state-city';
 
 export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
@@ -40,23 +39,16 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
     },
   });
 
-  const options = [
-    { label: "+966", value: "+966" },
-    { label: "+973", value: "+973" },
-    { label: "+971", value: "+971" },
-    { label: "+965", value: "+965" },
-  ];
-  // console.log("countries", countries);
-  // {
-  //   Object.keys(countries).map((key, index) => {
-  //     // if (!exclude_option.includes(countries[key]["phone"])) {
-  //       options.push({
-  //         label: "+" + countries[key]["phone"],
-  //         value: "+" + countries[key]["phone"],
-  //       });
-  //     // }
-  //   });
-  // }
+  let countryLists: any = []
+  
+  {
+    Country.getAllCountries().map((key) => {
+      countryLists.push({
+        label: "+"+ key.phonecode+" "+key.name,
+        value: "+"+ key.phonecode+" "+key.name,
+      });
+    });
+  }
 
   const handlePasswordChange = () => {
     let results = changePhoneNumber.validate();
@@ -131,7 +123,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
                   variant='filled'
                   radius={"xl"}
                   // size="lg"
-                  data={options}
+                  data={countryLists}
                   {...changePhoneNumber.getInputProps("country_code")}
                 />
           </Stack>
