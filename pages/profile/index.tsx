@@ -9,6 +9,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import useStyles from './Profile.styles';
 import { Account } from '@/components/modules/Account/Account';
 import { Address } from '@/components/modules/Address/Address';
+import { Setting } from '@/components/modules/Settings/Setting';
 //stores
 
 function StyledTabs(props: TabsProps) {
@@ -95,7 +96,7 @@ const Profile = () => {
 
         <Tabs.Panel value="Account"> <Account/> </Tabs.Panel>
         <Tabs.Panel value="Addresses"> <Address/> </Tabs.Panel>
-        <Tabs.Panel value="Settings">Account panel</Tabs.Panel>
+        <Tabs.Panel value="Settings"><Setting/></Tabs.Panel>
       </StyledTabs>
     </Container>
   );

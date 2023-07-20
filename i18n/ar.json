@@ -80,8 +80,12 @@
       "district":"يصرف",
       "code":"رمز بريدي"
     },
+    "setting":{
+      "heading":"جلسة",
+      "changeLanguage":"تغيير اللغة"
+    },
     "error":{
       "mailError":"البريد الإلكتروني غير صالح."
+    }
   }
-}
 }

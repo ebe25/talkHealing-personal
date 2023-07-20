@@ -88,6 +88,10 @@
       "district":"District",
       "code":"Postal code"
     },
+    "setting":{
+      "heading":"Setting",
+      "changeLanguage":"Change Language"
+    },
     "error":{
       "mailError":"Email is not valid."
     }
