@@ -1,7 +1,7 @@
 import React from 'react';
 import { webFontFamily } from './fonts';
 
-export const typography :any = {
+export const typography:any = {
   headings: {
     en: {
       h1: {
@@ -53,6 +53,13 @@ export const typography :any = {
         lineHeight: '24px',
         fontWeight: 600,
       } as React.CSSProperties,
+      h8: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '16px',
+        lineHeight: '15px',
+        fontWeight: 400,
+      } as React.CSSProperties,
     },
     ar: {
       h1: {
@@ -83,7 +90,6 @@ export const typography :any = {
         lineHeight: '28px',
         fontWeight: 700,
       } as React.CSSProperties,
-
       h5: {
         fontFamily: webFontFamily['PlusJakartaSans-Bold'],
         fontStyle: 'normal',
@@ -104,6 +110,20 @@ export const typography :any = {
         fontSize: '16px',
         lineHeight: '22px',
         fontWeight: 600,
+      } as React.CSSProperties,
+      h7: {
+        fontFamily: webFontFamily['PlusJakartaSans-Bold'],
+        fontStyle: 'normal',
+        fontWeight: 700,
+        fontSize: '28px',
+        lineHeight: '42px',
+      } as React.CSSProperties,
+      h8: {
+        fontFamily: webFontFamily['PlusJakartaSans-Bold'],
+        fontStyle: 'normal',
+        fontWeight: 700,
+        fontSize: '28px',
+        lineHeight: '42px',
       } as React.CSSProperties,
     },
   } ,

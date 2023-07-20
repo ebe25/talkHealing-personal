@@ -32,19 +32,47 @@ export const AvatarPaginated = types.model({
 })
 export interface AvatarPaginated extends Instance<typeof AvatarPaginated> { }
 
-// user schema 
+// // user schema 
+// export const User = types.model({
+//   ...BaseModelSchemaBase,
+//   is_password_set: types.boolean,
+//   is_phone_verified: types.boolean,
+//   is_terms_agreed: types.boolean,
+//   avatar: types.string,
+//   full_name: types.maybeNull(types.string),
+//   email: types.maybeNull(types.string),
+//   phone: types.maybeNull(types.string),
+// })
+
+// export interface UserType extends Instance<typeof User> { }
+
+export const GENDERS = {
+  MALE: "MALE",
+  FEMALE: "FEMALE",
+}
+
+// user schema
 export const User = types.model({
   ...BaseModelSchemaBase,
-  is_password_set: types.boolean,
-  is_phone_verified: types.boolean,
-  is_terms_agreed: types.boolean,
-  avatar: types.string,
+  email: types.string,
   full_name: types.maybeNull(types.string),
-  email: types.maybeNull(types.string),
+  avatar: types.string,
   phone: types.maybeNull(types.string),
+  is_terms_agreed: types.boolean,
+  is_phone_verified: types.boolean,
+  gender: types.maybeNull(types.enumeration(Object.values(GENDERS))),
+})
+export interface UserType extends Instance<typeof User> { }
+
+
+// logged in user schema
+export const LoggedInUser = types.model({
+  user: User,
+  access: types.maybeNull(types.string),
+  refresh: types.maybeNull(types.string),
 })
 
-export interface UserType extends Instance<typeof User> { }
+export interface LoggedInUserType extends Instance<typeof LoggedInUser> { }
 
 export const UserPaginated = types.model({
   ...PaginatedSchemaBase,
@@ -52,12 +80,6 @@ export const UserPaginated = types.model({
 })
 export interface UserPaginatedType extends Instance<typeof UserPaginated> { }
 
-// logged in user schema
-export const LoggedInUser = types.model({
-  key: types.string,
-})
-
-export interface LoggedInUserType extends Instance<typeof LoggedInUser> { }
 export const LoggedInUserPaginated = types.model({
   ...PaginatedSchemaBase,
   results: types.array(LoggedInUser),
