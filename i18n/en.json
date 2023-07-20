@@ -61,6 +61,8 @@
     },
     "header":{
       "booking":"BOOKING FOR EVENT",
+      "signUp": "Create account",
+      "login": "Login to your account",
       "play":"OPEN PLAY",
       "shop":"WORKSHOPS",
       "gallery":"GALLERY",
@@ -82,7 +84,9 @@
       "incSym": "Includes special symbol"
     },
     "formText":{
-      "signUp":"Sign up",
+      "signUp":"Sign up now",
+      "writeEmail": "Write your email",
+      "writePassword": "Write your password",
       "name": "Name",
       "email": "Email",
       "phoneNumber": "Phone Number",
@@ -180,7 +184,7 @@
   },
   "signUpForm": {
     "login": "Log in",
-    "forgetPassword": "Forgot Password",
+    "forgetPassword": "Forgot password?",
     "newUser": "Don't have an account? ",
     "signUp": "Sign up",
     "loginButtonText": "Login",
@@ -314,3 +318,4 @@
      "selectDate":"Select from calendar"
 }
 }
+

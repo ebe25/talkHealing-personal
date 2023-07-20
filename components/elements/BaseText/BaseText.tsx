@@ -32,7 +32,12 @@ interface BaseTextProps extends PolymorphicComponentProps<'div', TextProps> {
 
 export const BaseText = (props: BaseTextProps) => {
   return (
-    <Text fz={props.size_variant} fw={props.fontWeight_variant} c={props.color} {...props}>
+    <Text
+      fz={props.size_variant}
+      fw={props.fontWeight_variant}
+      c={props.color}
+      {...props}
+    >
       {props.txtkey ? translate(props.txtkey) : props.children}
     </Text>
   );

@@ -12,8 +12,11 @@ const TRANSFORMERS = {
     }),
     userPaginatedTransformer: (data) => ({
         ...data,
-        count: parseInt(data.count),
-        results: data.results.map(TRANSFORMERS.userTransformer)
+        user: {
+            ...data.user,
+            created_on: new Date(data.created_on),
+            edited_on: new Date(data.edited_on),
+        }
     }),
     accessTokenTransformer: (data) => ({
         ...data,
@@ -32,7 +35,7 @@ export const API_ENDPOINTS = {
         url: "/auth/login/",
         method: REQUEST_METHOD.POST,
         response: null,
-        transformer: null,
+        transformer: TRANSFORMERS.userPaginatedTransformer,
     }),
     verifyEmail: new API_ENDPOINT({
         url: "/auth/registration/verify-email/",
