@@ -37,7 +37,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   const [showEmailField, setShowEmailField] = useState(false);
   const [showPhoneNumberField, setShowPhoneNumberField] = useState(false);
 
-  const methodHandler = (type: string) => {
+  const userChoiceHandler = (type: string) => {
     setSelectedPasswordForgotType("")
     if (type == passwordForgotWays.Email)
       setSelectedPasswordForgotType(passwordForgotWays.Email)
@@ -79,7 +79,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   }
 
 
-  const continueButton = () => {
+  const goToNextModal = () => {
     (selectedPasswordForgotType === passwordForgotWays.Email) ? setShowEmailField(true) : null;
     (selectedPasswordForgotType === passwordForgotWays.Phone) ? setShowPhoneNumberField(true) : null;
   };
@@ -261,7 +261,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                 {/* Email Icon */}
                 <Flex
                   onClick={() => {
-                    methodHandler(passwordForgotWays.Email);
+                    userChoiceHandler(passwordForgotWays.Email);
                   }}
                   className={classes.iconBox}
                   w={'100px'}
@@ -276,7 +276,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                 {/* Phone Icon */}
                 <Flex
                   onClick={() => {
-                    methodHandler(passwordForgotWays.Phone)
+                    userChoiceHandler(passwordForgotWays.Phone)
                   }}
                   w={'100px'}
                   h={'100px'}
@@ -291,7 +291,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
               </Flex>
               <CancelAndConfirmButton bg={selectedPasswordForgotType ? theme.colors.blue[4] : ''}
                 onClick={() => {
-                  continueButton()
+                  goToNextModal()
                 }} />
             </Flex>
           ) : null}
