@@ -105,6 +105,21 @@ export const SignUp = (props: signUpProps) => {
   }
 
 
+  const timelinePages = [
+    // main page
+    '',
+
+    //  Email Otp Fragment
+    <EmailOtp email={signUpForm.values.email} incrementTimelineStep={incrementTimelineStep} />,
+
+    // Add number Fragment 
+    <AddNumber incrementTimelineStep={incrementTimelineStep} />,
+
+    // Number Otp Fragment
+    <PhoneNumberOtp />
+  ];
+
+
   return (
     <Container
       maw={"1400px"}
@@ -275,24 +290,8 @@ export const SignUp = (props: signUpProps) => {
             </Flex>
           ) : null}
 
-
-          {/* Email Otp Fragment */}
-          {timelineStep == 1 ? (
-            <EmailOtp email={signUpForm.values.email} incrementTimelineStep={incrementTimelineStep} />
-          ) : null}
-
-          {/* Add number Fragment */}
-          {timelineStep == 2 ?
-            (
-              <AddNumber incrementTimelineStep={incrementTimelineStep} />
-            )
-            : null}
-
-          {/* Number Otp Fragment */}
-          {timelineStep == 3 ?
-            (
-              <PhoneNumberOtp />
-            ) : null}
+          {/* Email Otp Fragment and Add number Fragment and Number Otp Fragment */}
+          {timelinePages[timelineStep]}
 
         </Grid.Col>
       </Grid>
