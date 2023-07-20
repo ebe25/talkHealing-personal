@@ -260,7 +260,7 @@ export const typography:any = {
         fontFamily: webFontFamily['PlusJakartaSans-Bold'],
         fontStyle: 'normal',
         fontWeight: 700,
-        fontSize: '40px',
+        fontSize: '14px',
         lineHeight: '50px',
       } as React.CSSProperties,
       l2: {
