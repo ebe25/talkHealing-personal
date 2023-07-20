@@ -13,9 +13,9 @@ import useStyles from './SignUp.style';
 import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from "../../i18n";
-import { EmailOtp } from "../../components/modules/SignupFragment/email_otp/EmailOtp"
-import { AddNumber } from "../../components/modules/SignupFragment/add_number/AddNumber"
-import { PhoneNumberOtp } from "../../components/modules/SignupFragment/phone_number_otp/PhoneNumberOtp"
+import { EmailOtp } from "../../components/modules/SignupFragment/EmailOtp/EmailOtp"
+import { AddNumber } from "../../components/modules/SignupFragment/AddNumber/AddNumber"
+import { PhoneNumberOtp } from "../../components/modules/SignupFragment/PhoneNumberOtp/PhoneNumberOtp"
 
 
 interface signUpProps {
