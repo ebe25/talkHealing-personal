@@ -36,7 +36,7 @@ export const createStyle = (
         background : theme.colors[props.color_variant][5],
         borderRadius: '44px',
         '&:not([data-disabled]):hover': { 
-        background : theme.colors[props.color_variant][5],
+          background: theme.colors[props.color_variant][5], 
         }
       },
       [STYLE_VARIANTS.subtle]: {
@@ -44,7 +44,7 @@ export const createStyle = (
         background : "white",
         borderRadius: '44px',
         '&:not([data-disabled]):hover': { 
-        background : "white",
+          background: "white", 
         }
       },
       [STYLE_VARIANTS.disabled]: {
@@ -52,7 +52,7 @@ export const createStyle = (
         background : theme.colors.gray[2],
         borderRadius: '44px',
         '&:not([data-disabled]):hover': { 
-        background : theme.colors.gray[2],
+          background: theme.colors.gray[2], 
         }
       },
       [STYLE_VARIANTS.outline]:{
@@ -60,8 +60,8 @@ export const createStyle = (
         background : "transparent",
         borderRadius: '42px',
         border:`1px solid ${theme.colors[props.color_variant][0]}`,
-        '&:not([data-disabled]):hover': {
-        background : "transparent",
+        '&:not([data-disabled]):hover': { 
+          background: "transparent", 
         }
       }
 }))};

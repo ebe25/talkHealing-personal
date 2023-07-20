@@ -5,6 +5,7 @@ import { useStores } from "@/models";
 import TermsAndCondition from './terms-and-condition';
 import PrivacyPolicy from './privacy-policy';
 import CookiePolicy from './cookie-policy';
+import { Login } from './login';
 
 export default function HomePage() {
   const {userStore}=useStores()
@@ -22,6 +23,7 @@ export default function HomePage() {
     <TermsAndCondition />
     {/* <PrivacyPolicy /> */}
     {/* <CookiePolicy /> */}
+<!--     <Login /> -->
       {/* <Welcome /> */}
       {/* <ColorSchemeToggle /> */}
     </>
