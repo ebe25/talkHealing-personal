@@ -26,9 +26,9 @@ export const FaqQuestionsAnswers = () => {
         <Container maw='1440px'>
             <Box className={classes.termsAndConditionBox}>
                 {/* Heading */}
-                <Flex gap={'25px'} wrap={'wrap'} dir={i18nStore.getCurrentLanguage() == 'en' ? 'row' : 'colums'} justify={'space-between'}>
+                <Flex gap={'25px'} wrap={'wrap'} justify={'space-between'}>
                     <BaseText color={theme.colors.black[5]} style={typography.headings[i18nStore.getCurrentLanguage()].h3} txtkey={'frequentlyAskedQuestions.heading'} />
-                    <Input variant={'filled'} radius={'8px'} w={'500px'} c={theme.colors.gray[7]} component={"input"} type='text' style_variant={'inputText1'} placeholder={`${translate('frequentlyAskedQuestions.search')}`} />
+                    <Input variant={'filled'} radius={'8px'} w={'500px'} component={"input"} type='text' style_variant={'inputText1'} placeholder={`${translate('frequentlyAskedQuestions.search')}`} />
                 </Flex>
                 {/* FaqQuestionsAnswers */}
                 <Box className={classes.faqQuestionsAnswersBox} >
