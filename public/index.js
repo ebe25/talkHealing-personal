@@ -52,7 +52,7 @@ export const Images = {
   datePoint: "./icons/datePoint.png",
   whatsapp_icon:"./icons/whatsapp_icon.png",
   gallery_item:"./image/GalleryItem.png",
-  start_Icon:"./image/Start.png",
+  start_icon:"./image/Start.png",
   email: "./image/emailIcon.png",
   phone: "./image/phoneIcon.png",
 }

@@ -64,7 +64,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   }
 
   // close Modal function
-  const CloseModal = () => {
+  const closeModal = () => {
     props.close();
     setSelectedPasswordForgotType("")
     setShowEmailField(false)
@@ -79,7 +79,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   }
 
 
-  const ContinueButton = () => {
+  const continueButton = () => {
     (selectedPasswordForgotType === passwordForgotWays.Email) ? setShowEmailField(true) : null;
     (selectedPasswordForgotType === passwordForgotWays.Phone) ? setShowPhoneNumberField(true) : null;
   };
@@ -109,7 +109,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         if (res.ok) {
           console.log("email link send successfully!")
           setLoader(false)
-          CloseModal()
+          closeModal()
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -164,7 +164,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         if (res.ok) {
           console.log("phone link send successfully!")
           setLoader(false)
-          CloseModal()
+          closeModal()
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -195,7 +195,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     >
       <BaseButton
         onClick={() => {
-          CloseModal()
+          closeModal()
         }}
         style_variant={'filled'}
         color_variant={'gray'}
@@ -240,7 +240,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                 txtkey={'authentication.formText.forgetPassword'}
               />
               <CloseButton onClick={() => {
-                CloseModal()
+                closeModal()
               }} aria-label="Close modal" iconSize={20} />
             </Flex>
             <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p2} txtkey={"modal.forgotPassword.text"} />
@@ -291,7 +291,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
               </Flex>
               <CancelAndConfirmButton bg={selectedPasswordForgotType ? theme.colors.blue[4] : ''}
                 onClick={() => {
-                  ContinueButton()
+                  continueButton()
                 }} />
             </Flex>
           ) : null}
