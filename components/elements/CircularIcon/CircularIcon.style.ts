@@ -1,6 +1,8 @@
 import { createStyles } from '@mantine/core';
 import {typography } from "@/themes/Mantine/typography";
 
+export const createStyle = (
+) => {
   return createStyles((theme) => ({
   container: {
     width:"44px",

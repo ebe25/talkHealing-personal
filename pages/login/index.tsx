@@ -207,7 +207,7 @@ export const Login = (props: loginProps) => {
               txtkey={'signUpForm.newUser'}
             />
             &nbsp;
-            <Link className={classes.link} href={'/sign_up'} >
+            <Link className={classes.link} href={'/signup'} >
               <BaseText
                 style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                 color={theme.colors.blue[4]}
