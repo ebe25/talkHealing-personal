@@ -96,7 +96,9 @@
       "changeLanguage":"Change Language",
       "push":"Push Notification",
       "emailNotification":"Email Notification",
-      "smsNotification":"SMS Notification"
+      "smsNotification":"SMS Notification",
+      "on":"ON",
+      "off":"OFF"
     },
     "error":{
       "mailError":"Email is not valid."

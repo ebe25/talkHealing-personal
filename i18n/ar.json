@@ -91,7 +91,9 @@
       "changeLanguage":"تغيير اللغة",
       "push":"دفع الإخطار",
       "emailNotification":"إعلام البريد الإلكتروني",
-      "smsNotification":"إخطار الرسائل القصيرة"
+      "smsNotification":"إخطار الرسائل القصيرة",
+      "on":"على",
+      "off":"عن"
     },
     "error":{
       "mailError":"البريد الإلكتروني غير صالح."
