@@ -37,6 +37,9 @@
     }
   },
   "profile":{
+    "tabOne":"حساب",
+    "tabTwo":"عناوين",
+    "tabThree":"إعدادات",
     "heading":"ملفي",
     "buttonChange":"يتغير",
     "buttonRemove":"يزيل",
@@ -82,7 +85,10 @@
     },
     "setting":{
       "heading":"جلسة",
-      "changeLanguage":"تغيير اللغة"
+      "changeLanguage":"تغيير اللغة",
+      "push":"دفع الإخطار",
+      "emailNotification":"إعلام البريد الإلكتروني",
+      "smsNotification":"إخطار الرسائل القصيرة"
     },
     "error":{
       "mailError":"البريد الإلكتروني غير صالح."

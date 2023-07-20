@@ -52,21 +52,27 @@ export const Setting = () => {
             justify={"space-between"}
             align={"center"}
           >
-            Push Notification 
+            <BaseText
+                txtkey='profile.setting.push'
+            /> 
             <Switch onLabel="ON" offLabel="OFF" />
           </Flex>
           <Flex
             justify={"space-between"}
             align={"center"}
           >
-            Email Notification 
+            <BaseText
+                txtkey='profile.setting.emailNotification'
+            /> 
             <Switch onLabel="ON" offLabel="OFF" />
           </Flex>
           <Flex
             justify={"space-between"}
             align={"center"}
           >
-            SMS Notification 
+            <BaseText
+                txtkey='profile.setting.smsNotification'
+            /> 
             <Switch onLabel="ON" offLabel="OFF" />
           </Flex>
         </Stack>

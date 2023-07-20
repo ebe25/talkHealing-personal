@@ -3,6 +3,7 @@ import React from 'react'
 // mantine component imports
 import { Box, Flex, Grid, Image, TextInput, useMantineTheme } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks';
+import { useForm } from '@mantine/form';
 // styles import
 import useStyles from './Account.styles';
 // component
@@ -32,6 +33,15 @@ export const Account = () => {
     //     setImages(URL.createObjectURL(event.target.files[0]));
     //     }
     // };
+
+    const address = useForm({
+        initialValues: {
+          name:"Sachin padhalni",
+          email:"sachinpadhalni9@gmail.com",
+          phoneNumber:"+918475945596",
+          password:"SachinPad@123"
+        }
+    });
 
     return (
         <Box
@@ -76,6 +86,7 @@ export const Account = () => {
                     </BaseButton>
                 </Flex>
             </Flex>
+        <form onSubmit={address.onSubmit((values) => console.log(values))}>
             <Grid className={classes.grid} >
                 <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6} >
                     <BaseText
@@ -89,6 +100,8 @@ export const Account = () => {
                         style_variant={'inputText2'} 
                         component={'input'}
                         variant='filled'
+                        disabled
+                        {...address.getInputProps('name')}
                     />
                 </Grid.Col>
                 <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6} >
@@ -103,6 +116,7 @@ export const Account = () => {
                         style_variant={'inputText2'} 
                         component={'input'}
                         variant='filled'
+                        disabled
                         rightSection={
                             <BaseText
                                 onClick={emailChangeModal[1].open}
@@ -112,6 +126,7 @@ export const Account = () => {
                                 style={typography.label[i18nStore.getCurrentLanguage()].l4}
                             />
                         }
+                        {...address.getInputProps('email')}
                     />
                 </Grid.Col>
             </Grid>
@@ -128,6 +143,7 @@ export const Account = () => {
                         style_variant={'inputText2'} 
                         component={'input'}
                         variant='filled'
+                        disabled
                         rightSection={
                             <BaseText
                                 onClick={phoneNumberChangeModal[1].open}
@@ -137,6 +153,7 @@ export const Account = () => {
                                 style={typography.label[i18nStore.getCurrentLanguage()].l4}
                             />
                         }
+                        {...address.getInputProps('phoneNumber')}
                     />
                 </Grid.Col>
                 <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6} >
@@ -151,16 +168,19 @@ export const Account = () => {
                         variant='filled'
                         type='password'
                         radius={"xl"}
+                        disabled
                         rightSection={<BaseText
                             onClick={open}
                             className={classes.mantineInputRightSection}
                             txtkey='profile.change'
                             color={theme.colors.blue[4]}
                             style={typography.label[i18nStore.getCurrentLanguage()].l4} 
-                        />}                    
+                        />}  
+                        {...address.getInputProps('password')}
                     />
                 </Grid.Col>
             </Grid>
+            </form>
             <ChangePassword
                 opened={opened}
                 onClose={close}

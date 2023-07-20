@@ -10,6 +10,7 @@ import useStyles from './Profile.styles';
 import { Account } from '@/components/modules/Account/Account';
 import { Address } from '@/components/modules/Address/Address';
 import { Setting } from '@/components/modules/Settings/Setting';
+import { translate } from '@/i18n';
 //stores
 
 function StyledTabs(props: TabsProps) {
@@ -89,9 +90,9 @@ const Profile = () => {
       <BaseText className={classes.title} txtkey="profile.heading" />
       <StyledTabs defaultValue="Account" >
         <Tabs.List>
-          <Tabs.Tab value="Account" >Account</Tabs.Tab>
-          <Tabs.Tab value="Addresses">Addresses</Tabs.Tab>
-          <Tabs.Tab value="Settings">Settings</Tabs.Tab>
+          <Tabs.Tab value="Account" > {translate("profile.tabOne")} </Tabs.Tab>
+          <Tabs.Tab value="Addresses">{translate("profile.tabTwo")}</Tabs.Tab>
+          <Tabs.Tab value="Settings">{translate("profile.tabThree")}</Tabs.Tab>
         </Tabs.List>
 
         <Tabs.Panel value="Account"> <Account/> </Tabs.Panel>

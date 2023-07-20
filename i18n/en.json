@@ -42,6 +42,9 @@
     }
   },
   "profile":{
+    "tabOne":"Account",
+    "tabTwo":"Addresses",
+    "tabThree":"Settings",
     "heading":"My profile",
     "buttonChange":"Change",
     "buttonRemove":"Remove",
@@ -90,7 +93,10 @@
     },
     "setting":{
       "heading":"Setting",
-      "changeLanguage":"Change Language"
+      "changeLanguage":"Change Language",
+      "push":"Push Notification",
+      "emailNotification":"Email Notification",
+      "smsNotification":"SMS Notification"
     },
     "error":{
       "mailError":"Email is not valid."

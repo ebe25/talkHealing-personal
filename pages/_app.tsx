@@ -43,6 +43,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     rootStore.i18nStore.setSystemDefault();
   }
   return (
+    <div dir={rootStore.i18nStore.isRTL ? "rtl" : "ltr"}>
     <RootStoreProvider value={rootStore}>
       <Head>
         <title>Mantine next example</title>
@@ -62,6 +63,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         </MantineProvider>
       </ColorSchemeProvider>
     </RootStoreProvider>
+    </div>
   );
 }
 
