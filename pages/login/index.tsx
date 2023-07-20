@@ -99,7 +99,7 @@ export const Login = (props: loginProps) => {
           <Image
             w={"100%"}
             src={props.img ? props.img : Images.login_icon}
-            alt="icon"
+            alt="login_icon"
           />
         </Grid.Col>
         <Grid.Col
@@ -158,6 +158,7 @@ export const Login = (props: loginProps) => {
                   placeholder={`${translate("authentication.formText.writePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
+                {/* error message */}
                 <Text ta={'center'} style={typography.label[i18nStore.getCurrentLanguage()].l1}
                   color={theme.colors.red[7]}>{error}</Text>
               </Flex>

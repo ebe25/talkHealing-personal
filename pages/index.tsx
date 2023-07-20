@@ -22,8 +22,6 @@ export default function HomePage() {
       {/* <Welcome /> */}
       {/* <ColorSchemeToggle /> */}
     {/* <Login /> */}
-      {/* <Welcome /> */}
-      {/* <ColorSchemeToggle /> */}
     </>
   );
 }

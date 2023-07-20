@@ -1,6 +1,5 @@
 import { createStyles } from '@mantine/core';
 import { Images } from '../../public/index';
-import {typography } from "@/themes/Mantine/typography";
 
 export default createStyles((theme) => ({
   container: {
