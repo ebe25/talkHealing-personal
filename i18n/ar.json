@@ -67,6 +67,7 @@
   "authentication": {
     "invalidEmail": "بريد إلكتروني خاطئ",
     "invalidPhone" : "رقم الهاتف غير صالح",
+    "invalidPassword" : "رمز مرور خاطئ",
     "strings": {
       "incChar": "يتألف من 6 أحرف على الأقل",
       "incNum": "يشمل الرقم",

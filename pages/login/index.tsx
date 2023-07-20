@@ -13,6 +13,9 @@ import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '@/i18n';
+import { ForgotPassword } from '../../components/modules/Modals/ForgotPassword/ForgotPassword';
+import { useDisclosure } from '@mantine/hooks';
+
 
 interface loginProps {
   img?: string;
@@ -23,7 +26,9 @@ export const Login = (props: loginProps) => {
   const theme = useMantineTheme();
   const { i18nStore, userStore } = useStores()
   const [loader, setLoader] = useState(false);
-  const [error, setError] = useState<any>("")
+  const [error, setError] = useState<any>("");
+  const [opened, { open, close }] = useDisclosure(false);
+
 
   const loginForm = useForm({
     initialValues: {
@@ -154,14 +159,15 @@ export const Login = (props: loginProps) => {
               </Flex>
               {/* ForgetPassword */}
               <Center>
-                <Link className={classes.link} href={'/'}>
-                  <BaseText
-                    ta="center"
-                    style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                    color={theme.colors.dark[8]}
-                    txtkey={'signUpForm.forgetPassword'}
-                  />
-                </Link>
+                <BaseText
+                  onClick={open}
+                  className={classes.link}
+                  ta="center"
+                  style={typography.label[i18nStore.getCurrentLanguage()].l1}
+                  color={theme.colors.dark[8]}
+                  txtkey={'signUpForm.forgetPassword'}
+                />
+                <ForgotPassword opened={opened} close={close} />
               </Center>
               {/* Login Button */}
               <BaseButton

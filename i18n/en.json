@@ -76,6 +76,7 @@
   "authentication": {
     "invalidEmail": "Invalid email",
     "invalidPhone" : "Invalid phone",
+    "invalidPassword" : "Invalid Password",
     "strings": {
       "incChar": "Includes at least 6 characters",
       "incNum": "Includes number",
