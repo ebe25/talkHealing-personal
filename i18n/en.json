@@ -38,7 +38,9 @@
       "openPlay": "Open play",
       "workShops": "Workshops",
       "booking": "Booking",
-      "verify":"Verify"
+      "verify":"Verify",
+      "deleteAccount":"Delete Account",
+      "logOut":"Log Out"
     }
   },
   "profile":{
@@ -82,6 +84,14 @@
       "verifyNumberOtpPara":"We have sent the OTP in your email. Please enter the OTP for the verification.",
       "phoneNumberLengthError":"Please enter a number",
       "afterPhoneNumberVerifypara":"Phone number has successfully been changed."
+    },
+    "logOutModal":{
+      "heading":"Log out of your account",
+      "para":"Are you sure you want to log out of your account now?"
+    },
+    "deleteModal":{
+      "heading":"Delete account",
+      "para":"Are you sure you want to delete your account now?"
     },
     "addressModal":{
       "label1":"Address One",

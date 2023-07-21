@@ -6,8 +6,11 @@ export default createStyles((theme) => ({
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     marginTop: "50px",
     ...typography.headings.en.h2,
-    // [theme.fn.smallerThan('md')]: {
-    //   fontSize: 50,
-    // },
   },
+  deleteAndLogout:{
+    marginTop: "",
+    [theme.fn.smallerThan('xs')]: {
+      marginTop: "10px",
+    },
+  }
 }));

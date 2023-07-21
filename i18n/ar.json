@@ -33,7 +33,9 @@
       "save": "يحفظ",
       "see details": "انظر التفاصيل",
       "buy now": "اشتري الآن",
-      "available seat": "مقعد متاح:"
+      "available seat": "مقعد متاح:",
+      "deleteAccount":"Delete Account",
+      "logOut":"Log Out"
     }
   },
   "profile":{
@@ -77,6 +79,14 @@
       "verifyNumberOtpPara":"لقد أرسلنا OTP في بريدك الإلكتروني. الرجاء إدخال OTP للتحقق.",
       "phoneNumberLengthError":"الرجاء إدخال رقم",
       "afterPhoneNumberVerifypara":"تم تغيير رقم الهاتف بنجاح."
+    },
+    "logOutModal":{
+      "heading":"Log out of your account",
+      "para":"Are you sure you want to log out of your account now?"
+    },
+    "deleteModal":{
+      "heading":"Delete account",
+      "para":"Are you sure you want to delete your account now?"
     },
     "addressModal":{
       "label1":"العنوان الأول",

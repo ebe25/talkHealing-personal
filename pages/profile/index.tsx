@@ -1,7 +1,7 @@
 // React and next imports
 import React from 'react';
 // mantine component imports
-import { Container, Tabs, TabsProps, useMantineTheme } from '@mantine/core';
+import { Container, Flex, Tabs, TabsProps, useMantineTheme } from '@mantine/core';
 import { typography } from '../../themes/Mantine/typography';
 // components
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -9,8 +9,11 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import useStyles from './Profile.styles';
 import { Account } from '@/components/modules/Account/Account';
 import { Address } from '@/components/modules/Address/Address';
-import { Setting } from '@/components/modules/Settings/Settings';
+import { Settings } from '@/components/modules/Settings/Settings';
 import { translate } from '@/i18n';
+import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
+import { useDisclosure } from '@mantine/hooks';
+import { LogOutModal } from '@/components/modules/Modals/ProfileModals/LogOutModal/LogOutModal';
 //stores
 
 function StyledTabs(props: TabsProps) {
@@ -84,22 +87,63 @@ function StyledTabs(props: TabsProps) {
 
 const Profile = () => {
   const { classes } = useStyles();
+  const theme = useMantineTheme();
+  const [opened, { open, close }] = useDisclosure(false); 
 
   return (
+    <>
     <Container maw={'1000px'}>
       <BaseText className={classes.title} txtkey="profile.heading" />
+
       <StyledTabs defaultValue="Account" >
+      <Flex
+        justify={"space-between"}
+        align={"baseline"}
+        wrap={"wrap"}
+      >
         <Tabs.List>
           <Tabs.Tab value="Account" > {translate("profile.tabOne")} </Tabs.Tab>
           <Tabs.Tab value="Addresses">{translate("profile.tabTwo")}</Tabs.Tab>
           <Tabs.Tab value="Settings">{translate("profile.tabThree")}</Tabs.Tab>
         </Tabs.List>
 
+      <Flex
+        gap={"lg"}
+        className={classes.deleteAndLogout}
+      >
+            <BaseButton
+              w={'100%'}
+              h={'40px'}
+              style_variant={ 'outline'}
+              color_variant={'red'}
+            >
+              <BaseText 
+                txtkey="global.button.deleteAccount" 
+                color={theme.colors.red[4]}
+              />
+            </BaseButton>
+            <BaseButton
+              w={'100%'}
+              h={'40px'}
+              style_variant={ 'outline'}
+              color_variant={ 'red'}
+              onClick={open}
+            >
+              <BaseText txtkey="global.button.logOut" color={theme.colors.red[4]} />
+            </BaseButton>
+
+      </Flex>
+      </Flex>
         <Tabs.Panel value="Account"> <Account/> </Tabs.Panel>
         <Tabs.Panel value="Addresses"> <Address/> </Tabs.Panel>
-        <Tabs.Panel value="Settings"><Setting/></Tabs.Panel>
+        <Tabs.Panel value="Settings"><Settings/></Tabs.Panel>
       </StyledTabs>
     </Container>
+    <LogOutModal
+      onClose={close}
+      opened={opened}
+    />
+    </>
   );
 };
 
