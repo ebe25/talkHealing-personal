@@ -13,7 +13,16 @@ export default createStyles((theme) => ({
     },
   },
   link: {
-    cursor:"pointer",
+    cursor: "pointer",
     textDecoration: "none"
-  }
+  },
+  facebookIconBox: {
+    width: "40px",
+    height: "40px",
+    borderRadius: "100%",
+    border: `1px solid ${theme.colors.gray[4]}`,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
 }));

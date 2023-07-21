@@ -12,6 +12,7 @@ import "@/themes/Mantine/WebFonts/stylesheet.css";
 //setting up store
 import { i18nx } from "../i18n";
 import { RootStore, RootStoreProvider, setupRootStore } from "@/models";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
@@ -23,7 +24,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   };
   let currentTheme = MANTINE_THEME;
   currentTheme.colorScheme;
-  
+
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined);
 
   useEffect(() => {
@@ -43,25 +44,27 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     rootStore.i18nStore.setSystemDefault();
   }
   return (
-    <RootStoreProvider value={rootStore}>
-      <Head>
-        <title>Mantine next example</title>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <link rel="shortcut icon" href="/favicon.svg" />
-      </Head>
+    <GoogleOAuthProvider clientId="115727969785-dr3gd9rpagos187jq3mg8gphbe3hb0ds.apps.googleusercontent.com">
+      <RootStoreProvider value={rootStore}>
+        <Head>
+          <title>Mantine next example</title>
+          <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+          <link rel="shortcut icon" href="/favicon.svg" />
+        </Head>
 
-      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-        <MantineProvider
-          theme={{ ...currentTheme, colorScheme }}
-          withGlobalStyles
-          withNormalizeCSS
-          withCSSVariables
-        >
-          <Component {...pageProps} />
-          <Notifications />
-        </MantineProvider>
-      </ColorSchemeProvider>
-    </RootStoreProvider>
+        <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+          <MantineProvider
+            theme={{ ...currentTheme, colorScheme }}
+            withGlobalStyles
+            withNormalizeCSS
+            withCSSVariables
+          >
+            <Component {...pageProps} />
+            <Notifications />
+          </MantineProvider>
+        </ColorSchemeProvider>
+      </RootStoreProvider>
+    </GoogleOAuthProvider>
   );
 }
 
