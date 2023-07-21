@@ -14,7 +14,7 @@ import { useStores } from '@/models';
 import { Images } from '@/public';
 import { translate } from '@/i18n';
 import { useDisclosure } from '@mantine/hooks';
-import { FinalModal } from '../FinalModal/FinalModal';
+import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { Input } from '@/components/elements/Input/Input';
 //external
 import { Country, State, City } from 'country-state-city';
@@ -296,7 +296,7 @@ export const AddressModal = (props: {
           :null}
         </form>
       </BaseModal>
-      <FinalModal
+      <SuccessfulModal
         opened={opened}
         onClose={close}
         para="profile.addressModal.addressChangeSucccessful"

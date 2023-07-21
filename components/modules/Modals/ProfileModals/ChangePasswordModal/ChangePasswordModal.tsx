@@ -15,7 +15,7 @@ import { useStores } from '@/models';
 import { Images } from '@/public';
 import { translate } from '@/i18n';
 import { useDisclosure } from '@mantine/hooks';
-import { FinalModal } from '../FinalModal/FinalModal';
+import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
@@ -143,7 +143,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
               <BaseText txtkey="global.button.save" />
             </BaseButton>
     </BaseModal>
-    <FinalModal
+    <SuccessfulModal
         opened={opened}
         onClose={close}
         para="profile.modal.passwordSuccessful"

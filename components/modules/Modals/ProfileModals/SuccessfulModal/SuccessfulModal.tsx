@@ -1,5 +1,5 @@
 // react and nextb import
-import React, { useState } from 'react';
+import React from 'react';
 // mantine component
 import { Flex, Image, Stack } from '@mantine/core';
 // internals components
@@ -13,7 +13,7 @@ import { useStores } from '@/models';
 import { Images } from '@/public';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 
-export const FinalModal = (props: { 
+export const SuccessfulModal = (props: { 
     opened?: boolean
     onClose?: any 
     para?: any

@@ -15,7 +15,7 @@ import { useStores } from '@/models';
 // others import
 import { useForm } from '@mantine/form';
 import { Images } from '@/public';
-import { FinalModal } from '../FinalModal/FinalModal';
+import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }) => {
@@ -126,7 +126,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
             </BaseButton>
         </Flex>
     </BaseModal>
-    <FinalModal
+    <SuccessfulModal
         opened={opened}
         onClose={close}
         para="profile.modal.afterPhoneNumberVerifypara"

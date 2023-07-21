@@ -15,7 +15,7 @@ import { typography } from '../../../../../themes/Mantine/typography';
 import { useStores } from '@/models';
 // others import
 import { Images } from '@/public';
-import { FinalModal } from '../FinalModal/FinalModal';
+import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => {
@@ -126,7 +126,7 @@ export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => 
             </BaseButton>
         </Flex>
     </BaseModal>
-    <FinalModal
+    <SuccessfulModal
         opened={opened}
         onClose={close}
         para="profile.modal.emailChanged"
