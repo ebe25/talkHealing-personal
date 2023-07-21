@@ -10,7 +10,7 @@ import { PinInput } from '@mantine/core';
 import { translate } from "../../../../i18n";
 import swal from 'sweetalert';
 
-export const EmailOtp = (props: { incrementTimelineStep: Function, email: string }) => {
+export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
     const { i18nStore, userStore } = useStores();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
@@ -61,14 +61,9 @@ export const EmailOtp = (props: { incrementTimelineStep: Function, email: string
     const handleResendVerificationEmail = () => {
         setLoader(true)
 
-        userStore.resendVerificationEmail(
-            props.email
-        ).then((res) => {
+        userStore.resendVerificationEmail().then((res) => {
             if (res.ok) {
                 console.log("user resendVerificationEmail in successfully!")
-                emailOtpFrom.setValues({
-                    emailOtp: "",
-                });
                 setLoader(false)
                 swal(`${translate("header.resendVerification")}`, `${translate("header.emailSuccessfully")}`, "success")
             }

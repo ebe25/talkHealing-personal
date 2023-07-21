@@ -146,12 +146,10 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    resendVerificationEmail: flow(function* (email: string) {
+    resendVerificationEmail: flow(function* () {
       const response = yield self.environment.api.call(
         API_ENDPOINTS.resendVerificationEmail,
-        {
-          email: email,
-        }
+        {}
       );
       switch (response.status) {
         case 200:
