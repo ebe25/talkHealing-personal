@@ -206,7 +206,6 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
       </BaseButton>
       <BaseButton
         style_variant={'filled'}
-        color_variant={'gray'}
         w={isPhone ? '100%' : '47%'}
         h={'45px'}
         {...props}
@@ -289,7 +288,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   <Image width={50} alt='phone_icon' style={{ margin: 'auto' }} src={Images.phone} />
                 </Flex>
               </Flex>
-              <CancelAndConfirmButton bg={selectedPasswordForgotType ? theme.colors.blue[4] : ''}
+              <CancelAndConfirmButton
+                color_variant={selectedPasswordForgotType ? 'blue' : 'gray'}
                 onClick={() => {
                   goToNextModal()
                 }} />
@@ -325,7 +325,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                       : null}
                   </Center>
                 </Flex>
-                <CancelAndConfirmButton bg={resetPasswordByEmail.isValid() ? theme.colors.blue[4] : ''}
+                <CancelAndConfirmButton color_variant={selectedPasswordForgotType ? 'blue' : 'gray'}
                   onClick={(e: any) => {
                     e.preventDefault()
                     if (resetPasswordByEmail.isValid()) {
@@ -379,7 +379,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     }
                   </Center>
                 </Flex>
-                <CancelAndConfirmButton bg={resetPasswordByPhone.isValid() ? theme.colors.blue[4] : ''}
+                <CancelAndConfirmButton color_variant={selectedPasswordForgotType ? 'blue' : 'gray'}
                   onClick={(e: any) => {
                     e.preventDefault()
                     if (resetPasswordByPhone.isValid()) {
