@@ -14,6 +14,7 @@ import { translate } from '@/i18n';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { useDisclosure } from '@mantine/hooks';
 import { LogOutModal } from '@/components/modules/Modals/ProfileModals/LogOutModal/LogOutModal';
+import { DeleteAccountModal } from '@/components/modules/Modals/ProfileModals/DeleteAccountModal/DeleteAccountModal';
 //stores
 
 function StyledTabs(props: TabsProps) {
@@ -88,7 +89,8 @@ function StyledTabs(props: TabsProps) {
 const Profile = () => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const [opened, { open, close }] = useDisclosure(false); 
+  const [opened, { open, close }] = useDisclosure(false);
+  const deleteAccountModal = useDisclosure(false); 
 
   return (
     <>
@@ -116,6 +118,7 @@ const Profile = () => {
               h={'40px'}
               style_variant={ 'outline'}
               color_variant={'red'}
+              onClick={deleteAccountModal[1].open}
             >
               <BaseText 
                 txtkey="global.button.deleteAccount" 
@@ -142,6 +145,10 @@ const Profile = () => {
     <LogOutModal
       onClose={close}
       opened={opened}
+    />
+    <DeleteAccountModal
+      onClose={deleteAccountModal[1].close}
+      opened={deleteAccountModal[0]}
     />
     </>
   );
