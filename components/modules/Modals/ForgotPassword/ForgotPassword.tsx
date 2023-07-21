@@ -325,7 +325,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                       : null}
                   </Center>
                 </Flex>
-                <CancelAndConfirmButton color_variant={selectedPasswordForgotType ? 'blue' : 'gray'}
+                <CancelAndConfirmButton
+                  color_variant={resetPasswordByEmail.isValid() ? 'blue' : 'gray'}
                   onClick={(e: any) => {
                     e.preventDefault()
                     if (resetPasswordByEmail.isValid()) {
@@ -379,7 +380,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     }
                   </Center>
                 </Flex>
-                <CancelAndConfirmButton color_variant={selectedPasswordForgotType ? 'blue' : 'gray'}
+                <CancelAndConfirmButton color_variant={resetPasswordByPhone.isValid() ? 'blue' : 'gray'}
                   onClick={(e: any) => {
                     e.preventDefault()
                     if (resetPasswordByPhone.isValid()) {
