@@ -18,6 +18,7 @@ import { Images } from '@/public';
 import { translate } from '@/i18n';
 // external 
 import { Country }  from 'country-state-city';
+import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
@@ -87,6 +88,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
                 props.onClose();
                 changePhoneNumber.reset();
               }}
+              style={boilerPlateStyles.cursor}
               src={Images.close_modal_icon}
               alt="close_modal_icon"
               width={'14px'}

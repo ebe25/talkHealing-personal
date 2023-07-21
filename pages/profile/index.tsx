@@ -9,7 +9,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import useStyles from './Profile.styles';
 import { Account } from '@/components/modules/Account/Account';
 import { Address } from '@/components/modules/Address/Address';
-import { Setting } from '@/components/modules/Settings/Setting';
+import { Setting } from '@/components/modules/Settings/Settings';
 import { translate } from '@/i18n';
 //stores
 

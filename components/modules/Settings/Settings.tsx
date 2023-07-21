@@ -8,7 +8,7 @@ import { useStores } from '@/models';
 import  Router  from 'next/router';
 import { languageDetails } from '@/models/modules/i18n/schema';
 
-export const Setting = () => {
+export const Settings = () => {
   const { i18nStore } = useStores();
   const { classes } = useStyles();
   return (

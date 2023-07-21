@@ -5,6 +5,7 @@ import { Flex, Image, PinInput, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 // style import
+import useStyles from './EmailOTP.styles'
 // internals components
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
@@ -15,10 +16,12 @@ import { useStores } from '@/models';
 // others import
 import { Images } from '@/public';
 import { FinalModal } from '../FinalModal/FinalModal';
+import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => {
   const { i18nStore } = useStores();
   const theme = useMantineTheme();
+  const { classes } = useStyles();
   const [opened, { open, close }] = useDisclosure(false); 
 
   const otpVerify = useForm({
@@ -68,6 +71,7 @@ export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => 
               onClick={() => {
                 props.onClose();
               }}
+              style={boilerPlateStyles.cursor}
               src={Images.close_modal_icon}
               alt="close_modal_icon"
               width={'14px'}
@@ -107,6 +111,7 @@ export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => 
                 <BaseText
                     txtkey='profile.modal.resendText'
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
+                    className={classes.pointer}
                     color={theme.colors.blue[4]}
                 />
             </Flex>
@@ -124,7 +129,7 @@ export const EmailChangeOtpModal = (props: { opened?: any ; onClose?: any }) => 
     <FinalModal
         opened={opened}
         onClose={close}
-        para="profile.modal.passwordSuccessful"
+        para="profile.modal.emailChanged"
     />
     </>
   );

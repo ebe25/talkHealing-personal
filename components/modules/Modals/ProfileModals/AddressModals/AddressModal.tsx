@@ -18,11 +18,13 @@ import { FinalModal } from '../FinalModal/FinalModal';
 import { Input } from '@/components/elements/Input/Input';
 //external
 import { Country, State, City } from 'country-state-city';
+import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const AddressModal = (props: { 
   opened?: any; 
-  onClose?: any 
-  modalHeading?: any
+  onClose?: any; 
+  modalHeading?: any 
+  isEdit?: boolean
 }) => {
   const { i18nStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
@@ -38,29 +40,27 @@ export const AddressModal = (props: {
     },
     validate: {
       addressOne: (value) => {
-        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.error.addressOneError');
       },
       addressTwo: (value) => {
-        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.error.addressTwoError');
       },
       country: (value) => {
-        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.error.countryError');
       },
       state: (value) => {
-        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.error.stateError');
       },
       district: (value) => {
-        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.error.districtError');
       },
       code: (value) => {
-        if (value.trim().length == 0) return translate('profile.modal.passwordLength');
+        if (value.trim().length == 0) return translate('profile.error.postalCodeError');
       },
     },
   });
 
-  console.log(address.values.addressOne,address.values.addressTwo, address.values.code, address.values.country, address.values.district, address.values.state);
-
-  const handlePasswordChange = () => {
+  const handleAddressChange = () => {
     let results = address.validate();
     if (results.hasErrors) return;
     if (!address.isValid()) return;
@@ -69,6 +69,11 @@ export const AddressModal = (props: {
       address.reset();
       open();
     }
+  };
+  const handleEditAddress = () => {
+      props.onClose();
+      address.reset();
+      open();
   };
 
   let countryLists: any = [];
@@ -140,6 +145,7 @@ export const AddressModal = (props: {
                 props.onClose();
                 address.reset();
               }}
+              style={boilerPlateStyles.cursor}
               src={Images.close_modal_icon}
               alt="close_modal_icon"
               width={'14px'}
@@ -253,19 +259,48 @@ export const AddressModal = (props: {
             />
           </Box>
 
-          <BaseButton
+          { !props.isEdit? <BaseButton
             mt={'30px'}
             w={'100%'}
             h={'40px'}
             style_variant={!address.isValid() ? 'disabled' : 'filled'}
             color_variant={!address.isValid() ? 'gray' : 'blue'}
-            onClick={handlePasswordChange}
+            onClick={handleAddressChange}
           >
             <BaseText txtkey="global.button.save" />
-          </BaseButton>
+          </BaseButton>:null
+          }
+          {
+            props.isEdit?
+          
+          <Flex justify={'space-between'} align={'center'} gap={'md'} mt={"30px"} >
+            <BaseButton
+              w={'100%'}
+              h={'40px'}
+              style_variant={!address.isValid() ? 'disabled' : 'filled'}
+              color_variant={!address.isValid() ? 'gray' : 'blue'}
+              onClick={handleEditAddress}
+            >
+              <BaseText txtkey="global.button.save" />
+            </BaseButton>
+            <BaseButton
+              w={'100%'}
+              h={'40px'}
+              style_variant={!address.isValid() ? 'disabled' : 'outline'}
+              color_variant={!address.isValid() ? 'gray' : 'blue'}
+              onClick={handleEditAddress}
+            >
+              <BaseText txtkey="global.button.save" />
+            </BaseButton>
+          </Flex>
+          :null}
         </form>
       </BaseModal>
-      <FinalModal opened={opened} onClose={close} para="profile.modal.passwordSuccessful" />
+      <FinalModal
+        opened={opened}
+        onClose={close}
+        para="profile.addressModal.addressChangeSucccessful"
+      />
     </>
   );
 };

@@ -1,5 +1,5 @@
 // react and nextb import
-import React, { useState } from 'react';
+import React from 'react';
 // mantine component
 import { useForm } from '@mantine/form';
 import { Flex, Image, Stack, useMantineTheme } from '@mantine/core';
@@ -16,6 +16,7 @@ import { Images } from '@/public';
 import { translate } from '@/i18n';
 import { useDisclosure } from '@mantine/hooks';
 import { FinalModal } from '../FinalModal/FinalModal';
+import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
@@ -40,10 +41,13 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
     },
   });
 
+  const passwordMatch = () => changepassword.values.newPassword != changepassword.values.confirmNewPassword;
+
   const handlePasswordChange = () => {
     let results = changepassword.validate();
     if (results.hasErrors) return;
     if (!changepassword.isValid()) return;
+    if(passwordMatch())return
     else{
       props.onClose();
       changepassword.reset();
@@ -77,6 +81,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
               props.onClose();
               changepassword.reset();
             }}
+            style={boilerPlateStyles.cursor}
             src={Images.close_modal_icon}
             alt="close_modal_icon"
             width={'14px'}
@@ -121,12 +126,18 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
               />
             </Stack>
             </form>
+           { passwordMatch()  ? (
+          <BaseText
+            txtkey="profile.error.passwordMatchError"
+            color={theme.colors.red[5]}
+          />
+        ) : null}
             <BaseButton
               mt={'30px'}
               w={'100%'}
               h={'40px'}
-              style_variant={!changepassword.isValid() ? 'disabled' : 'filled'}
-              color_variant={!changepassword.isValid() ? 'gray' : 'blue'}
+              style_variant={!changepassword.isValid() || passwordMatch() ? 'disabled' : 'filled'}
+              color_variant={!changepassword.isValid() || passwordMatch() ? 'gray' : 'blue'}
               onClick={handlePasswordChange}
             >
               <BaseText txtkey="global.button.save" />

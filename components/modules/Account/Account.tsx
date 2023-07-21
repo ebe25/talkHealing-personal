@@ -36,9 +36,9 @@ export const Account = () => {
 
     const address = useForm({
         initialValues: {
-          name:"Sachin padhalni",
-          email:"sachinpadhalni9@gmail.com",
-          phoneNumber:"+918475945596",
+          name:"John Doe",
+          email:"johndoe@gmail.com",
+          phoneNumber:"+919876543219",
           password:"SachinPad@123"
         }
     });
@@ -63,6 +63,7 @@ export const Account = () => {
                 </div>
                 <Flex
                     gap={"18px"}
+                    className={classes.imageFlex}
                 >
                     <BaseButton
                         w={"125px"}

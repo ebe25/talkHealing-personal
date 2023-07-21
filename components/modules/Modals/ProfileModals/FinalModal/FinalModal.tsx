@@ -1,8 +1,7 @@
 // react and nextb import
 import React, { useState } from 'react';
 // mantine component
-import { useForm } from '@mantine/form';
-import { Flex, Image, Stack, useMantineTheme } from '@mantine/core';
+import { Flex, Image, Stack } from '@mantine/core';
 // internals components
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
@@ -12,6 +11,7 @@ import { typography } from '../../../../../themes/Mantine/typography';
 import { useStores } from '@/models';
 // others import
 import { Images } from '@/public';
+import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const FinalModal = (props: { 
     opened?: boolean
@@ -37,6 +37,7 @@ export const FinalModal = (props: {
             props.onClose();
           }}
           src={Images.close_modal_icon}
+          style={boilerPlateStyles.cursor}
           alt="close_modal_icon"
           width={'14px'}
           height={'14px'}
@@ -46,7 +47,7 @@ export const FinalModal = (props: {
         <Stack>
           <Flex w={'100%'} justify={'center'}>
             <Image
-              src={Images.successful_password__modal_img}
+              src={Images.successful_password_modal_img}
               width="226px"
               height="190px"
               alt="successful_password__modal_img"

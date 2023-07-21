@@ -5,4 +5,7 @@ export default createStyles((theme) => ({
     width: "70px",
     height: "70px",
   },
+  pointer:{
+    cursor: "pointer",
+  }
 }));

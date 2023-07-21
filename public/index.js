@@ -5,9 +5,8 @@ export const Images = {
   logout_icon: "./icons/logout_icon.png",
   next_icon: "./icons/NextIcon.png",
   person_icon: "./icons/PersonIcon.png",
-  start_Icon:"./image/Start.png",
   profile_image: "/image/profile_image.png",
   close_modal_icon: "/icons/close_modal_icon.png",
-  successful_password__modal_img: "/image/successful_password__modal_img.png"
+  successful_password_modal_img: "/image/successful_password_modal_img.png"
 }
 

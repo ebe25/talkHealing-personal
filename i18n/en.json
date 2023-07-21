@@ -89,7 +89,8 @@
       "country":"Country",
       "state":"State",
       "district":"District",
-      "code":"Postal code"
+      "code":"Postal code",
+      "addressChangeSucccessful":"New address has been added"
     },
     "setting":{
       "heading":"Setting",
@@ -101,7 +102,14 @@
       "off":"OFF"
     },
     "error":{
-      "mailError":"Email is not valid."
+      "mailError":"Email is not valid.",
+      "passwordMatchError":"New password and Confirm new password not match ",
+      "countryError":"Please select an Country",
+      "stateError":"Please select an State",
+      "districtError":"Please select an District",
+      "postalCodeError":"Please enter Postal Code",
+      "addressOneError":"Please enter Address One",
+      "addressTwoError":"Please enter Address Two"
     }
   }
 }

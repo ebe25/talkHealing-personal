@@ -19,18 +19,19 @@ export const Address = () => {
   const theme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false); 
   const address = useDisclosure(false); 
+  const editAddress = useDisclosure(false); 
   const [ modalHeading, setModalHeading ] = useState<any>();
   
-  const AddresData = [
+  const ADDRESSDATA_CONSTANT = [
     {
       name: 'Andrew White',
-      numbher: '+8562910002938',
+      number: '+8562910002938',
       address:
         'Old Airport Raod, Kodihalli, Bangalore 560008, Karnataka, India, HAL Old Airport Rd, ISRO Colony, Domlur, Bengaluru, Karnataka, India',
     },
     {
       name: 'Andrew White',
-      numbher: '+8562910002938',
+      number: '+8562910002938',
       address:
         'Old Airport Raod, Kodihalli, Bangalore 560008, Karnataka, India, HAL Old Airport Rd, ISRO Colony, Domlur, Bengaluru, Karnataka, India',
     },
@@ -49,13 +50,13 @@ export const Address = () => {
       >
         <BaseText txtkey="profile.addressButton" color={theme.colors.blue[5]} />
       </Button>
-      {AddresData.map((item, id) => {
+      {ADDRESSDATA_CONSTANT.map((item, id) => {
         return (
           <Box key={id} className={classes.addressBox}>
             <Text
               color={theme.colors.gray[5]}
             >
-            {item.name}&nbsp;&middot;&nbsp;{item.numbher}
+            {item.name}&nbsp;&middot;&nbsp;{item.number}
             </Text>
             <Flex gap={"8px"} my={"10px"} >
               <IconMapPinFilled color={"blue"} />
@@ -71,7 +72,7 @@ export const Address = () => {
                 color_variant='blue'
                 onClick={()=>{
                   setModalHeading("profile.addressDetails")
-                  open()
+                  editAddress[1].open()
                 }}
               >
                 <BaseText
@@ -99,6 +100,12 @@ export const Address = () => {
         opened={opened}
         onClose={close}
         modalHeading={modalHeading}
+      />
+      <AddressModal
+        opened={editAddress[0]}
+        onClose={editAddress[1].close}
+        modalHeading={modalHeading}
+        isEdit
       />
       <DeleteAddressModal
         opened={address[0]}

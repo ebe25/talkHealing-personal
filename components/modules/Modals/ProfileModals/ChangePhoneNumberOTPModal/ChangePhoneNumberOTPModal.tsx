@@ -4,6 +4,7 @@ import React from 'react';
 import { Flex, Image, PinInput, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 // style import
+import useStyles from './ChangePhoneNumberOTPModal.styles'
 // internals components
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
@@ -15,10 +16,12 @@ import { useStores } from '@/models';
 import { useForm } from '@mantine/form';
 import { Images } from '@/public';
 import { FinalModal } from '../FinalModal/FinalModal';
+import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
   const theme = useMantineTheme();
+  const { classes } = useStyles();
   const [opened, { open, close }] = useDisclosure(false); 
 
   const otpVerify = useForm({
@@ -69,6 +72,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
                 props.onClose();
               }}
               src={Images.close_modal_icon}
+              style={boilerPlateStyles.cursor}
               alt="close_modal_icon"
               width={'14px'}
               height={'14px'}
@@ -105,6 +109,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
                 />
                 &nbsp;
                 <BaseText
+                    className={classes.pointer}
                     txtkey='profile.modal.resendText'
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.blue[4]}

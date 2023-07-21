@@ -16,8 +16,9 @@ import { useStores } from '@/models';
 import { Images } from '@/public';
 import { translate } from '@/i18n';
 import { Input } from '@/components/elements/Input/Input';
+import { boilerPlateStyles } from '@/utils/styles/styles';
 
-export const EmailChangeModal = (props: { opened?: boolean; onClose?: any }) => {
+export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
   const emailOTP = useDisclosure(false);
   const theme = useMantineTheme();
@@ -71,6 +72,7 @@ export const EmailChangeModal = (props: { opened?: boolean; onClose?: any }) => 
                 props.onClose();
                 changeMail.reset();
               }}
+              style={boilerPlateStyles.cursor}
               src={Images.close_modal_icon}
               alt="close_modal_icon"
               width={'14px'}
