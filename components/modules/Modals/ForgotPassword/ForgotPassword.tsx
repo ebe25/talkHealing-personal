@@ -46,14 +46,14 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   };
 
   // countriesCode
-  let testItems: any = []
+  let countriesCode: any = []
   {
     Object.keys(countries).map((key, id) => {
-      testItems.push({
+      countriesCode.push({
         label: countries[key]["name"] + "(+" + countries[key]["phone"] + ")",
         value: "+" + countries[key]["phone"],
       })
-      testItems.sort((a, b) => {
+      countriesCode.sort((a, b) => {
         if (a['label'][0] < b['label'][0])
           return -1
         else if (a['label'][0] > b['label'][0])
@@ -360,7 +360,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     rightSectionWidth={30}
                     radius="xl"
                     styles={{ rightSection: { pointerEvents: 'none' } }}
-                    data={testItems}
+                    data={countriesCode}
                     {...resetPasswordByPhone.getInputProps('countriesCode')}
                   />
                   <Input
