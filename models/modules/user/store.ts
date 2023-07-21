@@ -529,10 +529,10 @@ export const UserStore = types
           );
           return ACTION_RESPONSES.success;
         case 400:
-          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.non_field_errors[0]
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data
           };
         case 401:
-          return ACTION_RESPONSES.failure;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data}
         case 500:
           return ACTION_RESPONSES.failure;
         default:
@@ -562,10 +562,10 @@ export const UserStore = types
           );
           return ACTION_RESPONSES.success;
         case 400:
-          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.non_field_errors[0]
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data
           };
         case 401:
-          return ACTION_RESPONSES.failure;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data }
         case 500:
           return ACTION_RESPONSES.failure;
         default:

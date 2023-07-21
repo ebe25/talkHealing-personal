@@ -23,6 +23,10 @@ export default createStyles((theme) => ({
     border: `1px solid ${theme.colors.gray[4]}`,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    cursor: "pointer",
+    '&:not([data-disabled]):hover': { 
+      background: theme.colors.gray[0], 
+    }
   },
 }));

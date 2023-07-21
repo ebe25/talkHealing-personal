@@ -3,17 +3,16 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Button, Center, Container, Flex, Grid, Image, Text } from '@mantine/core';
+import { Box, Center, Container, Flex, Grid, Image, Text } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
-import { CircularIcon } from '../../components/elements/CircularIcon/CircularIcon';
 import useStyles from './Login.style';
 import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '@/i18n';
-import { GoogleLogin, GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 
 
@@ -82,7 +81,12 @@ export const Login = (props: loginProps) => {
       }
       else if (res.code == 400) {
         if (res.error) {
-          alert(res.error)
+          alert(res.error.non_field_errors)
+        }
+      }
+      else if (res.code == 401) {
+        if (res.error) {
+          alert(res.error.detail)
         }
       }
     }
@@ -97,21 +101,17 @@ export const Login = (props: loginProps) => {
       }
       else if (res.code == 400) {
         if (res.error) {
-          alert(res.error)
+          alert(res.error.non_field_errors)
+        }
+      }
+      else if (res.code == 401) {
+        if (res.error) {
+          alert(res.error.detail)
         }
       }
     }
     )
   };
-
-  const loginWithGoogle = useGoogleLogin({
-    onSuccess: (response) => {
-      console.log(response)
-      console.log(response.access_token)
-    },
-    onError: (error) => console.log('Login Failed:', error)
-  });
-
 
   return (
     <Container
@@ -155,33 +155,22 @@ export const Login = (props: loginProps) => {
               {/* Social Media Login */}
               <Flex justify="center" align="center" gap={32}
               >
-                <Box className={classes.link}>
-                  <FacebookLogin
-                    appId="542240271409221"
-                    onSuccess={(response) => {
-                      console.log('Login Success!', response);
-                      onFacebookLogin(response.accessToken)
-                    }}
-                    onFail={(error) => {
-                      console.log('Login Failed!', error);
-                    }}
-                    onProfileSuccess={(response) => {
-                      console.log('Get Profile Success!', response);
-                    }}
-                    render={({ onClick }) => (
-                      <Box className={classes.facebookIconBox} onClick={onClick}>
-                        <Image width={20} src={Images.facebook_icon} />
-                      </Box>
-                    )}
-                  />
-                  {/* <CircularIcon Icon={Images.facebook_icon} /> */}
-                </Box>
-                {/* <Box onClick={() => loginWithGoogle()} className={classes.link}>
-                  <CircularIcon Icon={Images.google_icon} />
-                </Box> */}
+                <FacebookLogin
+                  appId="542240271409221"
+                  onSuccess={(response) => {
+                    onFacebookLogin(response.accessToken)
+                  }}
+                  onFail={(error) => {
+                    console.log('Login Failed!', error);
+                  }}
+                  render={({ onClick }) => (
+                    <Box className={classes.facebookIconBox} onClick={onClick}>
+                      <Image width={20} src={Images.facebook_icon} />
+                    </Box>
+                  )}
+                />
                 <GoogleLogin
                   onSuccess={credentialResponse => {
-                    console.log(credentialResponse.credential);
                     onGoogleLogin(credentialResponse.credential)
                   }}
                   type="icon"
