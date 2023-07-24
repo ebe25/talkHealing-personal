@@ -19,24 +19,11 @@ export const Settings = () => {
         />
         <Select
             mt={"10px"}
-            // classNames={{
-            //   input: classes.input,
-            //   dropdown: classes.dropdown,
-            //   item: classes.item,
-            // }}
             placeholder="English"
             onChange={async (value) => {
               await i18nStore.setAppLanguage(value);
               Router.reload();
             }}
-            // rightSection={
-            //   <Image
-            //     src={Images.dropdown_chevron_icon}
-            //     alt="dropdown_chevron_icon"
-            //     height={"6px"}
-            //     width={"11px"}
-            //   />
-            // }
             defaultValue={i18nStore.getCurrentLanguage()}
             data={[
               { value: "en", label: `${languageDetails.en.localName}` },
