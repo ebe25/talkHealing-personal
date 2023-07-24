@@ -1,7 +1,6 @@
 // react and nextb import
 import React from 'react';
 //Styles component
-import useStyles from './SuccessfulModal.styles'
 // mantine component
 import { Flex, Image, Stack } from '@mantine/core';
 // internals components
@@ -21,7 +20,6 @@ export const SuccessfulModal = (props: {
     para?: any
 }) => {
   const { i18nStore } = useStores();
-  const {classes} = useStyles();
 
   return (
     <BaseModal
@@ -34,7 +32,7 @@ export const SuccessfulModal = (props: {
       }}
       withCloseButton={false}
     >
-      <Flex justify={'flex-end'}>
+      <Flex justify={ i18nStore.isRTL?"flex-start": 'flex-end'}>
         <Image
           onClick={() => {
             props.onClose();
@@ -58,13 +56,13 @@ export const SuccessfulModal = (props: {
           </Flex>
           <BaseText
             ta={'center'}
-            mt={'30px'}
+            my={'30px'}
             txtkey={props.para}
             style={typography.headings[i18nStore.getCurrentLanguage()].h6}
           />
         </Stack>
         <BaseButton
-          className={classes.button}
+          w={"100%"}
           style_variant={'filled'}
           color_variant={'blue'}
           onClick={props.onClose}

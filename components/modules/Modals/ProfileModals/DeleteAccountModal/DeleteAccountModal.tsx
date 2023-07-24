@@ -23,6 +23,7 @@ export const DeleteAccountModal = (props: { opened?: any; onClose?: any; id?: st
         onClose={() => {
           props.onClose();
         }}
+        // dir={i18nStore.isRTL?"rtl":"ltr"}
         withCloseButton={false}
       >
             <BaseText
@@ -38,7 +39,7 @@ export const DeleteAccountModal = (props: { opened?: any; onClose?: any; id?: st
                 style={typography.paragraph[i18nStore.getCurrentLanguage()].p4}
                 color={theme.colors.gray[7]}
             />
-            <Flex justify={'space-between'} align={'center'} mt={"40px"} >
+            <Flex direction={i18nStore.isRTL?"row-reverse":"row"} justify={'space-between'} align={'center'} mt={"40px"} >
                 <BaseButton
                     w={'48%'}
                     h={'40px'}

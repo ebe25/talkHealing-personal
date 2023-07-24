@@ -1,9 +1,11 @@
 // react and nextb import
-import React, { useState } from 'react';
+import React from 'react';
 // mantine component
 import { useDisclosure } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
-import { Flex, Image, Stack, useMantineTheme } from '@mantine/core';
+import { Box, Flex, Image, useMantineTheme } from '@mantine/core';
+// styles component
+import {createStyle} from './EmailChangeModal.styles';
 // internals components
 import { EmailChangeOtpModal } from '../EmailChangeOtpModal/EmailChangeOtpModal';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -22,6 +24,8 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
   const emailOTP = useDisclosure(false);
   const theme = useMantineTheme();
+  const useStyles=createStyle()
+  const { classes } = useStyles();
   const changeMail = useForm({
     initialValues: {
       email: ''
@@ -60,7 +64,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
     >
       <form onSubmit={changeMail.onSubmit((values) => console.log(values))}>
         <Flex direction={'column'} justify={'space-between'} w={'100%'} h={"300px"} >
-          <Flex justify={'space-between'} align={'center'}>
+          <Flex direction={i18nStore.isRTL?"row-reverse":"row"} justify={'space-between'} align={'center'}>
             <BaseText
               txtkey="profile.modal.changeEmail"
               style={typography.headings[i18nStore.getCurrentLanguage()].h6}
@@ -84,8 +88,9 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
             style={typography.paragraph[i18nStore.getCurrentLanguage()]["p1.5"]}
             color={theme.colors.gray[6]}
           />
-          <Stack>
+          <Box>
             <BaseText
+              className={classes.input}
               txtkey="profile.modal.email"
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
@@ -94,9 +99,12 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
                 style_variant={'inputText2'} 
                 component={'input'}
                 variant='default'
+                classNames={{
+                  input: classes.input
+                }}
                 {...changeMail.getInputProps('email')}
             />
-          </Stack>
+          </Box>
           <BaseButton
             mt={'30px'}
             w={'100%'}

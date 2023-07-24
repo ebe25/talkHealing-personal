@@ -1,9 +1,11 @@
 // react and nextb import
 import React from 'react';
 // mantine component
-import { Flex, Image, Select, Stack, useMantineTheme } from '@mantine/core';
+import { Center, Flex, Image, Select, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
+//styles component
+import {createStyle} from './ChangePhoneNumberModal.styles';
 // internals components
 import { ChangePhoneNumberOTPModal } from '../ChangePhoneNumberOTPModal/ChangePhoneNumberOTPModal';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -22,6 +24,8 @@ import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
+  const useStyles=createStyle()
+  const { classes } = useStyles();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const changePhoneNumber = useForm({
@@ -76,7 +80,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
         withCloseButton={false}
       >
         <form onSubmit={changePhoneNumber.onSubmit((values) => console.log(values))}>
-          <Flex justify={'space-between'} align={'center'}>
+          <Flex direction={i18nStore.isRTL?"row-reverse":"row"} justify={'space-between'} align={'center'}>
             <BaseText
               txtkey="profile.modal.changePhoneNumber"
               style={typography.headings[i18nStore.getCurrentLanguage()].h6}
@@ -95,14 +99,18 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
               height={'14px'}
             />
           </Flex>
+          <Center>
+
           <BaseText
             my={"38px"}
             txtkey="profile.modal.paraPhoneNumber"
             style={typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5']}
             color={theme.colors.gray[6]}
-          />
+            />
+            </Center>
           <Stack>
             <BaseText
+              className={classes.align}
               txtkey="profile.modal.countryCode"
               color={theme.colors.gray[6]}
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -112,15 +120,9 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
                   hoverOnSearchChange={false}
                   placeholder="+966"
                   style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                  // rightSection={
-                  //   <Image
-                  //     src={Images.signup_chevron_icon}
-                  //     height={"6px"}
-                  //     width={"11px"}
-                  //     alt="image"
-                  //   />
-                  // }
-                  styles={{ rightSection: { pointerEvents: "none" } }}
+                  classNames={{ rightSection: classes.rightSection,
+                    input: classes.input
+                  }}
                   w={"100%"}
                   variant='filled'
                   radius={"xl"}
@@ -133,6 +135,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
             mt={"lg"}
           >
             <BaseText
+              className={classes.align}
               txtkey="profile.phoneNumber"
               color={theme.colors.gray[6]}
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -143,6 +146,9 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
                 inputMode='numeric' 
                 variant='filled'
                 component={'input'} 
+                classNames={{
+                  input: classes.input
+                }}
                 placeholder={`${translate('profile.phoneNumber')}`}
                 {...changePhoneNumber.getInputProps('phone')}
             />
