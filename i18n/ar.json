@@ -34,8 +34,8 @@
       "see details": "انظر التفاصيل",
       "buy now": "اشتري الآن",
       "available seat": "مقعد متاح:",
-      "deleteAccount":"Delete Account",
-      "logOut":"Log Out"
+      "deleteAccount":"حذف الحساب",
+      "logOut":"تسجيل خروج"
     }
   },
   "profile":{
@@ -81,12 +81,12 @@
       "afterPhoneNumberVerifypara":"تم تغيير رقم الهاتف بنجاح."
     },
     "logOutModal":{
-      "heading":"Log out of your account",
-      "para":"Are you sure you want to log out of your account now?"
+      "heading":"تسجيل الخروج من حسابك",
+      "para":"هل أنت متأكد أنك تريد تسجيل الخروج من حسابك الآن؟"
     },
     "deleteModal":{
-      "heading":"Delete account",
-      "para":"Are you sure you want to delete your account now?"
+      "heading":"حذف الحساب",
+      "para":"هل أنت متأكد أنك تريد حذف حسابك الآن؟"
     },
     "addressModal":{
       "label1":"العنوان الأول",
