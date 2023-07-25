@@ -13,6 +13,8 @@ import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '@/i18n';
+import { useRouter } from 'next/router';
+
 
 interface loginProps {
   img?: string;
@@ -24,6 +26,7 @@ export const Login = (props: loginProps) => {
   const theme = useMantineTheme();
   const { i18nStore, userStore } = useStores()
   const [loader, setLoader] = useState(false);
+  const router = useRouter();
   const [error, setError] = useState<any>("")
 
   const loginForm = useForm({
@@ -51,6 +54,7 @@ export const Login = (props: loginProps) => {
       userStore.loginUser(loginForm.values.email, loginForm.values.password).then((res) => {
         if (res.ok) {
           console.log("user logged in successfully!")
+          router.push('/home')
           loginForm.reset()
           setLoader(false)
         }
@@ -138,7 +142,7 @@ export const Login = (props: loginProps) => {
                   h={'44px'}
                   w={"100%"}
                   component={'input'}
-                  classNames={{input:classes.input}}
+                  classNames={{ input: classes.input }}
                   placeholder={`${translate("authentication.formText.writeEmail")}`}
                   style_variant={'inputText1'}
                   {...loginForm.getInputProps('email')}
