@@ -11,13 +11,17 @@ interface BaseSearchInput extends PolymorphicComponentProps<'input', PasswordInp
 export const BasePasswordInput = (
   props: BaseSearchInput
 ) => {
-  const useStyles = createStyle('en');
+  const useStyles = createStyle();
   const { classes } = useStyles();
 
   return (
     <PasswordInput
       {...props}
       className={classes.PasswordInput}
+      classNames={{
+        rightSection: classes.rightSection,
+        innerInput: classes.innerInput
+      }}
       placeholder={props.placeholder}
       radius="xl"
     />

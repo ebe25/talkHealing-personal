@@ -9,13 +9,14 @@ import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../../../public/index';
 import { CircularIcon } from 'components/elements/CircularIcon/CircularIcon';
 import { useStores } from '@/models';
-import useStyles from './SignupForm.style';
+import { createStyle } from './SignupForm.style';
 import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from "../../../../i18n";
 
 
 export const SignupForm = (props: { incrementTimelineStep: Function }) => {
+    const useStyles = createStyle()
     const { classes } = useStyles();
     const { i18nStore, userStore } = useStores();
     const theme = useMantineTheme();
@@ -127,6 +128,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                             w={'100%'}
                             mah={'44px'}
                             component={'input'}
+                            classNames={{ input: classes.input }}
                             placeholder={`${translate('authentication.formText.writeName')}`}
                             style_variant={'inputText1'}
                             {...signUpForm.getInputProps('full_name')}
@@ -144,6 +146,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                             w={'100%'}
                             mah={'44px'}
                             component={'input'}
+                            classNames={{ input: classes.input }}
                             placeholder={`${translate('authentication.formText.writeEmail')}`}
                             style_variant={'inputText1'}
                             {...signUpForm.getInputProps('email')}

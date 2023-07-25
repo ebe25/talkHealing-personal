@@ -11,9 +11,12 @@ import { countries } from "countries-list"
 import { IconChevronDown } from '@tabler/icons-react';
 import Link from 'next/link';
 import { translate } from "../../../../i18n";
+import { createStyle } from "./AddNumber.style"
 
 export const AddNumber = (props: { incrementTimelineStep: Function }) => {
     const { i18nStore, userStore } = useStores();
+    const useStyles = createStyle()
+    const { classes } = useStyles();
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
@@ -106,6 +109,10 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                         <Select
                             placeholder="+914"
                             rightSection={<IconChevronDown size="1rem" />}
+                            classNames={{
+                                rightSection: classes.rightSection,
+                                input: classes.input
+                            }}
                             rightSectionWidth={30}
                             radius="xl"
                             styles={{ rightSection: { pointerEvents: 'none' } }}
@@ -124,6 +131,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                             w={'100%'}
                             h={'44px'}
                             component={'input'}
+                            classNames={{ input: classes.input }}
                             type={'number'}
                             placeholder={`${translate('authentication.formText.phoneNumber')}`}
                             style_variant={'inputText1'}
