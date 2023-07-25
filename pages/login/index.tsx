@@ -18,7 +18,7 @@ interface loginProps {
   img?: string;
 }
 
-export const Login = (props: loginProps) => {
+const Login = (props: loginProps) => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const { i18nStore, userStore } = useStores()
@@ -210,3 +210,5 @@ export const Login = (props: loginProps) => {
     </Container>
   );
 };
+
+export default Login
