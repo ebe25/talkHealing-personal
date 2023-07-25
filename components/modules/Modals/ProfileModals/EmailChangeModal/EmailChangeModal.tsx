@@ -83,7 +83,8 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
               height={'14px'}
             />
           </Flex>
-          <BaseText 
+          <BaseText
+            ta={i18nStore.isRTL?"right":"left"}
             txtkey='profile.modal.emailPara'
             style={typography.paragraph[i18nStore.getCurrentLanguage()]["p1.5"]}
             color={theme.colors.gray[6]}

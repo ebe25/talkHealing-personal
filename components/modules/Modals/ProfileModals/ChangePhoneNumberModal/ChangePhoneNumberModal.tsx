@@ -99,15 +99,14 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
               height={'14px'}
             />
           </Flex>
-          <Center>
 
           <BaseText
+            ta={i18nStore.isRTL?"right":"left"}
             my={"38px"}
             txtkey="profile.modal.paraPhoneNumber"
             style={typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5']}
             color={theme.colors.gray[6]}
             />
-            </Center>
           <Stack>
             <BaseText
               className={classes.align}

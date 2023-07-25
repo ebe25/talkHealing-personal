@@ -14,6 +14,6 @@ return createStyles((theme) => ({
   },
   input: {
     textAlign: i18nStore.isRTL? "right":"left",
-    padding:" 0px 10px"
+    padding:"0px 10px"
   }
 }))}

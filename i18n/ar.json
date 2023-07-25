@@ -96,6 +96,7 @@
       "state":"ولاية",
       "district":"يصرف",
       "code":"رمز بريدي",
+      "addressChangeSucccessful":"تمت إضافة عنوان جديد",
       "saveChanges":"حفظ التغييرات",
       "cancelEdit":"إلغاء التحرير"
     },

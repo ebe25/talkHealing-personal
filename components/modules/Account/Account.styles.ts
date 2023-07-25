@@ -56,7 +56,7 @@ return createStyles((theme) => ({
     },
   },
   rightSection: { 
-    right: i18nStore.isRTL? "83%":""
+    right: i18nStore.isRTL? "80%":""
   },
   input: {
     textAlign: i18nStore.isRTL? "right":"left",
