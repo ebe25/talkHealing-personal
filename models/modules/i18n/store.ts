@@ -11,7 +11,7 @@ export const i18nStore = types
   })
   .extend(withEnvironment)
   .actions((self) => ({
-    setAppLanguage: flow(function* (language) {
+    setAppLanguage: flow(function* (language:keyof typeof languageDetails ) {
       i18nx.locale = language;
       self.isRTL = languageDetails[language].direction == "rtl";
       self.appLanguage = language;
