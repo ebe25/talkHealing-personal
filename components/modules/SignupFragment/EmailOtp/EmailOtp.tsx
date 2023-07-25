@@ -131,7 +131,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
                             }
                         }}
                         w={'100%'}
-                        h={'50px'}
+                        h={'39px'}
                         style_variant={emailOtpFrom.isValid() ? 'filled' : 'disabled'}
                         color_variant={emailOtpFrom.isValid() ? 'blue' : 'gray'}
                     >

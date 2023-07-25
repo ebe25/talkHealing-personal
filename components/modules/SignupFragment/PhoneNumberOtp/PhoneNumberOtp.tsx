@@ -142,7 +142,7 @@ export const PhoneNumberOtp = () => {
                             }
                         }}
                         w={'100%'}
-                        h={'59px'}
+                        h={'39px'}
                         style_variant={numberOtpFrom.isValid() ? 'filled' : 'disabled'}
                         color_variant={numberOtpFrom.isValid() ? 'blue' : 'gray'}
                     >
