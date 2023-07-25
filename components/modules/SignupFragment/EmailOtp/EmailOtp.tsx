@@ -39,7 +39,6 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
             emailOtpFrom.values.emailOtp,
         ).then((res) => {
             if (res.ok) {
-                console.log("user verifyEmail in successfully!")
                 emailOtpFrom.reset()
                 setLoader(false)
                 props.incrementTimelineStep()
@@ -61,7 +60,6 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
 
         userStore.resendVerificationEmail().then((res) => {
             if (res.ok) {
-                console.log("user resendVerificationEmail in successfully!")
                 setLoader(false)
                 swal(`${translate("header.resendVerification")}`, `${translate("header.emailSuccessfully")}`, "success")
             }
@@ -129,7 +127,6 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
                                 handleEmailOtp()
                             }
                             else {
-                                console.log("otp is empty")
                                 emailOtpFrom.validate()
                             }
                         }}

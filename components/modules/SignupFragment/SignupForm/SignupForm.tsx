@@ -63,7 +63,6 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                 signUpForm.values.password2
             ).then((res) => {
                 if (res.ok) {
-                    console.log("user logged in successfully!")
                     signUpForm.reset()
                     props.incrementTimelineStep()
                     setLoader(false)
@@ -188,7 +187,6 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                             if (signUpForm.isValid())
                                 handleSignUp()
                             else {
-                                console.log("email or password is empty")
                                 signUpForm.validate()
                             }
                         }}

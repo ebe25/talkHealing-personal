@@ -43,7 +43,6 @@ export const PhoneNumberOtp = () => {
             numberOtpFrom.values.numberOtp,
         ).then((res) => {
             if (res.ok) {
-                console.log("user verifyPhoneNumber in successfully!")
                 numberOtpFrom.setValues({
                     numberOtp: "",
                 });
