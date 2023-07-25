@@ -1,7 +1,7 @@
 // Use this import if you want to use "env.js" file
 // const { API_URL } = require("../../config/env")
 // Or just specify it directly like this:
-export const API_URL = "http://127.0.0.1:8000/"
+export const API_URL = "https://boilerplate.highpolar.in"
 //export const API_URL = "http://localhost:8000/"
 // export const API_URL = "https://playwheel-backend.highpolar.in"
 //export const API_URL = "http://10.0.2.2:8000"
