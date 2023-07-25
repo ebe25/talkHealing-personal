@@ -218,3 +218,5 @@ export const Login = (props: loginProps) => {
     </Container>
   );
 };
+
+export default Login
