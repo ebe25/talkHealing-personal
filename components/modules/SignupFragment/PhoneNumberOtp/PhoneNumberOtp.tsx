@@ -67,7 +67,6 @@ export const PhoneNumberOtp = () => {
 
         userStore.resendVerificationSMS().then((res) => {
             if (res.ok) {
-                console.log("user resendVerificationNumber in successfully!")
                 numberOtpFrom.setValues({
                     numberOtp: "",
                 });
@@ -139,7 +138,6 @@ export const PhoneNumberOtp = () => {
                                 handleNumberOtp()
                             }
                             else {
-                                console.log("email or password is empty")
                                 numberOtpFrom.validate()
                             }
                         }}

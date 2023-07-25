@@ -147,8 +147,6 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                             e.preventDefault()
                             if (addNumberFrom.isValid())
                                 handleAddNumber()
-                            else
-                                console.log("phone number is empty")
                         }}
                         w={'100%'}
                         mah={'39px'}
