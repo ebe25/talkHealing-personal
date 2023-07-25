@@ -150,6 +150,13 @@ export const typography:any = {
         lineHeight: '27px',
         fontWeight: 400,
       } as React.CSSProperties,
+      p5: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'Regular',
+        fontSize: '14px',
+        lineHeight: '27px',
+        fontWeight: 600,
+      } as React.CSSProperties,
     },
     ar: {
       p1: {
@@ -179,6 +186,13 @@ export const typography:any = {
         fontSize: '18px',
         lineHeight: '31px',
         fontWeight: 500,
+      } as React.CSSProperties,
+      p5: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'Regular',
+        fontSize: '14px',
+        lineHeight: '27px',
+        fontWeight: 600,
       } as React.CSSProperties,
     },
   } ,
@@ -274,6 +288,20 @@ export const typography:any = {
         lineHeight: '19px',
         fontWeight: 600,
       } as React.CSSProperties,
+      l5: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '15px',
+        lineHeight: '24px',
+        fontWeight: 500,
+      } as React.CSSProperties,
+      l6: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '17px',
+        lineHeight: '16px',
+        fontWeight: 600,
+      } as React.CSSProperties,
     },
     ar: {
       l1: {
@@ -303,6 +331,20 @@ export const typography:any = {
         fontSize: '26px',
         lineHeight: '33px',
         fontWeight: 700,
+      } as React.CSSProperties,
+      l5: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '15px',
+        lineHeight: '24px',
+        fontWeight: 500,
+      } as React.CSSProperties,
+      l6: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '17px',
+        lineHeight: '16px',
+        fontWeight: 600,
       } as React.CSSProperties,
     },
   } ,
