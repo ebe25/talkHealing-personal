@@ -110,7 +110,15 @@
       "off":"عن"
     },
     "error":{
-      "mailError":"البريد الإلكتروني غير صالح."
+      "mailError":"البريد الإلكتروني غير صالح.",
+      "passwordMatchError":"كلمة المرور الجديدة وتأكيد كلمة المرور الجديدة غير متطابقين ",
+      "countryError":"الرجاء تحديد الدولة",
+      "stateError":"الرجاء تحديد ولاية",
+      "districtError":"الرجاء تحديد منطقة",
+      "postalCodeError":"الرجاء إدخال الرمز البريدي",
+      "addressOneError":"الرجاء إدخال الرمز البريدي",
+      "addressTwoError":"الرجاء إدخال العنوان الثاني",
+      "errorMessageForOTP":"الرجاء إدخال OTP"
     }
   }
 }

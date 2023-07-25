@@ -17,6 +17,7 @@ import { useStores } from '@/models';
 import { Images } from '@/public';
 import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
+import { translate } from '@/i18n';
 
 export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
@@ -30,7 +31,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
     },
     validate: {
       otp: (value) => {
-        if (value.length != 4) return 'Please enter OTP';
+        if (value.length != 4) return translate('profile.error.errorMessageForOTP') ;
       },
     },
   });

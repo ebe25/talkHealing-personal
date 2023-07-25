@@ -121,7 +121,8 @@
       "districtError":"Please select an District",
       "postalCodeError":"Please enter Postal Code",
       "addressOneError":"Please enter Address One",
-      "addressTwoError":"Please enter Address Two"
+      "addressTwoError":"Please enter Address Two",
+      "errorMessageForOTP":"Please enter OTP"
     }
   }
 }

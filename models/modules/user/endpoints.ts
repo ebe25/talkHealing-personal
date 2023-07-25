@@ -2,20 +2,20 @@ import { API_ENDPOINT, REQUEST_METHOD } from "../../api/endpoint.types"
 import * as SCHEMAS from "./schemas"
 
 const TRANSFORMERS = {
-    referralSource: (data) => ({
+    referralSource: (data:Record<string,any>) => ({
         ...data,
     }),
-    userTransformer: (data) => ({
+    userTransformer: (data:Record<string,any>) => ({
         ...data,
         created_on: new Date(data.created_on),
         edited_on: new Date(data.edited_on),
     }),
-    userPaginatedTransformer: (data) => ({
+    userPaginatedTransformer: (data:Record<string,any>) => ({
         ...data,
         count: parseInt(data.count),
         results: data.results.map(TRANSFORMERS.userTransformer)
     }),
-    accessTokenTransformer: (data) => ({
+    accessTokenTransformer: (data:Record<string,any>) => ({
         ...data,
         user: TRANSFORMERS.userTransformer(data.user),
     }),

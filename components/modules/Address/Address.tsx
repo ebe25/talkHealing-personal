@@ -22,7 +22,7 @@ export const Address = () => {
   const editAddress = useDisclosure(false); 
   const [ modalHeading, setModalHeading ] = useState<any>();
   
-  const ADDRESSDATA_CONSTANT = [
+  const ADDRESS_DATA = [
     {
       name: 'Andrew White',
       number: '+8562910002938',
@@ -50,7 +50,7 @@ export const Address = () => {
       >
         <BaseText txtkey="profile.addressButton" color={theme.colors.blue[5]} />
       </Button>
-      {ADDRESSDATA_CONSTANT.map((item, id) => {
+      {ADDRESS_DATA.map((item, id) => {
         return (
           <Box key={id} className={classes.addressBox}>
             <Text
