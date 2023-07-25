@@ -313,16 +313,22 @@ export const AddressModal = (props: {
                 color_variant={!address.isValid() ? 'gray' : 'blue'}
                 onClick={handleEditAddress}
               >
-                <BaseText txtkey="global.button.save" />
+                <BaseText txtkey="profile.addressModal.saveChanges" />
               </BaseButton>
               <BaseButton
                 w={'100%'}
                 h={'40px'}
-                style_variant={!address.isValid() ? 'disabled' : 'outline'}
-                color_variant={!address.isValid() ? 'gray' : 'blue'}
-                onClick={handleEditAddress}
+                style_variant={ 'outline'}
+                color_variant={ 'blue'}
+                onClick={()=>{
+                  props.onClose();
+                  address.reset();
+                  // open();
+                }}
               >
-                <BaseText txtkey="global.button.save" />
+                <BaseText txtkey="profile.addressModal.cancelEdit" 
+                  color={theme.colors.blue[5]}
+                />
               </BaseButton>
             </Flex>
           ) : null}

@@ -94,7 +94,9 @@
       "country":"دولة",
       "state":"ولاية",
       "district":"يصرف",
-      "code":"رمز بريدي"
+      "code":"رمز بريدي",
+      "saveChanges":"حفظ التغييرات",
+      "cancelEdit":"إلغاء التحرير"
     },
     "setting":{
       "heading":"جلسة",

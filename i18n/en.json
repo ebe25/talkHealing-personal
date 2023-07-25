@@ -100,7 +100,9 @@
       "state":"State",
       "district":"District",
       "code":"Postal code",
-      "addressChangeSucccessful":"New address has been added"
+      "addressChangeSucccessful":"New address has been added",
+      "saveChanges":"Save Changes",
+      "cancelEdit":"Cancel edit"
     },
     "setting":{
       "heading":"Setting",
