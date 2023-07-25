@@ -1,7 +1,10 @@
 import { createStyles } from '@mantine/core';
-import {typography } from "@/themes/Mantine/typography";
+import { useStores } from '@/models';
 
-export default createStyles((theme) => ({
+export const createStyle = () => {
+  const {i18nStore} =useStores()
+
+return createStyles((theme) => ({
   loader :{
     position: "absolute",
     margin:"auto",
@@ -11,5 +14,12 @@ export default createStyles((theme) => ({
   iconBox :{
     cursor: 'pointer',
     borderRadius: '100%',
+  },
+  rightSection: { 
+    right: i18nStore.isRTL? "88%":"",
+  },
+  input: {
+    textAlign: i18nStore.isRTL? "right":"left",
+    padding:" 0px 10px"
   }
-}));
+}))}

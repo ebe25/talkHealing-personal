@@ -8,7 +8,7 @@ import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
 import { CircularIcon } from '../../components/elements/CircularIcon/CircularIcon';
-import useStyles from './Login.style';
+import { createStyle } from './Login.style';
 import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import Link from 'next/link';
@@ -22,6 +22,7 @@ interface loginProps {
 }
 
 export const Login = (props: loginProps) => {
+  const useStyles = createStyle()
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const { i18nStore, userStore } = useStores()
@@ -134,6 +135,7 @@ export const Login = (props: loginProps) => {
                 <Input
                   h={'44px'}
                   w={"100%"}
+                  classNames={{input:classes.input}}
                   component={'input'}
                   placeholder={`${translate("authentication.formText.writeEmail")}`}
                   style_variant={'inputText1'}

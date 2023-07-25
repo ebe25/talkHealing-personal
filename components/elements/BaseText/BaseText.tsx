@@ -28,6 +28,7 @@ interface BaseTextProps extends PolymorphicComponentProps<'div', TextProps> {
   color?: string;
   // fontWeight?: 400 | 500 | 600 | 700;
   txtkey?: TxKeyPath;
+  [x: string | number | symbol]: unknown
 }
 
 export const BaseText = (props: BaseTextProps) => {

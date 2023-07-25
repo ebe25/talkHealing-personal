@@ -13,7 +13,7 @@ import { Loader } from '@mantine/core';
 import { translate } from '@/i18n';
 import { countries } from "countries-list"
 import { IconChevronDown } from '@tabler/icons-react';
-import useStyles from './ForgotPassword.style';
+import { createStyle } from './ForgotPassword.style';
 
 
 interface forgotPasswordProps {
@@ -24,6 +24,7 @@ interface forgotPasswordProps {
 export const ForgotPassword = (props: forgotPasswordProps) => {
   const isPhone = useMediaQuery('(max-width:600px)');
   const isTablet = useMediaQuery('(max-width:900px)');
+  const useStyles = createStyle()
   const { classes } = useStyles();
   const { i18nStore, userStore } = useStores()
   const passwordForgotWays = {
@@ -36,7 +37,6 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   const [error, setError] = useState(false);
   const [showEmailField, setShowEmailField] = useState(false);
   const [showPhoneNumberField, setShowPhoneNumberField] = useState(false);
-
   const userChoiceHandler = (type: string) => {
     setSelectedPasswordForgotType("")
     if (type == passwordForgotWays.Email)
@@ -79,7 +79,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   }
 
 
-  const goToNextModal = () => {
+  const selectPasswordForgotService = () => {
     (selectedPasswordForgotType === passwordForgotWays.Email) ? setShowEmailField(true) : null;
     (selectedPasswordForgotType === passwordForgotWays.Phone) ? setShowPhoneNumberField(true) : null;
   };
@@ -192,6 +192,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
       w={'100%'}
       align={'center'}
       justify={'space-between'}
+      direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
     >
       <BaseButton
         onClick={() => {
@@ -232,7 +233,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
           <Flex direction={'column'} gap={8}>
-            <Flex justify={'space-between'}>
+            <Flex direction={i18nStore.isRTL ? 'row-reverse' : 'row'} justify={'space-between'}>
               <BaseText
                 style={typography.headings[i18nStore.getCurrentLanguage()].h3}
                 color={theme.colors.dark[7]}
@@ -242,7 +243,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                 closeModal()
               }} aria-label="Close modal" iconSize={20} />
             </Flex>
-            <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p2} txtkey={"modal.forgotPassword.text"} />
+            <BaseText ta={i18nStore.isRTL ? "right" : "left"} style={typography.paragraph[i18nStore.getCurrentLanguage()].p2} txtkey={"modal.forgotPassword.text"} />
           </Flex>
 
 
@@ -256,6 +257,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                 w={'100%'}
                 align={'center'}
                 justify={'space-around'}
+                direction={i18nStore.isRTL ? 'row' : 'row-reverse'}
               >
                 {/* Email Icon */}
                 <Flex
@@ -291,7 +293,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
               <CancelAndConfirmButton
                 color_variant={selectedPasswordForgotType ? 'blue' : 'gray'}
                 onClick={() => {
-                  goToNextModal()
+                  selectPasswordForgotService()
                 }} />
             </Flex>
           ) : null}
@@ -309,12 +311,14 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.gray[6]}
                     txtkey={'authentication.formText.email'}
+                    ta={i18nStore.isRTL ? "right" : "left"}
                   />
                   <Input
                     component={'input'}
                     type="text"
                     placeholder={`${translate('authentication.formText.email')}`}
                     style_variant={'inputText1'}
+                    classNames={{ input: classes.input }}
                     {...resetPasswordByEmail.getInputProps('email')}
                   />
                   {/* error message */}
@@ -354,6 +358,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.gray[6]}
                     txtkey={'authentication.formText.phoneNumber'}
+                    ta={i18nStore.isRTL ? "right" : "left"}
                   />
                   <Select
                     placeholder="+914"
@@ -361,6 +366,10 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     rightSectionWidth={30}
                     radius="xl"
                     styles={{ rightSection: { pointerEvents: 'none' } }}
+                    classNames={{
+                      rightSection: classes.rightSection,
+                      input: classes.input
+                    }}
                     data={countriesCode}
                     {...resetPasswordByPhone.getInputProps('countriesCode')}
                   />
@@ -369,6 +378,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     type="number"
                     placeholder={`${translate("authentication.formText.phoneNumber")}`}
                     style_variant={'inputText1'}
+                    classNames={{ input: classes.input }}
                     {...resetPasswordByPhone.getInputProps('phone')}
                   />
                   {/* error message */}
