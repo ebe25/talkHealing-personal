@@ -64,11 +64,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
             ).then((res) => {
                 if (res.ok) {
                     console.log("user logged in successfully!")
-                    signUpForm.setValues({
-                        full_name: "",
-                        password1: "",
-                        password2: "",
-                    });
+                    signUpForm.reset()
                     props.incrementTimelineStep()
                     setLoader(false)
                     // setEmailOtp(true)

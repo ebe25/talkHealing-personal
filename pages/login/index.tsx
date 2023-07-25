@@ -51,10 +51,7 @@ export const Login = (props: loginProps) => {
       userStore.loginUser(loginForm.values.email, loginForm.values.password).then((res) => {
         if (res.ok) {
           console.log("user logged in successfully!")
-          loginForm.setValues({
-            email: "",
-            password: "",
-          });
+          loginForm.reset()
           setLoader(false)
         }
         else if (res.code == 400) {

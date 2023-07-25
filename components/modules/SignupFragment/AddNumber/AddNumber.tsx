@@ -48,10 +48,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
         userStore.editUser({ phone: `${addNumberFrom.values.countriesCode}${addNumberFrom.values.number}` }).then((res) => {
             if (res.ok) {
                 console.log("user add number in successfully!")
-                addNumberFrom.setValues({
-                    number: "",
-                    countriesCode: ""
-                });
+                addNumberFrom.reset()
                 setLoader(false)
                 props.incrementTimelineStep()
             }

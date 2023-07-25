@@ -40,9 +40,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
         ).then((res) => {
             if (res.ok) {
                 console.log("user verifyEmail in successfully!")
-                emailOtpFrom.setValues({
-                    emailOtp: "",
-                });
+                emailOtpFrom.reset()
                 setLoader(false)
                 props.incrementTimelineStep()
             }
