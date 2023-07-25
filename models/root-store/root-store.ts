@@ -12,8 +12,8 @@ import { GalleryStore } from "@/models/modules/gallery/store"
 // prettier-ignore
 export const RootStoreModel = types.model("RootStore").props({
     userStore: types.optional(UserStore, {} as any),
-    GlobalsStore: types.optional(GlobalsStore, {} as any),
-    GalleryStore: types.optional(GalleryStore, {} as any),
+    globalsStore: types.optional(GlobalsStore, {} as any),
+    falleryStore: types.optional(GalleryStore, {} as any),
     dummyStore: types.optional(DummyStore, {} as any),
     i18nStore: types.optional(i18nStore, {} as any),
     notificationStore: types.optional(NotificationStore, {} as any),

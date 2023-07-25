@@ -8,22 +8,22 @@ import CookiePolicy from './cookie-policy';
 import { Login } from './login';
 
 export default function HomePage() {
-  const {userStore}=useStores()
+  const { userStore } = useStores()
   userStore.loginUser(
-    "kaushalv568@gmail.com","admin@123"
-  ).then(({ok})=>{
-    userStore.getLoginUserData().then((res)=>{
+    "kaushalv568@gmail.com", "admin@123"
+  ).then(({ ok }) => {
+    userStore.getLoginUserData().then((res) => {
       // console.log(userStore.toJSON())
 
     })
   })
-  
+
   return (
     <>
-    <TermsAndCondition />
-    {/* <PrivacyPolicy /> */}
-    {/* <CookiePolicy /> */}
-<!--     <Login /> -->
+      <TermsAndCondition />
+      {/* <PrivacyPolicy /> */}
+      {/* <CookiePolicy /> */}
+      {/* <Login /> */}
       {/* <Welcome /> */}
       {/* <ColorSchemeToggle /> */}
     </>
