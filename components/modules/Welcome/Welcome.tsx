@@ -58,8 +58,7 @@ export function Welcome() {
       {/* <BaseCheckbox ></BaseCheckbox> */}
       {/* <BackButton> <BaseText txtkey="global.button.back" />  </BackButton> */}
       <BaseButton onClick={open} style_variant={'filled'} color_variant={'red'}> <BaseText txtkey="addKidDetails.nextButton" /></BaseButton>
-       {/* <BaseModal  withCloseButton={false} opened={opened} onClose={close}><BaseText txtkey="bookingForEvent.paymentProceedButtonText" /> </BaseModal> */}
-      <Input component={"input"} type='text' styleName={'inputText1'} style={{width:"300px"}} />
+       <BaseModal  withCloseButton={false} opened={opened} onClose={close}><BaseText txtkey="bookingForEvent.paymentProceedButtonText" /> </BaseModal>
       <form style={{display:"flex"}}>
         <label><BaseText txtkey="bookingForEvent.addOnPriceText" /></label>
       {/* <BaseRadioButton /> */}
