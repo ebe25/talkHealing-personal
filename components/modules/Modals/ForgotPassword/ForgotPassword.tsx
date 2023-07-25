@@ -69,13 +69,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     setSelectedPasswordForgotType("")
     setShowEmailField(false)
     setShowPhoneNumberField(false)
-    resetPasswordByPhone.setValues({
-      phone: "",
-      countriesCode: "",
-    });
-    resetPasswordByEmail.setValues({
-      email: "",
-    });
+    resetPasswordByPhone.reset()
+    resetPasswordByEmail.reset()
   }
 
 
@@ -122,9 +117,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         }
         else {
           setLoader(false)
-          resetPasswordByEmail.setValues({
-            email: "",
-          });
+          resetPasswordByEmail.reset()
         }
       })
     }
@@ -177,9 +170,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         }
         else {
           setLoader(false)
-          resetPasswordByPhone.setValues({
-            phone: "",
-          });
+          resetPasswordByPhone.reset()
         }
       })
     }
