@@ -459,10 +459,9 @@ export const UserStore = types
         case 200:
           return ACTION_RESPONSES.success;
         case 400:
-          error = response.data;
-          break;
+          return {...ACTION_RESPONSES.failure, code: response.status , error : response.data};
         case 401:
-          return ACTION_RESPONSES.failure;
+          return {...ACTION_RESPONSES.failure, code: response.status , error : response.data};
         default:
           console.error("UNHANDLED ERROR");
           break;
@@ -483,7 +482,7 @@ export const UserStore = types
         case 400:
           return {...ACTION_RESPONSES.failure, code: response.status , error : response.data};
         case 401:
-          return ACTION_RESPONSES.failure;
+          return {...ACTION_RESPONSES.failure, code: response.status , error : response.data};
         default:
           console.error("UNHANDLED ERROR");
           break;

@@ -115,6 +115,15 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
             }, 5000)
           }
         }
+        else if (res.code == 401) {
+          if (res.error) {
+            setLoader(false)
+            setError(true)
+            setTimeout(() => {
+              setError(false)
+            }, 5000)
+          }
+        }
         else {
           setLoader(false)
           resetPasswordByEmail.reset()
@@ -160,6 +169,15 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
           closeModal()
         }
         else if (res.code == 400) {
+          if (res.error) {
+            setLoader(false)
+            setError(true)
+            setTimeout(() => {
+              setError(false)
+            }, 5000)
+          }
+        }
+        else if (res.code == 401) {
           if (res.error) {
             setLoader(false)
             setError(true)
@@ -348,7 +366,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   <BaseText
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.gray[6]}
-                    txtkey={'profile.forgotPassword.phone'}
+                    txtkey={'profile.phoneNumber'}
                     ta={i18nStore.isRTL ? "right" : "left"}
                   />
                   <Select
