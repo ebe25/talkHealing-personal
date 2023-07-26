@@ -120,5 +120,50 @@
       "addressTwoError":"الرجاء إدخال العنوان الثاني",
       "errorMessageForOTP":"الرجاء إدخال OTP"
     }
+  },
+  "signUpForm": {
+    "login": "تسجيل الدخول",
+    "forgetPassword": "هل نسيت كلمة السر؟",
+    "newUser": "ليس لديك حساب",
+    "signUp": "اشتراك",
+    "loginButtonText": "تسجيل الدخول",
+    "subText": "سنقوم بإرسال بريد إلكتروني لإعادة تعيين كلمة المرور الخاصة بك",
+    "backToLogin": "العودة إلى تسجيل الدخول",
+    "continue": "يكمل",
+    "passwordLength": "يجب ألا يقل عن 8 أحرف",
+    "errorMessage": "لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
+  },
+  "authentication": {
+    "invalidEmail": "بريد إلكتروني خاطئ",
+    "invalidPassword": "رمز مرور خاطئ",
+    "strings": {
+      "incChar": "يتألف من 6 أحرف على الأقل",
+      "incNum": "يشمل الرقم",
+      "incLower": "يتضمن حرفًا صغيرًا",
+      "incUpper": "يتضمن حرف كبير",
+      "incSym": "يتضمن رمزًا خاصًا"
+    },
+    "formText": {
+      "signUp": "اشتراك",
+      "writeEmail": "اكتب بريدك الإلكتروني",
+      "writePassword": "اكتب كلمة المرور الخاصة بك",
+      "name": "اسم",
+      "email": "بريد إلكتروني",
+      "phone number": "رقم التليفون",
+      "continue": "يكمل",
+      "forgetPassword": "هل نسيت كلمة السر",
+      "newUser": "ليس لديك حساب؟",
+      "login": "تسجيل الدخول",
+      "agreeText": "أنا أوافق على",
+      "termsAndConditions": "الأحكام والشروط",
+      "invalidNumber": "رقم غير صالح",
+      "namePlaceholder": "اكتب الرقم",
+      "emailPlaceholder": "اكتب بريدا الكترونيا",
+      "errorMessage":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
+    }
+  },
+  "header": {
+    "signUp": "إنشاء حساب",
+    "login": "تسجيل الدخول إلى حسابك"
   }
 }

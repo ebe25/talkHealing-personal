@@ -124,5 +124,51 @@
       "addressTwoError":"Please enter Address Two",
       "errorMessageForOTP":"Please enter OTP"
     }
-  }
+  },
+  "signUpForm": {
+    "login": "Log in",
+    "forgetPassword": "Forgot password?",
+    "newUser": "Don't have an account? ",
+    "signUp": "Sign up",
+    "loginButtonText": "Login",
+    "subText": "We'll send a E-Mail to reset your password",
+    "backToLogin": "Back to Login",
+    "continue": "Continue",
+    "passwordLength": "must be at least 8 characters",
+    "errorMessage": "This email can’t be found, make sure email is incorrect"
+  },
+  "authentication": {
+    "invalidEmail": "Invalid email",
+    "invalidPassword": "Invalid password",
+    "strings": {
+      "incChar": "Includes at least 6 characters",
+      "incNum": "Includes number",
+      "incLower": "Includes lowercase letter",
+      "incUpper": "Includes uppercase letter",
+      "incSym": "Includes special symbol"
+    },
+    "formText":{
+      "signUp":"Sign up now",
+      "writeEmail": "Write your email",
+      "writePassword": "Write your password",
+      "name": "Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "continue": "Continue",
+      "forgetPassword":"Forgot Password",
+      "newUser":"Don't have an account?",
+      "login": "Login",
+      "agreeText":"I agree to the ",
+      "termsAndConditions": "Terms and Conditions",
+      "invalidNumber": "Invalid number",
+      "namePlaceholder": "Name",
+      "emailPlaceholder": "Email",
+      "errorMessage":"This email or password is incorrect, please try again"
+    }
+  },
+  "header":{
+    "signUp": "Create account",
+    "login": "Login to your account"
+  }  
 }
+

@@ -2,7 +2,7 @@ import type { Tuple } from '@mantine/styles/lib/theme/types';
 
 export const COLORS = {
   dark: [
-    '#C1C2C5',
+    '#F8F9F8', // '#C1C2C5',
     '#BDBEBD',
     '#A6A7AB',
     '#909296',

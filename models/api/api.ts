@@ -1,14 +1,11 @@
 import { ApisauceInstance, create, ApiResponse, HEADERS } from "apisauce";
-import { getGeneralApiProblem } from "./api-problem";
 import { ApiConfig, DEFAULT_API_CONFIG } from "./api-config";
 //import * as storage from "../../utils/mobile-storage"
 import * as storage from "localforage";
 import {
   API_ENDPOINT,
   REQUEST_METHOD,
-  transformObjectFromSchema,
   TRAILING_SLASH,
-  PAGINATION_FILTERS,
 } from "./endpoint.types";
 /**
  * Manages all requests to the API.
@@ -31,6 +28,13 @@ export class Api {
    */
   constructor(config: ApiConfig = DEFAULT_API_CONFIG) {
     this.config = config;
+    this.apisauce=create({
+      baseURL: this.config.url,
+      timeout: this.config.timeout,
+      headers: {
+        Accept: "application/json",
+      },
+    })
   }
 
   /**
@@ -53,14 +57,14 @@ export class Api {
   async call(
     endpoint: API_ENDPOINT,
     payload: Object | FormData | String = {},
-    ids: Object = null,
+    ids:  Record<string, any>= {},
     headers: HEADERS = {}
   ): Promise<any> {
     // console.log(endpoint)
     const token = await storage.getItem(this.config.token_key);
     if (token) {
       //console.log("token", token)
-      this.apisauce.setHeader("Authorization", "Token " + token);
+      this.apisauce.setHeader("Authorization", "Bearer " + token);
     }
     headers = {
       ...this.apisauce.headers,
@@ -68,7 +72,7 @@ export class Api {
     };
     endpoint = new API_ENDPOINT(endpoint);
     // console.log(endpoint)
-    if (ids) {
+    if (Object.keys(ids).length>0) {
       //for ids in URLs
       for (let id in ids) {
         let replaced_url = endpoint.url.replace("{" + id + "}", ids[id]);

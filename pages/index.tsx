@@ -3,6 +3,7 @@ import { ColorSchemeToggle } from '../components/elements/ColorSchemeToggle/Colo
 
 import { useStores } from "@/models";
 import Profile from './profile';
+import Login from './login';
 
 export default function HomePage() {
   const {userStore}=useStores()
@@ -18,8 +19,9 @@ export default function HomePage() {
   return (
     <>
       <Profile/>
-      {/* <Welcome />
-      <ColorSchemeToggle /> */}
+    {/* <Login /> */}
+      {/* <Welcome /> */}
+      {/* <ColorSchemeToggle /> */}
     </>
   );
 }
