@@ -141,7 +141,7 @@ export const PhoneNumberOtp = () => {
                                 numberOtpFrom.validate()
                             }
                         }}
-                        w={'100%'}
+                        w={'80%'}
                         h={'39px'}
                         style_variant={numberOtpFrom.isValid() ? 'filled' : 'disabled'}
                         color_variant={numberOtpFrom.isValid() ? 'blue' : 'gray'}
