@@ -27,7 +27,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   const useStyles = createStyle()
   const { classes } = useStyles();
   const { i18nStore, userStore } = useStores()
-  const passwordForgotWays = {
+  const passwordForgotMethods = {
     Email: "Email",
     Phone: "Phone"
   }
@@ -39,10 +39,10 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   const [showPhoneNumberField, setShowPhoneNumberField] = useState(false);
   const userChoiceHandler = (type: string) => {
     setSelectedPasswordForgotType("")
-    if (type == passwordForgotWays.Email)
-      setSelectedPasswordForgotType(passwordForgotWays.Email)
-    if (type == passwordForgotWays.Phone)
-      setSelectedPasswordForgotType(passwordForgotWays.Phone)
+    if (type == passwordForgotMethods.Email)
+      setSelectedPasswordForgotType(passwordForgotMethods.Email)
+    if (type == passwordForgotMethods.Phone)
+      setSelectedPasswordForgotType(passwordForgotMethods.Phone)
   };
 
   // countriesCode
@@ -75,8 +75,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
 
   const selectPasswordForgotService = () => {
-    (selectedPasswordForgotType === passwordForgotWays.Email) ? setShowEmailField(true) : null;
-    (selectedPasswordForgotType === passwordForgotWays.Phone) ? setShowPhoneNumberField(true) : null;
+    (selectedPasswordForgotType === passwordForgotMethods.Email) ? setShowEmailField(true) : null;
+    (selectedPasswordForgotType === passwordForgotMethods.Phone) ? setShowPhoneNumberField(true) : null;
   };
 
   const resetPasswordByEmail = useForm({
@@ -271,13 +271,13 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                 {/* Email Icon */}
                 <Flex
                   onClick={() => {
-                    userChoiceHandler(passwordForgotWays.Email);
+                    userChoiceHandler(passwordForgotMethods.Email);
                   }}
                   className={classes.iconBox}
                   w={'100px'}
                   h={'100px'}
                   style={{
-                    background: `${selectedPasswordForgotType === passwordForgotWays.Email ?
+                    background: `${selectedPasswordForgotType === passwordForgotMethods.Email ?
                       theme.colors.blue[4] : theme.colors.gray[4]}`,
                   }}
                 >
@@ -286,13 +286,13 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                 {/* Phone Icon */}
                 <Flex
                   onClick={() => {
-                    userChoiceHandler(passwordForgotWays.Phone)
+                    userChoiceHandler(passwordForgotMethods.Phone)
                   }}
                   w={'100px'}
                   h={'100px'}
                   className={classes.iconBox}
                   style={{
-                    background: `${selectedPasswordForgotType === passwordForgotWays.Phone ?
+                    background: `${selectedPasswordForgotType === passwordForgotMethods.Phone ?
                       theme.colors.blue[4] : theme.colors.gray[4]}`,
                   }}
                 >

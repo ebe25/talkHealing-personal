@@ -5,7 +5,7 @@ import { createStyles } from "@mantine/core";
 export const createStyle = () => {
   const {i18nStore} =useStores()
   return createStyles((theme) => ({
-    PasswordInput: {
+    passwordInput: {
       // width:"370px",
       height: "44px",
       borderRadius: "34px",
