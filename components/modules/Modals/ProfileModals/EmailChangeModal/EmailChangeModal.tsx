@@ -1,5 +1,5 @@
 // react and nextb import
-import React from 'react';
+import React,{useState} from 'react';
 // mantine component
 import { useDisclosure } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
@@ -21,11 +21,14 @@ import { Input } from '@/components/elements/Input/Input';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
-  const { i18nStore } = useStores();
+  const { i18nStore, userStore } = useStores();
   const emailOTP = useDisclosure(false);
   const theme = useMantineTheme();
   const useStyles=createStyle()
   const { classes } = useStyles();
+  const [ loader, setLoader ] = useState(false)
+  const [ error , setError ] = useState("")
+
   const changeMail = useForm({
     initialValues: {
       email: ''
@@ -43,9 +46,25 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
     if (results.hasErrors) return;
     if (!changeMail.isValid()) return;
     else{
-        props.onClose();
-        changeMail.reset();
-        emailOTP[1].open()
+      setLoader(true)
+      userStore.emailChange(changeMail.values.email).then((res) => {
+        if(res.ok){
+          props.onClose();
+          changeMail.reset();
+          emailOTP[1].open()
+          setLoader(false)
+        }
+        else if(res.code == 400){
+          if(res.error){
+            setLoader(false)
+            setError(res.error);
+            changeMail.reset();
+            setTimeout(()=>{
+              setError("");
+            }, 5000)
+          }
+        }
+      })
     }
   };
 
@@ -110,6 +129,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
             mt={'30px'}
             w={'100%'}
             h={'40px'}
+            loading={loader}
             style_variant={!changeMail.isValid() ? 'disabled' : 'filled'}
             color_variant={!changeMail.isValid() ? 'gray' : 'blue'}
             onClick={handlePasswordChange}

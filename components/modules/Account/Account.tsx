@@ -1,5 +1,5 @@
 //React and next imports
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // mantine component imports
 import {
   Box,
@@ -29,7 +29,7 @@ import { translate } from '@/i18n';
 import { ChangePhoneNumberModal } from '../Modals/ProfileModals/ChangePhoneNumberModal/ChangePhoneNumberModal';
 
 export const Account = () => {
-  const { i18nStore } = useStores();
+  const { i18nStore, userStore } = useStores();
   const useStyles=createStyle()
   const { classes } = useStyles();
   const theme = useMantineTheme();
@@ -37,34 +37,47 @@ export const Account = () => {
   const emailChangeModal = useDisclosure(false);
   const phoneNumberChangeModal = useDisclosure(false);
   const [images, setImages] = useState<any>(null);
-
-  console.log('images', images);
+  
   const onImageChange = (event: any) => {
-    console.log('images', event);
     if (event.name) {
     setImages(URL.createObjectURL(event));
     }
   };
-
   const address = useForm({
     initialValues: {
-      name: 'John Doe',
-      email: 'johndoe@gmail.com',
-      phoneNumber: '+919876543219',
+      name: userStore.userData?.full_name,
+      email: userStore.userData?.email,
+      phoneNumber: userStore.userData?.phone,
       password: 'SachinPad@123',
     },
   });
 
+  useEffect(() => {
+    userStore.getLoginUserData().then((res)=>{
+      if(res.ok){
+        if(userStore.userData){
+          address.setValues({
+            name : userStore.userData?.full_name,
+            email: userStore.userData?.email,
+            phoneNumber: userStore.userData?.phone,
+          })
+        }
+      }
+    })
+  },[])
+  
   return (
     <Box className={classes.container}>
+      <form onSubmit={address.onSubmit((values) => console.log(values))}>
       <Flex align={'center'} justify={'space-between'} wrap={'wrap'}>
         <div className={classes.imageFlex}>
           <Image
-            src={images ? images : Images.profile_image}
             width={'120px'}
             height={'120px'}
             radius={'50%'}
             alt="profile_image"
+            {...address.getInputProps("avatar")}
+            src={images ? images : userStore?.userData?.avatar}
           />
         </div>
         <Flex gap={'18px'} className={classes.imageFlex}>
@@ -94,7 +107,7 @@ export const Account = () => {
           </BaseButton>
         </Flex>
       </Flex>
-      <form onSubmit={address.onSubmit((values) => console.log(values))}>
+      
         <Grid className={classes.grid}>
           <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6}>
             <BaseText

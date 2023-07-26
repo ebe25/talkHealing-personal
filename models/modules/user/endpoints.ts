@@ -134,7 +134,7 @@ export const API_ENDPOINTS = {
         transformer: null,
     }),
     emailChangeVerify: new API_ENDPOINT({
-        url: "/auth/email-change/verfiy-change-email/",
+        url: "/auth/email-change/verify-change-email/",
         method: REQUEST_METHOD.POST,
         response: null,
         transformer: null,

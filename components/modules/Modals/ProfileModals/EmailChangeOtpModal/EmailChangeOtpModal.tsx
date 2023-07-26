@@ -1,5 +1,5 @@
 // react and nextb import
-import React from 'react';
+import React, { useState } from 'react';
 // mantine component
 import { Flex, Image, PinInput, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -7,6 +7,7 @@ import { useForm } from '@mantine/form';
 // style import
 import  useStyles  from './EmailOTP.styles';
 // internals components
+import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -20,9 +21,11 @@ import { boilerPlateStyles } from '@/utils/styles/styles';
 import { translate } from '@/i18n';
 
 export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
-  const { i18nStore } = useStores();
+  const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
   const { classes } = useStyles();
+  const [ error , setError ] = useState("");
+  const [ loader , setLoader ] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
 
   const otpVerify = useForm({
@@ -37,14 +40,26 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
   });
 
   const handlePasswordChange = () => {
+    setLoader(true)
     let results = otpVerify.validate();
     if (results.hasErrors) return;
-    console.log('otp', otpVerify.values.otp);
-    if (!otpVerify.isValid()) return;
+    if (!otpVerify.isValid()) return setLoader(false);
     else {
-      props.onClose();
-      otpVerify.reset();
-      open();
+      userStore.emailChangeVerify(otpVerify.values.otp).then((res)=>{
+        if(res.ok){
+          props.onClose();
+          open();
+        }
+        else if(res.code == 400 ){
+          if(res.error){
+            setError(res.error);
+            otpVerify.reset();
+            setTimeout(()=>{
+              setError("");
+            }, 5000)
+          }
+        }
+      })
     }
   };
 
@@ -103,6 +118,12 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
               {...otpVerify.getInputProps('otp')}
             />
           </Stack>
+          {
+            error?
+            <ErrorMessage
+              message={error}            
+            />:null
+          }
           <Flex 
             direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
             w={'100%'} justify={'center'} my={'40px'}
@@ -122,6 +143,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
           <BaseButton
             w={'100%'}
             h={'40px'}
+            loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}
             onClick={handlePasswordChange}

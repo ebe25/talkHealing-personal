@@ -357,12 +357,12 @@ export const UserStore = types
       return ACTION_RESPONSES.failure;
     }),
     emailChangeVerify: flow(function* (
-      key: string,
+      otp: string,
     ) {
       const response = yield self.environment.api.call(
         API_ENDPOINTS.emailChangeVerify,
         {
-          key: key,
+          otp: otp,
         }
       );
       let error = null;
@@ -372,7 +372,7 @@ export const UserStore = types
           return ACTION_RESPONSES.success;
         case 400:
           error = response.data;
-          break;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
         case 401:
           return ACTION_RESPONSES.failure;
         default:

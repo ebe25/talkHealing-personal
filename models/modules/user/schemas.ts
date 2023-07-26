@@ -47,8 +47,8 @@ export interface AvatarPaginated extends Instance<typeof AvatarPaginated> { }
 // export interface UserType extends Instance<typeof User> { }
 
 export const GENDERS = {
-  MALE: "MALE",
-  FEMALE: "FEMALE",
+  MALE: "Male",
+  FEMALE: "Female",
 }
 
 // user schema

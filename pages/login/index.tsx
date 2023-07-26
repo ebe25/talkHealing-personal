@@ -13,6 +13,7 @@ import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '@/i18n';
+import { useRouter } from 'next/navigation'
 
 interface loginProps {
   img?: string;
@@ -21,6 +22,7 @@ interface loginProps {
 const Login = (props: loginProps) => {
   const { classes } = useStyles();
   const theme = useMantineTheme();
+  const router = useRouter()
   const { i18nStore, userStore } = useStores()
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState<any>("")
@@ -50,12 +52,7 @@ const Login = (props: loginProps) => {
     if (!results.hasErrors) {
       userStore.loginUser(loginForm.values.email, loginForm.values.password).then((res) => {
         if (res.ok) {
-          console.log("user logged in successfully!")
-          loginForm.setValues({
-            email: "",
-            password: "",
-          });
-          setLoader(false)
+          router.push("/profile");
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -66,6 +63,8 @@ const Login = (props: loginProps) => {
             }, 5000)
           }
         }
+        setLoader(false)
+        loginForm.reset()
       })
     }
   }
@@ -113,10 +112,10 @@ const Login = (props: loginProps) => {
               <Flex justify="center" align="center" gap={32}
               >
                 <Box className={classes.link}>
-                  <CircularIcon Icon={Images.facebook_icon} />
+                  <CircularIcon icon={Images.facebook_icon} />
                 </Box>
                 <Box className={classes.link}>
-                  <CircularIcon Icon={Images.google_icon} />
+                  <CircularIcon icon={Images.google_icon} />
                 </Box>
               </Flex>
               {/* Email Input */}
@@ -145,6 +144,7 @@ const Login = (props: loginProps) => {
                 <BasePasswordInput
                   w={"100%"}
                   h={'44px'}
+                  autoComplete='on'
                   placeholder={`${translate("authentication.formText.writePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
@@ -176,6 +176,7 @@ const Login = (props: loginProps) => {
                 }}
                 w={"100%"}
                 mah={'39px'}
+                loading={loader}
                 style_variant={loginForm.isValid() ? 'filled' : 'disabled'}
                 color_variant={loginForm.isValid() ? 'blue' : 'gray'}
               >
