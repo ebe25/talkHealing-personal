@@ -43,26 +43,26 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     rootStore.i18nStore.setSystemDefault();
   }
   return (
-    <div dir={rootStore.i18nStore.isRTL ? 'rtl' : 'ltl'}>
-      <RootStoreProvider value={rootStore}>
-        <Head>
-          <title>Mantine next example</title>
-          <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-          <link rel="shortcut icon" href="/favicon.svg" />
-        </Head>
+    <div dir={rootStore.i18nStore.isRTL ? "rtl" : "ltr"}>
+    <RootStoreProvider value={rootStore}>
+      <Head>
+        <title>Mantine next example</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <link rel="shortcut icon" href="/favicon.svg" />
+      </Head>
 
-        <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-          <MantineProvider
-            theme={{ ...currentTheme, colorScheme, loader: 'bars' }}
-            withGlobalStyles
-            withNormalizeCSS
-            withCSSVariables
-          >
-            <Component {...pageProps} />
-            <Notifications />
-          </MantineProvider>
-        </ColorSchemeProvider>
-      </RootStoreProvider>
+      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+        <MantineProvider
+          theme={{ ...currentTheme, colorScheme }}
+          withGlobalStyles
+          withNormalizeCSS
+          withCSSVariables
+        >
+          <Component {...pageProps} />
+          <Notifications />
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </RootStoreProvider>
     </div>
   );
 }

@@ -1,11 +1,8 @@
-import { createStyles } from '@mantine/core';
+import {typography } from "@/themes/Mantine/typography";
 import { useStores } from '@/models';
-import { typography } from "@/themes/Mantine/typography";
 
-export const createStyle = (
-) => {
-  const { i18nStore } = useStores()
-
+export const createStyle = () => {
+  const {i18nStore} =useStores()
   return createStyles((theme) => ({
     PasswordInput: {
       // width:"370px",

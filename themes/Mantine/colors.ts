@@ -106,7 +106,7 @@ export const COLORS = {
     '#1c7ed6',
     '#3673CE',
     '#1971c2',
-    '#1864ab',
+    '#ECF1FE',
   ],
 
   cyan: [
