@@ -139,6 +139,12 @@ export const API_ENDPOINTS = {
         response: null,
         transformer: null,
     }),
+    emailChangeOtpResend: new API_ENDPOINT({
+        url: "/auth/email-change/verify-change-email/resend/",
+        method: REQUEST_METHOD.GET,
+        response: null,
+        transformer: null,
+    }),
     phoneChange: new API_ENDPOINT({
         url: "/auth/phone-change/",
         method: REQUEST_METHOD.POST,

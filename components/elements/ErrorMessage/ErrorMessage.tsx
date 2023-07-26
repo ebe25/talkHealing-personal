@@ -1,16 +1,18 @@
 import React from 'react'
 import { Text } from '@mantine/core'
-import { useStores } from '../../../models';
 import { TxKeyPath } from '@/i18n';
 
 const ErrorMessage = (props:{
     message: TxKeyPath | string
+    text_color?: string
 }) => {
-  const { i18nStore } = useStores();
   return (
     <Text
-        color='red'
-    >{props.message}</Text>
+      ta={"center"}
+      color={ props.text_color?props.text_color: 'red'}
+    >
+      {props.message}
+    </Text>
   )
 }
 

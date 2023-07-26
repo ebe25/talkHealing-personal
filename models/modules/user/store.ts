@@ -381,6 +381,25 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
+    emailChangeOtpResend: flow(function* (
+    ) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.emailChangeOtpResend,{} );
+      let error = null;
+      switch (response.status) {
+        case 200:
+          return { ...ACTION_RESPONSES.success, code: response.status , message : response.data.message}
+        case 400:
+          error = response.data;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
+        case 401:
+          return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
     phoneChange: flow(function* (
       phone: string,
     ) {

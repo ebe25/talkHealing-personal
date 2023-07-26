@@ -25,6 +25,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
   const theme = useMantineTheme();
   const { classes } = useStyles();
   const [ error , setError ] = useState("");
+  const [ otpResendResponseText , setOtpResendResponseText ] = useState("");
   const [ loader , setLoader ] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
 
@@ -39,7 +40,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
     },
   });
 
-  const handlePasswordChange = () => {
+  const handleEmailChnageOtp = () => {
     setLoader(true)
     let results = otpVerify.validate();
     if (results.hasErrors) return;
@@ -47,6 +48,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
     else {
       userStore.emailChangeVerify(otpVerify.values.otp).then((res)=>{
         if(res.ok){
+          otpVerify.reset()
           props.onClose();
           open();
         }
@@ -62,6 +64,17 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
       })
     }
   };
+
+  const handleEmailChangeOtpResend = () => {
+    userStore.emailChangeOtpResend().then((res)=>{
+      if(res.ok){
+        setOtpResendResponseText(res.message)
+        setTimeout(()=>{
+          setOtpResendResponseText("")
+        },5000)
+      }
+    })
+  }
 
   return (
     <>
@@ -124,6 +137,14 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
               message={error}            
             />:null
           }
+          {
+            otpResendResponseText?
+            <ErrorMessage
+              text_color={theme.colors.blue[4]}
+              message={otpResendResponseText}            
+            />
+            :null
+          }
           <Flex 
             direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
             w={'100%'} justify={'center'} my={'40px'}
@@ -134,6 +155,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
             />
             &nbsp;
             <BaseText
+              onClick={handleEmailChangeOtpResend}
               txtkey="profile.modal.resendText"
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
               className={classes.pointer}
@@ -146,7 +168,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
             loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}
-            onClick={handlePasswordChange}
+            onClick={handleEmailChnageOtp}
           >
             <BaseText txtkey="global.button.verify" />
           </BaseButton>
