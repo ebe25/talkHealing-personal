@@ -21,7 +21,7 @@ import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 
 export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
-  const { i18nStore } = useStores();
+  const { i18nStore, userStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const useStyles=createStyle()
@@ -54,9 +54,16 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
     if (!changepassword.isValid()) return;
     if (passwordMatch()) return;
     else {
-      props.onClose();
-      changepassword.reset();
-      open();
+      userStore.changePassword(changepassword.values.currentPassword, 
+        changepassword.values.newPassword, 
+        changepassword.values.confirmNewPassword )
+        .then((res)=>{
+          if(res.ok){
+            props.onClose();
+            changepassword.reset();
+            open();
+          }
+      })
     }
   };
 
