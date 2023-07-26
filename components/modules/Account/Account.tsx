@@ -186,6 +186,7 @@ export const Account = () => {
               placeholder={`${translate('profile.password')}`}
               variant="filled"
               type="password"
+              autoComplete='on'
               radius={'xl'}
               disabled
               classNames={{
