@@ -11,6 +11,8 @@ export const Images = {
   login_icon:"./image/LoginInear.png",
   bg_Img:"./image/LoginBg.png",
   facebook_icon:"./image/facebook.png",
-  google_icon:"./image/google.png"
+  google_icon:"./image/google.png",
+  email_icon: "./image/emailIcon.png",
+  phone_icon: "./image/phoneIcon.png"
 }
 

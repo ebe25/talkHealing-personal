@@ -1,5 +1,6 @@
 import {typography } from "@/themes/Mantine/typography";
 import { useStores } from '@/models';
+import { createStyles } from "@mantine/core";
 
 export const createStyle = () => {
   const {i18nStore} =useStores()

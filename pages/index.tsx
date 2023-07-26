@@ -18,8 +18,8 @@ export default function HomePage() {
   
   return (
     <>
-      <Profile/>
-    {/* <Login /> */}
+      {/* <Profile/> */}
+    <Login />
       {/* <Welcome /> */}
       {/* <ColorSchemeToggle /> */}
     </>

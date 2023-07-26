@@ -89,17 +89,14 @@
       "heading":"Log out of your account",
       "para":"Are you sure you want to log out of your account now?"
     },
-    "modal":{
       "forgotPassword":{
         "text":"Please enter your registered email or phone number to receive the reset link.",
         "phone":"Phone number not found",
         "email":"Email not found",
         "invalidEmail" : "Invalid email",
         "invalidNumber" : "Invalid phone number"
-      }
-    },
+      },
     "header":{
-      "booking":"BOOKING FOR EVENT",
       "signUp": "Create account",
       "login": "Login to your account",
     "deleteModal":{
@@ -180,19 +177,6 @@
       "errorMessage":"This email or password is incorrect, please try again"
     }
   },
-  },
-  "signUpForm": {
-    "login": "Log in",
-    "forgetPassword": "Forgot password?",
-    "newUser": "Don't have an account? ",
-    "signUp": "Sign up",
-    "loginButtonText": "Login",
-    "subText": "We'll send a E-Mail to reset your password",
-    "backToLogin": "Back to Login",
-    "continue": "Continue",
-    "passwordLength": "must be at least 8 characters",
-    "errorMessage": "This email can’t be found, make sure email is incorrect"
-  },
   "userProfile":{
     "accountDetails":{
       "name":"Name",
@@ -211,10 +195,7 @@
       "placeholder":"Write password",
       "saveCanges":"Save changes"
     }
-  },
-  "header":{
-    "signUp": "Create account",
-    "login": "Login to your account"
-  }  
+  }
+ }
 }
 
