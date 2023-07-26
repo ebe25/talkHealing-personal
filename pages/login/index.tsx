@@ -113,10 +113,10 @@ const Login = (props: loginProps) => {
               <Flex justify="center" align="center" gap={32}
               >
                 <Box className={classes.link}>
-                  <CircularIcon Icon={Images.facebook_icon} />
+                  <CircularIcon icon={Images.facebook_icon} />
                 </Box>
                 <Box className={classes.link}>
-                  <CircularIcon Icon={Images.google_icon} />
+                  <CircularIcon icon={Images.google_icon} />
                 </Box>
               </Flex>
               {/* Email Input */}
@@ -145,6 +145,7 @@ const Login = (props: loginProps) => {
                 <BasePasswordInput
                   w={"100%"}
                   h={'44px'}
+                  autoComplete='on'
                   placeholder={`${translate("authentication.formText.writePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
