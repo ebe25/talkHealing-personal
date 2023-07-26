@@ -38,10 +38,10 @@ export const Login = (props: loginProps) => {
       termsOfService: false,
     },
     validate: {
-      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("profile.authentication.invalidEmail")),
+      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
       password: (value) => {
         if (value.trim().length < 8)
-          return translate('profile.authentication.invalidPassword');
+          return translate('authentication.invalidPassword');
       },
     },
   });
@@ -112,7 +112,7 @@ export const Login = (props: loginProps) => {
                   ta={'center'}
                   style={typography.headings[i18nStore.getCurrentLanguage()].h1}
                   color={theme.colors.dark[8]}
-                  txtkey={'profile.header.login'}
+                  txtkey={'header.login'}
                 />
               </Center>
               {/* Social Media Login */}
@@ -137,7 +137,7 @@ export const Login = (props: loginProps) => {
                   w={"100%"}
                   classNames={{input:classes.input}}
                   component={'input'}
-                  placeholder={`${translate("profile.authentication.formText.writeEmail")}`}
+                  placeholder={`${translate("authentication.formText.writeEmail")}`}
                   style_variant={'inputText1'}
                   {...loginForm.getInputProps('email')}
                 />
@@ -152,7 +152,7 @@ export const Login = (props: loginProps) => {
                 <BasePasswordInput
                   w={"100%"}
                   h={'44px'}
-                  placeholder={`${translate("profile.authentication.formText.writePassword")}`}
+                  placeholder={`${translate("authentication.formText.writePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
                 {/* error message */}
@@ -167,7 +167,7 @@ export const Login = (props: loginProps) => {
                   ta="center"
                   style={typography.label[i18nStore.getCurrentLanguage()].l1}
                   color={theme.colors.dark[8]}
-                  txtkey={'profile.signUpForm.forgetPassword'}
+                  txtkey={'signUpForm.forgetPassword'}
                 />
                 <ForgotPassword opened={opened} close={close} />
               </Center>
@@ -190,7 +190,7 @@ export const Login = (props: loginProps) => {
                 <BaseText
                   style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
                   color={loginForm.isValid() ? theme.white : theme.colors.dark[1]}
-                  txtkey={'profile.signUpForm.login'}
+                  txtkey={'signUpForm.login'}
                 />
               </BaseButton>
             </Flex>
@@ -202,14 +202,14 @@ export const Login = (props: loginProps) => {
             <BaseText
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
               color={theme.colors.gray[6]}
-              txtkey={'profile.signUpForm.newUser'}
+              txtkey={'signUpForm.newUser'}
             />
             &nbsp;
             <Link className={classes.link} href={'/'} >
               <BaseText
                 style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                 color={theme.colors.blue[4]}
-                txtkey={'profile.signUpForm.signUp'}
+                txtkey={'signUpForm.signUp'}
               />
             </Link>
           </Center>

@@ -118,16 +118,8 @@
       "postalCodeError":"الرجاء إدخال الرمز البريدي",
       "addressOneError":"الرجاء إدخال الرمز البريدي",
       "addressTwoError":"الرجاء إدخال العنوان الثاني",
-      "errorMessageForOTP":"الرجاء إدخال OTP"
-    }
-  },
-  "modal":{
-    "forgotPassword":{
-      "text":"يرجى إدخال بريدك الإلكتروني المسجل أو رقم هاتفك لتلقي رابط إعادة التعيين.",
-      "phone":"رقم الهاتف غير موجود",
-      "email":"البريد الإلكتروني غير موجود",
-      "invalidEmail" : "بريد إلكتروني خاطئ",
-      "invalidNumber" : "رقم الهاتف غير صحيح"
+      "errorMessageForOTP":"الرجاء إدخال OTP",
+      "invalidOtp":"لرجاء إدخال الرمز Otp"
     }
   },
   "signUpForm": {
@@ -144,8 +136,9 @@
   },
   "authentication": {
     "invalidEmail": "بريد إلكتروني خاطئ",
-    "invalidPhone" : "رقم الهاتف غير صالح",
-    "invalidPassword" : "رمز مرور خاطئ",
+    "invalidPassword": "رمز مرور خاطئ",
+    "invalidNumber": "أحرف على الأقل",
+    "enterMobileNumber": "تأكد من أن البريد الإلكتروني",
     "strings": {
       "incChar": "يتألف من 6 أحرف على الأقل",
       "incNum": "يشمل الرقم",
@@ -159,7 +152,7 @@
       "writePassword": "اكتب كلمة المرور الخاصة بك",
       "name": "اسم",
       "email": "بريد إلكتروني",
-      "phoneNumber": "رقم التليفون",
+      "phone number": "رقم التليفون",
       "continue": "يكمل",
       "forgetPassword": "هل نسيت كلمة السر",
       "newUser": "ليس لديك حساب؟",
@@ -169,26 +162,10 @@
       "invalidNumber": "رقم غير صالح",
       "namePlaceholder": "اكتب الرقم",
       "emailPlaceholder": "اكتب بريدا الكترونيا",
-      "errorMessage":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
-    }
-  },
-  "userProfile": {
-    "accountDetails": {
-      "name": "اسم",
-      "placeholder": "اسم المستخدم",
-      "email": "بريد إلكتروني",
-      "emailPlaceholder": "John.doe@gmail.com",
-      "phoneNumber": "رقم التليفون",
-      "saveChanges": "احفظ التغييرات",
-      "changeAvatar": "تغيير الصورة الرمزية"
-    },
-    "changePassword":{
-      "currentPassword":"كلمة السر الحالية",
-      "newPassword":"كلمة المرور الجديدة",
-      "confirmNewPassword":"تأكيد كلمة المرور الجديدة",
-      "passwordSame":"كلمة المرور ليست هي نفسها",
-      "placeholder":"اكتب كلمة المرور",
-      "saveCanges":"احفظ التغييرات"
+      "errorMessage":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح ",
+      "oldUser":"يدا الكترونيا",
+      "successfully":"الإلكتروني ، تأكد من أن",
+      "forgotPasswordText":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير ص"
     }
   },
   "header": {

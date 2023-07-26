@@ -86,7 +86,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     },
 
     validate: {
-      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("profile.authentication.invalidEmail")),
+      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
     },
   });
 
@@ -143,11 +143,11 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
     validate: {
       phone: (value) => {
         if (value.trim().length < 1)
-          return translate("profile.authentication.formText.invalidNumber");
+          return translate("authentication.formText.invalidNumber");
       },
       countriesCode: (value) => {
         if (value.trim().length < 1)
-          return translate("profile.authentication.formText.invalidNumber");
+          return translate("authentication.formText.invalidNumber");
       }
     },
   });
@@ -246,13 +246,13 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
               <BaseText
                 style={typography.headings[i18nStore.getCurrentLanguage()].h3}
                 color={theme.colors.dark[7]}
-                txtkey={'profile.signUpForm.forgetPassword'}
+                txtkey={'signUpForm.forgetPassword'}
               />
               <CloseButton onClick={() => {
                 closeModal()
               }} aria-label="Close modal" iconSize={20} />
             </Flex>
-            <BaseText ta={i18nStore.isRTL ? "right" : "left"} style={typography.paragraph[i18nStore.getCurrentLanguage()].p2} txtkey={"profile.forgotPassword.text"} />
+            <BaseText ta={i18nStore.isRTL ? "right" : "left"} style={typography.paragraph[i18nStore.getCurrentLanguage()].p2} txtkey={"authentication.formText.forgotPasswordText"} />
           </Flex>
 
 
@@ -325,7 +325,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   <Input
                     component={'input'}
                     type="text"
-                    placeholder={`${translate('profile.userProfile.accountDetails.email')}`}
+                    placeholder={`${translate("authentication.formText.writeEmail")}`}
                     style_variant={'inputText1'}
                     classNames={{ input: classes.input }}
                     {...resetPasswordByEmail.getInputProps('email')}
@@ -334,7 +334,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   <Center>
                     {error ?
                       <BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                        color={theme.colors.red[7]} txtkey={'profile.forgotPassword.invalidEmail'} />
+                        color={theme.colors.red[7]} txtkey={'authentication.invalidEmail'} />
                       : null}
                   </Center>
                 </Flex>
@@ -394,7 +394,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   <Center>
                     {error ?
                       <BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                        color={theme.colors.red[7]} txtkey={'profile.authentication.invalidPhone'} />
+                        color={theme.colors.red[7]} txtkey={'authentication.invalidNumber'} />
                       : null
                     }
                   </Center>

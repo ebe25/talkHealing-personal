@@ -89,16 +89,6 @@
       "heading":"Log out of your account",
       "para":"Are you sure you want to log out of your account now?"
     },
-      "forgotPassword":{
-        "text":"Please enter your registered email or phone number to receive the reset link.",
-        "phone":"Phone number not found",
-        "email":"Email not found",
-        "invalidEmail" : "Invalid email",
-        "invalidNumber" : "Invalid phone number"
-      },
-    "header":{
-      "signUp": "Create account",
-      "login": "Login to your account",
     "deleteModal":{
       "heading":"Delete account",
       "para":"Are you sure you want to delete your account now?"
@@ -132,7 +122,7 @@
       "postalCodeError":"Please enter Postal Code",
       "addressOneError":"Please enter Address One",
       "addressTwoError":"Please enter Address Two",
-      "errorMessageForOTP":"Please enter OTP"
+      "invalidOtp":"Invalid Otp"
     }
   },
   "signUpForm": {
@@ -149,8 +139,9 @@
   },
   "authentication": {
     "invalidEmail": "Invalid email",
-    "invalidPhone" : "Invalid phone",
-    "invalidPassword" : "Invalid Password",
+    "invalidPassword": "Invalid password",
+    "invalidNumber": "Invalid Number",
+    "enterMobileNumber": "Enter Mobile Number",
     "strings": {
       "incChar": "Includes at least 6 characters",
       "incNum": "Includes number",
@@ -174,28 +165,15 @@
       "invalidNumber": "Invalid number",
       "namePlaceholder": "Name",
       "emailPlaceholder": "Email",
-      "errorMessage":"This email or password is incorrect, please try again"
+      "errorMessage":"This email or password is incorrect, please try again",
+      "oldUser":"Already have account?",
+      "successfully":"Successfully",
+      "forgotPasswordText":"Please enter your registered email or phone number to receive the reset link."
     }
   },
-  "userProfile":{
-    "accountDetails":{
-      "name":"Name",
-      "placeholder":"User name",
-      "email":"Email",
-      "emailPlaceholder":"John.doe@gmail.com",
-      "phoneNumber":"Phone number",
-      "saveChanges":"Save changes",
-      "changeAvatar":"Change avatar"
-     },
-     "changePassword":{
-      "currentPassword":"Current password",
-      "newPassword":"New password",
-      "confirmNewPassword":"Confirm new password",
-      "passwordSame":"Passwords are not same",
-      "placeholder":"Write password",
-      "saveCanges":"Save changes"
-    }
-  }
- }
+  "header":{
+    "signUp": "Create account",
+    "login": "Login to your account"
+  }  
 }
 
