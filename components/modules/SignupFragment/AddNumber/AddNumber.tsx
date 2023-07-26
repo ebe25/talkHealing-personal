@@ -30,11 +30,11 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
         validate: {
             number: (value) => {
                 if (value.trim().length < 1)
-                    return translate('authentication.invalidNumber');
+                    return translate('authentication.formText.invalidNumber');
             },
             countriesCode: (value) => {
                 if (value.trim().length < 1)
-                    return translate('authentication.invalidNumber');
+                    return translate('authentication.formText.invalidNumber');
             },
         },
 
@@ -54,7 +54,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
             else if (res.code == 400) {
                 if (res.error) {
                     setLoader(false)
-                    setError(translate("authentication.invalidNumber"))
+                    setError(translate('authentication.formText.invalidNumber'))
                     setTimeout(() => {
                         setError("")
                     }, 5000)
@@ -92,7 +92,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                         <BaseText
                             style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                             color={theme.colors.dark[8]}
-                            txtkey={'authentication.signupVerification.mobileNumber'}
+                            txtkey={'authentication.enterMobileNumber'}
                         />
                     </Center>
                     {/* Select CountriesCode */}
@@ -100,7 +100,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                         <BaseText
                             style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
-                            txtkey={'authentication.signupVerification.countryCode'}
+                            txtkey={'profile.modal.countryCode'}
                         />
                         <Select
                             placeholder="+914"
@@ -121,7 +121,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                         <BaseText
                             style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
-                            txtkey={'authentication.signupVerification.mobileNumber'}
+                            txtkey={'authentication.enterMobileNumber'}
                         />
                         <Input
                             w={'100%'}
@@ -137,7 +137,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                         <Center>
                             {error ?
                                 <BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                                    color={theme.colors.red[7]} txtkey={'authentication.invalidNumber'} />
+                                    color={theme.colors.red[7]} txtkey={'authentication.formText.invalidNumber'} />
                                 : null}
                         </Center>
                     </Flex>
@@ -167,7 +167,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                 <BaseText
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.gray[6]}
-                    txtkey={'signUpForm.oldUser'}
+                    txtkey={'authentication.formText.oldUser'}
                 />
                 <Link style={{ textDecoration: "none" }} href='/login'>
                     <BaseText

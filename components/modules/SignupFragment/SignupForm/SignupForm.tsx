@@ -38,11 +38,11 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
             password1: (value) => (/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value) ? null : translate("authentication.invalidPassword")),
             password2: (value) => {
                 if (value != signUpForm.values.password1)
-                    return translate("authentication.passwordNotMatched");
+                    return translate("authentication.invalidPassword");
             },
             full_name: (value) => {
                 if (value.trim().length < 1)
-                    return translate('authentication.formText.writeName');
+                    return translate('profile.name');
             },
         },
     });
@@ -98,17 +98,17 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                         <BaseText
                             style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                             color={theme.colors.dark[8]}
-                            txtkey={'header.signUp'}
+                            txtkey={'signUpForm.signUp'}
                         />
                     </Center>
                     {/* Social Media Login */}
                     <Flex justify="center" align="center" gap={32}
                     >
                         <Box className={classes.link}>
-                            <CircularIcon Icon={Images.facebook_icon} />
+                            <CircularIcon icon={Images.facebook_icon} />
                         </Box>
                         <Box className={classes.link}>
-                            <CircularIcon Icon={Images.google_icon} />
+                            <CircularIcon icon={Images.google_icon} />
                         </Box>
                     </Flex>
                     {/* FullName Input Box */}
@@ -117,14 +117,14 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                         <BaseText
                             style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
-                            txtkey={'userProfile.accountDetails.name'}
+                            txtkey={'profile.name'}
                         />
                         <Input
                             w={'100%'}
                             mah={'44px'}
                             component={'input'}
                             classNames={{ input: classes.input }}
-                            placeholder={`${translate('authentication.formText.writeName')}`}
+                            placeholder={`${translate('profile.name')}`}
                             style_variant={'inputText1'}
                             {...signUpForm.getInputProps('full_name')}
                         />
@@ -198,7 +198,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
                             color={signUpForm.isValid() ? theme.white : theme.colors.dark[1]}
-                            txtkey={'signUpForm.signUp'}
+                            txtkey={'header.signUp'}
                         />
                     </BaseButton>
                 </Flex>
@@ -209,13 +209,13 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                 <BaseText
                     style={typography.label[i18nStore.getCurrentLanguage()].l1}
                     color={theme.colors.gray[6]}
-                    txtkey={'signUpForm.oldUser'}
+                    txtkey={'authentication.formText.oldUser'}
                 />
                 <Link className={classes.link} href='/login'>
                     <BaseText
                         style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                         color={theme.colors.blue[4]}
-                        txtkey={'signUpForm.signIn'}
+                        txtkey={'signUpForm.login'}
                     />
                 </Link>
             </Flex>

@@ -143,7 +143,7 @@ export const Login = (props: loginProps) => {
                   w={"100%"}
                   component={'input'}
                   classNames={{ input: classes.input }}
-                  placeholder={`${translate("authentication.formText.writeEmail")}`}
+                  placeholder={`${translate('authentication.formText.writeEmail')}`}
                   style_variant={'inputText1'}
                   {...loginForm.getInputProps('email')}
                 />
@@ -159,7 +159,7 @@ export const Login = (props: loginProps) => {
                   w={"100%"}
                   h={'44px'}
                   autoComplete='on'
-                  placeholder={`${translate("authentication.formText.writePassword")}`}
+                  placeholder={`${translate('authentication.formText.writePassword')}`}
                   {...loginForm.getInputProps('password')}
                 />
                 {/* error message */}
@@ -215,7 +215,7 @@ export const Login = (props: loginProps) => {
               <BaseText
                 style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                 color={theme.colors.blue[4]}
-                txtkey={'authentication.formText.signUp'}
+                txtkey={'signUpForm.signUp'}
               />
             </Link>
           </Center>

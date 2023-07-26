@@ -28,7 +28,7 @@ export const PhoneNumberOtp = () => {
         validate: {
             numberOtp: (value) => {
                 if (value.trim().length < 4)
-                    return translate('authentication.invalidOtp');
+                    return translate('profile.error.invalidOtp');
             },
         },
 
@@ -52,7 +52,7 @@ export const PhoneNumberOtp = () => {
             else if (res.code == 400) {
                 if (res.error) {
                     setLoader(false)
-                    setError(translate("authentication.invalidOtp"))
+                    setError(translate('profile.error.invalidOtp'))
                     setTimeout(() => {
                         setError("")
                     }, 5000)
@@ -71,7 +71,7 @@ export const PhoneNumberOtp = () => {
                     numberOtp: "",
                 });
                 setLoader(false)
-                swal(`${translate("header.resendVerification")}`, `${translate("header.numberSuccessfully")}`, "success")
+                swal(`${translate("profile.modal.resendText")}`, `${translate('authentication.formText.successfully')}`, "success")
             }
         })
     }
@@ -86,22 +86,18 @@ export const PhoneNumberOtp = () => {
                         <BaseText
                             style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                             color={theme.colors.dark[8]}
-                            txtkey={'authentication.signupVerification.verifyMobileNumber'}
+                            txtkey={'profile.modal.verifyNumber'}
                         />
                     </Center>
-                    <Flex justify={'center'} direction={'column'} gap={39}
+                    <Flex justify={'center'} align={'center'} direction={'column'} gap={39}
                     >
-                        <Flex justify={'center'} direction={'column'} gap={20}
+                        <Flex w={'70%'} justify={'center'} direction={'column'} align={'center'}
                         >
                             <BaseText
+                                ta={'center'}
                                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                 color={theme.colors.gray[6]}
-                                txtkey={'authentication.signupVerification.otpInYourNumber'}
-                            />
-                            <BaseText
-                                style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                                color={theme.colors.gray[6]}
-                                txtkey={'authentication.signupVerification.forTheVerification'}
+                                txtkey={'profile.modal.verifyNumberOtpPara'}
                             />
                         </Flex>
                         {/* Otp Enter */}
@@ -109,7 +105,7 @@ export const PhoneNumberOtp = () => {
                         {/* Error Message */}
                         <Center>
                             {error ? (<BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                                color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
+                                color={theme.colors.red[7]} txtkey={'profile.error.invalidOtp'} />) : null}
                             {loader ? <Loader /> : null}
                         </Center>
                     </Flex>
@@ -119,14 +115,14 @@ export const PhoneNumberOtp = () => {
                         <BaseText
                             style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
-                            txtkey={'authentication.signupVerification.didNotGetTheCode'}
+                            txtkey={'profile.modal.resendCode'}
                         />
                         <Box style={{ cursor: "pointer" }}>
                             <BaseText
                                 onClick={() => handleResendVerificationNumber()}
                                 style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                                 color={theme.colors.blue[4]}
-                                txtkey={'authentication.signupVerification.resendCode'}
+                                txtkey={'profile.modal.resendText'}
                             />
                         </Box>
                     </Flex>

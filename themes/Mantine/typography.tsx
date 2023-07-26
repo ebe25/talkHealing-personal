@@ -261,7 +261,7 @@ export const typography:any = {
         fontSize: '14px',
         lineHeight: '17px',
         fontWeight: 400,
-        letterSpacing: '0.36px',
+        letterSpacing: '0.96px',
       } as React.CSSProperties,
       l2: {
         fontFamily: webFontFamily['PlusJakartaSans-Regular'],

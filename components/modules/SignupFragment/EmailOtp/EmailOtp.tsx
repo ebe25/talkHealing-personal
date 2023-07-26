@@ -26,7 +26,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
         validate: {
             emailOtp: (value) => {
                 if (value.trim().length < 4)
-                    return translate('authentication.invalidOtp');
+                    return translate('profile.error.invalidOtp');
             },
         },
     });
@@ -46,7 +46,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
             else if (res.code == 404) {
                 if (res.error) {
                     setLoader(false)
-                    setError(translate("authentication.invalidOtp"))
+                    setError(translate('profile.error.invalidOtp'))
                     setTimeout(() => {
                         setError("")
                     }, 5000)
@@ -61,7 +61,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
         userStore.resendVerificationEmail().then((res) => {
             if (res.ok) {
                 setLoader(false)
-                swal(`${translate("header.resendVerification")}`, `${translate("header.emailSuccessfully")}`, "success")
+                swal(`${translate('profile.modal.resendText')}`, `${translate("authentication.formText.successfully")}`, "success")
             }
         })
     }
@@ -76,22 +76,18 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
                         <BaseText
                             style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                             color={theme.colors.dark[8]}
-                            txtkey={'authentication.signupVerification.verifyEmail'}
+                            txtkey={'profile.modal.verifyOtp'}
                         />
                     </Center>
-                    <Flex justify={'center'} direction={'column'} gap={39}
+                    <Flex justify={'center'} align={'center'} direction={'column'} gap={39}
                     >
-                        <Flex justify={'center'} direction={'column'} gap={20}
+                        <Flex w={'70%'} justify={'center'} direction={'column'}
                         >
                             <BaseText
+                                ta={'center'}
                                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                 color={theme.colors.gray[6]}
-                                txtkey={'authentication.signupVerification.otpInYourEmail'}
-                            />
-                            <BaseText
-                                style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                                color={theme.colors.gray[6]}
-                                txtkey={'authentication.signupVerification.forTheVerification'}
+                                txtkey={'profile.modal.emailOtpPara'}
                             />
                         </Flex>
                         {/* Otp Enter */}
@@ -99,7 +95,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
                         {/* Error Message */}
                         <Center>
                             {error ? (<BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                                color={theme.colors.red[7]} txtkey={'signUpForm.otpError'} />) : null}
+                                color={theme.colors.red[7]} txtkey={'profile.error.invalidOtp'} />) : null}
                             {loader ? <Loader /> : null}
                         </Center>
                     </Flex>
@@ -109,13 +105,13 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
                         <BaseText
                             style={typography.label[i18nStore.getCurrentLanguage()].l1}
                             color={theme.colors.gray[6]}
-                            txtkey={'authentication.signupVerification.didNotGetTheCode'}
+                            txtkey={'profile.modal.resendCode'}
                         />
                         <Box style={{ cursor: "pointer" }} onClick={() => handleResendVerificationEmail()}>
                             <BaseText
                                 style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                                 color={theme.colors.blue[4]}
-                                txtkey={'authentication.signupVerification.resendCode'}
+                                txtkey={'profile.modal.resendText'}
                             />
                         </Box>
                     </Flex>
