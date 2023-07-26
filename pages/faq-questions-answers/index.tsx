@@ -32,36 +32,23 @@ export const FaqQuestionsAnswers = () => {
                 </Flex>
                 {/* FaqQuestionsAnswers */}
                 <Box className={classes.faqQuestionsAnswersBox} >
-                    <Flex gap={'10px'} wrap={'wrap'} justify={'space-between'}>
-                        <BaseText mt={'20px'} color={theme.colors.black[5]} style={typography.headings[i18nStore.getCurrentLanguage()].h6} txtkey={'frequentlyAskedQuestions.loremIpsum'} />
-                        <Box w={'695px'}>
-                            {[1, 2].map(() =>
-                                <AccordionBox w={'100%'}>
-                                    <Accordion.Control>
-                                        <BaseText color={theme.colors.black[5]} style={typography.headings[i18nStore.getCurrentLanguage()].h7} txtkey={'frequentlyAskedQuestions.faqQuestion'} />
-                                    </Accordion.Control>
-                                    <Accordion.Panel>
-                                        <BaseText color={theme.colors.black[2]} style={typography.headings[i18nStore.getCurrentLanguage()].p2} txtkey={'frequentlyAskedQuestions.faqAns'} />
-                                    </Accordion.Panel>
-                                </AccordionBox>
-                            )}
-                        </Box>
-                    </Flex>
-                    <Flex gap={'10px'} wrap={'wrap'} justify={'space-between'}>
-                        <BaseText color={theme.colors.black[5]} mt={'20px'} style={typography.headings[i18nStore.getCurrentLanguage()].h6} txtkey={'frequentlyAskedQuestions.loremIpsum'} />
-                        <Box w={'695px'}>
-                            {[1, 2].map(() =>
-                                <AccordionBox w={'100%'}>
-                                    <Accordion.Control>
-                                        <BaseText color={theme.colors.black[5]} style={typography.headings[i18nStore.getCurrentLanguage()].h7} txtkey={'frequentlyAskedQuestions.faqQuestion'} />
-                                    </Accordion.Control>
-                                    <Accordion.Panel>
-                                        <BaseText color={theme.colors.black[2]} style={typography.headings[i18nStore.getCurrentLanguage()].p2} txtkey={'frequentlyAskedQuestions.faqAns'} />
-                                    </Accordion.Panel>
-                                </AccordionBox>
-                            )}
-                        </Box>
-                    </Flex>
+                    {[1, 2].map(() =>
+                        <Flex gap={'10px'} wrap={'wrap'} justify={'space-between'}>
+                            <BaseText mt={'20px'} color={theme.colors.black[5]} style={typography.headings[i18nStore.getCurrentLanguage()].h6} txtkey={'frequentlyAskedQuestions.loremIpsum'} />
+                            <Box w={'695px'}>
+                                {[1, 2].map(() =>
+                                    <AccordionBox w={'100%'}>
+                                        <Accordion.Control>
+                                            <BaseText color={theme.colors.black[5]} style={typography.headings[i18nStore.getCurrentLanguage()].h7} txtkey={'frequentlyAskedQuestions.faqQuestion'} />
+                                        </Accordion.Control>
+                                        <Accordion.Panel>
+                                            <BaseText color={theme.colors.black[2]} style={typography.headings[i18nStore.getCurrentLanguage()].p2} txtkey={'frequentlyAskedQuestions.faqAns'} />
+                                        </Accordion.Panel>
+                                    </AccordionBox>
+                                )}
+                            </Box>
+                        </Flex>
+                    )}
                 </Box>
             </Box>
         </Container>
