@@ -19,7 +19,7 @@ export const BasePasswordInput = (
   return (
     <PasswordInput
       {...props}
-      className={classes.PasswordInput}
+      className={classes.passwordInput}
       classNames={{
         rightSection: classes.rightSection,
         innerInput: classes.innerInput
