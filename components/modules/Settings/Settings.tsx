@@ -34,7 +34,7 @@ export const Settings = () => {
       <Select
         mt={'10px'}
         placeholder="English"
-        onChange={async (value) => {
+        onChange={async (value:any) => {
           await i18nStore.setAppLanguage(value);
           Router.reload();
         }}
@@ -50,6 +50,7 @@ export const Settings = () => {
         {NOTIFICATION_CONTANT.map((item, id) => {
           return (
             <Flex 
+            key={id}
               justify={'space-between'} 
               align={'center'}
             >
