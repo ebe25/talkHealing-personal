@@ -3,22 +3,15 @@ import { ColorSchemeToggle } from '../components/elements/ColorSchemeToggle/Colo
 
 import { useStores } from "@/models";
 import { SignUp } from './signup';
+import Profile from './profile';
 import Login from './login';
 
 export default function HomePage() {
-  const {userStore}=useStores()
-  userStore.loginUser(
-    "kaushalv568@gmail.com","admin@123"
-  ).then(({ok})=>{
-    userStore.getLoginUserData().then((res)=>{
-      // console.log(userStore.toJSON())
-
-    })
-  })
   
   return (
     <>
     <SignUp />
+      {/* <Profile/> */}
       {/* <Welcome /> */}
       {/* <ColorSchemeToggle /> */}
     {/* <Login /> */}

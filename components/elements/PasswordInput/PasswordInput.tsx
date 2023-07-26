@@ -1,7 +1,8 @@
 import React, { SetStateAction } from 'react';
 import { PasswordInput, PasswordInputProps } from '@mantine/core';
 import { PolymorphicComponentProps } from '@mantine/utils';
-import { createStyle } from './PasswordInput.style'
+import {createStyle} from './PasswordInput.style'
+import { useStores } from '@/models';
 
 interface BaseSearchInput extends PolymorphicComponentProps<'input', PasswordInputProps> {
   placeholder?: string;
@@ -13,6 +14,7 @@ export const BasePasswordInput = (
 ) => {
   const useStyles = createStyle();
   const { classes } = useStyles();
+  const{i18nStore} = useStores()
 
   return (
     <PasswordInput

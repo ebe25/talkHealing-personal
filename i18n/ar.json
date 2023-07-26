@@ -31,40 +31,123 @@
       "select": "يختار",
       "submit": "إرسال",
       "save": "يحفظ",
-      "seeDetails": "انظر التفاصيل",
-      "buyNow": "اشتري الآن",
-      "availableSeat": "مقعد متاح:"
+      "see details": "انظر التفاصيل",
+      "buy now": "اشتري الآن",
+      "available seat": "مقعد متاح:",
+      "verify":"يؤكد",
+      "deleteAccount":"حذف الحساب",
+      "logOut":"تسجيل خروج"
     }
   },
-  "card": {
-    "heading": "طَرد",
-    "availableSeats": "المقاعد المتاحة:",
-    "buyNow": "اشتري الآن",
-    "seeDetails": "انظر التفاصيل",
-    "moreDetail": "تفاصيل اكثر"
+  "profile":{
+    "tabOne":"حساب",
+    "tabTwo":"عناوين",
+    "tabThree":"إعدادات",
+    "heading":"ملفي",
+    "buttonChange":"يتغير",
+    "buttonRemove":"يزيل",
+    "name":"اسم",
+    "email":"بريد إلكتروني",
+    "phoneNumber":"رقم التليفون",
+    "password":"كلمة المرور",
+    "change":"يتغير",
+    "addressButton":"أضف عنوان جديد",
+    "editAddress":"تعديل العنوان",
+    "delete":"يمسح",
+    "addressDetails":"تفاصيل العنوان",
+    "deleteAddress":"حذف العنوان",
+    "deletePara":"هل أنت متأكد أنك تريد حذف هذا العنوان؟",
+    "modal":{
+      "changePasswordHeading":"تغيير كلمة المرور",
+      "currentPassword":"كلمة السر الحالية",
+      "newPassword":"كلمة المرور الجديدة",
+      "confirmPassword":"تأكيد كلمة المرور",
+      "passwordLength": "يجب ألا يقل عن 8 أحرف",
+      "passwordSuccessful":"تم تغيير كلمة المرور بنجاح",
+      "changeEmail":"تغيير الايميل",
+      "emailPara":"الرجاء إدخال عنوان البريد الإلكتروني الجديد الذي ترغب في تغييره.",
+      "email":"بريد إلكتروني",
+      "verifyOtp":"التحقق من البريد الإلكتروني",
+      "emailOtpPara":"لقد أرسلنا OTP في بريدك الإلكتروني. الرجاء إدخال OTP للتحقق.",
+      "resendCode":"ألم تحصل على الرمز؟",
+      "resendText":"أعد إرسال الرمز",
+      "emailChanged":"تم تغيير عنوان البريد الإلكتروني بنجاح.",
+      "paraPhoneNumber":"الرجاء إدخال رقم الهاتف الجديد الذي ترغب في تغييره.",
+      "countryCode":"حدد رمز الدولة",
+      "changePhoneNumber":"غير رقم الهاتف",
+      "phoneChanged":"تم تغيير رقم الهاتف بنجاح.",
+      "verifyNumber":"تحقق من رقم الهاتف",
+      "verifyNumberOtpPara":"لقد أرسلنا OTP في بريدك الإلكتروني. الرجاء إدخال OTP للتحقق.",
+      "phoneNumberLengthError":"الرجاء إدخال رقم",
+      "afterPhoneNumberVerifypara":"تم تغيير رقم الهاتف بنجاح."
+    },
+    "logOutModal":{
+      "heading":"تسجيل الخروج من حسابك",
+      "para":"هل أنت متأكد أنك تريد تسجيل الخروج من حسابك الآن؟"
+    },
+    "deleteModal":{
+      "heading":"حذف الحساب",
+      "para":"هل أنت متأكد أنك تريد حذف حسابك الآن؟"
+    },
+    "addressModal":{
+      "label1":"العنوان الأول",
+      "label2":"العنوان الثاني",
+      "country":"دولة",
+      "state":"ولاية",
+      "district":"يصرف",
+      "code":"رمز بريدي",
+      "addressChangeSucccessful":"تمت إضافة عنوان جديد",
+      "saveChanges":"حفظ التغييرات",
+      "cancelEdit":"إلغاء التحرير"
+    },
+    "setting":{
+      "heading":"جلسة",
+      "changeLanguage":"تغيير اللغة",
+      "push":"دفع الإخطار",
+      "emailNotification":"إعلام البريد الإلكتروني",
+      "smsNotification":"إخطار الرسائل القصيرة",
+      "on":"على",
+      "off":"عن"
+    },
+    "error":{
+      "mailError":"البريد الإلكتروني غير صالح.",
+      "passwordMatchError":"كلمة المرور الجديدة وتأكيد كلمة المرور الجديدة غير متطابقين ",
+      "countryError":"الرجاء تحديد الدولة",
+      "stateError":"الرجاء تحديد ولاية",
+      "districtError":"الرجاء تحديد منطقة",
+      "postalCodeError":"الرجاء إدخال الرمز البريدي",
+      "addressOneError":"الرجاء إدخال الرمز البريدي",
+      "addressTwoError":"الرجاء إدخال العنوان الثاني",
+      "errorMessageForOTP":"الرجاء إدخال OTP",
+      "errorMessage": "لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح ",
+      "otpError": "غير معثور عليه",
+      "numberError": "Invalid phone number"
+    }
   },
-  "premiumCard": {
-    "premiumCardTitle": "شهريا ، تدفع سنويا"
+  "modal":{
+    "forgotPassword":{
+      "text":"يرجى إدخال بريدك الإلكتروني المسجل أو رقم هاتفك لتلقي رابط إعادة التعيين.",
+      "phone":"رقم الهاتف غير موجود",
+      "email":"البريد الإلكتروني غير موجود",
+      "invalidEmail" : "بريد إلكتروني خاطئ",
+      "invalidNumber" : "رقم الهاتف غير صحيح"
+    }
   },
-  "header": {
-    "booking": "الحجز للحدث",
-    "signUp": "إنشاء حساب",
-    "login": "تسجيل الدخول إلى حسابك",
-    "play": "اللعب المفتوح",
-    "shop": "ورش عمل",
-    "gallery": "صالة عرض",
-    "contact": "اتصل بنا",
-    "visit": "يزور",
-    "save": "يحفظ",
-    "seeDetails": "انظر التفاصيل",
-    "buyNow": "اشتري الآن",
-    "available seat": "مقعد متاح:",
-    "resendVerification": "إعادة التحقق",
-    "emailSuccessfully": "إعادة إرسال المستخدم التحقق",
-    "numberSuccessfully": "المستخدم إعادة إرسال رقم التحقق بنجاح!"
+  "signUpForm": {
+    "login": "تسجيل الدخول",
+    "forgetPassword": "هل نسيت كلمة السر؟",
+    "newUser": "ليس لديك حساب",
+    "signUp": "اشتراك",
+    "loginButtonText": "تسجيل الدخول",
+    "subText": "سنقوم بإرسال بريد إلكتروني لإعادة تعيين كلمة المرور الخاصة بك",
+    "backToLogin": "العودة إلى تسجيل الدخول",
+    "continue": "يكمل",
+    "passwordLength": "يجب ألا يقل عن 8 أحرف",
+    "errorMessage": "لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
   },
   "authentication": {
     "invalidEmail": "بريد إلكتروني خاطئ",
+    "invalidPhone" : "رقم الهاتف غير صالح",
     "invalidOtp": "otp غير صالح",
     "invalidPassword": "رمز مرور خاطئ",
     "invalidNumber": "رقم الهاتف غير صحيح",
@@ -95,122 +178,7 @@
       "namePlaceholder": "اكتب الرقم",
       "emailPlaceholder": "اكتب بريدا الكترونيا",
       "errorMessage":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
-    },
-    "signupVerification": {
-      "verificationText": "تَحَقّق",
-      "verificationCodeText": "الرجاء كتابة الرمز المرسل إلى ",
-      "createPasswordText": "أنشئ كلمة مرور",
-      "password": " كلمة المرور",
-      "confirmPassword": "تأكيد كلمة المرور",
-      "includedText": "يجب أن يحتوي على حرف واحد كبير ورقمي وحرف خاص على الأقل",
-      "backButton": "خلف",
-      "continue": "يكمل",
-      "passwordPlaceholder": "اكتب كلمة المرور",
-      "newKid": "أضف تفاصيل أطفال جديدة",
-      "kidName": "ما اسمك يا فتى",
-      "skip": "تخطي في الوقت الراهن",
-      "kidInfoPlaceholder": "اسم الطفل",
-      "kidDOB": "ما هو تاريخ ميلاد طفلك",
-      "previousButtonText": "سابق",
-      "datePlaceholder": "DD",
-      "monthPlaceholder": "MM",
-      "yearPlaceholder": "YYYY",
-      "didNotGetTheCode": "ألم تحصل على الرمز؟",
-      "resendCode": "أعد إرسال الرمز",
-      "otpInYourEmail":"لقد أرسلنا OTP في بريدك الإلكتروني",
-      "forTheVerification":"الرجاء إدخال OTP للتحقق.",
-      "verifyEmail": "التحقق من البريد الإلكتروني",
-      "mobileNumber": "أدخل رقم الهاتف المتحرك",
-      "countryCode": "حدد رمز الدولة",
-      "verifyMobileNumber": "تحقق من رقم الهاتف المحمول",
-      "otpInYourNumber":"لقد أرسلنا OTP في رقم هاتفك المحمول."
     }
-  },
-  "dataBox": {
-    "selectThisDetails": "حدد هذه التفاصيل",
-    "addKidDetails": "أضف تفاصيل طفل جديد",
-    "selectedData": "المحدد"
-  },
-  "footer": {
-    "welcome": "مرحبًا بكم في Playwheel ،",
-    "paragraph": "أبجد هوز دولور الجلوس امات. يجب أن يكون الأمر كذلك نتيجة لذلك. Hic nemo repudiandae aut maiores praesentium nam enim error ut numquam gentissimos. .",
-    "story": "قصتنا",
-    "contact": "اتصل بنا",
-    "location": "لوريم إيبسوم ، س ص دولور الجلوس اميت.",
-    "email": "Info@blohel.com",
-    "privacy": "سياسة الخصوصية",
-    "condition": "البنود و الظروف",
-    "policy": "سياسة ملفات الارتباط",
-    "question": "هل لديك أسئلة؟",
-    "faqQuestion": "تحقق من الأسئلة الشائعة أو اتصل بنا",
-    "copyRight": "حقوق النشر © 2022 دولاب اللعب. كل الحقوق محفوظة"
-  },
-  "sidebar": {
-    "useProfile": "استخدام الملف الشخصي",
-    "userStatus": "حالة المستخدم",
-    "accountDetails": "Account details",
-    "changePassword": "تفاصيل الحساب",
-    "kidDetails": "تفاصيل الأطفال",
-    "termsAndConditions": "البنود و الظروف",
-    "becomeMember": "كن عضوا",
-    "logOut": "تسجيل خروج"
-  },
-  "homePage": {
-    "playWheelPara": "Playwheel، مكان مليء بالمرح للجميع للاستمتاع به",
-    "playWheelParaSec": "كل زيارة فريدة من نوعها ، والأشخاص من جميع الأعمار موضع ترحيب.   نحن نعد أنه جو مريح من أجل المتعة الجيدة.  لا يوجد حقًا أي صواب أو خطأ ، فقط إمكانيات ومغامرات لا حصر لها!",
-    "homesecondFragment": {
-      "heading": "تحقق من Open Play",
-      "para": "أحضر أطفالك إلى اللعب المفتوح لدينا لتجربة آمنة وممتعة مليئة بمجموعة متنوعة من الأنشطة والألعاب. يتضمن اللعب المفتوح لدينا هياكل التسلق والشرائح والمحطات التفاعلية والطاولات الحرفية للترفيه عن الأطفال من جميع الأعمار. موظفينا الودودين وذوي الخبرة موجودون دائمًا لضمان تجربة آمنة وممتعة.",
-      "checkAvailability": "التحقق من الصلاحية",
-      "learnMore": "يتعلم أكثر"
-    },
-    "childInfoFragment": {
-      "heading": "ورشة عمل",
-      "seeAll": "اظهار الكل"
-    },
-    "bookingForEventsFragment": {
-      "heading": "الحجز للأحداث",
-      "para": "احجز مجموعة متنوعة من الأحداث المثيرة للأطفال على موقعنا الإلكتروني ، بما في ذلك حفلات أعياد الميلاد وورش العمل التعليمية. مع وجود شيء يناسب اهتمامات كل طفل وفئته العمرية ، فإن عملية الحجز لدينا سريعة وسهلة. امنح طفلك تجربة لن ينساها أبدًا من خلال حجز حدث اليوم.",
-      "bookNow": "احجز الآن",
-      "aboutPackageParagraphFirst":"لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
-      "aboutPackageParagraphSecond":"لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
-      "aboutPackageParagraphThird":"لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني."
-    }
-  },
-  "signUpForm": {
-    "login": "تسجيل الدخول",
-    "forgetPassword": "هل نسيت كلمة السر؟",
-    "newUser": "ليس لديك حساب",
-    "signUp": "اشتراك",
-    "oldUser": "لديك حساب بالفعل؟",
-    "signIn": "تسجيل الدخول",
-    "loginButtonText": "تسجيل الدخول",
-    "subText": "سنقوم بإرسال بريد إلكتروني لإعادة تعيين كلمة المرور الخاصة بك",
-    "backToLogin": "العودة إلى تسجيل الدخول",
-    "continue": "يكمل",
-    "passwordLength": "يجب ألا يقل عن 8 أحرف",
-    "errorMessage": "لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح ",
-    "otpError": "غير معثور عليه",
-    "numberError": "Invalid phone number"
-  },
-  "footerPages": {
-    "privacyPolicy": "سياسة الخصوصية",
-    "cookiesPolicy": "سياسة ملفات الارتباط",
-    "ourStory": "قصتنا",
-    "faqQuestion": "أسئلة مكررة"
-  },
-  "paymentModal": {
-    "buttonText": "منتهي",
-    "paymentStatus": "دفعتك ناجحة",
-    "item": "أغراض:",
-    "totalItem": "المجموع:"
-  },
-  "cartPage": {
-    "heading": "عربتك",
-    "placeholder": "أضف رمز القسيمة",
-    "itemPrice": "سعر العناصر",
-    "totalAmount": "السعر الكلي",
-    "buttonText": "الشروع في دفع"
   },
   "userProfile": {
     "accountDetails": {
@@ -231,88 +199,8 @@
       "saveCanges":"احفظ التغييرات"
     }
   },
-  "contactUs": {
-    "imageHeading": "ابقى على تواصل",
-    "imageParagraph": "يسعدنا أن نسمع منك",
-    "contactTitle": "بيانات المتصل",
-    "contactDetails": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
-    "location": "خريطة الموقع",
-    "buttonAboveHeadingOne": "تصفح الأسئلة الشائعة",
-    "buttonAboveHeadingTwo": "ابق على تواصل معنا",
-    "buttonText1": "تصفح الأسئلة الشائعة",
-    "buttonText2": "ارسل رأيك"
-  },
-  "termsAndConditions": {
-    "condition": "أحكام وشروط"
-  },
-  "userStatus": {
-    "InvoicesTitle": "الفواتير",
-    "userId": "هوية صوتية",
-    "userDecription": "حجز تذكره",
-    "planDate": "تاريخ",
-    "amount": "كمية",
-    "booking": "الحجوزات",
-    "promos": "الملل"
-  },
-  "becomeMember": {
-    "playWheelMember": "كن عضوًا في Playwheel",
-    "memberParagraph": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ أن تم تعميمه في الستينيات مع إصدار أوراق Letraset التي تحتوي على."
-  },
-  "bookingForEvent": {
-    "aboutMultipurposeText": "حول القاعة متعددة الأغراض والخدمات",
-    "galleryText": "صالة عرض",
-    "bookingForEventText": "الحجز للأحداث",
-    "packagePriceText": "سعر الطرد",
-    "addToCartText": "أضف إلى السلة",
-    "checkOutNowText": "الخروج الآن",
-    "totalPriceText": "السعر الكلي",
-    "addOnPriceText": "سعر الإضافات",
-    "addOnsText": "الإضافات",
-    "addOnNameText": "اسم الوظيفة الإضافية",
-    "chooseDateText": "اختر التاريخ والوقت",
-    "checkoutText": "الدفع",
-    "addCouponText": "أضف رمز القسيمة",
-    "paymentProceedButtonText": "الشروع في دفع",
-    "bookingForEventHeading": "كتاب للأحداث"
-  },
-  "kidZone": {
-    "heading": "اللعب المفتوح",
-    "availableAndTiming": "التوفر والتوقيت",
-    "timing": "المواعيد:",
-    "availableSlots": "فتحات متاحة",
-    "services": "خدمات",
-    "selectDate":"حدد تاريخ"
-  },
-  "addKidDetails": {
-    "kidName": "اسم الطفل",
-    "kidNamePlaceholder": "اكتب الاسم",
-    "kidDateOfBirthText": "تاريخ ميلاد الطفل",
-    "kidFavouriteColor": "اللون المفضل",
-    "kidFavouriteColorPlaceholder": "اكتب اللون",
-    "previousButtonText": "سابق",
-    "saveButtonText": "يحفظ",
-    "nextButton": "التالي",
-    "editKidDetails": "تحرير تفاصيل الطفل"
-  },
-  "workshop": {
-    "workshopHeadingOne": "ورشة عمل مستمرة",
-    "workshopHeadingTwo": "ورش العمل القادمة",
-    "aboutWorkShop": "حول ورشة العمل",
-    "aboutOrganizer": "حول المنظم",
-    "workshopCardHeading": "اسم الورشة",
-    "buttonText": "اشتري الآن",
-    "progressbarText": "المقعد متاح",
-    "bookingWorkshop": "الحجز لورشة العمل",
-    "choosekidDetails": "اختر تفاصيل الأطفال",
-    "addKidDetails": "أضف تفاصيل طفل جديد",
-    "workshopName": "اسم الورشة هنا",
-    "buttonTextOne": "أضف إلى السلة",
-    "buttonTextTwo": "الخروج الآن",
-    "workshopImageHeading": "ورش عمل",
-    "calenderButtonText": "اختر من التقويم",
-    "workshopParagraphFirst": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني",
-    "workshopParagraphSecond": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
-    "workshopParagraphThird": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
-    "selectDate":"اختر من التقويم"
+  "header": {
+    "signUp": "إنشاء حساب",
+    "login": "تسجيل الدخول إلى حسابك"
   }
 }
