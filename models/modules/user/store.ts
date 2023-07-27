@@ -36,7 +36,6 @@ export const UserStore = types
           password: password,
         }
       );
-      console.log("this is log in response ", response)
       switch (response.status) {
         case 200:
           self.loggedInUserData = null;
@@ -51,10 +50,11 @@ export const UserStore = types
           );
           return ACTION_RESPONSES.success;
         case 400:
-          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.non_field_errors[0]
+          return {
+            ...ACTION_RESPONSES.failure, code: response.status, error: response.data
           };
         case 401:
-          return ACTION_RESPONSES.failure;
+          return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data }
         case 500:
           return ACTION_RESPONSES.failure;
         default:
@@ -84,8 +84,9 @@ export const UserStore = types
     signupUser: flow(function* (
       email: string,
       full_name: string,
-      phone: string,
-      is_terms_agreed: boolean
+      password1: string,
+      password2: string,
+      // is_terms_agreed: boolean
     ) {
       storage.clear();
       self.is_logged_in = false;
@@ -94,35 +95,19 @@ export const UserStore = types
         {
           email: email,
           full_name: full_name,
-          phone: phone,
-          is_terms_agreed: is_terms_agreed
+          password1: password1,
+          password2: password2,
+          // is_terms_agreed: is_terms_agreed
         }
       );
       console.log("this is sign up response ", response)
       let error = null;
       switch (response.status) {
         case 201:
-          return ACTION_RESPONSES.success;
-        case 400:
-          error = response.data;
-          break;
-        default:
-          console.error("UNHANDLED ERROR");
-          break;
-      }
-      return ACTION_RESPONSES.failure;
-    }),
-    verifyEmail: flow(function* (key: string) {
-      const response = yield self.environment.api.call(
-        API_ENDPOINTS.verifyEmail,
-        {
-          key: key,
-        }
-      );
-      console.log("response", response);
-      switch (response.status) {
-        case 200:
-          self.verfyEmailData = UserSchemas.LoggedInUser.create(
+          self.loggedInUserData = null;
+          yield storage.clear();
+          self.is_logged_in = true;
+          self.loggedInUserData = UserSchemas.LoggedInUser.create(
             response.data
           );
           yield storage.setItem(
@@ -131,7 +116,30 @@ export const UserStore = types
           );
           return ACTION_RESPONSES.success;
         case 400:
+          return {
+            ...ACTION_RESPONSES.failure, code: response.status, error: response.data
+          };
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    verifyEmail: flow(function* (otp: string) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.verifyEmail,
+        {
+          otp: otp,
+        }
+      );
+      console.log("response", response);
+      switch (response.status) {
+        case 200:
+          return ACTION_RESPONSES.success;
+        case 400:
           return ACTION_RESPONSES.failure;
+        case 404:
+          return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data }
         default:
           console.error("UNHANDLED ERROR");
           break;
@@ -140,7 +148,8 @@ export const UserStore = types
     }),
     resendVerificationEmail: flow(function* () {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.resendVerificationEmail
+        API_ENDPOINTS.resendVerificationEmail,
+        {}
       );
       switch (response.status) {
         case 200:
@@ -153,7 +162,7 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    verifyPhoneNumber: flow(function* (otp: number) {
+    verifyPhoneNumber: flow(function* (otp: string) {
       const response = yield self.environment.api.call(
         API_ENDPOINTS.verifyPhoneNumber,
         {
@@ -164,7 +173,7 @@ export const UserStore = types
         case 200:
           return ACTION_RESPONSES.success;
         case 400:
-          return ACTION_RESPONSES.failure;
+          return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data };
         default:
           console.error("UNHANDLED ERROR");
       }
@@ -279,7 +288,7 @@ export const UserStore = types
           // self.loggedInUserData.user = UserSchemas.User.create(response.data);
           return ACTION_RESPONSES.success;
         case 400:
-          return { ...ACTION_RESPONSES.failure, code: response.status };
+          return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data }
         case 401:
           return ACTION_RESPONSES.failure;
         default:

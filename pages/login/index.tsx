@@ -13,6 +13,7 @@ import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '@/i18n';
+import { useRouter } from 'next/router';
 import { ForgotPassword } from '../../components/modules/Modals/ForgotPassword/ForgotPassword';
 import { useDisclosure } from '@mantine/hooks';
 
@@ -27,7 +28,8 @@ export const Login = (props: loginProps) => {
   const theme = useMantineTheme();
   const { i18nStore, userStore } = useStores()
   const [loader, setLoader] = useState(false);
-  const [error, setError] = useState<any>("");
+  const router = useRouter();
+  const [error, setError] = useState<any>("")
   const [opened, { open, close }] = useDisclosure(false);
 
 
@@ -46,7 +48,6 @@ export const Login = (props: loginProps) => {
     },
   });
 
-
   //  Login Api Call
   const handleLogin = () => {
     setLoader(true)
@@ -57,16 +58,25 @@ export const Login = (props: loginProps) => {
       userStore.loginUser(loginForm.values.email, loginForm.values.password).then((res) => {
         if (res.ok) {
           console.log("user logged in successfully!")
-          loginForm.setValues({
-            email: "",
-            password: "",
-          });
+          router.push('/home')
+          loginForm.reset()
           setLoader(false)
         }
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
             setError(res.error)
+            setTimeout(() => {
+              setError("")
+            }, 5000)
+          }
+        }
+        else if (res.code == 401) {
+          if (res.error) {
+            setLoader(false)
+            setError(res.error)
+            if (res.error && res.error.detail)
+              setError(res.error?.detail?.toString())
             setTimeout(() => {
               setError("")
             }, 5000)
@@ -110,7 +120,7 @@ export const Login = (props: loginProps) => {
               <Center>
                 <BaseText
                   ta={'center'}
-                  style={typography.headings[i18nStore.getCurrentLanguage()].h1}
+                  style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                   color={theme.colors.dark[8]}
                   txtkey={'header.login'}
                 />
@@ -135,9 +145,9 @@ export const Login = (props: loginProps) => {
                 <Input
                   h={'44px'}
                   w={"100%"}
-                  classNames={{input:classes.input}}
                   component={'input'}
-                  placeholder={`${translate("authentication.formText.writeEmail")}`}
+                  classNames={{ input: classes.input }}
+                  placeholder={`${translate('authentication.formText.writeEmail')}`}
                   style_variant={'inputText1'}
                   {...loginForm.getInputProps('email')}
                 />
@@ -205,7 +215,7 @@ export const Login = (props: loginProps) => {
               txtkey={'signUpForm.newUser'}
             />
             &nbsp;
-            <Link className={classes.link} href={'/'} >
+            <Link className={classes.link} href={'/signup'} >
               <BaseText
                 style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                 color={theme.colors.blue[4]}
@@ -219,4 +229,4 @@ export const Login = (props: loginProps) => {
   );
 };
 
-export default Login
+export default Login;

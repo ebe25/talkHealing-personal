@@ -27,7 +27,6 @@
     "@mantine/dropzone": "6.0.2",
     "@mantine/form": "^6.0.16",
     "@mantine/hooks": "6.0.2",
-    "@mantine/form": "^6.0.7",
     "@mantine/modals": "6.0.2",
     "@mantine/next": "6.0.2",
     "@mantine/notifications": "6.0.2",
@@ -54,7 +53,8 @@
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rtl-detect": "^1.0.4"
+    "rtl-detect": "^1.0.4",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

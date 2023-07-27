@@ -1,24 +1,26 @@
 import { createStyles } from '@mantine/core';
-import { Images } from '../../public/index';
 import { useStores } from '@/models';
 
 export const createStyle = () => {
   const { i18nStore } = useStores()
 
   return createStyles((theme) => ({
-    container: {
-      width: '100%',
-      height: '100vh',
-      alignItems: 'center',
-      backgroundImage: 'url( ' + `${Images.bg_Img}` + '  )',
-      backgroundSize: '100%',
-      [theme.fn.smallerThan('md')]: {
-        padding: '20px',
-      },
-    },
     link: {
       cursor: "pointer",
       textDecoration: "none"
+    },
+    loaderBox: {
+      position: 'fixed',
+      zIndex: 1,
+      left: 0,
+      top: 0,
+      width: '100%',
+      height: '100vh',
+      overflow: 'auto',
+      backgroundColor: 'rgba(0,0,0,0.4)',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
     },
     rightSection: {
       right: i18nStore.isRTL ? "88%" : "",
