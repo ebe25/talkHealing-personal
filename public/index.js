@@ -59,8 +59,14 @@ export const Images = {
   google_icon:"./image/google.png",
   product_image:"./image/product_image.png",
   product_logo:"./image/product_logo.png",
+  profile_photo_image:"./image/profile_photo_image.png",
   location_icon:"./icons/location_icon.png",
   chat_icon:"./icons/chat_icon.png",
   star_icon:"./icons/star_icon.png",
+  brand_icon:"./icons/brand_icon.png",
+  bookmark_icon:"./icons/bookmark_icon.png",
+  share_icon:"./icons/share_icon.png",
+  vertical_line_icon:"./icons/vertical_line_icon.png",
+  
 }
 
