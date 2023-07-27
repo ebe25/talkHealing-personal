@@ -1,26 +1,39 @@
 // react and next import
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 //styles
 import useStyles from './Address.styles';
 //mantine component
 import { Box, Button, Flex, Text, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 // internal component
+import { AddressModal } from '../Modals/ProfileModals/AddressModals/AddressModal';
+import { DeleteAddressModal } from '../Modals/ProfileModals/DeleteAddressModal/DeleteAddressModal';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { IconCirclePlus, IconMapPinFilled } from '@tabler/icons-react';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 //stores
-import { AddressModal } from '../Modals/ProfileModals/AddressModals/AddressModal';
-import { DeleteAddressModal } from '../Modals/ProfileModals/DeleteAddressModal/DeleteAddressModal';
+import { useStores } from '@/models';
+import { AddressPaginatedType, AddressType } from '@/models/modules/user/schemas';
 //external
 
 export const Address = () => {
+  const { userStore } = useStores()
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false); 
   const address = useDisclosure(false); 
   const editAddress = useDisclosure(false); 
   const [ modalHeading, setModalHeading ] = useState<any>();
+  // const [ userAddress, setUserAddress ] = useState();
+ 
+  useEffect(() => {
+    userStore.getLoginUserData()
+    userStore.getUserAddress().then((res)=>{
+      if(res.ok){
+        // setUserAddress(userStore.address?.results)
+      }
+    })
+  },[])
   
   const ADDRESS_DATA = [
     {
@@ -50,20 +63,20 @@ export const Address = () => {
       >
         <BaseText txtkey="profile.addressButton" color={theme.colors.blue[5]} />
       </Button>
-      {ADDRESS_DATA.map((item, id) => {
+      {userStore.address?.results.map((item, id) => {
         return (
           <Box key={id} className={classes.addressBox}>
             <Text
               color={theme.colors.gray[5]}
             >
-            {item.name}&nbsp;&middot;&nbsp;{item.number}
+            {userStore.userData?.full_name}&nbsp;&middot;&nbsp;{userStore.userData?.phone}
             </Text>
             <Flex gap={"8px"} my={"10px"} >
               <IconMapPinFilled color={"blue"} />
               <Text
                 color={theme.colors.dark[8]}
               >
-                {item.address}
+                {item.address_line1},&nbsp;{item.address_line2},&nbsp;{item.city},&nbsp;{item.state},&nbsp;{item.country}
               </Text>
             </Flex>
             <Flex gap={"16px"} >

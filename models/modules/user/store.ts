@@ -1,11 +1,9 @@
 import { types, flow } from "mobx-state-tree";
 import { withEnvironment } from "../../extensions/with-environment";
-import { ACTION_RESPONSES, API_ENDPOINT } from "../../api/endpoint.types";
-import globalKeyStore from "../../api/global-key-store";
+import { ACTION_RESPONSES } from "../../api/endpoint.types";
 import * as UserSchemas from "./schemas";
 import { API_ENDPOINTS } from "./endpoints";
 import * as storage from "localforage";
-import { TermsOfUse } from "./schemas";
 /**
  * Model description here for TypeScript hints.
  */
@@ -21,6 +19,7 @@ export const UserStore = types
     remember_me: types.maybeNull(types.boolean),
     isLoggedInUser: types.maybeNull(types.boolean),
     verfyEmailData: types.maybeNull(UserSchemas.LoggedInUser),
+    address: types.maybeNull(UserSchemas.AddressPaginated),
   })
   .extend(withEnvironment)
   .actions((self) => ({
@@ -526,5 +525,21 @@ export const UserStore = types
           break;
       }
       return ACTION_RESPONSES.failure;
-    })
+    }),
+    getUserAddress: flow(function* () {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.userAddress
+      );
+      switch (response.status) {
+        case 200:
+          self.address = UserSchemas.AddressPaginated.create(response.data)
+          return ACTION_RESPONSES.success;
+        case 400:
+          return ACTION_RESPONSES.success;;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
   }));

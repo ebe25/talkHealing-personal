@@ -163,4 +163,10 @@ export const API_ENDPOINTS = {
         response: null,
         transformer: null,
     }),
+    userAddress: new API_ENDPOINT({
+        url: "/base_user/user-address/",
+        method: REQUEST_METHOD.GET,
+        response: null,
+        transformer: null,
+    }),
 }

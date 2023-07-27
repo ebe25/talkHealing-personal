@@ -98,3 +98,23 @@ export const Action = types.model({
   target_external_url: types.string,
   target_internal_url: types.string,
 })
+
+export const Address = types.model({
+  id: types.identifier,
+  created_on: types.string,
+  edited_on: types.string,
+  _data: types.maybeNull(types.frozen()),
+  address_line1: types.maybeNull(types.string),
+  address_line2: types.maybeNull(types.string),
+  city: types.maybeNull(types.string),
+  state: types.maybeNull(types.string),
+  country: types.maybeNull(types.string),
+  postal_code: types.maybeNull(types.string)
+})
+export interface AddressType extends Instance<typeof Address> { }
+export const AddressPaginated = types.model({
+  ...PaginatedSchemaBase,
+  results: types.array(Address),
+})
+export interface AddressPaginatedType extends Instance<typeof AddressPaginated> { }
+
