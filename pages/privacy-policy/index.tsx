@@ -20,7 +20,7 @@ export const PrivacyPolicy = () => {
 
     return (
         <Container maw={'1440px'}>
-            <Box className={classes.termsAndConditionBox}>
+            <Box className={classes.privacyPolicyBox}>
                 {/* Heading */}
                 <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h2} txtkey='termsAndConditionAndPolicy.privacyPolicy.heading' />
                 {/* paragraph */}

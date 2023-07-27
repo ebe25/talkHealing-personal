@@ -20,7 +20,7 @@ export const CookiePolicy = () => {
 
     return (
         <Container maw={'1440px'}>
-            <Box className={classes.termsAndConditionBox}>
+            <Box className={classes.cookiePolicyBox}>
                 {/* Heading */}
                 <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h2} txtkey='termsAndConditionAndPolicy.cookiePolicy.heading' />
                 {/* paragraph */}

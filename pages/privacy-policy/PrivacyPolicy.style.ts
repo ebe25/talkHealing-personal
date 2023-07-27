@@ -1,13 +1,13 @@
 import { createStyles } from '@mantine/core';
-import {typography } from "@/themes/Mantine/typography";
+import { typography } from "@/themes/Mantine/typography";
 
 export default createStyles((theme) => ({
-    termsAndConditionBox : {
+    privacyPolicyBox: {
         padding: "50px",
         width: "100%",
         height: "100%"
     },
-    textBox : {
-        marginTop : "24px",
+    textBox: {
+        marginTop: "24px",
     }
 }));
