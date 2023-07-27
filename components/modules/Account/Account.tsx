@@ -24,7 +24,6 @@ import { Input } from '@/components/elements/Input/Input';
 //store import
 import { useStores } from '@/models';
 // other import
-import { Images } from '@/public';
 import { translate } from '@/i18n';
 import { ChangePhoneNumberModal } from '../Modals/ProfileModals/ChangePhoneNumberModal/ChangePhoneNumberModal';
 

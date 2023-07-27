@@ -5,7 +5,7 @@ import { Flex, Image, PinInput, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 // style import
-import  useStyles  from './EmailOTP.styles';
+import useStyles from './EmailOTP.styles';
 // internals components
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -24,9 +24,9 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
   const { classes } = useStyles();
-  const [ error , setError ] = useState("");
-  const [ otpResendResponseText , setOtpResendResponseText ] = useState("");
-  const [ loader , setLoader ] = useState(false);
+  const [error, setError] = useState('');
+  const [otpResendResponseText, setOtpResendResponseText] = useState('');
+  const [loader, setLoader] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
 
   const otpVerify = useForm({
@@ -35,46 +35,47 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
     },
     validate: {
       otp: (value) => {
-        if (value.length != 4) return translate('profile.error.errorMessageForOTP') ;
+        if (value.length != 4) return translate('profile.error.errorMessageForOTP');
       },
     },
   });
 
   const handleEmailChnageOtp = () => {
-    setLoader(true)
+    setLoader(true);
     let results = otpVerify.validate();
     if (results.hasErrors) return;
     if (!otpVerify.isValid()) return setLoader(false);
     else {
-      userStore.emailChangeVerify(otpVerify.values.otp).then((res)=>{
-        if(res.ok){
-          otpVerify.reset()
+      userStore.emailChangeVerify(otpVerify.values.otp).then((res) => {
+        if (res.ok) {
+          otpVerify.reset();
           props.onClose();
           open();
-        }
-        else if(res.code == 400 ){
-          if(res.error){
+        } else if (res.code == 400) {
+          if (res.error) {
             setError(res.error);
             otpVerify.reset();
-            setTimeout(()=>{
-              setError("");
-            }, 5000)
+            setTimeout(() => {
+              setError('');
+            }, 5000);
           }
         }
-      })
+        setLoader(false);
+      });
     }
   };
 
   const handleEmailChangeOtpResend = () => {
-    userStore.emailChangeOtpResend().then((res)=>{
-      if(res.ok){
-        setOtpResendResponseText(res.message)
-        setTimeout(()=>{
-          setOtpResendResponseText("")
-        },5000)
+    userStore.emailChangeOtpResend().then((res) => {
+      if (res.ok) {
+        otpVerify.reset();
+        setOtpResendResponseText(res.message);
+        setTimeout(() => {
+          setOtpResendResponseText('');
+        }, 5000);
       }
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -84,6 +85,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
         radius={'xl'}
         opened={props.opened}
         onClose={() => {
+          otpVerify.reset();
           props.onClose();
         }}
         withCloseButton={false}
@@ -102,6 +104,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
 
             <Image
               onClick={() => {
+                otpVerify.reset();
                 props.onClose();
               }}
               style={boilerPlateStyles.cursor}
@@ -117,37 +120,31 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
             color={theme.colors.gray[6]}
             style={typography.label[i18nStore.getCurrentLanguage()].l1}
           />
-          <Stack>
-            <PinInput
-              dir={i18nStore.isRTL ? 'rtl' : 'ltr'}
-              variant="filled"
-              placeholder=""
-              // className={classes.input}
-              type={'number'}
-              size={'50px'}
-              spacing={'40px'}
-              // value={otp}
-              // onChange={setOtp}
-              {...otpVerify.getInputProps('otp')}
-            />
-          </Stack>
-          {
-            error?
-            <ErrorMessage
-              message={error}            
-            />:null
-          }
-          {
-            otpResendResponseText?
-            <ErrorMessage
-              text_color={theme.colors.blue[4]}
-              message={otpResendResponseText}            
-            />
-            :null
-          }
-          <Flex 
+          <form onSubmit={otpVerify.onSubmit((values) => console.log(values))}>
+            <Stack>
+              <PinInput
+                dir={i18nStore.isRTL ? 'rtl' : 'ltr'}
+                variant="filled"
+                placeholder=""
+                // className={classes.input}
+                type={'number'}
+                size={'50px'}
+                spacing={'40px'}
+                // value={otp}
+                // onChange={setOtp}
+                {...otpVerify.getInputProps('otp')}
+              />
+            </Stack>
+          </form>
+          {error ? <ErrorMessage message={error} /> : null}
+          {otpResendResponseText ? (
+            <ErrorMessage text_color={theme.colors.blue[4]} message={otpResendResponseText} />
+          ) : null}
+          <Flex
             direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
-            w={'100%'} justify={'center'} my={'40px'}
+            w={'100%'}
+            justify={'center'}
+            my={'40px'}
           >
             <BaseText
               txtkey="profile.modal.resendCode"

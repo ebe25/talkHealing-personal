@@ -1,5 +1,5 @@
 // react and nextb import
-import React from 'react';
+import React, { useState } from 'react';
 // mantine component
 import { useForm } from '@mantine/form';
 import { Flex, Image, Stack, useMantineTheme } from '@mantine/core';
@@ -25,6 +25,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const useStyles=createStyle()
+  const [loader, setLoader] = useState(false);
   const { classes } = useStyles();
   const changepassword = useForm({
     initialValues: {
@@ -49,10 +50,11 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
     changepassword.values.newPassword != changepassword.values.confirmNewPassword;
 
   const handlePasswordChange = () => {
+    setLoader(true);
     let results = changepassword.validate();
     if (results.hasErrors) return;
-    if (!changepassword.isValid()) return;
-    if (passwordMatch()) return;
+    if (!changepassword.isValid()) return setLoader(false);
+    if (passwordMatch()) return setLoader(false);
     else {
       userStore.changePassword(changepassword.values.currentPassword, 
         changepassword.values.newPassword, 
@@ -60,8 +62,13 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
         .then((res)=>{
           if(res.ok){
             props.onClose();
-            changepassword.reset();
+            setLoader(false);
             open();
+          }else if(res.code ==400){
+            if(res.error){
+              setLoader(false);
+              changepassword.reset();
+            }
           }
       })
     }
@@ -144,6 +151,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
           mt={'30px'}
           w={'100%'}
           h={'40px'}
+          loading={loader}
           style_variant={!changepassword.isValid() || passwordMatch() ? 'disabled' : 'filled'}
           color_variant={!changepassword.isValid() || passwordMatch() ? 'gray' : 'blue'}
           onClick={handlePasswordChange}
