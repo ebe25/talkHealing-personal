@@ -19,6 +19,7 @@ import { Images } from '@/public';
 import { translate } from '@/i18n';
 import { Input } from '@/components/elements/Input/Input';
 import { boilerPlateStyles } from '@/utils/styles/styles';
+import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 
 export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore, userStore } = useStores();
@@ -125,6 +126,9 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
                 {...changeMail.getInputProps('email')}
             />
           </Box>
+          {error? <ErrorMessage
+            message={error}
+          />:null }
           <BaseButton
             mt={'30px'}
             w={'100%'}

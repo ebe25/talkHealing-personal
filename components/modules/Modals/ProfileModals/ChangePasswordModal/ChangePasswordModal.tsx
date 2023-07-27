@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useForm } from '@mantine/form';
 import { Flex, Image, Stack, useMantineTheme } from '@mantine/core';
 //  styles component
-import {createStyle} from './ChangePasswordModal.styles';
+import { createStyle } from './ChangePasswordModal.styles';
 // internals components
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -19,14 +19,17 @@ import { translate } from '@/i18n';
 import { useDisclosure } from '@mantine/hooks';
 import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
+import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 
 export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore, userStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
-  const useStyles=createStyle()
+  const useStyles = createStyle();
   const [loader, setLoader] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const { classes } = useStyles();
+
   const changepassword = useForm({
     initialValues: {
       currentPassword: '',
@@ -34,15 +37,18 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
       confirmNewPassword: '',
     },
     validate: {
-      currentPassword: (value) => {
-        if (value.trim().length < 8) return translate('profile.modal.passwordLength');
-      },
-      newPassword: (value) => {
-        if (value.trim().length < 8) return translate('profile.modal.passwordLength');
-      },
-      confirmNewPassword: (value) => {
-        if (value.trim().length < 8) return translate('profile.modal.passwordLength');
-      },
+      currentPassword: (value) =>
+        /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value)
+          ? null
+          : translate('profile.modal.passwordLength'),
+      newPassword: (value) =>
+        /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value)
+          ? null
+          : translate('profile.modal.passwordLength'),
+      confirmNewPassword: (value) =>
+        /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value)
+          ? null
+          : translate('profile.modal.passwordLength'),
     },
   });
 
@@ -50,27 +56,34 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
     changepassword.values.newPassword != changepassword.values.confirmNewPassword;
 
   const handlePasswordChange = () => {
-    setLoader(true);
     let results = changepassword.validate();
     if (results.hasErrors) return;
-    if (!changepassword.isValid()) return setLoader(false);
-    if (passwordMatch()) return setLoader(false);
+    if (!changepassword.isValid()) return;
+    if (passwordMatch()) return;
     else {
-      userStore.changePassword(changepassword.values.currentPassword, 
-        changepassword.values.newPassword, 
-        changepassword.values.confirmNewPassword )
-        .then((res)=>{
-          if(res.ok){
+      setLoader(true);
+      userStore
+        .changePassword(
+          changepassword.values.currentPassword,
+          changepassword.values.newPassword,
+          changepassword.values.confirmNewPassword
+        )
+        .then((res) => {
+          if (res.ok) {
             props.onClose();
-            setLoader(false);
+            changepassword.reset();
             open();
-          }else if(res.code ==400){
-            if(res.error){
-              setLoader(false);
+          } else if (res.code == 400) {
+            if (res.error) {
               changepassword.reset();
+              setErrorMessage(res.error.toString());
+              setTimeout(() => {
+                setErrorMessage('');
+              }, 3000);
             }
           }
-      })
+        });
+      setLoader(false);
     }
   };
 
@@ -87,7 +100,11 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
         }}
         withCloseButton={false}
       >
-        <Flex direction={i18nStore.isRTL ? 'row-reverse' : 'row'} justify={'space-between'} align={'center'}>
+        <Flex
+          direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
+          justify={'space-between'}
+          align={'center'}
+        >
           <BaseText
             txtkey="profile.modal.changePasswordHeading"
             style={typography.headings[i18nStore.getCurrentLanguage()].h6}
@@ -147,6 +164,13 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
         {passwordMatch() ? (
           <BaseText txtkey="profile.error.passwordMatchError" color={theme.colors.red[5]} />
         ) : null}
+        { 
+          errorMessage?
+          <ErrorMessage
+            message={errorMessage}
+          />
+          :null
+        }
         <BaseButton
           mt={'30px'}
           w={'100%'}

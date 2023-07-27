@@ -36,7 +36,6 @@ export const UserStore = types
           password: password,
         }
       );
-      console.log("this is log in response ", response)
       switch (response.status) {
         case 200:
           self.loggedInUserData = null;
@@ -98,7 +97,6 @@ export const UserStore = types
           is_terms_agreed: is_terms_agreed
         }
       );
-      console.log("this is sign up response ", response)
       let error = null;
       switch (response.status) {
         case 201:
@@ -119,7 +117,6 @@ export const UserStore = types
           key: key,
         }
       );
-      console.log("response", response);
       switch (response.status) {
         case 200:
           self.verfyEmailData = UserSchemas.LoggedInUser.create(
@@ -273,7 +270,6 @@ export const UserStore = types
         API_ENDPOINTS.editUser,
         data
       );
-      console.log("edit user data", response);
       switch (response.status) {
         case 200:
           // self.loggedInUserData.user = UserSchemas.User.create(response.data);
@@ -317,15 +313,14 @@ export const UserStore = types
         }
       );
       let error = null;
-      console.log("response", response);
       switch (response.status) {
         case 200:
           return ACTION_RESPONSES.success;
         case 400:
           error = response.data;
-          break;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.old_password};
         case 401:
-          return ACTION_RESPONSES.failure;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.old_password};
         default:
           console.error("UNHANDLED ERROR");
           break;
@@ -366,7 +361,6 @@ export const UserStore = types
         }
       );
       let error = null;
-      console.log("response", response);
       switch (response.status) {
         case 200:
           return ACTION_RESPONSES.success;
@@ -410,13 +404,12 @@ export const UserStore = types
         }
       );
       let error = null;
-      console.log("response", response);
       switch (response.status) {
         case 200:
           return ACTION_RESPONSES.success;
         case 400:
           error = response.data;
-          break;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.phone};
         case 401:
           return ACTION_RESPONSES.failure;
         default:
@@ -435,13 +428,31 @@ export const UserStore = types
         }
       );
       let error = null;
-      console.log("response", response);
       switch (response.status) {
         case 200:
           return ACTION_RESPONSES.success;
         case 400:
           error = response.data;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
+        case 401:
+          return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
           break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    phoneChangeResend: flow(function* ( ) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.phoneChangeResend,{ }
+      );
+      let error = null;
+      switch (response.status) {
+        case 200:
+          return { ...ACTION_RESPONSES.success, code: response.status , message : response.data.message}
+        case 400:
+          error = response.data;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
         case 401:
           return ACTION_RESPONSES.failure;
         default:

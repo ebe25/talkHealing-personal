@@ -146,14 +146,20 @@ export const API_ENDPOINTS = {
         transformer: null,
     }),
     phoneChange: new API_ENDPOINT({
-        url: "/auth/phone-change/",
+        url: "/auth/change-phone-number/",
         method: REQUEST_METHOD.POST,
         response: null,
         transformer: null,
     }),
     phoneChangeVerify: new API_ENDPOINT({
-        url: "/auth/phone-change/change-phone/",
+        url: "/auth/change-phone-number/verify-change-phone-number/",
         method: REQUEST_METHOD.POST,
+        response: null,
+        transformer: null,
+    }),
+    phoneChangeResend: new API_ENDPOINT({
+        url: "/auth/change-phone-number/verify-phone-number/resend/",
+        method: REQUEST_METHOD.GET,
         response: null,
         transformer: null,
     }),

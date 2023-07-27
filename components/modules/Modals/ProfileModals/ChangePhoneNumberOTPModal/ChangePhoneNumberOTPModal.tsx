@@ -1,5 +1,5 @@
 // react and nextb import
-import React from 'react';
+import React, { useState } from 'react';
 // mantine component
 import { Center, Flex, Image, PinInput, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -18,12 +18,16 @@ import { Images } from '@/public';
 import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import { translate } from '@/i18n';
+import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 
 export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }) => {
-  const { i18nStore } = useStores();
+  const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
   const { classes } = useStyles();
   const [opened, { open, close }] = useDisclosure(false);
+  const [otpResendResponseText, setOtpResendResponseText] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [ loader, setLoader ] = useState(false);
 
   const otpVerify = useForm({
     initialValues: {
@@ -37,16 +41,43 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
   });
 
   const handlePasswordChange = () => {
+    setLoader(true)
     let results = otpVerify.validate();
     if (results.hasErrors) return;
-    console.log('otp', otpVerify.values.otp);
-    if (!otpVerify.isValid()) return;
+    if (!otpVerify.isValid()) return setLoader(false);
     else {
-      props.onClose();
-      otpVerify.reset();
-      open();
+      userStore.phoneChangeVerify(otpVerify.values.otp).then((res)=>{
+        if(res.ok){
+          setLoader(false)
+          props.onClose();
+          otpVerify.reset();
+          open();
+        }
+        else if(res.code == 400){
+          if(res.error){
+            otpVerify.reset();
+            setLoader(false)
+            setErrorMessage(res.error.toString());
+            setTimeout(()=>{
+              setErrorMessage("");
+            },3000)
+          }
+        }
+      })
     }
   };
+
+  const handleResendOtp = () =>{
+    userStore.phoneChangeResend().then((res)=>{
+      if(res.ok) {
+        otpVerify.reset();
+        setOtpResendResponseText(res.message);
+        setTimeout(() => {
+          setOtpResendResponseText('');
+        }, 5000);
+      }
+    })
+  }
 
   return (
     <>
@@ -105,6 +136,10 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
               {...otpVerify.getInputProps('otp')}
             />
           </Stack>
+          {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
+          {otpResendResponseText ? (
+            <ErrorMessage text_color={theme.colors.blue[4]} message={otpResendResponseText} />
+          ) : null}
           <Flex w={'100%'} justify={'center'} my={'45px'}>
             <BaseText
               txtkey="profile.modal.resendCode"
@@ -113,6 +148,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
             &nbsp;
             <BaseText
               className={classes.pointer}
+              onClick={handleResendOtp}
               txtkey="profile.modal.resendText"
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
               color={theme.colors.blue[4]}
@@ -121,6 +157,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
           <BaseButton
             w={'100%'}
             h={'40px'}
+            loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}
             onClick={handlePasswordChange}

@@ -1,19 +1,11 @@
 //React and next imports
 import React, { useState, useEffect } from 'react';
 // mantine component imports
-import {
-  Box,
-  FileButton,
-  Flex,
-  Grid,
-  Image,
-  TextInput,
-  useMantineTheme
-} from '@mantine/core';
+import { Box, FileButton, Flex, Grid, Image, TextInput, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 // styles import
-import {createStyle} from './Account.styles';
+import { createStyle } from './Account.styles';
 // component
 import { ChangePassword } from '../Modals/ProfileModals/ChangePasswordModal/ChangePasswordModal';
 import { EmailChangeModal } from '../Modals/ProfileModals/EmailChangeModal/EmailChangeModal';
@@ -26,24 +18,36 @@ import { useStores } from '@/models';
 // other import
 import { translate } from '@/i18n';
 import { ChangePhoneNumberModal } from '../Modals/ProfileModals/ChangePhoneNumberModal/ChangePhoneNumberModal';
+import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 
 export const Account = () => {
   const { i18nStore, userStore } = useStores();
-  const useStyles=createStyle()
+  const useStyles = createStyle();
   const { classes } = useStyles();
   const theme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
   const emailChangeModal = useDisclosure(false);
   const phoneNumberChangeModal = useDisclosure(false);
+  const [imageUploadMessage, setImageUploadMessage] = useState('');
   const [images, setImages] = useState<any>(null);
-  
-  const onImageChange = (event: any) => {
-    if (event.name) {
-    setImages(URL.createObjectURL(event));
+  const onImageChange = (event: File) => {
+    if (event?.name) {
+      setImages(URL.createObjectURL(event));
+      const data = new FormData();
+      data.append('avatar', event);
+      userStore.editUser(data).then((res) => {
+        if (res.ok) {
+          setImageUploadMessage('Image has been updated');
+          setTimeout(() => {
+            setImageUploadMessage("");
+          },5000)
+        }
+      });
     }
   };
   const address = useForm({
     initialValues: {
+      avatar: userStore.userData?.avatar,
       name: userStore.userData?.full_name,
       email: userStore.userData?.email,
       phoneNumber: userStore.userData?.phone,
@@ -52,61 +56,67 @@ export const Account = () => {
   });
 
   useEffect(() => {
-    userStore.getLoginUserData().then((res)=>{
-      if(res.ok){
-        if(userStore.userData){
+    userStore.getLoginUserData().then((res) => {
+      if (res.ok) {
+        if (userStore.userData) {
           address.setValues({
-            name : userStore.userData?.full_name,
+            avatar: userStore.userData?.avatar,
+            name: userStore.userData?.full_name,
             email: userStore.userData?.email,
             phoneNumber: userStore.userData?.phone,
-          })
+          });
         }
       }
-    })
-  },[])
-  
+    });
+  }, []);
+
   return (
     <Box className={classes.container}>
       <form onSubmit={address.onSubmit((values) => console.log(values))}>
-      <Flex align={'center'} justify={'space-between'} wrap={'wrap'}>
-        <div className={classes.imageFlex}>
-          <Image
-            width={'120px'}
-            height={'120px'}
-            radius={'50%'}
-            alt="profile_image"
-            {...address.getInputProps("avatar")}
-            src={images ? images : userStore?.userData?.avatar}
-          />
-        </div>
-        <Flex gap={'18px'} className={classes.imageFlex}>
-          <FileButton onChange={onImageChange} accept="image/*">
-            {(props) => (
-              <BaseButton
-                w={'125px'}
-                h={'39px'}
-                style_variant={'filled'}
-                color_variant={'blue'}
-                {...props}
-              >
-                <BaseText txtkey="profile.buttonChange" />
-              </BaseButton>
-            )}
-          </FileButton>
-          <BaseButton
-            w={'125px'}
-            h={'39px'}
-            style_variant={'filled'}
-            color_variant={'red'}
-            onClick={() => {
-              setImages(null);
-            }}
-          >
-            <BaseText txtkey="profile.buttonRemove" />
-          </BaseButton>
+        <Flex align={'center'} justify={'space-between'} wrap={'wrap'}>
+          <div className={classes.imageFlex}>
+            <Image
+              width={'120px'}
+              height={'120px'}
+              radius={'50%'}
+              alt="profile_image"
+              {...address.getInputProps('avatar')}
+              src={images ? images : userStore?.userData?.avatar}
+            />
+          </div>
+          <Flex gap={'18px'} className={classes.imageFlex}>
+            <FileButton onChange={onImageChange} accept="image/*">
+              {(props) => (
+                <BaseButton
+                  w={'125px'}
+                  h={'39px'}
+                  style_variant={'filled'}
+                  color_variant={'blue'}
+                  {...props}
+                >
+                  <BaseText txtkey="profile.buttonChange" />
+                </BaseButton>
+              )}
+            </FileButton>
+            <BaseButton
+              w={'125px'}
+              h={'39px'}
+              style_variant={'filled'}
+              color_variant={'red'}
+              onClick={() => {
+                setImages(null);
+              }}
+            >
+              <BaseText txtkey="profile.buttonRemove" />
+            </BaseButton>
+          </Flex>
         </Flex>
-      </Flex>
-      
+          {imageUploadMessage?
+          <ErrorMessage
+          message={imageUploadMessage}
+          />
+        :null}
+
         <Grid className={classes.grid}>
           <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6}>
             <BaseText
@@ -122,7 +132,7 @@ export const Account = () => {
               variant="filled"
               disabled
               classNames={{
-                input: classes.input
+                input: classes.input,
               }}
               {...address.getInputProps('name')}
             />
@@ -142,7 +152,7 @@ export const Account = () => {
               disabled
               classNames={{
                 rightSection: classes.rightSection,
-                input: classes.input
+                input: classes.input,
               }}
               rightSection={
                 <BaseText
@@ -173,7 +183,7 @@ export const Account = () => {
               disabled
               classNames={{
                 rightSection: classes.rightSection,
-                input: classes.input
+                input: classes.input,
               }}
               rightSection={
                 <BaseText
@@ -198,12 +208,12 @@ export const Account = () => {
               placeholder={`${translate('profile.password')}`}
               variant="filled"
               type="password"
-              autoComplete='on'
+              autoComplete="on"
               radius={'xl'}
               disabled
               classNames={{
                 rightSection: classes.rightSection,
-                input: classes.input
+                input: classes.input,
               }}
               rightSection={
                 <BaseText
