@@ -1,16 +1,16 @@
 import { createStyles } from '@mantine/core';
-import {typography } from "@/themes/Mantine/typography";
+import { typography } from "@/themes/Mantine/typography";
 
 export default createStyles((theme) => ({
-    termsAndConditionBox : {
+    faqContainer: {
         padding: "50px",
         width: "100%",
         height: "100%"
     },
-    faqQuestionsAnswersBox :{
-        marginTop :'100px',
+    faqQuestionsAnswersBox: {
+        marginTop: '100px',
         [theme.fn.smallerThan('md')]: {
             marginTop: 50,
-          },
+        },
     }
 }));
