@@ -151,4 +151,10 @@ export const API_ENDPOINTS = {
         response: null,
         transformer: null,
     }),
+    smsPasswordReset: new API_ENDPOINT({
+        url: "/auth/sms-password-reset",
+        method: REQUEST_METHOD.POST,
+        response: null,
+        transformer: TRANSFORMERS.userTransformer,
+    }),
 }

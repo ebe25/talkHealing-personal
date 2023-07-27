@@ -19,10 +19,8 @@ export const BasePasswordInput = (
   return (
     <PasswordInput
       {...props}
-      // iconWidth={i18nStore.isRTL?"10px":"0px"}
-      // rightSectionWidth={i18nStore.isRTL?"0px":"10px"}
+      className={classes.passwordInput}
       classNames={{
-        // wrapper:classes.wrapper,
         rightSection: classes.rightSection,
         innerInput: classes.innerInput
       }}

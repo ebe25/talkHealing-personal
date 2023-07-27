@@ -23,7 +23,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   };
   let currentTheme = MANTINE_THEME;
   currentTheme.colorScheme;
-  
+
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined);
 
   useEffect(() => {

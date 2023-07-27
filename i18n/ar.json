@@ -118,7 +118,8 @@
       "postalCodeError":"الرجاء إدخال الرمز البريدي",
       "addressOneError":"الرجاء إدخال الرمز البريدي",
       "addressTwoError":"الرجاء إدخال العنوان الثاني",
-      "errorMessageForOTP":"الرجاء إدخال OTP"
+      "errorMessageForOTP":"الرجاء إدخال OTP",
+      "invalidOtp":"لرجاء إدخال الرمز Otp"
     }
   },
   "signUpForm": {
@@ -136,6 +137,8 @@
   "authentication": {
     "invalidEmail": "بريد إلكتروني خاطئ",
     "invalidPassword": "رمز مرور خاطئ",
+    "invalidNumber": "أحرف على الأقل",
+    "enterMobileNumber": "تأكد من أن البريد الإلكتروني",
     "strings": {
       "incChar": "يتألف من 6 أحرف على الأقل",
       "incNum": "يشمل الرقم",
@@ -159,7 +162,10 @@
       "invalidNumber": "رقم غير صالح",
       "namePlaceholder": "اكتب الرقم",
       "emailPlaceholder": "اكتب بريدا الكترونيا",
-      "errorMessage":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
+      "errorMessage":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح ",
+      "oldUser":"يدا الكترونيا",
+      "successfully":"الإلكتروني ، تأكد من أن",
+      "forgotPasswordText":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير ص"
     }
   },
   "header": {
