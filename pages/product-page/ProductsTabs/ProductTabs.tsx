@@ -6,9 +6,17 @@ import { typography } from "@/themes/Mantine/typography";
 import { COLORS } from "@/themes/Mantine/colors";
 import ProductRating from "../ProductRating/ProductRating";
 import CustomerQuestions from "../CustomerQuestions/CustomerQuestions";
+import { translate } from "@/i18n";
+
 function ProductTabs() {
   const { i18nStore } = useStores();
   const [currentTab, setCurrentTab] = useState<any>("About product");
+  const ProductLabels = [
+    translate("productPage.condition"),
+    translate("productPage.currentQuantity"),
+    translate("productPage.material"),
+    translate("productPage.delivery")
+  ];
   const ProductValues = [
     "New",
     "> 10 items",
@@ -22,12 +30,13 @@ function ProductTabs() {
     >
       <Tabs.List>
         <Tabs.Tab
-          pb={"18px"}
+        
+        pb={"18px"}
           value="About product"
           c={currentTab == "About product" ? "blue !important" : COLORS.gray[6]}
-          style={{ ...typography.label[i18nStore.getCurrentLanguage()].l7 }}
+          style={{ ...typography.label[i18nStore.getCurrentLanguage()].l7}}
         >
-          About product
+          {translate("productPage.aboutProduct")}
         </Tabs.Tab>
         <Tabs.Tab
           pb={"18px"}
@@ -37,7 +46,7 @@ function ProductTabs() {
           value="Customer rating"
           style={typography.label[i18nStore.getCurrentLanguage()].l7}
         >
-          Customer rating
+          {translate("productPage.customerRating")}
         </Tabs.Tab>
         <Tabs.Tab
           pb={"18px"}
@@ -48,35 +57,36 @@ function ProductTabs() {
           }
           value="Customer questions"
           style={typography.label[i18nStore.getCurrentLanguage()].l7}
+         
         >
-          Customer questions
+          {translate("productPage.customerQuestions")}
         </Tabs.Tab>
       </Tabs.List>
 
-      <Tabs.Panel value="About product" mt={"40px"}>
-        {["Condition", "Current quantity", "Materials", "Delivery"].map(
-          (item, id) => {
-            return (
-              <Flex justify={"space-between"}>
-                <BaseText c={COLORS.gray[6]} mb={"14px"}>
-                  {item}
+      <Tabs.Panel value="About product" mt={"40px"} >
+        {ProductLabels.map((item, id) => {
+          return (
+            <Flex justify={"space-between"}>
+              <BaseText c={COLORS.gray[6]} mb={"14px"}>
+                {item}
+              </BaseText>
+              <Box w="70%">
+                <BaseText
+                  mb={"14px"}
+                  style={typography.label[i18nStore.getCurrentLanguage()].l9}
+                >
+                  {ProductValues[id]}{" "}
                 </BaseText>
-                <Box w="70%">
-                  <BaseText
-                    mb={"14px"}
-                    style={typography.label[i18nStore.getCurrentLanguage()].l9}
-                  >
-                    {ProductValues[id]}{" "}
-                  </BaseText>
-                </Box>
-              </Flex>
-            );
-          }
-        )}
+              </Box>
+            </Flex>
+          );
+        })}
         <BaseText
-
           mt={"40px"}
-          style={{...typography.paragraph[i18nStore.getCurrentLanguage()].p6, textAlign:"justify"}}
+          style={{
+            ...typography.paragraph[i18nStore.getCurrentLanguage()].p6,
+            textAlign: "justify"
+          }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -96,11 +106,11 @@ function ProductTabs() {
       </Tabs.Panel>
 
       <Tabs.Panel value="Customer questions">
-        <CustomerQuestions/>
-        <CustomerQuestions/>
-        <CustomerQuestions/>
-        <CustomerQuestions/>
-        
+        <CustomerQuestions />
+        <CustomerQuestions />
+        <CustomerQuestions />
+        <CustomerQuestions />
+        <CustomerQuestions />
       </Tabs.Panel>
     </Tabs>
   );

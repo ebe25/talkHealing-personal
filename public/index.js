@@ -66,7 +66,14 @@ export const Images = {
   brand_icon:"./icons/brand_icon.png",
   bookmark_icon:"./icons/bookmark_icon.png",
   share_icon:"./icons/share_icon.png",
+  share_link_icon:"./icons/share_link_icon.png",
+  whatsapp_icon:"./icons/whatsapp_icon.png",
+  twitter_icon:"./icons/twitter_icon.png",
+  facebook_icon:"./icons/facebook_icon.png",
+  selected_bookmark_icon:"./icons/selected_bookmark_icon.png",
   vertical_line_icon:"./icons/vertical_line_icon.png",
+  bottom_border_icon:"./icons/bottom_border_icon.png",
+  right_arrow_icon:"./icons/right_arrow_icon.png",
   
 }
 

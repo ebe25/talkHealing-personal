@@ -307,6 +307,26 @@
      "workshopParagraphSecond":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
      "workshopParagraphThird":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
      "selectDate":"Select from calendar"
+},
+"productPage":{
+  "visitStore":"Visit store",
+  "totalProduct": "Total product",
+  "productSold": "Product sold",
+  "responseRate":"Response rate",
+  "joinedSince" :"Joined since",
+  "aboutProduct": "About product",
+  "customerRating":"Customer rating",
+  "customerQuestions":"Customer questions",
+  "addToCart":"Add to cart",
+  "buyNow":"Buy now",
+  "size": "Size",
+  "colors": "Colors",
+  "question":"Question",
+  "condition":"Condition",
+  "currentQuantity": "Current quantity",
+  "material":"Material",
+  "delivery":"Delivery"
+
 }
 }
 

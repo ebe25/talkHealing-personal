@@ -469,6 +469,13 @@ export const typography:any = {
         lineHeight: '16px',
         fontWeight: 600,
       } as React.CSSProperties,
+      i4: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'Bold',
+        fontSize: '12px',
+        lineHeight: '14px',
+        fontWeight: 500,
+      } as React.CSSProperties,
     },
     ar: {
       i1: {
@@ -491,6 +498,13 @@ export const typography:any = {
         fontSize: '16px',
         lineHeight: '16px',
         fontWeight: 600,
+      } as React.CSSProperties,
+      i4: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'Bold',
+        fontSize: '12px',
+        lineHeight: '14px',
+        fontWeight: 500,
       } as React.CSSProperties,
     },
   } ,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Breadcrumbs,
@@ -6,22 +6,18 @@ import {
   Flex,
   Image,
   Card,
-  Text,
-  Button,
-  Group,
-  Badge,
   Stack,
-  Tabs
+  Tooltip
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import ProductTabs from "./ProductsTabs/ProductTabs";
 import { COLORS } from "@/themes/Mantine/colors";
 import { typography } from "@/themes/Mantine/typography";
-import { i18nStore } from "@/models/modules/i18n/store";
 import { useStores } from "@/models";
 import { Images } from "@/public";
 import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { BaseButton } from "@/components/elements/BaseButton/BaseButton";
+import { translate } from "@/i18n";
 
 function BadgeIcon(props: {
   logo: string;
@@ -51,10 +47,10 @@ function BadgeIcon(props: {
 }
 
 const ProductdetailFields = [
-  "Total product",
-  "Product sold",
-  "Response rate",
-  "Joined since"
+  translate("productPage.totalProduct"),
+  translate("productPage.productSold"),
+  translate("productPage.responseRate"),
+  translate("productPage.joinedSince")
 ];
 const ItemImages = [
   Images.product_image,
@@ -62,13 +58,23 @@ const ItemImages = [
   Images.product_image,
   Images.product_image
 ];
+const TootTipImages = [
+  Images.facebook_icon,
+  Images.twitter_icon,
+  Images.whatsapp_icon,
+  Images.share_link_icon
+];
 const ProductInformation = ["230", "4321", "10 minutes", "4 years ago"];
 function ProductPage() {
   const { i18nStore } = useStores();
   const [countItems, setCountItems] = useState(0);
   const matches = useMediaQuery("(max-width:660px)");
   const desktop = useMediaQuery("(max-width:1080px)");
+  const mobile = useMediaQuery("(max-width:500px)");
+  const small = useMediaQuery("(max-width:400px)");
   const [selectItemImage, setSelectedItemImage] = useState(0);
+  const [isBookMarkSave, setIsBookMarkSave] = useState(false);
+
   const items = [
     { title: "Apparels", href: "#" },
     { title: "Tops ", href: "#" },
@@ -87,10 +93,13 @@ function ProductPage() {
   return (
     <Box
       // mx={"135px"}
-      mx={desktop ? "10px" : "70px"}
+      mx={desktop ? "20px" : "70px"}
     >
       <Breadcrumbs
-        separator=">"
+        sx={{ display: "flex", flexWrap: "wrap" }}
+        separator={
+          <Image src={Images.right_arrow_icon} alt="arrow_icon" width={"6px"} />
+        }
         mt="63px"
         color={COLORS.dark[8]}
         style={typography.label[i18nStore.getCurrentLanguage()].l5}
@@ -101,14 +110,16 @@ function ProductPage() {
         <Box>
           <Box>
             <Image
-            sx = {{objectFit:"cover"}}
+              sx={{ objectFit: "contain" }}
               width={desktop ? "98vw" : "100%"}
-              // height={"590px"}
-              height= {"auto"}
+              height={"490px"}
               src={ItemImages[selectItemImage]}
               alt="product_image"
             />
-            <Flex gap={desktop ?"50px": "22px"} justify={desktop ? "center" : "none"}>
+            <Flex
+              gap={desktop ? "30px" : "22px"}
+              justify={desktop ? "center" : "none"}
+            >
               {ItemImages.map((item, id) => {
                 const uniqueKey = `image_${id}`;
                 return (
@@ -117,9 +128,8 @@ function ProductPage() {
                       onClick={() => setSelectedItemImage(id)}
                       mt={"24px"}
                       width={"100%"}
-                      maw = {"100px"}
-
-                      height={"auto"}
+                      maw={"100px"}
+                      // height={"auto"}
                       src={item}
                       alt="product_image"
                     />
@@ -138,28 +148,41 @@ function ProductPage() {
           >
             <Flex
               bg="white"
-              justify={"space-around"}
+              wrap={mobile ? "wrap" : "nowrap"}
+              justify={mobile ? "" : "space-around"}
               style={{
                 borderRadius: "26px",
                 border: `solid 1px ${COLORS.gray[2]}`
               }}
             >
-              <Flex align={"center"} justify={"space-between"} m={"32px"}>
+              <Flex
+                align={"center"}
+                justify={"space-between"}
+                m={mobile ? "0px" : "32px"}
+                // mx= {mobile?"32px":"0px"}
+              >
                 <Image
                   width={"54px"}
                   height={"54px"}
                   src={Images.product_logo}
                   alt="product_log"
                 />
-                <Box mx={"20px"}>
+                <Box
+                  mx={"20px"}
+                  sx={{
+                    display: mobile ? "flex" : "visible",
+                    flexDirection: small ? "column" : "row"
+                  }}
+                >
                   <BaseText
                     my={"10px"}
+                    mr={mobile ? "13px" : "0px"}
                     color={COLORS.dark[8]}
                     style={typography.label[i18nStore.getCurrentLanguage()].l6}
                   >
                     Pebea Sneakers
                   </BaseText>
-                  <Flex justify={"space-between"} align={"center"} gap ={"6px"}>
+                  <Flex justify={"space-between"} align={"center"} gap={"6px"}>
                     <Image
                       width={"10.5px"}
                       height={"14px"}
@@ -196,13 +219,14 @@ function ProductPage() {
                 </Box>
               </Flex>
               <Flex
+                // bg = 'red'
                 justify={"space-between"}
                 align={"center"}
                 mr="32px"
                 gap="24px"
               >
                 <BaseButton
-                  // mx={"20px"}
+                  ml={small || mobile ? "90px" : "0px"}
                   style_variant="outline"
                   variant="outline"
                   radius={"44px"}
@@ -210,7 +234,7 @@ function ProductPage() {
                   size="xs"
                 >
                   {" "}
-                  view store{" "}
+                  {translate("productPage.visitStore")}
                 </BaseButton>
                 <Image
                   width={"24px"}
@@ -267,7 +291,7 @@ function ProductPage() {
               fontStyle: "bold"
             }}
           >
-            colors
+            {translate("productPage.colors")}
           </BaseText>
           <Flex gap="xl" wrap={"wrap"}>
             {["White", "Black", "Blue", "Red"].map((item, id) => {
@@ -292,7 +316,7 @@ function ProductPage() {
           <BaseText
             style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}
           >
-            size
+            {translate("productPage.size")}
           </BaseText>
           <Flex gap="xl" wrap={"wrap"}>
             {["38", "39", "40", "41", "42", "43", "44", "45", "46"].map(
@@ -323,7 +347,7 @@ function ProductPage() {
             wrap={"wrap"}
             justify={"space-between"}
           >
-            <Flex gap={"32px"} align={"center"} wrap={ 'wrap'}>
+            <Flex gap={"32px"} align={"center"} wrap={"wrap"}>
               <BaseButton
                 onClick={() => {
                   setCountItems((pre) => {
@@ -340,7 +364,7 @@ function ProductPage() {
                   fontSize: "35px"
                 }}
                 bg={COLORS.dark[0]}
-                c={COLORS.gray[6]}
+                c={countItems == 0 ? COLORS.gray[6] : COLORS.blue[4]}
                 size="sm"
                 style_variant="filled"
                 color_variant="gray"
@@ -359,7 +383,7 @@ function ProductPage() {
                   fontSize: "30px"
                 }}
                 bg={COLORS.dark[0]}
-                c={COLORS.blue[1]}
+                c={COLORS.blue[4]}
                 pb={"9px"}
                 size="sm"
                 style_variant="filled"
@@ -368,7 +392,7 @@ function ProductPage() {
                 {"+"}
               </BaseButton>
             </Flex>
-            <Flex gap="28px" wrap={'wrap'}>
+            <Flex gap="28px" wrap={"wrap"}>
               <BaseButton
                 style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                 size="sm"
@@ -377,7 +401,7 @@ function ProductPage() {
                 color_variant="gray"
                 c={COLORS.dark[1]}
               >
-                Add to cart
+                {translate("productPage.addToCart")}
               </BaseButton>
               <BaseButton
                 style={{
@@ -389,20 +413,63 @@ function ProductPage() {
                 style_variant="filled"
                 color_variant="gray"
               >
-                {"Buy now"}
+                {translate("productPage.buyNow")}
               </BaseButton>
               <Image
+                onClick={() => setIsBookMarkSave((pre) => !pre)}
                 width={"19.11px"}
                 height={"25px"}
-                src={Images.bookmark_icon}
+                style={{
+                  cursor: "pointer"
+                }}
+                src={
+                  isBookMarkSave
+                    ? Images.selected_bookmark_icon
+                    : Images.bookmark_icon
+                }
                 alt="bookmark_icon"
               />
-              <Image
-                width={"23px"}
-                height={"24px"}
-                src={Images.share_icon}
-                alt="share_icon"
-              />
+
+              <Tooltip
+                // opened ={true}
+                position="bottom"
+                label={
+                  <Flex
+                    align={"center"}
+                    px={"12px"}
+                    gap={"12px"}
+                    sx={{
+                      borderRadius: "18px",
+                      boxShadow: "1px 1px 10px rgba(0, 0, 0, 0.15)",
+                      height: "56px"
+                    }}
+                  >
+                    {TootTipImages.map((item, id) => {
+                      return (
+                        <Image
+                          key={id}
+                          src={item}
+                          width={"32px"}
+                          height={"32px"}
+                          alt={`image_${id}`}
+                        />
+                      );
+                    })}
+                  </Flex>
+                }
+                color="white"
+                withArrow
+              >
+                <Image
+                  style={{
+                    cursor: "pointer"
+                  }}
+                  width={"23px"}
+                  height={"24px"}
+                  src={Images.share_icon}
+                  alt="share_icon"
+                />
+              </Tooltip>
             </Flex>
           </Flex>
           <ProductTabs />

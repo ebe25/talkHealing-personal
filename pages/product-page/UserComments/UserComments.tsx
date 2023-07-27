@@ -4,6 +4,7 @@ import { Images } from "@/public";
 import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { useStores } from "@/models";
 import { typography } from "@/themes/Mantine/typography";
+import { useMediaQuery } from "@mantine/hooks";
 import { COLORS } from "@/themes/Mantine/colors";
 interface UserCommentsProps {
   profilePhoto?: string;
@@ -15,9 +16,10 @@ interface UserCommentsProps {
 
 function UserComments(props: UserCommentsProps) {
   const { i18nStore } = useStores();
+  const mobile = useMediaQuery("(max-width:500px)");
   return (
     <Box mt={"50px"}>
-      <Flex align={"center"} justify={"space-between"}>
+      <Flex align={mobile? "start":"center"} justify={"space-between"}>
         <Flex gap={"20px"}>
           <Image
             src={Images.profile_photo_image}
@@ -38,7 +40,7 @@ function UserComments(props: UserCommentsProps) {
             </BaseText>
           </Flex>
         </Flex>
-        <Rating value={3} size="lg"  readOnly />
+        <Rating value={3} size={mobile?"sm":"lg"}  readOnly />
       </Flex>
       <BaseText mt={"29px"}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
