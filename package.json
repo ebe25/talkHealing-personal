@@ -38,6 +38,7 @@
     "@tabler/icons-react": "^2.4.0",
     "@types/i18n-js": "^3.8.4",
     "apisauce": "^3.0.0",
+    "countries-list": "^2.6.1",
     "cookies-next": "^2.1.1",
     "country-state-city": "^3.1.4",
     "dayjs": "^1.11.6",

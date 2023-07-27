@@ -14,6 +14,8 @@ import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '@/i18n';
 import { useRouter } from 'next/router';
+import { ForgotPassword } from '../../components/modules/Modals/ForgotPassword/ForgotPassword';
+import { useDisclosure } from '@mantine/hooks';
 
 
 interface loginProps {
@@ -28,6 +30,8 @@ export const Login = (props: loginProps) => {
   const [loader, setLoader] = useState(false);
   const router = useRouter();
   const [error, setError] = useState<any>("")
+  const [opened, { open, close }] = useDisclosure(false);
+
 
   const loginForm = useForm({
     initialValues: {
@@ -141,6 +145,7 @@ export const Login = (props: loginProps) => {
                 <Input
                   h={'44px'}
                   w={"100%"}
+                  classNames={{input:classes.input}}
                   component={'input'}
                   classNames={{ input: classes.input }}
                   placeholder={`${translate('authentication.formText.writeEmail')}`}
@@ -158,8 +163,7 @@ export const Login = (props: loginProps) => {
                 <BasePasswordInput
                   w={"100%"}
                   h={'44px'}
-                  autoComplete='on'
-                  placeholder={`${translate('authentication.formText.writePassword')}`}
+                  placeholder={`${translate("authentication.formText.writePassword")}`}
                   {...loginForm.getInputProps('password')}
                 />
                 {/* error message */}
@@ -168,14 +172,15 @@ export const Login = (props: loginProps) => {
               </Flex>
               {/* ForgetPassword */}
               <Center>
-                <Link className={classes.link} href={'/'}>
-                  <BaseText
-                    ta="center"
-                    style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                    color={theme.colors.dark[8]}
-                    txtkey={'signUpForm.forgetPassword'}
-                  />
-                </Link>
+                <BaseText
+                  onClick={open}
+                  className={classes.link}
+                  ta="center"
+                  style={typography.label[i18nStore.getCurrentLanguage()].l1}
+                  color={theme.colors.dark[8]}
+                  txtkey={'signUpForm.forgetPassword'}
+                />
+                <ForgotPassword opened={opened} close={close} />
               </Center>
               {/* Login Button */}
               <BaseButton

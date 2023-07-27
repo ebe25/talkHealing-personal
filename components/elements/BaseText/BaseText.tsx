@@ -5,23 +5,21 @@ import { PolymorphicComponentProps } from '@mantine/utils';
 import { useStores } from '@/models';
 
 export const SIZE_VARIANTS = {
-  xs: "xs",
-  sm: "sm",
-  md: "md",
-  lg: "lg",
-  xl: "xl"
+  xs: 'xs',
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+  xl: 'xl',
 };
 //Color variant
 export const FONTWEIGHT_VARIANTS = {
   400: 400,
   500: 500,
   600: 600,
-  700: 700
+  700: 700,
 };
 type fontWeightMap = Record<keyof typeof SIZE_VARIANTS, string>;
 type sizeMap = Record<keyof typeof FONTWEIGHT_VARIANTS, number>;
-
-
 
 interface BaseTextProps extends PolymorphicComponentProps<'div', TextProps> {
   // size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -30,6 +28,7 @@ interface BaseTextProps extends PolymorphicComponentProps<'div', TextProps> {
   color?: string;
   // fontWeight?: 400 | 500 | 600 | 700;
   txtkey?: TxKeyPath;
+  [x: string | number | symbol]: unknown
 }
 
 export const BaseText = (props: BaseTextProps) => {
