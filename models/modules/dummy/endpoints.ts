@@ -10,16 +10,16 @@ import {
 import * as SCHEMAS from "./schemas"
 
 const TRANSFORMERS = {
-    dummyPaginatedTransformer: (data) => ({
+    dummyPaginatedTransformer: (data:Record<string,any>) => ({
         ...data,
         count: parseInt(data.count),
-        results: data.results.map((result) => {
+        results: data.results.map((result:any) => {
             result.created_on = new Date(result.created_on)
             result.edited_on = new Date(result.edited_on)
             return result
         }),
     }),
-    dummyTransformer: (data) => ({
+    dummyTransformer: (data:Record<string,any>) => ({
         ...data,
         created_on: new Date(data.created_on),
         edited_on: new Date(data.edited_on),

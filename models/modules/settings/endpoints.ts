@@ -6,7 +6,7 @@ import * as SCHEMAS from "./schemas"
 
 
 const TRANSFORMERS = {
-    settingsTransformer: (data) => ({
+    settingsTransformer: (data:Record<string,any>) => ({
         ...data,
         created_on: new Date(data.created_on),
         edited_on: new Date(data.edited_on),

@@ -7,12 +7,12 @@ import * as SCHEMAS from "./schemas"
 
 
 const TRANSFORMERS = {
-    notificationTransformer: (data) => ({
+    notificationTransformer: (data:Record<string,any>) => ({
         ...data,
         created_on: new Date(data.created_on),
         edited_on: new Date(data.edited_on),
     }),
-    notificationPaginatedTransformer: (data) => ({
+    notificationPaginatedTransformer: (data:Record<string,any>) => ({
         ...data,
         count: parseInt(data.count),
         results: data.results.map(TRANSFORMERS.notificationTransformer)
