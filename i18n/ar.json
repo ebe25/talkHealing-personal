@@ -290,7 +290,7 @@
     "selectDate":"اختر من التقويم"
   },
   "productPage":{
-    "visitStore":"قم بزيارة المعرض او المتجر",
+    "visitStore":"قم بزيارة المتجر",
     "totalProduct": "إجمالي المنتج",
      "productSold": "بيع المنتج",
      "responseRate":"معدل الاستجابة",
@@ -298,7 +298,7 @@
      "aboutProduct": "حول المنتج",
      "customerRating":"تقييم العملاء",
      "customerQuestions":"أسئلة العملاء",
-     "addToCart":"Add to cart",
+     "addToCart":"أضف إلى السلة",
      "buyNow":"اشتري الآن",
      "size": "مقاس",
      "colors": "الألوان",

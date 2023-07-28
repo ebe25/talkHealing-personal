@@ -7,9 +7,10 @@ import { COLORS } from "@/themes/Mantine/colors";
 import ProductRating from "../ProductRating/ProductRating";
 import CustomerQuestions from "../CustomerQuestions/CustomerQuestions";
 import { translate } from "@/i18n";
-
+import { useMediaQuery } from "@mantine/hooks";
 function ProductTabs() {
   const { i18nStore } = useStores();
+  const matches = useMediaQuery("(max-width: 500px)");
   const [currentTab, setCurrentTab] = useState<any>("About product");
   const ProductLabels = [
     translate("productPage.condition"),
@@ -28,49 +29,114 @@ function ProductTabs() {
       defaultValue="About product"
       onTabChange={(value) => setCurrentTab(value)}
     >
-      <Tabs.List>
+      <Tabs.List grow position="apart">
         <Tabs.Tab
-        
-        pb={"18px"}
+          px={2}
+          pb={"18px"}
           value="About product"
-          c={currentTab == "About product" ? "blue !important" : COLORS.gray[6]}
-          style={{ ...typography.label[i18nStore.getCurrentLanguage()].l7}}
+          c={
+            currentTab == "About product"
+              ? `${COLORS.blue[4]} !important`
+              : COLORS.gray[6]
+          }
+          sx={{
+            ...typography.label[i18nStore.getCurrentLanguage()].l7,
+            border: "none",
+            "&:hover": {
+              backgroundColor: "transparent"
+            }
+          }}
         >
           {translate("productPage.aboutProduct")}
+          {currentTab == "About product" && (
+            <span
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "59px",
+                borderBottom: `4px solid ${COLORS.blue[4]}`,
+                borderTopLeftRadius: "20px",
+                borderTopRightRadius: "20px"
+              }}
+            />
+          )}
         </Tabs.Tab>
         <Tabs.Tab
           pb={"18px"}
           c={
-            currentTab == "Customer rating" ? "blue !important" : COLORS.gray[6]
+            currentTab == "Customer rating"
+              ? `${COLORS.blue[4]} !important`
+              : COLORS.gray[6]
           }
           value="Customer rating"
-          style={typography.label[i18nStore.getCurrentLanguage()].l7}
+          sx={{
+            ...typography.label[i18nStore.getCurrentLanguage()].l7,
+            border: "none",
+            "&:hover": {
+              backgroundColor: "transparent"
+            }
+          }}
         >
           {translate("productPage.customerRating")}
+          {currentTab == "Customer rating" && (
+            <span
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "59px",
+                borderBottom: `4px solid ${COLORS.blue[4]}`,
+                borderTopLeftRadius: "20px",
+                borderTopRightRadius: "20px"
+              }}
+            />
+          )}
         </Tabs.Tab>
         <Tabs.Tab
           pb={"18px"}
           c={
             currentTab == "Customer questions"
-              ? "blue !important"
+              ? `${COLORS.blue[4]} !important`
               : COLORS.gray[6]
           }
           value="Customer questions"
-          style={typography.label[i18nStore.getCurrentLanguage()].l7}
-         
+          sx={{
+            ...typography.label[i18nStore.getCurrentLanguage()].l7,
+            border: "none",
+            "&:hover": {
+              backgroundColor: "transparent"
+            }
+          }}
         >
           {translate("productPage.customerQuestions")}
+          {currentTab == "Customer questions" && (
+            <span
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "59px",
+                borderBottom: `4px solid ${COLORS.blue[4]}`,
+                borderTopLeftRadius: "20px",
+                borderTopRightRadius: "20px"
+              }}
+            />
+          )}
         </Tabs.Tab>
       </Tabs.List>
 
-      <Tabs.Panel value="About product" mt={"40px"} >
+      <Tabs.Panel value="About product" mt={"40px"}>
         {ProductLabels.map((item, id) => {
           return (
             <Flex justify={"space-between"}>
               <BaseText c={COLORS.gray[6]} mb={"14px"}>
                 {item}
               </BaseText>
-              <Box w="70%">
+              <Box w={matches ? "50%" : "70%"}>
                 <BaseText
                   mb={"14px"}
                   style={typography.label[i18nStore.getCurrentLanguage()].l9}
@@ -85,7 +151,7 @@ function ProductTabs() {
           mt={"40px"}
           style={{
             ...typography.paragraph[i18nStore.getCurrentLanguage()].p6,
-            textAlign: "justify"
+            // textAlign: "justify"
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -94,10 +160,19 @@ function ProductTabs() {
           aliquip ex ea commodo consequat. Duis aute irure dolor in
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip.
+          culpa qui officia deserunt mollit anim id est laborum.
+        </BaseText>
+        <BaseText
+          mt={"40px"}
+          style={{
+            ...typography.paragraph[i18nStore.getCurrentLanguage()].p6,
+            // textAlign: "justify"
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip.
         </BaseText>
       </Tabs.Panel>
 

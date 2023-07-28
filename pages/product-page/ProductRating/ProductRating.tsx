@@ -6,14 +6,14 @@ import { typography } from "@/themes/Mantine/typography";
 import UserComments from "../UserComments/UserComments";
 import { Images } from "@/public";
 import { COLORS } from "@/themes/Mantine/colors";
-import { useMediaQuery } from "@mantine/hooks";
+import useStyles from "./../ProductPage.style"
 
 function ProductRating() {
   const { i18nStore } = useStores();
-  const small = useMediaQuery("(max-width:420px)");
+  const {classes} = useStyles();
   return (
     <Stack mt="40px">
-      <Flex  align={"end"} gap = {small?'10px':'50px'} ml = {small?"5px":"50px"}>
+      <Flex  className= {classes.flexWrapper5} >
         <Box>
           <BaseText
             style={typography.label[i18nStore.getCurrentLanguage()].l10}

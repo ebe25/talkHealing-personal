@@ -1,0 +1,118 @@
+import { createStyles } from "@mantine/core";
+import { Images } from "../../public/index";
+
+export default createStyles((theme) => ({
+  boxWrapper: {
+    marginLeft: "70px",
+    marginRight: "70px",
+    [`@media (max-width: 1080px)`]: {
+      marginLeft: "20px",
+      marginRight: "20px"
+    }
+  },
+  boxWrapper2:{
+    marginLeft:'20px',
+    marginRight: '20px',
+    display:'visible',
+    [`@media (max-width: 500px)`]: {
+      display:'flex',
+      // marginTop:"10px"
+    }
+
+  },
+  boxWrapper3:{
+    flexDirection:'row',
+    [`@media (max-width: 400px)`]: {
+      flexDirection:'column',
+    }
+
+  },
+  productImageStyle: {
+    objectFit: "contain",
+    width: "100%",
+    height: "auto",
+    [`@media (max-width: 1080px)`]: {
+      width: "95vw"
+    }
+  },
+  flexWrapper1: {
+    gap: "22px",
+    justifyContent: "none",
+    [`@media (max-width: 1080px)`]: {
+      gap: "30px",
+      justifyContent: "center"
+    }
+  },
+  flexWrapper2: {
+    gap: "50px",
+    marginTop: "40px",
+    flexWrap: "nowrap",
+    [`@media (max-width: 1080px)`]: {
+      flexWrap: "wrap"
+    }
+  },
+  flexWrapper3: {
+    backgroundColor: "white",
+    flexWrap: "nowrap",
+    justifyContent: "space-around",
+    [`@media (max-width: 500px)`]: {
+      flexWrap: "wrap",
+      justifyContent: "none"
+    }
+  },
+  flexWrapper4:{
+    alignItems:'center',
+    justifyContent:"space-between",
+    margin:'32px',
+    [`@media (max-width: 500px)`]: {
+      margin: "0px",
+      marginTop: "20px",
+    }
+  },
+  flexWrapper5:{
+    alignItems:"end",
+    gap: "50px",
+    marginLeft:"50px",
+    [`@media (max-width: 420px)`]: {
+      marginLeft: "5px",
+      gap:"10px"
+    }
+  },
+  flexWrapper6:{
+    alignItems:"center",
+    justifyContent:"space-between",
+    [`@media (max-width: 500px)`]: {
+      alignItems:'start'
+    }
+
+  },
+  flexWrapper7:{
+    alignItems:"center",
+    gap:"24px",
+    justifyContent:"space-between",
+    [`@media (max-width: 500px)`]: {
+      width:"100%",
+      marginTop:"12px",
+      marginBottom:"10px",
+      justifyContent:"space-evenly"
+    }
+
+  },
+  textStyle: {
+    marginTop:'10px',
+    marginBottom:'10px',
+    marginRight:"0px",
+    [`@media (max-width: 500px)`]: {
+      marginRight:"13px"
+    }
+  },
+  visitStoreBtnStyle:{
+    marginLeft:"0px",
+    borderRadius:"44px",
+    [`@media (max-width: 500px)  or (max-width: 400px) `]: {
+      marginLeft:"90px",
+    }
+    
+  },
+  
+}));

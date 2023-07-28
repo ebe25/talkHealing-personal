@@ -57,7 +57,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           withNormalizeCSS
           withCSSVariables
         >
-          <Component {...pageProps} />
+          <Component {...pageProps}  />
           <Notifications />
         </MantineProvider>
       </ColorSchemeProvider>

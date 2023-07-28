@@ -6,6 +6,8 @@ import { useStores } from "@/models";
 import { typography } from "@/themes/Mantine/typography";
 import { useMediaQuery } from "@mantine/hooks";
 import { COLORS } from "@/themes/Mantine/colors";
+import useStyles from './../ProductPage.style'
+
 interface UserCommentsProps {
   profilePhoto?: string;
   dateOnCommented?: string;
@@ -16,10 +18,11 @@ interface UserCommentsProps {
 
 function UserComments(props: UserCommentsProps) {
   const { i18nStore } = useStores();
+  const {classes} = useStyles();
   const mobile = useMediaQuery("(max-width:500px)");
   return (
     <Box mt={"50px"}>
-      <Flex align={mobile? "start":"center"} justify={"space-between"}>
+      <Flex className= {classes.flexWrapper6}>
         <Flex gap={"20px"}>
           <Image
             src={Images.profile_photo_image}

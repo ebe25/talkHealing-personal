@@ -4,6 +4,7 @@ import React from "react";
 import { typography } from "@/themes/Mantine/typography";
 import { useStores } from "@/models";
 import { COLORS } from "@/themes/Mantine/colors";
+import { translate } from "@/i18n";
 
 interface CustomerQuestionsProps {
   question?: any;
@@ -20,7 +21,7 @@ function CustomerQuestions(props: CustomerQuestionsProps) {
         mr = "2px"
           style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i3}
         >
-          {"Question: "}
+          {translate('productPage.question')}
         </BaseText>
         <BaseText
           style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i3}
