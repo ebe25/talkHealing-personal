@@ -7,7 +7,7 @@ import { Box, Center, Container, Flex, Grid, Image, Text } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
-import useStyles from './Login.style';
+import { createStyle } from './Login.style';
 import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import Link from 'next/link';
@@ -16,6 +16,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import { useRouter } from 'next/router';
 import { ForgotPassword } from '../../components/modules/Modals/ForgotPassword/ForgotPassword';
+import swal from 'sweetalert';
 import { useDisclosure } from '@mantine/hooks';
 
 
@@ -59,7 +60,7 @@ export const Login = (props: loginProps) => {
       userStore.loginUser(loginForm.values.email, loginForm.values.password).then((res) => {
         if (res.ok) {
           console.log("user logged in successfully!")
-          router.push('/home')
+          router.push('/profile')
           loginForm.reset()
           setLoader(false)
         }
@@ -91,16 +92,16 @@ export const Login = (props: loginProps) => {
     userStore.loginGoogle(google_access_token).then((res) => {
       if (res.ok) {
         console.log("user logged in successfully!")
-        alert("user logged in successfully!")
+        router.push('/profile')
       }
       else if (res.code == 400) {
         if (res.error) {
-          alert(res.error.non_field_errors)
+          swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
         }
       }
       else if (res.code == 401) {
         if (res.error) {
-          alert(res.error.detail)
+          swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
         }
       }
     }
@@ -111,16 +112,16 @@ export const Login = (props: loginProps) => {
     userStore.loginFacebook(facebook_access_token).then((res) => {
       if (res.ok) {
         console.log("user logged in successfully!")
-        alert("user logged in successfully!")
+        router.push('/profile')
       }
       else if (res.code == 400) {
         if (res.error) {
-          alert(res.error.non_field_errors)
+          swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
         }
       }
       else if (res.code == 401) {
         if (res.error) {
-          alert(res.error.detail)
+          swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
         }
       }
     }
