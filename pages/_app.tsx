@@ -18,7 +18,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
   const toggleColorScheme = (value?: ColorScheme) => {
-    const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
+    const nextColorScheme = value || (colorScheme === 'dark' ? 'dark' : 'light');
     setColorScheme(nextColorScheme);
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
@@ -44,6 +44,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     rootStore.i18nStore.setSystemDefault();
   }
   return (
+   <div dir={rootStore.i18nStore.isRTL ? "rtl" : "ltr"}>
     <GoogleOAuthProvider clientId="115727969785-dr3gd9rpagos187jq3mg8gphbe3hb0ds.apps.googleusercontent.com">
       <RootStoreProvider value={rootStore}>
         <Head>
@@ -65,6 +66,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         </ColorSchemeProvider>
       </RootStoreProvider>
     </GoogleOAuthProvider>
+   </div>
   );
 }
 

@@ -16,6 +16,7 @@ import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordI
 import { useDisclosure } from '@mantine/hooks';
 // import { BaseRadioButton } from '@/components/elements/BaseRadioButton/RadioButton';
 import { IconArrowLeft } from '@tabler/icons-react';
+import { ForgotPassword } from '../Modals/ForgotPassword/ForgotPassword';
 
 
 
@@ -45,10 +46,8 @@ export function Welcome() {
       <BaseButton style_variant={'filled'} color_variant={'blue'} style={{width:"200px",color:"red"}}> 
       <span style={{display:"flex",gap:"30px"}}>
       <IconArrowLeft />
-      <BaseText txtkey="addKidDetails.editKidDetails" />
       </span>
       </BaseButton>
-      <BaseText color={'red'} txtkey="addKidDetails.editKidDetails" />
       <BasePasswordInput />
       {/* <IconGalleryItem heading={"authentication.formText.name"} /> */}
       <Selectbox data={data} />
@@ -56,13 +55,14 @@ export function Welcome() {
       {/* <Ratings heading={'addKidDetails.kidDateOfBirthText'} /> */}
       {/* <BaseCheckbox ></BaseCheckbox> */}
       {/* <BackButton> <BaseText txtkey="global.button.back" />  </BackButton> */}
-      <BaseButton onClick={open} style_variant={'filled'} color_variant={'red'}> <BaseText txtkey="addKidDetails.nextButton" /></BaseButton>
-       <BaseModal  withCloseButton={false} opened={opened} onClose={close}><BaseText txtkey="bookingForEvent.paymentProceedButtonText" /> </BaseModal>
-      <Input component={"input"} type='text' styleName={'inputText1'} style={{width:"300px"}} />
+      {/* <BaseButton onClick={open} style_variant={'filled'} color_variant={'red'}> <BaseText txtkey="addKidDetails.nextButton" /></BaseButton> */}
+       {/* <BaseModal  withCloseButton={false} opened={opened} onClose={close}><BaseText txtkey="bookingForEvent.paymentProceedButtonText" /> </BaseModal> */}
+      {/* <Input component={"input"} type='text' styleName={'inputText1'} style={{width:"300px"}} /> */}
       <form style={{display:"flex"}}>
-        <label><BaseText txtkey="bookingForEvent.addOnPriceText" /></label>
+        <label></label>
       {/* <BaseRadioButton /> */}
       </form>
+      <ForgotPassword opened={opened} close={close}/>
     </>
   );
 }

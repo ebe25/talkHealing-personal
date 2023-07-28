@@ -2,15 +2,15 @@ import { API_ENDPOINT, REQUEST_METHOD } from "../../api/endpoint.types"
 import * as SCHEMAS from "./schemas"
 
 const TRANSFORMERS = {
-    referralSource: (data) => ({
+    referralSource: (data:Record<string,any>) => ({
         ...data,
     }),
-    userTransformer: (data) => ({
+    userTransformer: (data:Record<string,any>) => ({
         ...data,
         created_on: new Date(data.created_on),
         edited_on: new Date(data.edited_on),
     }),
-    userPaginatedTransformer: (data) => ({
+    userPaginatedTransformer: (data:Record<string,any>) => ({
         ...data,
         user: {
             ...data.user,
@@ -18,7 +18,7 @@ const TRANSFORMERS = {
             edited_on: new Date(data.edited_on),
         }
     }),
-    accessTokenTransformer: (data) => ({
+    accessTokenTransformer: (data:Record<string,any>) => ({
         ...data,
         user: TRANSFORMERS.userTransformer(data.user),
     }),
@@ -29,7 +29,7 @@ export const API_ENDPOINTS = {
         url: "/auth/registration/",
         method: REQUEST_METHOD.POST,
         response: null,
-        transformer: null,
+        transformer: TRANSFORMERS.userPaginatedTransformer,
     }),
     loginUser: new API_ENDPOINT({
         url: "/auth/login/",
@@ -41,25 +41,25 @@ export const API_ENDPOINTS = {
         url: "/auth/registration/verify-email/",
         method: REQUEST_METHOD.POST,
         response: null,
-        transformer: null,
+        transformer: TRANSFORMERS.userPaginatedTransformer,
     }),
     resendVerificationEmail: new API_ENDPOINT({
-        url: "/auth/onboarding/verify-email/resend/",
+        url: "/base_user/verify-email/resend/",
         method: REQUEST_METHOD.GET,
         response: null,
-        transformer: null,
+        transformer: TRANSFORMERS.userPaginatedTransformer,
     }),
     verifyPhoneNumber: new API_ENDPOINT({
-        url: "/auth/onboarding/verify-phone-number/",
+        url: "/base_user/verify-phone-number/",
         method: REQUEST_METHOD.POST,
         response: null,
-        transformer: null,
+        transformer: TRANSFORMERS.userPaginatedTransformer,
     }),
     resendVerificationSMS: new API_ENDPOINT({
-        url: "auth/onboarding/verify-phone-number/resend/",
+        url: "/base_user/verify-phone-number/resend/",
         method: REQUEST_METHOD.GET,
         response: null,
-        transformer: null,
+        transformer: TRANSFORMERS.userPaginatedTransformer,
     }),
     changePassword: new API_ENDPOINT({
         url: "/auth/password/change/",
@@ -162,5 +162,11 @@ export const API_ENDPOINTS = {
         method: REQUEST_METHOD.POST,
         response: null,
         transformer: TRANSFORMERS.userPaginatedTransformer,
+       }),
+    smsPasswordReset: new API_ENDPOINT({
+        url: "/auth/sms-password-reset",
+        method: REQUEST_METHOD.POST,
+        response: null,
+        transformer: TRANSFORMERS.userTransformer,
     }),
 }
