@@ -1,5 +1,5 @@
 // react and nextb import
-import React from 'react';
+import React, { useEffect } from 'react';
 // mantine component
 import { useForm } from '@mantine/form';
 import { Box, Flex, Image, Select, useMantineTheme } from '@mantine/core';
@@ -27,15 +27,16 @@ export const AddressModal = (props: {
   onClose?: any;
   modalHeading?: any;
   isEdit?: boolean;
+  id?: string
 }) => {
-  const { i18nStore } = useStores();
+  const { i18nStore, userStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const useStyles=createStyle()
   const { classes } = useStyles();
   const address = useForm({
     initialValues: {
-      addressOne: '',
+      addressOne : '',
       addressTwo: '',
       country: '',
       state: '',
@@ -63,6 +64,16 @@ export const AddressModal = (props: {
       },
     },
   });
+
+  console.log("", props.id);
+  useEffect(() => {
+    userStore.getUserAddressById(props.id).then((res)=>{
+      if(res.ok){
+        
+        // setUserAddress(userStore.address?.results)
+      }
+    })
+  },[])
 
   const handleAddressChange = () => {
     let results = address.validate();
@@ -182,6 +193,7 @@ export const AddressModal = (props: {
               variant="default"
               radius={'xl'}
               data={countryLists}
+              defaultValue={userStore.getAddress?.country}
               {...address.getInputProps('country')}
             />
           </Box>
@@ -206,6 +218,7 @@ export const AddressModal = (props: {
               radius={'xl'}
               // size="lg"
               data={stateLists}
+              defaultValue={userStore.getAddress?.state}
               {...address.getInputProps('state')}
             />
           </Box>
@@ -230,6 +243,7 @@ export const AddressModal = (props: {
               radius={'xl'}
               // size="lg"
               data={stateCityLists}
+              defaultValue={userStore.getAddress?.city}
               {...address.getInputProps('district')}
             />
           </Box>

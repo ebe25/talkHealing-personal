@@ -24,8 +24,9 @@ export const Address = () => {
   const address = useDisclosure(false); 
   const editAddress = useDisclosure(false); 
   const [ modalHeading, setModalHeading ] = useState<any>();
+  const [ addressId, setAddresId ] = useState("");
   // const [ userAddress, setUserAddress ] = useState();
- 
+ console.log("addressId",addressId);
   useEffect(() => {
     userStore.getLoginUserData()
     userStore.getUserAddress().then((res)=>{
@@ -34,21 +35,6 @@ export const Address = () => {
       }
     })
   },[])
-  
-  const ADDRESS_DATA = [
-    {
-      name: 'Andrew White',
-      number: '+8562910002938',
-      address:
-        'Old Airport Raod, Kodihalli, Bangalore 560008, Karnataka, India, HAL Old Airport Rd, ISRO Colony, Domlur, Bengaluru, Karnataka, India',
-    },
-    {
-      name: 'Andrew White',
-      number: '+8562910002938',
-      address:
-        'Old Airport Raod, Kodihalli, Bangalore 560008, Karnataka, India, HAL Old Airport Rd, ISRO Colony, Domlur, Bengaluru, Karnataka, India',
-    },
-  ];
 
   return (
     <Box className={classes.container}>
@@ -84,6 +70,7 @@ export const Address = () => {
                 style_variant='outline'
                 color_variant='blue'
                 onClick={()=>{
+                  setAddresId(item.id)
                   setModalHeading("profile.addressDetails")
                   editAddress[1].open()
                 }}
@@ -115,6 +102,7 @@ export const Address = () => {
         modalHeading={modalHeading}
       />
       <AddressModal
+        id={addressId}
         opened={editAddress[0]}
         onClose={editAddress[1].close}
         modalHeading={modalHeading}

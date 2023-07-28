@@ -169,4 +169,10 @@ export const API_ENDPOINTS = {
         response: null,
         transformer: null,
     }),
+    getAddressById: new API_ENDPOINT({
+        url: "/base_user/user-address/{id}/",
+        method: REQUEST_METHOD.GET,
+        response: null,
+        transformer: null,
+    }),
 }

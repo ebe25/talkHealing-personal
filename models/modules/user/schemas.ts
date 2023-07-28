@@ -101,8 +101,8 @@ export const Action = types.model({
 
 export const Address = types.model({
   id: types.identifier,
-  created_on: types.string,
-  edited_on: types.string,
+  created_on: types.maybeNull(types.string),
+  edited_on: types.maybeNull(types.string),
   _data: types.maybeNull(types.frozen()),
   address_line1: types.maybeNull(types.string),
   address_line2: types.maybeNull(types.string),

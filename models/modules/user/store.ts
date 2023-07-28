@@ -20,6 +20,7 @@ export const UserStore = types
     isLoggedInUser: types.maybeNull(types.boolean),
     verfyEmailData: types.maybeNull(UserSchemas.LoggedInUser),
     address: types.maybeNull(UserSchemas.AddressPaginated),
+    getAddress: types.maybeNull(UserSchemas.Address),
   })
   .extend(withEnvironment)
   .actions((self) => ({
@@ -533,6 +534,23 @@ export const UserStore = types
       switch (response.status) {
         case 200:
           self.address = UserSchemas.AddressPaginated.create(response.data)
+          return ACTION_RESPONSES.success;
+        case 400:
+          return ACTION_RESPONSES.success;;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    getUserAddressById: flow(function* (id:string|undefined) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.getAddressById, {}, { id: id }
+      );
+      console.log(response.data)
+      switch (response.status) {
+        case 200:
+          self.getAddress = UserSchemas.Address.create(response.data)
           return ACTION_RESPONSES.success;
         case 400:
           return ACTION_RESPONSES.success;;
