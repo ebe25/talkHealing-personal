@@ -1,4 +1,4 @@
-import { Login } from '.';
+import Login from './index';
 import type { Meta, StoryObj } from '@storybook/react';
 import LoginIcon from '../../public/image/LoginInear.png'
 
