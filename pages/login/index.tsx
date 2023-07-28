@@ -3,7 +3,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Center, Container, Flex, Grid, Image, Text } from '@mantine/core';
+import { Box, Center, Container, Flex, Grid, Image, Loader, Text } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
@@ -89,19 +89,23 @@ export const Login = (props: loginProps) => {
   }
 
   const onGoogleLogin = (google_access_token: any) => {
+    setLoader(true)
     userStore.loginGoogle(google_access_token).then((res) => {
       if (res.ok) {
         console.log("user logged in successfully!")
         router.push('/profile')
+        setLoader(false)
       }
       else if (res.code == 400) {
         if (res.error) {
           swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
+          setLoader(false)
         }
       }
       else if (res.code == 401) {
         if (res.error) {
           swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
+          setLoader(false)
         }
       }
     }
@@ -109,19 +113,23 @@ export const Login = (props: loginProps) => {
   }
 
   const onFacebookLogin = (facebook_access_token: any) => {
+    setLoader(true)
     userStore.loginFacebook(facebook_access_token).then((res) => {
       if (res.ok) {
         console.log("user logged in successfully!")
         router.push('/profile')
+        setLoader(false)
       }
       else if (res.code == 400) {
         if (res.error) {
           swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
+          setLoader(false)
         }
       }
       else if (res.code == 401) {
         if (res.error) {
           swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
+          setLoader(false)
         }
       }
     }
@@ -132,6 +140,12 @@ export const Login = (props: loginProps) => {
     <Container
       maw={"1400px"}
     >
+        {/* Loader */}
+        {loader ? (
+                <Box className={classes.loaderBox}>
+                    <Loader size="xl" />
+                </Box>
+            ) : null}
       <Grid
         className={classes.container}
         gutter="100px"
