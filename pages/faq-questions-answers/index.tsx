@@ -27,34 +27,38 @@ export const FaqQuestionsAnswers = () => {
     const [faq, setFaq] = useState<any>({});
 
     const findFaqCategory = (categoryList: Array<string>) => {
-        let faqDataObject: any = {}
-        let faqData: any = globalsStore.faqData?.results
-        if (categoryList.length > 0) {
-            categoryList.forEach((element: any) => {
-                faqDataObject[element['en']] = []
+        if (globalsStore.faqData != null) {
+            let faqDataObject: any = {}
+            let faqData: any = globalsStore.faqData.results
+            if (categoryList.length > 0) {
+                categoryList.forEach((element: any) => {
+                    faqDataObject[element['en']] = []
+                })
+            }
+            faqData.forEach((item: any) => {
+                faqDataObject[item.faq_category.en].push(item)
             })
+            setFaq({ ...faqDataObject })
+            setFaqLoading(false)
         }
-        faqData.forEach((item: any) => {
-            faqDataObject[item.faq_category.en].push(item)
-        })
-        setFaq({ ...faqDataObject })
-        setFaqLoading(false)
     };
 
     useEffect(() => {
         globalsStore.getFAQCategory().then((res) => {
             if (res.ok) {
-                let faqCategoryName: any = [];
-                globalsStore.faqCategoryData?.results.map((item) => {
-                    faqCategoryName.push(item.name);
-                });
-                setFaqCategory([...faqCategoryName]);
-                if (faqCategoryName.length === globalsStore.faqCategoryData?.count)
-                    globalsStore.getFAQ().then((res) => {
-                        if (res.ok) {
-                            findFaqCategory(faqCategoryName)
-                        }
+                if (globalsStore.faqCategoryData != null) {
+                    let faqCategoryName: any = [];
+                    globalsStore.faqCategoryData.results.map((item) => {
+                        faqCategoryName.push(item.name);
                     });
+                    setFaqCategory([...faqCategoryName]);
+                    if (faqCategoryName.length === globalsStore.faqCategoryData.count)
+                        globalsStore.getFAQ().then((res) => {
+                            if (res.ok) {
+                                findFaqCategory(faqCategoryName)
+                            }
+                        });
+                }
             }
         });
     }, []);
