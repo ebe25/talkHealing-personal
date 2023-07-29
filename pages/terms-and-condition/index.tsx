@@ -13,7 +13,9 @@ export const TermsAndConditionAndPolicy = () => {
     useEffect(() => {
         globalsStore.getTermsAndConditions().then((res) => {
             if (res) {
-                setTermsAndConditionsData(globalsStore.termsAndConditionsData?.data)
+                if (globalsStore.termsAndConditionsData != null) {
+                    setTermsAndConditionsData(globalsStore.termsAndConditionsData.data)
+                }
             }
         })
     }, [])

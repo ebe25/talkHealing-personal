@@ -13,7 +13,9 @@ export const CookiePolicy = () => {
     useEffect(() => {
         globalsStore.getCookiesPolicy().then((res) => {
             if (res) {
-                setCookiesPolicyData(globalsStore.cookiesPolicyData?.data)
+                if (globalsStore.cookiesPolicyData != null) {
+                    setCookiesPolicyData(globalsStore.cookiesPolicyData.data)
+                }
             }
         })
     }, [])

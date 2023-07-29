@@ -13,7 +13,9 @@ export const PrivacyPolicy = () => {
     useEffect(() => {
         globalsStore.getPrivacyPolicy().then((res) => {
             if (res) {
-                setPrivacyPolicyData(globalsStore.privacyPolicyData?.data)
+                if (globalsStore.privacyPolicyData != null) {
+                    setPrivacyPolicyData(globalsStore.privacyPolicyData.data)
+                }
             }
         })
     }, [])
