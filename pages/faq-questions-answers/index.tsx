@@ -27,7 +27,7 @@ export const FaqQuestionsAnswers = () => {
     const [faq, setFaq] = useState<any>({});
 
     const findFaqCategory = (categoryList: Array<string>) => {
-        if (globalsStore.faqData != null) {
+        if (globalsStore.faqData) {
             let faqDataObject: any = {}
             let faqData: any = globalsStore.faqData.results
             if (categoryList.length > 0) {
@@ -41,12 +41,15 @@ export const FaqQuestionsAnswers = () => {
             setFaq({ ...faqDataObject })
             setFaqLoading(false)
         }
+        else {
+            console.log("faq data is null")
+        }
     };
 
     useEffect(() => {
         globalsStore.getFAQCategory().then((res) => {
             if (res.ok) {
-                if (globalsStore.faqCategoryData != null) {
+                if (globalsStore.faqCategoryData) {
                     let faqCategoryName: any = [];
                     globalsStore.faqCategoryData.results.map((item) => {
                         faqCategoryName.push(item.name);
@@ -58,6 +61,9 @@ export const FaqQuestionsAnswers = () => {
                                 findFaqCategory(faqCategoryName)
                             }
                         });
+                }
+                else {
+                    console.log("faq category data is null")
                 }
             }
         });
