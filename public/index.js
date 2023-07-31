@@ -74,6 +74,8 @@ export const Images = {
   vertical_line_icon:"./icons/vertical_line_icon.png",
   bottom_border_icon:"./icons/bottom_border_icon.png",
   right_arrow_icon:"./icons/right_arrow_icon.png",
+  uncolored_star_icon:"./icons/uncoloured_start_icon.png",
+  colored_star_icon:"./icons/coloured_star_icon.png",
   
 }
 

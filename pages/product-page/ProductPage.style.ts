@@ -30,7 +30,7 @@ export default createStyles((theme) => ({
 
   },
   productImageStyle: {
-    objectFit: "contain",
+    objectFit: "fill",
     width: "100%",
     height: "auto",
     [`@media (max-width: 1080px)`]: {
@@ -118,6 +118,6 @@ export default createStyles((theme) => ({
   },
   mark: {
     backgroundColor: COLORS.gray[6],
-  }
+  },
   
 }));

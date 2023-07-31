@@ -49,7 +49,29 @@ function UserComments(props: UserCommentsProps) {
             </BaseText>
           </Flex>
         </Flex>
-        <Rating value={3} size={mobile ? "sm" : "lg"} readOnly />
+        <Rating
+          value={3}
+          size={mobile ? "sm" : "lg"}
+          readOnly
+          fullSymbol={
+            <Image
+            mr = {"8px"}
+              src={Images.colored_star_icon}
+              width={"23px"}
+              height={"23px"}
+              alt={"coloured_star_icon"}
+            />
+          }
+          emptySymbol={
+            <Image
+            mr = {"8px"}
+              src={Images.uncolored_star_icon}
+              width={"23px"}
+              height={"23x"}
+              alt={"uncoloured_star_icon"}
+            />
+          }
+        />
       </Flex>
       <BaseText
         mt={"29px"}

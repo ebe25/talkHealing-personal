@@ -82,6 +82,7 @@ function ProductPage() {
   const [countItems, setCountItems] = useState(0);
   const [selectItemImage, setSelectedItemImage] = useState(0);
   const [isBookMarkSave, setIsBookMarkSave] = useState(false);
+  const [opened, setOpened] = useState(false);
   const items = [
     { title: "Apparels", href: "#" },
     { title: "Tops ", href: "#" },
@@ -132,10 +133,13 @@ function ProductPage() {
         </Breadcrumbs>
         <Flex
           className={classes.flexWrapper2}
-          sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" , justifyContent:"center"}}
+          sx={{
+            flexDirection: i18nStore.isRTL ? "row-reverse" : "row",
+            justifyContent: "center"
+          }}
         >
-          <Box >
-            <Box >
+          <Box>
+            <Box>
               <Image
                 className={classes.productImageStyle}
                 src={ItemImages[selectItemImage]}
@@ -189,7 +193,9 @@ function ProductPage() {
                       Pebea Sneakers
                     </BaseText>
                     <Flex
-                    sx = {{flexDirection:i18nStore.isRTL? 'row-reverse': "row"}}
+                      sx={{
+                        flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
+                      }}
                       justify={"space-between"}
                       align={"center"}
                       gap={"6px"}
@@ -234,7 +240,7 @@ function ProductPage() {
                 <Flex
                   className={classes.flexWrapper7}
                   mr={"24px"}
-                  ml = {i18nStore.isRTL? '24px':" 0px"}
+                  ml={i18nStore.isRTL ? "24px" : " 0px"}
                   sx={{
                     flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
                   }}
@@ -260,7 +266,9 @@ function ProductPage() {
               <Box mt={"24px"} mb={"30px"}>
                 {ProductdetailFields.map((item, idx) => (
                   <Flex
-                  sx = {{flexDirection:i18nStore.isRTL? 'row-reverse': "row"}}
+                    sx={{
+                      flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
+                    }}
                     justify={"space-between"}
                     key={idx}
                     mt="16px"
@@ -306,12 +314,15 @@ function ProductPage() {
               Product name lorem ipsum dolor set amet
             </BaseText>
             <BaseText
+              mt={"20px"}
+              mb={"50px"}
               sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
               style={typography.label[i18nStore.getCurrentLanguage()].l8}
             >
               $78.25
             </BaseText>
             <BaseText
+              mb="16px"
               sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
               style={{
                 ...typography.paragraph[i18nStore.getCurrentLanguage()].p3,
@@ -344,6 +355,7 @@ function ProductPage() {
               })}
             </Flex>
             <BaseText
+              my="16px"
               sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
               style={{
                 ...typography.paragraph[i18nStore.getCurrentLanguage()].p3,
@@ -453,8 +465,8 @@ function ProductPage() {
                   style={{
                     ...typography.headings[i18nStore.getCurrentLanguage()].h7
                   }}
-                  bg={COLORS.dark[0]}
-                  c={COLORS.gray[6]}
+                  bg={COLORS.gray[2]}
+                  c={COLORS.dark[1]}
                   size="md"
                   style_variant="filled"
                   color_variant="gray"
@@ -477,7 +489,7 @@ function ProductPage() {
                 />
 
                 <Tooltip
-                  // opened ={true}
+                  opened={opened}
                   position="bottom"
                   label={
                     <Flex
@@ -493,6 +505,10 @@ function ProductPage() {
                       {TootTipImages.map((item, id) => {
                         return (
                           <Image
+                          
+                            style={{
+                              cursor: "pointer"
+                            }}
                             key={id}
                             src={item}
                             width={"32px"}
@@ -507,6 +523,7 @@ function ProductPage() {
                   withArrow
                 >
                   <Image
+                    onClick={() => setOpened((o) => !o)}
                     style={{
                       cursor: "pointer"
                     }}
