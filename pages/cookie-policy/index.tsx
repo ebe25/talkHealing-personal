@@ -13,9 +13,13 @@ export const CookiePolicy = () => {
     useEffect(() => {
         globalsStore.getCookiesPolicy().then((res) => {
             if (res) {
-                if (globalsStore.cookiesPolicyData != null) {
+                if (globalsStore.cookiesPolicyData)
                     setCookiesPolicyData(globalsStore.cookiesPolicyData.data)
-                }
+                else
+                    console.log("cookies policy data is null")
+            }
+            else {
+                console.log("cookies policy data can't fetched")
             }
         })
     }, [])

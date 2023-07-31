@@ -13,9 +13,13 @@ export const PrivacyPolicy = () => {
     useEffect(() => {
         globalsStore.getPrivacyPolicy().then((res) => {
             if (res) {
-                if (globalsStore.privacyPolicyData != null) {
+                if (globalsStore.privacyPolicyData)
                     setPrivacyPolicyData(globalsStore.privacyPolicyData.data)
-                }
+                else
+                    console.log("privacy policy data is null")
+            }
+            else {
+                console.log("privacy policy data can't fetched")
             }
         })
     }, [])

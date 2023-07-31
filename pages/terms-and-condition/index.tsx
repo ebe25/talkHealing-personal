@@ -13,9 +13,13 @@ export const TermsAndConditionAndPolicy = () => {
     useEffect(() => {
         globalsStore.getTermsAndConditions().then((res) => {
             if (res) {
-                if (globalsStore.termsAndConditionsData != null) {
+                if (globalsStore.termsAndConditionsData)
                     setTermsAndConditionsData(globalsStore.termsAndConditionsData.data)
-                }
+                else
+                    console.log("terms and conditions data is null")
+            }
+            else {
+                console.log("terms and conditions data can't fetched")
             }
         })
     }, [])
