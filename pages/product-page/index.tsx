@@ -1,29 +1,25 @@
-import { useState } from "react";
-import {
-  Box,
-  Breadcrumbs,
-  Anchor,
-  Flex,
-  Image,
-  Card,
-  Stack,
-  Tooltip,
-  Container,
-  Button
-} from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
-import ProductTabs from "./ProductsTabs/ProductTabs";
-import { COLORS } from "@/themes/Mantine/colors";
-import { typography } from "@/themes/Mantine/typography";
+import { BaseButton } from "@/components/elements/BaseButton/BaseButton";
+import { BaseText } from "@/components/elements/BaseText/BaseText";
+import { translate } from "@/i18n";
 import { useStores } from "@/models";
 import { Images } from "@/public";
-import { BaseText } from "@/components/elements/BaseText/BaseText";
-import { BaseButton } from "@/components/elements/BaseButton/BaseButton";
-import { translate } from "@/i18n";
+import { COLORS } from "@/themes/Mantine/colors";
+import { typography } from "@/themes/Mantine/typography";
+import {
+  Anchor,
+  Box,
+  Breadcrumbs, Card,
+  Container,
+  Flex,
+  Image,
+  Popover,
+  Stack
+} from "@mantine/core";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import ProductImageCarousel from "./PoductImageCarousel/ProductImageCarousel";
 import useStyles from "./ProductPage.style";
-import { useRouter } from "next/router";
-import { ClassNames } from "@emotion/react";
+import ProductTabs from "./ProductsTabs/ProductTabs";
 
 function BadgeIcon(props: {
   logo: string;
@@ -82,7 +78,6 @@ function ProductPage() {
   const [countItems, setCountItems] = useState(0);
   const [selectItemImage, setSelectedItemImage] = useState(0);
   const [isBookMarkSave, setIsBookMarkSave] = useState(false);
-  const [opened, setOpened] = useState(false);
   const items = [
     { title: "Apparels", href: "#" },
     { title: "Tops ", href: "#" },
@@ -100,14 +95,6 @@ function ProductPage() {
   ));
   return (
     <Container maw="1350px">
-      <Button
-        onClick={() => {
-          i18nStore.setAppLanguage(i18nStore.isRTL ? "en" : "ar");
-          router.reload();
-        }}
-      >
-        Toggle language
-      </Button>
       <Box className={classes.boxWrapper}>
         <Breadcrumbs
           sx={{
@@ -488,51 +475,45 @@ function ProductPage() {
                   alt="bookmark_icon"
                 />
 
-                <Tooltip
-                  opened={opened}
-                  position="bottom"
-                  label={
-                    <Flex
-                      align={"center"}
-                      px={"12px"}
-                      gap={"12px"}
-                      sx={{
-                        borderRadius: "18px",
-                        boxShadow: "1px 1px 10px rgba(0, 0, 0, 0.15)",
-                        height: "56px"
+                <Popover withArrow>
+                  <Popover.Target>
+                    <Image
+                      style={{
+                        cursor: "pointer "
                       }}
-                    >
-                      {TootTipImages.map((item, id) => {
-                        return (
-                          <Image
-                          
-                            style={{
-                              cursor: "pointer"
-                            }}
-                            key={id}
-                            src={item}
-                            width={"32px"}
-                            height={"32px"}
-                            alt={`image_${id}`}
-                          />
-                        );
-                      })}
-                    </Flex>
-                  }
-                  color="white"
-                  withArrow
-                >
-                  <Image
-                    onClick={() => setOpened((o) => !o)}
-                    style={{
-                      cursor: "pointer"
+                      width={"23px"}
+                      height={"24px"}
+                      src={Images.share_icon}
+                      alt="share_icon"
+                    />
+                  </Popover.Target>
+                  <Popover.Dropdown
+                    px={"12px"}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      borderRadius: "18px",
+                      gap: "12px",
+                      boxShadow: "1px 1px 10px rgba(0, 0, 0, 0.15)",
+                      height: "56px"
                     }}
-                    width={"23px"}
-                    height={"24px"}
-                    src={Images.share_icon}
-                    alt="share_icon"
-                  />
-                </Tooltip>
+                  >
+                    {TootTipImages.map((item, id) => {
+                      return (
+                        <Image
+                          style={{
+                            cursor: "pointer"
+                          }}
+                          key={id}
+                          src={item}
+                          width={"32px"}
+                          height={"32px"}
+                          alt={`image_${id}`}
+                        />
+                      );
+                    })}
+                  </Popover.Dropdown>
+                </Popover>
               </Flex>
             </Flex>
             <ProductTabs />
