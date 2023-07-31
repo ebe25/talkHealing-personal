@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Tabs, Flex, Box } from "@mantine/core";
 import { useStores } from "@/models";
 import { BaseText } from "@/components/elements/BaseText/BaseText";

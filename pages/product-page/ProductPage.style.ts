@@ -30,7 +30,7 @@ export default createStyles((theme) => ({
 
   },
   productImageStyle: {
-    objectFit: "fill",
+    objectFit: "cover",
     width: "100%",
     height: "auto",
     [`@media (max-width: 1080px)`]: {

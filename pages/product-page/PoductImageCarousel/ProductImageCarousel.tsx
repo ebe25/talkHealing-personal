@@ -1,7 +1,6 @@
 import { Carousel } from "@mantine/carousel";
 import { Image } from "@mantine/core";
-import React from "react";
-import useStyles from "./../ProductPage.style"
+import useStyles from "./../ProductPage.style";
 function ProductImageCarousel(props: {
   images?: any;
   setSelectedItemImage?: any;

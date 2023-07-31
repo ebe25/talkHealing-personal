@@ -1,6 +1,5 @@
 import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { Stack, Rating, Flex, Box, Slider } from "@mantine/core";
-import React from "react";
 import { useStores } from "@/models";
 import { typography } from "@/themes/Mantine/typography";
 import UserComments from "../UserComments/UserComments";

@@ -1,6 +1,5 @@
 import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { Flex, Stack } from "@mantine/core";
-import React from "react";
 import { typography } from "@/themes/Mantine/typography";
 import { useStores } from "@/models";
 import { COLORS } from "@/themes/Mantine/colors";
