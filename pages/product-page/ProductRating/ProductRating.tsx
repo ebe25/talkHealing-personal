@@ -13,7 +13,7 @@ function ProductRating() {
   const {classes} = useStyles();
   return (
     <Stack mt="40px">
-      <Flex  className= {classes.flexWrapper5} >
+      <Flex  className= {classes.flexWrapper5}  sx = {{flexDirection: i18nStore.isRTL? 'row-reverse':"row"}}>
         <Box>
           <BaseText
             style={typography.label[i18nStore.getCurrentLanguage()].l10}
@@ -29,7 +29,14 @@ function ProductRating() {
               <Flex key={id} align={"center"} gap="7px" >
                 <Rating defaultValue={2} count={1} readOnly />
                 <BaseText>{id + 1}</BaseText>
-                <Slider defaultValue={id*20} disabled  w="140px"   />
+                <Slider defaultValue={id*20}   w="140px" 
+               classNames={{
+                
+                bar: classes.mark,
+
+                
+              }}
+                 disabled/>
                 <BaseText c = {COLORS.gray[6]}
                   style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i4}
                 >{8}</BaseText>

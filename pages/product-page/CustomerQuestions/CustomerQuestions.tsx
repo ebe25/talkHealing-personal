@@ -16,7 +16,7 @@ function CustomerQuestions(props: CustomerQuestionsProps) {
   const { i18nStore } = useStores();
   return (
     <Stack spacing={2} mt={"23px"}>
-      <Flex>
+      <Flex  sx = {{flexDirection: i18nStore.isRTL? 'row-reverse':"row"}}>
         <BaseText
         mr = "2px"
           style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i3}
@@ -30,13 +30,16 @@ function CustomerQuestions(props: CustomerQuestionsProps) {
         </BaseText>
       </Flex>
       <BaseText
+       sx = {{textAlign:i18nStore.isRTL? 'end': "start"}}
         mt={"8px"}
         c={COLORS.gray[6]}
         style={typography.label[i18nStore.getCurrentLanguage()].l11}
       >
         June 16th, 2020
       </BaseText>
-      <BaseText mt={"29px"} mb={"26px"}>
+      <BaseText mt={"29px"} mb={"26px"}
+      sx = {{textAlign:i18nStore.isRTL? 'end': "start"}}
+      >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </BaseText>

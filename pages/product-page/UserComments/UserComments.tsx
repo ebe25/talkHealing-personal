@@ -6,7 +6,7 @@ import { useStores } from "@/models";
 import { typography } from "@/themes/Mantine/typography";
 import { useMediaQuery } from "@mantine/hooks";
 import { COLORS } from "@/themes/Mantine/colors";
-import useStyles from './../ProductPage.style'
+import useStyles from "./../ProductPage.style";
 
 interface UserCommentsProps {
   profilePhoto?: string;
@@ -18,12 +18,18 @@ interface UserCommentsProps {
 
 function UserComments(props: UserCommentsProps) {
   const { i18nStore } = useStores();
-  const {classes} = useStyles();
+  const { classes } = useStyles();
   const mobile = useMediaQuery("(max-width:500px)");
   return (
     <Box mt={"50px"}>
-      <Flex className= {classes.flexWrapper6}>
-        <Flex gap={"20px"}>
+      <Flex
+        className={classes.flexWrapper6}
+        sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
+      >
+        <Flex
+          gap={"20px"}
+          sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
+        >
           <Image
             src={Images.profile_photo_image}
             width={"50px"}
@@ -43,13 +49,20 @@ function UserComments(props: UserCommentsProps) {
             </BaseText>
           </Flex>
         </Flex>
-        <Rating value={3} size={mobile?"sm":"lg"}  readOnly />
+        <Rating value={3} size={mobile ? "sm" : "lg"} readOnly />
       </Flex>
-      <BaseText mt={"29px"}>
+      <BaseText
+        mt={"29px"}
+        sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
+      >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </BaseText>
-      <Flex gap={"20px"} mt={"20px"}>
+      <Flex
+        gap={"20px"}
+        mt={"20px"}
+        sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
+      >
         {props.images?.map((item: string | null | undefined, id: any) => {
           return (
             <Image

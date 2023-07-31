@@ -1,6 +1,8 @@
+import { i18nStore } from '@/models/modules/i18n/store';
 import { createStyles } from "@mantine/core";
 import { Images } from "../../public/index";
-
+import { COLORS } from "@/themes/Mantine/colors";
+import { useStores } from "@/models";
 export default createStyles((theme) => ({
   boxWrapper: {
     marginLeft: "70px",
@@ -114,5 +116,8 @@ export default createStyles((theme) => ({
     }
     
   },
+  mark: {
+    backgroundColor: COLORS.gray[6],
+  }
   
 }));

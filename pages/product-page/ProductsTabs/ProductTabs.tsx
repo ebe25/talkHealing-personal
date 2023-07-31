@@ -29,7 +29,14 @@ function ProductTabs() {
       defaultValue="About product"
       onTabChange={(value) => setCurrentTab(value)}
     >
-      <Tabs.List grow position="apart">
+      <Tabs.List
+        grow
+        position="apart"
+        sx={{
+          display: i18nStore.isRTL ? "flex" : "visible",
+          flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
+        }}
+      >
         <Tabs.Tab
           px={2}
           pb={"18px"}
@@ -132,12 +139,16 @@ function ProductTabs() {
       <Tabs.Panel value="About product" mt={"40px"}>
         {ProductLabels.map((item, id) => {
           return (
-            <Flex justify={"space-between"}>
+            <Flex
+              justify={"space-between"}
+              sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
+            >
               <BaseText c={COLORS.gray[6]} mb={"14px"}>
                 {item}
               </BaseText>
-              <Box w={matches ? "50%" : "70%"}>
+              <Box w={matches ? "50%" : "70%"}  >
                 <BaseText
+                sx = {{textAlign: i18nStore.isRTL? 'end': 'start'}}
                   mb={"14px"}
                   style={typography.label[i18nStore.getCurrentLanguage()].l9}
                 >
@@ -148,9 +159,10 @@ function ProductTabs() {
           );
         })}
         <BaseText
+          sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
           mt={"40px"}
           style={{
-            ...typography.paragraph[i18nStore.getCurrentLanguage()].p6,
+            ...typography.paragraph[i18nStore.getCurrentLanguage()].p6
             // textAlign: "justify"
           }}
         >
@@ -163,9 +175,10 @@ function ProductTabs() {
           culpa qui officia deserunt mollit anim id est laborum.
         </BaseText>
         <BaseText
+          sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
           mt={"40px"}
           style={{
-            ...typography.paragraph[i18nStore.getCurrentLanguage()].p6,
+            ...typography.paragraph[i18nStore.getCurrentLanguage()].p6
             // textAlign: "justify"
           }}
         >
