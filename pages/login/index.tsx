@@ -93,7 +93,7 @@ export const Login = (props: loginProps) => {
     userStore.loginGoogle(google_access_token).then((res) => {
       if (res.ok) {
         console.log("user logged in successfully!")
-        router.push('/profile')
+        router.push('/home')
         setLoader(false)
       }
       else if (res.code == 400) {
@@ -117,7 +117,7 @@ export const Login = (props: loginProps) => {
     userStore.loginFacebook(facebook_access_token).then((res) => {
       if (res.ok) {
         console.log("user logged in successfully!")
-        router.push('/profile')
+        router.push('/home')
         setLoader(false)
       }
       else if (res.code == 400) {
@@ -136,16 +136,18 @@ export const Login = (props: loginProps) => {
     )
   };
 
+  let facebookLoginAppId = "542240271409221";
+
   return (
     <Container
       maw={"1400px"}
     >
-        {/* Loader */}
-        {loader ? (
-                <Box className={classes.loaderBox}>
-                    <Loader size="xl" />
-                </Box>
-            ) : null}
+      {/* Loader */}
+      {loader ? (
+        <Box className={classes.loaderBox}>
+          <Loader size="xl" />
+        </Box>
+      ) : null}
       <Grid
         className={classes.container}
         gutter="100px"
@@ -185,12 +187,12 @@ export const Login = (props: loginProps) => {
               <Flex justify="center" align="center" gap={32}
               >
                 <FacebookLogin
-                  appId="542240271409221"
+                  appId={facebookLoginAppId}
                   onSuccess={(response) => {
                     onFacebookLogin(response.accessToken)
                   }}
                   onFail={(error) => {
-                    console.log('Login Failed!', error);
+                    swal(`${error}`, `${translate('profile.error.error')}`, "error")
                   }}
                   render={({ onClick }) => (
                     <Box className={classes.facebookIconBox} onClick={onClick}>
@@ -205,7 +207,7 @@ export const Login = (props: loginProps) => {
                   type="icon"
                   shape="circle"
                   onError={() => {
-                    console.log('Login Failed');
+                    swal(`${error}`, `${translate('profile.error.error')}`, "error")
                   }}
                 />
               </Flex>

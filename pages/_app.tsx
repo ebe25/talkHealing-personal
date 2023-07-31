@@ -43,9 +43,12 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   else {
     rootStore.i18nStore.setSystemDefault();
   }
+
+  let googleOAuthProviderClientId="115727969785-dr3gd9rpagos187jq3mg8gphbe3hb0ds.apps.googleusercontent.com";
+
   return (
    <div dir={rootStore.i18nStore.isRTL ? "rtl" : "ltr"}>
-    <GoogleOAuthProvider clientId="115727969785-dr3gd9rpagos187jq3mg8gphbe3hb0ds.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={googleOAuthProviderClientId} >
       <RootStoreProvider value={rootStore}>
         <Head>
           <title>Mantine next example</title>
