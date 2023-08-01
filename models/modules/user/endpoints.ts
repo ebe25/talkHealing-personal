@@ -175,4 +175,22 @@ export const API_ENDPOINTS = {
         response: null,
         transformer: null,
     }),
+    addressUpdate: new API_ENDPOINT({
+        url: "/base_user/user-address/{id}/",
+        method: REQUEST_METHOD.PATCH,
+        response: null,
+        transformer: null,
+    }),
+    addressDelete: new API_ENDPOINT({
+        url: "/base_user/user-address/{id}/",
+        method: REQUEST_METHOD.DELETE,
+        response: null,
+        transformer: null,
+    }),
+    createAddress: new API_ENDPOINT({
+        url: "/base_user/user-address/",
+        method: REQUEST_METHOD.POST,
+        response: null,
+        transformer: null,
+    }),
 }

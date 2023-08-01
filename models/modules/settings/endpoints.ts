@@ -15,13 +15,13 @@ const TRANSFORMERS = {
 
 export const API_ENDPOINTS = {
     getSettings: new API_ENDPOINT({
-        url: "/user/settings/",
+        url: "/base_user/settings/",
         method: REQUEST_METHOD.GET,
         response: SCHEMAS.Settings,
         transformer: TRANSFORMERS.settingsTransformer,
     }),
     editSettings: new API_ENDPOINT({
-        url: "/user/settings/",
+        url: "/base_user/settings/",
         method: REQUEST_METHOD.PATCH,
         response: SCHEMAS.Settings,
         transformer: TRANSFORMERS.settingsTransformer,

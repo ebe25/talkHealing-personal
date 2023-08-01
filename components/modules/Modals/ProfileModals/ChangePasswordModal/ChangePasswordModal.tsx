@@ -37,18 +37,24 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
       confirmNewPassword: '',
     },
     validate: {
-      currentPassword: (value) =>
-        /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value)
-          ? null
-          : translate('profile.modal.passwordLength'),
-      newPassword: (value) =>
-        /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value)
-          ? null
-          : translate('profile.modal.passwordLength'),
-      confirmNewPassword: (value) =>
-        /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value)
-          ? null
-          : translate('profile.modal.passwordLength'),
+      currentPassword: (value) => {
+        if (value.length < 7) {
+          return translate('profile.modal.passwordLength');
+        }
+      },
+      // /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value)
+      //   ? null
+      //   : translate('profile.modal.passwordLength'),
+      newPassword: (value) => {
+        if (value.length < 7) {
+          return translate('profile.modal.passwordLength');
+        }
+      },
+      confirmNewPassword: (value) => {
+        if (value.length < 7) {
+          return translate('profile.modal.passwordLength');
+        }
+      },
     },
   });
 
@@ -164,13 +170,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
         {passwordMatch() ? (
           <BaseText txtkey="profile.error.passwordMatchError" color={theme.colors.red[5]} />
         ) : null}
-        { 
-          errorMessage?
-          <ErrorMessage
-            message={errorMessage}
-          />
-          :null
-        }
+        {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
         <BaseButton
           mt={'30px'}
           w={'100%'}

@@ -560,4 +560,59 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
+    addressUpdate: flow(function* ( data, id:string|undefined) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.addressUpdate, data, { id: id }
+      );
+      console.log(response.data)
+      switch (response.status) {
+        case 200:
+          self.getAddress = UserSchemas.Address.create(response.data)
+          return ACTION_RESPONSES.success;
+        case 400:
+          return ACTION_RESPONSES.success;;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    addressDelete: flow(function* (id:string|undefined) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.addressDelete, {}, { id: id }
+      );
+      console.log(response.data)
+      switch (response.status) {
+        case 200:
+          return ACTION_RESPONSES.success;
+        case 204:
+          return ACTION_RESPONSES.success;
+        case 400:
+          return ACTION_RESPONSES.success;;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    createAddress: flow(function* (
+      data
+    ) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.createAddress, data
+      );
+      console.log(response.data)
+      switch (response.status) {
+        case 200:
+          return ACTION_RESPONSES.success;
+        case 201:
+          return ACTION_RESPONSES.success;
+        case 400:
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
   }));

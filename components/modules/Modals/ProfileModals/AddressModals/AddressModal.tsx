@@ -1,10 +1,10 @@
 // react and nextb import
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // mantine component
 import { useForm } from '@mantine/form';
 import { Box, Flex, Image, Select, useMantineTheme } from '@mantine/core';
 // styles components
-import {createStyle} from './AddressModal.styles';
+import { createStyle } from './AddressModal.styles';
 // internals components
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
@@ -22,21 +22,33 @@ import { Input } from '@/components/elements/Input/Input';
 import { Country, State, City } from 'country-state-city';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 
+interface modalData {
+  addressOne: '',
+  addressTwo: '',
+  country: '',
+  state: '',
+  district: '',
+  code: '',
+}
+
 export const AddressModal = (props: {
   opened?: any;
   onClose?: any;
   modalHeading?: any;
   isEdit?: boolean;
-  id?: string
+  id?: string;
+  setAddressRecall?: any
+  data?: modalData
 }) => {
   const { i18nStore, userStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
-  const useStyles=createStyle()
+  const useStyles = createStyle();
+  const [ error, setError ] = useState({});
   const { classes } = useStyles();
   const address = useForm({
     initialValues: {
-      addressOne : '',
+      addressOne: '',
       addressTwo: '',
       country: '',
       state: '',
@@ -65,30 +77,71 @@ export const AddressModal = (props: {
     },
   });
 
-  console.log("", props.id);
   useEffect(() => {
-    userStore.getUserAddressById(props.id).then((res)=>{
-      if(res.ok){
-        
-        // setUserAddress(userStore.address?.results)
+    userStore.getUserAddressById(props.id).then((res) => {
+      if (res.ok) {
+        if(userStore.getAddress !=null ){
+          address.setValues({
+            addressOne: userStore.getAddress.address_line1,
+            addressTwo: userStore.getAddress.address_line2,
+            country: userStore.getAddress.country,
+            state: userStore.getAddress.state,
+            district: userStore.getAddress.city,
+            code: userStore.getAddress.postal_code,
+          });
+        }
       }
-    })
-  },[])
+    });
+  }, [props.id]);
 
-  const handleAddressChange = () => {
+  const data = {
+    address_line1: address.values.addressOne,
+    address_line2: address.values.addressTwo,
+    city: address.values.district,
+    state: address.values.state,
+    country: address.values.country,
+    postal_code: address.values.code,
+  };
+
+  const addressAdd = () => {
     let results = address.validate();
     if (results.hasErrors) return;
     if (!address.isValid()) return;
     else {
-      props.onClose();
-      address.reset();
-      open();
+      userStore.createAddress(data).then((res) => {
+        if (res.ok) {
+          props.onClose();
+          address.reset();
+          open();
+          props.setAddressRecall((pre:any)=> !pre)
+        } else if (res.code == 400) {
+          if (res.error) {
+            address.reset();
+            console.log('res.error', res.error);
+          }
+        }
+      });
     }
   };
   const handleEditAddress = () => {
-    props.onClose();
-    address.reset();
-    open();
+    let results = address.validate();
+    if (results.hasErrors) return;
+    if (!address.isValid()) return;
+    else {
+      userStore.addressUpdate(data, props.id).then((res) => {
+        if (res.ok) {
+          props.onClose();
+          address.reset();
+          open();
+          props.setAddressRecall((pre:any)=> !pre)
+        } else if(res.code == 400){
+          if(res.error) {
+            address.reset();
+            console.log('res.error', res.error);
+          }
+        }
+      });
+    }
   };
 
   let countryLists: any = [];
@@ -182,7 +235,7 @@ export const AddressModal = (props: {
             <Select
               classNames={{
                 rightSection: classes.rightSection,
-                input:classes.input
+                input: classes.input,
               }}
               mt={'xs'}
               // dir='rtl'
@@ -193,7 +246,7 @@ export const AddressModal = (props: {
               variant="default"
               radius={'xl'}
               data={countryLists}
-              defaultValue={userStore.getAddress?.country}
+              // defaultValue={userStore.getAddress?.country}
               {...address.getInputProps('country')}
             />
           </Box>
@@ -206,7 +259,7 @@ export const AddressModal = (props: {
             <Select
               classNames={{
                 rightSection: classes.rightSection,
-                input:classes.input
+                input: classes.input,
               }}
               mt={'xs'}
               searchable
@@ -218,7 +271,7 @@ export const AddressModal = (props: {
               radius={'xl'}
               // size="lg"
               data={stateLists}
-              defaultValue={userStore.getAddress?.state}
+              // defaultValue={userStore.getAddress?.state}
               {...address.getInputProps('state')}
             />
           </Box>
@@ -231,7 +284,7 @@ export const AddressModal = (props: {
             <Select
               classNames={{
                 rightSection: classes.rightSection,
-                input:classes.input
+                input: classes.input,
               }}
               mt={'xs'}
               searchable
@@ -243,7 +296,7 @@ export const AddressModal = (props: {
               radius={'xl'}
               // size="lg"
               data={stateCityLists}
-              defaultValue={userStore.getAddress?.city}
+              // defaultValue={userStore.getAddress?.city}
               {...address.getInputProps('district')}
             />
           </Box>
@@ -255,7 +308,7 @@ export const AddressModal = (props: {
             />
             <Input
               classNames={{
-                input:classes.input
+                input: classes.input,
               }}
               mt={'xs'}
               inputMode="numeric"
@@ -273,12 +326,13 @@ export const AddressModal = (props: {
             />
             <Input
               classNames={{
-                input:classes.input
+                input: classes.input,
               }}
               mt={'xs'}
               placeholder={`${translate('profile.addressModal.label1')}`}
               style_variant={'inputText2'}
               component={'input'}
+              // defaultValue={userAddress?.address_line1}
               {...address.getInputProps('addressOne')}
             />
           </Box>
@@ -290,7 +344,7 @@ export const AddressModal = (props: {
             />
             <Input
               classNames={{
-                input:classes.input
+                input: classes.input,
               }}
               mt={'xs'}
               placeholder={`${translate('profile.addressModal.label2')}`}
@@ -307,7 +361,7 @@ export const AddressModal = (props: {
               h={'40px'}
               style_variant={!address.isValid() ? 'disabled' : 'filled'}
               color_variant={!address.isValid() ? 'gray' : 'blue'}
-              onClick={handleAddressChange}
+              onClick={addressAdd}
             >
               <BaseText txtkey="global.button.save" />
             </BaseButton>
@@ -332,17 +386,15 @@ export const AddressModal = (props: {
               <BaseButton
                 w={'100%'}
                 h={'40px'}
-                style_variant={ 'outline'}
-                color_variant={ 'blue'}
-                onClick={()=>{
+                style_variant={'outline'}
+                color_variant={'blue'}
+                onClick={() => {
                   props.onClose();
                   address.reset();
                   // open();
                 }}
               >
-                <BaseText txtkey="profile.addressModal.cancelEdit" 
-                  color={theme.colors.blue[5]}
-                />
+                <BaseText txtkey="profile.addressModal.cancelEdit" color={theme.colors.blue[5]} />
               </BaseButton>
             </Flex>
           ) : null}

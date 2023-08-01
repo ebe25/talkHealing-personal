@@ -104,12 +104,12 @@ export const Address = types.model({
   created_on: types.maybeNull(types.string),
   edited_on: types.maybeNull(types.string),
   _data: types.maybeNull(types.frozen()),
-  address_line1: types.maybeNull(types.string),
-  address_line2: types.maybeNull(types.string),
-  city: types.maybeNull(types.string),
-  state: types.maybeNull(types.string),
-  country: types.maybeNull(types.string),
-  postal_code: types.maybeNull(types.string)
+  address_line1: types.string,
+  address_line2: types.string,
+  city: types.string,
+  state: types.string,
+  country: types.string,
+  postal_code: types.string
 })
 export interface AddressType extends Instance<typeof Address> { }
 export const AddressPaginated = types.model({

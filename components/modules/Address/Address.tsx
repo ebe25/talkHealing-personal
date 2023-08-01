@@ -24,17 +24,18 @@ export const Address = () => {
   const address = useDisclosure(false); 
   const editAddress = useDisclosure(false); 
   const [ modalHeading, setModalHeading ] = useState<any>();
+  const [ addressRecall, setAddressRecall ] = useState(true);
+  const [ userAddress, setUserAddress ] = useState<AddressPaginatedType>();
   const [ addressId, setAddresId ] = useState("");
-  // const [ userAddress, setUserAddress ] = useState();
- console.log("addressId",addressId);
   useEffect(() => {
     userStore.getLoginUserData()
     userStore.getUserAddress().then((res)=>{
       if(res.ok){
-        // setUserAddress(userStore.address?.results)
+        if(userStore.address != null ) setUserAddress(userStore.address)
+        setAddressRecall(false)
       }
     })
-  },[])
+  },[addressRecall])
 
   return (
     <Box className={classes.container}>
@@ -43,13 +44,14 @@ export const Address = () => {
         variant="outline"
         rightIcon={<IconCirclePlus color={theme.colors.blue[5]} />}
         onClick={()=>{
+          setAddresId("")
           setModalHeading("profile.addressButton");
           open()
         }}
       >
         <BaseText txtkey="profile.addressButton" color={theme.colors.blue[5]} />
       </Button>
-      {userStore.address?.results.map((item, id) => {
+      {userAddress?.results.map((item, id) => {
         return (
           <Box key={id} className={classes.addressBox}>
             <Text
@@ -84,6 +86,7 @@ export const Address = () => {
                 style_variant='outline'
                 color_variant='red'
                 onClick={()=>{
+                  setAddresId(item.id)
                   address[1].open()
                 }}
               >
@@ -97,20 +100,25 @@ export const Address = () => {
         );
       })}
       <AddressModal
+        setAddressRecall={setAddressRecall}
         opened={opened}
         onClose={close}
         modalHeading={modalHeading}
       />
       <AddressModal
+        setAddressRecall={setAddressRecall}
         id={addressId}
+        // data={JSON.stringify(userAddress?.results[userAddressid])}
         opened={editAddress[0]}
         onClose={editAddress[1].close}
         modalHeading={modalHeading}
         isEdit
       />
       <DeleteAddressModal
+        id={addressId}
         opened={address[0]}
         onClose={address[1].close}
+        setAddressRecall={setAddressRecall}
       />
     </Box>
   );
