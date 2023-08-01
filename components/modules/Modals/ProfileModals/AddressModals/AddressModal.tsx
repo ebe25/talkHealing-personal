@@ -38,7 +38,8 @@ export const AddressModal = (props: {
   isEdit?: boolean;
   id?: string;
   setAddressRecall?: any
-  data?: modalData
+  data?: modalData;
+  setAddresId?: any
 }) => {
   const { i18nStore, userStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
@@ -133,6 +134,7 @@ export const AddressModal = (props: {
           props.onClose();
           address.reset();
           open();
+          props.setAddresId("")
           props.setAddressRecall((pre:any)=> !pre)
         } else if(res.code == 400){
           if(res.error) {
@@ -197,6 +199,7 @@ export const AddressModal = (props: {
         onClose={() => {
           props.onClose();
           address.reset();
+          props.setAddresId("")
         }}
         withCloseButton={false}
       >
@@ -216,6 +219,7 @@ export const AddressModal = (props: {
               onClick={() => {
                 props.onClose();
                 address.reset();
+                props.setAddresId("")
               }}
               style={boilerPlateStyles.cursor}
               src={Images.close_modal_icon}
@@ -391,7 +395,7 @@ export const AddressModal = (props: {
                 onClick={() => {
                   props.onClose();
                   address.reset();
-                  // open();
+                  props.setAddresId("")
                 }}
               >
                 <BaseText txtkey="profile.addressModal.cancelEdit" color={theme.colors.blue[5]} />

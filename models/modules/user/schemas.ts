@@ -55,9 +55,9 @@ export const GENDERS = {
 export const User = types.model({
   ...BaseModelSchemaBase,
   email: types.string,
-  full_name: types.maybeNull(types.string),
+  full_name: types.string,
   avatar: types.string,
-  phone: types.maybeNull(types.string),
+  phone: types.string,
   is_terms_agreed: types.boolean,
   is_phone_verified: types.boolean,
   gender: types.maybeNull(types.enumeration(Object.values(GENDERS))),

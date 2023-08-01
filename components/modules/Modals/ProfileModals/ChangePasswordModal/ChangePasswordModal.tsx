@@ -21,14 +21,13 @@ import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 
-export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
+export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressRecall: any }) => {
   const { i18nStore, userStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const useStyles = createStyle();
   const [loader, setLoader] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { classes } = useStyles();
 
   const changepassword = useForm({
     initialValues: {
@@ -42,9 +41,6 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
           return translate('profile.modal.passwordLength');
         }
       },
-      // /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value)
-      //   ? null
-      //   : translate('profile.modal.passwordLength'),
       newPassword: (value) => {
         if (value.length < 7) {
           return translate('profile.modal.passwordLength');
@@ -79,6 +75,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
             props.onClose();
             changepassword.reset();
             open();
+            props.setAddressRecall(false)
           } else if (res.code == 400) {
             if (res.error) {
               changepassword.reset();
@@ -103,6 +100,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
         onClose={() => {
           props.onClose();
           changepassword.reset();
+          props.setAddressRecall(false)
         }}
         withCloseButton={false}
       >
@@ -121,6 +119,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
             onClick={() => {
               props.onClose();
               changepassword.reset();
+              props.setAddressRecall(false)
             }}
             style={boilerPlateStyles.cursor}
             src={Images.close_modal_icon}

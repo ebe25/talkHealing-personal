@@ -64,7 +64,7 @@ export const Address = () => {
               <Text
                 color={theme.colors.dark[8]}
               >
-                {item.address_line1},&nbsp;{item.address_line2},&nbsp;{item.city},&nbsp;{item.state},&nbsp;{item.country}
+                {item.address_line1},&nbsp;{item.address_line2},&nbsp;{item.city},&nbsp;{item.state},&nbsp;{item.country}&nbsp;{item.postal_code}
               </Text>
             </Flex>
             <Flex gap={"16px"} >
@@ -101,6 +101,7 @@ export const Address = () => {
       })}
       <AddressModal
         setAddressRecall={setAddressRecall}
+        setAddresId={setAddresId}
         opened={opened}
         onClose={close}
         modalHeading={modalHeading}
@@ -108,6 +109,7 @@ export const Address = () => {
       <AddressModal
         setAddressRecall={setAddressRecall}
         id={addressId}
+        setAddresId={setAddresId}
         // data={JSON.stringify(userAddress?.results[userAddressid])}
         opened={editAddress[0]}
         onClose={editAddress[1].close}

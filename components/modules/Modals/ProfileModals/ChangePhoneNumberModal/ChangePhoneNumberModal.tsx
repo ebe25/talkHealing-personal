@@ -23,7 +23,7 @@ import { Country } from 'country-state-city';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 
-export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) => {
+export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any; setAddressRecall: any }) => {
   const { i18nStore, userStore } = useStores();
   const useStyles = createStyle();
   const { classes } = useStyles();
@@ -186,7 +186,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
           </BaseButton>
         </form>
       </BaseModal>
-      <ChangePhoneNumberOTPModal opened={opened} onClose={close} />
+      <ChangePhoneNumberOTPModal setAddressRecall={props.setAddressRecall} opened={opened} onClose={close} />
     </>
   );
 };

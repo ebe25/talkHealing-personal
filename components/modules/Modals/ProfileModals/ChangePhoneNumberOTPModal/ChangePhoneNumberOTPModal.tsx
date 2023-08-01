@@ -20,7 +20,7 @@ import { boilerPlateStyles } from '@/utils/styles/styles';
 import { translate } from '@/i18n';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 
-export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }) => {
+export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any; setAddressRecall: any }) => {
   const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
   const { classes } = useStyles();
@@ -52,6 +52,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
           props.onClose();
           otpVerify.reset();
           open();
+          props.setAddressRecall(true)
         }
         else if(res.code == 400){
           if(res.error){

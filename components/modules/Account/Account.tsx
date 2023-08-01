@@ -30,6 +30,8 @@ export const Account = () => {
   const phoneNumberChangeModal = useDisclosure(false);
   const [imageUploadMessage, setImageUploadMessage] = useState('');
   const [images, setImages] = useState<any>(null);
+  const [ addressRecall, setAddressRecall ] = useState(true);
+  
   const onImageChange = (event: File) => {
     if (event?.name) {
       setImages(URL.createObjectURL(event));
@@ -47,11 +49,11 @@ export const Account = () => {
   };
   const address = useForm({
     initialValues: {
-      avatar: userStore.userData?.avatar,
-      name: userStore.userData?.full_name,
-      email: userStore.userData?.email,
-      phoneNumber: userStore.userData?.phone,
-      password: 'SachinPad@123',
+      avatar: "",
+      name: "",
+      email: "",
+      phoneNumber: "",
+      password: 'JhonDeo@123',
     },
   });
 
@@ -66,9 +68,10 @@ export const Account = () => {
             phoneNumber: userStore.userData.phone,
           });
         }
+        setAddressRecall(false)
       }
     });
-  }, []);
+  }, [addressRecall]);
 
   return (
     <Box className={classes.container}>
@@ -229,9 +232,10 @@ export const Account = () => {
           </Grid.Col>
         </Grid>
       </form>
-      <ChangePassword opened={opened} onClose={close} />
-      <EmailChangeModal opened={emailChangeModal[0]} onClose={emailChangeModal[1].close} />
+      <ChangePassword setAddressRecall={setAddressRecall} opened={opened} onClose={close} />
+      <EmailChangeModal setAddressRecall={setAddressRecall} opened={emailChangeModal[0]} onClose={emailChangeModal[1].close} />
       <ChangePhoneNumberModal
+        setAddressRecall={setAddressRecall}
         opened={phoneNumberChangeModal[0]}
         onClose={phoneNumberChangeModal[1].close}
       />

@@ -20,7 +20,7 @@ import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import { translate } from '@/i18n';
 
-export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
+export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAddressRecall?:any }) => {
   const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
   const { classes } = useStyles();
@@ -51,6 +51,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
           otpVerify.reset();
           props.onClose();
           open();
+          props.setAddressRecall(true)
         } else if (res.code == 400) {
           if (res.error) {
             setError(res.error);

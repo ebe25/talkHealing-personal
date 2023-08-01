@@ -21,7 +21,7 @@ import { Input } from '@/components/elements/Input/Input';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 
-export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
+export const EmailChangeModal = (props: { opened?: any; onClose?: any; setAddressRecall: any }) => {
   const { i18nStore, userStore } = useStores();
   const emailOTP = useDisclosure(false);
   const theme = useMantineTheme();
@@ -54,6 +54,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
           changeMail.reset();
           emailOTP[1].open()
           setLoader(false)
+          props.setAddressRecall(false)
         }
         else if(res.code == 400){
           if(res.error){
@@ -79,6 +80,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
       onClose={() => {
         props.onClose();
         changeMail.reset();
+        props.setAddressRecall(false)
       }}
       withCloseButton={false}
     >
@@ -95,6 +97,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
               onClick={() => {
                 props.onClose();
                 changeMail.reset();
+                props.setAddressRecall(false)
               }}
               style={boilerPlateStyles.cursor}
               src={Images.close_modal_icon}
@@ -144,6 +147,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
       </form>
       </BaseModal>
       <EmailChangeOtpModal
+        setAddressRecall={props.setAddressRecall}
         opened={emailOTP[0]}
         onClose={emailOTP[1].close}
       />
