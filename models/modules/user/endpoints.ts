@@ -109,6 +109,12 @@ export const API_ENDPOINTS = {
         response: null,
         transformer: null,
     }),
+    deleteUser: new API_ENDPOINT({
+        url: "/auth/user/",
+        method: REQUEST_METHOD.DELETE,
+        response: null,
+        transformer: null,
+    }),
     getReferralSource: new API_ENDPOINT({
         url: "/auth/onboarding/referral-source/",
         method: REQUEST_METHOD.GET,

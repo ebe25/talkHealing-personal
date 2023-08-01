@@ -1,5 +1,6 @@
 // react and nextb import
 import React from 'react';
+import { useRouter } from 'next/router';
 // mantine component
 import { Flex, useMantineTheme } from '@mantine/core';
 // internals components
@@ -11,8 +12,17 @@ import { typography } from '../../../../../themes/Mantine/typography';
 import { useStores } from '@/models';
 
 export const DeleteAccountModal = (props: { opened?: any; onClose?: any; id?: string }) => {
-  const { i18nStore } = useStores();
+  const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
+  const router = useRouter();
+
+  const deleteUser = () =>{
+    userStore.deleteUser().then((res)=>{
+        if(res.ok){
+            router.push("/");
+        }
+    })
+  }
 
   return (
       <BaseModal
@@ -45,7 +55,7 @@ export const DeleteAccountModal = (props: { opened?: any; onClose?: any; id?: st
                     h={'40px'}
                     style_variant={ 'filled' }
                     color_variant={'red' }
-                    onClick={props.onClose}
+                    onClick={deleteUser}
                 >
                     <BaseText txtkey="global.button.yes" />
                 </BaseButton>

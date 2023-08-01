@@ -80,6 +80,24 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
+    deleteUser: flow(function* () {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.deleteUser
+      );
+      switch (response.status) {
+        case 204:
+          yield storage.removeItem(self.environment.api.config.token_key);
+          yield storage.clear();
+          self.is_logged_in = false;
+          self.loggedInUserData = null;
+          return ACTION_RESPONSES.success;
+        default:
+          yield storage.clear();
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
     signupUser: flow(function* (
       email: string,
       full_name: string,
