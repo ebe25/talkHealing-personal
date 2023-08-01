@@ -25,6 +25,7 @@ export const FaqQuestionsAnswers = () => {
     const [faqLoading, setFaqLoading] = useState<boolean>(true);
     const [searchText, setSearchText] = useState<string>("");
     const [faq, setFaq] = useState<any>({});
+    const [error, setError] = useState<string>("");
 
     const findFaqCategory = (categoryList: Array<string>) => {
         if (globalsStore.faqData) {
@@ -42,7 +43,7 @@ export const FaqQuestionsAnswers = () => {
             setFaqLoading(false)
         }
         else {
-            console.log("faq data is null")
+            setError("faq data is null")
         }
     };
 
@@ -63,7 +64,7 @@ export const FaqQuestionsAnswers = () => {
                         });
                 }
                 else {
-                    console.log("faq category data is null")
+                    setError("faq category data is null")
                 }
             }
         });
@@ -122,6 +123,10 @@ export const FaqQuestionsAnswers = () => {
                                 <Loader size="xl" />
                             </Center>
                     }
+                    {/* faq  data is null */}
+                    <BaseText color={theme.colors.red[7]} style={typography.headings[i18nStore.getCurrentLanguage()].p1}>
+                        {error}
+                    </BaseText>
                 </Stack>
             </Box>
         </Container>
