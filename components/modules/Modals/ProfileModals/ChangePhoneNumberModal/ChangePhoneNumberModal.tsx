@@ -58,7 +58,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
     });
   }
 
-  const handlePasswordChange = () => {
+  const handlePhoneNumberChange = () => {
     setLoader(true)
     let results = changePhoneNumber.validate();
     if (results.hasErrors) return;
@@ -180,7 +180,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
             loading={loader}
             style_variant={changePhoneNumber.isValid() ? 'filled' : 'disabled'}
             color_variant={changePhoneNumber.isValid() ? 'blue' : 'gray'}
-            onClick={handlePasswordChange}
+            onClick={handlePhoneNumberChange}
           >
             <BaseText txtkey="global.button.continue" />
           </BaseButton>

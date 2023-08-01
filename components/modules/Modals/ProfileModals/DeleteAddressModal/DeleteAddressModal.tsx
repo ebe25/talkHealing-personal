@@ -21,7 +21,7 @@ export const DeleteAddressModal = (props: {
   const [ loader, setLoader ] = useState(false);
   const theme = useMantineTheme();
 
-  const deleteAddres = () => {
+  const deleteAddress = () => {
     setLoader(true)
     userStore.addressDelete(props.id).then((res) => {
       if (res.ok) {
@@ -66,7 +66,7 @@ export const DeleteAddressModal = (props: {
             loading={loader}
             onClick={() => {
               props.onClose();
-              deleteAddres();
+              deleteAddress();
             }}
           >
             <BaseText txtkey="global.button.yes" />

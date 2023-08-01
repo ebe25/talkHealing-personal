@@ -40,7 +40,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
     },
   });
 
-  const handleEmailChnageOtp = () => {
+  const handleEmailChangeOtp = () => {
     setLoader(true);
     let results = otpVerify.validate();
     if (results.hasErrors) return;
@@ -165,7 +165,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
             loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}
-            onClick={handleEmailChnageOtp}
+            onClick={handleEmailChangeOtp}
           >
             <BaseText txtkey="global.button.verify" />
           </BaseButton>

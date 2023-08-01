@@ -42,7 +42,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
     },
   });
 
-  const handlePasswordChange = () => {
+  const emailChange = () => {
     let results = changeMail.validate();
     if (results.hasErrors) return;
     if (!changeMail.isValid()) return;
@@ -136,7 +136,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
             loading={loader}
             style_variant={!changeMail.isValid() ? 'disabled' : 'filled'}
             color_variant={!changeMail.isValid() ? 'gray' : 'blue'}
-            onClick={handlePasswordChange}
+            onClick={emailChange}
           >
             <BaseText txtkey="global.button.continue" />
           </BaseButton>

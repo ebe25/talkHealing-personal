@@ -40,7 +40,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
     },
   });
 
-  const handlePasswordChange = () => {
+  const changePhoneNumberOTP = () => {
     setLoader(true)
     let results = otpVerify.validate();
     if (results.hasErrors) return;
@@ -160,7 +160,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
             loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}
-            onClick={handlePasswordChange}
+            onClick={changePhoneNumberOTP}
           >
             <BaseText txtkey="global.button.verify" />
           </BaseButton>

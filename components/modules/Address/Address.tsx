@@ -13,7 +13,7 @@ import { IconCirclePlus, IconMapPinFilled } from '@tabler/icons-react';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 //stores
 import { useStores } from '@/models';
-import { AddressPaginatedType, AddressType } from '@/models/modules/user/schemas';
+import { AddressPaginatedType } from '@/models/modules/user/schemas';
 //external
 
 export const Address = () => {
