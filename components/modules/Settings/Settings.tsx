@@ -15,13 +15,13 @@ export const Settings = () => {
   const [notification, setNotification] = useState<any>({
     push_notification: null,
     email_notification: null,
-    sms_notification: null
+    sms_notification: null,
   });
 
   const handleNotification = (data: any) => {
     settingsStore.editSettings(data).then((res) => {
       if (res.ok) {
-        console.log("notifiaction has been updated")
+        console.log('notifiaction has been updated');
       }
     });
   };
@@ -33,7 +33,7 @@ export const Settings = () => {
           setNotification({
             push_notification: settingsStore.settings.push_notification,
             email_notification: settingsStore.settings.email_notification,
-            sms_notification: settingsStore.settings.sms_notification
+            sms_notification: settingsStore.settings.sms_notification,
           });
         }
       }
@@ -62,67 +62,60 @@ export const Settings = () => {
       <Divider my={'xl'} />
 
       <Stack>
-        {/* {NOTIFICATION_CONTANT.map((item, id) => {
-          return ( */}
-            <Flex justify={'space-between'} align={'center'}>
-              <BaseText txtkey={"profile.setting.push"} />
-              <Switch
-                onLabel="ON"
-                offLabel="OFF"
-                defaultChecked={settingsStore.settings?.push_notification}
-                onChange={() => {
-                    setNotification(
-                      {
-                          ...notification,
-                          push_notification: !notification?.push_notification
-                      }
-                    )
-                    handleNotification({
-                      ...notification,
-                      push_notification: !notification?.push_notification
-                  })
-                 
-                }}
-              />
-              <BaseText txtkey={"profile.setting.emailNotification"} />
-              <Switch
-                onLabel="ON"
-                offLabel="OFF"
-                defaultChecked={settingsStore.settings?.email_notification}
-                onChange={() => {
-                    setNotification(
-                      {
-                          ...notification,
-                          email_notification: !notification?.email_notification
-                      }
-                    )
-                    handleNotification({
-                      ...notification,
-                      email_notification: !notification?.email_notification
-                  })
-                }}
-              />
-              <BaseText txtkey={"profile.setting.smsNotification"} />
-              <Switch
-                onLabel="ON"
-                offLabel="OFF"
-                defaultChecked={settingsStore.settings?.sms_notification}
-                onClick={() => {
-                    setNotification(
-                      {
-                          ...notification,
-                          sms_notification: !notification?.sms_notification
-                      }
-                    )
-                    handleNotification({
-                      ...notification,
-                      sms_notification: !notification?.sms_notification
-                  })
-                }}
-              />
-            </Flex>
-          {/* );
-        })} */}
+        <Flex justify={'space-between'} align={'center'}>
+          <BaseText txtkey={'profile.setting.push'} />
+          <Switch
+            onLabel="ON"
+            offLabel="OFF"
+            defaultChecked={settingsStore.settings?.push_notification}
+            onChange={() => {
+              setNotification({
+                ...notification,
+                push_notification: !notification?.push_notification,
+              });
+              handleNotification({
+                ...notification,
+                push_notification: !notification?.push_notification,
+              });
+            }}
+          />
+        </Flex>
+        <Flex justify={'space-between'} align={'center'}>
+          <BaseText txtkey={'profile.setting.emailNotification'} />
+          <Switch
+            onLabel="ON"
+            offLabel="OFF"
+            defaultChecked={settingsStore.settings?.email_notification}
+            onChange={() => {
+              setNotification({
+                ...notification,
+                email_notification: !notification?.email_notification,
+              });
+              handleNotification({
+                ...notification,
+                email_notification: !notification?.email_notification,
+              });
+            }}
+          />
+        </Flex>
+        <Flex justify={'space-between'} align={'center'}>
+          <BaseText txtkey={'profile.setting.smsNotification'} />
+          <Switch
+            onLabel="ON"
+            offLabel="OFF"
+            defaultChecked={settingsStore.settings?.sms_notification}
+            onClick={() => {
+              setNotification({
+                ...notification,
+                sms_notification: !notification?.sms_notification,
+              });
+              handleNotification({
+                ...notification,
+                sms_notification: !notification?.sms_notification,
+              });
+            }}
+          />
+        </Flex>
       </Stack>
     </Box>
   );

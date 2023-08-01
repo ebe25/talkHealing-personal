@@ -58,12 +58,12 @@ export const Account = () => {
   useEffect(() => {
     userStore.getLoginUserData().then((res) => {
       if (res.ok) {
-        if (userStore.userData) {
+        if (userStore.userData != null ) {
           address.setValues({
-            avatar: userStore.userData?.avatar,
-            name: userStore.userData?.full_name,
-            email: userStore.userData?.email,
-            phoneNumber: userStore.userData?.phone,
+            avatar: userStore.userData.avatar,
+            name: userStore.userData.full_name,
+            email: userStore.userData.email,
+            phoneNumber: userStore.userData.phone,
           });
         }
       }
