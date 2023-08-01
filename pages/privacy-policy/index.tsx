@@ -10,16 +10,18 @@ export const PrivacyPolicy = () => {
     const { i18nStore, globalsStore } = useStores();
     const theme = useMantineTheme();
     const [privacyPolicyData, setPrivacyPolicyData] = useState<any>({})
+    const [error, setError] = useState<string>("");
     useEffect(() => {
         globalsStore.getPrivacyPolicy().then((res) => {
             if (res) {
                 if (globalsStore.privacyPolicyData)
                     setPrivacyPolicyData(globalsStore.privacyPolicyData.data)
-                else
-                    console.log("privacy policy data is null")
+                else {
+                    setError("privacy policy data is null")
+                }
             }
             else {
-                console.log("privacy policy data can't fetched")
+                setError("privacy policy data can't fetched")
             }
         })
     }, [])
@@ -37,6 +39,10 @@ export const PrivacyPolicy = () => {
                     >
                         <div
                             dangerouslySetInnerHTML={{ __html: `${privacyPolicyData[i18nStore.getCurrentLanguage()]}` }} />
+                    </BaseText>
+                    <BaseText color={theme.colors.red[7]}
+                        style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}>
+                        {error}
                     </BaseText>
                 </Box>
             </Box>

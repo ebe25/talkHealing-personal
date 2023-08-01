@@ -9,17 +9,19 @@ export const CookiePolicy = () => {
     const { classes } = useStyles();
     const theme = useMantineTheme();
     const { i18nStore, globalsStore } = useStores();
-    const [cookiesPolicyData, setCookiesPolicyData] = useState<any>({})
+    const [cookiesPolicyData, setCookiesPolicyData] = useState<any>({});
+    const [error, setError] = useState<any>("");
     useEffect(() => {
         globalsStore.getCookiesPolicy().then((res) => {
             if (res) {
                 if (globalsStore.cookiesPolicyData)
                     setCookiesPolicyData(globalsStore.cookiesPolicyData.data)
-                else
-                    console.log("cookies policy data is null")
+                else {
+                    setError("cookies policy data is null")
+                }
             }
             else {
-                console.log("cookies policy data can't fetched")
+                setError("cookies policy data can't fetched")
             }
         })
     }, [])
@@ -37,6 +39,11 @@ export const CookiePolicy = () => {
                     >
                         <div
                             dangerouslySetInnerHTML={{ __html: `${cookiesPolicyData[i18nStore.getCurrentLanguage()]}` }} />
+                    </BaseText>
+                    {/* Error */}
+                    <BaseText color={theme.colors.red[7]}
+                        style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}>
+                        {error}
                     </BaseText>
                 </Box>
             </Box>

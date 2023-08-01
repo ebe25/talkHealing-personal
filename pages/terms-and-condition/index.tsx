@@ -10,16 +10,18 @@ export const TermsAndConditionAndPolicy = () => {
     const { i18nStore, globalsStore } = useStores();
     const theme = useMantineTheme();
     const [termsAndConditionsData, setTermsAndConditionsData] = useState<any>({})
+    const [error, setError] = useState<string>("");
     useEffect(() => {
         globalsStore.getTermsAndConditions().then((res) => {
             if (res) {
                 if (globalsStore.termsAndConditionsData)
                     setTermsAndConditionsData(globalsStore.termsAndConditionsData.data)
-                else
-                    console.log("terms and conditions data is null")
+                else {
+                    setError("terms and conditions data is null")
+                }
             }
             else {
-                console.log("terms and conditions data can't fetched")
+                setError("terms and conditions data can't fetched")
             }
         })
     }, [])
@@ -37,6 +39,10 @@ export const TermsAndConditionAndPolicy = () => {
                     >
                         <div
                             dangerouslySetInnerHTML={{ __html: `${termsAndConditionsData[i18nStore.getCurrentLanguage()]}` }} />
+                    </BaseText>
+                    <BaseText color={theme.colors.red[7]}
+                        style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}>
+                        {error}
                     </BaseText>
                 </Box>
             </Box>
