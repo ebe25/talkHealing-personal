@@ -67,6 +67,7 @@ export const FaqQuestionsAnswers = () => {
                     setError(translate("signUpForm.unexpectedError"))
                 }
             }
+            else setError(translate("signUpForm.unexpectedError"))
         });
     }, []);
 
@@ -120,13 +121,15 @@ export const FaqQuestionsAnswers = () => {
                                 return null
                             }) :
                             <Center>
-                                <Loader size="xl" />
+                                {error ?
+                                    <BaseText color={theme.colors.red[7]} style={typography.headings[i18nStore.getCurrentLanguage()].p1}>
+                                        {error}
+                                    </BaseText>
+                                    :
+                                    <Loader size="xl" />
+                                }
                             </Center>
                     }
-                    {/* faq  data is null */}
-                    <BaseText color={theme.colors.red[7]} style={typography.headings[i18nStore.getCurrentLanguage()].p1}>
-                        {error}
-                    </BaseText>
                 </Stack>
             </Box>
         </Container>
