@@ -199,7 +199,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
   const CancelAndConfirmButton = (props: any) => (
     <Flex
-      wrap={'wrap'}
+      wrap={'wrap-reverse'}
       gap={10}
       w={'100%'}
       align={'center'}

@@ -141,6 +141,7 @@
   "authentication": {
     "invalidEmail": "Invalid email",
     "invalidPassword": "Invalid password",
+    "passwordNotMatch":"Password does not match",
     "invalidNumber": "Invalid Number",
     "enterMobileNumber": "Enter Mobile Number",
     "strings": {

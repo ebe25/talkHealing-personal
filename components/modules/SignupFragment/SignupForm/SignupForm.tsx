@@ -38,7 +38,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
             password1: (value) => (/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value) ? null : translate("authentication.invalidPassword")),
             password2: (value) => {
                 if (value != signUpForm.values.password1)
-                    return translate("authentication.invalidPassword");
+                    return translate("authentication.passwordNotMatch");
             },
             full_name: (value) => {
                 if (value.trim().length < 1)

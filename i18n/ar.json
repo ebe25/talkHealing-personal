@@ -138,6 +138,7 @@
   "authentication": {
     "invalidEmail": "بريد إلكتروني خاطئ",
     "invalidPassword": "رمز مرور خاطئ",
+    "passwordNotMatch":"كلمة السر غير متطابقة",
     "invalidNumber": "أحرف على الأقل",
     "enterMobileNumber": "تأكد من أن البريد الإلكتروني",
     "strings": {
