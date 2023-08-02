@@ -3,6 +3,7 @@ import { Box, Container, useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import useStyles from './TermsAndCondition.style';
+import { translate } from '@/i18n';
 import { useStores } from '@/models';
 
 export const TermsAndConditionAndPolicy = () => {
@@ -10,18 +11,18 @@ export const TermsAndConditionAndPolicy = () => {
     const { i18nStore, globalsStore } = useStores();
     const theme = useMantineTheme();
     const [termsAndConditionsData, setTermsAndConditionsData] = useState<any>({})
-    const [error, setError] = useState<string>("");
+    const [error, setError] = useState<any>("");
     useEffect(() => {
         globalsStore.getTermsAndConditions().then((res) => {
             if (res) {
                 if (globalsStore.termsAndConditionsData)
                     setTermsAndConditionsData(globalsStore.termsAndConditionsData.data)
                 else {
-                    setError("terms and conditions data is null")
+                    setError(translate("signUpForm.unexpectedError"))
                 }
             }
             else {
-                setError("terms and conditions data can't fetched")
+                setError(translate("signUpForm.unexpectedError"))
             }
         })
     }, [])

@@ -3,6 +3,7 @@ import { Box, Container, Flex, useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import useStyles from './CookiePolicy.style';
+import { translate } from '@/i18n';
 import { useStores } from '@/models';
 
 export const CookiePolicy = () => {
@@ -17,11 +18,11 @@ export const CookiePolicy = () => {
                 if (globalsStore.cookiesPolicyData)
                     setCookiesPolicyData(globalsStore.cookiesPolicyData.data)
                 else {
-                    setError("cookies policy data is null")
+                    setError(translate("signUpForm.unexpectedError"))
                 }
             }
             else {
-                setError("cookies policy data can't fetched")
+                setError(translate("signUpForm.unexpectedError"))
             }
         })
     }, [])

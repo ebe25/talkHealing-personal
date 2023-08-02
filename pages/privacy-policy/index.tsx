@@ -3,6 +3,7 @@ import { Box, Container, Flex, useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import useStyles from './PrivacyPolicy.style';
+import { translate } from '@/i18n';
 import { useStores } from '@/models';
 
 export const PrivacyPolicy = () => {
@@ -10,18 +11,18 @@ export const PrivacyPolicy = () => {
     const { i18nStore, globalsStore } = useStores();
     const theme = useMantineTheme();
     const [privacyPolicyData, setPrivacyPolicyData] = useState<any>({})
-    const [error, setError] = useState<string>("");
+    const [error, setError] = useState<any>("");
     useEffect(() => {
         globalsStore.getPrivacyPolicy().then((res) => {
             if (res) {
                 if (globalsStore.privacyPolicyData)
                     setPrivacyPolicyData(globalsStore.privacyPolicyData.data)
                 else {
-                    setError("privacy policy data is null")
+                    setError(translate("signUpForm.unexpectedError"))
                 }
             }
             else {
-                setError("privacy policy data can't fetched")
+                setError(translate("signUpForm.unexpectedError"))
             }
         })
     }, [])
