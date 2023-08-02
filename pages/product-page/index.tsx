@@ -5,10 +5,13 @@ import { useStores } from "@/models";
 import { Images } from "@/public";
 import { COLORS } from "@/themes/Mantine/colors";
 import { typography } from "@/themes/Mantine/typography";
+import I18Flex from "@/components/elements/I18nFlex/I18nFlex";
 import {
   Anchor,
   Box,
-  Breadcrumbs, Button, Card,
+  Breadcrumbs,
+  Button,
+  Card,
   Container,
   Flex,
   Image,
@@ -67,7 +70,7 @@ function ProductPage() {
   ));
   return (
     <Container maw="1350px">
-      
+     
       <Box className={classes.boxWrapper}>
         <Breadcrumbs
           sx={{
@@ -91,12 +94,9 @@ function ProductPage() {
         >
           {items}
         </Breadcrumbs>
-        <Flex
+        <I18Flex
           className={classes.flexWrapper2}
-          sx={{
-            flexDirection: i18nStore.isRTL ? "row-reverse" : "row",
-            justifyContent: "center"
-          }}
+          justify={"center"}
         >
           <Box>
             <Box>
@@ -120,19 +120,19 @@ function ProductPage() {
               padding={"0px"}
               style={{ borderRadius: "26px" }}
             >
-              <Flex
-                sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
+              <I18Flex
+                // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
                 className={classes.flexWrapper3}
                 style={{
                   borderRadius: "26px",
                   border: `solid 1px ${COLORS.gray[2]}`
                 }}
               >
-                <Flex
+                <I18Flex
                   className={classes.flexWrapper4}
-                  sx={{
-                    flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
-                  }}
+                  // sx={{
+                  //   flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
+                  // }}
                 >
                   <Image
                     width={"54px"}
@@ -152,10 +152,10 @@ function ProductPage() {
                     >
                       Pebea Sneakers
                     </BaseText>
-                    <Flex
-                      sx={{
-                        flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
-                      }}
+                    <I18Flex
+                      // sx={{
+                      //   flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
+                      // }}
                       justify={"space-between"}
                       align={"center"}
                       gap={"6px"}
@@ -194,16 +194,16 @@ function ProductPage() {
                       >
                         4.1
                       </BaseText>
-                    </Flex>
+                    </I18Flex>
                   </Box>
-                </Flex>
-                <Flex
+                </I18Flex>
+                <I18Flex
                   className={classes.flexWrapper7}
                   mr={"24px"}
                   ml={i18nStore.isRTL ? "24px" : " 0px"}
-                  sx={{
-                    flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
-                  }}
+                  // sx={{
+                  //   flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
+                  // }}
                 >
                   <BaseButton
                     className={classes.visitStoreBtnStyle}
@@ -221,14 +221,14 @@ function ProductPage() {
                     src={Images.chat_icon}
                     alt="chat_icon"
                   />
-                </Flex>
-              </Flex>
+                </I18Flex>
+              </I18Flex>
               <Box mt={"24px"} mb={"30px"}>
                 {ProductdetailFields.map((item, idx) => (
-                  <Flex
-                    sx={{
-                      flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
-                    }}
+                  <I18Flex
+                    // sx={{
+                    //   flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
+                    // }}
                     justify={"space-between"}
                     key={idx}
                     mt="16px"
@@ -242,16 +242,16 @@ function ProductPage() {
                     >
                       {ProductInformation[idx]}
                     </BaseText>
-                  </Flex>
+                  </I18Flex>
                 ))}
               </Box>
             </Card>
           </Box>
 
           <Stack miw={"50%"}>
-            <Flex
+            <I18Flex
               gap={"22px"}
-              sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
+              // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
             >
               <BadgeIcon
                 logo={Images.brand_icon}
@@ -265,7 +265,7 @@ function ProductPage() {
                 w={"17px"}
                 h={"17px"}
               />
-            </Flex>
+            </I18Flex>
             <BaseText
               color={COLORS.cyan[9]}
               sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
@@ -291,10 +291,10 @@ function ProductPage() {
             >
               {translate("productPage.colors")}
             </BaseText>
-            <Flex
+            <I18Flex
               gap="xl"
               wrap={"wrap"}
-              sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
+              // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
             >
               {["White", "Black", "Blue", "Red"].map((item, id) => {
                 return (
@@ -313,7 +313,7 @@ function ProductPage() {
                   </BaseButton>
                 );
               })}
-            </Flex>
+            </I18Flex>
             <BaseText
               my="16px"
               sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
@@ -324,10 +324,10 @@ function ProductPage() {
             >
               {translate("productPage.size")}
             </BaseText>
-            <Flex
+            <I18Flex
               gap="xl"
               wrap={"wrap"}
-              sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
+              // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
             >
               {["38", "39", "40", "41", "42", "43", "44", "45", "46"].map(
                 (item, id) => {
@@ -350,14 +350,14 @@ function ProductPage() {
                   );
                 }
               )}
-            </Flex>
-            <Flex
+            </I18Flex>
+            <I18Flex
               my={"40px"}
               align={"center"}
               gap={"18px"}
               wrap={"wrap"}
               justify={"space-between"}
-              sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
+              // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
             >
               <Flex gap={"32px"} align={"center"} wrap={"wrap"}>
                 <BaseButton
@@ -488,10 +488,10 @@ function ProductPage() {
                   </Popover.Dropdown>
                 </Popover>
               </Flex>
-            </Flex>
+            </I18Flex>
             <ProductTabs />
           </Stack>
-        </Flex>
+        </I18Flex>
       </Box>
     </Container>
   );
