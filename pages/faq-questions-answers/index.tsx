@@ -25,7 +25,7 @@ export const FaqQuestionsAnswers = () => {
     const [faqLoading, setFaqLoading] = useState<boolean>(true);
     const [searchText, setSearchText] = useState<string>("");
     const [faq, setFaq] = useState<any>({});
-    const [error, setError] = useState<string>("");
+    const [error, setError] = useState<any>("");
 
     const findFaqCategory = (categoryList: Array<string>) => {
         if (globalsStore.faqData) {
@@ -43,7 +43,7 @@ export const FaqQuestionsAnswers = () => {
             setFaqLoading(false)
         }
         else {
-            setError("faq data is null")
+            setError(translate("signUpForm.unexpectedError"))
         }
     };
 
@@ -64,7 +64,7 @@ export const FaqQuestionsAnswers = () => {
                         });
                 }
                 else {
-                    setError("faq category data is null")
+                    setError(translate("signUpForm.unexpectedError"))
                 }
             }
         });

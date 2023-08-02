@@ -142,7 +142,8 @@
     "backToLogin": "Back to Login",
     "continue": "Continue",
     "passwordLength": "must be at least 8 characters",
-    "errorMessage": "This email can’t be found, make sure email is incorrect"
+    "errorMessage": "This email can’t be found, make sure email is incorrect",
+    "unexpectedError":"An unexpected error occurred. Please try again later."
   },
   "authentication": {
     "invalidEmail": "Invalid email",
