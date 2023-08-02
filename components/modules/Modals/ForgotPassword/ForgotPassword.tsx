@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Center, CloseButton, Flex, Image, useMantineTheme, Select } from '@mantine/core';
+import { Center, CloseButton, Flex, Image, useMantineTheme, Select, Box } from '@mantine/core';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -223,9 +223,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         h={'45px'}
         {...props}
       >
-        {loader ? <Loader color='white' /> :
-          <BaseText txtkey={'global.button.confirm'} />
-        }
+        <BaseText txtkey={'global.button.confirm'} />
       </BaseButton>
     </Flex>
   )
@@ -240,6 +238,12 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         opened={props.opened}
         onClose={props.close}
       >
+        {/* Loader */}
+        {loader ? (
+          <Box className={classes.loaderBox}>
+            <Loader size="xl" />
+          </Box>
+        ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
           <Flex direction={'column'} gap={8}>
             <Flex direction={i18nStore.isRTL ? 'row-reverse' : 'row'} justify={'space-between'}>
