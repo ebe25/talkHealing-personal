@@ -22,6 +22,7 @@ import { translate } from '@/i18n';
 import { Country } from 'country-state-city';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any; setAddressRecall: any }) => {
   const { i18nStore, userStore } = useStores();
@@ -100,8 +101,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any; set
         withCloseButton={false}
       >
         <form onSubmit={changePhoneNumber.onSubmit((values) => console.log(values))}>
-          <Flex
-            direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
+          <I18nFlex
             justify={'space-between'}
             align={'center'}
           >
@@ -122,7 +122,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any; set
               width={'14px'}
               height={'14px'}
             />
-          </Flex>
+          </I18nFlex>
 
           <BaseText
             ta={i18nStore.isRTL ? 'right' : 'left'}

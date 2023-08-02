@@ -10,6 +10,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '../../../../../themes/Mantine/typography';
 // stores import
 import { useStores } from '@/models';
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 export const DeleteAccountModal = (props: { opened?: any; onClose?: any; id?: string }) => {
   const { i18nStore, userStore } = useStores();
@@ -49,7 +50,7 @@ export const DeleteAccountModal = (props: { opened?: any; onClose?: any; id?: st
                 style={typography.paragraph[i18nStore.getCurrentLanguage()].p4}
                 color={theme.colors.gray[7]}
             />
-            <Flex direction={i18nStore.isRTL?"row-reverse":"row"} justify={'space-between'} align={'center'} mt={"40px"} >
+            <I18nFlex justify={'space-between'} align={'center'} mt={"40px"} >
                 <BaseButton
                     w={'48%'}
                     h={'40px'}
@@ -70,7 +71,7 @@ export const DeleteAccountModal = (props: { opened?: any; onClose?: any; id?: st
                         color={theme.colors.blue[5]}
                     />
                 </BaseButton>
-            </Flex>
+            </I18nFlex>
       </BaseModal>
   );
 };

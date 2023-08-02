@@ -20,6 +20,7 @@ import { translate } from '@/i18n';
 import { Input } from '@/components/elements/Input/Input';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 export const EmailChangeModal = (props: { opened?: any; onClose?: any; setAddressRecall: any }) => {
   const { i18nStore, userStore } = useStores();
@@ -86,7 +87,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any; setAddres
     >
       <form onSubmit={changeMail.onSubmit((values) => console.log(values))}>
         <Flex direction={'column'} justify={'space-between'} w={'100%'} h={"300px"} >
-          <Flex direction={i18nStore.isRTL?"row-reverse":"row"} justify={'space-between'} align={'center'}>
+          <I18nFlex justify={'space-between'} align={'center'}>
             <BaseText
               txtkey="profile.modal.changeEmail"
               style={typography.headings[i18nStore.getCurrentLanguage()].h6}
@@ -105,7 +106,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any; setAddres
               width={'14px'}
               height={'14px'}
             />
-          </Flex>
+          </I18nFlex>
           <BaseText
             ta={i18nStore.isRTL?"right":"left"}
             txtkey='profile.modal.emailPara'

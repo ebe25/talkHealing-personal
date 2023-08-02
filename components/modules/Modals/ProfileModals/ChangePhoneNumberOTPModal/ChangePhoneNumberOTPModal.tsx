@@ -19,6 +19,7 @@ import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import { translate } from '@/i18n';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any; setAddressRecall: any }) => {
   const { i18nStore, userStore } = useStores();
@@ -93,8 +94,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any; 
         withCloseButton={false}
       >
         <Flex direction={'column'} justify={'space-between'} w={'100%'} h={'400px'}>
-          <Flex
-            direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
+          <I18nFlex
             justify={'space-between'}
             align={'center'}
           >
@@ -114,7 +114,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any; 
               width={'14px'}
               height={'14px'}
             />
-          </Flex>
+          </I18nFlex>
           <Center>
             <BaseText
               txtkey="profile.modal.verifyNumberOtpPara"
@@ -141,7 +141,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any; 
           {otpResendResponseText ? (
             <ErrorMessage text_color={theme.colors.blue[4]} message={otpResendResponseText} />
           ) : null}
-          <Flex w={'100%'} justify={'center'} my={'45px'}>
+          <I18nFlex w={'100%'} justify={'center'} my={'45px'}>
             <BaseText
               txtkey="profile.modal.resendCode"
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -154,7 +154,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any; 
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
               color={theme.colors.blue[4]}
             />
-          </Flex>
+          </I18nFlex>
           <BaseButton
             w={'100%'}
             h={'40px'}

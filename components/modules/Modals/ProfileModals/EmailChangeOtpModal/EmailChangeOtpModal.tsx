@@ -19,6 +19,7 @@ import { Images } from '@/public';
 import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import { translate } from '@/i18n';
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAddressRecall?:any }) => {
   const { i18nStore, userStore } = useStores();
@@ -92,8 +93,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAdd
         withCloseButton={false}
       >
         <Flex direction={'column'} justify={'space-between'} w={'100%'} h={'400px'}>
-          <Flex
-            direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
+          <I18nFlex
             justify={'space-between'}
             align={'center'}
           >
@@ -114,7 +114,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAdd
               width={'14px'}
               height={'14px'}
             />
-          </Flex>
+          </I18nFlex>
           <BaseText
             txtkey="profile.modal.emailOtpPara"
             my={'36px'}
@@ -141,8 +141,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAdd
           {otpResendResponseText ? (
             <ErrorMessage text_color={theme.colors.blue[4]} message={otpResendResponseText} />
           ) : null}
-          <Flex
-            direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
+          <I18nFlex
             w={'100%'}
             justify={'center'}
             my={'40px'}
@@ -159,7 +158,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAdd
               className={classes.pointer}
               color={theme.colors.blue[4]}
             />
-          </Flex>
+          </I18nFlex>
           <BaseButton
             w={'100%'}
             h={'40px'}

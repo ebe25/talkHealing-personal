@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 // mantine component
 import { useForm } from '@mantine/form';
-import { Flex, Image, Stack, useMantineTheme } from '@mantine/core';
+import { Image, Stack, useMantineTheme } from '@mantine/core';
 //  styles component
 import { createStyle } from './ChangePasswordModal.styles';
 // internals components
@@ -20,9 +20,12 @@ import { useDisclosure } from '@mantine/hooks';
 import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressRecall: any }) => {
   const { i18nStore, userStore } = useStores();
+  const useStyles = createStyle();
+  const { classes } = useStyles();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const [loader, setLoader] = useState(false);
@@ -104,8 +107,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
         }}
         withCloseButton={false}
       >
-        <Flex
-          direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
+        <I18nFlex
           justify={'space-between'}
           align={'center'}
         >
@@ -127,10 +129,11 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
             width={'14px'}
             height={'14px'}
           />
-        </Flex>
+        </I18nFlex>
         <form onSubmit={changepassword.onSubmit((values) => console.log(values))}>
           <Stack mt={'34px'}>
             <BaseText
+              className={classes.align}
               txtkey="profile.modal.currentPassword"
               color={theme.colors.gray[6]}
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -143,6 +146,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
           </Stack>
           <Stack my={'24px'}>
             <BaseText
+              className={classes.align}
               txtkey="profile.modal.newPassword"
               color={theme.colors.gray[6]}
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -155,6 +159,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
           </Stack>
           <Stack>
             <BaseText
+              className={classes.align}
               txtkey="profile.modal.confirmPassword"
               color={theme.colors.gray[6]}
               style={typography.label[i18nStore.getCurrentLanguage()].l1}

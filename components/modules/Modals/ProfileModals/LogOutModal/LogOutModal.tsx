@@ -10,6 +10,7 @@ import { typography } from '../../../../../themes/Mantine/typography';
 // stores import
 import { useStores } from '@/models';
 import { useRouter } from 'next/router';
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 export const LogOutModal = (props: { opened?: any; onClose?: any; id?: string }) => {
     const router = useRouter()
@@ -53,7 +54,7 @@ export const LogOutModal = (props: { opened?: any; onClose?: any; id?: string })
                     style={typography.paragraph[i18nStore.getCurrentLanguage()].p4}
                     color={theme.colors.gray[7]}
                 />
-                <Flex justify={'space-between'} align={'center'} mt={"40px"} >
+                <I18nFlex justify={'space-between'} align={'center'} mt={"40px"} >
                     <BaseButton
                         w={'48%'}
                         h={'40px'}
@@ -75,7 +76,7 @@ export const LogOutModal = (props: { opened?: any; onClose?: any; id?: string })
                             color={theme.colors.blue[5]}
                         />
                     </BaseButton>
-                </Flex>
+                </I18nFlex>
         </BaseModal>
     );
 };
