@@ -263,8 +263,7 @@
   "material":"Material",
   "delivery":"Delivery"
 
-}
-
+},
   "header":{
     "signUp": "Create account",
     "login": "Login to your account"
