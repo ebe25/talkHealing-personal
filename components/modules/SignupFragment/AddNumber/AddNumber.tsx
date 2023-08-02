@@ -162,7 +162,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
                             color={addNumberFrom.isValid() ? theme.white : theme.colors.dark[1]}
-                            txtkey={'signUpForm.login'}
+                            txtkey={'global.button.continue'}
                         />
                     </BaseButton>
                 </Flex>
