@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Center, Flex, Select } from '@mantine/core';
+import { Box, Center, Flex, Loader, Select } from '@mantine/core';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -86,6 +86,12 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
         <Flex gap={26}
             direction={'column'}
         >
+            {/* Loader */}
+            {loader ? (
+                <Box className={classes.loaderBox}>
+                    <Loader size="xl" />
+                </Box>
+            ) : null}
             <form onSubmit={addNumberFrom.onSubmit((values) => console.log(values))}>
                 <Flex direction={'column'} gap={50}>
                     <Center>
@@ -129,7 +135,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                             component={'input'}
                             classNames={{ input: classes.input }}
                             type={'number'}
-                            placeholder={`${translate('authentication.formText.phoneNumber')}`}
+                            placeholder={`${translate('profile.phoneNumber')}`}
                             style_variant={'inputText1'}
                             {...addNumberFrom.getInputProps('number')}
                         />

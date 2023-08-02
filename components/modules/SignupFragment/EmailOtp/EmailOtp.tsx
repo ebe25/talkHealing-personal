@@ -8,6 +8,7 @@ import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import { PinInput } from '@mantine/core';
 import { translate } from "../../../../i18n";
+import { createStyle } from "./EmailOtp.style";
 import swal from 'sweetalert';
 
 export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
@@ -15,6 +16,8 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
+    const useStyles = createStyle()
+    const { classes } = useStyles();
 
     const emailOtpFrom = useForm({
         initialValues: {
@@ -69,7 +72,12 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
     return (
         <Flex gap={26}
             direction={'column'}
-        >
+        >  {/* Loader */}
+            {loader ? (
+                <Box className={classes.loaderBox}>
+                    <Loader size="xl" />
+                </Box>
+            ) : null}
             <form onSubmit={emailOtpFrom.onSubmit((values) => console.log(values))}>
                 <Flex justify={'center'} align={'center'} direction={'column'} gap={30}>
                     <Center>
@@ -96,7 +104,6 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
                         <Center>
                             {error ? (<BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                 color={theme.colors.red[7]} txtkey={'profile.error.invalidOtp'} />) : null}
-                            {loader ? <Loader /> : null}
                         </Center>
                     </Flex>
                     {/* Resend Otp Button */}
