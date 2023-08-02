@@ -514,6 +514,16 @@ export const UserStore = types
       let error = null;
       switch (response.status) {
         case 200:
+          self.loggedInUserData = null;
+          yield storage.clear();
+          self.is_logged_in = true;
+          self.loggedInUserData = UserSchemas.LoggedInUser.create(
+            response.data
+          );
+          yield storage.setItem(
+            self.environment.api.config.token_key,
+            response.data[self.environment.api.config.token_key]
+          );
           return ACTION_RESPONSES.success;
         case 400:
           error = response.data;
@@ -525,5 +535,71 @@ export const UserStore = types
           break;
       }
       return ACTION_RESPONSES.failure;
-    })
+    }),
+    loginFacebook: flow(function* (access_token: string) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.loginFacebook,
+        {
+          access_token: access_token,
+        }
+      );
+      console.log("this is log in response ", response)
+      switch (response.status) {
+        case 200:
+          self.loggedInUserData = null;
+          yield storage.clear();
+          self.is_logged_in = true;
+          self.loggedInUserData = UserSchemas.LoggedInUser.create(
+            response.data
+          );
+          yield storage.setItem(
+            self.environment.api.config.token_key,
+            response.data[self.environment.api.config.token_key]
+          );
+          return ACTION_RESPONSES.success;
+        case 400:
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data
+          };
+        case 401:
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data}
+        case 500:
+          return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
+          return ACTION_RESPONSES.success;
+      }
+    }),
+    loginGoogle: flow(function* (access_token: string) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.loginGoogle,
+        {
+          access_token: access_token,
+        }
+      );
+      console.log("this is log in response ", response)
+      switch (response.status) {
+        case 200:
+          self.loggedInUserData = null;
+          yield storage.clear();
+          self.is_logged_in = true;
+          self.loggedInUserData = UserSchemas.LoggedInUser.create(
+            response.data
+          );
+          yield storage.setItem(
+            self.environment.api.config.token_key,
+            response.data[self.environment.api.config.token_key]
+          );
+          return ACTION_RESPONSES.success;
+        case 400:
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data
+          };
+        case 401:
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data }
+        case 500:
+          return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
+          return ACTION_RESPONSES.success;
+        }
+      })
   }));
