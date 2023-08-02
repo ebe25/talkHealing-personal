@@ -28,7 +28,7 @@ export const DummyStore = types
     .extend(withEnvironment)
     .actions((self) => ({
         getDummiesPaginated: flow(function* (page_number: number = 0) {
-            let FILTERS = {}
+            let FILTERS = {} as Record<string,any>
             if (page_number > 0) FILTERS[PAGINATION_FILTERS.PAGE_NUMBER] = page_number
             const response = yield self.environment.api.call(API_ENDPOINTS.getDummies, FILTERS)
             switch (response.status) {

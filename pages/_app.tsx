@@ -17,13 +17,13 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
   const toggleColorScheme = (value?: ColorScheme) => {
-    const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
+    const nextColorScheme = value || (colorScheme === 'dark' ? 'dark' : 'light');
     setColorScheme(nextColorScheme);
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
   let currentTheme = MANTINE_THEME;
   currentTheme.colorScheme;
-  
+
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined);
 
   useEffect(() => {
@@ -43,6 +43,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     rootStore.i18nStore.setSystemDefault();
   }
   return (
+    <div dir={rootStore.i18nStore.isRTL ? "rtl" : "ltr"}>
     <RootStoreProvider value={rootStore}>
       <Head>
         <title>Mantine next example</title>
@@ -62,6 +63,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         </MantineProvider>
       </ColorSchemeProvider>
     </RootStoreProvider>
+    </div>
   );
 }
 
