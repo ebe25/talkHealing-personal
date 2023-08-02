@@ -14,6 +14,7 @@ import { translate } from '@/i18n';
 import { countries } from "countries-list"
 import { IconChevronDown } from '@tabler/icons-react';
 import { createStyle } from './ForgotPassword.style';
+import swal from 'sweetalert';
 
 
 interface forgotPasswordProps {
@@ -105,6 +106,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
           console.log("email link send successfully!")
           setLoader(false)
           closeModal()
+          swal(`${translate('authentication.formText.forgotPasswordLink')}`, `${translate("authentication.formText.successfully")}`, "success")
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -167,6 +169,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
           console.log("phone link send successfully!")
           setLoader(false)
           closeModal()
+          swal(`${translate('authentication.formText.forgotPasswordLink')}`, `${translate("authentication.formText.successfully")}`, "success")
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -220,7 +223,9 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         h={'45px'}
         {...props}
       >
-        <BaseText txtkey={'global.button.confirm'} />
+        {loader ? <Loader color='white' /> :
+          <BaseText txtkey={'global.button.confirm'} />
+        }
       </BaseButton>
     </Flex>
   )
@@ -235,11 +240,6 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         opened={props.opened}
         onClose={props.close}
       >
-        {loader ? (
-          <Flex h={'100%'} justify={"center"}>
-            <Loader className={classes.loader} color="indigo" size="sm" variant="oval" />
-          </Flex>
-        ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
           <Flex direction={'column'} gap={8}>
             <Flex direction={i18nStore.isRTL ? 'row-reverse' : 'row'} justify={'space-between'}>

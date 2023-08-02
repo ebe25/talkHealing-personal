@@ -169,7 +169,8 @@
       "errorMessage":"This email or password is incorrect, please try again",
       "oldUser":"Already have account?",
       "successfully":"Successfully",
-      "forgotPasswordText":"Please enter your registered email or phone number to receive the reset link."
+      "forgotPasswordText":"Please enter your registered email or phone number to receive the reset link.",
+      "forgotPasswordLink":"Please check your registered email or phone number"
     }
   },
   "header":{
