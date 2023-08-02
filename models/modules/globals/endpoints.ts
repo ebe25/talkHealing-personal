@@ -6,12 +6,12 @@ import {
 // import * as SCHEMAS from "./schemas"
 
 const TRANSFORMERS = {
-    faqTransformer: (data) => ({
+    faqTransformer: (data:Record<string,any>) => ({
         ...data,
         created_on: new Date(data.created_on),
         edited_on: new Date(data.edited_on)
     }),
-    faqPaginatedTransformer: (data) => (
+    faqPaginatedTransformer: (data:Record<string,any>) => (
         {
         ...data,
         results: data.results.map(TRANSFORMERS.faqTransformer),

@@ -4,7 +4,7 @@ import { Images } from '../../../public/index';
 import { createStyle } from './CircularIcon.style';
 
 interface circularIconProps {
-  Icon?: string;
+  icon?: string;
 }
 
 export const CircularIcon = (props: circularIconProps) => {
@@ -16,7 +16,7 @@ export const CircularIcon = (props: circularIconProps) => {
     <>
       <Box className={classes.container} {...props}>
         <Image
-          src={props.Icon ? props.Icon : Images.facebook_icon}
+          src={props.icon ? props.icon : Images.facebook_icon}
           width={20}
           height={20}
           alt="Icon"

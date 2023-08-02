@@ -7,7 +7,7 @@ export default createStyles((theme) => ({
     fontSize: 100,
     fontWeight: 900,
     letterSpacing: -2,
-    ...typography.headings.h1,
+    ...typography.headings.en.h1,
     [theme.fn.smallerThan('md')]: {
       fontSize: 50,
     },
