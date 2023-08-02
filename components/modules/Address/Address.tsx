@@ -3,7 +3,7 @@ import React, {useEffect, useState } from 'react';
 //styles
 import useStyles from './Address.styles';
 //mantine component
-import { Box, Button, Flex, Text, useMantineTheme } from '@mantine/core';
+import { Box, Button, Center, Flex, Loader, Text, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 // internal component
 import { AddressModal } from '../Modals/ProfileModals/AddressModals/AddressModal';
@@ -38,6 +38,11 @@ export const Address = () => {
   },[addressRecall])
 
   return (
+    <>
+    {addressRecall?
+      <Center h={"100vh"} >
+      <Loader size="xl" />;
+    </Center>:
     <Box className={classes.container}>
       <Button
         className={classes.addNewAddressButton}
@@ -122,6 +127,7 @@ export const Address = () => {
         onClose={address[1].close}
         setAddressRecall={setAddressRecall}
       />
-    </Box>
+    </Box>}
+    </>
   );
 };

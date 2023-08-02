@@ -25,7 +25,6 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
   const { i18nStore, userStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
-  const useStyles = createStyle();
   const [loader, setLoader] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -76,8 +75,10 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
             changepassword.reset();
             open();
             props.setAddressRecall(false)
+            setLoader(false);
           } else if (res.code == 400) {
             if (res.error) {
+              setLoader(false);
               changepassword.reset();
               setErrorMessage(res.error.toString());
               setTimeout(() => {
@@ -86,7 +87,6 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
             }
           }
         });
-      setLoader(false);
     }
   };
 

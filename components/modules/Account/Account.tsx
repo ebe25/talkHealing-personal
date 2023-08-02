@@ -1,7 +1,7 @@
 //React and next imports
 import React, { useState, useEffect } from 'react';
 // mantine component imports
-import { Box, FileButton, Flex, Grid, Image, TextInput, useMantineTheme } from '@mantine/core';
+import { Box, Center, FileButton, Flex, Grid, Image, Loader, TextInput, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 // styles import
@@ -30,6 +30,7 @@ export const Account = () => {
   const phoneNumberChangeModal = useDisclosure(false);
   const [imageUploadMessage, setImageUploadMessage] = useState('');
   const [images, setImages] = useState<any>(null);
+  const [ loader, setLoader ] = useState(true);
   const [ addressRecall, setAddressRecall ] = useState(true);
   
   const onImageChange = (event: File) => {
@@ -61,6 +62,7 @@ export const Account = () => {
     userStore.getLoginUserData().then((res) => {
       if (res.ok) {
         if (userStore.userData != null ) {
+          setLoader(false)
           address.setValues({
             avatar: userStore.userData.avatar,
             name: userStore.userData.full_name,
@@ -74,6 +76,12 @@ export const Account = () => {
   }, [addressRecall]);
 
   return (
+    <>
+    {loader?
+      <Center h={"100vh"} >
+      <Loader size="xl" />;
+    </Center>:
+  
     <Box className={classes.container}>
       <form onSubmit={address.onSubmit((values) => console.log(values))}>
         <Flex align={'center'} justify={'space-between'} wrap={'wrap'}>
@@ -84,7 +92,8 @@ export const Account = () => {
               radius={'50%'}
               alt="profile_image"
               {...address.getInputProps('avatar')}
-              src={images ? images : userStore?.userData?.avatar}
+              // src={ images ? images : userStore?.userData?.avatar ?userStore?.userData?.avatar: Images.default_profile_avatar }
+              src={ images ? images : userStore?.userData?.avatar }
             />
           </div>
           <Flex gap={'18px'} className={classes.imageFlex}>
@@ -117,6 +126,7 @@ export const Account = () => {
           {imageUploadMessage?
           <ErrorMessage
           message={imageUploadMessage}
+          text_color={theme.colors.blue[4]}
           />
         :null}
 
@@ -239,6 +249,7 @@ export const Account = () => {
         opened={phoneNumberChangeModal[0]}
         onClose={phoneNumberChangeModal[1].close}
       />
-    </Box>
+    </Box>}
+    </>
   );
 };

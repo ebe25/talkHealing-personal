@@ -21,14 +21,15 @@ import { Input } from '@/components/elements/Input/Input';
 //external
 import { Country, State, City } from 'country-state-city';
 import { boilerPlateStyles } from '@/utils/styles/styles';
+import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 
 interface modalData {
-  addressOne: '',
-  addressTwo: '',
-  country: '',
-  state: '',
-  district: '',
-  code: '',
+  addressOne: '';
+  addressTwo: '';
+  country: '';
+  state: '';
+  district: '';
+  code: '';
 }
 
 export const AddressModal = (props: {
@@ -37,15 +38,16 @@ export const AddressModal = (props: {
   modalHeading?: any;
   isEdit?: boolean;
   id?: string;
-  setAddressRecall?: any
+  setAddressRecall?: any;
   data?: modalData;
-  setAddresId?: any
+  setAddresId?: any;
 }) => {
   const { i18nStore, userStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
   const useStyles = createStyle();
-  const [ error, setError ] = useState({});
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState("");
   const { classes } = useStyles();
   const address = useForm({
     initialValues: {
@@ -81,7 +83,7 @@ export const AddressModal = (props: {
   useEffect(() => {
     userStore.getUserAddressById(props.id).then((res) => {
       if (res.ok) {
-        if(userStore.getAddress !=null ){
+        if (userStore.getAddress != null) {
           address.setValues({
             addressOne: userStore.getAddress.address_line1,
             addressTwo: userStore.getAddress.address_line2,
@@ -109,16 +111,22 @@ export const AddressModal = (props: {
     if (results.hasErrors) return;
     if (!address.isValid()) return;
     else {
+      setLoader(true);
       userStore.createAddress(data).then((res) => {
         if (res.ok) {
           props.onClose();
           address.reset();
           open();
-          props.setAddressRecall((pre:any)=> !pre)
+          setLoader(false);
+          props.setAddressRecall((pre: any) => !pre);
         } else if (res.code == 400) {
           if (res.error) {
             address.reset();
-            console.log('res.error', res.error);
+            setError(res.error);
+            setLoader(false);
+            setTimeout(() => {
+              setError("")
+            },5000)
           }
         }
       });
@@ -129,17 +137,23 @@ export const AddressModal = (props: {
     if (results.hasErrors) return;
     if (!address.isValid()) return;
     else {
+      setLoader(true);
       userStore.addressUpdate(data, props.id).then((res) => {
         if (res.ok) {
           props.onClose();
           address.reset();
           open();
-          props.setAddresId("")
-          props.setAddressRecall((pre:any)=> !pre)
-        } else if(res.code == 400){
-          if(res.error) {
+          props.setAddresId('');
+          props.setAddressRecall((pre: any) => !pre);
+          setLoader(false);
+        } else if (res.code == 400) {
+          if (res.error) {
             address.reset();
-            console.log('res.error', res.error);
+            setError(res.error);
+            setLoader(false);
+            setTimeout(() => {
+              setError("")
+            },5000)
           }
         }
       });
@@ -199,7 +213,7 @@ export const AddressModal = (props: {
         onClose={() => {
           props.onClose();
           address.reset();
-          props.setAddresId("")
+          props.setAddresId('');
         }}
         withCloseButton={false}
       >
@@ -219,7 +233,7 @@ export const AddressModal = (props: {
               onClick={() => {
                 props.onClose();
                 address.reset();
-                props.setAddresId("")
+                props.setAddresId('');
               }}
               style={boilerPlateStyles.cursor}
               src={Images.close_modal_icon}
@@ -357,12 +371,13 @@ export const AddressModal = (props: {
               {...address.getInputProps('addressTwo')}
             />
           </Box>
-
+          {error ? <ErrorMessage message={error} /> : null}
           {!props.isEdit ? (
             <BaseButton
               mt={'30px'}
               w={'100%'}
               h={'40px'}
+              loading={loader}
               style_variant={!address.isValid() ? 'disabled' : 'filled'}
               color_variant={!address.isValid() ? 'gray' : 'blue'}
               onClick={addressAdd}
@@ -381,6 +396,7 @@ export const AddressModal = (props: {
               <BaseButton
                 w={'100%'}
                 h={'40px'}
+                loading={loader}
                 style_variant={!address.isValid() ? 'disabled' : 'filled'}
                 color_variant={!address.isValid() ? 'gray' : 'blue'}
                 onClick={handleEditAddress}
@@ -395,7 +411,7 @@ export const AddressModal = (props: {
                 onClick={() => {
                   props.onClose();
                   address.reset();
-                  props.setAddresId("")
+                  props.setAddresId('');
                 }}
               >
                 <BaseText txtkey="profile.addressModal.cancelEdit" color={theme.colors.blue[5]} />
