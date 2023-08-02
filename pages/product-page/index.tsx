@@ -8,7 +8,7 @@ import { typography } from "@/themes/Mantine/typography";
 import {
   Anchor,
   Box,
-  Breadcrumbs, Card,
+  Breadcrumbs, Button, Card,
   Container,
   Flex,
   Image,
@@ -20,35 +20,7 @@ import { useState } from "react";
 import ProductImageCarousel from "./PoductImageCarousel/ProductImageCarousel";
 import useStyles from "./ProductPage.style";
 import ProductTabs from "./ProductsTabs/ProductTabs";
-
-function BadgeIcon(props: {
-  logo: string;
-  title: string;
-  w: string;
-  h: string;
-}) {
-  const { i18nStore } = useStores();
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "space-evenly",
-        alignItems: "center",
-
-        height: "34px",
-        backgroundColor: "white",
-        color: "black",
-        width: "84px",
-        borderRadius: "26px",
-        border: `solid 1px ${COLORS.gray[2]}`
-      }}
-      // variant="outline"
-    >
-      <Image src={props.logo} width={props.w} height={props.h} />
-      {props.title}
-    </Box>
-  );
-}
+import BadgeIcon from "./BadgeIcon/BadgeIcon";
 
 const ProductdetailFields = [
   translate("productPage.totalProduct"),
@@ -95,6 +67,7 @@ function ProductPage() {
   ));
   return (
     <Container maw="1350px">
+      
       <Box className={classes.boxWrapper}>
         <Breadcrumbs
           sx={{
