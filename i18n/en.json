@@ -122,7 +122,8 @@
       "postalCodeError":"Please enter Postal Code",
       "addressOneError":"Please enter Address One",
       "addressTwoError":"Please enter Address Two",
-      "invalidOtp":"Invalid Otp"
+      "invalidOtp":"Invalid Otp",
+      "error": "Error"
     }
   },
   "signUpForm": {

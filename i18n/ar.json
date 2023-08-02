@@ -119,7 +119,8 @@
       "addressOneError":"الرجاء إدخال الرمز البريدي",
       "addressTwoError":"الرجاء إدخال العنوان الثاني",
       "errorMessageForOTP":"الرجاء إدخال OTP",
-      "invalidOtp":"لرجاء إدخال الرمز Otp"
+      "invalidOtp":"لرجاء إدخال الرمز Otp",
+      "error": " إدخال الرمز"
     }
   },
   "signUpForm": {
