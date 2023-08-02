@@ -152,6 +152,13 @@ export const typography:any = {
         lineHeight: '27px',
         fontWeight: 400,
       } as React.CSSProperties,
+      p5: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '16px',
+        lineHeight: '31px',
+      } as React.CSSProperties,
     },
     ar: {
       p1: {
@@ -188,6 +195,13 @@ export const typography:any = {
         fontSize: '18px',
         lineHeight: '31px',
         fontWeight: 500,
+      } as React.CSSProperties,
+      p5: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '12px',
+        lineHeight: '31px',
       } as React.CSSProperties,
     },
   } ,
