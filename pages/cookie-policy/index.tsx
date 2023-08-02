@@ -34,18 +34,20 @@ export const CookiePolicy = () => {
                 <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h2} txtkey='termsAndConditionAndPolicy.cookiePolicy.heading' />
                 {/* paragraph */}
                 <Box className={classes.textBox}>
-                    <BaseText
-                        color={theme.colors.dark[9]}
-                        style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}
-                    >
-                        <div
-                            dangerouslySetInnerHTML={{ __html: `${cookiesPolicyData[i18nStore.getCurrentLanguage()]}` }} />
-                    </BaseText>
-                    {/* Error */}
-                    <BaseText color={theme.colors.red[7]}
-                        style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}>
-                        {error}
-                    </BaseText>
+                    {cookiesPolicyData.length ?
+                        <BaseText
+                            color={theme.colors.dark[9]}
+                            style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}
+                        >
+                            <div
+                                dangerouslySetInnerHTML={{ __html: `${cookiesPolicyData[i18nStore.getCurrentLanguage()]}` }} />
+                        </BaseText>
+                        :
+                        <BaseText color={theme.colors.red[7]}
+                            style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}>
+                            {error}
+                        </BaseText>
+                    }
                 </Box>
             </Box>
         </Container>
