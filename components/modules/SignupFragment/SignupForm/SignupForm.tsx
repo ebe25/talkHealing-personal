@@ -122,6 +122,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                         <Input
                             w={'100%'}
                             mah={'44px'}
+                            radius="xl"
                             component={'input'}
                             classNames={{ input: classes.input }}
                             placeholder={`${translate('profile.name')}`}
@@ -140,6 +141,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                         <Input
                             w={'100%'}
                             mah={'44px'}
+                            radius="xl"
                             component={'input'}
                             classNames={{ input: classes.input }}
                             placeholder={`${translate('authentication.formText.writeEmail')}`}

@@ -221,6 +221,7 @@ export const Login = (props: loginProps) => {
                 <Input
                   h={'44px'}
                   w={"100%"}
+                  radius="xl"
                   component={'input'}
                   classNames={{ input: classes.input }}
                   placeholder={`${translate('authentication.formText.writeEmail')}`}
