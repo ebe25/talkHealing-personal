@@ -23,7 +23,7 @@ function ProductImageCarousel(props: {
               onClick={() => props.setSelectedItemImage(id)}
               mt={"24px"}
               width={"100%"}
-              maw={"auto"}
+              maw={"100px"}
               src={item}
               alt="product_image"
             />
