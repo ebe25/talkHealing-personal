@@ -95,7 +95,6 @@ function ProductCard() {
   const { classes } = useStyles();
   return (
     <Card
-      // mt={"50px"}
       mb={"50px"}
       bg={COLORS.dark[0]}
       maw={"100%"}
@@ -103,19 +102,13 @@ function ProductCard() {
       style={{ borderRadius: "26px" }}
     >
       <I18Flex
-        // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
         className={classes.flexWrapper3}
         style={{
           borderRadius: "26px",
           border: `solid 1px ${COLORS.gray[2]}`
         }}
       >
-        <I18Flex
-          className={classes.flexWrapper4}
-          // sx={{
-          //   flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
-          // }}
-        >
+        <I18Flex className={classes.flexWrapper4}>
           <Image
             width={"54px"}
             height={"54px"}
@@ -130,14 +123,7 @@ function ProductCard() {
             >
               Pebea Sneakers
             </BaseText>
-            <I18Flex
-              // sx={{
-              //   flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
-              // }}
-              justify={"space-between"}
-              align={"center"}
-              gap={"6px"}
-            >
+            <I18Flex justify={"space-between"} align={"center"} gap={"6px"}>
               <Image
                 width={"10.5px"}
                 height={"14px"}
@@ -175,9 +161,6 @@ function ProductCard() {
           className={classes.flexWrapper7}
           mr={"24px"}
           ml={i18nStore.isRTL ? "24px" : " 0px"}
-          // sx={{
-          //   flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
-          // }}
         >
           <BaseButton
             className={classes.visitStoreBtnStyle}
@@ -199,15 +182,7 @@ function ProductCard() {
       </I18Flex>
       <Box mt={"24px"} mb={"30px"}>
         {ProductdetailFields.map((item, idx) => (
-          <I18Flex
-            // sx={{
-            //   flexDirection: i18nStore.isRTL ? "row-reverse" : "row"
-            // }}
-            justify={"space-between"}
-            key={idx}
-            mt="16px"
-            mx={"32px"}
-          >
+          <I18Flex justify={"space-between"} key={idx} mt="16px" mx={"32px"}>
             <BaseText color={COLORS.gray[6]}>{item}</BaseText>
             <BaseText
               style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}
@@ -227,10 +202,7 @@ function ProductProfile() {
   const [isBookMarkSave, setIsBookMarkSave] = useState(false);
   return (
     <Stack miw={"50%"}>
-      <I18Flex
-        gap={"22px"}
-        // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
-      >
+      <I18Flex gap={"22px"}>
         <BadgeIcon
           logo={Images.brand_icon}
           title={"Nike"}
@@ -269,11 +241,7 @@ function ProductProfile() {
       >
         {translate("productPage.colors")}
       </BaseText>
-      <I18Flex
-        gap="xl"
-        wrap={"wrap"}
-        // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
-      >
+      <I18Flex gap="xl" wrap={"wrap"}>
         {["White", "Black", "Blue", "Red"].map((item, id) => {
           return (
             <BaseButton
@@ -302,11 +270,7 @@ function ProductProfile() {
       >
         {translate("productPage.size")}
       </BaseText>
-      <I18Flex
-        gap="xl"
-        wrap={"wrap"}
-        // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
-      >
+      <I18Flex gap="xl" wrap={"wrap"}>
         {["38", "39", "40", "41", "42", "43", "44", "45", "46"].map(
           (item, id) => {
             return (
@@ -333,7 +297,6 @@ function ProductProfile() {
         gap={"18px"}
         wrap={"wrap"}
         justify={"space-between"}
-        // sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
       >
         <Flex gap={"32px"} align={"center"} wrap={"wrap"}>
           <BaseButton
@@ -350,7 +313,6 @@ function ProductProfile() {
               ...typography.inputFieldText[i18nStore.getCurrentLanguage()].i2,
               fontSize: "35px"
             }}
-            // bg={COLORS.dark[0]}
             c={countItems == 0 ? COLORS.gray[6] : COLORS.blue[4]}
             size="sm"
             w={"50px"}
