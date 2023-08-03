@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Tabs, Flex, Box } from "@mantine/core";
+import { Tabs, Flex, Box, useMantineTheme } from "@mantine/core";
 import { useStores } from "@/models";
 import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { typography } from "@/themes/Mantine/typography";
-import { COLORS } from "@/themes/Mantine/colors";
 import ProductRating from "../ProductRating/ProductRating";
 import CustomerQuestions from "../CustomerQuestions/CustomerQuestions";
 import { translate } from "@/i18n";
@@ -11,6 +10,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import AboutProduct from "../AboutProduct/AboutProduct";
 function ProductTabs() {
   const { i18nStore } = useStores();
+  const theme = useMantineTheme();
   const matches = useMediaQuery("(max-width: 500px)");
   const [currentTab, setCurrentTab] = useState<any>("About product");
   const ProductLabels = [
@@ -25,6 +25,12 @@ function ProductTabs() {
     "Cotton",
     "Pick up & delivery courrier"
   ];
+  const customerQuery = {
+    question: " Is this shoes comfortable?",
+    timestamp: "  June 16th, 2020",
+    answer: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua`
+  };
   return (
     <Tabs
       defaultValue="About product"
@@ -44,8 +50,8 @@ function ProductTabs() {
           value="About product"
           c={
             currentTab == "About product"
-              ? `${COLORS.blue[4]} !important`
-              : COLORS.gray[6]
+              ? `${theme.colors.blue[4]} !important`
+              : theme.colors.gray[6]
           }
           sx={{
             ...typography.label[i18nStore.getCurrentLanguage()].l7,
@@ -64,7 +70,7 @@ function ProductTabs() {
                 left: "50%",
                 transform: "translateX(-50%)",
                 width: "59px",
-                borderBottom: `4px solid ${COLORS.blue[4]}`,
+                borderBottom: `4px solid ${theme.colors.blue[4]}`,
                 borderTopLeftRadius: "20px",
                 borderTopRightRadius: "20px"
               }}
@@ -75,8 +81,8 @@ function ProductTabs() {
           pb={"18px"}
           c={
             currentTab == "Customer rating"
-              ? `${COLORS.blue[4]} !important`
-              : COLORS.gray[6]
+              ? `${theme.colors.blue[4]} !important`
+              : theme.colors.gray[6]
           }
           value="Customer rating"
           sx={{
@@ -96,7 +102,7 @@ function ProductTabs() {
                 left: "50%",
                 transform: "translateX(-50%)",
                 width: "59px",
-                borderBottom: `4px solid ${COLORS.blue[4]}`,
+                borderBottom: `4px solid ${theme.colors.blue[4]}`,
                 borderTopLeftRadius: "20px",
                 borderTopRightRadius: "20px"
               }}
@@ -107,8 +113,8 @@ function ProductTabs() {
           pb={"18px"}
           c={
             currentTab == "Customer questions"
-              ? `${COLORS.blue[4]} !important`
-              : COLORS.gray[6]
+              ? `${theme.colors.blue[4]} !important`
+              : theme.colors.gray[6]
           }
           value="Customer questions"
           sx={{
@@ -128,7 +134,7 @@ function ProductTabs() {
                 left: "50%",
                 transform: "translateX(-50%)",
                 width: "59px",
-                borderBottom: `4px solid ${COLORS.blue[4]}`,
+                borderBottom: `4px solid ${theme.colors.blue[4]}`,
                 borderTopLeftRadius: "20px",
                 borderTopRightRadius: "20px"
               }}
@@ -146,11 +152,27 @@ function ProductTabs() {
       </Tabs.Panel>
 
       <Tabs.Panel value="Customer questions">
-        <CustomerQuestions />
-        <CustomerQuestions />
-        <CustomerQuestions />
-        <CustomerQuestions />
-        <CustomerQuestions />
+        <CustomerQuestions
+          question={customerQuery.question}
+          timestamp={customerQuery.timestamp}
+          answer={customerQuery.answer}
+        />
+        <CustomerQuestions
+          question={customerQuery.question}
+          timestamp={customerQuery.timestamp}
+          answer={customerQuery.answer}
+        />
+        <CustomerQuestions
+          question={customerQuery.question}
+          timestamp={customerQuery.timestamp}
+          answer={customerQuery.answer}
+        />
+        <CustomerQuestions
+          question={customerQuery.question}
+          timestamp={customerQuery.timestamp}
+          answer={customerQuery.answer}
+        />
+        
       </Tabs.Panel>
     </Tabs>
   );

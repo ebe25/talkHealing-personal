@@ -1,10 +1,9 @@
 import { BaseButton } from "@/components/elements/BaseButton/BaseButton";
 import { BaseText } from "@/components/elements/BaseText/BaseText";
-import I18Flex from "@/components/elements/I18nFlex/I18nFlex";
+import I18NFlex from "@/components/elements/I18NFlex/I18NFlex";
 import { translate } from "@/i18n";
 import { useStores } from "@/models";
 import { Images } from "@/public";
-import { COLORS } from "@/themes/Mantine/colors";
 import { typography } from "@/themes/Mantine/typography";
 import {
   Anchor,
@@ -15,7 +14,8 @@ import {
   Flex,
   Image,
   Popover,
-  Stack
+  Stack,
+  useMantineTheme
 } from "@mantine/core";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -54,11 +54,12 @@ const BreadcrumbsLabels = [
 
 function BreadcrumbPath() {
   const { i18nStore } = useStores();
+  const theme = useMantineTheme();
   const items = BreadcrumbsLabels.map((item, index) => (
     <Anchor
       href={item.href}
       key={index}
-      color={COLORS.dark[9]}
+      color={theme.colors.dark[9]}
       style={typography.label[i18nStore.getCurrentLanguage()].l5}
     >
       {item.title}
@@ -82,7 +83,7 @@ function BreadcrumbPath() {
         />
       }
       mt="63px"
-      color={COLORS.dark[8]}
+      color={theme.colors.dark[8]}
       style={typography.label[i18nStore.getCurrentLanguage()].l5}
     >
       {items}
@@ -93,22 +94,23 @@ function BreadcrumbPath() {
 function ProductCard() {
   const { i18nStore } = useStores();
   const { classes } = useStyles();
+  const theme = useMantineTheme();
   return (
     <Card
       mb={"50px"}
-      bg={COLORS.dark[0]}
+      bg={theme.colors.dark[0]}
       maw={"100%"}
       padding={"0px"}
       style={{ borderRadius: "26px" }}
     >
-      <I18Flex
+      <I18NFlex
         className={classes.flexWrapper3}
         style={{
           borderRadius: "26px",
-          border: `solid 1px ${COLORS.gray[2]}`
+          border: `solid 1px ${theme.colors.gray[2]}`
         }}
       >
-        <I18Flex className={classes.flexWrapper4}>
+        <I18NFlex className={classes.flexWrapper4}>
           <Image
             width={"54px"}
             height={"54px"}
@@ -118,12 +120,12 @@ function ProductCard() {
           <Box className={`${classes.boxWrapper2} ${classes.boxWrapper3}`}>
             <BaseText
               className={classes.textStyle}
-              color={COLORS.dark[8]}
+              color={theme.colors.dark[8]}
               style={typography.label[i18nStore.getCurrentLanguage()].l6}
             >
               Pebea Sneakers
             </BaseText>
-            <I18Flex justify={"space-between"} align={"center"} gap={"6px"}>
+            <I18NFlex justify={"space-between"} align={"center"} gap={"6px"}>
               <Image
                 width={"10.5px"}
                 height={"14px"}
@@ -131,7 +133,7 @@ function ProductCard() {
                 alt="location_icon"
               />
               <BaseText
-                color={COLORS.dark[8]}
+                color={theme.colors.dark[8]}
                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
               >
                 Bangalore
@@ -149,15 +151,15 @@ function ProductCard() {
                 alt="star_icon"
               />
               <BaseText
-                color={COLORS.dark[8]}
+                color={theme.colors.dark[8]}
                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
               >
                 4.1
               </BaseText>
-            </I18Flex>
+            </I18NFlex>
           </Box>
-        </I18Flex>
-        <I18Flex
+        </I18NFlex>
+        <I18NFlex
           className={classes.flexWrapper7}
           mr={"24px"}
           ml={i18nStore.isRTL ? "24px" : " 0px"}
@@ -178,18 +180,18 @@ function ProductCard() {
             src={Images.chat_icon}
             alt="chat_icon"
           />
-        </I18Flex>
-      </I18Flex>
+        </I18NFlex>
+      </I18NFlex>
       <Box mt={"24px"} mb={"30px"}>
         {ProductdetailFields.map((item, idx) => (
-          <I18Flex justify={"space-between"} key={idx} mt="16px" mx={"32px"}>
-            <BaseText color={COLORS.gray[6]}>{item}</BaseText>
+          <I18NFlex justify={"space-between"} key={idx} mt="16px" mx={"32px"}>
+            <BaseText color={theme.colors.gray[6]}>{item}</BaseText>
             <BaseText
               style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}
             >
               {ProductInformation[idx]}
             </BaseText>
-          </I18Flex>
+          </I18NFlex>
         ))}
       </Box>
     </Card>
@@ -198,11 +200,13 @@ function ProductCard() {
 
 function ProductProfile() {
   const { i18nStore } = useStores();
+  const theme = useMantineTheme();
   const [countItems, setCountItems] = useState(0);
+  const { classes } = useStyles();
   const [isBookMarkSave, setIsBookMarkSave] = useState(false);
   return (
     <Stack miw={"50%"}>
-      <I18Flex gap={"22px"}>
+      <I18NFlex gap={"22px"}>
         <BadgeIcon
           logo={Images.brand_icon}
           title={"Nike"}
@@ -215,9 +219,9 @@ function ProductProfile() {
           w={"17px"}
           h={"17px"}
         />
-      </I18Flex>
+      </I18NFlex>
       <BaseText
-        color={COLORS.cyan[9]}
+        color={theme.colors.cyan[9]}
         sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
         style={typography.headings[i18nStore.getCurrentLanguage()].h9}
       >
@@ -241,15 +245,15 @@ function ProductProfile() {
       >
         {translate("productPage.colors")}
       </BaseText>
-      <I18Flex gap="xl" wrap={"wrap"}>
+      <I18NFlex gap="xl" wrap={"wrap"}>
         {["White", "Black", "Blue", "Red"].map((item, id) => {
           return (
             <BaseButton
               style={{
                 ...typography.paragraph[i18nStore.getCurrentLanguage()].p3
               }}
-              bg={COLORS.dark[0]}
-              c={COLORS.gray[6]}
+              bg={theme.colors.dark[0]}
+              c={theme.colors.gray[6]}
               key={`image_type_${id}`}
               w={"98px"}
               style_variant="filled"
@@ -259,7 +263,7 @@ function ProductProfile() {
             </BaseButton>
           );
         })}
-      </I18Flex>
+      </I18NFlex>
       <BaseText
         my="16px"
         sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
@@ -270,7 +274,7 @@ function ProductProfile() {
       >
         {translate("productPage.size")}
       </BaseText>
-      <I18Flex gap="xl" wrap={"wrap"}>
+      <I18NFlex gap="xl" wrap={"wrap"}>
         {["38", "39", "40", "41", "42", "43", "44", "45", "46"].map(
           (item, id) => {
             return (
@@ -278,8 +282,8 @@ function ProductProfile() {
                 style={
                   typography.inputFieldText[i18nStore.getCurrentLanguage()].i2
                 }
-                bg={COLORS.dark[0]}
-                c={COLORS.gray[6]}
+                bg={theme.colors.dark[0]}
+                c={theme.colors.gray[6]}
                 key={`image_type_${id}`}
                 w={"76px"}
                 style_variant="filled"
@@ -290,8 +294,8 @@ function ProductProfile() {
             );
           }
         )}
-      </I18Flex>
-      <I18Flex
+      </I18NFlex>
+      <I18NFlex
         my={"40px"}
         align={"center"}
         gap={"18px"}
@@ -313,7 +317,7 @@ function ProductProfile() {
               ...typography.inputFieldText[i18nStore.getCurrentLanguage()].i2,
               fontSize: "35px"
             }}
-            c={countItems == 0 ? COLORS.gray[6] : COLORS.blue[4]}
+            c={countItems == 0 ? theme.colors.gray[6] : theme.colors.blue[4]}
             size="sm"
             w={"50px"}
             h={"50px"}
@@ -325,7 +329,7 @@ function ProductProfile() {
           >
             {"-"}
           </BaseButton>
-          <BaseText c={COLORS.gray[6]} fz={"22px"} fw={"bold"}>
+          <BaseText c={theme.colors.gray[6]} fz={"22px"} fw={"bold"}>
             {countItems}
           </BaseText>
           <BaseButton
@@ -334,7 +338,7 @@ function ProductProfile() {
               ...typography.inputFieldText[i18nStore.getCurrentLanguage()].i2,
               fontSize: "30px"
             }}
-            c={COLORS.blue[4]}
+            c={theme.colors.blue[4]}
             p={"0px"}
             pb={"10px"}
             size="sm"
@@ -353,7 +357,7 @@ function ProductProfile() {
             size="md"
             style_variant="outline"
             color_variant="gray"
-            c={COLORS.dark[1]}
+            c={theme.colors.dark[1]}
           >
             {translate("productPage.addToCart")}
           </BaseButton>
@@ -361,8 +365,8 @@ function ProductProfile() {
             style={{
               ...typography.headings[i18nStore.getCurrentLanguage()].h7
             }}
-            bg={COLORS.gray[2]}
-            c={COLORS.dark[1]}
+            bg={theme.colors.gray[2]}
+            c={theme.colors.dark[1]}
             size="md"
             style_variant="filled"
             color_variant="gray"
@@ -396,17 +400,7 @@ function ProductProfile() {
                 alt="share_icon"
               />
             </Popover.Target>
-            <Popover.Dropdown
-              px={"12px"}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                borderRadius: "18px",
-                gap: "12px",
-                boxShadow: "1px 1px 10px rgba(0, 0, 0, 0.15)",
-                height: "56px"
-              }}
-            >
+            <Popover.Dropdown className={classes.popoverStyle}>
               {TootTipImages.map((item, id) => {
                 return (
                   <Image
@@ -424,7 +418,7 @@ function ProductProfile() {
             </Popover.Dropdown>
           </Popover>
         </Flex>
-      </I18Flex>
+      </I18NFlex>
       <ProductTabs />
     </Stack>
   );
@@ -438,7 +432,7 @@ function ProductPage() {
     <Container maw="1350px">
       <Box className={classes.boxWrapper}>
         <BreadcrumbPath />
-        <I18Flex className={classes.flexWrapper2} justify={"center"}>
+        <I18NFlex className={classes.flexWrapper2} justify={"center"}>
           <Box>
             <Box>
               <Image
@@ -456,7 +450,7 @@ function ProductPage() {
             <ProductCard />
           </Box>
           <ProductProfile />
-        </I18Flex>
+        </I18NFlex>
       </Box>
     </Container>
   );

@@ -1,46 +1,47 @@
 import { BaseText } from "@/components/elements/BaseText/BaseText";
-import { Flex, Stack } from "@mantine/core";
+import { Flex, Stack, useMantineTheme } from "@mantine/core";
 import { typography } from "@/themes/Mantine/typography";
 import { useStores } from "@/models";
-import { COLORS } from "@/themes/Mantine/colors";
 import { translate } from "@/i18n";
-
+import I18NFlex from "@/components/elements/I18NFlex/I18NFlex";
 interface CustomerQuestionsProps {
   question?: any;
-  dateOnAsked?: any;
+  timestamp?: any;
   answer?: any;
 }
 
 function CustomerQuestions(props: CustomerQuestionsProps) {
   const { i18nStore } = useStores();
+  const theme = useMantineTheme();
   return (
     <Stack spacing={2} mt={"23px"}>
-      <Flex  sx = {{flexDirection: i18nStore.isRTL? 'row-reverse':"row"}}>
+      <I18NFlex>
         <BaseText
-        mr = "2px"
+          mr="2px"
           style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i3}
         >
-          {translate('productPage.question')}
+          {translate("productPage.question")}
         </BaseText>
         <BaseText
           style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i3}
         >
-          Is this shoes comfortable?
+          {props.question}
         </BaseText>
-      </Flex>
+      </I18NFlex>
       <BaseText
-       sx = {{textAlign:i18nStore.isRTL? 'end': "start"}}
+        sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
         mt={"8px"}
-        c={COLORS.gray[6]}
+        c={theme.colors.gray[6]}
         style={typography.label[i18nStore.getCurrentLanguage()].l11}
       >
-        June 16th, 2020
+        {props.timestamp}
       </BaseText>
-      <BaseText mt={"29px"} mb={"26px"}
-      sx = {{textAlign:i18nStore.isRTL? 'end': "start"}}
+      <BaseText
+        mt={"29px"}
+        mb={"26px"}
+        sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        {props.answer}
       </BaseText>
     </Stack>
   );

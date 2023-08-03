@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Flex, Box } from "@mantine/core";
+import { Flex, Box, useMantineTheme } from "@mantine/core";
 import { useStores } from "@/models";
 import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { typography } from "@/themes/Mantine/typography";
-import { COLORS } from "@/themes/Mantine/colors";
 import { translate } from "@/i18n";
 import { useMediaQuery } from "@mantine/hooks";
+import I18NFlex from "@/components/elements/I18NFlex/I18NFlex";
 function AboutProduct() {
   const { i18nStore } = useStores();
+  const theme = useMantineTheme();
   const matches = useMediaQuery("(max-width: 500px)");
   const [currentTab, setCurrentTab] = useState<any>("About product");
   const ProductLabels = [
@@ -22,15 +23,28 @@ function AboutProduct() {
     "Cotton",
     "Pick up & delivery courrier"
   ];
+  const ApiData = [
+    {
+      productDescriptionText: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+    occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+    mollit anim id est laborum.`
+    },
+    {
+      productDescriptionText: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.`
+    }
+  ];
   return (
     <Box>
       {ProductLabels.map((item, id) => {
         return (
-          <Flex
-            justify={"space-between"}
-            sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
-          >
-            <BaseText c={COLORS.gray[6]} mb={"14px"}>
+          <I18NFlex justify={"space-between"}>
+            <BaseText c={theme.colors.gray[6]} mb={"14px"}>
               {item}
             </BaseText>
             <Box w={matches ? "50%" : "70%"}>
@@ -42,37 +56,23 @@ function AboutProduct() {
                 {ProductValues[id]}{" "}
               </BaseText>
             </Box>
-          </Flex>
+          </I18NFlex>
         );
       })}
-      <BaseText
-        sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
-        mt={"40px"}
-        style={{
-          ...typography.paragraph[i18nStore.getCurrentLanguage()].p6
-          // textAlign: "justify"
-        }}
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </BaseText>
-      <BaseText
-        sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
-        mt={"40px"}
-        style={{
-          ...typography.paragraph[i18nStore.getCurrentLanguage()].p6
-          // textAlign: "justify"
-        }}
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-      </BaseText>
+      {ApiData.map((item, id) => {
+        return (
+          <BaseText
+            key={id}
+            sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
+            mt={"40px"}
+            style={{
+              ...typography.paragraph[i18nStore.getCurrentLanguage()].p6
+            }}
+          >
+            {item.productDescriptionText}
+          </BaseText>
+        );
+      })}
     </Box>
   );
 }

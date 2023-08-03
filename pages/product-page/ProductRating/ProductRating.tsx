@@ -1,20 +1,20 @@
 import { BaseText } from "@/components/elements/BaseText/BaseText";
-import { Stack, Rating, Flex, Box, Slider } from "@mantine/core";
+import { Stack, Rating, Flex, Box, Slider, useMantineTheme } from "@mantine/core";
 import { useStores } from "@/models";
 import { typography } from "@/themes/Mantine/typography";
 import UserComments from "../UserComments/UserComments";
 import { Images } from "@/public";
-import { COLORS } from "@/themes/Mantine/colors";
 import useStyles from "./../ProductPage.style";
+import I18NFlex from "@/components/elements/I18NFlex/I18NFlex";
 
 function ProductRating() {
   const { i18nStore } = useStores();
   const { classes } = useStyles();
+  const theme = useMantineTheme();
   return (
     <Stack mt="40px">
-      <Flex
+      <I18NFlex
         className={classes.flexWrapper5}
-        sx={{ flexDirection: i18nStore.isRTL ? "row-reverse" : "row" }}
       >
         <Box>
           <BaseText
@@ -28,8 +28,7 @@ function ProductRating() {
         <Box>
           {[...Array(5)].map((item, id) => {
             return (
-              <Flex key={id} align={"center"} gap="7px"
-              sx = {{flexDirection: i18nStore.isRTL?"row-reverse":"row"}}
+              <I18NFlex key={id} align={"center"} gap="7px"
               >
                 <Rating defaultValue={2} count={1} readOnly />
                 <BaseText>{id + 1}</BaseText>
@@ -42,19 +41,19 @@ function ProductRating() {
                   disabled
                 />
                 <BaseText
-                  c={COLORS.gray[6]}
+                  c={theme.colors.gray[6]}
                   style={
                     typography.inputFieldText[i18nStore.getCurrentLanguage()].i4
                   }
                 >
                   {8}
                 </BaseText>
-              </Flex>
+              </I18NFlex>
             );
           })}
         </Box>
-      </Flex>
-      <UserComments />
+      </I18NFlex>
+      <UserComments  />
       <UserComments images={[Images.product_image, Images.product_image]} />
       <UserComments />
       <UserComments images={[Images.product_image, Images.product_image]} />

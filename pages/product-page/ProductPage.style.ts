@@ -119,5 +119,25 @@ export default createStyles((theme) => ({
   mark: {
     backgroundColor: COLORS.gray[6],
   },
+  boxStyles:{
+    display: "flex",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    height: "34px",
+    backgroundColor: "white",
+    color: "black",
+    width: "84px",
+    borderRadius: "26px",
+  },
+  popoverStyle: {
+    display: "flex",
+    paddingLeft:"24px",
+    paddingRight:"24px",
+    alignItems: "center",
+    borderRadius: "18px",
+    gap: "12px",
+    boxShadow: "1px 1px 10px rgba(0, 0, 0, 0.15)",
+    height: "56px"
+  }
   
 }));

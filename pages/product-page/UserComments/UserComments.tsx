@@ -1,10 +1,9 @@
-import { Box, Flex, Image, Rating } from "@mantine/core";
+import { Box, Flex, Image, Rating, useMantineTheme } from "@mantine/core";
 import { Images } from "@/public";
 import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { useStores } from "@/models";
 import { typography } from "@/themes/Mantine/typography";
 import { useMediaQuery } from "@mantine/hooks";
-import { COLORS } from "@/themes/Mantine/colors";
 import useStyles from "./../ProductPage.style";
 
 interface UserCommentsProps {
@@ -18,6 +17,7 @@ interface UserCommentsProps {
 function UserComments(props: UserCommentsProps) {
   const { i18nStore } = useStores();
   const { classes } = useStyles();
+  const theme = useMantineTheme();
   const mobile = useMediaQuery("(max-width:500px)");
   return (
     <Box mt={"50px"}>
@@ -41,7 +41,7 @@ function UserComments(props: UserCommentsProps) {
               Diane Lansdowne
             </BaseText>
             <BaseText
-              c={COLORS.gray[6]}
+              c={theme.colors.gray[6]}
               style={typography.label[i18nStore.getCurrentLanguage()].l11}
             >
               June 16th, 2020
