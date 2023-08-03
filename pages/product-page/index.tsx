@@ -51,6 +51,13 @@ const BreadcrumbsLabels = [
   { title: "T-shirt & tanks", href: "#" },
   { title: "Basic round neck Tshirt", href: "#" }
 ];
+const ApiData= {
+  productHeading: "Product name lorem ipsum dolor set amet",
+  productPrice:"$78.32",
+  brandName:"Pebea Sneakers",
+  location:"Bangalore",
+  productRating: '4.1'
+}
 
 function BreadcrumbPath() {
   const { i18nStore } = useStores();
@@ -95,6 +102,7 @@ function ProductCard() {
   const { i18nStore } = useStores();
   const { classes } = useStyles();
   const theme = useMantineTheme();
+  
   return (
     <Card
       mb={"50px"}
@@ -123,7 +131,8 @@ function ProductCard() {
               color={theme.colors.dark[8]}
               style={typography.label[i18nStore.getCurrentLanguage()].l6}
             >
-              Pebea Sneakers
+            
+              {ApiData.brandName}
             </BaseText>
             <I18NFlex justify={"space-between"} align={"center"} gap={"6px"}>
               <Image
@@ -136,7 +145,8 @@ function ProductCard() {
                 color={theme.colors.dark[8]}
                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
               >
-                Bangalore
+                {ApiData.location}
+            
               </BaseText>
               <Image
                 width={"1px"}
@@ -154,7 +164,7 @@ function ProductCard() {
                 color={theme.colors.dark[8]}
                 style={typography.label[i18nStore.getCurrentLanguage()].l1}
               >
-                4.1
+                {ApiData.productRating}
               </BaseText>
             </I18NFlex>
           </Box>
@@ -204,6 +214,7 @@ function ProductProfile() {
   const [countItems, setCountItems] = useState(0);
   const { classes } = useStyles();
   const [isBookMarkSave, setIsBookMarkSave] = useState(false);
+  
   return (
     <Stack miw={"50%"}>
       <I18NFlex gap={"22px"}>
@@ -225,7 +236,7 @@ function ProductProfile() {
         sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
         style={typography.headings[i18nStore.getCurrentLanguage()].h9}
       >
-        Product name lorem ipsum dolor set amet
+        {ApiData.productHeading}
       </BaseText>
       <BaseText
         mt={"20px"}
@@ -233,7 +244,7 @@ function ProductProfile() {
         sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
         style={typography.label[i18nStore.getCurrentLanguage()].l8}
       >
-        $78.25
+        {ApiData.productPrice}
       </BaseText>
       <BaseText
         mb="16px"
