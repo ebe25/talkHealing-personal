@@ -67,7 +67,7 @@ export const Login = (props: loginProps) => {
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError(res.error)
+            setError(res.error.non_field_errors)
             setTimeout(() => {
               setError("")
             }, 5000)
