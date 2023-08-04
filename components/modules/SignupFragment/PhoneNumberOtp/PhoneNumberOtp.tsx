@@ -46,7 +46,7 @@ export const PhoneNumberOtp = () => {
                 numberOtpFrom.setValues({
                     numberOtp: "",
                 });
-                router.push('/home')
+                router.push('/profile')
                 setLoader(false)
             }
             else if (res.code == 400) {
