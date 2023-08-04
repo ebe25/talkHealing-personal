@@ -41,7 +41,7 @@ export const Address = () => {
     <>
     {addressRecall?
       <Center h={"100vh"} >
-      <Loader size="xl" />;
+      <Loader size="xl" />
     </Center>:
     <Box className={classes.container}>
       <Button
