@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Center, Flex, Loader } from '@mantine/core';
+import { Box, Center, Flex } from '@mantine/core';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -8,7 +8,6 @@ import { useStores } from '@/models';
 import { useForm } from "@mantine/form";
 import { PinInput } from '@mantine/core';
 import { translate } from "../../../../i18n";
-import { createStyle } from "./EmailOtp.style";
 import swal from 'sweetalert';
 
 export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
@@ -16,8 +15,6 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
     const theme = useMantineTheme();
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
-    const useStyles = createStyle()
-    const { classes } = useStyles();
 
     const emailOtpFrom = useForm({
         initialValues: {
@@ -72,12 +69,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
     return (
         <Flex gap={26}
             direction={'column'}
-        >  {/* Loader */}
-            {loader ? (
-                <Box className={classes.loaderBox}>
-                    <Loader size="xl" />
-                </Box>
-            ) : null}
+        >
             <form onSubmit={emailOtpFrom.onSubmit((values) => console.log(values))}>
                 <Flex justify={'center'} align={'center'} direction={'column'} gap={30}>
                     <Center>
@@ -137,6 +129,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
                         h={'39px'}
                         style_variant={emailOtpFrom.isValid() ? 'filled' : 'disabled'}
                         color_variant={emailOtpFrom.isValid() ? 'blue' : 'gray'}
+                        loading={loader}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}

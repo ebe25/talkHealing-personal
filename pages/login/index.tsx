@@ -3,7 +3,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Center, Container, Flex, Grid, Image, Loader, Text } from '@mantine/core';
+import { Box, Center, Container, Flex, Grid, Image , Text } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
@@ -142,12 +142,6 @@ export const Login = (props: loginProps) => {
     <Container
       maw={"1400px"}
     >
-      {/* Loader */}
-      {loader ? (
-        <Box className={classes.loaderBox}>
-          <Loader size="xl" />
-        </Box>
-      ) : null}
       <Grid
         className={classes.container}
         gutter="100px"
@@ -272,6 +266,7 @@ export const Login = (props: loginProps) => {
                 mah={'39px'}
                 style_variant={loginForm.isValid() ? 'filled' : 'disabled'}
                 color_variant={loginForm.isValid() ? 'blue' : 'gray'}
+                loading={loader}
               >
                 <BaseText
                   style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}

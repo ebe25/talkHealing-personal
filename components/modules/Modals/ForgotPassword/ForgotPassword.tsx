@@ -9,7 +9,6 @@ import { useMediaQuery } from '@mantine/hooks';
 import { useStores } from '@/models';
 import { Images } from '../../../../public/index';
 import { useForm } from "@mantine/form";
-import { Loader } from '@mantine/core';
 import { translate } from '@/i18n';
 import { countries } from "countries-list"
 import { IconChevronDown } from '@tabler/icons-react';
@@ -221,6 +220,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         style_variant={'filled'}
         w={isPhone ? '100%' : '47%'}
         h={'45px'}
+        loading={loader}
         {...props}
       >
         <BaseText txtkey={'global.button.confirm'} />
@@ -238,12 +238,6 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         opened={props.opened}
         onClose={props.close}
       >
-        {/* Loader */}
-        {loader ? (
-          <Box className={classes.loaderBox}>
-            <Loader size="xl" />
-          </Box>
-        ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
           <Flex direction={'column'} gap={8}>
             <Flex direction={i18nStore.isRTL ? 'row-reverse' : 'row'} justify={'space-between'}>

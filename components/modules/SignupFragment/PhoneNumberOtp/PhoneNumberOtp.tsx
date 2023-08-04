@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Center, Flex, Loader } from '@mantine/core';
+import { Box, Center, Flex } from '@mantine/core';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -10,7 +10,6 @@ import { PinInput } from '@mantine/core';
 import { translate } from "../../../../i18n";
 import swal from 'sweetalert';
 import { useRouter } from 'next/router';
-import { createStyle } from "./PhoneNumberOtp.style"
 
 
 export const PhoneNumberOtp = () => {
@@ -19,8 +18,6 @@ export const PhoneNumberOtp = () => {
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
     const router = useRouter();
-    const useStyles = createStyle()
-    const { classes } = useStyles();
 
     const numberOtpFrom = useForm({
         initialValues: {
@@ -83,12 +80,6 @@ export const PhoneNumberOtp = () => {
         <Flex gap={26}
             direction={'column'}
         >
-            {/* Loader */}
-            {loader ? (
-                <Box className={classes.loaderBox}>
-                    <Loader size="xl" />
-                </Box>
-            ) : null}
             <form onSubmit={numberOtpFrom.onSubmit((values) => console.log(values))}>
                 <Flex justify={'center'} align={'center'} direction={'column'} gap={30}>
                     <Center>
@@ -149,6 +140,7 @@ export const PhoneNumberOtp = () => {
                         h={'39px'}
                         style_variant={numberOtpFrom.isValid() ? 'filled' : 'disabled'}
                         color_variant={numberOtpFrom.isValid() ? 'blue' : 'gray'}
+                        loading={loader}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}

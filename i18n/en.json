@@ -72,7 +72,7 @@
       "emailPara":"Please enter the new email address you would like to change.",
       "email":"Email",
       "verifyOtp":"Verify Email",
-      "emailOtpPara":"We have sent the OTP in your email. Please enter the OTP for the verification.",
+      "emailOtpPara":"We have sent the Otp in your email. Please enter the Otp for the verification.",
       "resendCode":"Didn’t get the code?",
       "resendText":"Resend Code",
       "emailChanged":"Email address has successfully been changed.",
@@ -81,7 +81,7 @@
       "changePhoneNumber":"Change Phone Number",
       "countryCode":"Select Country Code",
       "verifyNumber":"Verify Phone Number",
-      "verifyNumberOtpPara":"We have sent the OTP in your email. Please enter the OTP for the verification.",
+      "verifyNumberOtpPara":"We have sent the Otp in your email. Please enter the Otp for the verification.",
       "phoneNumberLengthError":"Please enter a number",
       "afterPhoneNumberVerifypara":"Phone number has successfully been changed."
     },
@@ -122,7 +122,7 @@
       "postalCodeError":"Please enter Postal Code",
       "addressOneError":"Please enter Address One",
       "addressTwoError":"Please enter Address Two",
-      "invalidOtp":"Invalid Otp",
+      "invalidOtp":"Invalid OTP",
       "error": "Error"
     }
   },
