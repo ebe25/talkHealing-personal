@@ -151,6 +151,18 @@ export const API_ENDPOINTS = {
         response: null,
         transformer: null,
     }),
+    loginFacebook: new API_ENDPOINT({
+        url: "/social-auth/facebook/",
+        method: REQUEST_METHOD.POST,
+        response: null,
+        transformer: TRANSFORMERS.userPaginatedTransformer,
+    }),
+    loginGoogle: new API_ENDPOINT({
+        url: "/social-auth/google/",
+        method: REQUEST_METHOD.POST,
+        response: null,
+        transformer: TRANSFORMERS.userPaginatedTransformer,
+       }),
     smsPasswordReset: new API_ENDPOINT({
         url: "/auth/sms-password-reset",
         method: REQUEST_METHOD.POST,
