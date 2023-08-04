@@ -79,7 +79,7 @@ export const Account = () => {
     <>
     {loader?
       <Center h={"100vh"} >
-      <Loader size="xl" />;
+      <Loader size="xl" />
     </Center>:
   
     <Box className={classes.container}>
