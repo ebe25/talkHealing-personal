@@ -1,6 +1,6 @@
 import { BaseButton } from "@/components/elements/BaseButton/BaseButton";
 import { BaseText } from "@/components/elements/BaseText/BaseText";
-import I18NFlex from "@/components/elements/I18NFlex/I18nFlex";
+import I18nFlex from "@/components/elements/I18NFlex/I18nFlex";
 import { translate } from "@/i18n";
 import { useStores } from "@/models";
 import { Images } from "@/public";
@@ -111,14 +111,14 @@ function ProductCard() {
       padding={"0px"}
       style={{ borderRadius: "26px" }}
     >
-      <I18NFlex
+      <I18nFlex
         className={classes.flexWrapper3}
         style={{
           borderRadius: "26px",
           border: `solid 1px ${theme.colors.gray[2]}`
         }}
       >
-        <I18NFlex className={classes.flexWrapper4}>
+        <I18nFlex className={classes.flexWrapper4}>
           <Image
             width={"54px"}
             height={"54px"}
@@ -134,7 +134,7 @@ function ProductCard() {
             
               {ApiData.brandName}
             </BaseText>
-            <I18NFlex justify={"space-between"} align={"center"} gap={"6px"}>
+            <I18nFlex justify={"space-between"} align={"center"} gap={"6px"}>
               <Image
                 width={"10.5px"}
                 height={"14px"}
@@ -166,10 +166,10 @@ function ProductCard() {
               >
                 {ApiData.productRating}
               </BaseText>
-            </I18NFlex>
+            </I18nFlex>
           </Box>
-        </I18NFlex>
-        <I18NFlex
+        </I18nFlex>
+        <I18nFlex
           className={classes.flexWrapper7}
           mr={"24px"}
           ml={i18nStore.isRTL ? "24px" : " 0px"}
@@ -190,18 +190,18 @@ function ProductCard() {
             src={Images.chat_icon}
             alt="chat_icon"
           />
-        </I18NFlex>
-      </I18NFlex>
+        </I18nFlex>
+      </I18nFlex>
       <Box mt={"24px"} mb={"30px"}>
         {ProductdetailFields.map((item, idx) => (
-          <I18NFlex justify={"space-between"} key={idx} mt="16px" mx={"32px"}>
+          <I18nFlex justify={"space-between"} key={idx} mt="16px" mx={"32px"}>
             <BaseText color={theme.colors.gray[6]}>{item}</BaseText>
             <BaseText
               style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}
             >
               {ProductInformation[idx]}
             </BaseText>
-          </I18NFlex>
+          </I18nFlex>
         ))}
       </Box>
     </Card>
@@ -217,7 +217,7 @@ function ProductProfile() {
   
   return (
     <Stack miw={"50%"}>
-      <I18NFlex gap={"22px"}>
+      <I18nFlex gap={"22px"}>
         <BadgeIcon
           logo={Images.brand_icon}
           title={"Nike"}
@@ -230,7 +230,7 @@ function ProductProfile() {
           w={"17px"}
           h={"17px"}
         />
-      </I18NFlex>
+      </I18nFlex>
       <BaseText
         color={theme.colors.cyan[9]}
         sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
@@ -256,7 +256,7 @@ function ProductProfile() {
       >
         {translate("productPage.colors")}
       </BaseText>
-      <I18NFlex gap="xl" wrap={"wrap"}>
+      <I18nFlex gap="xl" wrap={"wrap"}>
         {["White", "Black", "Blue", "Red"].map((item, id) => {
           return (
             <BaseButton
@@ -274,7 +274,7 @@ function ProductProfile() {
             </BaseButton>
           );
         })}
-      </I18NFlex>
+      </I18nFlex>
       <BaseText
         my="16px"
         sx={{ textAlign: i18nStore.isRTL ? "end" : "start" }}
@@ -285,7 +285,7 @@ function ProductProfile() {
       >
         {translate("productPage.size")}
       </BaseText>
-      <I18NFlex gap="xl" wrap={"wrap"}>
+      <I18nFlex gap="xl" wrap={"wrap"}>
         {["38", "39", "40", "41", "42", "43", "44", "45", "46"].map(
           (item, id) => {
             return (
@@ -305,8 +305,8 @@ function ProductProfile() {
             );
           }
         )}
-      </I18NFlex>
-      <I18NFlex
+      </I18nFlex>
+      <I18nFlex
         my={"40px"}
         align={"center"}
         gap={"18px"}
@@ -429,7 +429,7 @@ function ProductProfile() {
             </Popover.Dropdown>
           </Popover>
         </Flex>
-      </I18NFlex>
+      </I18nFlex>
       <ProductTabs />
     </Stack>
   );
@@ -443,7 +443,7 @@ function ProductPage() {
     <Container maw="1350px">
       <Box className={classes.boxWrapper}>
         <BreadcrumbPath />
-        <I18NFlex className={classes.flexWrapper2} justify={"center"}>
+        <I18nFlex className={classes.flexWrapper2} justify={"center"}>
           <Box>
             <Box>
               <Image
@@ -461,7 +461,7 @@ function ProductPage() {
             <ProductCard />
           </Box>
           <ProductProfile />
-        </I18NFlex>
+        </I18nFlex>
       </Box>
     </Container>
   );

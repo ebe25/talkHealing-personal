@@ -5,15 +5,14 @@ import { typography } from "@/themes/Mantine/typography";
 import UserComments from "../UserComments/UserComments";
 import { Images } from "@/public";
 import useStyles from "./../ProductPage.style";
-import I18NFlex from "@/components/elements/I18NFlex/I18nFlex";
-
+import I18nFlex from "@/components/elements/I18NFlex/I18nFlex";
 function ProductRating() {
   const { i18nStore } = useStores();
   const { classes } = useStyles();
   const theme = useMantineTheme();
   return (
     <Stack mt="40px">
-      <I18NFlex
+      <I18nFlex
         className={classes.flexWrapper5}
       >
         <Box>
@@ -28,7 +27,7 @@ function ProductRating() {
         <Box>
           {[...Array(5)].map((item, id) => {
             return (
-              <I18NFlex key={id} align={"center"} gap="7px"
+              <I18nFlex key={id} align={"center"} gap="7px"
               >
                 <Rating defaultValue={2} count={1} readOnly />
                 <BaseText>{id + 1}</BaseText>
@@ -48,11 +47,11 @@ function ProductRating() {
                 >
                   {8}
                 </BaseText>
-              </I18NFlex>
+              </I18nFlex>
             );
           })}
         </Box>
-      </I18NFlex>
+      </I18nFlex>
       <UserComments  />
       <UserComments images={[Images.product_image, Images.product_image]} />
       <UserComments />

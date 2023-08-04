@@ -5,7 +5,7 @@ import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { typography } from "@/themes/Mantine/typography";
 import { translate } from "@/i18n";
 import { useMediaQuery } from "@mantine/hooks";
-import I18NFlex from "@/components/elements/I18NFlex/I18nFlex";
+import I18nFlex from "@/components/elements/I18NFlex/I18nFlex";
 function AboutProduct() {
   const { i18nStore } = useStores();
   const theme = useMantineTheme();
@@ -43,7 +43,7 @@ function AboutProduct() {
     <Box>
       {ProductLabels.map((item, id) => {
         return (
-          <I18NFlex justify={"space-between"}>
+          <I18nFlex justify={"space-between"}>
             <BaseText c={theme.colors.gray[6]} mb={"14px"}>
               {item}
             </BaseText>
@@ -56,7 +56,7 @@ function AboutProduct() {
                 {ProductValues[id]}{" "}
               </BaseText>
             </Box>
-          </I18NFlex>
+          </I18nFlex>
         );
       })}
       {ApiData.map((item, id) => {
