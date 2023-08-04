@@ -1,6 +1,6 @@
 import { BaseButton } from "@/components/elements/BaseButton/BaseButton";
 import { BaseText } from "@/components/elements/BaseText/BaseText";
-import I18NFlex from "@/components/elements/I18NFlex/I18NFlex";
+import I18NFlex from "@/components/elements/I18NFlex/I18nFlex";
 import { translate } from "@/i18n";
 import { useStores } from "@/models";
 import { Images } from "@/public";
