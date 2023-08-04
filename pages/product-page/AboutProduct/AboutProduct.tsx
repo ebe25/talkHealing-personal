@@ -5,7 +5,7 @@ import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { typography } from "@/themes/Mantine/typography";
 import { translate } from "@/i18n";
 import { useMediaQuery } from "@mantine/hooks";
-import I18NFlex from "@/components/elements/I18NFlex/I18NFlex";
+import I18NFlex from "@/components/elements/I18NFlex/I18nFlex";
 function AboutProduct() {
   const { i18nStore } = useStores();
   const theme = useMantineTheme();

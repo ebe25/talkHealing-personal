@@ -5,7 +5,7 @@ import { typography } from "@/themes/Mantine/typography";
 import UserComments from "../UserComments/UserComments";
 import { Images } from "@/public";
 import useStyles from "./../ProductPage.style";
-import I18NFlex from "@/components/elements/I18NFlex/I18NFlex";
+import I18NFlex from "@/components/elements/I18NFlex/I18nFlex";
 
 function ProductRating() {
   const { i18nStore } = useStores();

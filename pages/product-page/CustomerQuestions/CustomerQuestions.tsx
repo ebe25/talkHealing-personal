@@ -3,7 +3,7 @@ import { Flex, Stack, useMantineTheme } from "@mantine/core";
 import { typography } from "@/themes/Mantine/typography";
 import { useStores } from "@/models";
 import { translate } from "@/i18n";
-import I18NFlex from "@/components/elements/I18NFlex/I18NFlex";
+import I18NFlex from "@/components/elements/I18NFlex/I18nFlex";
 interface CustomerQuestionsProps {
   question?: any;
   timestamp?: any;
