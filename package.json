@@ -22,6 +22,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
     "@greatsumini/react-facebook-login": "^3.3.3",
+    "@hookform/resolvers": "^3.1.1",
     "@mantine/carousel": "6.0.2",
     "@mantine/core": "6.0.2",
     "@mantine/dates": "6.0.2",
@@ -40,8 +41,8 @@
     "@tabler/icons-react": "^2.4.0",
     "@types/i18n-js": "^3.8.4",
     "apisauce": "^3.0.0",
-    "countries-list": "^2.6.1",
     "cookies-next": "^2.1.1",
+    "countries-list": "^2.6.1",
     "country-state-city": "^3.1.4",
     "dayjs": "^1.11.6",
     "embla-carousel-react": "^7.0.3",
@@ -55,8 +56,10 @@
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.45.2",
     "rtl-detect": "^1.0.4",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
