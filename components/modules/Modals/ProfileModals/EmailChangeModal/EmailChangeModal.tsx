@@ -43,13 +43,13 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any; setAddres
     },
   });
 
-  const emailChange = () => {
+  const changeEmail = () => {
     let results = changeMail.validate();
     if (results.hasErrors) return;
     if (!changeMail.isValid()) return;
     else{
       setLoader(true)
-      userStore.emailChange(changeMail.values.email).then((res) => {
+      userStore.changeEmail(changeMail.values.email).then((res) => {
         if(res.ok){
           props.onClose();
           changeMail.reset();
@@ -140,7 +140,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any; setAddres
             loading={loader}
             style_variant={!changeMail.isValid() ? 'disabled' : 'filled'}
             color_variant={!changeMail.isValid() ? 'gray' : 'blue'}
-            onClick={emailChange}
+            onClick={changeEmail}
           >
             <BaseText txtkey="global.button.continue" />
           </BaseButton>

@@ -24,7 +24,7 @@ export const DeleteAddressModal = (props: {
 
   const deleteAddress = () => {
     setLoader(true)
-    userStore.addressDelete(props.id).then((res) => {
+    userStore.deleteAddress(props.id).then((res) => {
       if (res.ok) {
         setLoader(false)
         props.onClose();

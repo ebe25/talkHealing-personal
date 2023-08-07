@@ -41,13 +41,13 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAdd
     },
   });
 
-  const handleEmailChangeOtp = () => {
+  const verifyEmailChangeOtp = () => {
     setLoader(true);
     let results = otpVerify.validate();
     if (results.hasErrors) return;
     if (!otpVerify.isValid()) return setLoader(false);
     else {
-      userStore.emailChangeVerify(otpVerify.values.otp).then((res) => {
+      userStore.verifyChangeEmail(otpVerify.values.otp).then((res) => {
         if (res.ok) {
           otpVerify.reset();
           props.onClose();
@@ -67,8 +67,8 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAdd
     }
   };
 
-  const handleEmailChangeOtpResend = () => {
-    userStore.emailChangeOtpResend().then((res) => {
+  const resendChangeEmailOtp = () => {
+    userStore.resendChangeEmailOtp().then((res) => {
       if (res.ok) {
         otpVerify.reset();
         setOtpResendResponseText(res.message);
@@ -152,7 +152,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAdd
             />
             &nbsp;
             <BaseText
-              onClick={handleEmailChangeOtpResend}
+              onClick={resendChangeEmailOtp}
               txtkey="profile.modal.resendText"
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
               className={classes.pointer}
@@ -165,7 +165,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAdd
             loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}
-            onClick={handleEmailChangeOtp}
+            onClick={verifyEmailChangeOtp}
           >
             <BaseText txtkey="global.button.verify" />
           </BaseButton>

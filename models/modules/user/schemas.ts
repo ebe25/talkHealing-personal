@@ -112,9 +112,9 @@ export const Address = types.model({
   postal_code: types.string
 })
 export interface AddressType extends Instance<typeof Address> { }
-export const AddressPaginated = types.model({
+export const AddressResults = types.model({
   ...PaginatedSchemaBase,
   results: types.array(Address),
 })
-export interface AddressPaginatedType extends Instance<typeof AddressPaginated> { }
+export interface AddressPaginatedType extends Instance<typeof AddressResults> { }
 

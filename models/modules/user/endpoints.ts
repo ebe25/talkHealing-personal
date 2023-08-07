@@ -133,31 +133,31 @@ export const API_ENDPOINTS = {
         response: SCHEMAS.User,
         transformer: TRANSFORMERS.userTransformer,
     }),
-    emailChange: new API_ENDPOINT({
+    changeEmail: new API_ENDPOINT({
         url: "/auth/email-change/",
         method: REQUEST_METHOD.POST,
         response: null,
         transformer: null,
     }),
-    emailChangeVerify: new API_ENDPOINT({
+    verifyChangeEmail: new API_ENDPOINT({
         url: "/auth/email-change/verify-change-email/",
         method: REQUEST_METHOD.POST,
         response: null,
         transformer: null,
     }),
-    emailChangeOtpResend: new API_ENDPOINT({
+    resendChangeEmailOtp: new API_ENDPOINT({
         url: "/auth/email-change/verify-change-email/resend/",
         method: REQUEST_METHOD.GET,
         response: null,
         transformer: null,
     }),
-    phoneChange: new API_ENDPOINT({
+    changePhoneNumber: new API_ENDPOINT({
         url: "/auth/change-phone-number/",
         method: REQUEST_METHOD.POST,
         response: null,
         transformer: null,
     }),
-    phoneChangeVerify: new API_ENDPOINT({
+    changePhoneNumberVerify: new API_ENDPOINT({
         url: "/auth/change-phone-number/verify-change-phone-number/",
         method: REQUEST_METHOD.POST,
         response: null,
@@ -181,13 +181,13 @@ export const API_ENDPOINTS = {
         response: null,
         transformer: null,
     }),
-    addressUpdate: new API_ENDPOINT({
+    updateAddress: new API_ENDPOINT({
         url: "/base_user/user-address/{id}/",
         method: REQUEST_METHOD.PATCH,
         response: null,
         transformer: null,
     }),
-    addressDelete: new API_ENDPOINT({
+    deleteAddress: new API_ENDPOINT({
         url: "/base_user/user-address/{id}/",
         method: REQUEST_METHOD.DELETE,
         response: null,

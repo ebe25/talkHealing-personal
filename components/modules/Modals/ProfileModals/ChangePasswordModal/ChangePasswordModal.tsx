@@ -31,7 +31,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
   const [loader, setLoader] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const changepassword = useForm({
+  const changePasswordForm = useForm({
     initialValues: {
       currentPassword: '',
       newPassword: '',
@@ -56,33 +56,33 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
     },
   });
 
-  const passwordMatch = () =>
-    changepassword.values.newPassword != changepassword.values.confirmNewPassword;
+  const passwordsMatching = () =>
+    changePasswordForm.values.newPassword != changePasswordForm.values.confirmNewPassword;
 
   const handlePasswordChange = () => {
-    let results = changepassword.validate();
+    let results = changePasswordForm.validate();
     if (results.hasErrors) return;
-    if (!changepassword.isValid()) return;
-    if (passwordMatch()) return;
+    if (!changePasswordForm.isValid()) return;
+    if (passwordsMatching()) return;
     else {
       setLoader(true);
       userStore
         .changePassword(
-          changepassword.values.currentPassword,
-          changepassword.values.newPassword,
-          changepassword.values.confirmNewPassword
+          changePasswordForm.values.currentPassword,
+          changePasswordForm.values.newPassword,
+          changePasswordForm.values.confirmNewPassword
         )
         .then((res) => {
           if (res.ok) {
             props.onClose();
-            changepassword.reset();
+            changePasswordForm.reset();
             open();
             props.setAddressRecall(false)
             setLoader(false);
           } else if (res.code == 400) {
             if (res.error) {
               setLoader(false);
-              changepassword.reset();
+              changePasswordForm.reset();
               setErrorMessage(res.error.toString());
               setTimeout(() => {
                 setErrorMessage('');
@@ -102,7 +102,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
         opened={props.opened}
         onClose={() => {
           props.onClose();
-          changepassword.reset();
+          changePasswordForm.reset();
           props.setAddressRecall(false)
         }}
         withCloseButton={false}
@@ -120,7 +120,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
           <Image
             onClick={() => {
               props.onClose();
-              changepassword.reset();
+              changePasswordForm.reset();
               props.setAddressRecall(false)
             }}
             style={boilerPlateStyles.cursor}
@@ -130,7 +130,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
             height={'14px'}
           />
         </I18nFlex>
-        <form onSubmit={changepassword.onSubmit((values) => console.log(values))}>
+        <form onSubmit={changePasswordForm.onSubmit((values) => console.log(values))}>
           <Stack mt={'34px'}>
             <BaseText
               className={classes.align}
@@ -140,7 +140,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
             />
             <BasePasswordInput
               placeholder={`${translate('profile.modal.currentPassword')}`}
-              {...changepassword.getInputProps('currentPassword')}
+              {...changePasswordForm.getInputProps('currentPassword')}
               autoComplete="on"
             />
           </Stack>
@@ -153,7 +153,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
             />
             <BasePasswordInput
               placeholder={`${translate('profile.modal.newPassword')}`}
-              {...changepassword.getInputProps('newPassword')}
+              {...changePasswordForm.getInputProps('newPassword')}
               autoComplete="on"
             />
           </Stack>
@@ -166,12 +166,12 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
             />
             <BasePasswordInput
               placeholder={`${translate('profile.modal.confirmPassword')}`}
-              {...changepassword.getInputProps('confirmNewPassword')}
+              {...changePasswordForm.getInputProps('confirmNewPassword')}
               autoComplete="on"
             />
           </Stack>
         </form>
-        {passwordMatch() ? (
+        {passwordsMatching() ? (
           <BaseText txtkey="profile.error.passwordMatchError" color={theme.colors.red[5]} />
         ) : null}
         {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
@@ -180,8 +180,8 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
           w={'100%'}
           h={'40px'}
           loading={loader}
-          style_variant={!changepassword.isValid() || passwordMatch() ? 'disabled' : 'filled'}
-          color_variant={!changepassword.isValid() || passwordMatch() ? 'gray' : 'blue'}
+          style_variant={!changePasswordForm.isValid() || passwordsMatching() ? 'disabled' : 'filled'}
+          color_variant={!changePasswordForm.isValid() || passwordsMatching() ? 'gray' : 'blue'}
           onClick={handlePasswordChange}
         >
           <BaseText txtkey="global.button.save" />

@@ -47,7 +47,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any; 
     if (results.hasErrors) return;
     if (!otpVerify.isValid()) return setLoader(false);
     else {
-      userStore.phoneChangeVerify(otpVerify.values.otp).then((res)=>{
+      userStore.changePhoneNumberVerify(otpVerify.values.otp).then((res)=>{
         if(res.ok){
           setLoader(false)
           props.onClose();

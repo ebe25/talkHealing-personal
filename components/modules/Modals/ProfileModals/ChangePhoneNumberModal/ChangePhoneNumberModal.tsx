@@ -66,7 +66,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any; set
     if (!changePhoneNumber.isValid()) return setLoader(false);
     else {
       userStore
-        .phoneChange(changePhoneNumber.values.country_code + changePhoneNumber.values.phone)
+        .changePhoneNumber(changePhoneNumber.values.country_code + changePhoneNumber.values.phone)
         .then((res) => {
           if (res.ok) {
             setLoader(false)

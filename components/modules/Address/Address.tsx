@@ -26,7 +26,7 @@ export const Address = () => {
   const [ modalHeading, setModalHeading ] = useState<any>();
   const [ addressRecall, setAddressRecall ] = useState(true);
   const [ userAddress, setUserAddress ] = useState<AddressPaginatedType>();
-  const [ addressId, setAddresId ] = useState("");
+  const [ addressId, setAddressId ] = useState("");
   useEffect(() => {
     userStore.getLoginUserData()
     userStore.getUserAddress().then((res)=>{
@@ -49,7 +49,7 @@ export const Address = () => {
         variant="outline"
         rightIcon={<IconCirclePlus color={theme.colors.blue[5]} />}
         onClick={()=>{
-          setAddresId("")
+          setAddressId("")
           setModalHeading("profile.addressButton");
           open()
         }}
@@ -77,7 +77,7 @@ export const Address = () => {
                 style_variant='outline'
                 color_variant='blue'
                 onClick={()=>{
-                  setAddresId(item.id)
+                  setAddressId(item.id)
                   setModalHeading("profile.addressDetails")
                   editAddress[1].open()
                 }}
@@ -91,7 +91,7 @@ export const Address = () => {
                 style_variant='outline'
                 color_variant='red'
                 onClick={()=>{
-                  setAddresId(item.id)
+                  setAddressId(item.id)
                   address[1].open()
                 }}
               >
@@ -106,7 +106,7 @@ export const Address = () => {
       })}
       <AddressModal
         setAddressRecall={setAddressRecall}
-        setAddresId={setAddresId}
+        setAddressId={setAddressId}
         opened={opened}
         onClose={close}
         modalHeading={modalHeading}
@@ -114,7 +114,7 @@ export const Address = () => {
       <AddressModal
         setAddressRecall={setAddressRecall}
         id={addressId}
-        setAddresId={setAddresId}
+        setAddressId={setAddressId}
         // data={JSON.stringify(userAddress?.results[userAddressid])}
         opened={editAddress[0]}
         onClose={editAddress[1].close}

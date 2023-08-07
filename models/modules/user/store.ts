@@ -19,7 +19,7 @@ export const UserStore = types
     remember_me: types.maybeNull(types.boolean),
     isLoggedInUser: types.maybeNull(types.boolean),
     verfyEmailData: types.maybeNull(UserSchemas.LoggedInUser),
-    address: types.maybeNull(UserSchemas.AddressPaginated),
+    address: types.maybeNull(UserSchemas.AddressResults),
     getAddress: types.maybeNull(UserSchemas.Address),
   })
   .extend(withEnvironment)
@@ -74,7 +74,6 @@ export const UserStore = types
           self.loggedInUserData = null;
           return ACTION_RESPONSES.success;
         default:
-          yield storage.clear();
           console.error("UNHANDLED ERROR");
           break;
       }
@@ -345,11 +344,11 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    emailChange: flow(function* (
+    changeEmail: flow(function* (
       email: string,
     ) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.emailChange,
+        API_ENDPOINTS.changeEmail,
         {
           email: email,
         }
@@ -369,11 +368,11 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    emailChangeVerify: flow(function* (
+    verifyChangeEmail: flow(function* (
       otp: string,
     ) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.emailChangeVerify,
+        API_ENDPOINTS.verifyChangeEmail,
         {
           otp: otp,
         }
@@ -393,10 +392,10 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    emailChangeOtpResend: flow(function* (
+    resendChangeEmailOtp: flow(function* (
     ) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.emailChangeOtpResend,{} );
+        API_ENDPOINTS.resendChangeEmailOtp,{} );
       let error = null;
       switch (response.status) {
         case 200:
@@ -412,11 +411,11 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    phoneChange: flow(function* (
+    changePhoneNumber: flow(function* (
       phone: string,
     ) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.phoneChange,
+        API_ENDPOINTS.changePhoneNumber,
         {
           phone: phone,
         }
@@ -436,11 +435,11 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    phoneChangeVerify: flow(function* (
+    changePhoneNumberVerify: flow(function* (
       otp: string,
     ) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.phoneChangeVerify,
+        API_ENDPOINTS.changePhoneNumberVerify,
         {
           otp: otp,
         }
@@ -551,7 +550,7 @@ export const UserStore = types
       );
       switch (response.status) {
         case 200:
-          self.address = UserSchemas.AddressPaginated.create(response.data)
+          self.address = UserSchemas.AddressResults.create(response.data)
           return ACTION_RESPONSES.success;
         case 400:
           return ACTION_RESPONSES.success;;
@@ -578,9 +577,9 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    addressUpdate: flow(function* ( data, id:string|undefined) {
+    updateAddress: flow(function* ( data, id:string|undefined) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.addressUpdate, data, { id: id }
+        API_ENDPOINTS.updateAddress, data, { id: id }
       );
       console.log(response.data)
       switch (response.status) {
@@ -595,9 +594,9 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    addressDelete: flow(function* (id:string|undefined) {
+    deleteAddress: flow(function* (id:string|undefined) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.addressDelete, {}, { id: id }
+        API_ENDPOINTS.deleteAddress, {}, { id: id }
       );
       console.log(response.data)
       switch (response.status) {

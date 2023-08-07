@@ -7,12 +7,12 @@ import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
 import Router from 'next/router';
 import { languageDetails } from '@/models/modules/i18n/schema';
-import { TxKeyPath } from '@/i18n';
+import { translate } from '@/i18n';
 
 export const Settings = () => {
   const { i18nStore, settingsStore } = useStores();
   const { classes } = useStyles();
-  const [notification, setNotification] = useState<any>({
+  const [notificationSettings, setNotificationSettings] = useState<any>({
     push_notification: null,
     email_notification: null,
     sms_notification: null,
@@ -30,7 +30,7 @@ export const Settings = () => {
     settingsStore.getSettings().then((res) => {
       if (res.ok) {
         if (settingsStore.settings != null) {
-          setNotification({
+          setNotificationSettings({
             push_notification: settingsStore.settings.push_notification,
             email_notification: settingsStore.settings.email_notification,
             sms_notification: settingsStore.settings.sms_notification,
@@ -65,17 +65,17 @@ export const Settings = () => {
         <Flex justify={'space-between'} align={'center'}>
           <BaseText txtkey={'profile.setting.push'} />
           <Switch
-            onLabel="ON"
-            offLabel="OFF"
+            onLabel={translate("profile.setting.on")}
+            offLabel={translate("profile.setting.off")}
             defaultChecked={settingsStore.settings?.push_notification}
             onChange={() => {
-              setNotification({
-                ...notification,
-                push_notification: !notification?.push_notification,
+              setNotificationSettings({
+                ...notificationSettings,
+                push_notification: !notificationSettings?.push_notification,
               });
               handleNotification({
-                ...notification,
-                push_notification: !notification?.push_notification,
+                ...notificationSettings,
+                push_notification: !notificationSettings?.push_notification,
               });
             }}
           />
@@ -83,17 +83,17 @@ export const Settings = () => {
         <Flex justify={'space-between'} align={'center'}>
           <BaseText txtkey={'profile.setting.emailNotification'} />
           <Switch
-            onLabel="ON"
-            offLabel="OFF"
+            onLabel={translate("profile.setting.on")}
+            offLabel={translate("profile.setting.off")}
             defaultChecked={settingsStore.settings?.email_notification}
             onChange={() => {
-              setNotification({
-                ...notification,
-                email_notification: !notification?.email_notification,
+              setNotificationSettings({
+                ...notificationSettings,
+                email_notification: !notificationSettings?.email_notification,
               });
               handleNotification({
-                ...notification,
-                email_notification: !notification?.email_notification,
+                ...notificationSettings,
+                email_notification: !notificationSettings?.email_notification,
               });
             }}
           />
@@ -101,17 +101,17 @@ export const Settings = () => {
         <Flex justify={'space-between'} align={'center'}>
           <BaseText txtkey={'profile.setting.smsNotification'} />
           <Switch
-            onLabel="ON"
-            offLabel="OFF"
+            onLabel={translate("profile.setting.on")}
+            offLabel={translate("profile.setting.off")}
             defaultChecked={settingsStore.settings?.sms_notification}
             onClick={() => {
-              setNotification({
-                ...notification,
-                sms_notification: !notification?.sms_notification,
+              setNotificationSettings({
+                ...notificationSettings,
+                sms_notification: !notificationSettings?.sms_notification,
               });
               handleNotification({
-                ...notification,
-                sms_notification: !notification?.sms_notification,
+                ...notificationSettings,
+                sms_notification: !notificationSettings?.sms_notification,
               });
             }}
           />
