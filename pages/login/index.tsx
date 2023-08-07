@@ -38,8 +38,8 @@ export const Login = (props: loginProps) => {
   const [opened, { open, close }] = useDisclosure(false);
 
   const schema = yup.object({
-    email: yup.string().email().required(),
-    password: yup.string().required().min(8),
+    email: yup.string().email(`${translate("authentication.invalidEmail")}`).required(`${translate("authentication.required")}`),
+    password: yup.string().required(`${translate("authentication.required")}`).min(8),
   }).required();
   type FormData = yup.InferType<typeof schema>;
 
@@ -225,7 +225,7 @@ export const Login = (props: loginProps) => {
                   classNames={{ input: classes.input }}
                   placeholder={`${translate('authentication.formText.writeEmail')}`}
                   style_variant={'inputText1'}
-                  error={loginForm.formState.errors.email ? translate("authentication.invalidEmail") : ''}
+                  error={loginForm.formState.errors.email?.message}
                   inputvalue={loginForm.register("email")}
                 />
               </Flex>
@@ -241,7 +241,7 @@ export const Login = (props: loginProps) => {
                   h={'44px'}
                   placeholder={`${translate("authentication.formText.writePassword")}`}
                   inputvalue={loginForm.register("password", { required: true, minLength: 8 })}
-                  error={loginForm.formState.errors.password ? translate("authentication.invalidPassword") : ''}
+                  error={loginForm.formState.errors.password?.message }
                 />
                 {/* error message */}
                 <Text ta={'center'} style={typography.label[i18nStore.getCurrentLanguage()].l1}
