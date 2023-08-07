@@ -11,10 +11,9 @@ import { Images } from '../../../../public/index';
 import { useForm } from "@mantine/form";
 import { Loader } from '@mantine/core';
 import { translate } from '@/i18n';
-import { countries } from "countries-list"
 import { IconChevronDown } from '@tabler/icons-react';
 import { createStyle } from './ForgotPassword.style';
-
+import { Country }  from 'country-state-city';
 
 interface forgotPasswordProps {
   opened: boolean;
@@ -48,19 +47,19 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   // countriesCode
   let countriesCode: any = []
   {
-    Object.keys(countries).map((key, id) => {
+    Country.getAllCountries().map((key) => {
       countriesCode.push({
-        label: countries[key]["name"] + "(+" + countries[key]["phone"] + ")",
-        value: "+" + countries[key]["phone"],
+        label: "+"+ key.phonecode+" "+key.name,
+        value: "+"+ key.phonecode,
       })
-      countriesCode.sort((a, b) => {
+      countriesCode.sort((a:any, b:any) => {
         if (a['label'][0] < b['label'][0])
           return -1
         else if (a['label'][0] > b['label'][0])
           return 1
         else return 0
       })
-    })
+    });
   }
 
   // close Modal function

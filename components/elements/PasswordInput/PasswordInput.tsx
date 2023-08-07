@@ -26,6 +26,7 @@ export const BasePasswordInput = (
         innerInput: classes.innerInput
       }}
       placeholder={props.placeholder}
+      autoComplete='on'
       radius="xl"
       {...props.inputvalue}
     />
