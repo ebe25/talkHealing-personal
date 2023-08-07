@@ -51,11 +51,18 @@ export const typography:any = {
         fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
         fontStyle: 'Semi Bold',
         fontSize: '16px',
-        lineHeight: '15px',
-        fontWeight: 500,
+        lineHeight: '24px',
+        fontWeight: 600,
         letterSpacing: '0.13px',
       } as React.CSSProperties,
       h8: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '16px',
+        lineHeight: '15px',
+        fontWeight: 400,
+      } as React.CSSProperties,
+      h9: {
         fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
         fontStyle: 'Semi Bold',
         fontSize: '16px',
@@ -100,13 +107,27 @@ export const typography:any = {
         lineHeight: '42px',
       } as React.CSSProperties,
       h6: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '16px',
+        lineHeight: '22px',
+        fontWeight: 600,
+      } as React.CSSProperties,
+      h7: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'Semi Bold',
+        fontSize: '16px',
+        lineHeight: '22px',
+        fontWeight: 600,
+      } as React.CSSProperties,
+      h8: {
         fontFamily: webFontFamily['PlusJakartaSans-Bold'],
         fontStyle: 'normal',
         fontWeight: 700,
         fontSize: '28px',
         lineHeight: '42px',
       } as React.CSSProperties,
-      h7: {
+      h9: {
         fontFamily: webFontFamily['PlusJakartaSans-Bold'],
         fontStyle: 'normal',
         fontWeight: 700,
@@ -152,6 +173,13 @@ export const typography:any = {
         lineHeight: '27px',
         fontWeight: 400,
       } as React.CSSProperties,
+      p5: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '16px',
+        lineHeight: '31px',
+      } as React.CSSProperties,
     },
     ar: {
       p1: {
@@ -188,6 +216,13 @@ export const typography:any = {
         fontSize: '18px',
         lineHeight: '31px',
         fontWeight: 500,
+      } as React.CSSProperties,
+      p5: {
+        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontSize: '12px',
+        lineHeight: '31px',
       } as React.CSSProperties,
     },
   } ,

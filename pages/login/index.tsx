@@ -9,7 +9,7 @@ import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
 import { createStyle } from './Login.style';
 import { useStores } from '@/models';
-import { useForm } from "@mantine/form";
+// import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '@/i18n';
 import { GoogleLogin } from '@react-oauth/google';
@@ -18,11 +18,14 @@ import { useRouter } from 'next/router';
 import { ForgotPassword } from '../../components/modules/Modals/ForgotPassword/ForgotPassword';
 import swal from 'sweetalert';
 import { useDisclosure } from '@mantine/hooks';
-
-
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 interface loginProps {
   img?: string;
 }
+
+
 
 export const Login = (props: loginProps) => {
   const useStyles = createStyle()
@@ -34,30 +37,25 @@ export const Login = (props: loginProps) => {
   const [error, setError] = useState<any>("")
   const [opened, { open, close }] = useDisclosure(false);
 
+  const schema = yup.object({
+    email: yup.string().email(`${translate("authentication.invalidEmail")}`).required(`${translate("authentication.required")}`),
+    password: yup.string().required(`${translate("authentication.required")}`).min(8),
+  }).required();
+  type FormData = yup.InferType<typeof schema>;
 
-  const loginForm = useForm({
-    initialValues: {
-      email: '',
-      password: '',
-      termsOfService: false,
-    },
-    validate: {
-      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
-      password: (value) => {
-        if (value.trim().length < 8)
-          return translate('authentication.invalidPassword');
-      },
-    },
+  const loginForm = useForm<FormData>({
+    resolver: yupResolver(schema)
   });
+  const onSubmit = (data: FormData) => console.log(data);
+
 
   //  Login Api Call
   const handleLogin = () => {
     setLoader(true)
-    let results = loginForm.validate();
 
-    if (results.hasErrors) return setLoader(false);
-    if (!results.hasErrors) {
-      userStore.loginUser(loginForm.values.email, loginForm.values.password).then((res) => {
+    if (!loginForm.formState.isValid) return setLoader(false);
+    if (loginForm.formState.isValid) {
+      userStore.loginUser(loginForm.getValues("email"), loginForm.getValues("password")).then((res) => {
         if (res.ok) {
           console.log("user logged in successfully!")
           router.push('/profile')
@@ -138,6 +136,7 @@ export const Login = (props: loginProps) => {
 
   let facebookLoginAppId = "542240271409221";
 
+
   return (
     <Container
       maw={"1400px"}
@@ -167,7 +166,7 @@ export const Login = (props: loginProps) => {
           lg={5}
           xl={5}
         >
-          <form onSubmit={loginForm.onSubmit((values) => console.log(values))}>
+          <form onSubmit={loginForm.handleSubmit(onSubmit)}>
             <Flex direction={'column'} gap={20} w={"100%"} >
               <Center>
                 <BaseText
@@ -215,11 +214,13 @@ export const Login = (props: loginProps) => {
                 <Input
                   h={'44px'}
                   w={"100%"}
+                  radius="xl"
                   component={'input'}
                   classNames={{ input: classes.input }}
                   placeholder={`${translate('authentication.formText.writeEmail')}`}
                   style_variant={'inputText1'}
-                  {...loginForm.getInputProps('email')}
+                  error={loginForm.formState.errors.email?.message}
+                  inputvalue={loginForm.register("email")}
                 />
               </Flex>
               {/* Password Input */}
@@ -233,7 +234,8 @@ export const Login = (props: loginProps) => {
                   w={"100%"}
                   h={'44px'}
                   placeholder={`${translate("authentication.formText.writePassword")}`}
-                  {...loginForm.getInputProps('password')}
+                  inputvalue={loginForm.register("password", { required: true, minLength: 8 })}
+                  error={loginForm.formState.errors.password?.message }
                 />
                 {/* error message */}
                 <Text ta={'center'} style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -253,24 +255,24 @@ export const Login = (props: loginProps) => {
               </Center>
               {/* Login Button */}
               <BaseButton
+                type="submit"
                 onClick={(e) => {
-                  e.preventDefault()
-                  if (loginForm.isValid())
+                  // e.preventDefault()
+                  if (loginForm.formState.isValid)
                     handleLogin()
                   else {
                     console.log("email or password is empty")
-                    loginForm.validate()
                   }
                 }}
                 w={"100%"}
                 mah={'39px'}
-                style_variant={loginForm.isValid() ? 'filled' : 'disabled'}
-                color_variant={loginForm.isValid() ? 'blue' : 'gray'}
                 loading={loader}
+                style_variant={loginForm.formState.isValid ? 'filled' : 'disabled'}
+                color_variant={loginForm.formState.isValid ? 'blue' : 'gray'}
               >
                 <BaseText
                   style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                  color={loginForm.isValid() ? theme.white : theme.colors.dark[1]}
+                  color={loginForm.formState.isValid ? theme.white : theme.colors.dark[1]}
                   txtkey={'signUpForm.login'}
                 />
               </BaseButton>

@@ -6,7 +6,8 @@ import { useStores } from '@/models';
 
 interface BaseSearchInput extends PolymorphicComponentProps<'input', PasswordInputProps> {
   placeholder?: string;
-  onChange?: any
+  onChange?: any ,
+  inputvalue? : any
 }
 
 export const BasePasswordInput = (
@@ -26,6 +27,7 @@ export const BasePasswordInput = (
       }}
       placeholder={props.placeholder}
       radius="xl"
+      {...props.inputvalue}
     />
   );
 };
