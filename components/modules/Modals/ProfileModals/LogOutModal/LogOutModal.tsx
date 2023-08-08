@@ -57,7 +57,6 @@ export const LogOutModal = (props: { opened?: any; onClose?: any; id?: string })
                 <I18nFlex justify={'space-between'} align={'center'} mt={"40px"} >
                     <BaseButton
                         w={'48%'}
-                        h={'40px'}
                         loading={loader}
                         style_variant={ 'filled' }
                         color_variant={'red' }
@@ -67,7 +66,6 @@ export const LogOutModal = (props: { opened?: any; onClose?: any; id?: string })
                     </BaseButton>
                     <BaseButton
                         w={'48%'}
-                        h={'40px'}
                         style_variant={ 'outline'}
                         color_variant={ 'blue'}
                         onClick={props.onClose}

@@ -62,7 +62,7 @@ export const SuccessfulModal = (props: {
           />
         </Stack>
         <BaseButton
-          w={"100%"}
+           
           style_variant={'filled'}
           color_variant={'blue'}
           onClick={props.onClose}

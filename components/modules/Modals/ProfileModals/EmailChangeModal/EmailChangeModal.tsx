@@ -135,8 +135,7 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any; setAddres
           />:null }
           <BaseButton
             mt={'30px'}
-            w={'100%'}
-            h={'40px'}
+             
             loading={loader}
             style_variant={!changeMail.isValid() ? 'disabled' : 'filled'}
             color_variant={!changeMail.isValid() ? 'gray' : 'blue'}

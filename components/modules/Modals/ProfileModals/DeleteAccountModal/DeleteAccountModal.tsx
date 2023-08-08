@@ -53,7 +53,6 @@ export const DeleteAccountModal = (props: { opened?: any; onClose?: any; id?: st
             <I18nFlex justify={'space-between'} align={'center'} mt={"40px"} >
                 <BaseButton
                     w={'48%'}
-                    h={'40px'}
                     style_variant={ 'filled' }
                     color_variant={'red' }
                     onClick={deleteUser}
@@ -62,7 +61,6 @@ export const DeleteAccountModal = (props: { opened?: any; onClose?: any; id?: st
                 </BaseButton>
                 <BaseButton
                     w={'48%'}
-                    h={'40px'}
                     style_variant={ 'outline'}
                     color_variant={ 'blue'}
                     onClick={props.onClose}

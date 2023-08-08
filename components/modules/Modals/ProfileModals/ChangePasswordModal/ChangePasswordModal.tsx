@@ -171,8 +171,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
         {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
         <BaseButton
           mt={'30px'}
-          w={'100%'}
-          h={'40px'}
+           
           loading={loader}
           style_variant={!changePasswordForm.isValid() || passwordsMatching() ? 'disabled' : 'filled'}
           color_variant={!changePasswordForm.isValid() || passwordsMatching() ? 'gray' : 'blue'}

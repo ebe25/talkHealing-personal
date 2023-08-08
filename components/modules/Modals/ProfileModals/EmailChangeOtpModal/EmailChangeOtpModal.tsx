@@ -159,9 +159,8 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAdd
               color={theme.colors.blue[4]}
             />
           </I18nFlex>
-          <BaseButton
-            w={'100%'}
-            h={'40px'}
+          <BaseButton 
+             
             loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}

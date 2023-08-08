@@ -61,7 +61,6 @@ export const DeleteAddressModal = (props: {
         <I18nFlex justify={'space-between'} align={'center'} mt={'40px'}>
           <BaseButton
             w={'48%'}
-            h={'40px'}
             style_variant={'filled'}
             color_variant={'red'}
             loading={loader}
@@ -74,7 +73,6 @@ export const DeleteAddressModal = (props: {
           </BaseButton>
           <BaseButton
             w={'48%'}
-            h={'40px'}
             style_variant={'outline'}
             color_variant={'blue'}
             onClick={props.onClose}

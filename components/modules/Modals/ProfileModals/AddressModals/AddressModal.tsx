@@ -375,8 +375,7 @@ export const AddressModal = (props: {
           {!props.isEdit ? (
             <BaseButton
               mt={'30px'}
-              w={'100%'}
-              h={'40px'}
+               
               loading={loader}
               style_variant={!address.isValid() ? 'disabled' : 'filled'}
               color_variant={!address.isValid() ? 'gray' : 'blue'}
@@ -394,8 +393,7 @@ export const AddressModal = (props: {
               mt={'30px'}
             >
               <BaseButton
-                w={'100%'}
-                h={'40px'}
+                 
                 loading={loader}
                 style_variant={!address.isValid() ? 'disabled' : 'filled'}
                 color_variant={!address.isValid() ? 'gray' : 'blue'}
@@ -404,8 +402,7 @@ export const AddressModal = (props: {
                 <BaseText txtkey="profile.addressModal.saveChanges" />
               </BaseButton>
               <BaseButton
-                w={'100%'}
-                h={'40px'}
+                 
                 style_variant={'outline'}
                 color_variant={'blue'}
                 onClick={() => {

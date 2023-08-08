@@ -175,8 +175,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any; set
           {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
           <BaseButton
             mt={'80px'}
-            w={'100%'}
-            h={'40px'}
+             
             loading={loader}
             style_variant={changePhoneNumber.isValid() ? 'filled' : 'disabled'}
             color_variant={changePhoneNumber.isValid() ? 'blue' : 'gray'}

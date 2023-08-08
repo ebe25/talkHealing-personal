@@ -156,8 +156,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any; 
             />
           </I18nFlex>
           <BaseButton
-            w={'100%'}
-            h={'40px'}
+             
             loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}
