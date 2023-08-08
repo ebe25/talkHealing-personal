@@ -31,28 +31,22 @@ export const ChangePassword = (props: { opened?: any; onClose?: any; setAddressR
   const [loader, setLoader] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const checkPasswordLength = (value: string) =>{
+    if(value.length < 7) {
+      return translate('profile.modal.passwordLength')
+    }
+  }
+
   const changePasswordForm = useForm({
     initialValues: {
       currentPassword: '',
       newPassword: '',
-      confirmNewPassword: '',
+      confirmNewPassword: ''
     },
     validate: {
-      currentPassword: (value) => {
-        if (value.length < 7) {
-          return translate('profile.modal.passwordLength');
-        }
-      },
-      newPassword: (value) => {
-        if (value.length < 7) {
-          return translate('profile.modal.passwordLength');
-        }
-      },
-      confirmNewPassword: (value) => {
-        if (value.length < 7) {
-          return translate('profile.modal.passwordLength');
-        }
-      },
+      currentPassword: (value) => checkPasswordLength(value),
+      newPassword: (value) => checkPasswordLength(value),
+      confirmNewPassword: (value) => checkPasswordLength(value)
     },
   });
 
