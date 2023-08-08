@@ -48,8 +48,6 @@ const Profile = () => {
         className={classes.deleteAndLogout}
       >
             <BaseButton
-              w={'100%'}
-              h={'40px'}
               style_variant={ 'outline'}
               color_variant={'red'}
               onClick={deleteAccountModal[1].open}
@@ -60,8 +58,6 @@ const Profile = () => {
               />
             </BaseButton>
             <BaseButton
-              w={'100%'}
-              h={'40px'}
               style_variant={ 'outline'}
               color_variant={ 'red'}
               onClick={open}

@@ -101,7 +101,6 @@ export const Account = () => {
               {(props) => (
                 <BaseButton
                   w={'125px'}
-                  h={'39px'}
                   style_variant={'filled'}
                   color_variant={'blue'}
                   {...props}
@@ -112,7 +111,6 @@ export const Account = () => {
             </FileButton>
             <BaseButton
               w={'125px'}
-              h={'39px'}
               style_variant={'filled'}
               color_variant={'red'}
               onClick={() => {

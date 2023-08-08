@@ -76,6 +76,7 @@ export const Address = () => {
               <BaseButton
                 style_variant='outline'
                 color_variant='blue'
+                w={"120px"}
                 onClick={()=>{
                   setAddressId(item.id)
                   setModalHeading("profile.addressDetails")
@@ -88,6 +89,7 @@ export const Address = () => {
                 />
               </BaseButton>
               <BaseButton
+                w={"120px"}
                 style_variant='outline'
                 color_variant='red'
                 onClick={()=>{
