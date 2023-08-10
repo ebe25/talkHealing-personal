@@ -1,28 +1,34 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Flex, Box, useMantineTheme } from "@mantine/core";
 import { useStores } from "@/models";
 import { BaseText } from "@/components/elements/BaseText/BaseText";
 import { typography } from "@/themes/Mantine/typography";
 import { translate } from "@/i18n";
 import { useMediaQuery } from "@mantine/hooks";
-import I18nFlex from "@/components/elements/I18NFlex/I18nFlex";
+import I18nFlex from "@/components/elements/I18nFlex/I18nFlex";
+import useStyles from '../ProductPage.style'
+
 function AboutProduct() {
+
   const { i18nStore } = useStores();
   const theme = useMantineTheme();
   const matches = useMediaQuery("(max-width: 500px)");
-  const [currentTab, setCurrentTab] = useState<any>("About product");
+  const {classes} = useStyles();
+
   const ProductLabels = [
     translate("productPage.condition"),
     translate("productPage.currentQuantity"),
     translate("productPage.material"),
     translate("productPage.delivery")
   ];
+
   const ProductValues = [
     "New",
     "> 10 items",
     "Cotton",
     "Pick up & delivery courrier"
   ];
+
   const ApiData = [
     {
       productDescriptionText: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -39,8 +45,10 @@ function AboutProduct() {
     veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.`
     }
   ];
+
+
   return (
-    <Box>
+    <Box className= {classes.aboutTabStyles}>
       {ProductLabels.map((item, id) => {
         return (
           <I18nFlex justify={"space-between"}>

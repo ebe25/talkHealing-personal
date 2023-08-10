@@ -8,9 +8,12 @@ import CustomerQuestions from "../CustomerQuestions/CustomerQuestions";
 import { translate } from "@/i18n";
 import { useMediaQuery } from "@mantine/hooks";
 import AboutProduct from "../AboutProduct/AboutProduct";
+import useStyles from '../ProductPage.style'
+import { ClassNames } from "@emotion/react";
 function ProductTabs() {
   const { i18nStore } = useStores();
   const theme = useMantineTheme();
+  const { classes } = useStyles();
   const matches = useMediaQuery("(max-width: 500px)");
   const [currentTab, setCurrentTab] = useState<any>("About product");
   const ProductLabels = [
@@ -64,16 +67,7 @@ function ProductTabs() {
           {translate("productPage.aboutProduct")}
           {currentTab == "About product" && (
             <span
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "59px",
-                borderBottom: `4px solid ${theme.colors.blue[4]}`,
-                borderTopLeftRadius: "20px",
-                borderTopRightRadius: "20px"
-              }}
+            className= {classes.spanStyle}
             />
           )}
         </Tabs.Tab>
@@ -96,16 +90,7 @@ function ProductTabs() {
           {translate("productPage.customerRating")}
           {currentTab == "Customer rating" && (
             <span
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "59px",
-                borderBottom: `4px solid ${theme.colors.blue[4]}`,
-                borderTopLeftRadius: "20px",
-                borderTopRightRadius: "20px"
-              }}
+            className= {classes.spanStyle}
             />
           )}
         </Tabs.Tab>
@@ -128,16 +113,7 @@ function ProductTabs() {
           {translate("productPage.customerQuestions")}
           {currentTab == "Customer questions" && (
             <span
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "59px",
-                borderBottom: `4px solid ${theme.colors.blue[4]}`,
-                borderTopLeftRadius: "20px",
-                borderTopRightRadius: "20px"
-              }}
+            className= {classes.spanStyle}
             />
           )}
         </Tabs.Tab>

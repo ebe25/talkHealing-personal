@@ -1,7 +1,6 @@
 import { i18nStore } from '@/models/modules/i18n/store';
 import { createStyles } from "@mantine/core";
 import { Images } from "../../public/index";
-import { COLORS } from "@/themes/Mantine/colors";
 import { useStores } from "@/models";
 export default createStyles((theme) => ({
   boxWrapper: {
@@ -117,7 +116,7 @@ export default createStyles((theme) => ({
     
   },
   mark: {
-    backgroundColor: COLORS.gray[6],
+    backgroundColor: theme.colors.gray[6],
   },
   boxStyles:{
     display: "flex",
@@ -138,6 +137,33 @@ export default createStyles((theme) => ({
     gap: "12px",
     boxShadow: "1px 1px 10px rgba(0, 0, 0, 0.15)",
     height: "56px"
+  },
+  spanStyle: {
+    position: "absolute",
+    bottom: 0,
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "59px",
+    borderBottom: `4px solid ${theme.colors.blue[4]}`,
+    borderTopLeftRadius: "20px",
+    borderTopRightRadius: "20px"
+  },
+  aboutTabStyles: {
+      maxWidth:"650px",
+      [`@media (max-width: 1080px)`]: {
+        maxWidth:"100%"
+      }
+  },
+  addAndremoveItemStyle: {
+    fontSize: "35px",
+    padding:"0px",
+    paddingBottom:"10px",
+    width:"50px",
+    height:'50px',
+    color: theme.colors.blue[4],
+    borderRadius:"50%",
+    fontWeight:"bold",
+    border: `solid 1px ${theme.colors.gray[0]}`
   }
   
 }));
