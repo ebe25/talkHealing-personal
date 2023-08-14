@@ -10,6 +10,8 @@ export const BaseButton = (props: BaseButtonProps) => {
   return (
     <Button
       {...props}
+      loaderPosition='center'
+      fullWidth
       className={classes[props.style_variant]}
     >
       {props.children}
