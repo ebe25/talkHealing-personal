@@ -59,7 +59,6 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
     reset();
     
   };
-
   return (
     <>
       <BaseModal
@@ -134,7 +133,6 @@ export const EmailChangeModal = (props: { opened?: any; onClose?: any }) => {
               w={"100%"}
               h={"40px"}
               type="submit"
-              disabled={!isValid}
               style_variant={!isValid ? "disabled" : "filled"}
               color_variant={!isValid ? "gray" : "blue"}
             >
