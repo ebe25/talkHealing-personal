@@ -191,8 +191,162 @@
       "forgotPasswordText":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير ص"
     }
   },
+  "signUpForm": {
+    "login": "تسجيل الدخول",
+    "forgetPassword": "هل نسيت كلمة السر؟",
+    "newUser": "ليس لديك حساب",
+    "signUp": "اشتراك",
+    "loginButtonText": "تسجيل الدخول",
+    "subText": "سنقوم بإرسال بريد إلكتروني لإعادة تعيين كلمة المرور الخاصة بك",
+    "backToLogin": "العودة إلى تسجيل الدخول",
+    "continue": "يكمل",
+    "passwordLength": "يجب ألا يقل عن 8 أحرف",
+    "errorMessage": "لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
+  },
+  "footerPages": {
+    "privacyPolicy": "سياسة الخصوصية",
+    "cookiesPolicy": "سياسة ملفات الارتباط",
+    "ourStory": "قصتنا",
+    "faqQuestion": "أسئلة مكررة"
+  },
+  "paymentModal": {
+    "buttonText": "منتهي",
+    "paymentStatus": "دفعتك ناجحة",
+    "item": "أغراض:",
+    "totalItem": "المجموع:"
+  },
+  "cartPage": {
+    "heading": "عربتك",
+    "placeholder": "أضف رمز القسيمة",
+    "itemPrice": "سعر العناصر",
+    "totalAmount": "السعر الكلي",
+    "buttonText": "الشروع في دفع"
+  },
+  "userProfile": {
+    "accountDetails": {
+      "name": "اسم",
+      "placeholder": "اسم المستخدم",
+      "email": "بريد إلكتروني",
+      "emailPlaceholder": "John.doe@gmail.com",
+      "phoneNumber": "رقم التليفون",
+      "saveChanges": "احفظ التغييرات",
+      "changeAvatar": "تغيير الصورة الرمزية"
+    },
+    "changePassword":{
+      "currentPassword":"كلمة السر الحالية",
+      "newPassword":"كلمة المرور الجديدة",
+      "confirmNewPassword":"تأكيد كلمة المرور الجديدة",
+      "passwordSame":"كلمة المرور ليست هي نفسها",
+      "placeholder":"اكتب كلمة المرور",
+      "saveCanges":"احفظ التغييرات"
+    }
+  },
+  "contactUs": {
+    "imageHeading": "ابقى على تواصل",
+    "imageParagraph": "يسعدنا أن نسمع منك",
+    "contactTitle": "بيانات المتصل",
+    "contactDetails": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
+    "location": "خريطة الموقع",
+    "buttonAboveHeadingOne": "تصفح الأسئلة الشائعة",
+    "buttonAboveHeadingTwo": "ابق على تواصل معنا",
+    "buttonText1": "تصفح الأسئلة الشائعة",
+    "buttonText2": "ارسل رأيك"
+  },
+  "termsAndConditions": {
+    "condition": "أحكام وشروط"
+  },
+  "userStatus": {
+    "InvoicesTitle": "الفواتير",
+    "userId": "هوية صوتية",
+    "userDecription": "حجز تذكره",
+    "planDate": "تاريخ",
+    "amount": "كمية",
+    "booking": "الحجوزات",
+    "promos": "الملل"
+  },
+  "becomeMember": {
+    "playWheelMember": "كن عضوًا في Playwheel",
+    "memberParagraph": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ أن تم تعميمه في الستينيات مع إصدار أوراق Letraset التي تحتوي على."
+  },
+  "bookingForEvent": {
+    "aboutMultipurposeText": "حول القاعة متعددة الأغراض والخدمات",
+    "galleryText": "صالة عرض",
+    "bookingForEventText": "الحجز للأحداث",
+    "packagePriceText": "سعر الطرد",
+    "addToCartText": "أضف إلى السلة",
+    "checkOutNowText": "الخروج الآن",
+    "totalPriceText": "السعر الكلي",
+    "addOnPriceText": "سعر الإضافات",
+    "addOnsText": "الإضافات",
+    "addOnNameText": "اسم الوظيفة الإضافية",
+    "chooseDateText": "اختر التاريخ والوقت",
+    "checkoutText": "الدفع",
+    "addCouponText": "أضف رمز القسيمة",
+    "paymentProceedButtonText": "الشروع في دفع",
+    "bookingForEventHeading": "كتاب للأحداث"
+  },
+  "kidZone": {
+    "heading": "اللعب المفتوح",
+    "availableAndTiming": "التوفر والتوقيت",
+    "timing": "المواعيد:",
+    "availableSlots": "فتحات متاحة",
+    "services": "خدمات",
+    "selectDate":"حدد تاريخ"
+  },
+  "addKidDetails": {
+    "kidName": "اسم الطفل",
+    "kidNamePlaceholder": "اكتب الاسم",
+    "kidDateOfBirthText": "تاريخ ميلاد الطفل",
+    "kidFavouriteColor": "اللون المفضل",
+    "kidFavouriteColorPlaceholder": "اكتب اللون",
+    "previousButtonText": "سابق",
+    "saveButtonText": "يحفظ",
+    "nextButton": "التالي",
+    "editKidDetails": "تحرير تفاصيل الطفل"
+  },
+  "workshop": {
+    "workshopHeadingOne": "ورشة عمل مستمرة",
+    "workshopHeadingTwo": "ورش العمل القادمة",
+    "aboutWorkShop": "حول ورشة العمل",
+    "aboutOrganizer": "حول المنظم",
+    "workshopCardHeading": "اسم الورشة",
+    "buttonText": "اشتري الآن",
+    "progressbarText": "المقعد متاح",
+    "bookingWorkshop": "الحجز لورشة العمل",
+    "choosekidDetails": "اختر تفاصيل الأطفال",
+    "addKidDetails": "أضف تفاصيل طفل جديد",
+    "workshopName": "اسم الورشة هنا",
+    "buttonTextOne": "أضف إلى السلة",
+    "buttonTextTwo": "الخروج الآن",
+    "workshopImageHeading": "ورش عمل",
+    "calenderButtonText": "اختر من التقويم",
+    "workshopParagraphFirst": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني",
+    "workshopParagraphSecond": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
+    "workshopParagraphThird": "لوريم إيبسوم هو ببساطة نص شكلي يستخدم في صناعة الطباعة والتنضيد. كان Lorem Ipsum هو النص الوهمي القياسي في الصناعة منذ القرن الخامس عشر الميلادي ، عندما أخذت طابعة غير معروفة لوحًا من النوع وتدافعت عليه لعمل كتاب عينة. لقد نجت ليس فقط خمسة قرون ، ولكن أيضًا القفزة في التنضيد الإلكتروني.",
+    "selectDate":"اختر من التقويم"
+  },
+  "productPage":{
+    "visitStore":"قم بزيارة المتجر",
+    "totalProduct": "إجمالي المنتج",
+     "productSold": "بيع المنتج",
+     "responseRate":"معدل الاستجابة",
+     "joinedSince" :"انضم منذ ذلك الحين",
+     "aboutProduct": "حول المنتج",
+     "customerRating":"تقييم العملاء",
+     "customerQuestions":"أسئلة العملاء",
+     "addToCart":"أضف إلى السلة",
+     "buyNow":"اشتري الآن",
+     "size": "مقاس",
+     "colors": "الألوان",
+     "question":"سؤال",
+     "condition":"حالة",
+     "currentQuantity": "الكمية الحالية",
+     "material":"مادة",
+     "delivery":"توصيل"
+  },
   "header": {
     "signUp": "إنشاء حساب",
     "login": "تسجيل الدخول إلى حسابك"
+
   }
 }

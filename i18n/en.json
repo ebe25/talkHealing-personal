@@ -194,8 +194,102 @@
       "forgotPasswordText":"Please enter your registered email or phone number to receive the reset link."
     }
   },
+  "contactUs":{
+    "imageHeading":"Get in touch",
+    "imageParagraph":"We’d love to hear from you",
+    "contactTitle":"Contact details",
+    "contactDetails":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+    "location":"Location map",
+    "buttonAboveHeadingOne":"Browse our FAQs",
+    "buttonAboveHeadingTwo":"Get in touch with us",
+    "buttonText1":"Browse FAQs",
+    "buttonText2":"Send feedbacks"
+  },
+  "becomeMember":{
+    "playWheelMember":"Become Playwheel member",
+    "memberParagraph":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the was popularised in the 1960s with the release of Letraset sheets containing."
+  },
+  "bookingForEvent":{
+    "aboutMultipurposeText": "About multipurpose hall & services",
+    "galleryText": "Gallery",
+    "bookingForEventText":"Booking for events",
+    "packagePriceText":  "Package price",
+    "addToCartText": "Add to cart",
+    "checkOutNowText": "Check out now",
+    "totalPriceText": "Total price",
+    "addOnPriceText": "Add-ons price",
+    "addOnsText": "Add-ons",
+    "addOnNameText": "Add-on name",
+    "chooseDateText": "Choose date and time",
+    "checkoutText": "Checkout",
+    "addCouponText": "Add coupon code",
+    "paymentProceedButtonText":"Proceed to payment",
+    "bookingForEventHeading":"Book For Events"
+
+  },
+  "kidZone":{
+    "heading":"Open Play",
+    "availableAndTiming":"Availability & Timings",
+    "timing":"Timings:",
+    "availableSlots":"Available slots",
+    "services":"Services",
+    "selectDate":"Select date"
+    },
+  "addKidDetails": {
+    "kidName": "Kid’s name",
+    "kidNamePlaceholder":"Write name",
+    "kidDateOfBirthText":"Kid's Date of Birth",
+    "kidFavouriteColor":"Favorite color",
+    "kidFavouriteColorPlaceholder":"Write color",
+    "nextButton":"Next ",
+    "previousButtonText" : "Previous",
+    "saveButtonText" : "Save",
+    "editKidDetails": "Edit kid’s detail"
+  },
+  "workshop":{
+    "workshopHeadingOne":"Ongoing Workshop",
+    "workshopHeadingTwo":"Upcoming workshops",
+    "aboutWorkshop":"About workshop",
+    "aboutOrganizer":"About organizer",
+    "workshopCardHeading":"Name of the workshop",
+    "buttonText":"Buy now",
+    "progressbarText":"Seat available",
+     "bookingWorkshop":"Booking for workshop",
+     "choosekidDetails":"Choose kids details",
+     "addKidDetails":"Add new kid’s details",
+     "workshopName":"Workshop name here",
+     "buttonTextOne":"Add to cart",
+     "buttonTextTwo":"Check out now",
+     "workshopImageHeading":"Workshops",
+     "calenderButtonText":"Select from calendar",
+     "workshopParagraphFirst":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+     "workshopParagraphSecond":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+     "workshopParagraphThird":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+     "selectDate":"Select from calendar"
+},
+"productPage":{
+  "visitStore":"Visit store",
+  "totalProduct": "Total product",
+  "productSold": "Product sold",
+  "responseRate":"Response rate",
+  "joinedSince" :"Joined since",
+  "aboutProduct": "About product",
+  "customerRating":"Customer rating",
+  "customerQuestions":"Customer questions",
+  "addToCart":"Add to cart",
+  "buyNow":"Buy now",
+  "size": "Size",
+  "colors": "Colors",
+  "question":"Question:",
+  "condition":"Condition",
+  "currentQuantity": "Current quantity",
+  "material":"Material",
+  "delivery":"Delivery"
+
+},
   "header":{
     "signUp": "Create account",
     "login": "Login to your account"
   }  
+
 }

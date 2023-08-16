@@ -47,6 +47,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   let googleOAuthProviderClientId="115727969785-dr3gd9rpagos187jq3mg8gphbe3hb0ds.apps.googleusercontent.com";
 
   return (
+
    <div dir={rootStore.i18nStore.isRTL ? "rtl" : "ltr"}>
     <GoogleOAuthProvider clientId={googleOAuthProviderClientId} >
       <RootStoreProvider value={rootStore}>
