@@ -3,7 +3,6 @@ import React from 'react';
 // mantine component
 import { Center, Flex, Image, Select, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { useForm } from '@mantine/form';
 //styles component
 import {createStyle} from './ChangePhoneNumberModal.styles';
 // internals components
@@ -20,7 +19,16 @@ import { Images } from '@/public';
 import { translate } from '@/i18n';
 // external 
 import { Country }  from 'country-state-city';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { boilerPlateStyles } from '@/utils/styles/styles';
+
+
+const changePasswordSchema = yup.object({
+  phone: yup.string().required('Required phone number'),
+  country_code: yup.string().required('Required country code'),
+})
 
 export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
@@ -28,20 +36,19 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
   const { classes } = useStyles();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
-  const changePhoneNumber = useForm({
-    initialValues: {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+
+    formState: { errors, isValid }
+  } = useForm({
+    defaultValues: {
       phone: "",
       country_code: "+966",
     },
-    validate: {
-      phone: (value) => {
-        if (value.toString().length == 0)
-          return translate("profile.modal.phoneNumberLengthError");
-      },
-      country_code: (value) => {
-        if (!value) return "Invalid Country Code";
-      },
-    },
+    resolver: yupResolver(changePasswordSchema)
   });
 
   let countryLists: any = []
@@ -55,15 +62,11 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
     });
   }
 
-  const handlePasswordChange = () => {
-    let results = changePhoneNumber.validate();
-    if (results.hasErrors) return;
-    if (!changePhoneNumber.isValid()) return;
-    else {
+  const handlePasswordChange = (values:any) => {
+    console.log(values)
       props.onClose();
-      changePhoneNumber.reset();
+      reset();
       open();
-    }
   };
 
   return (
@@ -75,11 +78,11 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
         opened={props.opened}
         onClose={() => {
           props.onClose();
-          changePhoneNumber.reset();
+          reset();
         }}
         withCloseButton={false}
       >
-        <form onSubmit={changePhoneNumber.onSubmit((values) => console.log(values))}>
+        <form onSubmit={handleSubmit(handlePasswordChange)}>
           <Flex direction={i18nStore.isRTL?"row-reverse":"row"} justify={'space-between'} align={'center'}>
             <BaseText
               txtkey="profile.modal.changePhoneNumber"
@@ -90,7 +93,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
             <Image
               onClick={() => {
                 props.onClose();
-                changePhoneNumber.reset();
+                reset();
               }}
               style={boilerPlateStyles.cursor}
               src={Images.close_modal_icon}
@@ -125,9 +128,13 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
                   w={"100%"}
                   variant='filled'
                   radius={"xl"}
+                  error = {errors.country_code?.message}
                   // size="lg"
-                  data={countryLists}
-                  {...changePhoneNumber.getInputProps("country_code")}
+                   data={countryLists}
+                   {...register("country_code")}
+                   onChange={(event:any) => {
+                    setValue("country_code", event)
+                    }}
                 />
           </Stack>
           <Stack
@@ -140,6 +147,7 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
             <Input
+               inputvalue = {register('phone')}
                 style_variant={'inputText2'}
                 type='number'
                 inputMode='numeric' 
@@ -148,17 +156,17 @@ export const ChangePhoneNumberModal = (props: { opened?: any; onClose?: any }) =
                 classNames={{
                   input: classes.input
                 }}
+                error = {errors.phone?.message}
                 placeholder={`${translate('profile.phoneNumber')}`}
-                {...changePhoneNumber.getInputProps('phone')}
             />
           </Stack>
           <BaseButton
             mt={'80px'}
             w={'100%'}
             h={'40px'}
-            style_variant={ changePhoneNumber.isValid()?  'filled' :"disabled" }
-            color_variant={ changePhoneNumber.isValid() ?'blue':"gray"}
-            onClick={handlePasswordChange}
+            type='submit'
+            style_variant={ isValid?  'filled' :"disabled" }
+            color_variant={isValid ?'blue':"gray"}
           >
             <BaseText txtkey="global.button.continue" />
           </BaseButton>

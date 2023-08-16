@@ -1,26 +1,44 @@
 // react and nextb import
-import React from 'react';
+import React from "react";
 // mantine component
-import { useForm } from '@mantine/form';
-import { Box, Flex, Image, Select, useMantineTheme } from '@mantine/core';
+
+import { Box, Flex, Image, Select, useMantineTheme } from "@mantine/core";
 // styles components
-import {createStyle} from './AddressModal.styles';
+import { createStyle } from "./AddressModal.styles";
 // internals components
-import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
-import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
-import { BaseText } from '@/components/elements/BaseText/BaseText';
-import { typography } from '../../../../../themes/Mantine/typography';
+import { BaseButton } from "@/components/elements/BaseButton/BaseButton";
+import { BaseModal } from "@/components/elements/BaseModal/BaseModal";
+import { BaseText } from "@/components/elements/BaseText/BaseText";
+import { typography } from "../../../../../themes/Mantine/typography";
 // stores import
-import { useStores } from '@/models';
+import { useStores } from "@/models";
 // others import
-import { Images } from '@/public';
-import { translate } from '@/i18n';
-import { useDisclosure } from '@mantine/hooks';
-import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
-import { Input } from '@/components/elements/Input/Input';
+import { Images } from "@/public";
+import { translate } from "@/i18n";
+import { useDisclosure } from "@mantine/hooks";
+import { SuccessfulModal } from "../SuccessfulModal/SuccessfulModal";
+import { Input } from "@/components/elements/Input/Input";
 //external
-import { Country, State, City } from 'country-state-city';
-import { boilerPlateStyles } from '@/utils/styles/styles';
+import { Country, State, City } from "country-state-city";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { boilerPlateStyles } from "@/utils/styles/styles";
+import { useForm } from "react-hook-form";
+
+const addressModalSchema = yup.object({
+  addressOne: yup
+    .string()
+    .required(`${translate("profile.error.addressOneError")}`),
+  addressTwo: yup
+    .string()
+    .required(`${translate("profile.error.addressTwoError")}`),
+  country: yup.string().required(`${translate("profile.error.countryError")}`),
+  state: yup.string().required(`${translate("profile.error.stateError")}`),
+  district: yup
+    .string()
+    .required(`${translate("profile.error.districtError")}`),
+  code: yup.string().required(`${translate("profile.error.postalCodeError")}`)
+});
 
 export const AddressModal = (props: {
   opened?: any;
@@ -31,52 +49,38 @@ export const AddressModal = (props: {
   const { i18nStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const theme = useMantineTheme();
-  const useStyles=createStyle()
+  const useStyles = createStyle();
   const { classes } = useStyles();
-  const address = useForm({
-    initialValues: {
-      addressOne: '',
-      addressTwo: '',
-      country: '',
-      state: '',
-      district: '',
-      code: '',
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    watch,
+    clearErrors,
+    getValues,
+
+    formState: { errors, isValid }
+  } = useForm({
+    defaultValues: {
+      addressOne: "",
+      addressTwo: "",
+      country: "",
+      state: "",
+      district: "",
+      code: ""
     },
-    validate: {
-      addressOne: (value) => {
-        if (value.trim().length == 0) return translate('profile.error.addressOneError');
-      },
-      addressTwo: (value) => {
-        if (value.trim().length == 0) return translate('profile.error.addressTwoError');
-      },
-      country: (value) => {
-        if (value.trim().length == 0) return translate('profile.error.countryError');
-      },
-      state: (value) => {
-        if (value.trim().length == 0) return translate('profile.error.stateError');
-      },
-      district: (value) => {
-        if (value.trim().length == 0) return translate('profile.error.districtError');
-      },
-      code: (value) => {
-        if (value.trim().length == 0) return translate('profile.error.postalCodeError');
-      },
-    },
+    resolver: yupResolver(addressModalSchema)
   });
 
   const handleAddressChange = () => {
-    let results = address.validate();
-    if (results.hasErrors) return;
-    if (!address.isValid()) return;
-    else {
-      props.onClose();
-      address.reset();
-      open();
-    }
+    props.onClose();
+    reset();
+    open();
   };
   const handleEditAddress = () => {
     props.onClose();
-    address.reset();
+    reset();
     open();
   };
 
@@ -86,14 +90,14 @@ export const AddressModal = (props: {
     Country.getAllCountries().map((key) => {
       countryLists.push({
         label: key.name,
-        value: key.name,
+        value: key.name
       });
     });
   }
 
   const countryCode = Country.getAllCountries()
     .filter((country) => {
-      if (country.name === address.values.country) return country.isoCode;
+      if (country.name === getValues("country")) return country.isoCode;
     })
     .map((country) => country.isoCode);
 
@@ -102,14 +106,14 @@ export const AddressModal = (props: {
     State.getStatesOfCountry(countryCode[0]).map((key) => {
       stateLists.push({
         label: key.name,
-        value: key.name,
+        value: key.name
       });
     });
   }
 
   const countryStateCode = State.getStatesOfCountry(countryCode[0])
     .filter((country) => {
-      if (country.name === address.values.state) return country.isoCode;
+      if (country.name === getValues("state")) return country.isoCode;
     })
     .map((code) => code.isoCode);
 
@@ -118,7 +122,7 @@ export const AddressModal = (props: {
     City.getCitiesOfState(countryCode[0], countryStateCode[0]).map((key) => {
       stateCityLists.push({
         label: key.name,
-        value: key.name,
+        value: key.name
       });
     });
   }
@@ -126,21 +130,21 @@ export const AddressModal = (props: {
   return (
     <>
       <BaseModal
-        size={'sm'}
-        padding={'30px'}
-        radius={'xl'}
+        size={"sm"}
+        padding={"30px"}
+        radius={"xl"}
         opened={props.opened}
         onClose={() => {
           props.onClose();
-          address.reset();
+          reset();
         }}
         withCloseButton={false}
       >
-        <form onSubmit={address.onSubmit((values) => console.log(values))}>
+        <form onSubmit={handleSubmit(handleAddressChange)}>
           <Flex
-            direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
-            justify={'space-between'}
-            align={'center'}
+            direction={i18nStore.isRTL ? "row-reverse" : "row"}
+            justify={"space-between"}
+            align={"center"}
           >
             <BaseText
               txtkey={props.modalHeading}
@@ -151,17 +155,17 @@ export const AddressModal = (props: {
             <Image
               onClick={() => {
                 props.onClose();
-                address.reset();
+                reset();
               }}
               style={boilerPlateStyles.cursor}
               src={Images.close_modal_icon}
               alt="close_modal_icon"
-              width={'14px'}
-              height={'14px'}
+              width={"14px"}
+              height={"14px"}
             />
           </Flex>
 
-          <Box mt={'30px'} dir={i18nStore.isRTL ? 'rtl' : 'ltr'}>
+          <Box mt={"30px"} dir={i18nStore.isRTL ? "rtl" : "ltr"}>
             <BaseText
               className={classes.align}
               txtkey="profile.addressModal.country"
@@ -171,21 +175,26 @@ export const AddressModal = (props: {
             <Select
               classNames={{
                 rightSection: classes.rightSection,
-                input:classes.input
+                input: classes.input
               }}
-              mt={'xs'}
+              mt={"xs"}
               // dir='rtl'
               searchable
               hoverOnSearchChange={false}
-              placeholder={`${translate('profile.addressModal.country')}`}
-              w={'100%'}
+              placeholder={`${translate("profile.addressModal.country")}`}
+              w={"100%"}
               variant="default"
-              radius={'xl'}
+              radius={"xl"}
               data={countryLists}
-              {...address.getInputProps('country')}
+              {...register("country")}
+              onChange={(event: any) => {
+                clearErrors();
+                setValue("country", event);
+              }}
+              error={errors.country?.message}
             />
           </Box>
-          <Box mt={'20px'} dir={i18nStore.isRTL ? 'rtl' : 'ltr'}>
+          <Box mt={"20px"} dir={i18nStore.isRTL ? "rtl" : "ltr"}>
             <BaseText
               txtkey="profile.addressModal.state"
               color={theme.colors.gray[6]}
@@ -194,22 +203,27 @@ export const AddressModal = (props: {
             <Select
               classNames={{
                 rightSection: classes.rightSection,
-                input:classes.input
+                input: classes.input
               }}
-              mt={'xs'}
+              mt={"xs"}
               searchable
               hoverOnSearchChange={false}
-              placeholder={`${translate('profile.addressModal.state')}`}
+              placeholder={`${translate("profile.addressModal.state")}`}
               // style={boilerPlateStyles.input}
-              w={'100%'}
+              w={"100%"}
               variant="default"
-              radius={'xl'}
+              radius={"xl"}
               // size="lg"
               data={stateLists}
-              {...address.getInputProps('state')}
+              {...register("state")}
+              onChange={(event: any) => {
+                clearErrors();
+                setValue("state", event);
+              }}
+              error={errors.state?.message}
             />
           </Box>
-          <Box mt={'20px'} dir={i18nStore.isRTL ? 'rtl' : 'ltr'}>
+          <Box mt={"20px"} dir={i18nStore.isRTL ? "rtl" : "ltr"}>
             <BaseText
               txtkey="profile.addressModal.district"
               color={theme.colors.gray[6]}
@@ -218,22 +232,27 @@ export const AddressModal = (props: {
             <Select
               classNames={{
                 rightSection: classes.rightSection,
-                input:classes.input
+                input: classes.input
               }}
-              mt={'xs'}
+              mt={"xs"}
               searchable
               hoverOnSearchChange={false}
-              placeholder={`${translate('profile.addressModal.district')}`}
+              placeholder={`${translate("profile.addressModal.district")}`}
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
-              w={'100%'}
+              w={"100%"}
               variant="default"
-              radius={'xl'}
+              radius={"xl"}
               // size="lg"
               data={stateCityLists}
-              {...address.getInputProps('district')}
+              {...register("district")}
+              onChange={(event: any) => {
+                clearErrors();
+                setValue("district", event);
+              }}
+              error={errors.district?.message}
             />
           </Box>
-          <Box mt={'20px'} dir={i18nStore.isRTL ? 'rtl' : 'ltr'}>
+          <Box mt={"20px"} dir={i18nStore.isRTL ? "rtl" : "ltr"}>
             <BaseText
               txtkey="profile.addressModal.code"
               color={theme.colors.gray[6]}
@@ -241,17 +260,20 @@ export const AddressModal = (props: {
             />
             <Input
               classNames={{
-                input:classes.input
+                input: classes.input
               }}
-              mt={'xs'}
+              mt={"xs"}
               inputMode="numeric"
-              placeholder={`${translate('profile.addressModal.code')}`}
-              style_variant={'inputText2'}
-              component={'input'}
-              {...address.getInputProps('code')}
+              placeholder={`${translate("profile.addressModal.code")}`}
+              style_variant={"inputText2"}
+              component={"input"}
+              inputvalue={register("code", {
+                onChange: () => clearErrors()
+              })}
+              error={errors.code?.message}
             />
           </Box>
-          <Box mt={'20px'} dir={i18nStore.isRTL ? 'rtl' : 'ltr'}>
+          <Box mt={"20px"} dir={i18nStore.isRTL ? "rtl" : "ltr"}>
             <BaseText
               txtkey="profile.addressModal.label1"
               color={theme.colors.gray[6]}
@@ -259,16 +281,19 @@ export const AddressModal = (props: {
             />
             <Input
               classNames={{
-                input:classes.input
+                input: classes.input
               }}
-              mt={'xs'}
-              placeholder={`${translate('profile.addressModal.label1')}`}
-              style_variant={'inputText2'}
-              component={'input'}
-              {...address.getInputProps('addressOne')}
+              mt={"xs"}
+              placeholder={`${translate("profile.addressModal.label1")}`}
+              style_variant={"inputText2"}
+              component={"input"}
+              inputvalue={register("addressOne", {
+                onChange: () => clearErrors()
+              })}
+              error={errors.addressOne?.message}
             />
           </Box>
-          <Box mt={'20px'} dir={i18nStore.isRTL ? 'rtl' : 'ltr'}>
+          <Box mt={"20px"} dir={i18nStore.isRTL ? "rtl" : "ltr"}>
             <BaseText
               txtkey="profile.addressModal.label2"
               color={theme.colors.gray[6]}
@@ -276,57 +301,62 @@ export const AddressModal = (props: {
             />
             <Input
               classNames={{
-                input:classes.input
+                input: classes.input
               }}
-              mt={'xs'}
-              placeholder={`${translate('profile.addressModal.label2')}`}
-              style_variant={'inputText2'}
-              component={'input'}
-              {...address.getInputProps('addressTwo')}
+              mt={"xs"}
+              placeholder={`${translate("profile.addressModal.label2")}`}
+              style_variant={"inputText2"}
+              component={"input"}
+              inputvalue={register("addressTwo", {
+                onChange: () => clearErrors()
+              })}
+              error={errors.addressTwo?.message}
             />
           </Box>
 
           {!props.isEdit ? (
             <BaseButton
-              mt={'30px'}
-              w={'100%'}
-              h={'40px'}
-              style_variant={!address.isValid() ? 'disabled' : 'filled'}
-              color_variant={!address.isValid() ? 'gray' : 'blue'}
-              onClick={handleAddressChange}
+              mt={"30px"}
+              w={"100%"}
+              h={"40px"}
+              type="submit"
+              style_variant={!isValid ? "disabled" : "filled"}
+              color_variant={!isValid ? "gray" : "blue"}
+              // onClick={handleAddressChange}
             >
               <BaseText txtkey="global.button.save" />
             </BaseButton>
           ) : null}
           {props.isEdit ? (
             <Flex
-              direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
-              justify={'space-between'}
-              align={'center'}
-              gap={'md'}
-              mt={'30px'}
+              direction={i18nStore.isRTL ? "row-reverse" : "row"}
+              justify={"space-between"}
+              align={"center"}
+              gap={"md"}
+              mt={"30px"}
             >
               <BaseButton
-                w={'100%'}
-                h={'40px'}
-                style_variant={!address.isValid() ? 'disabled' : 'filled'}
-                color_variant={!address.isValid() ? 'gray' : 'blue'}
+                w={"100%"}
+                h={"40px"}
+                style_variant={!isValid ? "disabled" : "filled"}
+                color_variant={!isValid ? "gray" : "blue"}
                 onClick={handleEditAddress}
               >
                 <BaseText txtkey="profile.addressModal.saveChanges" />
               </BaseButton>
               <BaseButton
-                w={'100%'}
-                h={'40px'}
-                style_variant={ 'outline'}
-                color_variant={ 'blue'}
-                onClick={()=>{
+                w={"100%"}
+                h={"40px"}
+                style_variant={"outline"}
+                color_variant={"blue"}
+                onClick={() => {
                   props.onClose();
-                  address.reset();
+                  reset();
                   // open();
                 }}
               >
-                <BaseText txtkey="profile.addressModal.cancelEdit" 
+                <BaseText
+                  txtkey="profile.addressModal.cancelEdit"
                   color={theme.colors.blue[5]}
                 />
               </BaseButton>

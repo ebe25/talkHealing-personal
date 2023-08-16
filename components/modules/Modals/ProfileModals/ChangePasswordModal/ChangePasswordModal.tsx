@@ -22,7 +22,7 @@ import { boilerPlateStyles } from "@/utils/styles/styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { error } from "console";
+
 
 const changePasswordSchema = yup.object({
   currentPassword: yup.string().required("Required Field"),
@@ -42,8 +42,6 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
   const { i18nStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
   const [passwordFields, setPasswordFields] = useState({});
-  
-
 
   const {
     register,
@@ -52,7 +50,7 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
     clearErrors,
     watch,
 
-    formState: { errors, isValid}
+    formState: { errors, isValid }
   } = useForm({
     defaultValues: {
       currentPassword: "",
@@ -64,12 +62,11 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
 
   const theme = useMantineTheme();
 
-  const handlePasswordChange = (values: any) => { 
+  const handlePasswordChange = (values: any) => {
     setPasswordFields(values);
     props.onClose();
     reset();
     open();
-    
   };
   return (
     <>
@@ -116,7 +113,9 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
             />
             <BasePasswordInput
               placeholder={`${translate("profile.modal.currentPassword")}`}
-              inputvalue={register("currentPassword",{onChange: () => clearErrors()})}
+              inputvalue={register("currentPassword", {
+                onChange: () => clearErrors()
+              })}
               autoComplete="on"
               error={errors.currentPassword?.message}
             />
@@ -125,12 +124,13 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
             <BaseText
               txtkey="profile.modal.newPassword"
               color={theme.colors.gray[6]}
-              
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
             <BasePasswordInput
               placeholder={`${translate("profile.modal.newPassword")}`}
-              inputvalue={register("newPassword",{onChange: () => clearErrors()})}
+              inputvalue={register("newPassword", {
+                onChange: () => clearErrors()
+              })}
               autoComplete="on"
               error={errors.newPassword?.message}
             />
@@ -142,13 +142,15 @@ export const ChangePassword = (props: { opened?: any; onClose?: any }) => {
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
             />
             <BasePasswordInput
-                placeholder={`${translate("profile.modal.confirmPassword")}`}
-                inputvalue={register("confirmNewPassword",{onChange: () => clearErrors()})}
+              placeholder={`${translate("profile.modal.confirmPassword")}`}
+              inputvalue={register("confirmNewPassword", {
+                onChange: () => clearErrors()
+              })}
               error={errors.confirmNewPassword?.message}
               autoComplete="on"
             />
           </Stack>
-       
+
           <BaseButton
             mt={"30px"}
             w={"100%"}
