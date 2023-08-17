@@ -161,7 +161,7 @@
     "invalidPassword": "رمز مرور خاطئ",
     "invalidNumber": "أحرف على الأقل",
     "enterMobileNumber": "تأكد من أن البريد الإلكتروني",
-    "required":"مطلوب",
+    "required":"مجال مطلوب",
     "strings": {
       "incChar": "يتألف من 6 أحرف على الأقل",
       "incNum": "يشمل الرقم",

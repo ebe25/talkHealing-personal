@@ -11,7 +11,6 @@ import {
   useMantineTheme
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { useForm } from '@mantine/form';
 // styles import
 import {createStyle} from './Account.styles';
 // component
@@ -27,6 +26,7 @@ import { useStores } from '@/models';
 import { Images } from '@/public';
 import { translate } from '@/i18n';
 import { ChangePhoneNumberModal } from '../Modals/ProfileModals/ChangePhoneNumberModal/ChangePhoneNumberModal';
+import { useForm } from "react-hook-form";
 
 export const Account = () => {
   const { i18nStore } = useStores();
@@ -47,7 +47,7 @@ export const Account = () => {
   };
 
   const address = useForm({
-    initialValues: {
+    defaultValues: {
       name: 'John Doe',
       email: 'johndoe@gmail.com',
       phoneNumber: '+919876543219',
@@ -94,7 +94,7 @@ export const Account = () => {
           </BaseButton>
         </Flex>
       </Flex>
-      <form onSubmit={address.onSubmit((values) => console.log(values))}>
+      <form onSubmit={address.handleSubmit((values) => console.log(values))}>
         <Grid className={classes.grid}>
           <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6}>
             <BaseText
@@ -112,7 +112,7 @@ export const Account = () => {
               classNames={{
                 input: classes.input
               }}
-              {...address.getInputProps('name')}
+              inputvalue={address.register('name')}
             />
           </Grid.Col>
           <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -141,7 +141,7 @@ export const Account = () => {
                   style={typography.label[i18nStore.getCurrentLanguage()].l4}
                 />
               }
-              {...address.getInputProps('email')}
+              inputvalue={address.register("email")}
             />
           </Grid.Col>
         </Grid>
@@ -172,7 +172,7 @@ export const Account = () => {
                   style={typography.label[i18nStore.getCurrentLanguage()].l4}
                 />
               }
-              {...address.getInputProps('phoneNumber')}
+              inputvalue={address.register("phoneNumber")}
             />
           </Grid.Col>
           <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -202,7 +202,7 @@ export const Account = () => {
                   style={typography.label[i18nStore.getCurrentLanguage()].l4}
                 />
               }
-              {...address.getInputProps('password')}
+              {...address.register('password')}
             />
           </Grid.Col>
         </Grid>

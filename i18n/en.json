@@ -164,7 +164,7 @@
     "invalidPassword": "Invalid password",
     "invalidNumber": "Invalid Number",
     "enterMobileNumber": "Enter Mobile Number",
-    "required":"Required",
+    "required":"Required Field",
     "strings": {
       "incChar": "Includes at least 6 characters",
       "incNum": "Includes number",
