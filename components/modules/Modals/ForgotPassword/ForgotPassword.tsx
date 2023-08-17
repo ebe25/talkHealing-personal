@@ -8,17 +8,28 @@ import { Input } from '@/components/elements/Input/Input';
 import { useMediaQuery } from '@mantine/hooks';
 import { useStores } from '@/models';
 import { Images } from '../../../../public/index';
-import { useForm } from "@mantine/form";
 import { Loader } from '@mantine/core';
 import { translate } from '@/i18n';
 import { IconChevronDown } from '@tabler/icons-react';
 import { createStyle } from './ForgotPassword.style';
-import { Country }  from 'country-state-city';
+import { Country } from 'country-state-city';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 interface forgotPasswordProps {
   opened: boolean;
   close: any;
 }
+
+const resetPasswordByPhoneNumberSchema = yup.object({
+  number: yup.string().required(`${translate('authentication.formText.invalidNumber')}`),
+  countriesCode: yup.string().required(`${translate('authentication.required')}`),
+})
+
+const resetPasswordByEmailSchema = yup.object({
+  email: yup.string().email(`${translate('authentication.invalidEmail')}`).required(`${translate('authentication.required')}`),
+})
 
 export const ForgotPassword = (props: forgotPasswordProps) => {
   const isPhone = useMediaQuery('(max-width:600px)');
@@ -49,10 +60,10 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   {
     Country.getAllCountries().map((key) => {
       countriesCode.push({
-        label: "+"+ key.phonecode+" "+key.name,
-        value: "+"+ key.phonecode,
+        label: "+" + key.phonecode + " " + key.name,
+        value: "+" + key.phonecode,
       })
-      countriesCode.sort((a:any, b:any) => {
+      countriesCode.sort((a: any, b: any) => {
         if (a['label'][0] < b['label'][0])
           return -1
         else if (a['label'][0] > b['label'][0])
@@ -79,26 +90,20 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
   };
 
   const resetPasswordByEmail = useForm({
-    initialValues: {
+    defaultValues: {
       email: '',
-      termsOfService: false,
     },
-
-    validate: {
-      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
-    },
+    resolver: yupResolver(resetPasswordByEmailSchema)
   });
 
 
   // ResetPassword By Email Api call
   const handleResetPasswordByEmail = () => {
     setLoader(true)
-    let results = resetPasswordByEmail.validate();
 
-    if (results.hasErrors) return setLoader(false);
-    if (!results.hasErrors) {
+    if (resetPasswordByEmail.formState.isValid) {
       userStore.resetPassword(
-        resetPasswordByEmail.values.email
+        resetPasswordByEmail.getValues("email")
       ).then((res) => {
         if (res.ok) {
           console.log("email link send successfully!")
@@ -133,34 +138,22 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
   // ResetPassword By Phone Number Api call
   const resetPasswordByPhone = useForm({
-    initialValues: {
-      phone: '',
+    defaultValues: {
+      number: '',
       countriesCode: '',
-      termsOfService: false,
     },
-
-    validate: {
-      phone: (value) => {
-        if (value.trim().length < 1)
-          return translate("authentication.formText.invalidNumber");
-      },
-      countriesCode: (value) => {
-        if (value.trim().length < 1)
-          return translate("authentication.formText.invalidNumber");
-      }
-    },
+    resolver: yupResolver(resetPasswordByPhoneNumberSchema)
   });
+
 
 
   // smsPasswordReset By Phone Number Api
   const handleResetPasswordByPhone = () => {
     setLoader(true)
-    let results = resetPasswordByPhone.validate();
 
-    if (results.hasErrors) return setLoader(false);
-    if (!results.hasErrors) {
+    if (resetPasswordByPhone.formState.isValid) {
       userStore.smsPasswordReset(
-        `${resetPasswordByPhone.values.countriesCode}${resetPasswordByPhone.values.phone}`
+        `${resetPasswordByPhone.getValues("countriesCode")}${resetPasswordByPhone.getValues("number")}`
       ).then((res) => {
         if (res.ok) {
           console.log("phone link send successfully!")
@@ -217,6 +210,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         style_variant={'filled'}
         w={isPhone ? '100%' : '47%'}
         h={'45px'}
+        type='submit'
         {...props}
       >
         <BaseText txtkey={'global.button.confirm'} />
@@ -310,9 +304,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
           {/* Reset Password By Email */}
           {showEmailField ? (
-            <form onSubmit={
-              resetPasswordByEmail.onSubmit((values) => console.log(values))
-            }>
+            <form onSubmit={resetPasswordByEmail.handleSubmit(handleResetPasswordByEmail)}
+            >
               <Flex direction={'column'} gap={30}>
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
@@ -327,7 +320,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     placeholder={`${translate("authentication.formText.writeEmail")}`}
                     style_variant={'inputText1'}
                     classNames={{ input: classes.input }}
-                    {...resetPasswordByEmail.getInputProps('email')}
+                    inputvalue={resetPasswordByEmail.register("email")}
+                    error={resetPasswordByEmail.formState.errors.email?.message}
                   />
                   {/* error message */}
                   <Center>
@@ -338,10 +332,9 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                   </Center>
                 </Flex>
                 <CancelAndConfirmButton
-                  color_variant={resetPasswordByEmail.isValid() ? 'blue' : 'gray'}
-                  onClick={(e: any) => {
-                    e.preventDefault()
-                    if (resetPasswordByEmail.isValid()) {
+                  color_variant={resetPasswordByEmail.formState.isValid ? 'blue' : 'gray'}
+                  onClick={() => {
+                    if (resetPasswordByEmail.formState.isValid) {
                       handleResetPasswordByEmail()
                     }
                     else {
@@ -357,9 +350,8 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
           {/* Reset Password By Phone */}
           {showPhoneNumberField ? (
-            <form onSubmit={
-              resetPasswordByPhone.onSubmit((values) => console.log(values))
-            }>
+            <form onSubmit={resetPasswordByPhone.handleSubmit(handleResetPasswordByPhone)}
+            >
               <Flex direction={'column'} gap={30}>
                 <Flex direction={'column'} gap={10} w={'100%'}>
                   <BaseText
@@ -379,15 +371,21 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                       input: classes.input
                     }}
                     data={countriesCode}
-                    {...resetPasswordByPhone.getInputProps('countriesCode')}
+                    {...resetPasswordByPhone.register('countriesCode')}
+                    onChange={(event: any) => {
+                      resetPasswordByPhone.clearErrors();
+                      resetPasswordByPhone.setValue("countriesCode", event);
+                    }}
+                    error={resetPasswordByPhone.formState.errors.countriesCode?.message}
                   />
                   <Input
                     component={'input'}
-                    type="number"
+                    type={"number"}
                     placeholder={`${translate("profile.phoneNumber")}`}
                     style_variant={'inputText1'}
                     classNames={{ input: classes.input }}
-                    {...resetPasswordByPhone.getInputProps('phone')}
+                    inputvalue={resetPasswordByPhone.register("number")}
+                    error={resetPasswordByPhone.formState.errors.number?.message}
                   />
                   {/* error message */}
                   <Center>
@@ -398,10 +396,9 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     }
                   </Center>
                 </Flex>
-                <CancelAndConfirmButton color_variant={resetPasswordByPhone.isValid() ? 'blue' : 'gray'}
-                  onClick={(e: any) => {
-                    e.preventDefault()
-                    if (resetPasswordByPhone.isValid()) {
+                <CancelAndConfirmButton color_variant={resetPasswordByPhone.formState.isValid ? 'blue' : 'gray'}
+                  onClick={() => {
+                    if (resetPasswordByPhone.formState.isValid) {
                       handleResetPasswordByPhone()
                     }
                     else {
