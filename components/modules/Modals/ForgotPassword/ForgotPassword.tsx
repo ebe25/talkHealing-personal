@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Center, CloseButton, Flex, Image, useMantineTheme, Select } from '@mantine/core';
+import { Center, CloseButton, Flex, Image, useMantineTheme, Select, Box } from '@mantine/core';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -9,11 +9,11 @@ import { useMediaQuery } from '@mantine/hooks';
 import { useStores } from '@/models';
 import { Images } from '../../../../public/index';
 import { useForm } from "@mantine/form";
-import { Loader } from '@mantine/core';
 import { translate } from '@/i18n';
-import { countries } from "countries-list"
 import { IconChevronDown } from '@tabler/icons-react';
 import { createStyle } from './ForgotPassword.style';
+import swal from 'sweetalert';
+import { Country }  from 'country-state-city';
 
 
 interface forgotPasswordProps {
@@ -45,23 +45,23 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
       setSelectedPasswordForgotType(passwordForgotMethods.Phone)
   };
 
-  // countriesCode
-  let countriesCode: any = []
-  {
-    Object.keys(countries).map((key, id) => {
-      countriesCode.push({
-        label: countries[key]["name"] + "(+" + countries[key]["phone"] + ")",
-        value: "+" + countries[key]["phone"],
-      })
-      countriesCode.sort((a, b) => {
-        if (a['label'][0] < b['label'][0])
-          return -1
-        else if (a['label'][0] > b['label'][0])
-          return 1
-        else return 0
-      })
-    })
-  }
+   // countriesCode
+   let countriesCode: any = []
+   {
+       Country.getAllCountries().map((key) => {
+         countriesCode.push({
+           label: "+"+ key.phonecode+" "+key.name,
+           value: "+"+ key.phonecode,
+         })
+         countriesCode.sort((a:any, b:any) => {
+           if (a['label'][0] < b['label'][0])
+             return -1
+           else if (a['label'][0] > b['label'][0])
+             return 1
+           else return 0
+         })
+       });
+     }
 
   // close Modal function
   const closeModal = () => {
@@ -105,6 +105,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
           console.log("email link send successfully!")
           setLoader(false)
           closeModal()
+          swal(`${translate('authentication.formText.forgotPasswordLink')}`, `${translate("authentication.formText.successfully")}`, "success")
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -167,6 +168,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
           console.log("phone link send successfully!")
           setLoader(false)
           closeModal()
+          swal(`${translate('authentication.formText.forgotPasswordLink')}`, `${translate("authentication.formText.successfully")}`, "success")
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -196,7 +198,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
   const CancelAndConfirmButton = (props: any) => (
     <Flex
-      wrap={'wrap'}
+      wrap={'wrap-reverse'}
       gap={10}
       w={'100%'}
       align={'center'}
@@ -218,6 +220,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         style_variant={'filled'}
         w={isPhone ? '100%' : '47%'}
         h={'45px'}
+        loading={loader}
         {...props}
       >
         <BaseText txtkey={'global.button.confirm'} />
@@ -235,11 +238,6 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         opened={props.opened}
         onClose={props.close}
       >
-        {loader ? (
-          <Flex h={'100%'} justify={"center"}>
-            <Loader className={classes.loader} color="indigo" size="sm" variant="oval" />
-          </Flex>
-        ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
           <Flex direction={'column'} gap={8}>
             <Flex direction={i18nStore.isRTL ? 'row-reverse' : 'row'} justify={'space-between'}>
@@ -370,6 +368,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     ta={i18nStore.isRTL ? "right" : "left"}
                   />
                   <Select
+                    searchable
                     placeholder="+914"
                     rightSection={<IconChevronDown size="1rem" />}
                     rightSectionWidth={30}

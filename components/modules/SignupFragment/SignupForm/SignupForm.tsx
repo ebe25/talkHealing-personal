@@ -3,7 +3,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Center, Flex, Loader, Text } from '@mantine/core';
+import { Box, Center, Flex , Text } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../../../public/index';
@@ -38,7 +38,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
             password1: (value) => (/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value) ? null : translate("authentication.invalidPassword")),
             password2: (value) => {
                 if (value != signUpForm.values.password1)
-                    return translate("authentication.invalidPassword");
+                    return translate("authentication.passwordNotMatch");
             },
             full_name: (value) => {
                 if (value.trim().length < 1)
@@ -73,6 +73,8 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                         setLoader(false)
                         if (res.error && res.error.email)
                             setError(res.error?.email?.toString())
+                        else if (res.error.non_field_errors)
+                            setError(res.error?.non_field_errors?.toString())
                         setTimeout(() => {
                             setError("")
                         }, 5000)
@@ -86,12 +88,6 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
         <Flex gap={26}
             direction={'column'}
         >
-            {/* Loader */}
-            {loader ? (
-                <Box className={classes.loaderBox}>
-                    <Loader size="xl" />
-                </Box>
-            ) : null}
             <form onSubmit={signUpForm.onSubmit((values) => console.log(values))}>
                 <Flex direction={'column'} gap={20}>
                     <Center>
@@ -196,6 +192,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                         mah={'39px'}
                         style_variant={signUpForm.isValid() ? 'filled' : 'disabled'}
                         color_variant={signUpForm.isValid() ? 'blue' : 'gray'}
+                        loading={loader}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
