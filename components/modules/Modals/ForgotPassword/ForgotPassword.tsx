@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Center, CloseButton, Flex, Image, useMantineTheme, Select } from '@mantine/core';
+import { Center, CloseButton, Flex, Image, useMantineTheme, Select, Box } from '@mantine/core';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -16,6 +16,7 @@ import { Country } from 'country-state-city';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import swal from 'sweetalert';
 
 interface forgotPasswordProps {
   opened: boolean;
@@ -109,6 +110,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
           console.log("email link send successfully!")
           setLoader(false)
           closeModal()
+          swal(`${translate('authentication.formText.forgotPasswordLink')}`, `${translate("authentication.formText.successfully")}`, "success")
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -159,6 +161,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
           console.log("phone link send successfully!")
           setLoader(false)
           closeModal()
+          swal(`${translate('authentication.formText.forgotPasswordLink')}`, `${translate("authentication.formText.successfully")}`, "success")
         }
         else if (res.code == 400) {
           if (res.error) {
@@ -188,7 +191,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
 
   const CancelAndConfirmButton = (props: any) => (
     <Flex
-      wrap={'wrap'}
+      wrap={'wrap-reverse'}
       gap={10}
       w={'100%'}
       align={'center'}
@@ -211,6 +214,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         w={isPhone ? '100%' : '47%'}
         h={'45px'}
         type='submit'
+        loading={loader}
         {...props}
       >
         <BaseText txtkey={'global.button.confirm'} />
@@ -228,11 +232,6 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
         opened={props.opened}
         onClose={props.close}
       >
-        {loader ? (
-          <Flex h={'100%'} justify={"center"}>
-            <Loader className={classes.loader} color="indigo" size="sm" variant="oval" />
-          </Flex>
-        ) : null}
         <Flex direction={'column'} gap={20} style={{ padding: '25px' }}>
           <Flex direction={'column'} gap={8}>
             <Flex direction={i18nStore.isRTL ? 'row-reverse' : 'row'} justify={'space-between'}>
@@ -361,6 +360,7 @@ export const ForgotPassword = (props: forgotPasswordProps) => {
                     ta={i18nStore.isRTL ? "right" : "left"}
                   />
                   <Select
+                    searchable
                     placeholder="+914"
                     rightSection={<IconChevronDown size="1rem" />}
                     rightSectionWidth={30}

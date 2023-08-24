@@ -3,7 +3,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Center, Flex, Loader, Text } from '@mantine/core';
+import { Box, Center, Flex , Text } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../../../public/index';
@@ -61,6 +61,8 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                         setLoader(false)
                         if (res.error && res.error.email)
                             setError(res.error?.email?.toString())
+                        else if (res.error.non_field_errors)
+                            setError(res.error?.non_field_errors?.toString())
                         setTimeout(() => {
                             setError("")
                         }, 5000)
@@ -74,13 +76,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
         <Flex gap={26}
             direction={'column'}
         >
-            {/* Loader */}
-            {loader ? (
-                <Box className={classes.loaderBox}>
-                    <Loader size="xl" />
-                </Box>
-            ) : null}
-            <form onSubmit={signUpForm.handleSubmit(onSubmit)}>
+           <form onSubmit={signUpForm.handleSubmit(onSubmit)}>
                 <Flex direction={'column'} gap={20}>
                     <Center>
                         <BaseText
@@ -188,6 +184,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                         mah={'39px'}
                         style_variant={signUpForm.formState.isValid ? 'filled' : 'disabled'}
                         color_variant={signUpForm.formState.isValid ? 'blue' : 'gray'}
+                        loading={loader}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}

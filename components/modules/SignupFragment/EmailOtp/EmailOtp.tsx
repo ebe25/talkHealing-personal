@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Center, Flex, Loader } from '@mantine/core';
+import { Box, Center, Flex } from '@mantine/core';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -96,7 +96,6 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
                         <Center>
                             {error ? (<BaseText style={typography.label[i18nStore.getCurrentLanguage()].l1}
                                 color={theme.colors.red[7]} txtkey={'profile.error.invalidOtp'} />) : null}
-                            {loader ? <Loader /> : null}
                         </Center>
                     </Flex>
                     {/* Resend Otp Button */}
@@ -130,6 +129,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
                         h={'39px'}
                         style_variant={emailOtpFrom.isValid() ? 'filled' : 'disabled'}
                         color_variant={emailOtpFrom.isValid() ? 'blue' : 'gray'}
+                        loading={loader}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}

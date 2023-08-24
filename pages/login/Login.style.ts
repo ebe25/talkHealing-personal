@@ -13,7 +13,7 @@ export const createStyle = () => {
       backgroundImage: 'url( ' + `${Images.bg_Img}` + '  )',
       backgroundSize: '100%',
       [theme.fn.smallerThan('md')]: {
-        padding: '20px',
+        padding: '20px 2px',
       },
     },
     link: {

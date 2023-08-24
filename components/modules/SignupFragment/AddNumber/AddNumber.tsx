@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Box, Center, Flex, Select } from '@mantine/core';
+import { Center, Flex , Select } from '@mantine/core';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { useStores } from '@/models';
 import { Input } from '@/components/elements/Input/Input';
-import { countries } from "countries-list"
 import { IconChevronDown } from '@tabler/icons-react';
 import Link from 'next/link';
 import { translate } from "../../../../i18n";
+import { Country }  from 'country-state-city';
 import { createStyle } from "./AddNumber.style"
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -73,23 +73,23 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
     }
 
 
-    // countriesCode
-    let countriesCode: any = []
-    {
-        Object.keys(countries).map((key, id) => {
-            countriesCode.push({
-                label: countries[key]["name"] + "(+" + countries[key]["phone"] + ")",
-                value: "+" + countries[key]["phone"],
-            })
-            countriesCode.sort((a, b) => {
-                if (a['label'][0] < b['label'][0])
-                    return -1
-                else if (a['label'][0] > b['label'][0])
-                    return 1
-                else return 0
-            })
-        })
-    }
+     // countriesCode
+     let countriesCode: any = []
+     {
+         Country.getAllCountries().map((key) => {
+           countriesCode.push({
+             label: "+"+ key.phonecode+" "+key.name,
+             value: "+"+ key.phonecode,
+           })
+           countriesCode.sort((a:any, b:any) => {
+             if (a['label'][0] < b['label'][0])
+               return -1
+             else if (a['label'][0] > b['label'][0])
+               return 1
+             else return 0
+           })
+         });
+       }
 
     return (
         <Flex gap={26}
@@ -112,7 +112,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                             txtkey={'profile.modal.countryCode'}
                         />
                         <Select
-                        searchable
+                            searchable
                             placeholder="Select your country code"
                             rightSection={<IconChevronDown size="1rem" />}
                             classNames={{
@@ -144,7 +144,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                             component={'input'}
                             classNames={{ input: classes.input }}
                             type={'number'}
-                            placeholder={`${translate('authentication.formText.phoneNumber')}`}
+                            placeholder={`${translate('profile.phoneNumber')}`}
                             style_variant={'inputText1'}
                            inputvalue= {register('number')}
                            error ={errors.number?.message}
@@ -164,6 +164,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                         mah={'39px'}
                         style_variant={isValid ? 'filled' : 'disabled'}
                         color_variant={isValid? 'blue' : 'gray'}
+                        loading={loader}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
