@@ -5,13 +5,21 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { useStores } from '@/models';
-import { useForm } from "@mantine/form";
 import { Input } from '@/components/elements/Input/Input';
 import { IconChevronDown } from '@tabler/icons-react';
 import Link from 'next/link';
 import { translate } from "../../../../i18n";
 import { Country }  from 'country-state-city';
 import { createStyle } from "./AddNumber.style"
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const addPhoneNumber = yup.object({
+    number: yup.string().required(`${translate('authentication.formText.invalidNumber')}`),
+    countriesCode: yup.string().required(`${translate('authentication.formText.invalidNumber')}`),
+
+})
 
 export const AddNumber = (props: { incrementTimelineStep: Function }) => {
     const { i18nStore, userStore } = useStores();
@@ -21,22 +29,23 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
 
-    const addNumberFrom = useForm({
-        initialValues: {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        clearErrors,
+        watch,
+        setValue,
+        getValues,
+    
+        formState: { errors, isValid }
+      }= useForm({
+        defaultValues: {
             number: '',
             countriesCode: '',
-            termsOfService: false,
+            // termsOfService: false,
         },
-        validate: {
-            number: (value) => {
-                if (value.trim().length < 1)
-                    return translate('authentication.formText.invalidNumber');
-            },
-            countriesCode: (value) => {
-                if (value.trim().length < 1)
-                    return translate('authentication.formText.invalidNumber');
-            },
-        },
+        resolver:yupResolver(addPhoneNumber)
 
     });
 
@@ -45,9 +54,9 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
     const handleAddNumber = () => {
         setLoader(true)
 
-        userStore.editUser({ phone: `${addNumberFrom.values.countriesCode}${addNumberFrom.values.number}` }).then((res) => {
+        userStore.editUser({ phone: `${getValues("countriesCode")}${getValues("number")}` }).then((res) => {
             if (res.ok) {
-                addNumberFrom.reset()
+                reset()
                 setLoader(false)
                 props.incrementTimelineStep()
             }
@@ -86,7 +95,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
         <Flex gap={26}
             direction={'column'}
         >
-            <form onSubmit={addNumberFrom.onSubmit((values) => console.log(values))}>
+            <form onSubmit={handleSubmit(handleAddNumber)}>
                 <Flex direction={'column'} gap={50}>
                     <Center>
                         <BaseText
@@ -104,7 +113,7 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                         />
                         <Select
                             searchable
-                            placeholder="+914"
+                            placeholder="Select your country code"
                             rightSection={<IconChevronDown size="1rem" />}
                             classNames={{
                                 rightSection: classes.rightSection,
@@ -114,7 +123,12 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                             radius="xl"
                             styles={{ rightSection: { pointerEvents: 'none' } }}
                             data={countriesCode}
-                            {...addNumberFrom.getInputProps('countriesCode')}
+                            {...register('countriesCode')}
+                            onChange={(event: any) => {
+                                clearErrors();
+                                setValue("countriesCode", event);
+                              }}
+                              error = {errors.countriesCode?.message}
                         />
                     </Flex>
                     {/* Phone Number Input Box */}
@@ -132,7 +146,8 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                             type={'number'}
                             placeholder={`${translate('profile.phoneNumber')}`}
                             style_variant={'inputText1'}
-                            {...addNumberFrom.getInputProps('number')}
+                           inputvalue= {register('number')}
+                           error ={errors.number?.message}
                         />
                         {/* Error Message */}
                         <Center>
@@ -144,21 +159,17 @@ export const AddNumber = (props: { incrementTimelineStep: Function }) => {
                     </Flex>
                     {/* Number Add Button */}
                     <BaseButton
-                        onClick={(e) => {
-                            e.preventDefault()
-                            if (addNumberFrom.isValid())
-                                handleAddNumber()
-                        }}
+                        type ='submit'
                         w={'100%'}
                         mah={'39px'}
-                        style_variant={addNumberFrom.isValid() ? 'filled' : 'disabled'}
-                        color_variant={addNumberFrom.isValid() ? 'blue' : 'gray'}
+                        style_variant={isValid ? 'filled' : 'disabled'}
+                        color_variant={isValid? 'blue' : 'gray'}
                         loading={loader}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                            color={addNumberFrom.isValid() ? theme.white : theme.colors.dark[1]}
-                            txtkey={'global.button.continue'}
+                            color={isValid ? theme.white : theme.colors.dark[1]}
+                            txtkey={'signUpForm.login'}
                         />
                     </BaseButton>
                 </Flex>

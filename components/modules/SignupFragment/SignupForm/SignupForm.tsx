@@ -10,10 +10,12 @@ import { Images } from '../../../../public/index';
 import { CircularIcon } from 'components/elements/CircularIcon/CircularIcon';
 import { useStores } from '@/models';
 import { createStyle } from './SignupForm.style';
-import { useForm } from "@mantine/form";
+// import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from "../../../../i18n";
-
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
 export const SignupForm = (props: { incrementTimelineStep: Function }) => {
     const useStyles = createStyle()
@@ -23,44 +25,30 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState<any>("");
 
+    const schema = yup.object({
+        full_name: yup.string().required(`${translate('authentication.required')}`),
+        email: yup.string().email(`${translate("authentication.invalidEmail")}`).required(`${translate("authentication.required")}`),
+        password1: yup.string().required(`${translate("authentication.required")}`).matches(/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/, { message: translate("authentication.invalidPassword") }),
+        password2: yup.string().oneOf([yup.ref("password1"), null], "Passwords must match").required(`${translate("authentication.required")}`),
+    }).required();
+    type FormData = yup.InferType<typeof schema>;
 
-    const signUpForm = useForm({
-        initialValues: {
-            email: '',
-            full_name: '',
-            password1: '',
-            password2: '',
-            termsOfService: false,
-        },
-
-        validate: {
-            email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
-            password1: (value) => (/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(value) ? null : translate("authentication.invalidPassword")),
-            password2: (value) => {
-                if (value != signUpForm.values.password1)
-                    return translate("authentication.passwordNotMatch");
-            },
-            full_name: (value) => {
-                if (value.trim().length < 1)
-                    return translate('profile.name');
-            },
-        },
+    const signUpForm = useForm<FormData>({
+        resolver: yupResolver(schema)
     });
+    const onSubmit = (data: FormData) => console.log(data);
 
 
     // SignUp api
     const handleSignUp = () => {
         setLoader(true)
 
-        let results = signUpForm.validate();
-
-        if (results.hasErrors) return setLoader(false);
-        if (!results.hasErrors) {
+        if (signUpForm.formState.isValid) {
             userStore.signupUser(
-                signUpForm.values.email,
-                signUpForm.values.full_name,
-                signUpForm.values.password1,
-                signUpForm.values.password2
+                signUpForm.getValues("email"),
+                signUpForm.getValues("full_name"),
+                signUpForm.getValues("password1"),
+                signUpForm.getValues("password2")
             ).then((res) => {
                 if (res.ok) {
                     signUpForm.reset()
@@ -88,7 +76,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
         <Flex gap={26}
             direction={'column'}
         >
-            <form onSubmit={signUpForm.onSubmit((values) => console.log(values))}>
+           <form onSubmit={signUpForm.handleSubmit(onSubmit)}>
                 <Flex direction={'column'} gap={20}>
                     <Center>
                         <BaseText
@@ -123,7 +111,8 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                             classNames={{ input: classes.input }}
                             placeholder={`${translate('profile.name')}`}
                             style_variant={'inputText1'}
-                            {...signUpForm.getInputProps('full_name')}
+                            inputvalue={signUpForm.register('full_name')}
+                            error={signUpForm.formState.errors.full_name?.message}
                         />
                     </Flex>
                     {/* Email Input Box */}
@@ -142,7 +131,8 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                             classNames={{ input: classes.input }}
                             placeholder={`${translate('authentication.formText.writeEmail')}`}
                             style_variant={'inputText1'}
-                            {...signUpForm.getInputProps('email')}
+                            inputvalue={signUpForm.register('email')}
+                            error={signUpForm.formState.errors.email?.message}
                         />
                     </Flex>
                     {/* Password Input Box */}
@@ -157,7 +147,8 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                             w={'100%'}
                             mah={'44px'}
                             placeholder={`${translate('authentication.formText.writePassword')}`}
-                            {...signUpForm.getInputProps('password1')}
+                            inputvalue={signUpForm.register('password1')}
+                            error={signUpForm.formState.errors.password1?.message}
                         />
                     </Flex>
                     {/* Confirm Password Input Box */}
@@ -172,7 +163,8 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                             w={'100%'}
                             mah={'44px'}
                             placeholder={`${translate('authentication.formText.writePassword')}`}
-                            {...signUpForm.getInputProps('password2')}
+                            inputvalue={signUpForm.register('password2')}
+                            error={signUpForm.formState.errors.password2?.message}
                         />
                         {/* error message */}
                         <Text ta={'center'} style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -180,23 +172,23 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
                     </Flex>
                     {/* SignUp Form Submit Button */}
                     <BaseButton
-                        onClick={(e) => {
-                            e.preventDefault()
-                            if (signUpForm.isValid())
+                        type="submit"
+                        onClick={() => {
+                            if (signUpForm.formState.isValid)
                                 handleSignUp()
                             else {
-                                signUpForm.validate()
+                                console.log("email or password is empty")
                             }
                         }}
                         w={'100%'}
                         mah={'39px'}
-                        style_variant={signUpForm.isValid() ? 'filled' : 'disabled'}
-                        color_variant={signUpForm.isValid() ? 'blue' : 'gray'}
+                        style_variant={signUpForm.formState.isValid ? 'filled' : 'disabled'}
+                        color_variant={signUpForm.formState.isValid ? 'blue' : 'gray'}
                         loading={loader}
                     >
                         <BaseText
                             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                            color={signUpForm.isValid() ? theme.white : theme.colors.dark[1]}
+                            color={signUpForm.formState.isValid ? theme.white : theme.colors.dark[1]}
                             txtkey={'header.signUp'}
                         />
                     </BaseButton>

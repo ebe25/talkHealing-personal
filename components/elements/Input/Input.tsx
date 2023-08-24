@@ -13,6 +13,7 @@ export const Input = (props: BaseTextInputProps) => {
       {...props}
       className={classes[props.style_variant]}
       placeholder={props.placeholder}
+      radius="xl"
       {...props.inputvalue}
     />
   );
