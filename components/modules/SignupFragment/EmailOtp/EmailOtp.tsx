@@ -13,7 +13,7 @@ import { translate } from "../../../../i18n";
 import swal from "sweetalert";
 
 const OTPSchema = yup.object({
-  emailOtp: yup.string().length(4, "Filled all ")
+  emailOtp: yup.string().length(4, "")
 });
 export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
   const { i18nStore, userStore } = useStores();
