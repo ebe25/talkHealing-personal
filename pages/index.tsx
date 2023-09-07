@@ -1,31 +1,17 @@
-// import Profile from './profile';
-// import Login from './login';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router'
-import { Box, Center, Container, Loader } from '@mantine/core';
+import { Welcome } from '../components/modules/Welcome/Welcome';
+import { ColorSchemeToggle } from '../components/elements/ColorSchemeToggle/ColorSchemeToggle';
+import TermsAndCondition from './terms-and-condition';
+import PrivacyPolicy from './privacy-policy';
+import CookiePolicy from './cookie-policy';
+import Login  from './login';
 
 export default function HomePage() {
-  const router = useRouter()
-  useEffect(()=>{
-    //later check if logged in here
-    router.push("/login")
-    return ()=>{
 
-    }
-  },[])
   return (
     <>
-      {/* <Profile/> */}
-    {/* <Login /> */}
-    <Box >
-      <Container>
-        <Center h="100vh">
-          <Loader size="xl"/>
-        </Center>
-      </Container>
-    </Box>
       {/* <Welcome /> */}
       {/* <ColorSchemeToggle /> */}
+    <Login />
     </>
   );
 }

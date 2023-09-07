@@ -16,6 +16,7 @@ import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordI
 import { useDisclosure } from '@mantine/hooks';
 // import { BaseRadioButton } from '@/components/elements/BaseRadioButton/RadioButton';
 import { IconArrowLeft } from '@tabler/icons-react';
+import { ForgotPassword } from '../Modals/ForgotPassword/ForgotPassword';
 
 
 
@@ -61,6 +62,7 @@ export function Welcome() {
         <label></label>
       {/* <BaseRadioButton /> */}
       </form>
+      <ForgotPassword opened={opened} close={close}/>
     </>
   );
 }

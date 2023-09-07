@@ -3,71 +3,139 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Input } from '@/components/elements/Input/Input';
 import { BasePasswordInput } from '@/components/elements/PasswordInput/PasswordInput';
-import { Box, Center, Container, Flex, Grid, Image, Text } from '@mantine/core';
+import { Box, Center, Container, Flex, Grid, Image , Text } from '@mantine/core';
 import { typography } from '@/themes/Mantine/typography';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../public/index';
-import { CircularIcon } from '../../components/elements/CircularIcon/CircularIcon';
-import useStyles from './Login.style';
+import { createStyle } from './Login.style';
 import { useStores } from '@/models';
-import { useForm } from "@mantine/form";
+// import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '@/i18n';
-import { useRouter } from 'next/navigation'
-
+import { GoogleLogin } from '@react-oauth/google';
+import FacebookLogin from '@greatsumini/react-facebook-login';
+import { useRouter } from 'next/router';
+import { ForgotPassword } from '../../components/modules/Modals/ForgotPassword/ForgotPassword';
+import swal from 'sweetalert';
+import { useDisclosure } from '@mantine/hooks';
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 interface loginProps {
   img?: string;
 }
 
-const Login = (props: loginProps) => {
+
+
+export const Login = (props: loginProps) => {
+  const useStyles = createStyle()
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const router = useRouter()
   const { i18nStore, userStore } = useStores()
   const [loader, setLoader] = useState(false);
+  const router = useRouter();
   const [error, setError] = useState<any>("")
+  const [opened, { open, close }] = useDisclosure(false);
 
-  const loginForm = useForm({
-    initialValues: {
-      email: '',
-      password: '',
-      termsOfService: false,
-    },
-    validate: {
-      email: (value) => (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) ? null : translate("authentication.invalidEmail")),
-      password: (value) => {
-        if (value.trim().length < 8)
-          return translate('authentication.invalidPassword');
-      },
-    },
+  const schema = yup.object({
+    email: yup.string().email(`${translate("authentication.invalidEmail")}`).required(`${translate("authentication.required")}`),
+    password: yup.string().required(`${translate("authentication.required")}`).min(8),
+  }).required();
+  type FormData = yup.InferType<typeof schema>;
+
+  const loginForm = useForm<FormData>({
+    resolver: yupResolver(schema)
   });
+  const onSubmit = (data: FormData) => console.log(data);
 
 
   //  Login Api Call
   const handleLogin = () => {
     setLoader(true)
-    let results = loginForm.validate();
 
-    if (results.hasErrors) return setLoader(false);
-    if (!results.hasErrors) {
-      userStore.loginUser(loginForm.values.email, loginForm.values.password).then((res) => {
+    if (!loginForm.formState.isValid) return setLoader(false);
+    if (loginForm.formState.isValid) {
+      userStore.loginUser(loginForm.getValues("email"), loginForm.getValues("password")).then((res) => {
         if (res.ok) {
-          router.push("/profile");
+          console.log("user logged in successfully!")
+          router.push('/profile')
+          loginForm.reset()
+          setLoader(false)
         }
         else if (res.code == 400) {
           if (res.error) {
             setLoader(false)
-            setError(res.error)
+            setError(res.error.non_field_errors)
             setTimeout(() => {
               setError("")
             }, 5000)
           }
         }
-        setLoader(false)
-        loginForm.reset()
+        else if (res.code == 401) {
+          if (res.error) {
+            setLoader(false)
+            setError(res.error)
+            if (res.error && res.error.detail)
+              setError(res.error?.detail?.toString())
+            setTimeout(() => {
+              setError("")
+            }, 5000)
+          }
+        }
       })
     }
   }
+
+  const onGoogleLogin = (google_access_token: any) => {
+    setLoader(true)
+    userStore.loginGoogle(google_access_token).then((res) => {
+      if (res.ok) {
+        console.log("user logged in successfully!")
+        router.push('/home')
+        setLoader(false)
+      }
+      else if (res.code == 400) {
+        if (res.error) {
+          swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
+          setLoader(false)
+        }
+      }
+      else if (res.code == 401) {
+        if (res.error) {
+          swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
+          setLoader(false)
+        }
+      }
+    }
+    )
+  }
+
+  const onFacebookLogin = (facebook_access_token: any) => {
+    setLoader(true)
+    userStore.loginFacebook(facebook_access_token).then((res) => {
+      if (res.ok) {
+        console.log("user logged in successfully!")
+        router.push('/home')
+        setLoader(false)
+      }
+      else if (res.code == 400) {
+        if (res.error) {
+          swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
+          setLoader(false)
+        }
+      }
+      else if (res.code == 401) {
+        if (res.error) {
+          swal(`${res.error.non_field_errors}`, `${translate('profile.error.error')}`, "error")
+          setLoader(false)
+        }
+      }
+    }
+    )
+  };
+
+  let facebookLoginAppId = "542240271409221";
+
 
   return (
     <Container
@@ -98,12 +166,12 @@ const Login = (props: loginProps) => {
           lg={5}
           xl={5}
         >
-          <form onSubmit={loginForm.onSubmit((values) => console.log(values))}>
+          <form onSubmit={loginForm.handleSubmit(onSubmit)}>
             <Flex direction={'column'} gap={20} w={"100%"} >
               <Center>
                 <BaseText
                   ta={'center'}
-                  style={typography.headings[i18nStore.getCurrentLanguage()].h1}
+                  style={typography.headings[i18nStore.getCurrentLanguage()].h2}
                   color={theme.colors.dark[8]}
                   txtkey={'header.login'}
                 />
@@ -111,12 +179,30 @@ const Login = (props: loginProps) => {
               {/* Social Media Login */}
               <Flex justify="center" align="center" gap={32}
               >
-                <Box className={classes.link}>
-                  <CircularIcon icon={Images.facebook_icon} />
-                </Box>
-                <Box className={classes.link}>
-                  <CircularIcon icon={Images.google_icon} />
-                </Box>
+                <FacebookLogin
+                  appId={facebookLoginAppId}
+                  onSuccess={(response) => {
+                    onFacebookLogin(response.accessToken)
+                  }}
+                  onFail={(error) => {
+                    swal(`${error}`, `${translate('profile.error.error')}`, "error")
+                  }}
+                  render={({ onClick }) => (
+                    <Box className={classes.facebookIconBox} onClick={onClick}>
+                      <Image width={20} src={Images.facebook_icon} />
+                    </Box>
+                  )}
+                />
+                <GoogleLogin
+                  onSuccess={credentialResponse => {
+                    onGoogleLogin(credentialResponse.credential)
+                  }}
+                  type="icon"
+                  shape="circle"
+                  onError={() => {
+                    swal(`${error}`, `${translate('profile.error.error')}`, "error")
+                  }}
+                />
               </Flex>
               {/* Email Input */}
               <Flex direction={'column'} w={"100%"} gap={10} >
@@ -128,10 +214,13 @@ const Login = (props: loginProps) => {
                 <Input
                   h={'44px'}
                   w={"100%"}
+                  radius="xl"
                   component={'input'}
-                  placeholder={`${translate("authentication.formText.writeEmail")}`}
+                  classNames={{ input: classes.input }}
+                  placeholder={`${translate('authentication.formText.writeEmail')}`}
                   style_variant={'inputText1'}
-                  {...loginForm.getInputProps('email')}
+                  error={loginForm.formState.errors.email?.message}
+                  inputvalue={loginForm.register("email")}
                 />
               </Flex>
               {/* Password Input */}
@@ -144,9 +233,9 @@ const Login = (props: loginProps) => {
                 <BasePasswordInput
                   w={"100%"}
                   h={'44px'}
-                  autoComplete='on'
                   placeholder={`${translate("authentication.formText.writePassword")}`}
-                  {...loginForm.getInputProps('password')}
+                  inputvalue={loginForm.register("password", { required: true, minLength: 8 })}
+                  error={loginForm.formState.errors.password?.message }
                 />
                 {/* error message */}
                 <Text ta={'center'} style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -154,35 +243,36 @@ const Login = (props: loginProps) => {
               </Flex>
               {/* ForgetPassword */}
               <Center>
-                <Link className={classes.link} href={'/'}>
-                  <BaseText
-                    ta="center"
-                    style={typography.label[i18nStore.getCurrentLanguage()].l1}
-                    color={theme.colors.dark[8]}
-                    txtkey={'signUpForm.forgetPassword'}
-                  />
-                </Link>
+                <BaseText
+                  onClick={open}
+                  className={classes.link}
+                  ta="center"
+                  style={typography.label[i18nStore.getCurrentLanguage()].l1}
+                  color={theme.colors.dark[8]}
+                  txtkey={'signUpForm.forgetPassword'}
+                />
+                <ForgotPassword opened={opened} close={close} />
               </Center>
               {/* Login Button */}
               <BaseButton
+                type="submit"
                 onClick={(e) => {
-                  e.preventDefault()
-                  if (loginForm.isValid())
+                  // e.preventDefault()
+                  if (loginForm.formState.isValid)
                     handleLogin()
                   else {
                     console.log("email or password is empty")
-                    loginForm.validate()
                   }
                 }}
                 w={"100%"}
                 mah={'39px'}
                 loading={loader}
-                style_variant={loginForm.isValid() ? 'filled' : 'disabled'}
-                color_variant={loginForm.isValid() ? 'blue' : 'gray'}
+                style_variant={loginForm.formState.isValid ? 'filled' : 'disabled'}
+                color_variant={loginForm.formState.isValid ? 'blue' : 'gray'}
               >
                 <BaseText
                   style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                  color={loginForm.isValid() ? theme.white : theme.colors.dark[1]}
+                  color={loginForm.formState.isValid ? theme.white : theme.colors.dark[1]}
                   txtkey={'signUpForm.login'}
                 />
               </BaseButton>
@@ -198,11 +288,11 @@ const Login = (props: loginProps) => {
               txtkey={'signUpForm.newUser'}
             />
             &nbsp;
-            <Link className={classes.link} href={'/'} >
+            <Link className={classes.link} href={'/signup'} >
               <BaseText
                 style={typography.headings[i18nStore.getCurrentLanguage()].h7}
                 color={theme.colors.blue[4]}
-                txtkey={'authentication.formText.signUp'}
+                txtkey={'signUpForm.signUp'}
               />
             </Link>
           </Center>
@@ -212,4 +302,4 @@ const Login = (props: loginProps) => {
   );
 };
 
-export default Login
+export default Login;

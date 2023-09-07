@@ -1,4 +1,24 @@
 {
+  "frequentlyAskedQuestions" : {
+    "heading": "Frequently asked questions",
+    "search": "Search",
+    "loremIpsum": "Lorem ipsum dolor sit amet",
+    "faqQuestion": "What is FAQ Questions?",
+    "faqAns": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+   },
+  "termsAndConditionAndPolicy" : {
+    "termsAndCondition":{
+      "heading": "Terms and Conditions",
+      "firstParagraph" :"The standard Lorem Ipsum passage, used since the 1500s Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "secondParagraph":"Section 1.10.32 of 'de Finibus Bonorum et Malorum', written by Cicero in 45 BC Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?"
+    },
+    "privacyPolicy":{
+      "heading": "Privacy Policy"
+    },
+    "cookiePolicy":{
+      "heading": "Cookie Policy"
+    }
+  },
   "global": {
     "playwheel":"Playwheel",
     "label": {
@@ -72,7 +92,7 @@
       "emailPara":"Please enter the new email address you would like to change.",
       "email":"Email",
       "verifyOtp":"Verify Email",
-      "emailOtpPara":"We have sent the OTP in your email. Please enter the OTP for the verification.",
+      "emailOtpPara":"We have sent the Otp in your email. Please enter the Otp for the verification.",
       "resendCode":"Didn’t get the code?",
       "resendText":"Resend Code",
       "emailChanged":"Email address has successfully been changed.",
@@ -81,7 +101,7 @@
       "changePhoneNumber":"Change Phone Number",
       "countryCode":"Select Country Code",
       "verifyNumber":"Verify Phone Number",
-      "verifyNumberOtpPara":"We have sent the OTP in your email. Please enter the OTP for the verification.",
+      "verifyNumberOtpPara":"We have sent the Otp in your email. Please enter the Otp for the verification.",
       "phoneNumberLengthError":"Please enter a number",
       "afterPhoneNumberVerifypara":"Phone number has successfully been changed."
     },
@@ -122,7 +142,8 @@
       "postalCodeError":"Please enter Postal Code",
       "addressOneError":"Please enter Address One",
       "addressTwoError":"Please enter Address Two",
-      "errorMessageForOTP":"Please enter OTP"
+      "invalidOtp":"Invalid OTP",
+      "error": "Error"
     }
   },
   "signUpForm": {
@@ -135,11 +156,16 @@
     "backToLogin": "Back to Login",
     "continue": "Continue",
     "passwordLength": "must be at least 8 characters",
-    "errorMessage": "This email can’t be found, make sure email is incorrect"
+    "errorMessage": "This email can’t be found, make sure email is incorrect",
+    "unexpectedError":"An unexpected error occurred. Please try again later."
   },
   "authentication": {
     "invalidEmail": "Invalid email",
     "invalidPassword": "Invalid password",
+    "passwordNotMatch":"Password does not match",
+    "invalidNumber": "Invalid Number",
+    "enterMobileNumber": "Enter Mobile Number",
+    "required":"Required Field",
     "strings": {
       "incChar": "Includes at least 6 characters",
       "incNum": "Includes number",
@@ -163,12 +189,109 @@
       "invalidNumber": "Invalid number",
       "namePlaceholder": "Name",
       "emailPlaceholder": "Email",
-      "errorMessage":"This email or password is incorrect, please try again"
+      "errorMessage":"This email or password is incorrect, please try again",
+      "oldUser":"Already have account?",
+      "successfully":"Successfully",
+      "forgotPasswordText":"Please enter your registered email or phone number to receive the reset link.",
+      "forgotPasswordLink":"Please check your registered email or phone number"
     }
   },
+  "contactUs":{
+    "imageHeading":"Get in touch",
+    "imageParagraph":"We’d love to hear from you",
+    "contactTitle":"Contact details",
+    "contactDetails":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+    "location":"Location map",
+    "buttonAboveHeadingOne":"Browse our FAQs",
+    "buttonAboveHeadingTwo":"Get in touch with us",
+    "buttonText1":"Browse FAQs",
+    "buttonText2":"Send feedbacks"
+  },
+  "becomeMember":{
+    "playWheelMember":"Become Playwheel member",
+    "memberParagraph":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the was popularised in the 1960s with the release of Letraset sheets containing."
+  },
+  "bookingForEvent":{
+    "aboutMultipurposeText": "About multipurpose hall & services",
+    "galleryText": "Gallery",
+    "bookingForEventText":"Booking for events",
+    "packagePriceText":  "Package price",
+    "addToCartText": "Add to cart",
+    "checkOutNowText": "Check out now",
+    "totalPriceText": "Total price",
+    "addOnPriceText": "Add-ons price",
+    "addOnsText": "Add-ons",
+    "addOnNameText": "Add-on name",
+    "chooseDateText": "Choose date and time",
+    "checkoutText": "Checkout",
+    "addCouponText": "Add coupon code",
+    "paymentProceedButtonText":"Proceed to payment",
+    "bookingForEventHeading":"Book For Events"
+
+  },
+  "kidZone":{
+    "heading":"Open Play",
+    "availableAndTiming":"Availability & Timings",
+    "timing":"Timings:",
+    "availableSlots":"Available slots",
+    "services":"Services",
+    "selectDate":"Select date"
+    },
+  "addKidDetails": {
+    "kidName": "Kid’s name",
+    "kidNamePlaceholder":"Write name",
+    "kidDateOfBirthText":"Kid's Date of Birth",
+    "kidFavouriteColor":"Favorite color",
+    "kidFavouriteColorPlaceholder":"Write color",
+    "nextButton":"Next ",
+    "previousButtonText" : "Previous",
+    "saveButtonText" : "Save",
+    "editKidDetails": "Edit kid’s detail"
+  },
+  "workshop":{
+    "workshopHeadingOne":"Ongoing Workshop",
+    "workshopHeadingTwo":"Upcoming workshops",
+    "aboutWorkshop":"About workshop",
+    "aboutOrganizer":"About organizer",
+    "workshopCardHeading":"Name of the workshop",
+    "buttonText":"Buy now",
+    "progressbarText":"Seat available",
+     "bookingWorkshop":"Booking for workshop",
+     "choosekidDetails":"Choose kids details",
+     "addKidDetails":"Add new kid’s details",
+     "workshopName":"Workshop name here",
+     "buttonTextOne":"Add to cart",
+     "buttonTextTwo":"Check out now",
+     "workshopImageHeading":"Workshops",
+     "calenderButtonText":"Select from calendar",
+     "workshopParagraphFirst":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+     "workshopParagraphSecond":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+     "workshopParagraphThird":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.",
+     "selectDate":"Select from calendar"
+},
+"productPage":{
+  "visitStore":"Visit store",
+  "totalProduct": "Total product",
+  "productSold": "Product sold",
+  "responseRate":"Response rate",
+  "joinedSince" :"Joined since",
+  "aboutProduct": "About product",
+  "customerRating":"Customer rating",
+  "customerQuestions":"Customer questions",
+  "addToCart":"Add to cart",
+  "buyNow":"Buy now",
+  "size": "Size",
+  "colors": "Colors",
+  "question":"Question:",
+  "condition":"Condition",
+  "currentQuantity": "Current quantity",
+  "material":"Material",
+  "delivery":"Delivery"
+
+},
   "header":{
     "signUp": "Create account",
     "login": "Login to your account"
   }  
-}
 
+}

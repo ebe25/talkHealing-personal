@@ -6,7 +6,8 @@ import { useStores } from '@/models';
 
 interface BaseSearchInput extends PolymorphicComponentProps<'input', PasswordInputProps> {
   placeholder?: string;
-  onChange?: any
+  onChange?: any ,
+  inputvalue? : any
 }
 
 export const BasePasswordInput = (
@@ -19,15 +20,15 @@ export const BasePasswordInput = (
   return (
     <PasswordInput
       {...props}
-      // iconWidth={i18nStore.isRTL?"10px":"0px"}
-      // rightSectionWidth={i18nStore.isRTL?"0px":"10px"}
+      className={classes.passwordInput}
       classNames={{
-        // wrapper:classes.wrapper,
         rightSection: classes.rightSection,
         innerInput: classes.innerInput
       }}
       placeholder={props.placeholder}
+      autoComplete='on'
       radius="xl"
+      {...props.inputvalue}
     />
   );
 };

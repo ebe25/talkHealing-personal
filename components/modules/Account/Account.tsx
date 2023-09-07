@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 // mantine component imports
 import { Box, Center, FileButton, Flex, Grid, Image, Loader, TextInput, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { useForm } from '@mantine/form';
 // styles import
 import { createStyle } from './Account.styles';
 // component
@@ -19,6 +18,7 @@ import { useStores } from '@/models';
 import { translate } from '@/i18n';
 import { ChangePhoneNumberModal } from '../Modals/ProfileModals/ChangePhoneNumberModal/ChangePhoneNumberModal';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
+import { useForm } from "react-hook-form";
 
 export const Account = () => {
   const { i18nStore, userStore } = useStores();
@@ -49,12 +49,11 @@ export const Account = () => {
     }
   };
   const address = useForm({
-    initialValues: {
-      avatar: "",
-      name: "",
-      email: "",
-      phoneNumber: "",
-      password: 'JhonDeo@123',
+    defaultValues: {
+      name: 'John Doe',
+      email: 'johndoe@gmail.com',
+      phoneNumber: '+919876543219',
+      password: 'SachinPad@123',
     },
   });
 
@@ -83,7 +82,7 @@ export const Account = () => {
     </Center>:
   
     <Box className={classes.container}>
-      <form onSubmit={address.onSubmit((values) => console.log(values))}>
+      <form onSubmit={address.onSubmit((values: any) => console.log(values))}>
         <Flex align={'center'} justify={'space-between'} wrap={'wrap'}>
           <div className={classes.imageFlex}>
             <Image
@@ -145,7 +144,7 @@ export const Account = () => {
               classNames={{
                 input: classes.input,
               }}
-              {...address.getInputProps('name')}
+              inputvalue={address.register('name')}
             />
           </Grid.Col>
           <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -174,7 +173,7 @@ export const Account = () => {
                   style={typography.label[i18nStore.getCurrentLanguage()].l4}
                 />
               }
-              {...address.getInputProps('email')}
+              inputvalue={address.register("email")}
             />
           </Grid.Col>
         </Grid>
@@ -205,7 +204,7 @@ export const Account = () => {
                   style={typography.label[i18nStore.getCurrentLanguage()].l4}
                 />
               }
-              {...address.getInputProps('phoneNumber')}
+              inputvalue={address.register("phoneNumber")}
             />
           </Grid.Col>
           <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -235,7 +234,7 @@ export const Account = () => {
                   style={typography.label[i18nStore.getCurrentLanguage()].l4}
                 />
               }
-              {...address.getInputProps('password')}
+              {...address.register('password')}
             />
           </Grid.Col>
         </Grid>
