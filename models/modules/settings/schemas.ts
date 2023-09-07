@@ -7,7 +7,6 @@ export const Settings = types.model({
   sms_notification: types.boolean,
   email_notification: types.boolean,
   push_notification: types.boolean,
-  self_deactivation_status: types.boolean,
   user: types.string,
 })
 export interface SettingsType extends Instance<typeof Settings> { }

@@ -1,5 +1,5 @@
 // react and nextb import
-import React from 'react';
+import React, { useState } from 'react';
 // mantine component
 import { Center, Flex, Image, PinInput, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -18,12 +18,17 @@ import { Images } from '@/public';
 import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import { translate } from '@/i18n';
+import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
-export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }) => {
-  const { i18nStore } = useStores();
+export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any; setAddressRecall: any }) => {
+  const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
   const { classes } = useStyles();
   const [opened, { open, close }] = useDisclosure(false);
+  const [otpResendResponseText, setOtpResendResponseText] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [ loader, setLoader ] = useState(false);
 
   const otpVerify = useForm({
     initialValues: {
@@ -36,17 +41,45 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
     },
   });
 
-  const handlePasswordChange = () => {
+  const changePhoneNumberOTP = () => {
+    setLoader(true)
     let results = otpVerify.validate();
     if (results.hasErrors) return;
-    console.log('otp', otpVerify.values.otp);
-    if (!otpVerify.isValid()) return;
+    if (!otpVerify.isValid()) return setLoader(false);
     else {
-      props.onClose();
-      otpVerify.reset();
-      open();
+      userStore.changePhoneNumberVerify(otpVerify.values.otp).then((res)=>{
+        if(res.ok){
+          setLoader(false)
+          props.onClose();
+          otpVerify.reset();
+          open();
+          props.setAddressRecall(true)
+        }
+        else if(res.code == 400){
+          if(res.error){
+            otpVerify.reset();
+            setLoader(false)
+            setErrorMessage(res.error.toString());
+            setTimeout(()=>{
+              setErrorMessage("");
+            },3000)
+          }
+        }
+      })
     }
   };
+
+  const handleResendOtp = () =>{
+    userStore.phoneChangeResend().then((res)=>{
+      if(res.ok) {
+        otpVerify.reset();
+        setOtpResendResponseText(res.message);
+        setTimeout(() => {
+          setOtpResendResponseText('');
+        }, 5000);
+      }
+    })
+  }
 
   return (
     <>
@@ -61,8 +94,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
         withCloseButton={false}
       >
         <Flex direction={'column'} justify={'space-between'} w={'100%'} h={'400px'}>
-          <Flex
-            direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
+          <I18nFlex
             justify={'space-between'}
             align={'center'}
           >
@@ -82,7 +114,7 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
               width={'14px'}
               height={'14px'}
             />
-          </Flex>
+          </I18nFlex>
           <Center>
             <BaseText
               txtkey="profile.modal.verifyNumberOtpPara"
@@ -105,7 +137,11 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
               {...otpVerify.getInputProps('otp')}
             />
           </Stack>
-          <Flex w={'100%'} justify={'center'} my={'45px'}>
+          {errorMessage ? <ErrorMessage message={errorMessage} /> : null}
+          {otpResendResponseText ? (
+            <ErrorMessage text_color={theme.colors.blue[4]} message={otpResendResponseText} />
+          ) : null}
+          <I18nFlex w={'100%'} justify={'center'} my={'45px'}>
             <BaseText
               txtkey="profile.modal.resendCode"
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -113,17 +149,18 @@ export const ChangePhoneNumberOTPModal = (props: { opened?: any; onClose?: any }
             &nbsp;
             <BaseText
               className={classes.pointer}
+              onClick={handleResendOtp}
               txtkey="profile.modal.resendText"
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
               color={theme.colors.blue[4]}
             />
-          </Flex>
+          </I18nFlex>
           <BaseButton
-            w={'100%'}
-            h={'40px'}
+             
+            loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}
-            onClick={handlePasswordChange}
+            onClick={changePhoneNumberOTP}
           >
             <BaseText txtkey="global.button.verify" />
           </BaseButton>

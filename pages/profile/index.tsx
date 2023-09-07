@@ -1,8 +1,7 @@
 // React and next imports
 import React from 'react';
 // mantine component imports
-import { Container, Flex, Tabs, TabsProps, useMantineTheme } from '@mantine/core';
-import { typography } from '../../themes/Mantine/typography';
+import { Container, Flex, Tabs, useMantineTheme } from '@mantine/core';
 // components
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 //styles import
@@ -49,8 +48,6 @@ const Profile = () => {
         className={classes.deleteAndLogout}
       >
             <BaseButton
-              w={'100%'}
-              h={'40px'}
               style_variant={ 'outline'}
               color_variant={'red'}
               onClick={deleteAccountModal[1].open}
@@ -61,8 +58,6 @@ const Profile = () => {
               />
             </BaseButton>
             <BaseButton
-              w={'100%'}
-              h={'40px'}
               style_variant={ 'outline'}
               color_variant={ 'red'}
               onClick={open}

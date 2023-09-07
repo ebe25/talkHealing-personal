@@ -12,6 +12,7 @@ export const Images = {
   bg_Img:"./image/LoginBg.png",
   facebook_icon:"./image/facebook.png",
   google_icon:"./image/google.png",
+default_profile_avatar:"./image/default_profile_avatar.png",
   product_image:"./image/product_image.png",
   product_logo:"./image/product_logo.png",
   profile_photo_image:"./image/profile_photo_image.png",

@@ -47,17 +47,17 @@ export interface AvatarPaginated extends Instance<typeof AvatarPaginated> { }
 // export interface UserType extends Instance<typeof User> { }
 
 export const GENDERS = {
-  MALE: "MALE",
-  FEMALE: "FEMALE",
+  MALE: "Male",
+  FEMALE: "Female",
 }
 
 // user schema
 export const User = types.model({
   ...BaseModelSchemaBase,
   email: types.string,
-  full_name: types.maybeNull(types.string),
+  full_name: types.string,
   avatar: types.string,
-  phone: types.maybeNull(types.string),
+  phone: types.string,
   is_terms_agreed: types.boolean,
   is_phone_verified: types.boolean,
   gender: types.maybeNull(types.enumeration(Object.values(GENDERS))),
@@ -98,3 +98,23 @@ export const Action = types.model({
   target_external_url: types.string,
   target_internal_url: types.string,
 })
+
+export const Address = types.model({
+  id: types.identifier,
+  created_on: types.maybeNull(types.string),
+  edited_on: types.maybeNull(types.string),
+  _data: types.maybeNull(types.frozen()),
+  address_line1: types.string,
+  address_line2: types.string,
+  city: types.string,
+  state: types.string,
+  country: types.string,
+  postal_code: types.string
+})
+export interface AddressType extends Instance<typeof Address> { }
+export const AddressResults = types.model({
+  ...PaginatedSchemaBase,
+  results: types.array(Address),
+})
+export interface AddressPaginatedType extends Instance<typeof AddressResults> { }
+

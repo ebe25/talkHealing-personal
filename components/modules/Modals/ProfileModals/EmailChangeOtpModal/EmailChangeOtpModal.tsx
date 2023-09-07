@@ -1,12 +1,13 @@
 // react and nextb import
-import React from 'react';
+import React, { useState } from 'react';
 // mantine component
 import { Flex, Image, PinInput, Stack, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 // style import
-import  useStyles  from './EmailOTP.styles';
+import useStyles from './EmailOTP.styles';
 // internals components
+import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -18,11 +19,15 @@ import { Images } from '@/public';
 import { SuccessfulModal } from '../SuccessfulModal/SuccessfulModal';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import { translate } from '@/i18n';
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
-export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
-  const { i18nStore } = useStores();
+export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any; setAddressRecall?:any }) => {
+  const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
   const { classes } = useStyles();
+  const [error, setError] = useState('');
+  const [otpResendResponseText, setOtpResendResponseText] = useState('');
+  const [loader, setLoader] = useState(false);
   const [opened, { open, close }] = useDisclosure(false);
 
   const otpVerify = useForm({
@@ -31,21 +36,47 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
     },
     validate: {
       otp: (value) => {
-        if (value.length != 4) return translate('profile.error.errorMessageForOTP') ;
+        if (value.length != 4) return translate('profile.error.errorMessageForOTP');
       },
     },
   });
 
-  const handlePasswordChange = () => {
+  const verifyEmailChangeOtp = () => {
+    setLoader(true);
     let results = otpVerify.validate();
     if (results.hasErrors) return;
-    console.log('otp', otpVerify.values.otp);
-    if (!otpVerify.isValid()) return;
+    if (!otpVerify.isValid()) return setLoader(false);
     else {
-      props.onClose();
-      otpVerify.reset();
-      open();
+      userStore.verifyChangeEmail(otpVerify.values.otp).then((res) => {
+        if (res.ok) {
+          otpVerify.reset();
+          props.onClose();
+          open();
+          props.setAddressRecall(true)
+        } else if (res.code == 400) {
+          if (res.error) {
+            setError(res.error);
+            otpVerify.reset();
+            setTimeout(() => {
+              setError('');
+            }, 5000);
+          }
+        }
+        setLoader(false);
+      });
     }
+  };
+
+  const resendChangeEmailOtp = () => {
+    userStore.resendChangeEmailOtp().then((res) => {
+      if (res.ok) {
+        otpVerify.reset();
+        setOtpResendResponseText(res.message);
+        setTimeout(() => {
+          setOtpResendResponseText('');
+        }, 5000);
+      }
+    });
   };
 
   return (
@@ -56,13 +87,13 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
         radius={'xl'}
         opened={props.opened}
         onClose={() => {
+          otpVerify.reset();
           props.onClose();
         }}
         withCloseButton={false}
       >
         <Flex direction={'column'} justify={'space-between'} w={'100%'} h={'400px'}>
-          <Flex
-            direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
+          <I18nFlex
             justify={'space-between'}
             align={'center'}
           >
@@ -74,6 +105,7 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
 
             <Image
               onClick={() => {
+                otpVerify.reset();
                 props.onClose();
               }}
               style={boilerPlateStyles.cursor}
@@ -82,30 +114,37 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
               width={'14px'}
               height={'14px'}
             />
-          </Flex>
+          </I18nFlex>
           <BaseText
             txtkey="profile.modal.emailOtpPara"
             my={'36px'}
             color={theme.colors.gray[6]}
             style={typography.label[i18nStore.getCurrentLanguage()].l1}
           />
-          <Stack>
-            <PinInput
-              dir={i18nStore.isRTL ? 'rtl' : 'ltr'}
-              variant="filled"
-              placeholder=""
-              // className={classes.input}
-              type={'number'}
-              size={'50px'}
-              spacing={'40px'}
-              // value={otp}
-              // onChange={setOtp}
-              {...otpVerify.getInputProps('otp')}
-            />
-          </Stack>
-          <Flex 
-            direction={i18nStore.isRTL ? 'row-reverse' : 'row'}
-            w={'100%'} justify={'center'} my={'40px'}
+          <form onSubmit={otpVerify.onSubmit((values) => console.log(values))}>
+            <Stack>
+              <PinInput
+                dir={i18nStore.isRTL ? 'rtl' : 'ltr'}
+                variant="filled"
+                placeholder=""
+                // className={classes.input}
+                type={'number'}
+                size={'50px'}
+                spacing={'40px'}
+                // value={otp}
+                // onChange={setOtp}
+                {...otpVerify.getInputProps('otp')}
+              />
+            </Stack>
+          </form>
+          {error ? <ErrorMessage message={error} /> : null}
+          {otpResendResponseText ? (
+            <ErrorMessage text_color={theme.colors.blue[4]} message={otpResendResponseText} />
+          ) : null}
+          <I18nFlex
+            w={'100%'}
+            justify={'center'}
+            my={'40px'}
           >
             <BaseText
               txtkey="profile.modal.resendCode"
@@ -113,18 +152,19 @@ export const EmailChangeOtpModal = (props: { opened?: any; onClose?: any }) => {
             />
             &nbsp;
             <BaseText
+              onClick={resendChangeEmailOtp}
               txtkey="profile.modal.resendText"
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
               className={classes.pointer}
               color={theme.colors.blue[4]}
             />
-          </Flex>
-          <BaseButton
-            w={'100%'}
-            h={'40px'}
+          </I18nFlex>
+          <BaseButton 
+             
+            loading={loader}
             style_variant={!otpVerify.isValid() ? 'disabled' : 'filled'}
             color_variant={!otpVerify.isValid() ? 'gray' : 'blue'}
-            onClick={handlePasswordChange}
+            onClick={verifyEmailChangeOtp}
           >
             <BaseText txtkey="global.button.verify" />
           </BaseButton>

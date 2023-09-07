@@ -2,6 +2,7 @@ import { types, flow } from "mobx-state-tree"
 import { withEnvironment } from "../../extensions/with-environment"
 import * as SCHEMAS from "./schemas"
 import { API_ENDPOINTS } from "./endpoints"
+import { ACTION_RESPONSES } from '../../api/endpoint.types';
 /**
  * Model description here for TypeScript hints.
  */
@@ -20,33 +21,28 @@ export const SettingsStore = types
             switch (response.status) {
                 case 200:
                     self.settings = SCHEMAS.Settings.create(response.data)
-                    return true
+                    return ACTION_RESPONSES.success
                 case 405:
-                    return false
+                    return ACTION_RESPONSES.failure
                 default:
                     console.error("UNHANDLED ERROR")
                     break
             }
-            return false
+            return ACTION_RESPONSES.failure
         }),
-        editSettings: flow(function* (data: {
-            sms_notification?: boolean,
-            email_notification?: boolean,
-            push_notification?: boolean,
-            self_deactivation_status?: boolean,
-        }) {
+        editSettings: flow(function* (data) {
             const response = yield self.environment.api.call(API_ENDPOINTS.editSettings, data)
             switch (response.status) {
                 case 200:
                     self.settings = SCHEMAS.Settings.create(response.data)
-                    return true
+                    return ACTION_RESPONSES.success
                 case 405:
-                    return false
+                    return ACTION_RESPONSES.failure
                 default:
                     console.error("UNHANDLED ERROR")
                     break
             }
-            return false
+            return ACTION_RESPONSES.failure
         }),
         getFaqs: flow(function* () {
             const response = yield self.environment.api.call(API_ENDPOINTS.getFaqs)

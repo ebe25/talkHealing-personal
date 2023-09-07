@@ -1,11 +1,9 @@
 import { types, flow } from "mobx-state-tree";
 import { withEnvironment } from "../../extensions/with-environment";
-import { ACTION_RESPONSES, API_ENDPOINT } from "../../api/endpoint.types";
-import globalKeyStore from "../../api/global-key-store";
+import { ACTION_RESPONSES } from "../../api/endpoint.types";
 import * as UserSchemas from "./schemas";
 import { API_ENDPOINTS } from "./endpoints";
 import * as storage from "localforage";
-import { TermsOfUse } from "./schemas";
 /**
  * Model description here for TypeScript hints.
  */
@@ -21,6 +19,8 @@ export const UserStore = types
     remember_me: types.maybeNull(types.boolean),
     isLoggedInUser: types.maybeNull(types.boolean),
     verfyEmailData: types.maybeNull(UserSchemas.LoggedInUser),
+    address: types.maybeNull(UserSchemas.AddressResults),
+    getAddress: types.maybeNull(UserSchemas.Address),
   })
   .extend(withEnvironment)
   .actions((self) => ({
@@ -75,6 +75,23 @@ export const UserStore = types
           self.loggedInUserData = null;
           return ACTION_RESPONSES.success;
         default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    deleteUser: flow(function* () {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.deleteUser
+      );
+      switch (response.status) {
+        case 204:
+          yield storage.removeItem(self.environment.api.config.token_key);
+          yield storage.clear();
+          self.is_logged_in = false;
+          self.loggedInUserData = null;
+          return ACTION_RESPONSES.success;
+        default:
           yield storage.clear();
           console.error("UNHANDLED ERROR");
           break;
@@ -100,7 +117,6 @@ export const UserStore = types
           // is_terms_agreed: is_terms_agreed
         }
       );
-      console.log("this is sign up response ", response)
       let error = null;
       switch (response.status) {
         case 201:
@@ -132,7 +148,6 @@ export const UserStore = types
           otp: otp,
         }
       );
-      console.log("response", response);
       switch (response.status) {
         case 200:
           return ACTION_RESPONSES.success;
@@ -282,7 +297,6 @@ export const UserStore = types
         API_ENDPOINTS.editUser,
         data
       );
-      console.log("edit user data", response);
       switch (response.status) {
         case 200:
           // self.loggedInUserData.user = UserSchemas.User.create(response.data);
@@ -326,26 +340,25 @@ export const UserStore = types
         }
       );
       let error = null;
-      console.log("response", response);
       switch (response.status) {
         case 200:
           return ACTION_RESPONSES.success;
         case 400:
           error = response.data;
-          break;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.old_password};
         case 401:
-          return ACTION_RESPONSES.failure;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.old_password};
         default:
           console.error("UNHANDLED ERROR");
           break;
       }
       return ACTION_RESPONSES.failure;
     }),
-    emailChange: flow(function* (
+    changeEmail: flow(function* (
       email: string,
     ) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.emailChange,
+        API_ENDPOINTS.changeEmail,
         {
           email: email,
         }
@@ -365,73 +378,108 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    emailChangeVerify: flow(function* (
-      key: string,
-    ) {
-      const response = yield self.environment.api.call(
-        API_ENDPOINTS.emailChangeVerify,
-        {
-          key: key,
-        }
-      );
-      let error = null;
-      console.log("response", response);
-      switch (response.status) {
-        case 200:
-          return ACTION_RESPONSES.success;
-        case 400:
-          error = response.data;
-          break;
-        case 401:
-          return ACTION_RESPONSES.failure;
-        default:
-          console.error("UNHANDLED ERROR");
-          break;
-      }
-      return ACTION_RESPONSES.failure;
-    }),
-    phoneChange: flow(function* (
-      phone: string,
-    ) {
-      const response = yield self.environment.api.call(
-        API_ENDPOINTS.phoneChange,
-        {
-          phone: phone,
-        }
-      );
-      let error = null;
-      console.log("response", response);
-      switch (response.status) {
-        case 200:
-          return ACTION_RESPONSES.success;
-        case 400:
-          error = response.data;
-          break;
-        case 401:
-          return ACTION_RESPONSES.failure;
-        default:
-          console.error("UNHANDLED ERROR");
-          break;
-      }
-      return ACTION_RESPONSES.failure;
-    }),
-    phoneChangeVerify: flow(function* (
+    verifyChangeEmail: flow(function* (
       otp: string,
     ) {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.phoneChangeVerify,
+        API_ENDPOINTS.verifyChangeEmail,
         {
           otp: otp,
         }
       );
       let error = null;
-      console.log("response", response);
       switch (response.status) {
         case 200:
           return ACTION_RESPONSES.success;
         case 400:
           error = response.data;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
+        case 401:
+          return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
           break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    resendChangeEmailOtp: flow(function* (
+    ) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.resendChangeEmailOtp,{} );
+      let error = null;
+      switch (response.status) {
+        case 200:
+          return { ...ACTION_RESPONSES.success, code: response.status , message : response.data.message}
+        case 400:
+          error = response.data;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
+        case 401:
+          return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    changePhoneNumber: flow(function* (
+      phone: string,
+    ) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.changePhoneNumber,
+        {
+          phone: phone,
+        }
+      );
+      let error = null;
+      switch (response.status) {
+        case 200:
+          return ACTION_RESPONSES.success;
+        case 400:
+          error = response.data;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.phone};
+        case 401:
+          return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    changePhoneNumberVerify: flow(function* (
+      otp: string,
+    ) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.changePhoneNumberVerify,
+        {
+          otp: otp,
+        }
+      );
+      let error = null;
+      switch (response.status) {
+        case 200:
+          return ACTION_RESPONSES.success;
+        case 400:
+          error = response.data;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
+        case 401:
+          return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    phoneChangeResend: flow(function* ( ) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.phoneChangeResend,{ }
+      );
+      let error = null;
+      switch (response.status) {
+        case 200:
+          return { ...ACTION_RESPONSES.success, code: response.status , message : response.data.message}
+        case 400:
+          error = response.data;
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
         case 401:
           return ACTION_RESPONSES.failure;
         default:
@@ -530,6 +578,94 @@ export const UserStore = types
           break;
         case 401:
           return ACTION_RESPONSES.failure;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    getUserAddress: flow(function* () {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.userAddress
+      );
+      switch (response.status) {
+        case 200:
+          self.address = UserSchemas.AddressResults.create(response.data)
+          return ACTION_RESPONSES.success;
+        case 400:
+          return ACTION_RESPONSES.success;;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    getUserAddressById: flow(function* (id:string|undefined) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.getAddressById, {}, { id: id }
+      );
+      console.log(response.data)
+      switch (response.status) {
+        case 200:
+          self.getAddress = UserSchemas.Address.create(response.data)
+          return ACTION_RESPONSES.success;
+        case 400:
+          return ACTION_RESPONSES.success;;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    updateAddress: flow(function* ( data, id:string|undefined) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.updateAddress, data, { id: id }
+      );
+      console.log(response.data)
+      switch (response.status) {
+        case 200:
+          self.getAddress = UserSchemas.Address.create(response.data)
+          return ACTION_RESPONSES.success;
+        case 400:
+          return ACTION_RESPONSES.success;;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    deleteAddress: flow(function* (id:string|undefined) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.deleteAddress, {}, { id: id }
+      );
+      console.log(response.data)
+      switch (response.status) {
+        case 200:
+          return ACTION_RESPONSES.success;
+        case 204:
+          return ACTION_RESPONSES.success;
+        case 400:
+          return ACTION_RESPONSES.success;;
+        default:
+          console.error("UNHANDLED ERROR");
+          break;
+      }
+      return ACTION_RESPONSES.failure;
+    }),
+    createAddress: flow(function* (
+      data
+    ) {
+      const response = yield self.environment.api.call(
+        API_ENDPOINTS.createAddress, data
+      );
+      console.log(response.data)
+      switch (response.status) {
+        case 200:
+          return ACTION_RESPONSES.success;
+        case 201:
+          return ACTION_RESPONSES.success;
+        case 400:
+          return { ...ACTION_RESPONSES.failure, code: response.status , error : response.data.message};
         default:
           console.error("UNHANDLED ERROR");
           break;

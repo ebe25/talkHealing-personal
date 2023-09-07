@@ -35,6 +35,7 @@ export const createStyle = (
         ...typography.buttonText[langCode].b2,
         background : theme.colors[props.color_variant][5],
         borderRadius: '44px',
+        height:"40px",
         '&:not([data-disabled]):hover': {
           background : theme.colors[props.color_variant][5],
           borderColor: "none",
@@ -44,6 +45,7 @@ export const createStyle = (
         ...typography.buttonText[langCode].b4,
         background : "transparent",
         borderRadius: '44px',
+        height:"40px",
         '&:not([data-disabled]):hover': {
           background : "transparent",
           borderColor: "none",
@@ -53,6 +55,7 @@ export const createStyle = (
         ...typography.buttonText[langCode].b2,
         background : theme.colors.gray[2],
         borderRadius: '44px',
+        height:"40px",
         '&:not([data-disabled]):hover': {
           background : theme.colors.gray[2],
           borderColor: "none",
@@ -63,6 +66,7 @@ export const createStyle = (
         background : "transparent",
         borderRadius: '42px',
         border:`1px solid ${theme.colors[props.color_variant][0]}`,
+        height:"40px",
         '&:not([data-disabled]):hover': {
           background : "transparent",
         }
