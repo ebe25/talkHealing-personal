@@ -18,7 +18,8 @@ import { useStores } from '@/models';
 import { translate } from '@/i18n';
 import { ChangePhoneNumberModal } from '../Modals/ProfileModals/ChangePhoneNumberModal/ChangePhoneNumberModal';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
-import { useForm } from "react-hook-form";
+import { useForm } from '@mantine/form';
+// import { useForm } from "react-hook-form";
 
 export const Account = () => {
   const { i18nStore, userStore } = useStores();
@@ -48,12 +49,13 @@ export const Account = () => {
       });
     }
   };
-  const address = useForm({
-    defaultValues: {
-      name: 'John Doe',
-      email: 'johndoe@gmail.com',
-      phoneNumber: '+919876543219',
-      password: 'SachinPad@123',
+  const account = useForm({
+    initialValues: {
+      avatar: "",
+      name: "",
+      email: "",
+      phoneNumber: "",
+      password: 'JhonDeo@123',
     },
   });
 
@@ -62,7 +64,7 @@ export const Account = () => {
       if (res.ok) {
         if (userStore.userData != null ) {
           setLoader(false)
-          address.setValues({
+          account.setValues({
             avatar: userStore.userData.avatar,
             name: userStore.userData.full_name,
             email: userStore.userData.email,
@@ -82,7 +84,7 @@ export const Account = () => {
     </Center>:
   
     <Box className={classes.container}>
-      <form onSubmit={address.onSubmit((values: any) => console.log(values))}>
+      <form onSubmit={account.onSubmit((values: any) => console.log(values))}>
         <Flex align={'center'} justify={'space-between'} wrap={'wrap'}>
           <div className={classes.imageFlex}>
             <Image
@@ -90,7 +92,7 @@ export const Account = () => {
               height={'120px'}
               radius={'50%'}
               alt="profile_image"
-              {...address.getInputProps('avatar')}
+              {...account.getInputProps('avatar')}
               // src={ images ? images : userStore?.userData?.avatar ?userStore?.userData?.avatar: Images.default_profile_avatar }
               src={ images ? images : userStore?.userData?.avatar }
             />
@@ -144,7 +146,7 @@ export const Account = () => {
               classNames={{
                 input: classes.input,
               }}
-              inputvalue={address.register('name')}
+              {...account.getInputProps('name')}
             />
           </Grid.Col>
           <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -173,7 +175,7 @@ export const Account = () => {
                   style={typography.label[i18nStore.getCurrentLanguage()].l4}
                 />
               }
-              inputvalue={address.register("email")}
+              {...account.getInputProps('email')}
             />
           </Grid.Col>
         </Grid>
@@ -204,7 +206,7 @@ export const Account = () => {
                   style={typography.label[i18nStore.getCurrentLanguage()].l4}
                 />
               }
-              inputvalue={address.register("phoneNumber")}
+              {...account.getInputProps('phoneNumber')}
             />
           </Grid.Col>
           <Grid.Col xs={12} sm={12} md={6} lg={6} xl={6}>
@@ -234,7 +236,7 @@ export const Account = () => {
                   style={typography.label[i18nStore.getCurrentLanguage()].l4}
                 />
               }
-              {...address.register('password')}
+              {...account.getInputProps('password')}
             />
           </Grid.Col>
         </Grid>
