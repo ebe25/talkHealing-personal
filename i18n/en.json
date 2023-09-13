@@ -291,7 +291,22 @@
 },
   "header":{
     "signUp": "Create account",
-    "login": "Login to your account"
-  }  
+    "login": "Login to your account",
+    "allCategories":"All Categories",
+    "yourAccount":"Your account",
+    "name":"Andrew white"
+  },
+ "homePage":{
+    "seeMore":"See more",
+    "seeLess":"See less",
+    "productSectionsName":"Product sections name",
+    "popularProduct":"Popular Product",
+    "categoryName":"Category name",
+    "carousel":{
+      "heading":"Lorem ipsum dolor sit amet adipiscing elit sed do",
+      "subHeading":"Excepteur sint occaecat cupidatat non proident.",
+      "buttonText":"Learn more"
+    }
+ } 
 
 }

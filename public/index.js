@@ -33,6 +33,19 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   uncolored_star_icon:"./icons/uncoloured_start_icon.png",
   colored_star_icon:"./icons/coloured_star_icon.png",
   email_icon: "./image/emailIcon.png",
-  phone_icon: "./image/phoneIcon.png"
+  phone_icon: "./image/phoneIcon.png",
+  carousel_image:"./image/carouselImage.png",
+  gallery_item:"./image/GalleryItem.png",
+  star_icon:"./image/Star.png",
+  location_icon:"./image/location.png",
+  vector:"./image/Vector.png",
+  logo:"./image/logo.png",
+  chat:"./icons/chat.png",
+  down_arrow:"./icons/downArrow.png",
+  notification_icon:"./icons/notification.png",
+  pic:"./icons/pic.png",
+  tiptop:"./icons/tiptop.png",
+  shop_icon:"./icons/shop.png",
+  menu_icon:"./icons/menuIcon.png"
 }
 

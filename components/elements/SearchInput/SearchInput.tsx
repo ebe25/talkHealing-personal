@@ -14,7 +14,7 @@ export const SearchInput = (props: BaseSearchInput) => {
   return (
     <Input
       className={classes.mainBox}
-      icon={<IconSearch width={22} height={22} />}
+      rightSection={<IconSearch width={22} height={22} />}
       placeholder={props.placeholder}
       radius="lg"
       {...props}

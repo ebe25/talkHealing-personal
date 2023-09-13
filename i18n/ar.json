@@ -348,7 +348,21 @@
   },
   "header": {
     "signUp": "إنشاء حساب",
-    "login": "تسجيل الدخول إلى حسابك"
-
-  }
+    "login": "تسجيل الدخول إلى حسابك",
+    "allCategories":"جميع الفئات",
+    "yourAccount":"الحساب الخاص بك",
+    "name":"أندرو وايت"
+  },
+  "homePage":{
+    "seeMore":"شاهد المزيد",
+    "seeLess":"انظر أقل",
+    "ProductSectionsName":"اسم أقسام المنتج",
+    "popularProduct":"منتج شعبي",
+    "categoryName":"اسم التصنيف",
+    "carousel":{
+      "heading":"لوريم إيبسوم دولور الجلوس أميت adipiscing إليت سيد تفعل",
+      "subHeading":"باستثناء أن هناك رغبة غير متوقعة.",
+      "buttonText":"يتعلم أكثر"
+    }
+ } 
 }
