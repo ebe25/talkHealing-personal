@@ -307,6 +307,16 @@
       "subHeading":"Excepteur sint occaecat cupidatat non proident.",
       "buttonText":"Learn more"
     }
- } 
-
+ },
+ "footer":{
+  "copyrightName":"© Copyright company name, 2021",
+  "text1":"Wishlists",
+  "text2":"Chats",
+  "text3":"My orders",
+  "text4":"My Profile",
+  "text5":"About us",
+  "text6":"Terms & conditions",
+  "text7":"Privacy policy",
+  "text8":"Help center"
+ }
 }

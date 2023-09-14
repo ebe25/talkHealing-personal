@@ -46,6 +46,11 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   pic:"./icons/pic.png",
   tiptop:"./icons/tiptop.png",
   shop_icon:"./icons/shop.png",
-  menu_icon:"./icons/menuIcon.png"
+  menu_icon:"./icons/menuIcon.png",
+  logo_blue:"./image/logoBlue.png",
+  instagram_icon:"./image/instagram.png",
+  page_logo:"./image/Group.png",
+  facebook_logo:"./image/facebook.png",
+  twitter_logo:"./image/twitter.png",
 }
 

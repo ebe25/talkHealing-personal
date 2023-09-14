@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Image, Grid, Button, Box } from '@mantine/core';
+import { Flex, Image, Grid, Button, Box, Center } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -37,10 +37,8 @@ function CarouselWithImage() {
                                             txtkey={"homePage.carousel.heading"}
                                         />
                                         <BaseText
-                                            c={"white"}
-                                            mt={10}
+                                            className={classes.subHeading}
                                             txtkey={"homePage.carousel.subHeading"}
-                                            style={typography.paragraph[i18nStore.getCurrentLanguage()].p2}
                                         />
                                         <Button className={classes.button} >
                                             <BaseText c={"orange"} txtkey={"homePage.carousel.buttonText"} />
@@ -48,9 +46,11 @@ function CarouselWithImage() {
                                     </Box>
                                 </Grid.Col>
                                 <Grid.Col lg={6} md={6} sm={6} xs={12}>
-                                    <Box className={classes.carousel_image}>
-                                        <Image maw={426} miw={200} src={Images.carousel_image} />
-                                    </Box>
+                                    <Center>
+                                        <Box className={classes.carousel_image}>
+                                            <Image maw={426} src={Images.carousel_image} />
+                                        </Box>
+                                    </Center>
                                 </Grid.Col>
                             </Grid>
                         </Flex>

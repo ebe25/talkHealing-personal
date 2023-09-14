@@ -18,6 +18,10 @@ export const createStyle = () => {
             padding: "0px 10px",
             alignItems: "center",
             gap: "20px",
+            [theme.fn.smallerThan('sm')]: {
+                padding: "2px",
+                gap: "10px",
+            },
             [theme.fn.smallerThan('xs')]: {
                 display: "none"
             },
@@ -45,14 +49,14 @@ export const createStyle = () => {
             gap: "8px"
         },
         mobileMenu: {
-            justifyContent: "center",
+            justifyContent: "space-between",
             height: "78px",
             width: "100%",
             padding: "0px 10px",
             alignItems: "center",
             gap: "20px",
             [theme.fn.largerThan('xs')]: {
-                display: "none"
+                display: "none",
             },
         },
     }))

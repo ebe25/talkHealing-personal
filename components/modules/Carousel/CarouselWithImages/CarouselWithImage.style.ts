@@ -30,7 +30,10 @@ export const createStyle = () => {
             justifyContent: "center",
             alignItems: "center",
             flexWrap: "wrap",
-            [theme.fn.smallerThan('xs')]: {
+            [theme.fn.smallerThan('md')]: {
+                padding: "15px",
+            },
+            [theme.fn.smallerThan('sm')]: {
                 padding: "10px",
             },
         },
@@ -39,25 +42,39 @@ export const createStyle = () => {
             marginTop: "20px",
             width: "139px",
             backgroundColor: "white",
+            [theme.fn.smallerThan('sm')]: {
+                marginTop: "5px",
+            },
             '&:not([data-disabled]):hover': {
                 background: "white",
                 borderColor: "none",
             }
         },
         carousel_image: {
-            [theme.fn.smallerThan('xs')]: {
-                display: "none"
+            // width: "300px",
+            [theme.fn.smallerThan('sm')]: {
+                width: "200px",
             },
         },
         heading: {
             marginTop: "20px",
             color: "white",
             ...typography.headings.en.h1,
-            [theme.fn.smallerThan('sm')]: {
+            [theme.fn.smallerThan('md')]: {
                 ...typography.headings.en.h3,
             },
             [theme.fn.smallerThan('xs')]: {
-                ...typography.headings.en.h5,
+                ...typography.headings.en.h6,
+                marginTop: "0px",
+            },
+        },
+        subHeading: {
+            color: "white",
+            marginTop: "10px",
+            ...typography.paragraph[i18nStore.getCurrentLanguage()].p2,
+            [theme.fn.smallerThan('xs')]: {
+                ...typography.headings.en.p7,
+                marginTop: "5px",
             },
         }
     }))

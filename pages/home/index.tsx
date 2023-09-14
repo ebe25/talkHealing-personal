@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Stack, Grid, Image, Flex, Center, Button, Container } from '@mantine/core';
+import { Box, Stack, Grid, Image, Flex, Center, Button, Container, Divider } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -10,6 +10,9 @@ import ProductCard from '@/components/modules/Cards/ProductCard/ProductCard';
 import { Images } from '../../public/index';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import Header from '@/components/modules/Header/Header';
+import { createStyle } from "./Home.style";
+import Footer from '@/components/modules/Footer/Footer';
+
 
 const ProductCardData = [
   {
@@ -190,20 +193,17 @@ export default function Home() {
   const { i18nStore, userStore } = useStores();
   const [items, setItems] = useState(ProductCardData);
   const [showAll, setShowAll] = useState(false);
+  const useStyles = createStyle();
+  const { classes } = useStyles();
 
   const handleSeeMoreClick = () => {
     setShowAll(!showAll);
   };
 
   return (
-    <Container
-      maw={"100%"}
-      m={0}
-      p={0}
-    >
+    <Container className={classes.container}>
       <Header />
-      <Flex direction="column" gap={40}
-        style={{ padding: "50px 100px" }}>
+      <Flex className={classes.homePage}>
         <CarouselWithImage />
         <Grid>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, id) => (
@@ -222,7 +222,7 @@ export default function Home() {
           <Center>
             <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h3} txtkey={"homePage.productSectionsName"} />
           </Center>
-          <Flex justify={"space-between"} mt={"20px"} gap={30} wrap={"wrap"}>
+          <Flex className={classes.productCard}>
             {
               items.map((item, id) => (
                 <Box key={id} style={{ display: (showAll || id < 10) ? 'block' : 'none' }}>
@@ -253,7 +253,7 @@ export default function Home() {
                   txtkey={'homePage.seeMore'} />
               </BaseButton>
             </Flex>
-            <Flex justify={"space-between"} mt={"20px"} gap={10} wrap={"wrap"}>
+            <Flex className={classes.ProductSectionsCard}>
               {
                 ProductSectionsCard.map((item, id) => (
                   <Box key={id}>
@@ -265,6 +265,8 @@ export default function Home() {
           </Box>
         ))}
       </Flex>
+      <Divider my="xs" />
+      <Footer />
     </Container>
   );
 }

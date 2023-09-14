@@ -43,16 +43,14 @@ function Header() {
                 </Box>
             </Flex>
             <Flex className={classes.mobileMenu}>
-                <Image src={Images.logo} width={86} height={22} />
-                <SearchInput w={440} placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
-                <Drawer opened={opened} onClose={close} title="LOGO">
-                    {/* Drawer content */}
-                </Drawer>
-
                 <Group position="center">
-                    {/* <Button onClick={open}>Open Drawer</Button> */}
                     <Image onClick={open} src={Images.menu_icon} width={25} height={25} />
                 </Group>
+                <Image src={Images.logo} width={86} height={22} />
+                <SearchInput width={240} placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
+                <Drawer opened={opened} color={theme.colors.blue[6]} onClose={close} title="LOGO">
+                    {/* Drawer content */}
+                </Drawer>
             </Flex>
         </Box >
     )
