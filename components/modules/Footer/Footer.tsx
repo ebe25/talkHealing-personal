@@ -29,16 +29,16 @@ function Footer() {
                 </Flex>
             </Flex>
             <Box className={classes.containerSecond}>
-                <BaseText txtkey={"footer.text1"} />
-                <BaseText txtkey={"footer.text2"} />
-                <BaseText txtkey={"footer.text3"} />
-                <BaseText txtkey={"footer.text4"} />
+                <BaseText className={classes.cursor} txtkey={"footer.text1"} />
+                <BaseText className={classes.cursor} txtkey={"footer.text2"} />
+                <BaseText className={classes.cursor} txtkey={"footer.text3"} />
+                <BaseText className={classes.cursor} txtkey={"footer.text4"} />
             </Box>
             <Box className={classes.containerSecond}>
-                <BaseText txtkey={"footer.text5"} />
-                <BaseText txtkey={"footer.text6"} />
-                <BaseText txtkey={"footer.text7"} />
-                <BaseText txtkey={"footer.text8"} />
+                <BaseText className={classes.cursor} txtkey={"footer.text5"} />
+                <BaseText className={classes.cursor} txtkey={"footer.text6"} />
+                <BaseText className={classes.cursor} txtkey={"footer.text7"} />
+                <BaseText className={classes.cursor} txtkey={"footer.text8"} />
             </Box>
             <Box className={classes.logoImage}>
                 <Image src={Images.page_logo} />

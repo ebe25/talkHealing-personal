@@ -12,6 +12,7 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import Header from '@/components/modules/Header/Header';
 import { createStyle } from "./Home.style";
 import Footer from '@/components/modules/Footer/Footer';
+import Categories from '@/components/modules/Categories/Categories';
 
 
 const ProductCardData = [
@@ -193,6 +194,7 @@ export default function Home() {
   const { i18nStore, userStore } = useStores();
   const [items, setItems] = useState(ProductCardData);
   const [showAll, setShowAll] = useState(false);
+  const [categorie, setCategorie] = useState(false);
   const useStyles = createStyle();
   const { classes } = useStyles();
 
@@ -200,10 +202,15 @@ export default function Home() {
     setShowAll(!showAll);
   };
 
+  const handleCategorie = () => {
+    setCategorie(!categorie);
+  };
+
   return (
     <Container className={classes.container}>
-      <Header />
-      <Flex className={classes.homePage}>
+      <Header handleCategorie={handleCategorie} />
+      {categorie ? <Categories /> : null}
+      <Flex onClick={() => setCategorie(false)} className={classes.homePage}>
         <CarouselWithImage />
         <Grid>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, id) => (
@@ -264,8 +271,8 @@ export default function Home() {
             </Flex>
           </Box>
         ))}
+        <Divider my="xs" />
       </Flex>
-      <Divider my="xs" />
       <Footer />
     </Container>
   );

@@ -318,5 +318,22 @@
   "text6":"Terms & conditions",
   "text7":"Privacy policy",
   "text8":"Help center"
+ },
+ "Categories":{
+  "apparels":"Apparels",
+  "tops":"Tops",
+  "bottoms":"Bottoms",
+  "tSTanks":"T-shirt & tanks",
+  "shirts":"Shirts & polos",
+  "hoodies":"Hoodies & sweatshirts",
+  "cardigans":"Cardigans & sweaters",
+  "jacket":"Jacket & blazzers",
+  "jogger":"Jogger & sweatpants",
+  "shorts":"Shorts",
+  "tights":"Tights",
+  "chinos":"Chinos",
+  "jeans":"Jeans",
+  "trackpants":"Trackpants",
+  "sneakers":"Sneakers"
  }
 }

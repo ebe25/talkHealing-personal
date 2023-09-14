@@ -35,6 +35,7 @@ export const createStyle = () => {
             justifyContent: "center",
             alignContent: "center",
             width: "30px",
+            cursor:"pointer",
             height: "30px",
             borderRadius: "100%",
             border: `1px solid ${theme.colors.gray[0]}`,
@@ -64,6 +65,9 @@ export const createStyle = () => {
             [theme.fn.smallerThan('lg')]: {
                 width: "200px",
             },
+        },
+        cursor:{
+            cursor:"pointer"
         }
     }))
 }
