@@ -6,13 +6,12 @@ import { createStyle } from "./Header.style";
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { useStores } from '@/models';
 import { typography } from '@/themes/Mantine/typography';
-import { IconArrowBadgeDown } from '@tabler/icons-react';
 import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
 import { translate } from '../../../i18n';
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Button, Group } from '@mantine/core';
 
-function Header(props: { handleCategorie: any }) {
+function Header(props: { handleCategorie: any, categorie: boolean }) {
     const theme = useMantineTheme();
     const { i18nStore, userStore } = useStores();
     const useStyles = createStyle();
@@ -24,7 +23,7 @@ function Header(props: { handleCategorie: any }) {
                 <Image src={Images.logo} width={86} height={22} />
                 <Flex onClick={props.handleCategorie} className={classes.categories}>
                     <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3} c={"white"} txtkey={"header.allCategories"} />
-                    <IconArrowBadgeDown color='white' />
+                    <Image src={Images.down_arrow} style={props.categorie ? { transform: "rotate(180deg)" } : {}} width={10} height={6} />
                 </Flex>
                 <SearchInput w={440} placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
                 <Image className={classes.cursor} src={Images.shop_icon} width={20} height={20} />

@@ -66,7 +66,7 @@ function Categories() {
     const { classes } = useStyles();
 
     const Options = (props: { text: any }) => (
-        <Flex mt={10} justify={"space-between"}>
+        <Flex className={classes.Options} >
             <BaseText c={theme.colors.cyan[9]} style={typography.buttonText[i18nStore.getCurrentLanguage()].b3} txtkey={props.text} />
             <Image mt={5} src={Images.right_arrow_icon} width={4} height={7} />
         </Flex>

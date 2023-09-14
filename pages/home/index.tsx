@@ -208,7 +208,7 @@ export default function Home() {
 
   return (
     <Container className={classes.container}>
-      <Header handleCategorie={handleCategorie} />
+      <Header handleCategorie={handleCategorie} categorie={categorie} />
       {categorie ? <Categories /> : null}
       <Flex onClick={() => setCategorie(false)} className={classes.homePage}>
         <CarouselWithImage />

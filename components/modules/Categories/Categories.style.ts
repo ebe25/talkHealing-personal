@@ -25,7 +25,14 @@ export const createStyle = () => {
             },
             [theme.fn.smallerThan('sm')]: {
                 justifyContent: "center",
+                marginLeft: "10%",
+                marginTop: "-1%",
             },
+        },
+        Options: {
+            cursor: "pointer",
+            marginTop: "10px",
+            justifyContent: "space-between"
         },
         cursor: {
             cursor: "pointer"
