@@ -52,5 +52,7 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   page_logo:"./image/Group.png",
   facebook_logo:"./image/facebook.png",
   twitter_logo:"./image/twitter.png",
+  shirt_icon:"./image/Tshirt.png",
+  apparel_icon:"./image/ApparelCategories.png"
 }
 

@@ -392,5 +392,8 @@
   "jeans":"جينز",
   "trackpants":"بنطال رياضي",
   "sneakers":"أحذية رياضية"
- } 
+ },
+ "apparelCategories":{
+  "heading":"فئات الملابس"
+  }
 }

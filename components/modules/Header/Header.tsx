@@ -50,7 +50,14 @@ function Header(props: { handleCategorie: any, categorie: boolean, handleSearchT
                 <Image src={Images.logo} width={86} height={22} />
                 <SearchInput width={240} placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
                 <Drawer opened={opened} color={theme.colors.blue[6]} onClose={close} title="LOGO">
-                    {/* Drawer content */}
+                    <Image src={Images.pic} width={34} height={34} />
+                    <Box>
+                        <BaseText c={theme.colors.blue[0]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p7} txtkey={"header.yourAccount"} />
+                        <Flex className={classes.picBox}>
+                            <BaseText c={theme.white} style={typography.paragraph[i18nStore.getCurrentLanguage()].p3} txtkey={"header.name"} />
+                            <Image mt={8} src={Images.down_arrow} width={10} height={6} />
+                        </Flex>
+                    </Box>
                 </Drawer>
             </Flex>
         </Box >

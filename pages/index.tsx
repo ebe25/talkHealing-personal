@@ -3,7 +3,7 @@ import { ColorSchemeToggle } from '../components/elements/ColorSchemeToggle/Colo
 import TermsAndCondition from './terms-and-condition';
 import PrivacyPolicy from './privacy-policy';
 import CookiePolicy from './cookie-policy';
-import Login  from './login';
+import Login from './login';
 import Home from './home';
 
 export default function HomePage() {
@@ -12,8 +12,8 @@ export default function HomePage() {
     <>
       {/* <Welcome /> */}
       {/* <ColorSchemeToggle /> */}
-    {/* <Login /> */}
-    <Home />
+      {/* <Login /> */}
+      <Home />
     </>
   );
 }

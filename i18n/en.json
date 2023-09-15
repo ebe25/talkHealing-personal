@@ -335,5 +335,8 @@
   "jeans":"Jeans",
   "trackpants":"Trackpants",
   "sneakers":"Sneakers"
- }
+ },
+ "apparelCategories":{
+  "heading":"Apparel categories"
+  }
 }
