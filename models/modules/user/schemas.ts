@@ -1,6 +1,4 @@
 import { Instance, types } from "mobx-state-tree"
-import { maybeNull } from "mobx-state-tree/dist/internal"
-import { Images } from "../../../public"
 import { BaseModelSchemaBase, PaginatedSchemaBase } from "../../api/endpoint.types"
 
 export const ReferralSource = types.model({
@@ -57,7 +55,7 @@ export const User = types.model({
   email: types.string,
   full_name: types.string,
   avatar: types.string,
-  phone: types.string,
+  phone: types.maybeNull(types.string),
   is_terms_agreed: types.boolean,
   is_phone_verified: types.boolean,
   gender: types.maybeNull(types.enumeration(Object.values(GENDERS))),

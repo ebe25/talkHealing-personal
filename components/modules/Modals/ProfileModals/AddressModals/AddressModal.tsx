@@ -22,6 +22,7 @@ import { Input } from '@/components/elements/Input/Input';
 import { Country, State, City } from 'country-state-city';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage';
+import { AddressType } from '@/models/modules/user/schemas';
 
 interface modalData {
   address_line1: '';
@@ -41,6 +42,7 @@ export const AddressModal = (props: {
   setAddressRecall?: any;
   data?: modalData;
   setAddressId?: any;
+  editAddress?: AddressType
 }) => {
   const { i18nStore, userStore } = useStores();
   const [opened, { open, close }] = useDisclosure(false);
@@ -81,20 +83,18 @@ export const AddressModal = (props: {
   });
 
   useEffect(() => {
-    userStore.getUserAddressById(props.id).then((res) => {
-      if (res.ok) {
-        if (userStore.getAddress != null) {
-          address.setValues({
-            address_line1: userStore.getAddress.address_line1,
-            address_line2: userStore.getAddress.address_line2,
-            country: userStore.getAddress.country,
-            state: userStore.getAddress.state,
-            district: userStore.getAddress.city,
-            code: userStore.getAddress.postal_code,
+    if(props.id){
+
+    address.setValues({
+            address_line1: props.editAddress?.address_line1,
+            address_line2: props.editAddress?.address_line2,
+            country: props.editAddress?.country,
+            state: props.editAddress?.state,
+            district: props.editAddress?.city,
+            code: props.editAddress?.postal_code,
+            
           });
         }
-      }
-    });
   }, [props.id]);
 
   const data = {

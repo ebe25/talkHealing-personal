@@ -13,7 +13,7 @@ import { IconCirclePlus, IconMapPinFilled } from '@tabler/icons-react';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 //stores
 import { useStores } from '@/models';
-import { AddressPaginatedType } from '@/models/modules/user/schemas';
+import { AddressPaginatedType, AddressType } from '@/models/modules/user/schemas';
 //external
 
 export const Address = () => {
@@ -26,7 +26,8 @@ export const Address = () => {
   const [ modalHeading, setModalHeading ] = useState<any>();
   const [ addressRecall, setAddressRecall ] = useState(true);
   const [ userAddress, setUserAddress ] = useState<AddressPaginatedType>();
-  const [ addressId, setAddressId ] = useState("");
+  const [ selectedAddress, setSelectedAddress ] = useState<AddressType>();
+  const [ addressId, setAddressId ] = useState<any>("");
   useEffect(() => {
     userStore.getLoginUserData()
     userStore.getUserAddress().then((res)=>{
@@ -79,6 +80,7 @@ export const Address = () => {
                 w={"120px"}
                 onClick={()=>{
                   setAddressId(item.id)
+                  setSelectedAddress(userAddress?.results[id])
                   setModalHeading("profile.addressDetails")
                   editAddress[1].open()
                 }}
@@ -117,6 +119,7 @@ export const Address = () => {
         setAddressRecall={setAddressRecall}
         id={addressId}
         setAddressId={setAddressId}
+        editAddress={selectedAddress}
         // data={JSON.stringify(userAddress?.results[userAddressid])}
         opened={editAddress[0]}
         onClose={editAddress[1].close}
