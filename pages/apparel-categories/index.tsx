@@ -147,6 +147,7 @@ export default function ApparelCategories() {
 
     const CarouselBox = (props: { CarouselmultipleIamgeData: any }) => (
         <Carousel
+            dir={"ltr"}
             height={100}
             slideSize="13%"
             loop

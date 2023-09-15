@@ -3,6 +3,7 @@ import { Flex, Image, Grid, Button, Box, Center } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from "./CarouselWithImage.style"
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 function CarouselWithImage(props: { CarouselData: any }) {
     const useStyles = createStyle();
@@ -10,6 +11,7 @@ function CarouselWithImage(props: { CarouselData: any }) {
     return (
         <>
             <Carousel
+                dir={'ltr'}
                 maw="100%"
                 mx="auto"
                 loop
@@ -22,7 +24,7 @@ function CarouselWithImage(props: { CarouselData: any }) {
             >
                 {props.CarouselData.map((item: any, id: any) => (
                     <Carousel.Slide key={id} classNames={classes.crouselSlide}>
-                        <Flex className={classes.slideBox}>
+                        <I18nFlex className={classes.slideBox}>
                             <Grid>
                                 <Grid.Col lg={6} md={6} sm={6} xs={12}>
                                     <Box>
@@ -47,7 +49,7 @@ function CarouselWithImage(props: { CarouselData: any }) {
                                     </Center>
                                 </Grid.Col>
                             </Grid>
-                        </Flex>
+                        </I18nFlex>
                     </Carousel.Slide>
                 ))}
             </Carousel>

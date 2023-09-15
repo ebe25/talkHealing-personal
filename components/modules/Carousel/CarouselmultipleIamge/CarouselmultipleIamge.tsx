@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Image } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { createStyle } from "./CarouselmultipleIamge.style";
+import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 
 function CarouselmultipleIamge(props: { CarouselmultipleIamgeData: any }) {
@@ -10,6 +11,7 @@ function CarouselmultipleIamge(props: { CarouselmultipleIamgeData: any }) {
     return (
         <>
             <Carousel
+                dir={'ltr'}
                 height={40}
                 slideSize="10%"
                 loop
@@ -26,9 +28,9 @@ function CarouselmultipleIamge(props: { CarouselmultipleIamgeData: any }) {
             >
                 {props.CarouselmultipleIamgeData.map((item: any, id: any) => (
                     <Carousel.Slide key={id} classNames={classes.crouselSlide}>
-                        <Flex className={classes.slideBox}>
+                        <I18nFlex className={classes.slideBox}>
                             <Image src={item.Image} width={"20px"} />
-                        </Flex>
+                        </I18nFlex>
                     </Carousel.Slide>
                 ))}
             </Carousel>

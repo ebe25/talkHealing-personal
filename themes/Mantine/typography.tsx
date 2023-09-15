@@ -214,9 +214,9 @@ export const typography:any = {
       p1: {
         fontFamily: webFontFamily['PlusJakartaSans-Bold'],
         fontStyle: 'normal',
-        fontWeight: 700,
-        fontSize: '64px',
-        lineHeight: '67px',
+        fontWeight: 400,
+        fontSize: '16px',
+        lineHeight: '25px',
       } as React.CSSProperties,
       "p1.5": {
         fontFamily: webFontFamily['PlusJakartaSans-Regular'],
