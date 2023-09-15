@@ -8,18 +8,20 @@ export const createStyle = () => {
         container: {
             height: "263px",
             backgroundColor: "#E9EAE9",
-            borderRadius: "16px"
+            borderRadius: "16px",
+            position:"relative"
         },
         imageBox: {
             backgroundColor: "white",
             borderRadius: "5px",
-            position: "relative",
+            position: "absolute",
+            zIndex:10001,
             left: "131px",
             top: "0px",
             alignItems: "center",
             justifyContent: "center",
             width: "56px",
-            height: "31px"
+            height: "31px",
         },
         companyName: {
             justifyContent: "center",

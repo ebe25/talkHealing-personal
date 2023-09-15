@@ -1,13 +1,10 @@
 import React from 'react'
 import { Flex, Image } from '@mantine/core';
-import { useMantineTheme } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
-import { Images } from '../../../../public/index';
 import { createStyle } from "./CarouselmultipleIamge.style";
 
 
-function CarouselmultipleIamge() {
-    const theme = useMantineTheme();
+function CarouselmultipleIamge(props: { CarouselmultipleIamgeData: any }) {
     const useStyles = createStyle();
     const { classes } = useStyles();
     return (
@@ -27,10 +24,10 @@ function CarouselmultipleIamge() {
                     control: classes.control
                 }}
             >
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((item, id) => (
+                {props.CarouselmultipleIamgeData.map((item: any, id: any) => (
                     <Carousel.Slide key={id} classNames={classes.crouselSlide}>
                         <Flex className={classes.slideBox}>
-                            <Image src={Images.close_modal_icon} width={"20px"} />
+                            <Image src={item.Image} width={"20px"} />
                         </Flex>
                     </Carousel.Slide>
                 ))}

@@ -5,6 +5,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { Images } from '../../../../public/index';
 import { useStores } from '@/models';
 import { createStyle } from "./ProductCard.style"
+import { typography } from '@/themes/Mantine/typography';
 
 function ProductCard(props: { item: any }) {
     const theme = useMantineTheme();
@@ -17,26 +18,26 @@ function ProductCard(props: { item: any }) {
             <Box className={classes.container}>
                 <Flex className={classes.imageBox}>
                     <Image width={17} height={17} src={Images.star_icon} />
-                    <BaseText>{props.item.Rating}</BaseText>
+                    <BaseText c={theme.colors.dark[9]} style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i3}>{props.item.Rating}</BaseText>
                 </Flex>
                 <Center>
-                    <Image width={170} height={200} src={props.item.Image} />
+                    <Image width={200} height={263} src={props.item.Image} />
                 </Center>
             </Box>
             <Flex gap={10}>
                 <Flex className={classes.companyName}>
-                    <BaseText>{props.item.Company}</BaseText>
+                    <BaseText mt={5} c={theme.colors.cyan[9]} style={typography.label[i18nStore.getCurrentLanguage()].l11}>{props.item.Company}</BaseText>
                 </Flex>
                 <Flex className={classes.location}>
                     <Image width={9} height={12} src={Images.location_icon} />
-                    <BaseText>{props.item.Location}</BaseText>
+                    <BaseText c={theme.colors.cyan[9]} style={typography.label[i18nStore.getCurrentLanguage()].l11}>{props.item.Location}</BaseText>
                 </Flex>
             </Flex>
-            <BaseText>
+            <BaseText c={theme.colors.dark[9]} style={typography.label[i18nStore.getCurrentLanguage()].l11}>
                 {props.item.ProductName}
             </BaseText>
             <Flex justify={"space-between"}>
-                <BaseText>${props.item.Price}</BaseText>
+                <BaseText c={theme.colors.dark[9]} style={typography.headings[i18nStore.getCurrentLanguage()].h6}>${props.item.Price}</BaseText>
                 <Image width={15} height={20} src={Images.vector} />
             </Flex>
         </Flex>

@@ -1,16 +1,10 @@
 import React from 'react'
 import { Flex, Image, Grid, Button, Box, Center } from '@mantine/core';
-import { useMantineTheme } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
-import { Images } from '../../../../public/index';
-import { typography } from '@/themes/Mantine/typography';
 import { createStyle } from "./CarouselWithImage.style"
-import { useStores } from '@/models';
 
-function CarouselWithImage() {
-    const theme = useMantineTheme();
-    const { i18nStore, userStore } = useStores();
+function CarouselWithImage(props: { CarouselData: any }) {
     const useStyles = createStyle();
     const { classes } = useStyles();
     return (
@@ -26,7 +20,7 @@ function CarouselWithImage() {
                     control: classes.control
                 }}
             >
-                {[1, 2, 3, 4].map((item, id) => (
+                {props.CarouselData.map((item: any, id: any) => (
                     <Carousel.Slide key={id} classNames={classes.crouselSlide}>
                         <Flex className={classes.slideBox}>
                             <Grid>
@@ -48,7 +42,7 @@ function CarouselWithImage() {
                                 <Grid.Col lg={6} md={6} sm={6} xs={12}>
                                     <Center>
                                         <Box className={classes.carousel_image}>
-                                            <Image maw={426} src={Images.carousel_image} />
+                                            <Image maw={426} src={item.Image} />
                                         </Box>
                                     </Center>
                                 </Grid.Col>

@@ -35,12 +35,12 @@ export const createStyle = () => {
             justifyContent: "center",
             alignContent: "center",
             width: "30px",
-            cursor:"pointer",
+            cursor: "pointer",
             height: "30px",
             borderRadius: "100%",
             border: `1px solid ${theme.colors.gray[0]}`,
             color: theme.colors.indigo[7],
-            ...typography.headings.en.h5
+            ...typography.headings[i18nStore.getCurrentLanguage()].h5
         },
         logoBox: {
             flexDirection: "column",
@@ -48,7 +48,7 @@ export const createStyle = () => {
         },
         copyrightName: {
             color: theme.colors.gray[6],
-            ...typography.label.en.l11
+            ...typography.label[i18nStore.getCurrentLanguage()].l11
         },
         containerSecond: {
             display: "flex",
@@ -66,8 +66,8 @@ export const createStyle = () => {
                 width: "200px",
             },
         },
-        cursor:{
-            cursor:"pointer"
+        cursor: {
+            cursor: "pointer"
         }
     }))
 }

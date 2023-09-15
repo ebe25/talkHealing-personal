@@ -11,7 +11,7 @@ import { translate } from '../../../i18n';
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Button, Group } from '@mantine/core';
 
-function Header(props: { handleCategorie: any, categorie: boolean }) {
+function Header(props: { handleCategorie: any, categorie: boolean, handleSearchText: any }) {
     const theme = useMantineTheme();
     const { i18nStore, userStore } = useStores();
     const useStyles = createStyle();
@@ -25,7 +25,9 @@ function Header(props: { handleCategorie: any, categorie: boolean }) {
                     <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3} c={"white"} txtkey={"header.allCategories"} />
                     <Image src={Images.down_arrow} style={props.categorie ? { transform: "rotate(180deg)" } : {}} width={10} height={6} />
                 </Flex>
-                <SearchInput w={440} placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
+                <SearchInput w={440}
+                    onChange={(e) => props.handleSearchText(e.target.value)}
+                    placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
                 <Image className={classes.cursor} src={Images.shop_icon} width={20} height={20} />
                 <Image className={classes.cursor} src={Images.chat} width={20} height={20} />
                 <Image className={classes.cursor} src={Images.tiptop} width={14} height={17} />

@@ -17,7 +17,7 @@ export const createStyle = () => {
         slideBox: {
             border: "solid 2px #E9EAE9",
             width: "100px",
-            padding: "2px 10px",
+            padding: "5px 10px",
             borderRadius: "10px",
             justifyContent: "center",
             alignItems: "center"

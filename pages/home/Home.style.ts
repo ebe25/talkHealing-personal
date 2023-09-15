@@ -7,6 +7,7 @@ export const createStyle = () => {
     return createStyles((theme) => ({
         container: {
             maxWidth: "100%",
+            width: "1520px",
             margin: 0,
             padding: 0
         },

@@ -61,10 +61,10 @@ export const createStyle = () => {
             color: "white",
             ...typography.headings.en.h1,
             [theme.fn.smallerThan('md')]: {
-                ...typography.headings.en.h3,
+                ...typography.headings[i18nStore.getCurrentLanguage()].h3,
             },
             [theme.fn.smallerThan('xs')]: {
-                ...typography.headings.en.h6,
+                ...typography.headings[i18nStore.getCurrentLanguage()].h6,
                 marginTop: "0px",
             },
         },
@@ -73,7 +73,7 @@ export const createStyle = () => {
             marginTop: "10px",
             ...typography.paragraph[i18nStore.getCurrentLanguage()].p2,
             [theme.fn.smallerThan('xs')]: {
-                ...typography.headings.en.p7,
+                ...typography.headings[i18nStore.getCurrentLanguage()].p7,
                 marginTop: "5px",
             },
         }
