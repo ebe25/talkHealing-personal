@@ -29,6 +29,8 @@
     },
     "button": {
       "login": "Login",
+      "blue":"Blue",
+      "large":"Large",
       "back" : "Checkout",
       "english": "English",
       "arabic": "ةيب رعلا",
@@ -145,6 +147,10 @@
       "invalidOtp":"Invalid OTP",
       "error": "Error"
     }
+  },
+  "myCart":{
+    "heading":"My Cart",
+    "pebeaSneakers":"Pebea Sneakers"
   },
   "signUpForm": {
     "login": "Log in",
