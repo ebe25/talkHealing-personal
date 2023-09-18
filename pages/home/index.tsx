@@ -344,6 +344,8 @@ export default function Home() {
     setSearchText(name);
   };
 
+  let returned = false;
+
   return (
     <Container className={classes.container}>
       <Header handleSearchText={handleSearchText} />
@@ -371,6 +373,7 @@ export default function Home() {
               {
                 ProductCardData.filter((element: any) => {
                   if (element.ProductName.toLowerCase().includes(searchText)) {
+                    returned = true
                     return element
                   }
                 }).map((item: any, id: any) => (
@@ -380,17 +383,30 @@ export default function Home() {
                 ))
               }
 
-              {productName.map((value: any, index: any) => (
-                value.ProductDetails.filter((element: any) => {
-                  if (element.ProductName.toLowerCase().includes(searchText)) {
-                    return element
+              {
+                productName.map((value: any, index: any) => {
+                  const val = value.ProductDetails.filter((element: any) => {
+                    if (element.ProductName.toLowerCase().includes(searchText)) {
+                      return element
+                    }
+                  })
+                  if (val.length) {
+                    returned = true
+                    return (
+                      val.map((item: any, id: any) => {
+                        return (
+                          <Box key={++index}>
+                            <ProductCard key={id} item={item} />
+                          </Box>
+                        )
+                      }))
                   }
-                }).map((item: any, id: any) => (
-                  <Box key={++index}>
-                    <ProductCard key={id} item={item} />
-                  </Box>
-                ))
-              ))}
+                  else if (!returned) {
+                    returned = true
+                    return <Flex w={"100%"} justify={"center"}><BaseText c={theme.colors.red[9]} style={typography.headings[i18nStore.getCurrentLanguage()].h1} txtkey={"apparelCategories.noData"} /></Flex>
+                  }
+                })
+              }
             </Flex>
           </Box>) :
           (<>

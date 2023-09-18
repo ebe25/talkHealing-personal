@@ -167,6 +167,14 @@ export default function ApparelCategories() {
         </Carousel>
     )
 
+    let returned = false;
+
+    let productNameFilter = productName.filter((element: any) => {
+        if (element.productName.includes(productSelect)) {
+            return element
+        }
+    })
+
     return (
         <Container className={classes.container}>
             <Header handleSearchText={handleSearchText} />
@@ -180,50 +188,66 @@ export default function ApparelCategories() {
                     (<Box>
                         <Center>
                             <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h3} txtkey={"homePage.productSectionsName"} />
-                        </Center><Flex className={classes.productSectionsCard}>
-                            {productName.map((value: any, index: any) => (
-                                value.ProductDetails.filter((element: any) => {
-                                    if (element.ProductName.toLowerCase().includes(searchText)) {
-                                        return element
+                        </Center>
+                        <Flex className={classes.productSectionsCard}>
+                            {
+                                productName.map((value: any, index: any) => {
+                                    const val = value.ProductDetails.filter((element: any) => {
+                                        if (element.ProductName.toLowerCase().includes(searchText)) {
+                                            return element
+                                        }
+                                    })
+                                    if (val.length) {
+                                        returned = true
+                                        return (
+                                            val.map((item: any, id: any) => {
+                                                return (
+                                                    <Box key={++index}>
+                                                        <ProductCard key={id} item={item} />
+                                                    </Box>
+                                                )
+                                            }))
                                     }
-                                }).map((item: any, id: any) => (
-                                    <Box key={++index}>
-                                        <ProductCard key={id} item={item} />
-                                    </Box>
-                                ))
-                            ))}
+                                    else if (!returned) {
+                                        returned = true
+                                        return <Flex w={"100%"} justify={"center"}><BaseText c={theme.colors.red[9]} style={typography.headings[i18nStore.getCurrentLanguage()].h1} txtkey={"apparelCategories.noData"} /></Flex>
+                                    }
+                                })
+                            }
                         </Flex>
                     </Box>)
                     : (
-                        <>{productName.filter((element: any) => {
-                            if (element.productName.includes(productSelect)) {
-                                return element
-                            }
-                        }).map((value: any, index: any) => (
-                            <Box key={index}>
-                                <Flex justify={"space-between"}>
-                                    <BaseText
-                                        style={typography.headings[i18nStore.getCurrentLanguage()].h3}
-                                    >{value.productName}</BaseText>
-                                    {buttonNumber != index ? (
-                                        <BaseButton w={140} style_variant="outline" color_variant="gray">
-                                            <BaseText
-                                                onClick={() => handleSeeMoreClick(index)}
-                                                c={theme.colors.blue[8]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}
-                                                txtkey={'homePage.seeMore'} />
-                                        </BaseButton>) : null}
-                                </Flex>
-                                <Flex className={classes.productSectionsCard}>
-                                    {
-                                        value.ProductDetails.map((item: any, id: any) => (
-                                            <Box key={id} style={{ display: (buttonNumber == index || id < 6) ? 'block' : 'none' }}>
-                                                <ProductCard item={item} />
-                                            </Box>
-                                        ))
-                                    }
-                                </Flex>
-                            </Box>
-                        ))}</>)}
+                        <>{productNameFilter.length ?
+                            (productNameFilter.map((value: any, index: any) => (
+                                <Box key={index}>
+                                    <Flex justify={"space-between"}>
+                                        <BaseText
+                                            style={typography.headings[i18nStore.getCurrentLanguage()].h3}
+                                        >{value.productName}</BaseText>
+                                        {buttonNumber != index ? (
+                                            <BaseButton w={140} style_variant="outline" color_variant="gray">
+                                                <BaseText
+                                                    onClick={() => handleSeeMoreClick(index)}
+                                                    c={theme.colors.blue[8]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}
+                                                    txtkey={'homePage.seeMore'} />
+                                            </BaseButton>) : null}
+                                    </Flex>
+                                    <Flex className={classes.productSectionsCard}>
+                                        {
+                                            value.ProductDetails.map((item: any, id: any) => (
+                                                <Box key={id} style={{ display: (buttonNumber == index || id < 6) ? 'block' : 'none' }}>
+                                                    <ProductCard item={item} />
+                                                </Box>
+                                            ))
+                                        }
+                                    </Flex>
+                                </Box>
+                            )))
+                            :
+                            (<Flex w={"100%"} justify={"center"}>
+                                <BaseText c={theme.colors.red[9]} style={typography.headings[i18nStore.getCurrentLanguage()].h1} txtkey={"apparelCategories.noData"} />
+                            </Flex>)
+                        }</>)}
                 <Divider my="xs" />
             </Flex>
             <Footer />
