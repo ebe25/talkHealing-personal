@@ -10,7 +10,6 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import Header from '@/components/modules/Header/Header';
 import { createStyle } from "./ApparelCategories.style";
 import Footer from '@/components/modules/Footer/Footer';
-import Categories from '@/components/modules/Categories/Categories';
 import { Carousel } from '@mantine/carousel';
 
 const CarouselmultipleIamgeData = [
@@ -102,7 +101,7 @@ const ProductSectionsCard = [
         "Image": Images.shirt_icon
     },
     {
-        "ProductName": "Product name lorem ipsum dolor sit amet",
+        "ProductName": "hp",
         "Price": "78.25",
         "Company": "Nike",
         "Location": "Bangalore",
@@ -121,16 +120,11 @@ const productName = [
 export default function ApparelCategories() {
     const theme = useMantineTheme();
     const { i18nStore, userStore } = useStores();
-    const [categorie, setCategorie] = useState(false);
     const useStyles = createStyle();
     const { classes } = useStyles();
     const [searchText, setSearchText] = useState<string>("");
     const [buttonNumber, setButtonNumber] = useState<number>();
     const [productSelect, setProductSelect] = useState<string>("");
-
-    const handleCategorie = () => {
-        setCategorie(!categorie);
-    };
 
     const handleSearchText = (value: any) => {
         let name = value.toLowerCase();
@@ -175,47 +169,61 @@ export default function ApparelCategories() {
 
     return (
         <Container className={classes.container}>
-            <Header handleCategorie={handleCategorie} categorie={categorie} handleSearchText={handleSearchText} />
-            {categorie ? <Categories /> : null}
-            <Flex onClick={() => setCategorie(false)} className={classes.homePage}>
+            <Header handleSearchText={handleSearchText} />
+            <Flex className={classes.homePage}>
                 <Box className={classes.apparelIcon}>
                     <Image src={Images.apparel_icon} />
                     <BaseText className={classes.heading} txtkey={"apparelCategories.heading"} />
                 </Box>
                 <CarouselBox CarouselmultipleIamgeData={CarouselmultipleIamgeData} />
-                {productName.filter((element: any) => {
-                    if (element.productName.includes(productSelect)) {
-                        return element
-                    }
-                }).map((value: any, index: any) => (
-                    <Box key={index}>
-                        <Flex justify={"space-between"}>
-                            <BaseText
-                                style={typography.headings[i18nStore.getCurrentLanguage()].h3}
-                            >{value.productName}</BaseText>
-                            {buttonNumber != index ? (
-                                <BaseButton w={140} style_variant="outline" color_variant="gray">
-                                    <BaseText
-                                        onClick={() => handleSeeMoreClick(index)}
-                                        c={theme.colors.blue[8]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}
-                                        txtkey={'homePage.seeMore'} />
-                                </BaseButton>) : null}
-                        </Flex>
-                        <Flex className={classes.ProductSectionsCard}>
-                            {
+                {searchText ?
+                    (<Box>
+                        <Center>
+                            <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h3} txtkey={"homePage.productSectionsName"} />
+                        </Center><Flex className={classes.productSectionsCard}>
+                            {productName.map((value: any, index: any) => (
                                 value.ProductDetails.filter((element: any) => {
                                     if (element.ProductName.toLowerCase().includes(searchText)) {
                                         return element
                                     }
                                 }).map((item: any, id: any) => (
-                                    <Box key={id} style={{ display: (buttonNumber == index || id < 6) ? 'block' : 'none' }}>
-                                        <ProductCard item={item} />
+                                    <Box key={++index}>
+                                        <ProductCard key={id} item={item} />
                                     </Box>
                                 ))
-                            }
+                            ))}
                         </Flex>
-                    </Box>
-                ))}
+                    </Box>)
+                    : (
+                        <>{productName.filter((element: any) => {
+                            if (element.productName.includes(productSelect)) {
+                                return element
+                            }
+                        }).map((value: any, index: any) => (
+                            <Box key={index}>
+                                <Flex justify={"space-between"}>
+                                    <BaseText
+                                        style={typography.headings[i18nStore.getCurrentLanguage()].h3}
+                                    >{value.productName}</BaseText>
+                                    {buttonNumber != index ? (
+                                        <BaseButton w={140} style_variant="outline" color_variant="gray">
+                                            <BaseText
+                                                onClick={() => handleSeeMoreClick(index)}
+                                                c={theme.colors.blue[8]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}
+                                                txtkey={'homePage.seeMore'} />
+                                        </BaseButton>) : null}
+                                </Flex>
+                                <Flex className={classes.productSectionsCard}>
+                                    {
+                                        value.ProductDetails.map((item: any, id: any) => (
+                                            <Box key={id} style={{ display: (buttonNumber == index || id < 6) ? 'block' : 'none' }}>
+                                                <ProductCard item={item} />
+                                            </Box>
+                                        ))
+                                    }
+                                </Flex>
+                            </Box>
+                        ))}</>)}
                 <Divider my="xs" />
             </Flex>
             <Footer />

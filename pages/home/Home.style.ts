@@ -28,7 +28,7 @@ export const createStyle = () => {
                 justifyContent: "center",
             },
         },
-        ProductSectionsCard: {
+        productSectionsCard: {
             justifyContent: "space-between",
             marginTop: "20px",
             gap: "10px",
@@ -36,6 +36,17 @@ export const createStyle = () => {
             [theme.fn.smallerThan('xs')]: {
                 justifyContent: "center",
             },
+        },
+        filterSectionsCard: {
+            marginTop: "20px",
+            gap: "10px",
+            flexWrap: "wrap",
+            [theme.fn.smallerThan('xs')]: {
+                justifyContent: "center",
+            },
+        },
+        cursor: {
+            cursor: "pointer"
         }
     }))
 }

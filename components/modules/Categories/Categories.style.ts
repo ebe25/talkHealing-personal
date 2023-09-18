@@ -9,13 +9,7 @@ export const createStyle = () => {
         containerBox: {
             height: "480px",
             width: "480px",
-            marginLeft: "15%",
-            marginTop: "-1%",
             borderRadius: "30px",
-            backgroundColor: theme.white,
-            boxShadow: `5px 10px ${theme.colors.gray[0]}`,
-            position: "absolute",
-            zIndex: 10000,
             alignItems: "center",
             padding: "20px",
             gap: "20px",
@@ -25,14 +19,29 @@ export const createStyle = () => {
             },
             [theme.fn.smallerThan('sm')]: {
                 justifyContent: "center",
-                marginLeft: "10%",
-                marginTop: "-1%",
+                height: "480px",
+                padding: "4px",
+                width: "300px",
             },
         },
-        Options: {
+        optionsBox: {
+            width: "192px",
+            padding: "0px 25px 0px 0px",
+            [theme.fn.smallerThan('sm')]: {
+                width: "100px",
+                padding: "5px"
+            },
+        },
+        options: {
             cursor: "pointer",
             marginTop: "10px",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+        },
+        optionsText: {
+            color: theme.colors.cyan[9],
+            ":hover": {
+                color: theme.colors.red[9],
+            }
         },
         cursor: {
             cursor: "pointer"

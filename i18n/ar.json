@@ -394,6 +394,7 @@
   "sneakers":"أحذية رياضية"
  },
  "apparelCategories":{
-  "heading":"فئات الملابس"
+  "heading":"فئات الملابس",
+  "noData":"لاتوجد بيانات"
   }
 }

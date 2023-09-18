@@ -20,7 +20,8 @@ export const createStyle = () => {
             padding: "5px 10px",
             borderRadius: "10px",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            cursor:"pointer"
         }
     }))
 }

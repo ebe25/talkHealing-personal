@@ -40,14 +40,14 @@ export const createStyle = () => {
             borderLeft: "2px solid #FFFFFF",
             height: "28px",
             paddingLeft: "10px",
-            cursor:"pointer",
+            cursor: "pointer",
             justifyContent: "center",
             alignItems: "center",
         },
         picBox: {
             marginTop: "5px",
             justifyContent: "center",
-            cursor:"pointer",
+            cursor: "pointer",
             gap: "8px"
         },
         mobileMenu: {
@@ -61,8 +61,8 @@ export const createStyle = () => {
                 display: "none",
             },
         },
-        cursor:{
-            cursor:"pointer"
+        cursor: {
+            cursor: "pointer"
         }
     }))
 }

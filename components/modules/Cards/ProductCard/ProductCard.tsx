@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Flex, Image, Center } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -10,6 +10,7 @@ import { typography } from '@/themes/Mantine/typography';
 function ProductCard(props: { item: any }) {
     const theme = useMantineTheme();
     const { i18nStore, userStore } = useStores();
+    const [bookmark, setBookmark] = useState(false);
     const useStyles = createStyle();
     const { classes } = useStyles();
 
@@ -38,7 +39,7 @@ function ProductCard(props: { item: any }) {
             </BaseText>
             <Flex justify={"space-between"}>
                 <BaseText c={theme.colors.dark[9]} style={typography.headings[i18nStore.getCurrentLanguage()].h6}>${props.item.Price}</BaseText>
-                <Image width={15} height={20} src={Images.vector} />
+                <Image onClick={() => setBookmark(!bookmark)} className={classes.cursor} width={15} height={20} src={bookmark ? Images.selected_bookmark_icon : Images.vector} />
             </Flex>
         </Flex>
     )

@@ -56,7 +56,7 @@ function Categories() {
     const theme = useMantineTheme();
     const { i18nStore, userStore } = useStores();
     const [active, setActive] = useState(false);
-    const [value, setValue] = useState<number>();
+    const [value, setValue] = useState<number>(0);
     const useStyles = createStyle();
     const { classes } = useStyles();
     const router = useRouter();
@@ -88,13 +88,13 @@ function Categories() {
                             ))}
                     </Box>
                     <Divider orientation="vertical" />
-                    <Box w={192} p={"0px 25px 0px 0px"}>
+                    <Box className={classes.optionsBox}>
                         {value == 0 ? (
                             apparelsData.map((item, id) => (
                                 <Box mt={20} key={id}>
-                                    <Flex className={classes.Options}
+                                    <Flex className={classes.options}
                                         onClick={() => CategoriesPage(item)}>
-                                        <BaseText c={theme.colors.cyan[9]} style={typography.buttonText[i18nStore.getCurrentLanguage()].b3} >{item}</BaseText>
+                                        <BaseText className={classes.optionsText} style={typography.buttonText[i18nStore.getCurrentLanguage()].b3} >{item}</BaseText>
                                         <Image mt={5} src={Images.right_arrow_icon} width={4} height={7} />
                                     </Flex>
                                 </Box>

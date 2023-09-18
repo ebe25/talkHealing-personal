@@ -9,13 +9,13 @@ export const createStyle = () => {
             height: "263px",
             backgroundColor: "#E9EAE9",
             borderRadius: "16px",
-            position:"relative"
+            position: "relative"
         },
         imageBox: {
             backgroundColor: "white",
             borderRadius: "5px",
             position: "absolute",
-            zIndex:10001,
+            zIndex: 10001,
             left: "131px",
             top: "0px",
             alignItems: "center",
@@ -39,6 +39,9 @@ export const createStyle = () => {
             justifyContent: "center",
             width: "95px",
             height: "30px"
+        },
+        cursor: {
+            cursor: "pointer"
         }
     }))
 }

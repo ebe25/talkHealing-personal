@@ -52,7 +52,7 @@ export const createStyle = () => {
                 justifyContent: "center",
             },
         },
-        ProductSectionsCard: {
+        productSectionsCard: {
             justifyContent: "space-between",
             marginTop: "20px",
             gap: "10px",

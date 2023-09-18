@@ -337,6 +337,7 @@
   "sneakers":"Sneakers"
  },
  "apparelCategories":{
-  "heading":"Apparel categories"
+  "heading":"Apparel categories",
+  "noData":"No Data Found"
   }
 }
