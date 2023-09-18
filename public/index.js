@@ -36,9 +36,11 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   phone_icon: "./image/phoneIcon.png",
   pebea_icon:"./image/pebea.png",
   cart_image:"./image/cart_image.png",
+  dash_line:"./image/dash_line.png",
   delete_cart_icon:"./icons/delete_cart_icon.png",
   coupon_icon:"./icons/coupon_icon.png",
   minus_icon:"./icons/minus_icon.png",
   add_icon:"./icons/add_icon.png",
+  back_button_icon:"./icons/back_button_icon.png"
 }
 

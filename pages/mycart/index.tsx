@@ -1,16 +1,7 @@
 // React and next import
 import React, { useState } from 'react';
 // mantine component import
-import {
-  Box,
-  Container,
-  Flex,
-  Grid,
-  Image,
-  Input,
-  Stack,
-  useMantineTheme,
-} from '@mantine/core';
+import { Box, Container, Flex, Grid, Image, Input, Stack, useMantineTheme } from '@mantine/core';
 // styles file import
 import { createStyle } from './MyCart.styles';
 // internal components import
@@ -18,6 +9,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { Images } from '@/public';
 import { boilerPlateStyles } from '@/utils/styles/styles';
+import Link from 'next/link';
 
 const MyCart = () => {
   // style function
@@ -39,11 +31,9 @@ const MyCart = () => {
     <>
       <Container maw={'1000px'} mt={'50px'}>
         <BaseText className={classes.title} txtkey="myCart.heading" />
-        <Grid mt={'50px'} m={0} 
-          
-        >
+        <Grid mt={'50px'} m={0}>
           <Grid.Col xs={12} sm={12} md={8} lg={8} xl={8} p={0}>
-            <Stack w={'90%'} mb={'40px'}>
+            <Stack w={'95%'} mb={'40px'}>
               <Flex align={'center'} gap={'lg'} mb={'lg'}>
                 <Image src={Images.pebea_icon} alt="Pebea Icon" width={'34px'} height={'34px'} />
                 <BaseText className={classes.subHeading} txtkey="myCart.pebeaSneakers" />
@@ -61,7 +51,7 @@ const MyCart = () => {
                     {'Product name lorem ipsum dolor sit amet '}
                   </BaseText>
                   <BaseText className={classes.cardProductPrice}>{'$78.25'}</BaseText>
-                  <Flex w={'100%'} justify={'space-between'} align={'center'} wrap={"wrap"} >
+                  <Flex w={'100%'} justify={'space-between'} align={'center'} wrap={'wrap'}>
                     <Flex gap={'md'}>
                       <BaseButton style_variant={'outline'} color_variant={'gray'}>
                         <BaseText txtkey="global.button.blue" color={theme.colors.cyan[9]} />
@@ -71,9 +61,7 @@ const MyCart = () => {
                       </BaseButton>
                     </Flex>
                     <Flex gap={'lg'}>
-                      <Box
-                        style={boilerPlateStyles.cursor}
-                      >
+                      <Box style={boilerPlateStyles.cursor}>
                         <Image
                           src={Images.delete_cart_icon}
                           alt="delete_cart_icon"
@@ -81,10 +69,7 @@ const MyCart = () => {
                           height={'20px'}
                         />
                       </Box>
-                      <Box 
-                        onClick={decrement}
-                        style={boilerPlateStyles.cursor}
-                      >
+                      <Box onClick={decrement} style={boilerPlateStyles.cursor}>
                         <Image
                           src={Images.minus_icon}
                           alt="delete_cart_icon"
@@ -93,10 +78,7 @@ const MyCart = () => {
                         />
                       </Box>
                       <div>{itemCount}</div>
-                      <Box 
-                        onClick={increment}
-                        style={boilerPlateStyles.cursor}
-                      >
+                      <Box onClick={increment} style={boilerPlateStyles.cursor}>
                         <Image
                           src={Images.add_icon}
                           alt="delete_cart_icon"
@@ -109,9 +91,8 @@ const MyCart = () => {
                 </Stack>
               </Flex>
             </Stack>
-            
           </Grid.Col>
-          <Grid.Col xs={12} sm={12} md={4} lg={4} xl={4} p={0} >
+          <Grid.Col xs={12} sm={12} md={4} lg={4} xl={4} p={0}>
             <Flex
               direction={'column'}
               justify={'space-between'}
@@ -128,10 +109,14 @@ const MyCart = () => {
                 <BaseText color={theme.colors.cyan[9]}>{'$394.00'}</BaseText>
               </Flex>
             </Flex>
-
-            <BaseButton color_variant="blue" style_variant={'filled'} mt={'xl'}>
-              <BaseText color={'white'}>{'$394.00'}</BaseText>
-            </BaseButton>
+            <Link 
+              href={'/checkoutnow'}
+              style={boilerPlateStyles.textDecoration}
+            >
+              <BaseButton color_variant="blue" style_variant={'filled'} mt={'xl'}>
+                <BaseText  color={'white'} txtkey="checkOutNow.backButtonText" />
+              </BaseButton>
+            </Link>
           </Grid.Col>
         </Grid>
       </Container>

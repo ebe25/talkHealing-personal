@@ -149,6 +149,10 @@
     "heading":"سلة التسوق الخاصة بي",
     "pebeaSneakers":"أحذية بيبيا الرياضية"  
   },
+  "checkOutNow":{
+    "backButtonText":"الدفع",
+    "addrestext":"عنوان التسليم"
+  },
   "signUpForm": {
     "login": "تسجيل الدخول",
     "forgetPassword": "هل نسيت كلمة السر؟",

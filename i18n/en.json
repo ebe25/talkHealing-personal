@@ -152,6 +152,10 @@
     "heading":"My Cart",
     "pebeaSneakers":"Pebea Sneakers"
   },
+  "checkOutNow":{
+    "backButtonText":"Checkout",
+    "addrestext":"Delivery address"
+  },
   "signUpForm": {
     "login": "Log in",
     "forgetPassword": "Forgot password?",
