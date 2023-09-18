@@ -133,22 +133,7 @@ export const typography:any = {
         fontWeight: 700,
         fontSize: '28px',
         lineHeight: '42px',
-      } as React.CSSProperties,
-      h8: {
-        fontFamily: webFontFamily['PlusJakartaSans-Bold'],
-        fontStyle: 'normal',
-        fontWeight: 700,
-        fontSize: '28px',
-        lineHeight: '42px',
-      } as React.CSSProperties,
-      h9: {
-        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
-        fontStyle: 'Semi Bold',
-        fontSize: '26px',
-        lineHeight: '31px',
-        fontWeight: 500,
-      } as React.CSSProperties,
-
+      } as React.CSSProperties
     },
   } ,
   paragraph: {

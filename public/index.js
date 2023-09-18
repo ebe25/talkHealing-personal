@@ -33,6 +33,7 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   uncolored_star_icon:"./icons/uncoloured_start_icon.png",
   colored_star_icon:"./icons/coloured_star_icon.png",
   email_icon: "./image/emailIcon.png",
-  phone_icon: "./image/phoneIcon.png"
+  phone_icon: "./image/phoneIcon.png",
+  pebea_icon:"./image/pebea.png"
 }
 
