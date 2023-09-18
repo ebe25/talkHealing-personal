@@ -123,7 +123,7 @@ export default function ApparelCategories() {
     const useStyles = createStyle();
     const { classes } = useStyles();
     const [searchText, setSearchText] = useState<string>("");
-    const [buttonNumber, setButtonNumber] = useState<number>();
+    const [seeMoreButtton, setSeeMoreButtton] = useState<number>();
     const [productSelect, setProductSelect] = useState<string>("");
 
     const handleSearchText = (value: any) => {
@@ -136,7 +136,7 @@ export default function ApparelCategories() {
     };
 
     const handleSeeMoreClick = (value: any) => {
-        setButtonNumber(value);
+        setSeeMoreButtton(value);
     };
 
     const CarouselBox = (props: { CarouselmultipleIamgeData: any }) => (
@@ -224,7 +224,7 @@ export default function ApparelCategories() {
                                         <BaseText
                                             style={typography.headings[i18nStore.getCurrentLanguage()].h3}
                                         >{value.productName}</BaseText>
-                                        {buttonNumber != index ? (
+                                        {seeMoreButtton != index ? (
                                             <BaseButton w={140} style_variant="outline" color_variant="gray">
                                                 <BaseText
                                                     onClick={() => handleSeeMoreClick(index)}
@@ -235,7 +235,7 @@ export default function ApparelCategories() {
                                     <Flex className={classes.productSectionsCard}>
                                         {
                                             value.ProductDetails.map((item: any, id: any) => (
-                                                <Box key={id} style={{ display: (buttonNumber == index || id < 6) ? 'block' : 'none' }}>
+                                                <Box key={id} style={{ display: (seeMoreButtton == index || id < 6) ? 'block' : 'none' }}>
                                                     <ProductCard item={item} />
                                                 </Box>
                                             ))
