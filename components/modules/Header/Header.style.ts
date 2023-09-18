@@ -27,7 +27,8 @@ export const createStyle = () => {
             },
         },
         categories: {
-            width: "140px",
+            width: "180px",
+            minWidth: "130px",
             border: `1px solid ${theme.colors.blue[9]}`,
             borderRadius: "20px",
             justifyContent: "center",
