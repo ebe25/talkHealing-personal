@@ -9,7 +9,7 @@ import { useStores } from '@/models';
 import { useRouter } from 'next/router';
 
 const apparelsData = [
-    "Tops", "Bottoms", "Bottoms", "Bottoms"
+    "T-shirt & tanks", "Shirts & polos", "Hoodies & jumpers", "Cardigans"
 ]
 
 const CategoryData = [
@@ -61,9 +61,8 @@ function Categories() {
     const { classes } = useStyles();
     const router = useRouter();
 
-    const CategoriesPage = (item: any) => {
-        if (item == "Tops")
-            router.push('/apparel-categories')
+    const CategoriesPage = () => {
+        router.push('/apparel-categories')
     }
 
     const ActiveText = (item: any) => {
@@ -93,7 +92,7 @@ function Categories() {
                             apparelsData.map((item, id) => (
                                 <Box mt={20} key={id}>
                                     <Flex className={classes.options}
-                                        onClick={() => CategoriesPage(item)}>
+                                        onClick={() => CategoriesPage()}>
                                         <BaseText className={classes.optionsText} style={typography.buttonText[i18nStore.getCurrentLanguage()].b3} >{item}</BaseText>
                                         <Image mt={5} src={Images.right_arrow_icon} width={4} height={7} />
                                     </Flex>
