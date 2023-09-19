@@ -470,10 +470,10 @@ export default function Home() {
                   <BaseText
                     style={typography.headings[i18nStore.getCurrentLanguage()].h3}
                     txtkey={value.productName} />
-                  <BaseButton w={140} style_variant="outline" color_variant="gray">
+                  {/* <BaseButton w={140} style_variant="outline" color_variant="gray">
                     <BaseText c={theme.colors.blue[8]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}
                       txtkey={'homePage.seeMore'} />
-                  </BaseButton>
+                  </BaseButton> */}
                 </Flex>
                 <Flex className={classes.productSectionsCard}>
                   {
@@ -484,6 +484,12 @@ export default function Home() {
                     ))
                   }
                 </Flex>
+                <Center>
+                  <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue">
+                    <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}
+                      txtkey={'homePage.seeMore'} />
+                  </BaseButton>
+                </Center>
               </Box>
             ))}
           </>)}
