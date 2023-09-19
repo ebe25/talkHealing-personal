@@ -8,8 +8,8 @@ export const createStyle = () => {
     return createStyles((theme) => ({
         container: {
             maxWidth: "100%",
-            width: "1520px",
-            margin: 0,
+            // width: "1520px",
+            // margin: 0,
             padding: 0,
         },
         homePage: {
@@ -19,6 +19,9 @@ export const createStyle = () => {
             padding: "0px 100px 50px 100px",
             [theme.fn.smallerThan('sm')]: {
                 padding: "0px 50px 50px 50px",
+            },
+            [theme.fn.smallerThan('sm')]: {
+                margin: "0px 40px 40px 40px",
             },
         },
         apparelIcon: {
@@ -77,7 +80,7 @@ export const createStyle = () => {
             alignItems: "center",
             gap: "2px",
             cursor: "pointer",
-            width:"150px",
+            width: "150px",
         }
     }))
 }

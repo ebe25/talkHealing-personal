@@ -7,8 +7,8 @@ export const createStyle = () => {
     return createStyles((theme) => ({
         container: {
             maxWidth: "100%",
-            width: "1520px",
-            margin: 0,
+            // width: "1520px",
+            // margin: 0,
             padding: 0
         },
         homePage: {
@@ -18,6 +18,9 @@ export const createStyle = () => {
             [theme.fn.smallerThan('sm')]: {
                 padding: "50px",
             },
+            [theme.fn.smallerThan('xs')]: {
+                padding: "30px",
+            },
         },
         productCard: {
             justifyContent: "space-between",
@@ -25,6 +28,7 @@ export const createStyle = () => {
             gap: "30px",
             flexWrap: "wrap",
             [theme.fn.smallerThan('xs')]: {
+                gap: "10px",
                 justifyContent: "center",
             },
         },
