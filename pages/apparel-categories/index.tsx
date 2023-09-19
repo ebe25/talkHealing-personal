@@ -51,7 +51,7 @@ const carouselMultipleIamgeData = [
     }
 ]
 
-const ProductSectionsCard = [
+const productSectionsCard = [
     {
         "ProductName": "Product name lorem ipsum dolor sit amet",
         "Price": "78.25",
@@ -111,10 +111,10 @@ const ProductSectionsCard = [
 ]
 
 const productName = [
-    { productName: 'T-shirt & tanks', ProductDetails: ProductSectionsCard },
-    { productName: 'Shirts & polos', ProductDetails: ProductSectionsCard },
-    { productName: 'Hoodies & jumpers', ProductDetails: ProductSectionsCard },
-    { productName: 'Cardigans', ProductDetails: ProductSectionsCard },
+    { productName: 'T-shirt & tanks', ProductDetails: productSectionsCard },
+    { productName: 'Shirts & polos', ProductDetails: productSectionsCard },
+    { productName: 'Hoodies & jumpers', ProductDetails: productSectionsCard },
+    { productName: 'Cardigans', ProductDetails: productSectionsCard },
 ]
 
 export default function ApparelCategories() {

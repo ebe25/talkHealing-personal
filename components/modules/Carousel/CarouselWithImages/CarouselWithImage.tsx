@@ -5,7 +5,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from "./CarouselWithImage.style"
 import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
-function CarouselWithImage(props: { CarouselData: any }) {
+function CarouselWithImage(props: { carouselData: any }) {
     const useStyles = createStyle();
     const { classes } = useStyles();
     return (
@@ -22,7 +22,7 @@ function CarouselWithImage(props: { CarouselData: any }) {
                     control: classes.control
                 }}
             >
-                {props.CarouselData.map((item: any, id: any) => (
+                {props.carouselData.map((item: any, id: any) => (
                     <Carousel.Slide key={id} classNames={classes.crouselSlide}>
                         <I18nFlex className={classes.slideBox}>
                             <Grid>

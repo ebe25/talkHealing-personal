@@ -5,7 +5,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
 import CarouselWithImage from '@/components/modules/Carousel/CarouselWithImages/CarouselWithImage';
-import CarouselmultipleIamge from '@/components/modules/Carousel/CarouselmultipleIamge/CarouselmultipleIamge';
+import CarouselMultipleIamge from '@/components/modules/Carousel/CarouselMultipleIamge/CarouselMultipleIamge';
 import ProductCard from '@/components/modules/Cards/ProductCard/ProductCard';
 import { Images } from '../../public/index';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -16,7 +16,7 @@ import { useRouter } from 'next/router';
 import { Carousel } from '@mantine/carousel';
 
 
-const ProductCardData = [
+const productCardData = [
   {
     "ProductName": "Product name lorem ipsum dolor sit amet",
     "Price": "78.25",
@@ -147,7 +147,7 @@ const ProductCardData = [
   }
 ]
 
-const CarouselData = [
+const carouselData = [
   {
     Image: Images.carousel_image
   },
@@ -213,7 +213,7 @@ const carouselMultipleIamgeData = [
   }
 ]
 
-const GalleryItemData = [
+const galleryItemData = [
   {
     Image: Images.gallery_item,
     name: "Apparel Category"
@@ -379,9 +379,9 @@ export default function Home() {
     <Container className={classes.container}>
       <Header handleSearchText={handleSearchText} />
       <Flex className={classes.homePage}>
-        <CarouselWithImage CarouselData={CarouselData} />
+        <CarouselWithImage carouselData={carouselData} />
         <Grid className={classes.galleryItemBox}>
-          {GalleryItemData.map((item, id) => (
+          {galleryItemData.map((item, id) => (
             <Grid.Col key={id} lg={2} md={3} sm={4} xs={6}>
               <Stack align="center">
                 <Image onClick={() => CategoriesPage(item.name)} className={classes.cursor} width={66} height={66} src={item.Image} />
@@ -393,9 +393,9 @@ export default function Home() {
           ))}
         </Grid>
         <Box className={classes.galleryItemBoxForMobile}>
-          <CarouselBoxMobile data={GalleryItemData} />
+          <CarouselBoxMobile data={galleryItemData} />
         </Box>
-        <CarouselmultipleIamge carouselMultipleIamgeData={carouselMultipleIamgeData} />
+        <CarouselMultipleIamge carouselMultipleIamgeData={carouselMultipleIamgeData} />
         {searchText ? (
           <Box>
             <Center>
@@ -403,7 +403,7 @@ export default function Home() {
             </Center>
             <Flex className={classes.filterSectionsCard}>
               {
-                ProductCardData.filter((element: any) => {
+                productCardData.filter((element: any) => {
                   if (element.ProductName.toLowerCase().includes(searchText)) {
                     returned = true
                     return element
@@ -448,7 +448,7 @@ export default function Home() {
               </Center>
               <Flex className={classes.productCard}>
                 {
-                  ProductCardData.map((item, id) => (
+                  productCardData.map((item, id) => (
                     <Box key={id} style={{ display: (showAll || id < 10) ? 'block' : 'none' }}>
                       <ProductCard item={item} />
                     </Box>
