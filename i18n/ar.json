@@ -151,7 +151,8 @@
   },
   "checkOutNow":{
     "backButtonText":"الدفع",
-    "addrestext":"عنوان التسليم"
+    "addrestext":"عنوان التسليم",
+    "totalPrice":"السعر الكلي:"
   },
   "signUpForm": {
     "login": "تسجيل الدخول",

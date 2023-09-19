@@ -43,6 +43,21 @@ export const createStyle = () => {
       [theme.fn.smallerThan('xs')]: {
         flexWrap:"wrap"
       },
+    },
+    typeBox:{
+      height:"22px",
+      width:"100px",
+      padding:"2px",
+      borderRadius:"40px",
+      borderWidth:"1px",
+      borderStyle:"solid",
+      borderColor:`${theme.colors.gray[2]}`
+    },
+    itemDetailBox:{
+      alignSelf: "baseline",
+      width: "100%",
+      height: "140px",
+      marginTop:"50px"
     }
   }));
 };

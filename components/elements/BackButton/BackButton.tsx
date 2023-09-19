@@ -11,12 +11,14 @@ export const BackButton = (props: { heading?: string | null; navigationLink?: an
   const router = useRouter();
 
   return (
-    <Flex align={'center'} gap={'md'}>
+    <Flex align={'center'} gap={'md'} style={boilerPlateStyles.cursor}>
       <Image
         onClick={() => {
           router.back();
         }}
-        style={boilerPlateStyles.cursor}
+        style={{
+          scale: i18nStore.isRTL ? '-1' : '1',
+        }}
         src={Images.back_button_icon}
         alt="icon"
         width={'24px'}

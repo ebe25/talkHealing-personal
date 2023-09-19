@@ -1,5 +1,5 @@
 // React and next import
-import React from 'react';
+import React, { useState } from 'react';
 // mantine component import
 import { Box, Container, Flex, Grid, Image, Input, Stack, useMantineTheme } from '@mantine/core';
 // styles file import
@@ -12,12 +12,17 @@ import { boilerPlateStyles } from '@/utils/styles/styles';
 import { BackButton } from '@/components/elements/BackButton/BackButton';
 import { translate } from '@/i18n';
 import { IconMapPinFilled } from '@tabler/icons-react';
+import { AddressModal } from '@/components/modules/Modals/ProfileModals/AddressModals/AddressModal';
+import { useDisclosure } from '@mantine/hooks';
 
 const MyCart = () => {
   // style function
   const useStyles = createStyle();
   const { classes } = useStyles();
   const theme = useMantineTheme();
+  // Hooks
+  const [opened, { open, close }] = useDisclosure(false);
+  const [ addressId, setAddressId ] = useState<any>("");
 
 
   return (
@@ -27,51 +32,58 @@ const MyCart = () => {
         <Grid mt={'50px'} m={0}>
           <Grid.Col xs={12} sm={12} md={8} lg={8} xl={8} p={0}>
             <Stack w={'95%'} mb={'40px'}>
-                <Flex
-                    w={'100%'}
-                    align={'center'}
-                    justify={'space-between'}
-                    bg={theme.colors.dark[0]}
-                    p={'16px'}
-                    style={boilerPlateStyles.border_radius}
-                >
-                    <Flex gap={'sm'}>
-                        <IconMapPinFilled />
-                        <BaseText txtkey="checkOutNow.addrestext" color={theme.colors.cyan[9]} />
-                    </Flex>
-                    <BaseButton style_variant="filled" color_variant="blue" w={'200px'}>
-                        <BaseText txtkey="profile.addressButton" color={'white'} />
-                    </BaseButton>
+              <Flex
+                w={'100%'}
+                align={'center'}
+                justify={'space-between'}
+                bg={theme.colors.dark[0]}
+                p={'16px'}
+                style={boilerPlateStyles.border_radius}
+              >
+                <Flex gap={'sm'}>
+                  <IconMapPinFilled />
+                  <BaseText txtkey="checkOutNow.addrestext" color={theme.colors.cyan[9]} />
                 </Flex>
-                <Flex align={'center'} gap={'lg'} mt={'xl'}>
-                    <Image src={Images.pebea_icon} alt="Pebea Icon" width={'34px'} height={'34px'} />
-                    <BaseText className={classes.subHeading} txtkey="myCart.pebeaSneakers" />
-                </Flex>
-                <Flex w={'100%'} gap={'lg'} mb={'sm'} className={classes.cartBox}>
-                    <Image
-                        src={Images.cart_image}
-                        alt="cart iamges"
-                        width={'112px'}
-                        height={'140px'}
-                        radius={'12px'}
-                    />
-                    <Flex direction={"column"} align={"baseline"} w={'100%'} h={"120px"} >
+                <BaseButton onClick={open} style_variant="filled" color_variant="blue" w={'200px'}>
+                  <BaseText txtkey="profile.addressButton" color={'white'} />
+                </BaseButton>
+              </Flex>
+              <Flex align={'center'} gap={'lg'} mt={'xl'}>
+                <Image src={Images.pebea_icon} alt="Pebea Icon" width={'34px'} height={'34px'} />
+                <BaseText className={classes.subHeading} txtkey="myCart.pebeaSneakers" />
+              </Flex>
+              <Flex w={'100%'} gap={'lg'} mb={'sm'} className={classes.cartBox}>
+                <Image
+                  src={Images.cart_image}
+                  alt="cart iamges"
+                  width={'112px'}
+                  height={'140px'}
+                  radius={'12px'}
+                />
+                <Flex w={'100%'} h={'140px'}>
+                  <Stack className={classes.itemDetailBox}>
                     <BaseText className={classes.cardProductHeading}>
-                        {'Product name lorem ipsum dolor sit amet '}
+                      {'Product name lorem ipsum dolor sit amet '}
                     </BaseText>
-                    <BaseText className={classes.cardProductPrice}>{'$78.25'}</BaseText>
-                    <Flex w={'100%'} justify={'space-between'} align={'center'} wrap={'wrap'}>
-                        <Flex gap={'md'}>
-                            <BaseButton style_variant={'outline'} color_variant={'gray'}>
-                                <BaseText txtkey="global.button.blue" color={theme.colors.cyan[9]} />
-                            </BaseButton>
-                            <BaseButton style_variant={'outline'} color_variant={'gray'}>
-                                <BaseText txtkey="global.button.large" color={theme.colors.cyan[9]} />
-                            </BaseButton>
-                        </Flex>
+                    <BaseText className={classes.cardProductPrice}>
+                      {'1 Item'}&nbsp;&middot;&nbsp;{'$78.25'}
+                    </BaseText>
+                    <Flex
+                      gap={'5px'}
+                      justify={'center'}
+                      align={'center'}
+                      className={classes.typeBox}
+                    >
+                      <BaseText txtkey="global.button.blue" color={theme.colors.cyan[9]} />
+                      &middot;
+                      <BaseText txtkey="global.button.large" color={theme.colors.cyan[9]} />
                     </Flex>
-                    </Flex>
+                  </Stack>
                 </Flex>
+              </Flex>
+              <Flex  >
+              <BaseText txtkey="checkOutNow.totalPrice" color={theme.colors.cyan[9]} />
+              </Flex>
             </Stack>
           </Grid.Col>
           <Grid.Col xs={12} sm={12} md={4} lg={4} xl={4} p={0}>
@@ -101,6 +113,11 @@ const MyCart = () => {
           </Grid.Col>
         </Grid>
       </Container>
+      <AddressModal
+        opened={opened} 
+        onClose={close}
+        setAddressId={setAddressId}
+      />
     </>
   );
 };

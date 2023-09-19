@@ -54,7 +54,7 @@ export const Account = () => {
       avatar: "",
       name: "",
       email: "",
-      phoneNumber: "",
+      phoneNumber: userStore.userData?.phone,
       password: 'JhonDeo@123',
     },
   });

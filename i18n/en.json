@@ -154,7 +154,8 @@
   },
   "checkOutNow":{
     "backButtonText":"Checkout",
-    "addrestext":"Delivery address"
+    "addrestext":"Delivery address",
+    "totalPrice":"Total price:"
   },
   "signUpForm": {
     "login": "Log in",
