@@ -20,14 +20,15 @@ export const createStyle = () => {
             [theme.fn.smallerThan('sm')]: {
                 padding: "0px 50px 50px 50px",
             },
-            [theme.fn.smallerThan('sm')]: {
-                margin: "0px 40px 40px 40px",
+            [theme.fn.smallerThan('xs')]: {
+                padding: "0px 30px 30px 30px",
             },
         },
         apparelIcon: {
             position: "relative",
-            // width: "1170px",
-            // height: "300px"
+            [theme.fn.smallerThan('xs')]: {
+                width: "100%"
+            },
         },
         heading: {
             position: "absolute",
@@ -68,6 +69,9 @@ export const createStyle = () => {
             width: "10px",
             height: "10px",
             margin: "-5px -50px 0px -30px",
+            [theme.fn.smallerThan('xs')]: {
+                margin: "-5px -30px 0px -30px",
+            },
         },
         crouselSlide: {
             display: "flex",
@@ -81,6 +85,15 @@ export const createStyle = () => {
             gap: "2px",
             cursor: "pointer",
             width: "150px",
+        },
+        productHeadings: {
+            width: "100%",
+            [theme.fn.smallerThan('sm')]: {
+                justifyContent: "center",
+            },
+            [theme.fn.smallerThan('xs')]: {
+                maxWidth: "350px",
+            }
         }
     }))
 }

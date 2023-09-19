@@ -220,17 +220,10 @@ export default function ApparelCategories() {
                         <>{productNameFilter.length ?
                             (productNameFilter.map((value: any, index: any) => (
                                 <Box key={index}>
-                                    <Flex justify={"space-between"}>
+                                    <Flex className={classes.productHeadings}>
                                         <BaseText
                                             style={typography.headings[i18nStore.getCurrentLanguage()].h3}
                                         >{value.productName}</BaseText>
-                                        {seeMoreButtton != index ? (
-                                            <BaseButton w={140} style_variant="outline" color_variant="gray">
-                                                <BaseText
-                                                    onClick={() => handleSeeMoreClick(index)}
-                                                    c={theme.colors.blue[8]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}
-                                                    txtkey={'homePage.seeMore'} />
-                                            </BaseButton>) : null}
                                     </Flex>
                                     <Flex className={classes.productSectionsCard}>
                                         {
@@ -241,6 +234,15 @@ export default function ApparelCategories() {
                                             ))
                                         }
                                     </Flex>
+                                    {seeMoreButtton != index ? (
+                                        <Center>
+                                            <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue">
+                                                <BaseText
+                                                    onClick={() => handleSeeMoreClick(index)}
+                                                    style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}
+                                                    txtkey={'homePage.seeMore'} />
+                                            </BaseButton>
+                                        </Center>) : null}
                                 </Box>
                             )))
                             :

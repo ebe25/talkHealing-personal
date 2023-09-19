@@ -11,7 +11,6 @@ import { translate } from '../../../i18n';
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Group } from '@mantine/core';
 import Categories from '../Categories/Categories';
-import { Input } from '@/components/elements/Input/Input';
 
 
 function Header(props: { handleSearchText: any }) {
@@ -65,7 +64,7 @@ function Header(props: { handleSearchText: any }) {
                 </Group>
                 <Image src={Images.logo} width={86} height={22} />
                 <SearchInput width={240} placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
-                <Drawer opened={opened} color={theme.colors.blue[6]} onClose={close} title="LOGO">
+                <Drawer zIndex={100000} opened={opened} color={theme.colors.blue[6]} onClose={close} title="LOGO">
                     <Flex gap={10} h={300}>
                         <Image src={Images.pic} width={40} height={40} />
                         <Box>
