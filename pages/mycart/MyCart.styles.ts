@@ -33,6 +33,12 @@ export const createStyle = () => {
       [theme.fn.smallerThan('xs')]: {
         flexWrap:"wrap"
       },
+    },
+    countFlex:{
+      marginTop:"0px",
+      [theme.fn.smallerThan('xs')]: {
+        marginTop:"10px"
+      },
     }
   }));
 };

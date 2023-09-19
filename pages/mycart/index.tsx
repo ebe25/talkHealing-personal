@@ -1,7 +1,7 @@
 // React and next import
 import React, { useState } from 'react';
 // mantine component import
-import { Box, Container, Flex, Grid, Image, Input, Stack, useMantineTheme } from '@mantine/core';
+import { Box, Button, Container, Flex, Grid, Image, Input, Stack, useMantineTheme } from '@mantine/core';
 // styles file import
 import { createStyle } from './MyCart.styles';
 // internal components import
@@ -10,12 +10,16 @@ import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { Images } from '@/public';
 import { boilerPlateStyles } from '@/utils/styles/styles';
 import Link from 'next/link';
+import { useStores } from '@/models';
+import { useRouter } from 'next/router';
 
 const MyCart = () => {
   // style function
   const useStyles = createStyle();
   const { classes } = useStyles();
   const theme = useMantineTheme();
+  const { i18nStore } = useStores()
+  const router = useRouter()
 
   // State Mangement
   const [itemCount, setItemCouunt] = useState<number>(0);
@@ -60,7 +64,7 @@ const MyCart = () => {
                         <BaseText txtkey="global.button.large" color={theme.colors.cyan[9]} />
                       </BaseButton>
                     </Flex>
-                    <Flex gap={'lg'}>
+                    <Flex gap={'lg'} className={classes.countFlex} >
                       <Box style={boilerPlateStyles.cursor}>
                         <Image
                           src={Images.delete_cart_icon}
@@ -120,6 +124,26 @@ const MyCart = () => {
           </Grid.Col>
         </Grid>
       </Container>
+      <Button
+        onClick={() => {
+          i18nStore.setAppLanguage("en");
+        //   .location.reload();
+        router.reload()
+          // console.log("hbaschjvashcv", await i18nStore.setAppLanguage("ar"))
+        }}
+      >
+        EN
+      </Button>
+      <Button
+        onClick={ () => {
+          i18nStore.setAppLanguage("ar");
+          router.reload()
+        // window.location.reload();
+          // console.log("hbaschjvashcv", await i18nStore.setAppLanguage("ar"))
+        }}
+      >
+        AR
+      </Button>
     </>
   );
 };
