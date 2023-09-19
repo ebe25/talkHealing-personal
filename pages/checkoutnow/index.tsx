@@ -15,7 +15,7 @@ import { IconMapPinFilled } from '@tabler/icons-react';
 import { AddressModal } from '@/components/modules/Modals/ProfileModals/AddressModals/AddressModal';
 import { useDisclosure } from '@mantine/hooks';
 
-const MyCart = () => {
+const CheckOutNow = () => {
   // style function
   const useStyles = createStyle();
   const { classes } = useStyles();
@@ -122,4 +122,4 @@ const MyCart = () => {
   );
 };
 
-export default MyCart;
+export default CheckOutNow;
