@@ -12,7 +12,7 @@ function CarouselWithImage(props: { CarouselData: any }) {
         <>
             <Carousel
                 dir={'ltr'}
-                maw="100%"
+                maw="95%"
                 mx="auto"
                 loop
                 withIndicators

@@ -13,6 +13,7 @@ import Header from '@/components/modules/Header/Header';
 import { createStyle } from "./Home.style";
 import Footer from '@/components/modules/Footer/Footer';
 import { useRouter } from 'next/router';
+import { Carousel } from '@mantine/carousel';
 
 
 const ProductCardData = [
@@ -161,7 +162,7 @@ const CarouselData = [
   }
 ]
 
-const CarouselmultipleIamgeData = [
+const carouselMultipleIamgeData = [
   {
     Image: Images.facebook_icon
   },
@@ -344,6 +345,34 @@ export default function Home() {
     setSearchText(name);
   };
 
+  const CarouselBoxMobile = (props: { data: any }) => (
+    <Carousel
+      dir={"ltr"}
+      height={100}
+      slideSize="13%"
+      loop
+      align="start"
+      breakpoints={[
+        { maxWidth: 'lg', slideSize: '14%', slideGap: "8px" },
+        { maxWidth: 'md', slideSize: '17%', slideGap: "6px" },
+        { maxWidth: 'sm', slideSize: '20%', slideGap: "4px" },
+        { maxWidth: 'xs', slideSize: '50%', slideGap: "4px" },
+      ]}
+      classNames={{
+        control: classes.control
+      }}
+    >
+      {props.data.map((item: any, id: any) => (
+        <Carousel.Slide key={id} classNames={classes.crouselSlide}>
+          <Box className={classes.slideBox}>
+            <Image src={item.Image} width={"66px"} />
+            <BaseText>{item.name}</BaseText>
+          </Box>
+        </Carousel.Slide>
+      ))}
+    </Carousel>
+  )
+
   let returned = false;
 
   return (
@@ -351,7 +380,7 @@ export default function Home() {
       <Header handleSearchText={handleSearchText} />
       <Flex className={classes.homePage}>
         <CarouselWithImage CarouselData={CarouselData} />
-        <Grid>
+        {/* <Grid>
           {GalleryItemData.map((item, id) => (
             <Grid.Col key={id} lg={2} md={3} sm={4} xs={6}>
               <Stack align="center">
@@ -362,8 +391,9 @@ export default function Home() {
               </Stack>
             </Grid.Col>
           ))}
-        </Grid>
-        <CarouselmultipleIamge CarouselmultipleIamgeData={CarouselmultipleIamgeData} />
+        </Grid> */}
+        <CarouselBoxMobile data={GalleryItemData} />
+        <CarouselmultipleIamge carouselMultipleIamgeData={carouselMultipleIamgeData} />
         {searchText ? (
           <Box>
             <Center>

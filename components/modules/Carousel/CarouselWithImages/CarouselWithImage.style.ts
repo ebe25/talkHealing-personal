@@ -16,6 +16,9 @@ export const createStyle = () => {
             width: "10px",
             height: "10px",
             margin: "-30px -50px 50px -50px",
+            [theme.fn.smallerThan('xs')]: {
+                margin: "-30px -40px 30px -40px",
+            },
         },
         crouselSlide: {
             display: "flex",

@@ -51,6 +51,27 @@ export const createStyle = () => {
         },
         cursor: {
             cursor: "pointer"
+        },
+        control: {
+            width: "10px",
+            height: "10px",
+            margin: "-5px -50px 0px -30px",
+            [theme.fn.smallerThan('xs')]: {
+                margin: "-5px -30px 0px -30px",
+            },
+        },
+        crouselSlide: {
+            display: "flex",
+            justifyContent: "center"
+        },
+        slideBox: {
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "2px",
+            cursor: "pointer",
+            width: "150px",
         }
     }))
 }

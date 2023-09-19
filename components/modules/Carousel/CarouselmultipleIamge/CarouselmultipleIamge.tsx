@@ -5,7 +5,7 @@ import { createStyle } from "./CarouselmultipleIamge.style";
 import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 
-function CarouselmultipleIamge(props: { CarouselmultipleIamgeData: any }) {
+function CarouselmultipleIamge(props: { carouselMultipleIamgeData: any }) {
     const useStyles = createStyle();
     const { classes } = useStyles();
     return (
@@ -20,13 +20,13 @@ function CarouselmultipleIamge(props: { CarouselmultipleIamgeData: any }) {
                     { maxWidth: 'lg', slideSize: '10%', slideGap: "10px" },
                     { maxWidth: 'md', slideSize: '17%', slideGap: "10px" },
                     { maxWidth: 'sm', slideSize: '20%', slideGap: "4px" },
-                    { maxWidth: 'xs', slideSize: '50%', slideGap: "4px" },
+                    { maxWidth: 'xs', slideSize: '50%', slideGap: "2px" },
                 ]}
                 classNames={{
                     control: classes.control
                 }}
             >
-                {props.CarouselmultipleIamgeData.map((item: any, id: any) => (
+                {props.carouselMultipleIamgeData.map((item: any, id: any) => (
                     <Carousel.Slide key={id} classNames={classes.crouselSlide}>
                         <I18nFlex className={classes.slideBox}>
                             <Image src={item.Image} width={"20px"} />

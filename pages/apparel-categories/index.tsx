@@ -12,7 +12,7 @@ import { createStyle } from "./ApparelCategories.style";
 import Footer from '@/components/modules/Footer/Footer';
 import { Carousel } from '@mantine/carousel';
 
-const CarouselmultipleIamgeData = [
+const carouselMultipleIamgeData = [
     {
         Image: Images.gallery_item,
         name: "T-shirt & tanks"
@@ -139,7 +139,7 @@ export default function ApparelCategories() {
         setSeeMoreButtton(value);
     };
 
-    const CarouselBox = (props: { CarouselmultipleIamgeData: any }) => (
+    const CarouselBox = (props: { carouselMultipleIamgeData: any }) => (
         <Carousel
             dir={"ltr"}
             height={100}
@@ -156,7 +156,7 @@ export default function ApparelCategories() {
                 control: classes.control
             }}
         >
-            {props.CarouselmultipleIamgeData.map((item: any, id: any) => (
+            {props.carouselMultipleIamgeData.map((item: any, id: any) => (
                 <Carousel.Slide key={id} classNames={classes.crouselSlide}>
                     <Box onClick={() => handleProductSelect(item.name)} className={classes.slideBox}>
                         <Image src={item.Image} width={"66px"} />
@@ -183,7 +183,7 @@ export default function ApparelCategories() {
                     <Image src={Images.apparel_icon} />
                     <BaseText className={classes.heading} txtkey={"apparelCategories.heading"} />
                 </Box>
-                <CarouselBox CarouselmultipleIamgeData={CarouselmultipleIamgeData} />
+                <CarouselBox carouselMultipleIamgeData={carouselMultipleIamgeData} />
                 {searchText ?
                     (<Box>
                         <Center>
