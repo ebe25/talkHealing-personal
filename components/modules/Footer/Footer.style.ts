@@ -22,6 +22,9 @@ export const createStyle = () => {
                 justifyContent: "center",
                 padding: "25px",
             },
+            [theme.fn.smallerThan('xs')]: {
+                display: "none"
+            },
         },
         containerfirst: {
             justifyContent: "space-between",
@@ -68,6 +71,27 @@ export const createStyle = () => {
         },
         cursor: {
             cursor: "pointer"
-        }
+        },
+        mobileFooter: {
+            width: "100%",
+            padding: "10px",
+            justifyContent: "center",
+            [theme.fn.largerThan('xs')]: {
+                display: "none",
+            },
+        },
+        containerFirstMobile: {
+            justifyContent: "space-between",
+            height: "100%",
+            padding: "5px",
+            gap: "40px",
+        },
+        containerSecondMobile: {
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "20px",
+            marginTop: "10px"
+        },
     }))
 }
