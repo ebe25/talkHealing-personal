@@ -72,6 +72,16 @@ export const createStyle = () => {
             gap: "2px",
             cursor: "pointer",
             width: "150px",
+        },
+        galleryItemBox: {
+            [theme.fn.smallerThan('xs')]: {
+                display: "none"
+            },
+        },
+        galleryItemBoxForMobile: {
+            [theme.fn.largerThan('xs')]: {
+                display: "none",
+            },
         }
     }))
 }

@@ -365,8 +365,8 @@ export default function Home() {
       {props.data.map((item: any, id: any) => (
         <Carousel.Slide key={id} classNames={classes.crouselSlide}>
           <Box className={classes.slideBox}>
-            <Image src={item.Image} width={"66px"} />
-            <BaseText>{item.name}</BaseText>
+            <Image onClick={() => CategoriesPage(item.name)} src={item.Image} width={"66px"} />
+            <BaseText onClick={() => CategoriesPage(item.name)}>{item.name}</BaseText>
           </Box>
         </Carousel.Slide>
       ))}
@@ -380,7 +380,7 @@ export default function Home() {
       <Header handleSearchText={handleSearchText} />
       <Flex className={classes.homePage}>
         <CarouselWithImage CarouselData={CarouselData} />
-        {/* <Grid>
+        <Grid className={classes.galleryItemBox}>
           {GalleryItemData.map((item, id) => (
             <Grid.Col key={id} lg={2} md={3} sm={4} xs={6}>
               <Stack align="center">
@@ -391,8 +391,10 @@ export default function Home() {
               </Stack>
             </Grid.Col>
           ))}
-        </Grid> */}
-        <CarouselBoxMobile data={GalleryItemData} />
+        </Grid>
+        <Box className={classes.galleryItemBoxForMobile}>
+          <CarouselBoxMobile data={GalleryItemData} />
+        </Box>
         <CarouselmultipleIamge carouselMultipleIamgeData={carouselMultipleIamgeData} />
         {searchText ? (
           <Box>
