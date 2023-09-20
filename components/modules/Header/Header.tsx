@@ -13,7 +13,7 @@ import { Drawer, Group } from '@mantine/core';
 import Categories from '../Categories/Categories';
 
 
-function Header(props: { handleSearchText: any }) {
+function Header() {
     const theme = useMantineTheme();
     const { i18nStore, userStore } = useStores();
     const useStyles = createStyle();
@@ -41,7 +41,6 @@ function Header(props: { handleSearchText: any }) {
                     </Popover.Dropdown>
                 </Popover>
                 <SearchInput w={440}
-                    onChange={(e) => props.handleSearchText(e.target.value)}
                     placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
                 <Image className={classes.cursor} src={Images.shop_icon} width={20} height={20} />
                 <Image className={classes.cursor} src={Images.chat} width={20} height={20} />

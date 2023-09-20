@@ -327,7 +327,6 @@ export default function Home() {
   const [showAll, setShowAll] = useState(false);
   const useStyles = createStyle();
   const { classes } = useStyles();
-  const [searchText, setSearchText] = useState<string>("");
   const router = useRouter();
 
   const CategoriesPage = (item: any) => {
@@ -337,12 +336,6 @@ export default function Home() {
 
   const handleSeeMoreClick = () => {
     setShowAll(!showAll);
-  };
-
-
-  const handleSearchText = (value: any) => {
-    let name = value.toLowerCase();
-    setSearchText(name);
   };
 
   const CarouselBoxMobile = (props: { data: any }) => (
@@ -373,11 +366,9 @@ export default function Home() {
     </Carousel>
   )
 
-  let returned = false;
-
   return (
     <Container className={classes.container}>
-      <Header handleSearchText={handleSearchText} />
+      <Header />
       <Flex className={classes.homePage}>
         <CarouselWithImage carouselData={carouselData} />
         <Grid className={classes.galleryItemBox}>
@@ -396,105 +387,54 @@ export default function Home() {
           <CarouselBoxMobile data={galleryItemData} />
         </Box>
         <CarouselMultipleIamge carouselMultipleIamgeData={carouselMultipleIamgeData} />
-        {searchText ? (
-          <Box>
-            <Center>
-              <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h3} txtkey={"homePage.productSectionsName"} />
-            </Center>
-            <Flex className={classes.filterSectionsCard}>
+        <Box>
+          <Center>
+            <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h3} txtkey={"homePage.productSectionsName"} />
+          </Center>
+          <Flex className={classes.productCard}>
+            {
+              productCardData.map((item, id) => (
+                <Box key={id} style={{ display: (showAll || id < 10) ? 'block' : 'none' }}>
+                  <ProductCard item={item} />
+                </Box>
+              ))}
+          </Flex>
+          <Center>
+            {!showAll ? (
+              <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue" onClick={handleSeeMoreClick}>
+                <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}
+                  txtkey={'homePage.seeMore'} />
+              </BaseButton>
+            ) : <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue" onClick={handleSeeMoreClick}>
+              <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}
+                txtkey={'homePage.seeLess'} />
+            </BaseButton>}
+          </Center>
+        </Box>
+        {productName.map((value: any, index: any) => (
+          <Box key={index}>
+            <Flex>
+              <BaseText
+                style={typography.headings[i18nStore.getCurrentLanguage()].h3}
+                txtkey={value.productName} />
+            </Flex>
+            <Flex className={classes.productSectionsCard}>
               {
-                productCardData.filter((element: any) => {
-                  if (element.ProductName.toLowerCase().includes(searchText)) {
-                    returned = true
-                    return element
-                  }
-                }).map((item: any, id: any) => (
+                value.ProductDetails.map((item: any, id: any) => (
                   <Box key={id}>
                     <ProductCard item={item} />
                   </Box>
                 ))
               }
-
-              {
-                productName.map((value: any, index: any) => {
-                  const val = value.ProductDetails.filter((element: any) => {
-                    if (element.ProductName.toLowerCase().includes(searchText)) {
-                      return element
-                    }
-                  })
-                  if (val.length) {
-                    returned = true
-                    return (
-                      val.map((item: any, id: any) => {
-                        return (
-                          <Box key={++index}>
-                            <ProductCard key={id} item={item} />
-                          </Box>
-                        )
-                      }))
-                  }
-                  else if (!returned) {
-                    returned = true
-                    return <Flex w={"100%"} justify={"center"}><BaseText c={theme.colors.red[9]} style={typography.headings[i18nStore.getCurrentLanguage()].h1} txtkey={"apparelCategories.noData"} /></Flex>
-                  }
-                })
-              }
             </Flex>
-          </Box>) :
-          (<>
-            <Box>
-              <Center>
-                <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h3} txtkey={"homePage.productSectionsName"} />
-              </Center>
-              <Flex className={classes.productCard}>
-                {
-                  productCardData.map((item, id) => (
-                    <Box key={id} style={{ display: (showAll || id < 10) ? 'block' : 'none' }}>
-                      <ProductCard item={item} />
-                    </Box>
-                  ))}
-              </Flex>
-              <Center>
-                {!showAll ? (
-                  <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue" onClick={handleSeeMoreClick}>
-                    <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}
-                      txtkey={'homePage.seeMore'} />
-                  </BaseButton>
-                ) : <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue" onClick={handleSeeMoreClick}>
-                  <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}
-                    txtkey={'homePage.seeLess'} />
-                </BaseButton>}
-              </Center>
-            </Box>
-            {productName.map((value: any, index: any) => (
-              <Box key={index}>
-                <Flex>
-                  <BaseText
-                    style={typography.headings[i18nStore.getCurrentLanguage()].h3}
-                    txtkey={value.productName} />
-                  {/* <BaseButton w={140} style_variant="outline" color_variant="gray">
-                    <BaseText c={theme.colors.blue[8]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}
-                      txtkey={'homePage.seeMore'} />
-                  </BaseButton> */}
-                </Flex>
-                <Flex className={classes.productSectionsCard}>
-                  {
-                    value.ProductDetails.map((item: any, id: any) => (
-                      <Box key={id}>
-                        <ProductCard item={item} />
-                      </Box>
-                    ))
-                  }
-                </Flex>
-                <Center>
-                  <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue">
-                    <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}
-                      txtkey={'homePage.seeMore'} />
-                  </BaseButton>
-                </Center>
-              </Box>
-            ))}
-          </>)}
+            <Center>
+              <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue">
+                <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}
+                  txtkey={'homePage.seeMore'} />
+              </BaseButton>
+            </Center>
+          </Box>
+        ))}
         <Divider my="xs" />
       </Flex>
       <Footer />
