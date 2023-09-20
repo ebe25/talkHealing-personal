@@ -23,21 +23,29 @@ export const createStyle = () => {
             },
         },
         productCard: {
-            justifyContent: "space-between",
+            // justifyContent: "space-between",
             marginTop: "20px",
-            gap: "30px",
+            padding:"10px",
+            width:"100%",
+            gap: "70px",
             flexWrap: "wrap",
-            [theme.fn.smallerThan('xs')]: {
+            [theme.fn.smallerThan('lg')]: {
                 gap: "10px",
+            },
+            [theme.fn.smallerThan('md')]: {
+                gap: "20px",
                 justifyContent: "center",
             },
         },
         productSectionsCard: {
-            justifyContent: "space-between",
+            // justifyContent: "space-between",
             marginTop: "20px",
-            gap: "10px",
+            gap: "20px",
             flexWrap: "wrap",
-            [theme.fn.smallerThan('xs')]: {
+            [theme.fn.smallerThan('lg')]: {
+                gap: "10px",
+            },
+            [theme.fn.smallerThan('md')]: {
                 justifyContent: "center",
             },
         },

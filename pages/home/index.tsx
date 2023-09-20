@@ -468,7 +468,7 @@ export default function Home() {
             </Box>
             {productName.map((value: any, index: any) => (
               <Box key={index}>
-                <Flex justify={"space-between"}>
+                <Flex>
                   <BaseText
                     style={typography.headings[i18nStore.getCurrentLanguage()].h3}
                     txtkey={value.productName} />
