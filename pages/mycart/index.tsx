@@ -133,26 +133,6 @@ const MyCart = () => {
           </Grid.Col>
         </Grid>
       </Container>
-      <Button
-        onClick={() => {
-          i18nStore.setAppLanguage("en");
-        //   .location.reload();
-        router.reload()
-          // console.log("hbaschjvashcv", await i18nStore.setAppLanguage("ar"))
-        }}
-      >
-        EN
-      </Button>
-      <Button
-        onClick={ () => {
-          i18nStore.setAppLanguage("ar");
-          router.reload()
-        // window.location.reload();
-          // console.log("hbaschjvashcv", await i18nStore.setAppLanguage("ar"))
-        }}
-      >
-        AR
-      </Button>
     </>
   );
 };
