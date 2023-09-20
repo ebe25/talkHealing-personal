@@ -1,7 +1,17 @@
 // React and next import
 import React, { useState } from 'react';
 // mantine component import
-import { Box, Container, Flex, Grid, Image, Input, Stack, useMantineTheme } from '@mantine/core';
+import {
+  Box,
+  Container,
+  Flex,
+  Grid,
+  Image,
+  Input,
+  Stack,
+  Text,
+  useMantineTheme,
+} from '@mantine/core';
 // styles file import
 import { createStyle } from './CheckOutNow.styles';
 // internal components import
@@ -12,8 +22,8 @@ import { boilerPlateStyles } from '@/utils/styles/styles';
 import { BackButton } from '@/components/elements/BackButton/BackButton';
 import { translate } from '@/i18n';
 import { IconMapPinFilled } from '@tabler/icons-react';
-import { AddressModal } from '@/components/modules/Modals/ProfileModals/AddressModals/AddressModal';
 import { useDisclosure } from '@mantine/hooks';
+import { AddressModal } from '@/components/modules/Modals/CartAddressModal/AddressModal';
 
 const CheckOutNow = () => {
   // style function
@@ -22,8 +32,16 @@ const CheckOutNow = () => {
   const theme = useMantineTheme();
   // Hooks
   const [opened, { open, close }] = useDisclosure(false);
-  const [ addressId, setAddressId ] = useState<any>("");
+  const editAddressModal = useDisclosure(false);
+  const [addressId, setAddressId] = useState<any>('');
 
+  const address = [
+    {
+      name: 'Andrew White',
+      phone: '+8562910002938',
+      address: 'Old Airport Raod, Kodihalli, Bangalore 560008, Karnataka, Indi...',
+    },
+  ];
 
   return (
     <>
@@ -48,6 +66,46 @@ const CheckOutNow = () => {
                   <BaseText txtkey="profile.addressButton" color={'white'} />
                 </BaseButton>
               </Flex>
+              {address.map((item, index) => {
+                return (
+                  <Stack
+                    w={'100%'}
+                    key={index}
+                    p={'16px'}
+                    bg={theme.colors.dark[0]}
+                    style={boilerPlateStyles.border_radius}
+                  >
+                    <Flex>
+                      <Text
+                        color={theme.colors.cyan[9]}
+                      >{item.name}</Text>&nbsp;&middot;&nbsp;
+                      <Text
+                        color={theme.colors.cyan[9]}
+                      >{item.phone}</Text>
+                    </Flex>
+                    <Flex gap={'sm'}>
+                      <IconMapPinFilled />
+                      <Text>{item.address}</Text>
+                    </Flex>
+                    <Flex gap={'md'}>
+                      <BaseButton style_variant="filled" color_variant="blue"
+                        onClick={()=>{
+                          editAddressModal[1].open()
+                          
+                        }}
+                        w={"125px"}
+                        >
+                        <BaseText txtkey="profile.editAddress" />
+                      </BaseButton>
+                      <BaseButton style_variant="filled" color_variant="blue"
+                        w={"160px"}
+                      >
+                        <BaseText txtkey="global.button.changeAddress" />
+                      </BaseButton>
+                    </Flex>
+                  </Stack>
+                );
+              })}
               <Flex align={'center'} gap={'lg'} mt={'xl'}>
                 <Image src={Images.pebea_icon} alt="Pebea Icon" width={'34px'} height={'34px'} />
                 <BaseText className={classes.subHeading} txtkey="myCart.pebeaSneakers" />
@@ -81,8 +139,8 @@ const CheckOutNow = () => {
                   </Stack>
                 </Flex>
               </Flex>
-              <Flex  >
-              <BaseText txtkey="checkOutNow.totalPrice" color={theme.colors.cyan[9]} />
+              <Flex>
+                <BaseText txtkey="checkOutNow.totalPrice" color={theme.colors.cyan[9]} />
               </Flex>
             </Stack>
           </Grid.Col>
@@ -114,8 +172,16 @@ const CheckOutNow = () => {
         </Grid>
       </Container>
       <AddressModal
-        opened={opened} 
+        opened={opened}
         onClose={close}
+        modalHeading={'profile.addressButton'}
+        setAddressId={setAddressId}
+      />
+      <AddressModal
+        opened={editAddressModal[0]}
+        onClose={editAddressModal[1].close}
+        isEdit
+        modalHeading={'profile.editAddress'}
         setAddressId={setAddressId}
       />
     </>

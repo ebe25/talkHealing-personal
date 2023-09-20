@@ -58,7 +58,8 @@
       "available seat": "مقعد متاح:",
       "verify":"يؤكد",
       "deleteAccount":"حذف الحساب",
-      "logOut":"تسجيل خروج"
+      "logOut":"تسجيل خروج",
+      "changeAddress":"تغيير العنوان"
     }
   },
   "profile":{

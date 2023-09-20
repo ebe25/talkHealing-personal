@@ -62,7 +62,8 @@
       "booking": "Booking",
       "verify":"Verify",
       "deleteAccount":"Delete Account",
-      "logOut":"Log Out"
+      "logOut":"Log Out",
+      "changeAddress":"Change address"
     }
   },
   "profile":{
@@ -155,7 +156,16 @@
   "checkOutNow":{
     "backButtonText":"Checkout",
     "addrestext":"Delivery address",
-    "totalPrice":"Total price:"
+    "totalPrice":"Total price:",
+    "addressModal":{
+      "name":"Recipient name",
+      "phoneNumber":"Recipient phone number",
+      "addressName":"Address name",
+      "province":"Province",
+      "district":"District",
+      "code":"Postal code",
+      "select":"Select"
+    }
   },
   "signUpForm": {
     "login": "Log in",

@@ -22,10 +22,10 @@ const MyCart = () => {
   const router = useRouter()
 
   // State Mangement
-  const [itemCount, setItemCouunt] = useState<number>(0);
+  const [itemCount, setItemCouunt] = useState<number>(1);
 
   const decrement = () => {
-    setItemCouunt(itemCount - 1);
+    itemCount > 1 && setItemCouunt(itemCount - 1);
   };
   const increment = () => {
     setItemCouunt(itemCount + 1);
@@ -50,7 +50,9 @@ const MyCart = () => {
                   height={'140px'}
                   radius={'12px'}
                 />
-                <Stack w={'100%'}>
+                <Flex w={'100%'} h={'140px'}>
+
+                <Stack w={'100%'} mt={"35px"} >
                   <BaseText className={classes.cardProductHeading}>
                     {'Product name lorem ipsum dolor sit amet '}
                   </BaseText>
@@ -73,7 +75,9 @@ const MyCart = () => {
                           height={'20px'}
                         />
                       </Box>
-                      <Box onClick={decrement} style={boilerPlateStyles.cursor}>
+                      <Box onClick={decrement} style={boilerPlateStyles.cursor}
+
+                      >
                         <Image
                           src={Images.minus_icon}
                           alt="delete_cart_icon"
@@ -93,6 +97,7 @@ const MyCart = () => {
                     </Flex>
                   </Flex>
                 </Stack>
+                </Flex>
               </Flex>
             </Stack>
           </Grid.Col>
