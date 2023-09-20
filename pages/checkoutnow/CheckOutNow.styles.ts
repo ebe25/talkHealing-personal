@@ -58,6 +58,12 @@ export const createStyle = () => {
       width: "100%",
       height: "140px",
       marginTop:"50px"
-    }
+    },
+    payNow:{
+      marginBottom:"0px",
+      [theme.fn.smallerThan('md')]: {
+        marginBottom:"10px"
+      },
+    },
   }));
 };

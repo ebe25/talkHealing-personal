@@ -39,6 +39,12 @@ export const createStyle = () => {
       [theme.fn.smallerThan('xs')]: {
         marginTop:"10px"
       },
-    }
+    },
+    payNow:{
+      marginBottom:"0px",
+      [theme.fn.smallerThan('md')]: {
+        marginBottom:"10px"
+      },
+    },
   }));
 };

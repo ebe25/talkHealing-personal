@@ -101,7 +101,9 @@ const MyCart = () => {
               </Flex>
             </Stack>
           </Grid.Col>
-          <Grid.Col xs={12} sm={12} md={4} lg={4} xl={4} p={0}>
+          <Grid.Col xs={12} sm={12} md={4} lg={4} xl={4} p={0}
+            className={classes.payNow}
+          >
             <Flex
               direction={'column'}
               justify={'space-between'}

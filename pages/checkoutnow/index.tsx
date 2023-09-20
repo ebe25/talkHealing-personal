@@ -167,7 +167,9 @@ const CheckOutNow = () => {
               </Flex>
             </Stack>
           </Grid.Col>
-          <Grid.Col xs={12} sm={12} md={4} lg={4} xl={4} p={0}>
+          <Grid.Col xs={12} sm={12} md={4} lg={4} xl={4} p={0}
+            className={classes.payNow}
+          >
             <Flex direction={'column'} justify={'space-between'} className={classes.priceBox}>
               <Flex gap={'xs'}>
                 <Image src={Images.coupon_icon} alt="coupon_icon" width={'38px'} height={'38px'} />
@@ -188,7 +190,9 @@ const CheckOutNow = () => {
               </Flex>
             </Flex>
 
-            <BaseButton color_variant="blue" style_variant={'filled'} mt={'xl'}>
+            <BaseButton color_variant="blue" style_variant={'filled'} mt={'xl'}
+              
+            >
               <BaseText txtkey="global.button.pay" color={'white'} />
             </BaseButton>
           </Grid.Col>
