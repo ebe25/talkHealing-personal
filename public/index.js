@@ -53,6 +53,7 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   facebook_logo:"./image/facebook.png",
   twitter_logo:"./image/twitter.png",
   shirt_icon:"./image/Tshirt.png",
-  apparel_icon:"./image/ApparelCategories.png"
+  apparel_icon:"./image/ApparelCategories.png",
+  searchNoDataFound:"./image/searchNoDataFound.png"
 }
 

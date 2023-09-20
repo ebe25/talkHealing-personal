@@ -11,6 +11,7 @@ import Header from '@/components/modules/Header/Header';
 import { createStyle } from "./ApparelCategories.style";
 import Footer from '@/components/modules/Footer/Footer';
 import { Carousel } from '@mantine/carousel';
+import NoDataFound from '@/components/modules/NoDataFound/NoDataFound';
 
 const carouselMultipleIamgeData = [
     {
@@ -246,9 +247,7 @@ export default function ApparelCategories() {
                                 </Box>
                             )))
                             :
-                            (<Flex w={"100%"} justify={"center"}>
-                                <BaseText c={theme.colors.red[9]} style={typography.headings[i18nStore.getCurrentLanguage()].h1} txtkey={"apparelCategories.noData"} />
-                            </Flex>)
+                            (<Center><NoDataFound /></Center>)
                         }</>)}
                 <Divider my="xs" />
             </Flex>

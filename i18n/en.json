@@ -338,6 +338,8 @@
  },
  "apparelCategories":{
   "heading":"Apparel categories",
-  "noData":"No Data Found"
+  "noData":"No Data Found",
+  "SearchNofound":"Search can’t be found",
+  "tryAnother":"Your keyword can’t be found, please try another keyword "
   }
 }
