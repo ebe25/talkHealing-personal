@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 // mantine component import
 import {
-  Box,
   Container,
   Flex,
   Grid,
   Image,
   Input,
+  Radio,
   Stack,
   Text,
   useMantineTheme,
@@ -37,11 +37,26 @@ const CheckOutNow = () => {
 
   const address = [
     {
+      id: "1",
       name: 'Andrew White',
       phone: '+8562910002938',
       address: 'Old Airport Raod, Kodihalli, Bangalore 560008, Karnataka, Indi...',
     },
+    {
+      id: "2",
+      name: 'Sachin',
+      phone: '+8562910002938',
+      address: 'Old Airport Raod, Kodihalli, Bangalore 560008, Karnataka, Indi...',
+    },
+    {
+      id: "3",
+      name: 'Joe',
+      phone: '+8562910002938',
+      address: 'Old Airport Raod, Kodihalli, Bangalore 560008, Karnataka, Indi...',
+    },
   ];
+  const [ checked , setChecked ] = useState(address[0].id)
+
 
   return (
     <>
@@ -66,46 +81,54 @@ const CheckOutNow = () => {
                   <BaseText txtkey="profile.addressButton" color={'white'} />
                 </BaseButton>
               </Flex>
-              {address.map((item, index) => {
-                return (
-                  <Stack
-                    w={'100%'}
-                    key={index}
-                    p={'16px'}
-                    bg={theme.colors.dark[0]}
-                    style={boilerPlateStyles.border_radius}
-                  >
-                    <Flex>
-                      <Text
-                        color={theme.colors.cyan[9]}
-                      >{item.name}</Text>&nbsp;&middot;&nbsp;
-                      <Text
-                        color={theme.colors.cyan[9]}
-                      >{item.phone}</Text>
-                    </Flex>
-                    <Flex gap={'sm'}>
-                      <IconMapPinFilled />
-                      <Text>{item.address}</Text>
-                    </Flex>
-                    <Flex gap={'md'}>
-                      <BaseButton style_variant="filled" color_variant="blue"
-                        onClick={()=>{
-                          editAddressModal[1].open()
-                          
-                        }}
-                        w={"125px"}
-                        >
-                        <BaseText txtkey="profile.editAddress" />
-                      </BaseButton>
-                      <BaseButton style_variant="filled" color_variant="blue"
-                        w={"160px"}
+                  {address.map((item, index) => {
+                    return (
+                      <Flex
+                      p={'16px'}
+                      bg={theme.colors.dark[0]}
+                      style={boilerPlateStyles.border_radius}
+                      align={"center"}
+                      gap={"md"}
                       >
-                        <BaseText txtkey="global.button.changeAddress" />
-                      </BaseButton>
-                    </Flex>
-                  </Stack>
-                );
-              })}
+                        <Radio
+                          key={index}
+                          value={item.id}
+                          checked={ checked == item.id ?true:false }
+                          onChange={(event)=>{
+                            setChecked(event.target.value)
+                          }}
+                        />
+                        <Stack
+                          w={'100%'}
+                        >
+                          <Flex>
+                            <Text color={theme.colors.cyan[9]}>{item.name}</Text>
+                            &nbsp;&middot;&nbsp;
+                            <Text color={theme.colors.cyan[9]}>{item.phone}</Text>
+                          </Flex>
+                          <Flex gap={'sm'}>
+                            <IconMapPinFilled />
+                            <Text>{item.address}</Text>
+                          </Flex>
+                          <Flex gap={'md'}>
+                            <BaseButton
+                              style_variant="filled"
+                              color_variant="blue"
+                              onClick={() => {
+                                editAddressModal[1].open();
+                              }}
+                              w={'125px'}
+                            >
+                              <BaseText txtkey="profile.editAddress" />
+                            </BaseButton>
+                            {/* <BaseButton style_variant="filled" color_variant="blue" w={'160px'}>
+                              <BaseText txtkey="global.button.changeAddress" />
+                            </BaseButton> */}
+                          </Flex>
+                        </Stack>
+                      </Flex>
+                    );
+                  })}
               <Flex align={'center'} gap={'lg'} mt={'xl'}>
                 <Image src={Images.pebea_icon} alt="Pebea Icon" width={'34px'} height={'34px'} />
                 <BaseText className={classes.subHeading} txtkey="myCart.pebeaSneakers" />
