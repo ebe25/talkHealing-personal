@@ -145,6 +145,14 @@ export const AddressModal = (props: {
           props.setAddressId('');
         }}
         withCloseButton={false}
+        styles={{
+          overlay:{
+            zIndex:999
+          },
+          inner:{
+            zIndex:9999999
+          }
+        }}
       >
         <form onSubmit={address.onSubmit((values) => console.log(values))}>
           <Flex

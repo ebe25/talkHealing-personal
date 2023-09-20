@@ -24,6 +24,7 @@ import { translate } from '@/i18n';
 import { IconMapPinFilled } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 import { AddressModal } from '@/components/modules/Modals/CartAddressModal/AddressModal';
+import { AddressSelectModal } from '@/components/modules/Modals/AddressSelectModal/AddressSelectModal';
 
 const CheckOutNow = () => {
   // style function
@@ -33,8 +34,8 @@ const CheckOutNow = () => {
   // Hooks
   const [opened, { open, close }] = useDisclosure(false);
   const editAddressModal = useDisclosure(false);
-  const [addressId, setAddressId] = useState<any>('');
-
+  const AddresSelectModal = useDisclosure(false);
+  
   const address = [
     {
       id: "1",
@@ -55,7 +56,8 @@ const CheckOutNow = () => {
       address: 'Old Airport Raod, Kodihalli, Bangalore 560008, Karnataka, Indi...',
     },
   ];
-  const [ checked , setChecked ] = useState(address[0].id)
+  const [addressId, setAddressId] = useState<any>(address[0].id);
+  // const [ checked , setChecked ] = useState(address[0].id)
 
 
   return (
@@ -81,7 +83,7 @@ const CheckOutNow = () => {
                   <BaseText txtkey="profile.addressButton" color={'white'} />
                 </BaseButton>
               </Flex>
-                  {address.map((item, index) => {
+                  {address.filter((item)=> {if(item.id == addressId ) return item} ).map((item, index) => {
                     return (
                       <Flex
                       p={'16px'}
@@ -90,14 +92,14 @@ const CheckOutNow = () => {
                       align={"center"}
                       gap={"md"}
                       >
-                        <Radio
+                        {/* <Radio
                           key={index}
                           value={item.id}
                           checked={ checked == item.id ?true:false }
                           onChange={(event)=>{
                             setChecked(event.target.value)
                           }}
-                        />
+                        /> */}
                         <Stack
                           w={'100%'}
                         >
@@ -111,7 +113,7 @@ const CheckOutNow = () => {
                             <Text>{item.address}</Text>
                           </Flex>
                           <Flex gap={'md'}>
-                            <BaseButton
+                            {/* <BaseButton
                               style_variant="filled"
                               color_variant="blue"
                               onClick={() => {
@@ -120,10 +122,10 @@ const CheckOutNow = () => {
                               w={'125px'}
                             >
                               <BaseText txtkey="profile.editAddress" />
-                            </BaseButton>
-                            {/* <BaseButton style_variant="filled" color_variant="blue" w={'160px'}>
-                              <BaseText txtkey="global.button.changeAddress" />
                             </BaseButton> */}
+                            <BaseButton style_variant="filled" color_variant="blue" w={'160px'} onClick={AddresSelectModal[1].open} >
+                              <BaseText txtkey="global.button.changeAddress" />
+                            </BaseButton>
                           </Flex>
                         </Stack>
                       </Flex>
@@ -204,12 +206,12 @@ const CheckOutNow = () => {
         modalHeading={'profile.addressButton'}
         setAddressId={setAddressId}
       />
-      <AddressModal
-        opened={editAddressModal[0]}
-        onClose={editAddressModal[1].close}
-        isEdit
-        modalHeading={'profile.editAddress'}
-        setAddressId={setAddressId}
+      
+      <AddressSelectModal
+        opened={AddresSelectModal[0]}
+        onClose={AddresSelectModal[1].close}
+        address={address}
+        addressId={setAddressId}
       />
     </>
   );
