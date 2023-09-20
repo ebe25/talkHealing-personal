@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Image, Box } from '@mantine/core';
+import { Flex, Image, Box, Button } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../../public/index';
 import { createStyle } from "./Footer.style";
@@ -11,8 +11,22 @@ function Footer() {
     const { i18nStore, userStore } = useStores();
     const useStyles = createStyle();
     const { classes } = useStyles();
+
+    const English = () => {
+        i18nStore.setAppLanguage("en")
+        location.reload();
+    }
+    const Arabic = () => {
+        i18nStore.setAppLanguage("ar")
+        location.reload();
+    }
+
     return (
         <>
+            <Flex>
+                <Button onClick={() => English()}>English</Button>
+                <Button onClick={() => Arabic()}>Arabic</Button>
+            </Flex>
             <Flex className={classes.containerBox}>
                 <Flex className={classes.containerfirst}>
                     <Image src={Images.logo_blue} width={102} height={26} />
