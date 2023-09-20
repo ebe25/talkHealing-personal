@@ -57,7 +57,10 @@ export const createStyle = () => {
       alignSelf: "baseline",
       width: "100%",
       height: "140px",
-      marginTop:"50px"
+      marginTop:"50px",
+      [theme.fn.smallerThan('xs')]: {
+        marginTop:"0px",
+      },
     },
     payNow:{
       marginBottom:"0px",

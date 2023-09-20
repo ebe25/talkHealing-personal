@@ -42,7 +42,9 @@ const MyCart = () => {
                 <Image src={Images.pebea_icon} alt="Pebea Icon" width={'34px'} height={'34px'} />
                 <BaseText className={classes.subHeading} txtkey="myCart.pebeaSneakers" />
               </Flex>
-              <Flex w={'100%'} gap={'lg'} mb={'sm'}>
+              <Flex w={'100%'} gap={'lg'} mb={'sm'}
+                className={classes.carDetialsPrice}
+              >
                 <Image
                   src={Images.cart_image}
                   alt="cart iamges"
@@ -52,7 +54,7 @@ const MyCart = () => {
                 />
                 <Flex w={'100%'} h={'140px'}>
 
-                <Stack w={'100%'} mt={"35px"} >
+                <Stack w={'100%'} className={classes.priceDetails} >
                   <BaseText className={classes.cardProductHeading}>
                     {'Product name lorem ipsum dolor sit amet '}
                   </BaseText>

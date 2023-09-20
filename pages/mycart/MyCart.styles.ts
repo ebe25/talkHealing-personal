@@ -13,6 +13,19 @@ export const createStyle = () => {
       color: theme.colorScheme === 'dark' ? theme.white : theme.black,
       ...typography.headings.en.h2,
     },
+    carDetialsPrice:{
+      display:"flex",
+      flexWrap:"nowrap",
+      [theme.fn.smallerThan('xs')]: {
+        flexWrap:"wrap",
+      },
+    },
+    priceDetails:{
+      marginTop:"35px",
+      [theme.fn.smallerThan('xs')]: {
+        marginTop:"10px"
+      },
+    },
     cardProductHeading:{
       ...typography.paragraph.en.p3
     },
