@@ -2,10 +2,10 @@ import React from 'react'
 import { Flex, Image, Grid, Button, Box, Center, useMantineTheme } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
-import { createStyle } from "./SingalBox.style"
+import { createStyle } from "./HeroCarousal.style"
 import { useStores } from '@/models';
 
-function SingalBox(props: { carouselData: any }) {
+function HeroCarousal(props: { carouselData: any }) {
     const theme = useMantineTheme();
     const useStyles = createStyle();
     const { classes } = useStyles();
@@ -60,4 +60,4 @@ function SingalBox(props: { carouselData: any }) {
     )
 }
 
-export default SingalBox
+export default HeroCarousal

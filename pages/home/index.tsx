@@ -4,8 +4,8 @@ import { useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
-import SingalBox from '@/components/modules/Carousel/singalBox/SingalBox';
-import MultipleBox from '@/components/modules/Carousel/multipleBox/MultipleBox';
+import HeroCarousal from '@/components/modules/Carousel/heroCarousal/HeroCarousal';
+import BrandLogoCarousal from '@/components/modules/Carousel/brandLogoCarousal/BrandLogoCarousal';
 import ProductCard from '@/components/modules/Cards/ProductCard/ProductCard';
 import { Images } from '../../public/index';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -378,7 +378,7 @@ export default function Home() {
     <Container className={classes.container}>
       <Header />
       <Flex className={classes.homePage}>
-        <SingalBox carouselData={carouselData} />
+        <HeroCarousal carouselData={carouselData} />
         <Grid className={classes.galleryItemBox}>
           {galleryItemData.map((item, id) => (
             <Grid.Col key={id} lg={2} md={3} sm={4} xs={6}>
@@ -394,7 +394,7 @@ export default function Home() {
         <Box className={classes.galleryItemBoxForMobile}>
           <CarouselBoxMobile data={galleryItemData} />
         </Box>
-        <MultipleBox carouselMultipleIamgeData={carouselMultipleIamgeData} />
+        <BrandLogoCarousal carouselMultipleIamgeData={carouselMultipleIamgeData} />
         <Box>
           <Center>
             <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h3} txtkey={"homePage.productSectionsName"} />
