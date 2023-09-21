@@ -11,7 +11,7 @@ import { translate } from '../../../i18n';
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Group } from '@mantine/core';
 import Categories from '../Categories/Categories';
-
+import { IconChevronDown, IconMenu2 } from '@tabler/icons-react';
 
 function Header() {
     const theme = useMantineTheme();
@@ -33,7 +33,9 @@ function Header() {
                     <Popover.Target>
                         <Flex className={classes.categories}>
                             <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3} c={theme.white} txtkey={"header.allCategories"} />
-                            <Image src={Images.down_arrow} style={active ? { transform: "rotate(180deg)" } : {}} width={10} height={6} />
+                            <IconChevronDown size={18}
+                                strokeWidth={3} style={active ? { transform: "rotate(180deg)" } : {}}
+                                color={theme.white} />
                         </Flex>
                     </Popover.Target>
                     <Popover.Dropdown>
@@ -53,13 +55,15 @@ function Header() {
                     <BaseText c={theme.colors.blue[0]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p7} txtkey={"header.yourAccount"} />
                     <Flex className={classes.picBox}>
                         <BaseText c={theme.white} style={typography.paragraph[i18nStore.getCurrentLanguage()].p3} txtkey={"header.name"} />
-                        <Image mt={8} src={Images.down_arrow} width={10} height={6} />
+                        <IconChevronDown size={18}
+                            strokeWidth={3}
+                            color={theme.white} />
                     </Flex>
                 </Box>
             </Flex>
             <Flex className={classes.mobileMenu}>
                 <Group position="center">
-                    <Image onClick={open} src={Images.menu_icon} width={25} height={25} />
+                    <IconMenu2 onClick={open} color={theme.white} />
                 </Group>
                 <Image src={Images.logo} width={86} height={22} />
                 <SearchInput width={240} placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
@@ -70,7 +74,9 @@ function Header() {
                             <BaseText c={theme.colors.blue[0]} style={typography.paragraph[i18nStore.getCurrentLanguage()].p7} txtkey={"header.yourAccount"} />
                             <Flex className={classes.picBox}>
                                 <BaseText c={theme.black} style={typography.paragraph[i18nStore.getCurrentLanguage()].p3} txtkey={"header.name"} />
-                                <Image mt={8} src={Images.down_arrow} width={10} height={6} />
+                                <IconChevronDown size={18}
+                                    strokeWidth={3}
+                                />
                             </Flex>
                         </Box>
                     </Flex>
