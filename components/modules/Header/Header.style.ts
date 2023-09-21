@@ -38,7 +38,7 @@ export const createStyle = () => {
             gap: "10px"
         },
         notification: {
-            borderLeft: "2px solid #FFFFFF",
+            borderLeft: `2px solid ${theme.white}`,
             height: "28px",
             paddingLeft: "10px",
             cursor: "pointer",

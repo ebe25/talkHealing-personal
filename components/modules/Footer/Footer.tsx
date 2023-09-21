@@ -28,7 +28,7 @@ function Footer() {
                 <Button onClick={() => Arabic()}>Arabic</Button>
             </Flex>
             <Flex className={classes.containerBox}>
-                <Flex className={classes.containerfirst}>
+                <Flex className={classes.leftBox}>
                     <Image src={Images.logo_blue} width={102} height={26} />
                     <Flex className={classes.logoBox}>
                         <Flex gap={16}>
@@ -43,17 +43,17 @@ function Footer() {
                         <BaseText className={classes.copyrightName} txtkey={"footer.copyrightName"} />
                     </Flex>
                 </Flex>
-                <Box className={classes.containerSecond}>
-                    <BaseText className={classes.cursor} txtkey={"footer.text1"} />
-                    <BaseText className={classes.cursor} txtkey={"footer.text2"} />
-                    <BaseText className={classes.cursor} txtkey={"footer.text3"} />
-                    <BaseText className={classes.cursor} txtkey={"footer.text4"} />
+                <Box className={classes.rightBox}>
+                    <BaseText className={classes.cursor} txtkey={"footer.wishlists"} />
+                    <BaseText className={classes.cursor} txtkey={"footer.chats"} />
+                    <BaseText className={classes.cursor} txtkey={"footer.myOrders"} />
+                    <BaseText className={classes.cursor} txtkey={"footer.myProfile"} />
                 </Box>
-                <Box className={classes.containerSecond}>
-                    <BaseText className={classes.cursor} txtkey={"footer.text5"} />
-                    <BaseText className={classes.cursor} txtkey={"footer.text6"} />
-                    <BaseText className={classes.cursor} txtkey={"footer.text7"} />
-                    <BaseText className={classes.cursor} txtkey={"footer.text8"} />
+                <Box className={classes.rightBox}>
+                    <BaseText className={classes.cursor} txtkey={"footer.aboutUs"} />
+                    <BaseText className={classes.cursor} txtkey={"footer.termsConditions"} />
+                    <BaseText className={classes.cursor} txtkey={"footer.privacyPolicy"} />
+                    <BaseText className={classes.cursor} txtkey={"footer.helpCenter"} />
                 </Box>
                 <Box className={classes.logoImage}>
                     <Image src={Images.page_logo} />
@@ -62,7 +62,7 @@ function Footer() {
 
 
             <Flex wrap={"wrap"} className={classes.mobileFooter}>
-                <Flex className={classes.containerFirstMobile}>
+                <Flex className={classes.leftBoxMobile}>
                     <Image src={Images.logo_blue} width={102} height={26} />
                     <Flex className={classes.logoBox}>
                         <Flex justify={"center"} gap={16}>
@@ -78,17 +78,17 @@ function Footer() {
                     </Flex>
                 </Flex>
                 <Flex wrap={"wrap"} justify={"center"} gap={"20px"}>
-                    <Flex className={classes.containerSecondMobile}>
-                        <BaseText className={classes.cursor} txtkey={"footer.text1"} />
-                        <BaseText className={classes.cursor} txtkey={"footer.text2"} />
-                        <BaseText className={classes.cursor} txtkey={"footer.text3"} />
-                        <BaseText className={classes.cursor} txtkey={"footer.text4"} />
+                    <Flex className={classes.rightBoxMobile}>
+                        <BaseText className={classes.cursor} txtkey={"footer.wishlists"} />
+                        <BaseText className={classes.cursor} txtkey={"footer.chats"} />
+                        <BaseText className={classes.cursor} txtkey={"footer.myOrders"} />
+                        <BaseText className={classes.cursor} txtkey={"footer.myProfile"} />
                     </Flex>
-                    <Flex className={classes.containerSecondMobile}>
-                        <BaseText className={classes.cursor} txtkey={"footer.text5"} />
-                        <BaseText className={classes.cursor} txtkey={"footer.text6"} />
-                        <BaseText className={classes.cursor} txtkey={"footer.text7"} />
-                        <BaseText className={classes.cursor} txtkey={"footer.text8"} />
+                    <Flex className={classes.rightBoxMobile}>
+                        <BaseText className={classes.cursor} txtkey={"footer.aboutUs"} />
+                        <BaseText className={classes.cursor} txtkey={"footer.termsConditions"} />
+                        <BaseText className={classes.cursor} txtkey={"footer.privacyPolicy"} />
+                        <BaseText className={classes.cursor} txtkey={"footer.helpCenter"} />
                     </Flex>
                 </Flex>
             </Flex>

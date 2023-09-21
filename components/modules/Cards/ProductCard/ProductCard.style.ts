@@ -6,13 +6,27 @@ export const createStyle = () => {
 
     return createStyles((theme) => ({
         container: {
+            flexDirection: "column",
+            gap: "10px",
+            width: "200px",
+            height: "393px",
+            [theme.fn.smallerThan('md')]: {
+                width: "180px",
+                height: "353px",
+            },
+            [theme.fn.smallerThan('xs')]: {
+                width: "135px",
+                height: "320px",
+            },
+        },
+        productIcon: {
             height: "263px",
-            backgroundColor: "#E9EAE9",
+            // backgroundColor: "#E9EAE9",
             borderRadius: "16px",
             position: "relative"
         },
         imageBox: {
-            backgroundColor: "white",
+            backgroundColor: theme.white,
             borderRadius: "5px",
             position: "absolute",
             zIndex: 10001,
@@ -22,23 +36,24 @@ export const createStyle = () => {
             justifyContent: "center",
             width: "56px",
             height: "31px",
+            [theme.fn.smallerThan('xs')]: {
+                left: "71px",
+            },
         },
         companyName: {
             justifyContent: "center",
-            borderRadius: "15px",
-            border: "solid 2px #E9EAE9",
-            width: "56px",
-            height: "30px"
+            borderRadius: "13px",
+            border: `solid 2px ${theme.colors.gray[2]}`,
+            padding: "5px 8px",
         },
         location: {
             gap: "3px",
             borderRadius: "15px",
-            border: "solid 2px #E9EAE9",
+            border: `solid 2px ${theme.colors.gray[2]}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            width: "95px",
-            height: "30px"
+            padding: "5px 8px",
         },
         cursor: {
             cursor: "pointer"

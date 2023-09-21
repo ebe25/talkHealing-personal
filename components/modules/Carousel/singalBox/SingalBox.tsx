@@ -1,13 +1,16 @@
 import React from 'react'
-import { Flex, Image, Grid, Button, Box, Center } from '@mantine/core';
+import { Flex, Image, Grid, Button, Box, Center, useMantineTheme } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
-import { createStyle } from "./CarouselWithImage.style"
-import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
+import { createStyle } from "./SingalBox.style"
+import { useStores } from '@/models';
 
-function CarouselWithImage(props: { carouselData: any }) {
+function SingalBox(props: { carouselData: any }) {
+    const theme = useMantineTheme();
     const useStyles = createStyle();
     const { classes } = useStyles();
+    const { i18nStore } = useStores();
+
     return (
         <>
             <Carousel
@@ -24,7 +27,7 @@ function CarouselWithImage(props: { carouselData: any }) {
             >
                 {props.carouselData.map((item: any, id: any) => (
                     <Carousel.Slide key={id} classNames={classes.crouselSlide}>
-                        <I18nFlex className={classes.slideBox}>
+                        <Flex dir={i18nStore.isRTL ? 'rtl' : 'ltr'} className={classes.slideBox}>
                             <Grid>
                                 <Grid.Col lg={6} md={6} sm={6} xs={12}>
                                     <Box>
@@ -37,7 +40,7 @@ function CarouselWithImage(props: { carouselData: any }) {
                                             txtkey={"homePage.carousel.subHeading"}
                                         />
                                         <Button className={classes.button} >
-                                            <BaseText c={"orange"} txtkey={"homePage.carousel.buttonText"} />
+                                            <BaseText c={theme.colors.orange[8]} txtkey={"homePage.carousel.buttonText"} />
                                         </Button>
                                     </Box>
                                 </Grid.Col>
@@ -49,7 +52,7 @@ function CarouselWithImage(props: { carouselData: any }) {
                                     </Center>
                                 </Grid.Col>
                             </Grid>
-                        </I18nFlex>
+                        </Flex>
                     </Carousel.Slide>
                 ))}
             </Carousel>
@@ -57,4 +60,4 @@ function CarouselWithImage(props: { carouselData: any }) {
     )
 }
 
-export default CarouselWithImage
+export default SingalBox

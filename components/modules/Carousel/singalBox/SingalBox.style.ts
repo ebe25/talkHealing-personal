@@ -9,7 +9,7 @@ export const createStyle = () => {
         indicator: {
             width: "10px",
             height: "10px",
-            background: "blue",
+            background: theme.colors.indigo[8],
             transition: 'width 250ms ease'
         },
         control: {
@@ -25,7 +25,7 @@ export const createStyle = () => {
             justifyContent: "center"
         },
         slideBox: {
-            background: "#FFA230",
+            background: theme.colors.orange[3],
             padding: "20px 52px",
             width: "100%",
             height: "88%",
@@ -44,12 +44,12 @@ export const createStyle = () => {
             borderRadius: "20px",
             marginTop: "20px",
             width: "139px",
-            backgroundColor: "white",
+            backgroundColor: theme.white,
             [theme.fn.smallerThan('sm')]: {
                 marginTop: "5px",
             },
             '&:not([data-disabled]):hover': {
-                background: "white",
+                background: theme.white,
                 borderColor: "none",
             }
         },
@@ -61,7 +61,7 @@ export const createStyle = () => {
         },
         heading: {
             marginTop: "20px",
-            color: "white",
+            color: theme.white,
             ...typography.headings.en.h1,
             [theme.fn.smallerThan('md')]: {
                 ...typography.headings[i18nStore.getCurrentLanguage()].h3,
@@ -72,7 +72,7 @@ export const createStyle = () => {
             },
         },
         subHeading: {
-            color: "white",
+            color: theme.white,
             marginTop: "10px",
             ...typography.paragraph[i18nStore.getCurrentLanguage()].p2,
             [theme.fn.smallerThan('xs')]: {

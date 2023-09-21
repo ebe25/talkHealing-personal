@@ -1,11 +1,11 @@
 import React from 'react'
 import { Flex, Image } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
-import { createStyle } from "./CarouselMultipleIamge.style";
+import { createStyle } from "./MultipleBox.style";
 import I18nFlex from '@/components/elements/I18nFlex/I18nFlex';
 
 
-function CarouselMultipleIamge(props: { carouselMultipleIamgeData: any }) {
+function MultipleBox(props: { carouselMultipleIamgeData: any }) {
     const useStyles = createStyle();
     const { classes } = useStyles();
     return (
@@ -38,4 +38,4 @@ function CarouselMultipleIamge(props: { carouselMultipleIamgeData: any }) {
     )
 }
 
-export default CarouselMultipleIamge
+export default MultipleBox

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Image, Flex, Center, Button, Container, Divider } from '@mantine/core';
+import { Box, Image, Flex, Center, Container, Divider, Grid, Stack } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -177,15 +177,16 @@ export default function ApparelCategories() {
                             style={typography.headings[i18nStore.getCurrentLanguage()].h3}
                         >{value.productName}</BaseText>
                     </Flex>
-                    <Flex className={classes.productSectionsCard}>
-                        {
-                            value.ProductDetails.map((item: any, id: any) => (
-                                <Box key={id} style={{ display: (seeMoreButtton == index || id < 6) ? 'block' : 'none' }}>
+                    <Grid mt={20}>
+                        {value.ProductDetails.map((item: any, id: any) => (
+                            <Grid.Col style={{ display: (seeMoreButtton == index || id < 6) ? 'block' : 'none' }}
+                                key={id} xl={2} lg={3} md={3} sm={4} span={6}>
+                                <Stack align="center">
                                     <ProductCard item={item} />
-                                </Box>
-                            ))
-                        }
-                    </Flex>
+                                </Stack>
+                            </Grid.Col>
+                        ))}
+                    </Grid>
                     {seeMoreButtton != index ? (
                         <Center>
                             <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue">

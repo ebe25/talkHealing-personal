@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Box, Stack, Grid, Image, Flex, Center, Button, Container, Divider } from '@mantine/core';
+import { Box, Stack, Grid, Image, Flex, Center, Container, Divider } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
-import CarouselWithImage from '@/components/modules/Carousel/CarouselWithImages/CarouselWithImage';
-import CarouselMultipleIamge from '@/components/modules/Carousel/CarouselMultipleIamge/CarouselMultipleIamge';
+import SingalBox from '@/components/modules/Carousel/singalBox/SingalBox';
+import MultipleBox from '@/components/modules/Carousel/multipleBox/MultipleBox';
 import ProductCard from '@/components/modules/Cards/ProductCard/ProductCard';
 import { Images } from '../../public/index';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
@@ -370,7 +370,7 @@ export default function Home() {
     <Container className={classes.container}>
       <Header />
       <Flex className={classes.homePage}>
-        <CarouselWithImage carouselData={carouselData} />
+        <SingalBox carouselData={carouselData} />
         <Grid className={classes.galleryItemBox}>
           {galleryItemData.map((item, id) => (
             <Grid.Col key={id} lg={2} md={3} sm={4} xs={6}>
@@ -386,19 +386,21 @@ export default function Home() {
         <Box className={classes.galleryItemBoxForMobile}>
           <CarouselBoxMobile data={galleryItemData} />
         </Box>
-        <CarouselMultipleIamge carouselMultipleIamgeData={carouselMultipleIamgeData} />
+        <MultipleBox carouselMultipleIamgeData={carouselMultipleIamgeData} />
         <Box>
           <Center>
             <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h3} txtkey={"homePage.productSectionsName"} />
           </Center>
-          <Flex className={classes.productCard}>
-            {
-              productCardData.map((item, id) => (
-                <Box key={id} style={{ display: (showAll || id < 10) ? 'block' : 'none' }}>
+          <Grid mt={20}>
+            {productCardData.map((item, id) => (
+              <Grid.Col style={{ display: (showAll || id < 10) ? 'block' : 'none' }}
+                key={id} xl={2.4} lg={3} md={3} sm={4} span={6}>
+                <Stack align="center">
                   <ProductCard item={item} />
-                </Box>
-              ))}
-          </Flex>
+                </Stack>
+              </Grid.Col>
+            ))}
+          </Grid>
           <Center>
             {!showAll ? (
               <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue" onClick={handleSeeMoreClick}>
@@ -418,15 +420,15 @@ export default function Home() {
                 style={typography.headings[i18nStore.getCurrentLanguage()].h3}
                 txtkey={value.productName} />
             </Flex>
-            <Flex className={classes.productSectionsCard}>
-              {
-                value.ProductDetails.map((item: any, id: any) => (
-                  <Box key={id}>
+            <Grid mt={20}>
+              {value.ProductDetails.map((item: any, id: any) => (
+                <Grid.Col key={id} xl={2} lg={3} md={3} sm={4} span={6}>
+                  <Stack align="center">
                     <ProductCard item={item} />
-                  </Box>
-                ))
-              }
-            </Flex>
+                  </Stack>
+                </Grid.Col>
+              ))}
+            </Grid>
             <Center>
               <BaseButton w={140} mt={20} style_variant="filled" color_variant="blue">
                 <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}

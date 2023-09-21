@@ -8,8 +8,6 @@ export const createStyle = () => {
     return createStyles((theme) => ({
         container: {
             maxWidth: "100%",
-            // width: "1520px",
-            // margin: 0,
             padding: 0,
         },
         homePage: {
@@ -34,16 +32,20 @@ export const createStyle = () => {
             position: "absolute",
             color: theme.white,
             zIndex: 10001,
-            top: "50%",
+            top: "45%",
             left: "40%",
             ...typography.headings[i18nStore.getCurrentLanguage()].h1,
+            [theme.fn.smallerThan('lg')]: {
+                top: "40%",
+                left: "35%",
+            },
             [theme.fn.smallerThan('md')]: {
                 top: "30%",
                 left: "25%",
             },
             [theme.fn.smallerThan('xs')]: {
-                top: "20%",
-                left: "20%",
+                top: "30%",
+                left: "25%",
                 ...typography.headings[i18nStore.getCurrentLanguage()].h5,
             },
         },
@@ -52,7 +54,7 @@ export const createStyle = () => {
             marginTop: "20px",
             gap: "30px",
             flexWrap: "wrap",
-            [theme.fn.smallerThan('xs')]: {
+            [theme.fn.smallerThan('sm')]: {
                 justifyContent: "center",
             },
         },
@@ -90,9 +92,6 @@ export const createStyle = () => {
             width: "100%",
             [theme.fn.smallerThan('sm')]: {
                 justifyContent: "center",
-            },
-            [theme.fn.smallerThan('xs')]: {
-                maxWidth: "350px",
             }
         }
     }))

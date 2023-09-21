@@ -32,7 +32,7 @@ function Header() {
                     position="bottom" shadow="md">
                     <Popover.Target>
                         <Flex className={classes.categories}>
-                            <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3} c={"white"} txtkey={"header.allCategories"} />
+                            <BaseText style={typography.paragraph[i18nStore.getCurrentLanguage()].p3} c={theme.white} txtkey={"header.allCategories"} />
                             <Image src={Images.down_arrow} style={active ? { transform: "rotate(180deg)" } : {}} width={10} height={6} />
                         </Flex>
                     </Popover.Target>

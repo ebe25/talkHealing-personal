@@ -26,11 +26,10 @@ export const createStyle = () => {
                 display: "none"
             },
         },
-        containerfirst: {
+        leftBox: {
             justifyContent: "space-between",
             flexDirection: "column",
             height: "100%",
-            // width: "100%",
             padding: "55px 10px 20px 0px",
             gap: "60px",
         },
@@ -53,7 +52,7 @@ export const createStyle = () => {
             color: theme.colors.gray[6],
             ...typography.label[i18nStore.getCurrentLanguage()].l11
         },
-        containerSecond: {
+        rightBox: {
             display: "flex",
             flexDirection: "column",
             gap: "26px",
@@ -80,13 +79,13 @@ export const createStyle = () => {
                 display: "none",
             },
         },
-        containerFirstMobile: {
+        leftBoxMobile: {
             justifyContent: "space-between",
             height: "100%",
             padding: "5px",
             gap: "40px",
         },
-        containerSecondMobile: {
+        rightBoxMobile: {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
