@@ -32,21 +32,15 @@ export const createStyle = () => {
             position: "absolute",
             color: theme.white,
             zIndex: 10001,
-            top: "45%",
-            left: "40%",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             ...typography.headings[i18nStore.getCurrentLanguage()].h1,
-            [theme.fn.smallerThan('lg')]: {
-                top: "40%",
-                left: "35%",
-            },
             [theme.fn.smallerThan('md')]: {
-                top: "30%",
-                left: "25%",
+                ...typography.headings[i18nStore.getCurrentLanguage()].h5,
             },
             [theme.fn.smallerThan('xs')]: {
-                top: "30%",
-                left: "25%",
-                ...typography.headings[i18nStore.getCurrentLanguage()].h5,
+                ...typography.headings[i18nStore.getCurrentLanguage()].h7,
             },
         },
         productCard: {
