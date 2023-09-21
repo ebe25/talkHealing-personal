@@ -87,10 +87,10 @@ export const typography:any = {
       } as React.CSSProperties,
       h3: {
         fontFamily: webFontFamily['PlusJakartaSans-Bold'],
-        fontSize: '26px',
+        fontSize: '22px',
         fontStyle: 'normal',
         fontWeight: 700,
-        lineHeight: '44px',
+        lineHeight: '30px',
       } as React.CSSProperties,
       h4: {
         fontFamily: webFontFamily['PlusJakartaSans-Bold'],
