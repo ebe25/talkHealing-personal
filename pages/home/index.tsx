@@ -144,6 +144,14 @@ const productCardData = [
     "Location": "Bangalore",
     "Rating": "4.6",
     "Image": Images.product_image
+  },
+  {
+    "ProductName": "اسم المنتج لوريم إيبسوم دولور سيت أميت",
+    "Price": "78.25",
+    "Company": "Nike",
+    "Location": "Bangalore",
+    "Rating": "4.6",
+    "Image": Images.product_image
   }
 ]
 
