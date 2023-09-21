@@ -9,45 +9,69 @@ import { useStores } from '@/models';
 import { useRouter } from 'next/router';
 
 const apparelsData = [
-    "T-shirt & tanks", "Shirts & polos", "Hoodies & jumpers", "Cardigans"
+    {
+        id: 0,
+        "name": ["T-shirt & tanks", "Shirts & polos", "Hoodies & jumpers", "Cardigans"]
+    },
+    {
+        id: 1,
+        "name": ["T-shirt", "Shirts", "Hoodie", "Cardigans"]
+    },
+    {
+        id: 2,
+        "name": []
+    },
+    {
+        id: 3,
+        "name": []
+    },
 ]
 
 const CategoryData = [
     {
         "CategoryName": "Apparels",
-        "Img": Images.gallery_item
+        "Img": Images.gallery_item,
+        id: 0
     },
     {
         "CategoryName": "Category name",
-        "Img": Images.gallery_item
+        "Img": Images.gallery_item,
+        id: 1
     },
     {
         "CategoryName": "Category name",
-        "Img": Images.gallery_item
+        "Img": Images.gallery_item,
+        id: 2
     },
     {
         "CategoryName": "Category name",
-        "Img": Images.gallery_item
+        "Img": Images.gallery_item,
+        id: 3
     },
     {
         "CategoryName": "Category name",
-        "Img": Images.gallery_item
+        "Img": Images.gallery_item,
+        id: 4
     },
     {
         "CategoryName": "Category name",
-        "Img": Images.gallery_item
+        "Img": Images.gallery_item,
+        id: 5
     },
     {
         "CategoryName": "Category name",
-        "Img": Images.gallery_item
+        "Img": Images.gallery_item,
+        id: 6
     },
     {
         "CategoryName": "Category name",
-        "Img": Images.gallery_item
+        "Img": Images.gallery_item,
+        id: 7
     },
     {
         "CategoryName": "Category name",
-        "Img": Images.gallery_item
+        "Img": Images.gallery_item,
+        id: 8
     }
 ]
 
@@ -88,16 +112,18 @@ function Categories() {
                     </Box>
                     <Divider orientation="vertical" />
                     <Box className={classes.optionsBox}>
-                        {value == 0 ? (
-                            apparelsData.map((item, id) => (
+                        {
+                            apparelsData.filter(x => x.id === value).map((item, id) => (
                                 <Box mt={20} key={id}>
-                                    <Flex className={classes.options}
-                                        onClick={() => CategoriesPage()}>
-                                        <BaseText className={classes.optionsText} style={typography.buttonText[i18nStore.getCurrentLanguage()].b3} >{item}</BaseText>
-                                        <Image mt={5} src={Images.right_arrow_icon} width={4} height={7} />
-                                    </Flex>
+                                    {item.name.map((elemeny, index) => (
+                                        <Flex key={index} className={classes.options}
+                                            onClick={() => CategoriesPage()}>
+                                            <BaseText className={classes.optionsText} style={typography.buttonText[i18nStore.getCurrentLanguage()].b3} >{elemeny}</BaseText>
+                                            <Image mt={5} src={Images.right_arrow_icon} width={4} height={7} />
+                                        </Flex>
+                                    ))}
                                 </Box>
-                            ))) : null}
+                            ))}
                     </Box>
                 </Flex>
             </ScrollArea>
