@@ -12,7 +12,7 @@ function BrandLogoCarousal(props: { carouselMultipleIamgeData: any }) {
         <>
             <Carousel
                 dir={'ltr'}
-                height={40}
+                height={47}
                 slideSize="10%"
                 loop
                 align="start"

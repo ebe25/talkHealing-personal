@@ -8,7 +8,7 @@ export const createStyle = () => {
         control: {
             width: "10px",
             height: "10px",
-            margin: "-5px -50px 0px -30px",
+            margin: "-3px -50px 0px -30px",
             [theme.fn.smallerThan('xs')]: {
                 margin: "-2px -30px 0px -30px",
             }
@@ -18,9 +18,10 @@ export const createStyle = () => {
             justifyContent: "center"
         },
         slideBox: {
-            border: `solid 2px ${theme.colors.gray[2]}`,
-            width: "100px",
-            padding: "5px 10px",
+            border: `solid 1px ${theme.colors.gray[2]}`,
+            width: "113px",
+            height:"47px",
+            // padding: "5px 10px",
             marginLeft:"25px",
             borderRadius: "10px",
             justifyContent: "center",
