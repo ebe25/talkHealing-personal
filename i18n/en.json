@@ -341,5 +341,15 @@
   "noData":"No Data Found",
   "SearchNofound":"Search can’t be found",
   "tryAnother":"Your keyword can’t be found, please try another keyword "
+  },
+  "favoriteItems":{
+    "heading": "Favorite items",
+    "searchFavoriteItems": "Search favorite items...",
+    "RemoveModal":{
+      "heading": "Remove favorite item",
+      "subHeading": "Are you sure you want to remove this favorite items from your list?",
+      "yes": "Yes",
+      "no": "No"
+    }
   }
 }

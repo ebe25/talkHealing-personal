@@ -9,13 +9,17 @@ interface BaseSearchInput extends PolymorphicComponentProps<'input', TextInputPr
 }
 
 export const SearchInput = (props: BaseSearchInput) => {
-  const useStyles = createStyle('en');
+  const useStyles = createStyle();
   const { classes } = useStyles();
   return (
     <Input
       className={classes.mainBox}
       rightSection={<IconSearch width={22} height={22} />}
       placeholder={props.placeholder}
+      classNames={{
+        rightSection: classes.rightSection,
+        input: classes.innerInput
+      }}
       radius="lg"
       {...props}
     />
