@@ -12,6 +12,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Group } from '@mantine/core';
 import Categories from '../Categories/Categories';
 import { IconChevronDown, IconMenu2 } from '@tabler/icons-react';
+import { useRouter } from 'next/router';
 
 function Header() {
     const theme = useMantineTheme();
@@ -20,6 +21,15 @@ function Header() {
     const { classes } = useStyles();
     const [opened, { open, close }] = useDisclosure(false);
     const [active, setActive] = useState(false);
+    const [searchText, setSearchText] = useState<string>("");
+    const router = useRouter();
+
+    const searchTextFunction = () => {
+        let name = searchText.toLowerCase();
+        if (name.length) {
+            router.push(`./product-listing?searchProduct=${name}`)
+        }
+    };
 
     return (
         <Box className={classes.containerBox}>
@@ -29,6 +39,7 @@ function Header() {
                     onOpen={() => setActive(true)}
                     onClose={() => setActive(false)}
                     radius={30}
+                    zIndex={100000}
                     position="bottom" shadow="md">
                     <Popover.Target>
                         <Flex className={classes.categories}>
@@ -43,6 +54,14 @@ function Header() {
                     </Popover.Dropdown>
                 </Popover>
                 <SearchInput w={440}
+                    onKeyDown={(e: any) => {
+                        if (e.key === 'Enter') {
+                            setSearchText(e.target.value)
+                            searchTextFunction()
+                        }
+                    }}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    click={() => searchTextFunction()}
                     placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
                 <Image className={classes.cursor} src={Images.shop_icon} width={20} height={20} />
                 <Image className={classes.cursor} src={Images.chat} width={20} height={20} />
