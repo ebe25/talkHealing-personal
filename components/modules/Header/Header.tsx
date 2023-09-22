@@ -27,7 +27,7 @@ function Header() {
     const searchTextFunction = () => {
         let name = searchText.toLowerCase();
         if (name.length) {
-            router.push(`./product-listing?searchProduct=${name}`)
+            router.push(`./product-listing?search-product=${name}`)
         }
     };
 

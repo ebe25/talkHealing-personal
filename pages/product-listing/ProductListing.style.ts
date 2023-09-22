@@ -31,8 +31,15 @@ export const createStyle = () => {
                 padding: "30px",
             },
         },
-        cursor:{
-            cursor:"pointer"
+        cursor: {
+            cursor: "pointer"
         },
+        control: {
+            outline: "none",
+            border: "none",
+            outlineColor: theme.colors.dark[1],
+            color: theme.colors.dark[1],
+            background: theme.colors.gray[2]
+        }
     }))
 }

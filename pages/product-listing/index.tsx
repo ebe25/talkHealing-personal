@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Image, Flex, Center, Button, Container, Grid, Stack } from '@mantine/core';
+import { Box, Image, Flex, Center, Button, Container, Grid, Stack, Divider, Pagination } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
 import { useStores } from '@/models';
 import ProductCard from '@/components/modules/Cards/ProductCard/ProductCard';
@@ -9,6 +9,7 @@ import { createStyle } from "./ProductListing.style";
 import Footer from '@/components/modules/Footer/Footer';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import NoDataFound from '@/components/modules/NoDataFound/NoDataFound';
+import { typography } from '@/themes/Mantine/typography';
 
 const productCardData = [
     {
@@ -145,9 +146,11 @@ export default function ProductListing() {
     const theme = useMantineTheme();
     const useStyles = createStyle();
     const { classes } = useStyles();
+    const [pagination, setPaginationl] = useState<number>(1);
+    const { i18nStore } = useStores();
 
     let url = new URL(window.location.href);
-    let searchProduct = url.searchParams.get("searchProduct");
+    let searchProduct = url.searchParams.get("search-product");
 
     let productNameFilter = productCardData.filter((element: any) => {
         if (element.ProductName.toLowerCase().includes(searchProduct)) {
@@ -155,20 +158,21 @@ export default function ProductListing() {
         }
     })
 
+
     return (
         <Container className={classes.container}>
             <Header />
             <Flex className={classes.homePage}>
                 <Flex justify={"space-between"} wrap={"wrap"}>
                     <Flex>
-                        <BaseText txtkey={"searchPage.yourSearched"} />
-                        <BaseText> : {searchProduct}</BaseText>
+                        <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h8} txtkey={"searchPage.yourSearched"} />
+                        <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h8}> : {searchProduct}</BaseText>
                     </Flex>
                     <Flex gap={30}>
                         <Image className={classes.cursor} width={38} height={38} src={Images.box_icon} />
                         <Flex gap={10} mt={5}>
-                            <BaseText txtkey={"searchPage.mostRecent"} />
-                            <Image className={classes.cursor} mt={3} width={22} height={22} src={Images.sort_icon} />
+                            <BaseText mt={2} style={typography.headings[i18nStore.getCurrentLanguage()].h8} txtkey={"searchPage.mostRecent"} />
+                            <Image className={classes.cursor} width={22} height={22} src={Images.sort_icon} />
                         </Flex>
                     </Flex>
                 </Flex>
@@ -186,6 +190,13 @@ export default function ProductListing() {
                         </Flex>)
                     }
                 </Grid >
+                <Flex justify={"flex-end"} p={"0 50px 0 0"}>
+                    <Pagination
+                        classNames={{
+                            control: classes.control
+                        }} total={pagination} radius="xl" />
+                </Flex>
+                <Divider my="xs" />
             </Flex >
             <Footer />
         </Container >
