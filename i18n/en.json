@@ -291,7 +291,55 @@
 },
   "header":{
     "signUp": "Create account",
-    "login": "Login to your account"
-  }  
-
+    "login": "Login to your account",
+    "allCategories":"All Categories",
+    "yourAccount":"Your account",
+    "name":"Andrew white"
+  },
+ "homePage":{
+    "seeMore":"See more",
+    "seeLess":"See less",
+    "productSectionsName":"Product sections name",
+    "popularProduct":"Popular Product",
+    "categoryName":"Category name",
+    "carousel":{
+      "heading":"Lorem ipsum dolor sit amet adipiscing elit sed do",
+      "subHeading":"Excepteur sint occaecat cupidatat non proident.",
+      "buttonText":"Learn more"
+    }
+ },
+ "footer":{
+  "copyrightName":"© Copyright company name, 2021",
+  "wishlists":"Wishlists",
+  "chats":"Chats",
+  "myOrders":"My orders",
+  "myProfile":"My Profile",
+  "aboutUs":"About us",
+  "termsConditions":"Terms & conditions",
+  "privacyPolicy":"Privacy policy",
+  "helpCenter":"Help center"
+ },
+ "Categories":{
+  "apparels":"Apparels",
+  "tops":"Tops",
+  "bottoms":"Bottoms",
+  "tSTanks":"T-shirt & tanks",
+  "shirts":"Shirts & polos",
+  "hoodies":"Hoodies & sweatshirts",
+  "cardigans":"Cardigans & sweaters",
+  "jacket":"Jacket & blazzers",
+  "jogger":"Jogger & sweatpants",
+  "shorts":"Shorts",
+  "tights":"Tights",
+  "chinos":"Chinos",
+  "jeans":"Jeans",
+  "trackpants":"Trackpants",
+  "sneakers":"Sneakers"
+ },
+ "apparelCategories":{
+  "heading":"Apparel categories",
+  "noData":"No Data Found",
+  "SearchNofound":"Search can’t be found",
+  "tryAnother":"Your keyword can’t be found, please try another keyword "
+  }
 }
