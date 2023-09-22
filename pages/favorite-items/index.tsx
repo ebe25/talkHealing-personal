@@ -152,14 +152,17 @@ export const FavoriteItems = () => {
     const { i18nStore } = useStores();
     const theme = useMantineTheme();
     const [searchText, setSearchText] = useState<string>("");
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, handlers] = useDisclosure(false);
 
     let productNameFilter = productCardData.filter((element: any) => {
-        if (element.ProductName.toLowerCase().includes(searchText)) {
+        if (element.ProductName.toLowerCase().includes(searchText.toLowerCase())) {
             return element
         }
     })
 
+    const removeItem = (item: any) => {
+        handlers.open()
+    }
 
     return (
         <Container maw='100%' p={0} m={0}>
@@ -186,7 +189,7 @@ export const FavoriteItems = () => {
                         (productNameFilter.map((item, id) => (
                             <Grid.Col key={id} xl={2} lg={3} md={3} sm={4} span={6}>
                                 <Stack align="center">
-                                    <ProductCard item={item} removefavoriteItem={open} favoriteItemsImage={Images.selected_bookmark_icon} />
+                                    <ProductCard item={item} removefavoriteItem={removeItem} favoriteItemsImage={Images.selected_bookmark_icon} />
                                 </Stack>
                             </Grid.Col>
                         ))) :
@@ -196,7 +199,7 @@ export const FavoriteItems = () => {
                     }
                 </Grid >
             </Box>
-            <RemoveFavoriteItem opened={opened} onClose={close} />
+            <RemoveFavoriteItem opened={opened} onClose={handlers.close} />
             <Footer />
         </Container>
     )

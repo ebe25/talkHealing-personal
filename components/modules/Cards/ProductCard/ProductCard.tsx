@@ -42,7 +42,7 @@ function ProductCard(props: { item: any, favoriteItemsImage?: any, removefavorit
             <Flex justify={"space-between"}>
                 <BaseText c={theme.colors.dark[9]} style={typography.headings[i18nStore.getCurrentLanguage()].h6}>${props.item.Price}</BaseText>
                 {props.favoriteItemsImage ?
-                    <Image onClick={() => props.removefavoriteItem()} className={classes.cursor} width={15} height={20} src={props.favoriteItemsImage} />
+                    <Image onClick={() => props.removefavoriteItem(props.item.ProductName)} className={classes.cursor} width={15} height={20} src={props.favoriteItemsImage} />
                     :
                     <Image onClick={() => setBookmark(!bookmark)} className={classes.cursor} width={15} height={20} src={bookmark ? Images.selected_bookmark_icon : Images.vector} />
                 }
