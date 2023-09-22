@@ -12,6 +12,7 @@ import { boilerPlateStyles } from '@/utils/styles/styles';
 import Link from 'next/link';
 import { useStores } from '@/models';
 import { useRouter } from 'next/router';
+import { typography } from '@/themes/Mantine/typography';
 
 const MyCart = () => {
   // style function
@@ -119,7 +120,7 @@ const MyCart = () => {
               </Flex>
               <Flex justify={'space-between'}>
                 <BaseText color={theme.colors.cyan[9]}>{'Total price (5 items)'}</BaseText>
-                <BaseText color={theme.colors.cyan[9]}>{'$394.00'}</BaseText>
+                <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h8} color={theme.colors.dark[9]}>{'$394.00'}</BaseText>
               </Flex>
             </Flex>
             <Link 

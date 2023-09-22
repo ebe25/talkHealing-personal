@@ -47,7 +47,10 @@ export const createStyle = () => {
     typeBox:{
       height:"22px",
       width:"100px",
-      padding:"2px",
+      display:"flex",
+      justifyContent:"center",
+      alignItems:"center",
+      padding:"5px 11px",
       borderRadius:"40px",
       borderWidth:"1px",
       borderStyle:"solid",

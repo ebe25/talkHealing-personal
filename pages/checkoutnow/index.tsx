@@ -25,9 +25,12 @@ import { IconMapPinFilled } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 import { AddressModal } from '@/components/modules/Modals/CartAddressModal/AddressModal';
 import { AddressSelectModal } from '@/components/modules/Modals/AddressSelectModal/AddressSelectModal';
+import { typography } from '@/themes/Mantine/typography';
+import { useStores } from '@/models';
 
 const CheckOutNow = () => {
   // style function
+  const  { i18nStore } = useStores()
   const useStyles = createStyle();
   const { classes } = useStyles();
   const theme = useMantineTheme();
@@ -75,9 +78,9 @@ const CheckOutNow = () => {
                 p={'16px'}
                 style={boilerPlateStyles.border_radius}
               >
-                <Flex gap={'sm'}>
+                <Flex gap={'sm'} align={"center"} >
                   <IconMapPinFilled />
-                  <BaseText txtkey="checkOutNow.addrestext" color={theme.colors.cyan[9]} />
+                  <BaseText txtkey="checkOutNow.addrestext" style={typography.headings[i18nStore.getCurrentLanguage()].h8} color={theme.colors.dark[9]} />
                 </Flex>
                 <BaseButton onClick={open} style_variant="filled" color_variant="blue" w={'200px'}>
                   <BaseText txtkey="profile.addressButton" color={'white'} />
@@ -157,15 +160,15 @@ const CheckOutNow = () => {
                       align={'center'}
                       className={classes.typeBox}
                     >
-                      <BaseText txtkey="global.button.blue" color={theme.colors.cyan[9]} />
+                      <BaseText style={typography.label[i18nStore.getCurrentLanguage()].l12} txtkey="global.button.blue" color={theme.colors.cyan[9]} />
                       &middot;
-                      <BaseText txtkey="global.button.large" color={theme.colors.cyan[9]} />
+                      <BaseText style={typography.label[i18nStore.getCurrentLanguage()].l12} txtkey="global.button.large" color={theme.colors.cyan[9]} />
                     </Flex>
                   </Stack>
                 </Flex>
               </Flex>
               <Flex>
-                <BaseText txtkey="checkOutNow.totalPrice" color={theme.colors.cyan[9]} />
+                <BaseText txtkey="checkOutNow.totalPrice" color={theme.colors.dark[9]} style={typography.headings[i18nStore.getCurrentLanguage()].h8} />
               </Flex>
             </Stack>
           </Grid.Col>
@@ -179,7 +182,7 @@ const CheckOutNow = () => {
               </Flex>
               <Flex justify={'space-between'}>
                 <BaseText color={theme.colors.cyan[9]}>{'Total price (5 items)'}</BaseText>
-                <BaseText color={theme.colors.cyan[9]}>{'$394.00'}</BaseText>
+                <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h8} color={theme.colors.dark[9]}>{'$394.00'}</BaseText>
               </Flex>
               <Flex justify={'space-between'}>
                 <BaseText color={theme.colors.cyan[9]}>{'Delivery fee'}</BaseText>
@@ -187,8 +190,8 @@ const CheckOutNow = () => {
               </Flex>
               <Image src={Images.dash_line} alt="dash_line" width={'100%'} />
               <Flex justify={'space-between'}>
-                <BaseText color={theme.colors.cyan[9]}>{'Total payment'}</BaseText>
-                <BaseText color={theme.colors.cyan[9]}>{'$394.00'}</BaseText>
+                <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h8} color={theme.colors.dark[9]}>{'Total payment'}</BaseText>
+                <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h8} color={theme.colors.dark[9]}>{'$394.00'}</BaseText>
               </Flex>
             </Flex>
 
