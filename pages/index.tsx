@@ -4,7 +4,7 @@ import TermsAndCondition from './terms-and-condition';
 import PrivacyPolicy from './privacy-policy';
 import CookiePolicy from './cookie-policy';
 import Login from './login';
-import FavoriteItems from './favorite-items';
+import Home from './home';
 
 export default function HomePage() {
 
@@ -13,7 +13,7 @@ export default function HomePage() {
       {/* <Welcome /> */}
       {/* <ColorSchemeToggle /> */}
       {/* <Login /> */}
-      <FavoriteItems />
+      <Home />
     </>
   );
 }

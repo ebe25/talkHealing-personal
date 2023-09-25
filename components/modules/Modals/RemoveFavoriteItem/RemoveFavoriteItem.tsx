@@ -15,6 +15,7 @@ export const RemoveFavoriteItem = (props: {
     opened?: any;
     onClose?: any;
     id?: string;
+    removeProduct?: any;
 }) => {
     const { i18nStore, userStore } = useStores();
     const theme = useMantineTheme();
@@ -50,6 +51,7 @@ export const RemoveFavoriteItem = (props: {
                         style_variant={'filled'}
                         color_variant={'red'}
                         onClick={() => {
+                            props.removeProduct()
                             props.onClose();
                         }}
                     >

@@ -12,6 +12,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Group } from '@mantine/core';
 import Categories from '../Categories/Categories';
 import { IconChevronDown, IconMenu2 } from '@tabler/icons-react';
+import Link from 'next/link';
 
 function Header() {
     const theme = useMantineTheme();
@@ -46,7 +47,9 @@ function Header() {
                     placeholder={`${translate("frequentlyAskedQuestions.search")}`} />
                 <Image className={classes.cursor} src={Images.shop_icon} width={20} height={20} />
                 <Image className={classes.cursor} src={Images.chat} width={20} height={20} />
-                <Image className={classes.cursor} src={Images.tiptop} width={14} height={17} />
+                <Link href={'./favorite-items'}>
+                    <Image className={classes.cursor} src={Images.tiptop} width={14} height={17} />
+                </Link>
                 <Flex className={classes.notification}>
                     <Image src={Images.notification_icon} width={19} height={19} />
                 </Flex>

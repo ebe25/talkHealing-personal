@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Accordion, Box, Center, Container, Flex, Grid, Loader, Stack, useMantineTheme } from '@mantine/core';
+import React, { useState } from 'react'
+import { Box, Center, Container, Flex, Grid, Loader, Stack, useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import { createStyle } from './FavoriteItems.style';
@@ -152,6 +152,7 @@ export const FavoriteItems = () => {
     const { i18nStore } = useStores();
     const theme = useMantineTheme();
     const [searchText, setSearchText] = useState<string>("");
+    const [productName, setProductName] = useState<number>(-1);
     const [opened, handlers] = useDisclosure(false);
 
     let productNameFilter = productCardData.filter((element: any) => {
@@ -160,8 +161,16 @@ export const FavoriteItems = () => {
         }
     })
 
-    const removeItem = (item: any) => {
+
+    const handleRemoveItem = (item: any) => {
         handlers.open()
+        setProductName(item)
+    }
+
+    const removeProduct = () => {
+        if (productName != -1) {
+            productCardData.splice(productName, 1)
+        }
     }
 
     return (
@@ -189,7 +198,7 @@ export const FavoriteItems = () => {
                         (productNameFilter.map((item, id) => (
                             <Grid.Col key={id} xl={2} lg={3} md={3} sm={4} span={6}>
                                 <Stack align="center">
-                                    <ProductCard item={item} removefavoriteItem={removeItem} favoriteItemsImage={Images.selected_bookmark_icon} />
+                                    <ProductCard item={item} id={id} handleRemoveItem={handleRemoveItem} favoriteItemsImage={Images.selected_bookmark_icon} />
                                 </Stack>
                             </Grid.Col>
                         ))) :
@@ -199,7 +208,7 @@ export const FavoriteItems = () => {
                     }
                 </Grid >
             </Box>
-            <RemoveFavoriteItem opened={opened} onClose={handlers.close} />
+            <RemoveFavoriteItem opened={opened} onClose={handlers.close} removeProduct={removeProduct} />
             <Footer />
         </Container>
     )
