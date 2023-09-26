@@ -357,7 +357,59 @@
   },
   "header": {
     "signUp": "إنشاء حساب",
-    "login": "تسجيل الدخول إلى حسابك"
-
+    "login": "تسجيل الدخول إلى حسابك",
+    "allCategories":"جميع الفئات",
+    "yourAccount":"الحساب الخاص بك",
+    "name":"أندرو وايت"
+  },
+  "homePage":{
+    "seeMore":"شاهد المزيد",
+    "seeLess":"انظر أقل",
+    "ProductSectionsName":"اسم أقسام المنتج",
+    "popularProduct":"منتج شعبي",
+    "categoryName":"اسم التصنيف",
+    "carousel":{
+      "heading":"لوريم إيبسوم دولور الجلوس أميت adipiscing إليت سيد تفعل",
+      "subHeading":"باستثناء أن هناك رغبة غير متوقعة.",
+      "buttonText":"يتعلم أكثر"
+    }
+ },
+ "footer":{
+  "copyrightName":"© حقوق الطبع والنشر لاسم الشركة، 2021",
+  "wishlists":"قوائم الامنيات",
+  "chats":"الدردشات",
+  "myOrders":"طلباتي",
+  "myProfile":"ملفي",
+  "aboutUs":"معلومات عنا",
+  "termsConditions":"البنود و الظروف",
+  "privacyPolicy":"سياسة الخصوصية",
+  "helpCenter":"مركز المساعدة"
+ },
+ "Categories":{
+  "apparels":"ملابس",
+  "tops":"قمم",
+  "bottoms":"قيعان",
+  "tSTanks":"تي شيرت والدبابات",
+  "shirts":"قمصان وقمصان",
+  "hoodies":"هوديس وبلوزات",
+  "cardigans":"بالأزرار والسترات الصوفية",
+  "jacket":"سترة وسترات",
+  "jogger":"عداء ببطء وبنطلون رياضي",
+  "shorts":"السراويل القصيرة",
+  "tights":"الجوارب",
+  "chinos":"تشينو",
+  "jeans":"جينز",
+  "trackpants":"بنطال رياضي",
+  "sneakers":"أحذية رياضية"
+ },
+ "apparelCategories":{
+  "heading":"فئات الملابس",
+  "noData":"لاتوجد بيانات",
+  "SearchNofound":"لا يمكن العثور على البحث",
+  "tryAnother":"لا يمكن العثور على كلمتك الرئيسية، يرجى تجربة كلمة رئيسية أخرى"
+  },
+  "searchPage":{
+    "yourSearched":"بحثت عنه",
+    "mostRecent":"الأحدث"
   }
 }
