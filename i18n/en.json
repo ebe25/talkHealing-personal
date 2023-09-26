@@ -29,6 +29,8 @@
     },
     "button": {
       "login": "Login",
+      "blue":"Blue",
+      "large":"Large",
       "back" : "Checkout",
       "english": "English",
       "arabic": "ةيب رعلا",
@@ -60,7 +62,8 @@
       "booking": "Booking",
       "verify":"Verify",
       "deleteAccount":"Delete Account",
-      "logOut":"Log Out"
+      "logOut":"Log Out",
+      "changeAddress":"Change address"
     }
   },
   "profile":{
@@ -144,6 +147,24 @@
       "addressTwoError":"Please enter Address Two",
       "invalidOtp":"Invalid OTP",
       "error": "Error"
+    }
+  },
+  "myCart":{
+    "heading":"My Cart",
+    "pebeaSneakers":"Pebea Sneakers"
+  },
+  "checkOutNow":{
+    "backButtonText":"Checkout",
+    "addresstext":"Delivery address",
+    "totalPrice":"Total price:",
+    "addressModal":{
+      "name":"Recipient name",
+      "phoneNumber":"Recipient phone number",
+      "addressName":"Address name",
+      "province":"Province",
+      "district":"District",
+      "code":"Postal code",
+      "select":"Select"
     }
   },
   "signUpForm": {
@@ -351,5 +372,9 @@
       "yes": "Yes",
       "no": "No"
     }
-  }
+  },
+"searchPage":{
+  "yourSearched":"Your searched for",
+  "mostRecent":"Most recent"
+}
 }

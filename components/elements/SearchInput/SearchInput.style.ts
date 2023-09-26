@@ -18,6 +18,10 @@ export const createStyle = () => {
     innerInput: {
       textAlign: i18nStore.isRTL ? "right" : "left",
       padding: i18nStore.isRTL ? "0px 40px" : ""
+    },
+    searchIcon: {
+      marginTop: "5px",
+      cursor: "pointer"
     }
   }
   ))
