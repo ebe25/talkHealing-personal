@@ -54,6 +54,8 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   twitter_logo:"./image/twitter.png",
   shirt_icon:"./image/Tshirt.png",
   apparel_icon:"./image/ApparelCategories.png",
-  searchNoDataFound:"./image/searchNoDataFound.png"
+  searchNoDataFound:"./image/searchNoDataFound.png",
+  box_icon:"./image/boxs.png",
+  sort_icon:"./image/sort.png"
 }
 
