@@ -30,6 +30,8 @@
     "button": {
       "english": "English",
       "back" : "الدفع",
+      "blue":"أزرق",
+      "large":"كبير",
       "arabic": "ةيب رعلا",
       "start": "بداية",
       "primary": "ModalButton",
@@ -56,7 +58,8 @@
       "available seat": "مقعد متاح:",
       "verify":"يؤكد",
       "deleteAccount":"حذف الحساب",
-      "logOut":"تسجيل خروج"
+      "logOut":"تسجيل خروج",
+      "changeAddress":"تغيير العنوان"
     }
   },
   "profile":{
@@ -143,6 +146,24 @@
       "error": " إدخال الرمز"
     }
   },
+  "myCart":{
+    "heading":"سلة التسوق الخاصة بي",
+    "pebeaSneakers":"أحذية بيبيا الرياضية"  
+  },
+  "checkOutNow":{
+    "backButtonText":"الدفع",
+    "addresstext":"عنوان التسليم",
+    "totalPrice":"السعر الكلي:",
+    "addressModal":{
+      "name":"اسم المستلم",
+      "phoneNumber":"رقم هاتف المستلم",
+      "addressName":"اسم عنوان",
+      "province":"مقاطعة",
+      "district":"يصرف",
+      "code":"رمز بريدي",
+      "select":"يختار"
+    }
+  },
   "signUpForm": {
     "login": "تسجيل الدخول",
     "forgetPassword": "هل نسيت كلمة السر؟",
@@ -192,18 +213,6 @@
       "forgotPasswordText":"لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير ص",
       "forgotPasswordLink":"يرجى التحقق من بريدك الإلكتروني المسجل أو رقم هاتفك"
     }
-  },
-  "signUpForm": {
-    "login": "تسجيل الدخول",
-    "forgetPassword": "هل نسيت كلمة السر؟",
-    "newUser": "ليس لديك حساب",
-    "signUp": "اشتراك",
-    "loginButtonText": "تسجيل الدخول",
-    "subText": "سنقوم بإرسال بريد إلكتروني لإعادة تعيين كلمة المرور الخاصة بك",
-    "backToLogin": "العودة إلى تسجيل الدخول",
-    "continue": "يكمل",
-    "passwordLength": "يجب ألا يقل عن 8 أحرف",
-    "errorMessage": "لا يمكن العثور على هذا البريد الإلكتروني ، تأكد من أن البريد الإلكتروني غير صحيح "
   },
   "footerPages": {
     "privacyPolicy": "سياسة الخصوصية",

@@ -148,7 +148,6 @@ export const typography:any = {
         lineHeight: '31px',
         fontWeight: 500,
       } as React.CSSProperties,
-
     },
   } ,
   paragraph: {
@@ -411,6 +410,13 @@ export const typography:any = {
         lineHeight: '15.73px',
         fontWeight: 400,
       } as React.CSSProperties,
+      l12: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'normal',
+        fontSize: '10px',
+        lineHeight: '12px',
+        fontWeight: 400,
+      } as React.CSSProperties,
     },
     ar: {
       l1: {
@@ -489,6 +495,13 @@ export const typography:any = {
         fontStyle: 'normal',
         fontSize: '13px',
         lineHeight: '15.73px',
+        fontWeight: 400,
+      } as React.CSSProperties,
+      l12: {
+        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontStyle: 'normal',
+        fontSize: '10px',
+        lineHeight: '12px',
         fontWeight: 400,
       } as React.CSSProperties,
     },
