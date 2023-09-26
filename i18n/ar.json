@@ -152,8 +152,17 @@
   },
   "checkOutNow":{
     "backButtonText":"الدفع",
-    "addrestext":"عنوان التسليم",
-    "totalPrice":"السعر الكلي:"
+    "addresstext":"عنوان التسليم",
+    "totalPrice":"السعر الكلي:",
+    "addressModal":{
+      "name":"اسم المستلم",
+      "phoneNumber":"رقم هاتف المستلم",
+      "addressName":"اسم عنوان",
+      "province":"مقاطعة",
+      "district":"يصرف",
+      "code":"رمز بريدي",
+      "select":"يختار"
+    }
   },
   "signUpForm": {
     "login": "تسجيل الدخول",

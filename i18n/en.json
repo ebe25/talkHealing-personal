@@ -155,7 +155,7 @@
   },
   "checkOutNow":{
     "backButtonText":"Checkout",
-    "addrestext":"Delivery address",
+    "addresstext":"Delivery address",
     "totalPrice":"Total price:",
     "addressModal":{
       "name":"Recipient name",

@@ -80,7 +80,7 @@ const CheckOutNow = () => {
               >
                 <Flex gap={'sm'} align={"center"} >
                   <IconMapPinFilled />
-                  <BaseText txtkey="checkOutNow.addrestext" style={typography.headings[i18nStore.getCurrentLanguage()].h8} color={theme.colors.dark[9]} />
+                  <BaseText txtkey="checkOutNow.addresstext" style={typography.headings[i18nStore.getCurrentLanguage()].h8} color={theme.colors.dark[9]} />
                 </Flex>
                 <BaseButton onClick={open} style_variant="filled" color_variant="blue" w={'200px'}>
                   <BaseText txtkey="profile.addressButton" color={'white'} />
