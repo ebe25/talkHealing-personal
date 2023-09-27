@@ -12,6 +12,10 @@ export const Input = (props: BaseTextInputProps) => {
     <TextInput
       {...props}
       className={classes[props.style_variant]}
+      classNames={{
+        icon: classes.icon,
+        input: classes.innerInput
+      }}
       placeholder={props.placeholder}
       radius="xl"
       {...props.inputvalue}

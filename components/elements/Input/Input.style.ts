@@ -31,6 +31,16 @@ export const createStyle = (
       ...typography.inputFieldText[i18nStore.getCurrentLanguage()].i2,
       borderRadius: '34px'
     },
+    rightSection: {
+      right: i18nStore.isRTL ? "1%" : ""
+    },
+    icon: {
+      right: i18nStore.isRTL ? "1%" : ""
+    },
+    innerInput: {
+      textAlign: i18nStore.isRTL ? "right" : "left",
+      padding: " 0px 40px"
+    }
   }
   ))
 }

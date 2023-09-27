@@ -29,7 +29,7 @@ export const createStyle = () => {
             backgroundColor: theme.white,
             borderRadius: "5px",
             position: "absolute",
-            zIndex: 10001,
+            zIndex: 100,
             left: "131px",
             top: "0px",
             alignItems: "center",

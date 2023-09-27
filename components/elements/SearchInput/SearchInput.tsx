@@ -16,6 +16,10 @@ export const SearchInput = (props: BaseSearchInput) => {
       className={classes.mainBox}
       rightSection={<Box className={classes.searchIcon} onClick={props.click}><IconSearch width={22} height={22} /></Box>}
       placeholder={props.placeholder}
+      classNames={{
+        rightSection: classes.rightSection,
+        input: classes.innerInput
+      }}
       radius="lg"
       {...props}
     />
