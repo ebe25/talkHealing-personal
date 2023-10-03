@@ -40,7 +40,7 @@ function Header() {
           <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}> Community</Text>
           <SearchInput />
 
-          <Group gap={16}>
+          <Group >
             <BaseButton
               style_variant="filled"
               color_variant="green"
