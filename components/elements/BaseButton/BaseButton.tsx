@@ -6,14 +6,13 @@ import { BaseButtonProps } from './BaseButton.styles';
 export const BaseButton = (props: BaseButtonProps) => {
   const useStyles = createStyle('en', props);
   const { classes } = useStyles();
-
   return (
     <Button
       {...props}
       loaderPosition='center'
-      fullWidth
-      className={classes[props.style_variant]}
+      className={`${classes[props.style_variant]} ${classes[props.color_variant]}`}
     >
+      
       {props.children}
     </Button>
   );

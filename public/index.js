@@ -64,6 +64,7 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   apparel_icon:"./image/ApparelCategories.png",
   searchNoDataFound:"./image/searchNoDataFound.png",
   box_icon:"./image/boxs.png",
-  sort_icon:"./image/sort.png"
+  sort_icon:"./image/sort.png",
+  public_health: "./image/Public health-amico 1.png"
 }
 

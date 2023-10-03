@@ -5,7 +5,7 @@ export const typography:any = {
   headings: {
     en: {
       h1: {
-        fontFamily: webFontFamily['PlusJakartaSans-Bold'],
+        fontFamily: webFontFamily['Poppins-Bold'],
         fontStyle: 'normal',
         fontWeight: 700,
         fontSize: '35px',
@@ -20,11 +20,11 @@ export const typography:any = {
         letterSpacing: '0.62px',
       } as React.CSSProperties,
       h3: {
-        fontFamily: webFontFamily['PlusJakartaSans-Bold'],
+        fontFamily: webFontFamily['Urbanist-Bold'],
         fontStyle: 'normal',
         fontWeight: 700,
-        fontSize: '24px',
-        lineHeight: '29px',
+        fontSize: '34px',
+        lineHeight: 'normal',
       } as React.CSSProperties,
       h4: {
         fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
@@ -56,10 +56,10 @@ export const typography:any = {
         letterSpacing: '0.13px',
       } as React.CSSProperties,
       h8: {
-        fontFamily: webFontFamily['PlusJakartaSans-SemiBold'],
+        fontFamily: webFontFamily['Urbanist-SemiBold'],
         fontStyle: 'Semi Bold',
         fontSize: '16px',
-        lineHeight: '15px',
+        lineHeight: 'normal',
         fontWeight: 400,
       } as React.CSSProperties,
       h9: {
@@ -153,11 +153,11 @@ export const typography:any = {
   paragraph: {
     en: {
       p1: {
-        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontFamily: webFontFamily['Poppins-Bold'],
+        fontSize: '20px',
         fontStyle: 'normal',
-        fontWeight: 400,
-        fontSize: '16px',
-        lineHeight: '15px',
+        fontWeight: 700,
+        lineHeight: 'normal',
       } as React.CSSProperties,
       "p1.5": {
         fontFamily: webFontFamily['PlusJakartaSans-Regular'],
@@ -167,21 +167,14 @@ export const typography:any = {
         fontWeight: 400,
       } as React.CSSProperties,
       p2: {
-        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
-        fontStyle: 'Regular',
-        fontSize: '15px',
-        lineHeight: '24px',
-        fontWeight: 400,
-      } as React.CSSProperties,
-      p3: {
-        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontFamily: webFontFamily['Urbanist-Bold'],
         fontStyle: 'normal',
-        fontWeight: 500,
-        fontSize: '14px',
-        lineHeight: '17px',
+        fontWeight: 700,
+        fontSize: '17px',
+        lineHeight: 'normal',
       } as React.CSSProperties,
       p4: {
-        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
+        fontFamily: webFontFamily['Urbanist-Regular'],
         fontStyle: 'Regular',
         fontSize: '14px',
         lineHeight: '27px',
@@ -246,10 +239,10 @@ export const typography:any = {
         fontWeight: 500,
       } as React.CSSProperties,
       p5: {
-        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
-        fontStyle: 'Regular',
+        fontFamily: webFontFamily['Urbanist-Regular'],
+        fontStyle: 'normal',
         fontSize: '14px',
-        lineHeight: '27px',
+        lineHeight: 'normal',
         fontWeight: 600,
       } as React.CSSProperties,
       p6: {
@@ -278,11 +271,12 @@ export const typography:any = {
         lineHeight: '17px',
       } as React.CSSProperties,
       b2: {
-        fontFamily: webFontFamily['PlusJakartaSans-Regular'],
-        fontStyle: 'Medium',
-        fontSize: '16px',
-        fontWeight: 500,
-        lineHeight: '15px',
+        fontFamily: webFontFamily['Urbanist-Bold'],
+        color: "#FFF",
+        fontStyle: 'normal',
+        fontSize: '15px',
+        fontWeight: 700,
+        lineHeight: 'normal',
       } as React.CSSProperties,
       b3: {
         fontFamily: webFontFamily['PlusJakartaSans-Regular'],

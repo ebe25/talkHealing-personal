@@ -31,8 +31,7 @@ interface BaseTextProps extends PolymorphicComponentProps<'div', TextProps> {
   [x: string | number | symbol]: unknown
 }
 
-export const BaseText = (props: BaseTextProps) => {
-  return (
+export const BaseText = (props: BaseTextProps) => (
     <Text
       fz={props.size_variant}
       fw={props.fontWeight_variant}
@@ -42,4 +41,3 @@ export const BaseText = (props: BaseTextProps) => {
       {props.txtkey ? translate(props.txtkey) : props.children}
     </Text>
   );
-};

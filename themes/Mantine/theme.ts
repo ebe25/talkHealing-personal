@@ -91,7 +91,7 @@ export const MANTINE_THEME: MantineThemeOverride = {
   },
   other: {
     webFontFamily: webFontFamily,
-    typography:typography
+    typography:typography,
   },
   components: {},
   activeStyles: { transform: 'translateY(0.0625rem)' },

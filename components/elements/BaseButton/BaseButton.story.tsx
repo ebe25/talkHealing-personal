@@ -15,6 +15,10 @@ const meta: Meta<typeof BaseButton> = {
       options:Object.keys( COLOR_VARIANTS),
       control: { type: 'select' },
     },  
+    spacing_variant:{
+      options:Object.keys( SPACING_VARIANT),
+      control: { type: 'select' },
+    }
   },
 };
 
@@ -25,6 +29,7 @@ export const baseButton: Story = {
   args: {
     style_variant:STYLE_VARIANTS.filled as keyof typeof STYLE_VARIANTS,
     color_variant:COLOR_VARIANTS.blue  as keyof typeof COLOR_VARIANTS,
+    spacing_variant:SPACING_VARIANT.md as keyof typeof SPACING_VARIANT,
     children: "Button"
   },
 };

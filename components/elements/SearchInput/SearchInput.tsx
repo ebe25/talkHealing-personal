@@ -14,7 +14,7 @@ export const SearchInput = (props: BaseSearchInput) => {
   return (
     <Input
       className={classes.mainBox}
-      rightSection={<Box className={classes.searchIcon} onClick={props.click}><IconSearch width={22} height={22} /></Box>}
+      rightSection={<Box className={classes.searchIcon} onClick={props.click}><IconSearch width={20} height={20} /></Box>}
       placeholder={props.placeholder}
       classNames={{
         rightSection: classes.rightSection,
