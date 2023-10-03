@@ -50,9 +50,6 @@ export const createStyle = () => {
       justifyContent: 'center',
       alignItems: 'center',
       gap: '10px',
-      padding: '10px 24px',
-      justifyContent: 'center',
-      alignItems: 'center',
     },
     subHeading: {
       width: '1040px',
