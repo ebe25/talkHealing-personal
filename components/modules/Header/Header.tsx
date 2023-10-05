@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Flex, Box, Text, Group, Grid,Container } from '@mantine/core';
-import { useMantineTheme } from '@mantine/core';
+import { Flex, Text, Group, Container, Image, useMantineTheme } from '@mantine/core';
 
+import { useDisclosure } from '@mantine/hooks';
+import { useRouter } from 'next/router';
+import { Images } from '@/public';
 import { createStyle } from './Header.style';
-
 import { useStores } from '@/models';
 import { typography } from '@/themes/Mantine/typography';
 import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
 
-import { useDisclosure } from '@mantine/hooks';
-import { useRouter } from 'next/router';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
+import Link from 'next/link';
 
 function Header() {
   const theme = useMantineTheme();
@@ -24,7 +24,7 @@ function Header() {
   const router = useRouter();
 
   const searchTextFunction = () => {
-    let name = searchText.toLowerCase();
+    const name = searchText.toLowerCase();
     if (name.length) {
       router.push(`./product-listing?search-product=${name}`);
     }
@@ -33,62 +33,67 @@ function Header() {
 
   return (
     // <Box className={classes.containerBox}>
-    <Container maw={1070} className={classes.containerBox}>  
-        <Flex w={1040} justify={'space-between'} align={'center'} mt={'40px'}>
-          <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}> Talkhealing </Text>
-          <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}> Forum</Text>
-          <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}> Community</Text>
-          <SearchInput />
+    <Container maw={1070} className={classes.containerBox}>
+      <Flex w={1040} justify="space-between" align="center" mt="40px">
+        <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}> Talkhealing </Text>
+        <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}> Forum</Text>
+        <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}> Community</Text>
+        <SearchInput />
 
-          <Group >
-            <BaseButton
-              style_variant="filled"
-              color_variant="green"
-              className={classes.loginButton}
+        <Group>
+          <BaseButton style_variant="filled" color_variant="green" className={classes.loginButton}>
+            <Text
+              style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
+              onClick={() => {
+                router.push('./login');
+              }}
             >
-              <Text
-                style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                onClick={() => {
-                  router.push('./login');
-                }}
-              >
-                Login
-              </Text>
-            </BaseButton>
+              Login
+            </Text>
+          </BaseButton>
 
-            <BaseButton style_variant="filled" className={classes.loginButton} color_variant="blue">
-              <Text
-                style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-                onClick={() => {
-                  router.push('./signup');
-                }}
-              >
-                Sign Up
-              </Text>
-            </BaseButton>
-          </Group>
-        </Flex>
+          <BaseButton style_variant="filled" className={classes.loginButton} color_variant="blue">
+            <Text
+              style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
+              onClick={() => {
+                router.push('./signup');
+              }}
+            >
+              Sign Up
+            </Text>
+          </BaseButton>
+        </Group>
+      </Flex>
 
-   
-          <Flex
-          justify={'space-between'}
-          align={'center'}
-          h={57}
-          w={1050}
-          bg={theme.colors.gray[0]}
-          className={classes.subHeadingText}
-          mt={'40px'}
-            // style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}
-            // color="black"
-            // fontWeight_variant={600}
-          >
-            <BaseText>Latest research</BaseText>
-            <BaseText>Experience sharing</BaseText>
-            <BaseText>Program for recovery</BaseText>
-            <BaseText>Resources</BaseText>
-          </Flex>
-          </Container>
+      <Flex
+        justify="space-between"
+        align="center"
+        h={57}
+        w={1050}
+        className={classes.subHeadingText}
+        mt="40px"
+      >
+      <Link href="/latest-research">
+      <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+          Latest research <Image src={Images.link_icon} width="9.333px" height="8px" />
+        </BaseText>
+      </Link>
+      
 
+        <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+          Experience sharing <Image src={Images.link_icon} width="9.333px" height="8px" />
+        </BaseText>
+
+        <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+          Program for recovery <Image src={Images.link_icon} width="9.333px" height="8px" />
+        </BaseText>
+
+        <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+          Resources <Image src={Images.link_icon} width="9.333px" height="8px" />
+        </BaseText>
+      </Flex>
+
+    </Container>
   );
 }
 

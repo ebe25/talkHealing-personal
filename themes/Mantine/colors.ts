@@ -13,8 +13,8 @@ export const COLORS = {
     '#25262b',
     '#202420',
   ],
-  
-  black : [
+
+  black: [
     "#E5E5E5",
     '#9F9F9F',
     "#3B3B3B",
@@ -108,7 +108,7 @@ export const COLORS = {
     '#2B5BD4',
     '#364fc7',
   ],
-  
+
   blue: [
     '#008DE3',
   ],
@@ -182,4 +182,4 @@ export const COLORS = {
     '#e8590c',
     '#d9480f',
   ],
-} as Record<string, Tuple<string, 10>>;
+} as unknown as Record<string, Tuple<string, 10>>;

@@ -24,6 +24,8 @@ export const createStyle = () => {
       },
     },
     rightSide: {
+      justifyContent:'center',
+      alignItems:'center',
       [theme.fn.smallerThan('sm')]: {
         padding: '50px',
       },
@@ -86,3 +88,4 @@ export const createStyle = () => {
     },
   }));
 };
+export default createStyle;

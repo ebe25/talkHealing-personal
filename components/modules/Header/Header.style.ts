@@ -1,4 +1,4 @@
-import { Center, createStyles } from '@mantine/core';
+import {createStyles } from '@mantine/core';
 import { useStores } from '@/models';
 
 export const createStyle = () => {
@@ -6,13 +6,13 @@ export const createStyle = () => {
 
   return createStyles((theme) => ({
     containerBox: {
-      width: "1440px",
-      height: "194px",
+      width: '1440px',
+      height: '194px',
       background: theme.colors.white,
-      boxShadow: '0px 4px 34px 0px rgba(196, 196, 196, 0.25)'
+      boxShadow: '0px 4px 34px 0px rgba(196, 196, 196, 0.25)',
     },
     container: {
-      padding:"40px 0px 40px 200px",
+      padding: '40px 0px 40px 200px',
       [theme.fn.smallerThan('sm')]: {
         padding: '2px',
         gap: '10px',
@@ -62,7 +62,21 @@ export const createStyle = () => {
     subHeadingText: {
       borderRadius: '80px',
       padding: '20px 40px',
-      margin:'200px 0px'
+      margin: '200px 0px',
     },
+    navLinks: {
+      display: 'inline-flex',
+      padding: '10px 32px',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '8px',
+      transition: 'background-color 0.3s',
+      background: theme.colors.gray[0],
+      borderRadius: '80px',
+      '&:hover': {
+        background: theme.colors.gray[1],
+    },
+  }
+
   }));
 };
