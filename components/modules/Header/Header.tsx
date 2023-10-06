@@ -41,7 +41,7 @@ function Header() {
         <SearchInput />
 
         <Group>
-          <BaseButton style_variant="filled" color_variant="green" className={classes.loginButton}>
+          <BaseButton style_variant="filled"  className={classes.loginButton} color_variant="green">
             <Text
               style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
               onClick={() => {

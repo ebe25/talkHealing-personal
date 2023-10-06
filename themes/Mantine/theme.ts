@@ -23,9 +23,9 @@ export const MANTINE_THEME: MantineThemeOverride = {
   colors: COLORS,
   lineHeight: 1.55,
   fontFamily:
-    '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
+    'urbanist, sans-serif',
   fontFamilyMonospace:
-    'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
+    'Poppins, monospace',
   primaryColor: 'blue',
   respectReducedMotion: true,
   cursorType: 'default',

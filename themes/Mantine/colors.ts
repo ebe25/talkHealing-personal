@@ -141,7 +141,8 @@ export const COLORS = {
   ],
 
   green: [
-    '#02BD4D'
+    '#02BD4D',
+    'rgba(2, 189, 77, 0.05)',
   ],
 
   lime: [

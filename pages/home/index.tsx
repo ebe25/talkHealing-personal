@@ -1,4 +1,13 @@
-import { Image, Flex, Container } from '@mantine/core';
+import {
+  Image,
+  Flex,
+  Container,
+  Box,
+  SimpleGrid,
+  Center,
+  Card,
+  useMantineTheme,
+} from '@mantine/core';
 
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -9,7 +18,7 @@ import Header from '@/components/modules/Header/Header';
 import { createStyle } from './Home.style';
 
 export default function Home() {
-  // const theme = useMantineTheme();
+  const theme = useMantineTheme();
   const { i18nStore } = useStores();
 
   const useStyles = createStyle();
@@ -30,28 +39,33 @@ export default function Home() {
       </BaseText>
       <Container maw={'100%'}>
         <Flex justify={'space-around'} align={'center'}>
-          <Flex direction={'column'} justify={'center'} align={'flex-start'} gap={'17px'}>
-            <BaseText
-              color="black"
-              style={typography.headings[i18nStore.getCurrentLanguage()].h3}
-              fontWeight_variant={700}
-            >
-              Lorem Ipsum Dolor Sit Amet
-            </BaseText>
-            <BaseText
-              color="black"
-              style={(typography.headings[i18nStore.getCurrentLanguage()].h3, { opacity: 0.7 })}
-              fontWeight_variant={400}
-            >
-              Lorem Ipsum Dolor Sit Amet
-            </BaseText>
-          </Flex>
+          <Container className={classes.subMainText}>
+            <Flex direction={'column'} justify={'center'} align={'center'} gap={'17px'}>
+              <BaseText
+                color="black"
+                style={typography.label[i18nStore.getCurrentLanguage()].l10}
+                fontWeight_variant={700}
+              >
+                Lorem ipsum dolor sit amet consect.
+              </BaseText>
+
+              <BaseText
+                color="black"
+                style={(typography.headings[i18nStore.getCurrentLanguage()].h3, { opacity: 0.7 })}
+                fontWeight_variant={400}
+              >
+                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+              </BaseText>
+            </Flex>
+          </Container>
 
           <Image
             className={classes.rightSide}
             src={Images.public_health}
-            height={'500px'}
-            width={'500px'}
+            height={'440px'}
+            width={'440px'}
           />
 
           {/** <Box className={classes.galleryItemBoxForMobile}>
@@ -59,6 +73,104 @@ export default function Home() {
           <CarouselBoxMobile data={galleryItemData} />
         </Box>*/}
         </Flex>
+      </Container>
+
+      {/* how it works */}
+      <Container maw={'100%'}>
+        <BaseText
+          color_variant="black"
+          fontWeight_variant={700}
+          size_variant="xl"
+          style={
+            (typography.headings[i18nStore.getCurrentLanguage()].h3,
+            { textAlign: 'center', marginTop: '200px' })
+          }
+        >
+          How it works
+        </BaseText>
+
+        <SimpleGrid cols={2} spacing="xl" className={classes.cardGrid}>
+          <Card shadow="sm" p="md" bg={theme.colors.green[1]}>
+            <Card.Section>
+              <Flex direction={'column'} justify={'center'} align={'flex-start'} gap={'16px'}>
+                <BaseText fontWeight_variant={700} fontSize_variant={'xl'} color="black">
+                  Lorem Ipsum
+                </BaseText>
+                <Box>
+                  <BaseText fontWeight_variant={400} fontSize_variant={'md'} color="black">
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.
+                  </BaseText>
+                </Box>
+              </Flex>
+            </Card.Section>
+          </Card>
+
+          <Card shadow="sm" p="md" bg={theme.colors.green[1]}>
+            <Flex direction={'column'} justify={'center'} align={'flex-start'} gap={'16px'}>
+              <BaseText fontWeight_variant={700} fontSize_variant={'xl'} color="black">
+                Lorem Ipsum
+              </BaseText>
+              <Box>
+                <BaseText fontWeight_variant={400} fontSize_variant={'md'} color="black">
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                  ex ea commodo consequat.
+                </BaseText>
+              </Box>
+            </Flex>
+          </Card>
+
+          <Card shadow="sm" p="md" bg={theme.colors.green[1]}>
+            <Flex direction={'column'} justify={'center'} align={'flex-start'} gap={'16px'}>
+              <BaseText fontWeight_variant={700} fontSize_variant={'xl'} color="black">
+                Lorem Ipsum
+              </BaseText>
+              <Box>
+                <BaseText fontWeight_variant={400} fontSize_variant={'md'} color="black">
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                  ex ea commodo consequat.
+                </BaseText>
+              </Box>
+            </Flex>
+          </Card>
+
+          <Card shadow="sm" p="md" bg={theme.colors.green[1]}>
+            <Flex direction={'column'} justify={'center'} align={'flex-start'} gap={'16px'}>
+              <BaseText fontWeight_variant={700} fontSize_variant={'xl'} color="black">
+                Lorem Ipsum
+              </BaseText>
+              <Box>
+                <BaseText fontWeight_variant={400} fontSize_variant={'md'} color="black">
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                  ex ea commodo consequat.
+                </BaseText>
+              </Box>
+            </Flex>
+          </Card>
+        </SimpleGrid>
+
+        {/* <Flex justify={'space-around'} align={'center'} gap={'40px'}>
+          <Box w={'500px'} h={'337px'} className={classes.infoCard}>
+            <Center>
+              {' '}
+              <BaseText
+                fontWeight_variant={700}
+                color="black"
+                style={(typography.headings[i18nStore.getCurrentLanguage()].h5, { opacity: '1' })}
+              >
+                Lorem Ipsum{' '}
+              </BaseText>
+              <BaseText
+                fontWeight_variant={700}
+                color="black"
+                style={(typography.headings[i18nStore.getCurrentLanguage()].h5, { opacity: '1' })}
+              >
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+              </BaseText>
+            </Center>
+          </Box>
+        </Flex> */}
       </Container>
     </Container>
   );

@@ -1,4 +1,5 @@
 import { createStyles } from '@mantine/core';
+
 import { useStores } from '@/models';
 
 export const createStyle = () => {
@@ -15,7 +16,7 @@ export const createStyle = () => {
       justifyContent: 'space-between',
       alignItems: 'flex-start',
       gap: '17px',
-      
+
       [theme.fn.smallerThan('sm')]: {
         padding: '50px',
       },
@@ -24,8 +25,8 @@ export const createStyle = () => {
       },
     },
     rightSide: {
-      justifyContent:'center',
-      alignItems:'center',
+      justifyContent: 'center',
+      alignItems: 'center',
       [theme.fn.smallerThan('sm')]: {
         padding: '50px',
       },
@@ -85,6 +86,20 @@ export const createStyle = () => {
       [theme.fn.largerThan('xs')]: {
         display: 'none',
       },
+    },
+
+    infoCard: {
+      borderRadius: '32px',
+      opacity: '0.4',
+      background: theme.colors.green,
+    },
+    subMainText: {
+      width: '522px',
+    },
+    cardGrid: {
+      padding: '80px 200px',
+      borderRadius: '32px',
+    
     },
   }));
 };

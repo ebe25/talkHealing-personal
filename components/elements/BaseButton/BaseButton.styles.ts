@@ -30,7 +30,7 @@ export const createStyle = (langCode: 'en' | 'ar', props: BaseButtonProps) => cr
 
   [STYLE_VARIANTS.filled]: {
     ...typography.buttonText[langCode].b2,
-    background: theme.colors[props.color_variant],
+    background: theme.colors[props.color_variant][0],
     borderRadius: '11px',
   },
     [STYLE_VARIANTS.subtle]: {

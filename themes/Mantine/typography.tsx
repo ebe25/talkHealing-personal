@@ -23,7 +23,7 @@ export const typography: any = {
         fontFamily: webFontFamily['Urbanist-Bold'],
         fontStyle: 'normal',
         fontWeight: 700,
-        fontSize: '34px',
+        fontSize: '48px',
         lineHeight: 'normal',
       } as React.CSSProperties,
       h4: {
@@ -42,10 +42,10 @@ export const typography: any = {
       } as React.CSSProperties,
       h6: {
         fontFamily: webFontFamily['Urbanist-SemiBold'],
-        fontStyle: 'Semi Bold',
-        fontSize: '18px',
-        lineHeight: '22px',
-        fontWeight: 600,
+        fontStyle: 'normal',
+        fontSize: '28px',
+        lineHeight: 'normal',
+        fontWeight: 700,
       } as React.CSSProperties,
       h7: {
         fontFamily: webFontFamily['Urbanist-SemiBold'],
@@ -272,7 +272,6 @@ export const typography: any = {
       } as React.CSSProperties,
       b2: {
         fontFamily: webFontFamily['Urbanist-Bold'],
-        color: '#FFF',
         fontStyle: 'normal',
         fontSize: '15px',
         fontWeight: 700,
@@ -392,9 +391,9 @@ export const typography: any = {
       } as React.CSSProperties,
       l10: {
         fontFamily: webFontFamily['Urbanist-SemiBold'],
-        fontStyle: 'Semi Bold',
+        fontStyle: 'normal',
         fontSize: '60px',
-        lineHeight: '72px',
+        lineHeight: '83px',
         fontWeight: 600,
       } as React.CSSProperties,
       l11: {
