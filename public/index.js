@@ -67,6 +67,7 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   sort_icon:"./image/sort.png",
   public_health: "./image/Public health-amico 1.png",
   link_icon:"./image/link_icon.png",
+  userProfileImage: "./image/userProfileImage.png",
   
 }
 

@@ -111,6 +111,7 @@ export const COLORS = {
 
   blue: [
     '#008DE3',
+    
   ],
 
   cyan: [

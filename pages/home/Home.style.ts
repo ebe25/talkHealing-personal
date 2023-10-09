@@ -88,7 +88,7 @@ export const createStyle = () => {
       },
     },
 
-    infoCard: {
+    innerCard: {
       borderRadius: '32px',
       opacity: '0.4',
       background: theme.colors.green,
@@ -99,7 +99,10 @@ export const createStyle = () => {
     cardGrid: {
       padding: '80px 200px',
       borderRadius: '32px',
-    
+    },
+    cardGridText: {
+      textAlign: 'center',
+
     },
   }));
 };
