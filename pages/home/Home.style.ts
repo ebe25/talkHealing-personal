@@ -4,7 +4,6 @@ import { useStores } from '@/models';
 
 export const createStyle = () => {
   const { i18nStore } = useStores();
-
   return createStyles((theme) => ({
     container: {
       maxWidth: '100%',

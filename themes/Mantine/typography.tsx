@@ -43,7 +43,7 @@ export const typography: any = {
       h6: {
         fontFamily: webFontFamily['Urbanist-SemiBold'],
         fontStyle: 'normal',
-        fontSize: '28px',
+        fontSize: '40px',
         lineHeight: 'normal',
         fontWeight: 700,
       } as React.CSSProperties,

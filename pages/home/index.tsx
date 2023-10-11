@@ -1,13 +1,5 @@
-import {
-  Image,
-  Flex,
-  Container,
-  Box,
-  SimpleGrid,
-  Center,
-  Card,
-  useMantineTheme,
-} from '@mantine/core';
+/* eslint-disable import/extensions */
+import { Image, Flex, Container, Box, SimpleGrid, Card, useMantineTheme } from '@mantine/core';
 
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -69,10 +61,10 @@ export default function Home() {
       >
         Research
       </BaseText>
-      <Container maw={'100%'}>
-        <Flex justify={'space-around'} align={'center'}>
+      <Container maw="100%">
+        <Flex justify="space-around" align="center">
           <Container className={classes.subMainText}>
-            <Flex direction={'column'} justify={'center'} align={'center'} gap={'17px'}>
+            <Flex direction="column" justify="center" align="center" gap="17px">
               <BaseText
                 color="black"
                 style={typography.label[i18nStore.getCurrentLanguage()].l10}
@@ -96,19 +88,19 @@ export default function Home() {
           <Image
             className={classes.rightSide}
             src={Images.public_health}
-            height={'440px'}
-            width={'440px'}
+            height="440px"
+            width="440px"
           />
 
           {/** <Box className={classes.galleryItemBoxForMobile}>
-         
+
           <CarouselBoxMobile data={galleryItemData} />
         </Box>*/}
         </Flex>
       </Container>
 
       {/* how it works */}
-      <Container maw={'100%'}>
+      <Container maw="100%">
         <BaseText
           color_variant="black"
           fontWeight_variant={700}
@@ -125,13 +117,12 @@ export default function Home() {
           <Card shadow="sm" p="md" bg={theme.colors.green[1]}>
             <Card.Section>
               <Box>
-           
-                <Flex direction={'column'} justify={'center'} align={'flex-start'} gap={'16px'}>
-                  <BaseText fontWeight_variant={700} fontSize_variant={'xl'} color="black">
+                <Flex direction="column" justify="center" align="flex-start" gap="16px">
+                  <BaseText fontWeight_variant={700} fontSize_variant="xl" color="black">
                     Lorem Ipsum
                   </BaseText>
                   <Box>
-                    <BaseText fontWeight_variant={400} fontSize_variant={'md'} color="black">
+                    <BaseText fontWeight_variant={400} fontSize_variant="md" color="black">
                       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                       aliquip ex ea commodo consequat.
                     </BaseText>
@@ -150,12 +141,12 @@ export default function Home() {
           </Card>
 
           <Card shadow="sm" p="md" bg={theme.colors.green[1]}>
-            <Flex direction={'column'} justify={'center'} align={'flex-start'} gap={'16px'}>
-              <BaseText fontWeight_variant={700} fontSize_variant={'xl'} color="black">
+            <Flex direction="column" justify="center" align="flex-start" gap="16px">
+              <BaseText fontWeight_variant={700} fontSize_variant="xl" color="black">
                 Lorem Ipsum
               </BaseText>
               <Box>
-                <BaseText fontWeight_variant={400} fontSize_variant={'md'} color="black">
+                <BaseText fontWeight_variant={400} fontSize_variant="md" color="black">
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                   ex ea commodo consequat.
                 </BaseText>
@@ -164,12 +155,12 @@ export default function Home() {
           </Card>
 
           <Card shadow="sm" p="md" bg={theme.colors.green[1]}>
-            <Flex direction={'column'} justify={'center'} align={'flex-start'} gap={'16px'}>
-              <BaseText fontWeight_variant={700} fontSize_variant={'xl'} color="black">
+            <Flex direction="column" justify="center" align="flex-start" gap="16px">
+              <BaseText fontWeight_variant={700} fontSize_variant="xl" color="black">
                 Lorem Ipsum
               </BaseText>
               <Box>
-                <BaseText fontWeight_variant={400} fontSize_variant={'md'} color="black">
+                <BaseText fontWeight_variant={400} fontSize_variant="md" color="black">
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                   ex ea commodo consequat.
                 </BaseText>
@@ -178,12 +169,12 @@ export default function Home() {
           </Card>
 
           <Card shadow="sm" p="md" bg={theme.colors.green[1]}>
-            <Flex direction={'column'} justify={'center'} align={'flex-start'} gap={'16px'}>
-              <BaseText fontWeight_variant={700} fontSize_variant={'xl'} color="black">
+            <Flex direction="column" justify="center" align="flex-start" gap="16px">
+              <BaseText fontWeight_variant={700} fontSize_variant="xl" color="black">
                 Lorem Ipsum
               </BaseText>
               <Box>
-                <BaseText fontWeight_variant={400} fontSize_variant={'md'} color="black">
+                <BaseText fontWeight_variant={400} fontSize_variant="md" color="black">
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                   ex ea commodo consequat.
                 </BaseText>
@@ -216,8 +207,8 @@ export default function Home() {
         </Flex> */}
       </Container>
 
-        {/**testimonials */}
-      <Container maw={'100%'}>
+      {/**testimonials */}
+      <Container maw="100%">
         <BaseText
           color_variant="black"
           fontWeight_variant={700}
@@ -225,7 +216,7 @@ export default function Home() {
           style={
             (typography.headings[i18nStore.getCurrentLanguage()].h3,
             {
-              padding:"0px 200px",
+              padding: '0px 200px',
             })
           }
         >

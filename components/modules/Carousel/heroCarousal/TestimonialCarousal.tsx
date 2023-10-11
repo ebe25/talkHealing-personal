@@ -38,7 +38,7 @@ function TestimonialCarousal(props: { carouselData: any }) {
                       key="txt2"
                       color_variant={theme.colors.black}
                       style={typography.headings[i18nStore.getCurrentLanguage()].h9}
-                     
+
                     >
                       {item.role}
                     </BaseText>

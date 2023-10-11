@@ -41,7 +41,7 @@ function Header() {
         <SearchInput />
 
         <Group>
-          <BaseButton style_variant="filled"  className={classes.loginButton} color_variant="green">
+          <BaseButton style_variant="filled" className={classes.loginButton} color_variant="green">
             <Text
               style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
               onClick={() => {
@@ -76,9 +76,9 @@ function Header() {
       <Link href="/latest-research">
       <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
           Latest research <Image src={Images.link_icon} width="9.333px" height="8px" />
-        </BaseText>
+      </BaseText>
       </Link>
-      
+
 
         <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
           Experience sharing <Image src={Images.link_icon} width="9.333px" height="8px" />
