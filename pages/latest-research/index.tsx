@@ -1,23 +1,49 @@
-import {
-  Flex,
-  Container,
-  useMantineTheme,
-  Stack,
-  Box,
-  Group,
-  Title,
-  Grid,
-  Col,
-  SimpleGrid,
-} from '@mantine/core';
+import { Flex, Container, useMantineTheme, Box, Title } from '@mantine/core';
 import React from 'react';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from './Latest-research.style';
 import { useStores } from '@/models';
 import Header from '@/components/modules/Header/Header';
 import { typography } from '@/themes/Mantine/typography';
-import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
 import ResearchCard from '@/components/modules/ResearchCard';
+import PageSearchBox from '@/components/modules/PageSearchbox';
+
+const researchData = [
+  {
+    title: 'Research title lorem ipsum dolor sit',
+    content:
+      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...',
+    datePosted: 'Mar 2019',
+    author: 'Andreas Walker',
+  },
+  {
+    title: 'Title for research lorem ipsum dolor sit',
+    content:
+      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...',
+    datePosted: 'Mar 2023',
+    author: 'John Doe',
+  },
+  {
+    title: 'Genes diversity curing Cancer',
+    content:
+      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...',
+    datePosted: 'Sept 2021',
+    author: 'Bryce Walker',
+  },
+];
+
+const commonDiseases = [
+  'Hypertension (High Blood Pressure)',
+  'Diabetes',
+  'Coronary Artery Disease ',
+  'Stroke',
+  'Cancer',
+  'Asthma',
+  'Chronic Obstructive Pulmonary Disease ',
+  "Alzheimer's Disease",
+  'Arthritis',
+  'Influenza (Flu)',
+];
 
 export default function LatestResearch() {
   const theme = useMantineTheme();
@@ -30,51 +56,36 @@ export default function LatestResearch() {
     <>
       <Header />
       <Container maw="100%" className={classes.container}>
-        <BaseText
-          color_variant={theme.colors.black}
-          size_variant="lg"
-          fontWeight_variant={700}
-          styles={typography.headings[i18nStore.getCurrentLanguage()].h3}
-        >
+        <BaseText color={theme.colors.black[9]} size_variant="xl" fontWeight_variant={700} mb={10}>
           Lastest Research
         </BaseText>
-        <br />
-
         <Flex gap="32px">
           <Box className={classes.topicsLayout}>
             {/**Title */}
             <Title order={2}>
-              <BaseText
-                color_variant={theme.colors.black}
-                fontWeight_variant={600}
-                size_variant="md"
-              >
+              <BaseText fontWeight_variant={600} size_variant="md">
                 Topics
               </BaseText>
             </Title>
             {/**Diseases */}
-            <Flex direction="column" gap="sm" mt={27}>
-              <BaseText color_variant={theme.colors.black}>Lorem ipsum dolor sit amet.</BaseText>
-              <BaseText color_variant={theme.colors.black}>Lorem, ipsum dolor.</BaseText>
-              <BaseText color_variant={theme.colors.black}>
-                Lorem ipsum dolor sit amet consectetur.
-              </BaseText>
+            <Flex direction="column" columnGap="10px" mt={27} gap="10px">
+              {commonDiseases.map((disease, index) => (
+                <BaseText
+                  key={index}
+                  size_variant="sm"
+                  style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i1}
+                >
+                  {disease}
+                </BaseText>
+              ))}
             </Flex>
           </Box>
-
-          <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'lg', cols: 1 }]}>
-            <Box>
-              <Flex className={classes.searchInputContainer}>
-                <BaseText>219 researches</BaseText>
-                <SearchInput />
-              </Flex>
-            </Box>
-
-            <Box>
-              <ResearchCard />
-              <ResearchCard />
-            </Box>
-          </SimpleGrid>
+          <Flex direction="column" gap="sm">
+            <PageSearchBox />
+            {researchData.map((researchItem, index) => (
+              <ResearchCard research={researchItem} key={index} />
+            ))}
+          </Flex>
         </Flex>
       </Container>
     </>

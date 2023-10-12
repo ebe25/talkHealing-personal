@@ -1,27 +1,60 @@
-import { Box, Container, useMantineTheme } from '@mantine/core';
+import { Button, Container, Flex, Group, Text, useMantineTheme } from '@mantine/core';
 import React from 'react';
-import { useStores } from '@/models';
+import Image from 'next/image';
+
 import { createStyle } from './ResearchCard.style';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
+import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 
-export default function ResearchCard() {
+interface ResearchCardProps {
+  research: {
+    title: string;
+    content: string;
+    datePosted: string;
+    author: string;
+  };
+}
+
+const ResearchCard: React.FC<ResearchCardProps> = ({ research }) => {
   const theme = useMantineTheme();
-  const { i18nStore } = useStores();
 
   const useStyles = createStyle();
   const { classes } = useStyles();
   return (
     <Container className={classes.container}>
-      <Box className={classes.cardText}>
-        <BaseText size_variant="md" color_variant={theme.colors.black} fontWeight_variant={600}>
-          Research title lorem ipsum dolor sit
+      <Group dir="column" spacing="6px">
+        <BaseText size_variant="xl" color_variant={theme.colors.black} fontWeight_variant={600}>
+          {research.title}
         </BaseText>
-        <BaseText size_variant="sm" color_variant={theme.colors.black} fontWeight_variant={600}>
-          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat...
+        <BaseText size_variant="sm" color_variant={theme.colors.black} fontWeight_variant={400}>
+          {research.content}
         </BaseText>
-      </Box>
+      </Group>
+      <Flex justify="space-between" align="center">
+        <Group spacing="13px">
+          <Button className={classes.userPostedButton}>
+            <Flex justify="center" align="center" gap="xs">
+              <Image src="/icons/mdi_eye_icon.png" alt="eyeIcon" width="16" height="16" />
+              <Text>{research.author}</Text>
+            </Flex>
+          </Button>
+          <Button className={classes.datePostedtext}>
+            <Flex justify="center" align="center" gap="xs">
+              <Image
+                src="/icons/zondicons_calendar.png"
+                alt="calenderIcon"
+                width="14"
+                height="14"
+              />
+              <Text>{research.datePosted}</Text>
+            </Flex>
+          </Button>
+        </Group>
+        <BaseButton color_variant="blue" style_variant="filled" mt="lg">
+          See details
+        </BaseButton>
+      </Flex>
     </Container>
   );
-}
+};
+export default ResearchCard;

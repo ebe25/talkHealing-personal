@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TextProps } from '@mantine/core';
 import { translate, TxKeyPath } from '../../../i18n';
 import { PolymorphicComponentProps } from '@mantine/utils';
-import { useStores } from '@/models';
+
 
 export const SIZE_VARIANTS = {
   xs: 'xs',

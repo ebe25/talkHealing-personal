@@ -15,9 +15,9 @@ export const COLORS = {
   ],
 
   black: [
-    "#E5E5E5",
+    '#E5E5E5',
     '#9F9F9F',
-    "#3B3B3B",
+    '#3B3B3B',
     '#212529',
     '#141517',
     '#0C0C0C',
@@ -40,8 +40,9 @@ export const COLORS = {
     '#8F918F',
     '#868e96',
     '#495057',
-    '#212529',
+    // '#212529',
     // '#343a40',
+    '#F4F7F8',
   ],
 
   red: [
@@ -111,7 +112,6 @@ export const COLORS = {
 
   blue: [
     '#008DE3',
-    
   ],
 
   cyan: [
@@ -124,7 +124,7 @@ export const COLORS = {
     '#15aabf',
     '#1098ad',
     '#0c8599',
-    "#636663"
+    '#636663',
     // '#0b7285',
   ],
 
@@ -147,7 +147,7 @@ export const COLORS = {
   ],
 
   lime: [
-    '#f4fce3',
+    '#02BD4D',
     '#e9fac8',
     '#d8f5a2',
     '#c0eb75',
@@ -156,7 +156,7 @@ export const COLORS = {
     '#82c91e',
     '#74b816',
     '#66a80f',
-    '#5c940d',
+    '#f4fce3',
   ],
 
   yellow: [
@@ -183,5 +183,9 @@ export const COLORS = {
     '#f76707',
     '#e8590c',
     '#d9480f',
+  ],
+
+  white: [
+    '#FFF',
   ],
 } as unknown as Record<string, Tuple<string, 10>>;

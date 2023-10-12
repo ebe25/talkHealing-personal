@@ -41,7 +41,7 @@ export const typography: any = {
         fontWeight: 700,
       } as React.CSSProperties,
       h6: {
-        fontFamily: webFontFamily['Urbanist-SemiBold'],
+        fontFamily: webFontFamily['Urbanist-Regular'],
         fontStyle: 'normal',
         fontSize: '40px',
         lineHeight: 'normal',
@@ -406,7 +406,7 @@ export const typography: any = {
       l12: {
         fontFamily: webFontFamily['Urbanist-SemiBold'],
         fontStyle: 'normal',
-        fontSize: '10px',
+        fontSize: '14px',
         lineHeight: '12px',
         fontWeight: 400,
       } as React.CSSProperties,
@@ -501,10 +501,10 @@ export const typography: any = {
   inputFieldText: {
     en: {
       i1: {
-        fontFamily: webFontFamily['Urbanist-Regular'],
-        fontStyle: 'Medium',
+        fontFamily: webFontFamily['Lato-Regular'],
+        fontStyle: 'normal',
         fontSize: '15px',
-        lineHeight: '18px',
+        lineHeight: 'normal',
         fontWeight: 500,
       } as React.CSSProperties,
       i2: {

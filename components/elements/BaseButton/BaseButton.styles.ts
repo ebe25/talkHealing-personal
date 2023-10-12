@@ -1,7 +1,6 @@
-import { createStyles, useMantineTheme } from '@mantine/core';
-import { ButtonProps } from '@mantine/core';
-import { typography } from '@/themes/Mantine/typography';
+import { createStyles, ButtonProps } from '@mantine/core';
 import { PolymorphicComponentProps } from '@mantine/utils';
+import { typography } from '@/themes/Mantine/typography';
 
 export const STYLE_VARIANTS = {
   filled: 'filled',
@@ -14,7 +13,7 @@ export const COLOR_VARIANTS = {
   blue: 'blue',
   red: 'red',
   gray: 'gray',
-  green: 'green',
+  lime: 'lime',
 };
 
 type VariantMap = Record<keyof typeof STYLE_VARIANTS, React.CSSProperties>;
@@ -33,23 +32,23 @@ export const createStyle = (langCode: 'en' | 'ar', props: BaseButtonProps) => cr
     background: theme.colors[props.color_variant][0],
     borderRadius: '11px',
   },
-    [STYLE_VARIANTS.subtle]: {
-      ...typography.buttonText[langCode].b4,
-      background: theme.colors[props.color_variant],
-      borderRadius: '11px',
-      height: '40px',
-    },
-    [STYLE_VARIANTS.disabled]: {
-      ...typography.buttonText[langCode].b2,
-      background: theme.colors.gray[2],
-      borderRadius: '44px',
-      height: '40px',
-    },
-    [STYLE_VARIANTS.outline]: {
-      ...typography.buttonText[langCode].b3,
-      background: 'transparent',
-      borderRadius: '42px',
-      border: `1px solid ${theme.colors[props.color_variant]}`,
-      height: '40px',
-    },
-  }));
+  [STYLE_VARIANTS.subtle]: {
+    ...typography.buttonText[langCode].b4,
+    background: theme.colors[props.color_variant],
+    borderRadius: '11px',
+    height: '40px',
+  },
+  [STYLE_VARIANTS.disabled]: {
+    ...typography.buttonText[langCode].b2,
+    background: theme.colors.gray[2],
+    borderRadius: '44px',
+    height: '40px',
+  },
+  [STYLE_VARIANTS.outline]: {
+    ...typography.buttonText[langCode].b3,
+    background: 'transparent',
+    borderRadius: '42px',
+    border: `1px solid ${theme.colors[props.color_variant]}`,
+    height: '40px',
+  },
+}));
