@@ -31,6 +31,7 @@ export const createStyle = (langCode: 'en' | 'ar', props: BaseButtonProps) => cr
     ...typography.buttonText[langCode].b2,
     background: theme.colors[props.color_variant][0],
     borderRadius: '11px',
+    padding: '10px 24px',
   },
   [STYLE_VARIANTS.subtle]: {
     ...typography.buttonText[langCode].b4,

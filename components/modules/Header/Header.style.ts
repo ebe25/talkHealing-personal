@@ -1,4 +1,4 @@
-import {createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core';
 import { useStores } from '@/models';
 
 export const createStyle = () => {
@@ -76,7 +76,7 @@ export const createStyle = () => {
       '&:hover': {
         background: theme.colors.gray[1],
     },
-  }
+  },
 
   }));
 };

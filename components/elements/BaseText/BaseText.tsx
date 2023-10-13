@@ -1,8 +1,7 @@
 import React from 'react';
 import { Text, TextProps } from '@mantine/core';
-import { translate, TxKeyPath } from '../../../i18n';
 import { PolymorphicComponentProps } from '@mantine/utils';
-
+import { translate, TxKeyPath } from '../../../i18n';
 
 export const SIZE_VARIANTS = {
   xs: 'xs',
@@ -28,16 +27,11 @@ interface BaseTextProps extends PolymorphicComponentProps<'div', TextProps> {
   color?: string;
   // fontWeight?: 400 | 500 | 600 | 700;
   txtkey?: TxKeyPath;
-  [x: string | number | symbol]: unknown
+  [x: string | number | symbol]: unknown;
 }
 
 export const BaseText = (props: BaseTextProps) => (
-    <Text
-      fz={props.size_variant}
-      fw={props.fontWeight_variant}
-      c={props.color}
-      {...props}
-    >
-      {props.txtkey ? translate(props.txtkey) : props.children}
-    </Text>
-  );
+  <Text fz={props.size_variant} fw={props.fontWeight_variant} c={props.color} {...props}>
+    {props.txtkey ? translate(props.txtkey) : props.children}
+  </Text>
+);

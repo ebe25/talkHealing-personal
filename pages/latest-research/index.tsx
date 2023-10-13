@@ -81,7 +81,7 @@ export default function LatestResearch() {
             </Flex>
           </Box>
           <Flex direction="column" gap="sm">
-            <PageSearchBox />
+            <PageSearchBox num={291} type="research" />
             {researchData.map((researchItem, index) => (
               <ResearchCard research={researchItem} key={index} />
             ))}

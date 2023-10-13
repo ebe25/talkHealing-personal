@@ -35,7 +35,10 @@ function Header() {
     <Container maw={1070} className={classes.containerBox}>
       {/**Header mainHeading */}
       <Flex w="100%" justify="space-between" align="center" mt="20px">
-        <Image src="/icons/Talkhealing_logo.png" width="134.008px" height="24px" />
+        <Link href="/">
+          <Image src="/icons/Talkhealing_logo.png" width="134.008px" height="24px" />
+        </Link>
+
         <BaseText
           fontWeight_variant={700}
           color={theme.colors.black[9]}
