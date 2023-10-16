@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import { Flex, Text, Group, Container, Image, useMantineTheme } from '@mantine/core';
 
@@ -62,7 +63,7 @@ function Header() {
             <Text
               style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
               onClick={() => {
-                router.push('./login');
+                router.push('/');
               }}
             >
               Login
@@ -73,7 +74,7 @@ function Header() {
             <Text
               style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
               onClick={() => {
-                router.push('./signup');
+                router.push('/');
               }}
             >
               Sign Up
