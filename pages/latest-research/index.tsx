@@ -2,11 +2,12 @@ import { Flex, Container, useMantineTheme, Box, Title } from '@mantine/core';
 import React from 'react';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from './Latest-research.style';
-import { useStores } from '@/models';
+
 import Header from '@/components/modules/Header/Header';
-import { typography } from '@/themes/Mantine/typography';
+
 import ResearchCard from '@/components/modules/ResearchCard';
 import PageSearchBox from '@/components/modules/PageSearchbox';
+import TopicsBox from '@/components/modules/TopicsBox';
 
 const researchData = [
   {
@@ -32,22 +33,8 @@ const researchData = [
   },
 ];
 
-const commonDiseases = [
-  'Hypertension (High Blood Pressure)',
-  'Diabetes',
-  'Coronary Artery Disease ',
-  'Stroke',
-  'Cancer',
-  'Asthma',
-  'Chronic Obstructive Pulmonary Disease ',
-  "Alzheimer's Disease",
-  'Arthritis',
-  'Influenza (Flu)',
-];
-
 export default function LatestResearch() {
   const theme = useMantineTheme();
-  const { i18nStore } = useStores();
 
   const useStyles = createStyle();
   const { classes } = useStyles();
@@ -60,26 +47,7 @@ export default function LatestResearch() {
           Lastest Research
         </BaseText>
         <Flex gap="32px">
-          <Box className={classes.topicsLayout}>
-            {/**Title */}
-            <Title order={2}>
-              <BaseText fontWeight_variant={600} size_variant="md">
-                Topics
-              </BaseText>
-            </Title>
-            {/**Diseases */}
-            <Flex direction="column" columnGap="10px" mt={27} gap="10px">
-              {commonDiseases.map((disease, index) => (
-                <BaseText
-                  key={index}
-                  size_variant="sm"
-                  style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i1}
-                >
-                  {disease}
-                </BaseText>
-              ))}
-            </Flex>
-          </Box>
+          <TopicsBox />
           <Flex direction="column" gap="sm">
             <PageSearchBox num={291} type="research" />
             {researchData.map((researchItem, index) => (

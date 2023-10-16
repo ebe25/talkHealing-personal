@@ -55,6 +55,13 @@ export const typography: any = {
         fontWeight: 600,
         letterSpacing: '0.13px',
       } as React.CSSProperties,
+      h10: {
+        fontFamily: webFontFamily['Lato-Regular'],
+        fontStyle: 'normal',
+        fontSize: '20px',
+        fontWeight: 600,
+        lineHeight: '30px',
+      } as React.CSSProperties,
       h8: {
         fontFamily: webFontFamily['Urbanist-SemiBold'],
         fontStyle: 'normal',
@@ -160,10 +167,10 @@ export const typography: any = {
         lineHeight: 'normal',
       } as React.CSSProperties,
       'p1.5': {
-        fontFamily: webFontFamily['Urbanist-Regular'],
-        fontStyle: 'Regular',
+        fontFamily: webFontFamily['Lato-Regular'],
+        fontStyle: 'normal',
         fontSize: '16px',
-        lineHeight: '21px',
+        lineHeight: '30px',
         fontWeight: 400,
       } as React.CSSProperties,
       p2: {

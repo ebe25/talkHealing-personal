@@ -7,16 +7,6 @@ export const createStyle = () => createStyles((theme) => ({
         maxWidth: '100%',
         background: theme.colors.gray[9],
     },
-    topicsLayout: {
-        gap: '20px',
-        width: '216px',
-        height: '100vh',
-        borderRadius: '16px',
-        background: '#FFF',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '24px',
-},
 
 }));
 export default createStyle;

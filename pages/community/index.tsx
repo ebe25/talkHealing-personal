@@ -1,5 +1,4 @@
 import {
-  useMantineTheme,
   Container,
   Flex,
   Title,
@@ -9,7 +8,6 @@ import {
   Image,
 } from '@mantine/core';
 import { createStyle } from './Community.style';
-import { useStores } from '@/models';
 import Header from '@/components/modules/Header/Header';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import PageSearchBox from '@/components/modules/PageSearchbox';
@@ -80,8 +78,6 @@ const communityCardData = [
 ];
 
 export default function Community() {
-  const theme = useMantineTheme();
-  const { i18nStore } = useStores();
   const useStyles = createStyle();
   const { classes } = useStyles();
   return (

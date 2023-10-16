@@ -69,5 +69,6 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   link_icon:"./image/link_icon.png",
   userProfileImage: "./image/userProfileImage.png",
   avatarsCommunityGroup : "./image/avatarsCommunity.png",
+  forumUserImage : "./image/forumUserImg.png",
 }
 
