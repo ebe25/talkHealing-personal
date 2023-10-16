@@ -89,19 +89,15 @@ export const createStyle = () => {
 
     innerCard: {
       borderRadius: '32px',
-      opacity: '0.4',
-      background: theme.colors.green,
+      background: theme.colors.green[1],
+      height: '340px',
+      width: '500px',
     },
     subMainText: {
       width: '522px',
     },
-    cardGrid: {
-      padding: '80px 200px',
-      borderRadius: '32px',
-    },
-    cardGridText: {
-      textAlign: 'center',
-
+    gridContainer: {
+      padding: '80px 120px',
     },
   }));
 };

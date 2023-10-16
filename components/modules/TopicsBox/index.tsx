@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { Container, Flex, Title, useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -31,7 +32,7 @@ export default function TopicsBox() {
           </BaseText>
         </Title>
         {/**Diseases */}
-        <Flex direction="column" columnGap="10px" mt={27} gap="10px">
+        <Flex direction="column" mt={27} gap="10px">
           {commonDiseases.map((disease, index) => (
             <BaseText
               key={index}

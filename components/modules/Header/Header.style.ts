@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { createStyles } from '@mantine/core';
 import { useStores } from '@/models';
 
@@ -75,8 +76,9 @@ export const createStyle = () => {
       borderRadius: '80px',
       '&:hover': {
         background: theme.colors.gray[1],
+      },
+      color: theme.colors.black[3],
     },
-  },
 
   }));
 };

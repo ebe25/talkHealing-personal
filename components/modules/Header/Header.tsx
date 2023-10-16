@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import React, { useState } from 'react';
-import { Flex, Text, Group, Container, Image, useMantineTheme } from '@mantine/core';
+import { Flex, Group, Container, Image, useMantineTheme } from '@mantine/core';
 
 import { useDisclosure } from '@mantine/hooks';
 import { useRouter } from 'next/router';
@@ -8,7 +8,6 @@ import Link from 'next/link';
 import { Images } from '@/public';
 import { createStyle } from './Header.style';
 import { useStores } from '@/models';
-import { typography } from '@/themes/Mantine/typography';
 import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -60,25 +59,27 @@ function Header() {
 
         <Group>
           <BaseButton style_variant="filled" className={classes.loginButton} color_variant="lime">
-            <Text
-              style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
+            <BaseText
+              size={15}
+              fontWeight_variant={700}
               onClick={() => {
                 router.push('/');
               }}
             >
               Login
-            </Text>
+            </BaseText>
           </BaseButton>
 
           <BaseButton style_variant="filled" className={classes.loginButton} color_variant="blue">
-            <Text
-              style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
+            <BaseText
+              size={15}
+              fontWeight_variant={700}
               onClick={() => {
                 router.push('/');
               }}
             >
               Sign Up
-            </Text>
+            </BaseText>
           </BaseButton>
         </Group>
       </Flex>
@@ -104,13 +105,17 @@ function Header() {
           </BaseText>
         </Link>
 
-        <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
-          Program for recovery <Image src={Images.link_icon} width="9.333px" height="8px" />
-        </BaseText>
+        <Link href="/recovery-program">
+          <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+            Program for recovery <Image src={Images.link_icon} width="9.333px" height="8px" />
+          </BaseText>
+        </Link>
 
-        <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
-          Resources <Image src={Images.link_icon} width="9.333px" height="8px" />
-        </BaseText>
+        <Link href="/resources">
+          <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+            Resources <Image src={Images.link_icon} width="9.333px" height="8px" />
+          </BaseText>
+        </Link>
       </Flex>
     </Container>
   );

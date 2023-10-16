@@ -57,7 +57,7 @@ export default function Experience() {
           </Button>
         </Flex>
 
-        <Box mt={40} mb={25}>
+        <Box mt={40} mb={25} >
           <PageSearchBox num={200} type="experiences" />
         </Box>
         <Flex direction="column" gap={16} align="center" justify="center">

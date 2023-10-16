@@ -7,13 +7,10 @@ export const createStyle = () => createStyles((theme) => ({
 
     },
     topicsLayout: {
-        gap: '20px',
-        width: '216px',
+        width: '230px',
         height: '100vh',
         borderRadius: '16px',
         background: theme.colors.white[0],
-        justifyContent: 'center',
-        alignItems: 'center',
         padding: '24px',
         '&:hover': {
             cursor: 'pointer',

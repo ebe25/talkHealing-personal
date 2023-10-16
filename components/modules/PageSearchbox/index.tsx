@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { Container, Flex, useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { SearchInput } from '@/components/elements/SearchInput/SearchInput';

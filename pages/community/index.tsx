@@ -1,11 +1,12 @@
+/* eslint-disable import/extensions */
 import {
   Container,
   Flex,
-  Title,
   Button,
   SimpleGrid,
   Card,
   Image,
+  useMantineTheme,
 } from '@mantine/core';
 import { createStyle } from './Community.style';
 import Header from '@/components/modules/Header/Header';
@@ -80,16 +81,15 @@ const communityCardData = [
 export default function Community() {
   const useStyles = createStyle();
   const { classes } = useStyles();
+  const theme = useMantineTheme();
   return (
     <>
       <Header />
-      <Container maw="100%" className={classes.container}>
+      <Container maw="100%" className={classes.container} p="50px 150px">
         <Flex justify="space-between" align="center" mb={40}>
-          <Title order={2}>
-            <BaseText color="black" fontWeight_variant={700} size={40}>
-              Patients Community
-            </BaseText>
-          </Title>
+          <BaseText color="black" fontWeight_variant={700} size={40}>
+            Patients Community
+          </BaseText>
 
           <Button className={classes.button_container} variant="default">
             Create community
@@ -97,24 +97,21 @@ export default function Community() {
         </Flex>
         <PageSearchBox num={89} type="communities" />
 
-        <SimpleGrid cols={3} mt={32} spacing={90}>
+        <SimpleGrid cols={3} mt={32} spacing={32}>
           {communityCardData.map((community) => (
-            <Card key={community.id} className={classes.card_container}>
-              <Card.Section>
-                <Image
-                  src={community.communityImg}
-                  alt={community.communityName}
-                  height="200px"
-                  width="100%"
-                  style={{ objectFit: 'cover' }}
-                />
-              </Card.Section>
-
+            <Card padding={0} key={community.id} className={classes.card_container}>
+              <Image
+                src={community.communityImg}
+                alt={community.communityName}
+                height="200px"
+                width="100%"
+                style={{ objectFit: 'cover' }}
+              />
               <Flex direction="column" align="center" justify="center" gap={8} mt={32} mb={30}>
-                <BaseText fontWeight_variant={700} size_variant="lg" color="black">
+                <BaseText fontWeight_variant={700} size={20}>
                   {community.communityName}
                 </BaseText>
-                <BaseText fontWeight_variant={500} size_variant="md" color="#6C6C6C">
+                <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
                   {community.timestamp}
                 </BaseText>
               </Flex>

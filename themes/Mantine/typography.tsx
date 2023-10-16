@@ -397,7 +397,7 @@ export const typography: any = {
         fontWeight: 600,
       } as React.CSSProperties,
       l10: {
-        fontFamily: webFontFamily['Urbanist-SemiBold'],
+        fontFamily: webFontFamily['Urbanist-Regular'],
         fontStyle: 'normal',
         fontSize: '60px',
         lineHeight: '83px',

@@ -1,4 +1,5 @@
-import { Flex, Container, useMantineTheme, Box, Title } from '@mantine/core';
+/* eslint-disable import/extensions */
+import { Flex, Container, useMantineTheme } from '@mantine/core';
 import React from 'react';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from './Latest-research.style';
@@ -43,7 +44,7 @@ export default function LatestResearch() {
     <>
       <Header />
       <Container maw="100%" className={classes.container}>
-        <BaseText color={theme.colors.black[9]} size_variant="xl" fontWeight_variant={700} mb={10}>
+        <BaseText color={theme.colors.black[9]} size={40} fontWeight_variant={700} mb={10}>
           Lastest Research
         </BaseText>
         <Flex gap="32px">

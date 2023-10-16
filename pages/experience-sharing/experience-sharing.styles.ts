@@ -2,13 +2,13 @@ import { createStyles } from '@mantine/core';
 
 export const createStyle = () => createStyles((theme) => ({
     container: {
-        padding: '50px 170px',
+        padding: '80px 200px',
         margin: 'auto',
         maxWidth: '100%',
         background: theme.colors.gray[9],
     },
     cardContainer: {
-        width: '800px',
+        width: '100%',
         height: '218px',
         borderRadius: '20px',
         background: theme.colors.white[0],

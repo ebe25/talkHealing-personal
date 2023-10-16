@@ -15,7 +15,7 @@ function TestimonialCarousal(props: { carouselData: any }) {
 
   return (
     <>
-      <Carousel maw="70%" mx="auto" loop height={300} slideSize="50%" align="start">
+      <Carousel maw="100%" mx="auto" loop height={300} slideSize="60%" align="start">
         {props.carouselData.map((item: any, id: any) => (
           <Carousel.Slide key={id}>
             <Card padding="lg" className={classes.testimonialCard}>

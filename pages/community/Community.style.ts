@@ -3,8 +3,7 @@ import { createStyles } from '@mantine/core';
 export const createStyle = () => createStyles((theme) => ({
     container: {
         background: theme.colors.gray[9],
-        padding: '50px 170px',
-        margin: '0 auto',
+        margin: 'auto',
     },
     button_container: {
         display: 'inline-flex',
@@ -15,7 +14,7 @@ export const createStyle = () => createStyles((theme) => ({
         borderRadius: '11px',
     },
     card_container: {
-        width: '325px',
+        width: '300px',
         height: '440px',
         borderRadius: '16px',
         background: theme.colors.white,
