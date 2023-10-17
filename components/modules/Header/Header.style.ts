@@ -7,21 +7,21 @@ export const createStyle = () => {
 
   return createStyles((theme) => ({
     containerBox: {
-      width: '1440px',
       height: '194px',
       background: theme.colors.white,
       boxShadow: '0px 4px 34px 0px rgba(196, 196, 196, 0.25)',
+      padding: '38px 120px',
     },
-    container: {
-      padding: '40px 0px 40px 200px',
-      [theme.fn.smallerThan('sm')]: {
-        padding: '2px',
-        gap: '10px',
-      },
-      [theme.fn.smallerThan('xs')]: {
-        display: 'hidden',
-      },
-    },
+    // container: {
+    //   padding: '40px 0px 40px 200px',
+    //   [theme.fn.smallerThan('sm')]: {
+    //     padding: '2px',
+    //     gap: '10px',
+    //   },
+    //   [theme.fn.smallerThan('xs')]: {
+    //     display: 'hidden',
+    //   },
+    // },
     search: {
       width: '353px',
       height: '38px',
@@ -31,17 +31,17 @@ export const createStyle = () => {
       padding: '36px 438px 950px 649px',
     },
 
-    mobileMenu: {
-      justifyContent: 'space-between',
-      height: '78px',
-      width: '100%',
-      padding: '0px 10px',
-      alignItems: 'center',
-      gap: '20px',
-      [theme.fn.largerThan('xs')]: {
-        display: 'none',
-      },
-    },
+    // mobileMenu: {
+    //   justifyContent: 'space-between',
+    //   height: '78px',
+    //   width: '100%',
+    //   padding: '0px 10px',
+    //   alignItems: 'center',
+    //   gap: '20px',
+    //   [theme.fn.largerThan('xs')]: {
+    //     display: 'none',
+    //   },
+    // },
     cursor: {
       cursor: 'pointer',
     },
@@ -52,14 +52,14 @@ export const createStyle = () => {
       alignItems: 'center',
       gap: '10px',
     },
-    subHeading: {
-      width: '1040px',
-      height: '57px',
-      flexShrink: 0,
-      borderRadius: '80px',
-      background: '#F4F7F8',
-      margin: 'auto',
-    },
+    // subHeading: {
+    //   width: '1040px',
+    //   height: '57px',
+    //   flexShrink: 0,
+    //   borderRadius: '80px',
+    //   background: '#F4F7F8',
+    //   margin: 'auto',
+    // },
     subHeadingText: {
       borderRadius: '80px',
       padding: '20px 40px',

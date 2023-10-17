@@ -32,29 +32,32 @@ function Header() {
 
   return (
     // <Box className={classes.containerBox}>
-    <Container maw={1070} className={classes.containerBox}>
+    <Container maw="100%" className={classes.containerBox}>
       {/**Header mainHeading */}
       <Flex w="100%" justify="space-between" align="center" mt="20px">
         <Link href="/">
           <Image src="/icons/Talkhealing_logo.png" width="134.008px" height="24px" />
         </Link>
 
-        <BaseText
-          fontWeight_variant={700}
-          color={theme.colors.black[9]}
-          onClick={() => router.push('./forum')}
-          style={{ cursor: 'pointer' }}
-        >
-          Forum
-        </BaseText>
-        <BaseText
-          fontWeight_variant={700}
-          color={theme.colors.black[9]}
-          onClick={() => router.push('./community')}
-          style={{ cursor: 'pointer' }}
-        >
-          Community
-        </BaseText>
+        <Group spacing={25}>
+          <BaseText
+            fontWeight_variant={700}
+            color={theme.colors.black[9]}
+            onClick={() => router.push('./forum')}
+            style={{ cursor: 'pointer' }}
+          >
+            Forum
+          </BaseText>
+          <BaseText
+            fontWeight_variant={700}
+            color={theme.colors.black[9]}
+            onClick={() => router.push('./community')}
+            style={{ cursor: 'pointer' }}
+          >
+            Community
+          </BaseText>
+        </Group>
+
         <SearchInput placeholder="Search..." />
 
         <Group>

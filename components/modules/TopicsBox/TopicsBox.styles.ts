@@ -7,7 +7,7 @@ export const createStyle = () => createStyles((theme) => ({
 
     },
     topicsLayout: {
-        width: '230px',
+        width: '280px',
         height: '100vh',
         borderRadius: '16px',
         background: theme.colors.white[0],
