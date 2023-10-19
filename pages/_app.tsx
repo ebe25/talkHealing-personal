@@ -6,13 +6,14 @@ import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core
 import { Notifications } from '@mantine/notifications';
 
 //importing theme file
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { MANTINE_THEME } from '@/themes/Mantine/theme';
-import "@/themes/Mantine/WebFonts/stylesheet.css";
+import '@/themes/Mantine/WebFonts/stylesheet.css';
 
 //setting up store
-import { i18nx } from "../i18n";
-import { RootStore, RootStoreProvider, setupRootStore } from "@/models";
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { i18nx } from '../i18n';
+import { RootStore, RootStoreProvider, setupRootStore } from '@/models';
+
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
@@ -22,7 +23,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     setColorScheme(nextColorScheme);
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
-  let currentTheme = MANTINE_THEME;
+  const currentTheme = MANTINE_THEME;
   currentTheme.colorScheme;
 
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined);
@@ -33,26 +34,22 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     })();
   }, []);
   if (!rootStore) return null;
-  if (rootStore.i18nStore.appLanguage)
-    i18nx.locale = rootStore.i18nStore.appLanguage;
-  else {
+  if (rootStore.i18nStore.appLanguage) { i18nx.locale = rootStore.i18nStore.appLanguage; } else {
     rootStore.i18nStore.setSystemDefault();
   }
-  if (rootStore.i18nStore.appLanguage)
-    i18nx.locale = rootStore.i18nStore.appLanguage;
-  else {
+  if (rootStore.i18nStore.appLanguage) { i18nx.locale = rootStore.i18nStore.appLanguage; } else {
     rootStore.i18nStore.setSystemDefault();
   }
 
-  let googleOAuthProviderClientId="115727969785-dr3gd9rpagos187jq3mg8gphbe3hb0ds.apps.googleusercontent.com";
+  const googleOAuthProviderClientId = '115727969785-dr3gd9rpagos187jq3mg8gphbe3hb0ds.apps.googleusercontent.com';
 
   return (
 
-   <div dir={rootStore.i18nStore.isRTL ? "rtl" : "ltr"}>
-    <GoogleOAuthProvider clientId={googleOAuthProviderClientId} >
+   <div dir={rootStore.i18nStore.isRTL ? 'rtl' : 'ltr'}>
+    <GoogleOAuthProvider clientId={googleOAuthProviderClientId}>
       <RootStoreProvider value={rootStore}>
         <Head>
-          <title>Mantine next example</title>
+          <title>TalkHealing</title>
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
           <link rel="shortcut icon" href="/favicon.svg" />
         </Head>
@@ -64,6 +61,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
             withNormalizeCSS
             withCSSVariables
           >
+
             <Component {...pageProps} />
             <Notifications />
           </MantineProvider>

@@ -8,7 +8,7 @@ import {
   Card,
   useMantineTheme,
 } from '@mantine/core';
-
+import { useDisclosure } from '@mantine/hooks';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
@@ -24,6 +24,7 @@ export default function Home() {
 
   const useStyles = createStyle();
   const { classes } = useStyles();
+  const [opened, { toggle }] = useDisclosure();
 
   const testimonialData = [
     {
@@ -183,14 +184,10 @@ export default function Home() {
       {/**testimonials */}
       <Box maw="100%" p="0px 120px">
         <Flex direction="column" gap={56} justify="flex-start">
-        <BaseText
-          color_variant="black"
-          fontWeight_variant={700}
-          size={48}
-        >
-          Testimonials
-        </BaseText>
-        <TestimonialCarousal carouselData={testimonialData} />
+          <BaseText color_variant="black" fontWeight_variant={700} size={48}>
+            Testimonials
+          </BaseText>
+          <TestimonialCarousal carouselData={testimonialData} />
         </Flex>
       </Box>
     </Container>

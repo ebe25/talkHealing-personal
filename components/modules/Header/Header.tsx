@@ -1,42 +1,43 @@
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React from 'react';
 import { Flex, Group, Container, Image, useMantineTheme } from '@mantine/core';
 
-import { useDisclosure } from '@mantine/hooks';
+import { useMediaQuery } from '@mantine/hooks';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Images } from '@/public';
 import { createStyle } from './Header.style';
-import { useStores } from '@/models';
 import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
+import HeaderMobile from './HeaderMobile';
 
 function Header() {
   const theme = useMantineTheme();
-  const { i18nStore, userStore } = useStores();
   const useStyles = createStyle();
   const { classes } = useStyles();
-  const [opened, { open, close }] = useDisclosure(false);
-  const [active, setActive] = useState(false);
-  const [searchText, setSearchText] = useState<string>('');
   const router = useRouter();
+  const isMobileView = useMediaQuery('(max-width: 69.0625em)');
 
-  const searchTextFunction = () => {
-    const name = searchText.toLowerCase();
-    if (name.length) {
-      router.push(`./product-listing?search-product=${name}`);
-    }
-  };
-  //   console.log(typography.paragraph[i18nStore.getCurrentLanguage()].p1);
+  if (isMobileView) {
+    return (
+      <Container maw="100%" className={classes.containerMobile}>
+        <Group spacing={15} >
+        <HeaderMobile />
+        <Link href="/">
+          <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
+        </Link>
+        </Group>
+      </Container>
+    );
+  }
 
   return (
-    // <Box className={classes.containerBox}>
     <Container maw="100%" className={classes.containerBox}>
       {/**Header mainHeading */}
-      <Flex w="100%" justify="space-between" align="center" mt="20px">
+      <Flex w="100%" justify="space-between" align="center" mt="10px">
         <Link href="/">
-          <Image src="/icons/Talkhealing_logo.png" width="134.008px" height="24px" />
+          <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
         </Link>
 
         <Group spacing={25}>
@@ -92,9 +93,10 @@ function Header() {
         justify="space-between"
         align="center"
         h={57}
-        w={1050}
+        w="100%"
         className={classes.subHeadingText}
-        mt="40px"
+        mt="25px"
+        wrap="wrap"
       >
         <Link href="/latest-research">
           <BaseText className={`${classes.navLinks} ${classes.cursor}`}>

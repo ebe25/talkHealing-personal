@@ -12,6 +12,10 @@ export const createStyle = () => {
       boxShadow: '0px 4px 34px 0px rgba(196, 196, 196, 0.25)',
       padding: '38px 120px',
     },
+    containerMobile: {
+      height: '80px',
+      padding: '20px 10px',
+    },
     // container: {
     //   padding: '40px 0px 40px 200px',
     //   [theme.fn.smallerThan('sm')]: {
@@ -22,14 +26,17 @@ export const createStyle = () => {
     //     display: 'hidden',
     //   },
     // },
-    search: {
-      width: '353px',
-      height: '38px',
-      flexShrink: 0,
-      borderRadius: '7px',
-      border: '1px solid #EBEBEB',
-      padding: '36px 438px 950px 649px',
-    },
+    // search: {
+    //   width: '353px',
+    //   height: '38px',
+    //   flexShrink: 0,
+    //   borderRadius: '7px',
+    //   border: '1px solid #EBEBEB',
+    //   padding: '36px 438px 950px 649px',
+    //   [theme.fn.smallerThan('sm')]: {
+    //     display: 'hidden',
+    //   },
+    // },
 
     // mobileMenu: {
     //   justifyContent: 'space-between',
