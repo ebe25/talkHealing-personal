@@ -7,8 +7,9 @@ import {
   SimpleGrid,
   Card,
   useMantineTheme,
+  Center,
 } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { useMediaQuery } from '@mantine/hooks';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
@@ -24,39 +25,17 @@ export default function Home() {
 
   const useStyles = createStyle();
   const { classes } = useStyles();
-  const [opened, { toggle }] = useDisclosure();
+  const responsiveTabGridBreakpoint = useMediaQuery('(max-width:  76.0625em)'); //1217px
+  const responsiveMobileGridBreakpoint = useMediaQuery('(max-width: 47.4375em)'); //759px
+  const responsiveGridSmallerScreens = useMediaQuery('(max-width: 37em)'); //592px
+  const responsiveMainSection = useMediaQuery('(max-width: 60.875em)'); //974px
+  const responsiveCaraousel = useMediaQuery('(max-width: 66em)'); //1056px
 
-  const testimonialData = [
-    {
-      userName: 'Albert John',
-      role: 'Patient',
-      userProfileImg: Images.userProfileImage,
-      content:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-    {
-      userName: 'Albert John',
-      role: 'Patient',
-      userProfileImg: Images.userProfileImage,
-      content:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-    {
-      userName: 'Albert John',
-      role: 'Patient',
-      userProfileImg: Images.userProfileImage,
-      content:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-    {
-      userName: 'Albert John',
-      role: 'Patient',
-      userProfileImg: Images.userProfileImage,
-      content:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
-  ];
-
+  interface HowItWorksItem {
+    id: number;
+    step: string;
+    description: string;
+  }
   const howItWorksData = [
     {
       id: 1,
@@ -83,113 +62,179 @@ export default function Home() {
         'Receive updates, news, and valuable information about your health condition and the latest research findings. Stay informed about events and webinars. Feel free to ask questions or seek advice from the community. Many members are willing to share their knowledge and experiences.',
     },
   ];
+
+  // Function to generate card content (how it works grid cards)
+  const generateCardContent = (item: HowItWorksItem, responsive: Boolean) => (
+    <Card
+      padding={responsive ? 16 : 25}
+      className={responsive ? classes.innerCardResponsive : classes.innerCard}
+      key={item.id}
+    >
+      <Flex justify="space-between" align="center" gap={responsive ? 10 : 40}>
+        <Flex
+          direction="column"
+          justify={responsive ? 'flex-evenly' : 'flex-start'}
+          align="center"
+          gap={responsive ? '20px' : '16px'}
+        >
+          <BaseText fontWeight_variant={700} size={28} color="black">
+            {item.step}
+          </BaseText>
+          {!responsive && (
+            <BaseText fontWeight_variant={400} size={12} color="black">
+              {item.description}
+            </BaseText>
+          )}
+        </Flex>
+        <BaseText
+          c={theme.colors.green[1]}
+          style={typography.paragraph[i18nStore.getCurrentLanguage()].p7}
+        >
+          {item.id}
+        </BaseText>
+      </Flex>
+      <Image height={60} width={60} src="/icons/know_more_icon.png" mt={responsive ? 20 : 32} />
+    </Card>
+  );
+
+  const testimonialData = [
+    {
+      userName: 'Albert John',
+      role: 'Patient',
+      userProfileImg: Images.userProfileImage,
+      content: 'Very Good platform. Kudos to the developers and contributers',
+    },
+    {
+      userName: 'Albert John',
+      role: 'Patient',
+      userProfileImg: Images.userProfileImage,
+      content:
+        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+    {
+      userName: 'Albert John',
+      role: 'Patient',
+      userProfileImg: Images.userProfileImage,
+      content:
+        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+    {
+      userName: 'Albert John',
+      role: 'Patient',
+      userProfileImg: Images.userProfileImage,
+      content:
+        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    },
+  ];
+
   return (
     <Container className={classes.container}>
       <Header />
+
+      {/**Main section */}
       <Box maw="100%">
-        <Flex justify="space-evenly" align="center">
-          <Box className={classes.subMainText}>
-            <Flex direction="column" justify="flex-start" align="center" gap="17px">
-              <BaseText size={60} fontWeight_variant={700}>
-                Lorem ipsum dolor sit amet consect.
-              </BaseText>
+        {responsiveMainSection ? (
+          <Flex justify="center" align="center" direction="column" gap={50}>
+            <Box className={classes.responsiveSubMainText}>
+              <Flex direction="column" justify="center" align="center" gap="17px">
+                <BaseText fontWeight_variant={700} size={25}>
+                  Lorem ipsum dolor sit amet consect.
+                </BaseText>
 
-              <BaseText style={{ opacity: 0.7 }} fontWeight_variant={400} size={16}>
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.
-              </BaseText>
-            </Flex>
-          </Box>
+                <Box className={classes.responsiveSecondSubMainText}>
+                  {' '}
+                  <BaseText>
+                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.
+                  </BaseText>
+                </Box>
+              </Flex>
+              <Image src={Images.public_health} alt="public_health" h={350} w={350} />
+            </Box>
+          </Flex>
+        ) : (
+          <Flex justify="space-evenly" align="center">
+            <Box className={classes.subMainText}>
+              <Flex direction="column" justify="flex-start" align="center" gap="17px">
+                <BaseText size={60} fontWeight_variant={700}>
+                  Lorem ipsum dolor sit amet consect.
+                </BaseText>
 
-          <Image
-            className={classes.rightSide}
-            src={Images.public_health}
-            height="440px"
-            width="440px"
-          />
+                <BaseText style={{ opacity: 0.7 }} fontWeight_variant={400} size={16}>
+                  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo consequat.
+                </BaseText>
+              </Flex>
+            </Box>
 
-          {/** <Box className={classes.galleryItemBoxForMobile}>
-
-          <CarouselBoxMobile data={galleryItemData} />
-        </Box>*/}
-        </Flex>
+            <Image
+              className={classes.rightSide}
+              src={Images.public_health}
+              height="440px"
+              width="440px"
+            />
+          </Flex>
+        )}
       </Box>
 
       {/* how it works */}
       <Box maw="100%">
         <BaseText
           fontWeight_variant={700}
-          size={48}
+          size={45}
           style={
             (typography.headings[i18nStore.getCurrentLanguage()].h3,
-            { textAlign: 'center', marginTop: '200px' })
+            { textAlign: 'center', marginTop: '150px' })
           }
         >
           How it works
         </BaseText>
 
-        <SimpleGrid cols={2} spacing={40} className={classes.gridContainer}>
-          {howItWorksData.map((item) => (
-            <Card padding={25} className={classes.innerCard} key={item.id}>
-              <Flex justify="space-evenly" align="center" gap={40}>
-                {/**Inner content box */}
-                <Flex direction="column" justify="flex-start" align="center" gap="16px">
-                  <BaseText fontWeight_variant={700} size={28} color="black">
-                    {item.step}
-                  </BaseText>
-                  <BaseText fontWeight_variant={400} size={12} color="black">
-                    {item.description}
-                  </BaseText>
-                </Flex>
-                {/**Number text  */}
-                <BaseText
-                  c={theme.colors.green[1]}
-                  style={typography.paragraph[i18nStore.getCurrentLanguage()].p7}
-                >
-                  {item.id}
-                </BaseText>
-              </Flex>
-              {/**Know more button  */}
-
-              <Image height={60} width={60} src="/icons/know_more_icon.png" mt={32} />
-            </Card>
-          ))}
-        </SimpleGrid>
-
-        {/* <Flex justify={'space-around'} align={'center'} gap={'40px'}>
-          <Box w={'500px'} h={'337px'} className={classes.infoCard}>
-            <Center>
-              {' '}
-              <BaseText
-                fontWeight_variant={700}
-                color="black"
-                style={(typography.headings[i18nStore.getCurrentLanguage()].h5, { opacity: '1' })}
-              >
-                Lorem Ipsum{' '}
-              </BaseText>
-              <BaseText
-                fontWeight_variant={700}
-                color="black"
-                style={(typography.headings[i18nStore.getCurrentLanguage()].h5, { opacity: '1' })}
-              >
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.
-     700         </BaseText>
-            </Center>
-          </Box>
-        </Flex> */}
+        <Center>
+          <SimpleGrid
+            cols={
+              responsiveGridSmallerScreens
+                ? 1
+                : responsiveTabGridBreakpoint
+                ? 2
+                : responsiveMobileGridBreakpoint
+                ? 1
+                : 2
+            }
+            spacing={40}
+            className={
+              responsiveMobileGridBreakpoint
+                ? classes.responsiveGridContainer
+                : classes.gridContainer
+            }
+          >
+            {howItWorksData.map((item) => generateCardContent(item, responsiveTabGridBreakpoint))}
+          </SimpleGrid>
+        </Center>
       </Box>
 
       {/**testimonials */}
-      <Box maw="100%" p="0px 120px">
-        <Flex direction="column" gap={56} justify="flex-start">
-          <BaseText color_variant="black" fontWeight_variant={700} size={48}>
-            Testimonials
-          </BaseText>
-          <TestimonialCarousal carouselData={testimonialData} />
-        </Flex>
-      </Box>
+      {responsiveCaraousel ? (
+        <Box className={classes.caraouselBox}>
+          <Flex direction="column" gap={10}>
+            <BaseText c="black" fontWeight_variant={700} size={40} style={{ textAlign: 'center'}}>
+              Testimonials
+            </BaseText>
+            <TestimonialCarousal carouselData={testimonialData} orientation="vertical" />
+          </Flex>
+        </Box>
+      ) : (
+        <Box className={classes.caraouselBox}>
+          <Flex direction="column" gap={56} justify="flex-start">
+            <BaseText c="black" fontWeight_variant={700} size={48}>
+              Testimonials
+            </BaseText>
+            <TestimonialCarousal carouselData={testimonialData} orientation="horizontal" />
+          </Flex>
+        </Box>
+      )}
     </Container>
   );
 }

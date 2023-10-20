@@ -1,54 +1,56 @@
+/* eslint-disable import/extensions */
 import React from 'react';
-import { Flex, Image, Box, useMantineTheme, Card, Group } from '@mantine/core';
+import { Flex, Image, Box, useMantineTheme, Card } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
-// eslint-disable-next-line import/extensions
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from './TestimonialCarousal.style';
-import { useStores } from '@/models';
-import { typography } from '@/themes/Mantine/typography';
 
-function TestimonialCarousal(props: { carouselData: any }) {
+interface CarouselProps {
+  carouselData: Array<Object>;
+  orientation: any;
+}
+
+function TestimonialCarousal({ carouselData, orientation }: CarouselProps) {
   const theme = useMantineTheme();
   const useStyles = createStyle();
   const { classes } = useStyles();
-  const { i18nStore } = useStores();
 
   return (
     <>
-      <Carousel maw="100%" mx="auto" loop height={300} slideSize="60%" align="start">
-        {props.carouselData.map((item: any, id: any) => (
-          <Carousel.Slide key={id}>
-            <Card padding="lg" className={classes.testimonialCard}>
-              <Flex justify="space-around" align="center">
-                <Image
-                  src={item.userProfileImg}
-                  alt="userImage"
-                  className={classes.carousel_image}
-                />
-                <Box className={classes.carousel_text}>
-                  <Group spacing="xs">
-                    <BaseText
-                      color_variant={theme.colors.black}
-                      style={typography.headings[i18nStore.getCurrentLanguage()].h8}
-                      key="txt1"
-                    >
-                      {item.userName}
-                    </BaseText>
-                    <BaseText
-                      key="txt2"
-                      color_variant={theme.colors.black}
-                      style={typography.headings[i18nStore.getCurrentLanguage()].h9}
+      <Carousel
+        maw="100%"
+        mx="auto"
+        height={250}
+        slideSize="60%"
+        align="start"
+        orientation={orientation}
+        withControls={false}
+        loop
+      >
+        {carouselData.map((item: any, id: any) => (
+          <Carousel.Slide key={id} className={classes.crouselSlide}>
+            <Card className={classes.testimonialCard}>
+              <Box className={classes.carousel_image}>
+                <Image src={item.userProfileImg} alt="userImage" />
+              </Box>
 
-                    >
-                      {item.role}
-                    </BaseText>
-                  </Group>
-                  <BaseText>
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
+              <Box className={classes.carousel_text}>
+                <Flex
+                  gap={14}
+                  justify="center"
+                  align="center"
+                  className={classes.carousel_textFlex}
+                >
+                  <BaseText color_variant={theme.colors.dark[9]} fontWeight_variant={700}>
+                    {item.userName}
                   </BaseText>
-                </Box>
-              </Flex>
+                  <BaseText color_variant={theme.colors.dark[9]} fontWeight_variant={400}>
+                    {item.role}
+                  </BaseText>
+                </Flex>
+
+                <BaseText>{item.content}</BaseText>
+              </Box>
             </Card>
           </Carousel.Slide>
         ))}

@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { Center, createStyles } from '@mantine/core';
 
 import { useStores } from '@/models';
 
@@ -26,32 +26,7 @@ export const createStyle = () => {
     rightSide: {
       justifyContent: 'center',
       alignItems: 'center',
-      [theme.fn.smallerThan('sm')]: {
-        padding: '50px',
-      },
-      [theme.fn.smallerThan('xs')]: {
-        padding: '30px',
-      },
     },
-    // productSectionsCard: {
-    //   marginTop: '20px',
-    //   gap: '20px',
-    //   flexWrap: 'wrap',
-    //   [theme.fn.smallerThan('lg')]: {
-    //     gap: '10px',
-    //   },
-    //   [theme.fn.smallerThan('md')]: {
-    //     justifyContent: 'center',
-    //   },
-    // },
-    // filterSectionsCard: {
-    //   marginTop: '20px',
-    //   gap: '10px',
-    //   flexWrap: 'wrap',
-    //   [theme.fn.smallerThan('xs')]: {
-    //     justifyContent: 'center',
-    //   },
-    // },
     cursor: {
       cursor: 'pointer',
     },
@@ -63,30 +38,6 @@ export const createStyle = () => {
     //     margin: '-5px -30px 0px -30px',
     //   },
     // },
-    // crouselSlide: {
-    //   display: 'flex',
-    //   justifyContent: 'center',
-    // },
-    // slideBox: {
-    //   display: 'flex',
-    //   flexDirection: 'column',
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    //   gap: '2px',
-    //   cursor: 'pointer',
-    //   width: '150px',
-    // },
-    // galleryItemBox: {
-    //   [theme.fn.smallerThan('xs')]: {
-    //     display: 'none',
-    //   },
-    // },
-    // galleryItemBoxForMobile: {
-    //   [theme.fn.largerThan('xs')]: {
-    //     display: 'none',
-    //   },
-    // },
-
     innerCard: {
       borderRadius: '32px',
       background: theme.colors.green[1],
@@ -96,8 +47,48 @@ export const createStyle = () => {
     subMainText: {
       width: '522px',
     },
+    responsiveSubMainText: {
+      width: '400px',
+      marginTop: '20px',
+      [theme.fn.smallerThan('lg')]: {
+        textAlign: 'center',
+      },
+
+    },
+    responsiveSecondSubMainText: {
+      opacity: 0.7,
+      fontWeight: 400,
+      fontSize: '20px',
+      [theme.fn.smallerThan('xs')]: {
+        display: 'none',
+      },
+    },
+    responsiveImgMain: {
+      [theme.fn.smallerThan('xs')]: {
+        display: 'none',
+      },
+    },
     gridContainer: {
       padding: '80px 120px',
+    },
+    responsiveGridContainer: {
+      padding: '40px 10px',
+      margin: 'auto',
+    },
+    innerCardResponsive: {
+      borderRadius: '32px',
+      background: theme.colors.green[1],
+      height: '340px',
+      width: '270px',
+      overflow: 'auto',
+    },
+    caraouselBox: {
+      maxWidth: '100%',
+      padding: '0px 120px',
+      [theme.fn.smallerThan('lg')]:{
+        textAlign: 'center',
+        padding: '30px',
+      },
     },
   }));
 };
