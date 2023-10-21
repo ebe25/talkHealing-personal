@@ -7,7 +7,10 @@ import {
   Card,
   Image,
   useMantineTheme,
+  Box,
+  Group,
 } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { createStyle } from './Community.style';
 import Header from '@/components/modules/Header/Header';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -82,24 +85,27 @@ export default function Community() {
   const useStyles = createStyle();
   const { classes } = useStyles();
   const theme = useMantineTheme();
+  const tabResponsiveBreakPoint = useMediaQuery('(max-width: 76.8125em)');
+  const mobileResponsiveBreakPoint = useMediaQuery('(max-width: 41.9375em)');
   return (
     <>
       <Header />
-      <Container maw="100%" className={classes.container} p="50px 150px">
-        <Flex justify="space-between" align="center" mb={40}>
-          <BaseText color="black" fontWeight_variant={700} size={40}>
-            Patients Community
-          </BaseText>
-
+      <Container maw="100%" className={classes.container}>
+        <Box className={classes.subBodyFlex}>
+          <BaseText>Patients Community</BaseText>
           <Button className={classes.button_container} variant="default">
             Create community
           </Button>
-        </Flex>
+        </Box>
         <PageSearchBox num={89} type="communities" />
 
-        <SimpleGrid cols={3} mt={32} spacing={32}>
+        <SimpleGrid
+          cols={mobileResponsiveBreakPoint ? 1 : tabResponsiveBreakPoint ? 2 : 3}
+          mt={30}
+          spacing={tabResponsiveBreakPoint ? 40 : 32}
+        >
           {communityCardData.map((community) => (
-            <Card padding={0} key={community.id} className={classes.card_container}>
+            <Card key={community.id} className={classes.card_container}>
               <Image
                 src={community.communityImg}
                 alt={community.communityName}

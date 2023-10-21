@@ -30,8 +30,8 @@ const ResearchCard: React.FC<ResearchCardProps> = ({ research }) => {
           {research.content}
         </BaseText>
       </Group>
-      <Flex justify="space-between" align="center">
-        <Group spacing="13px">
+      <Flex className={classes.detailBtns}>
+        <Group className={classes.btnGroup}>
           <Button className={classes.userPostedButton}>
             <Flex justify="center" align="center" gap="xs">
               <Image src="/icons/mdi_eye_icon.png" alt="eyeIcon" width="16" height="16" />

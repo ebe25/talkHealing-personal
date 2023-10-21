@@ -8,12 +8,15 @@ export const createStyle = () => createStyles((theme) => ({
     },
     topicsLayout: {
         width: '280px',
-        height: '100vh',
+        height: '100%',
         borderRadius: '16px',
         background: theme.colors.white[0],
         padding: '24px',
         '&:hover': {
             cursor: 'pointer',
+        },
+        [theme.fn.smallerThan('md')]:{
+            display: 'none',
         },
     },
     topicsText: {

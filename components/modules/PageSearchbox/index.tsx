@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import { Container, Flex, useMantineTheme } from '@mantine/core';
+import {Container, useMantineTheme } from '@mantine/core';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
 import { createStyle } from './PageSearch.style';
@@ -15,12 +15,10 @@ export default function PageSearchBox({ num, type }: PageSearchBoxProps) {
   const { classes } = useStyles();
   return (
     <Container className={classes.searchInputContainer}>
-      <Flex justify="space-between" align="center">
-        <BaseText color_variant={theme.colors.black[9]} fontWeight_variant={700} size_variant="lg">
-          {num} {type}
-        </BaseText>
-        <SearchInput />
-      </Flex>
+      <BaseText color_variant={theme.colors.black[9]} fontWeight_variant={700} size_variant="lg">
+        {num} {type}
+      </BaseText>
+      <SearchInput />
     </Container>
   );
 }
