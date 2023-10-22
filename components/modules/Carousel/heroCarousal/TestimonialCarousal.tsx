@@ -1,7 +1,8 @@
 /* eslint-disable import/extensions */
-import React from 'react';
+import { useRef } from 'react';
 import { Flex, Image, Box, useMantineTheme, Card } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
+
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from './TestimonialCarousal.style';
 

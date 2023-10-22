@@ -5,6 +5,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
 import { createStyle } from './TopicsBox.styles';
+import Mobiletopics from '../MobileTopics';
 
 const commonDiseases = [
   'Hypertension (High Blood Pressure)',
@@ -25,9 +26,12 @@ export default function TopicsBox() {
   const { classes } = useStyles();
   const [opened, { toggle }] = useDisclosure(false);
   const responsiveTab = useMediaQuery('(max-width: 74.25em)');
+  const responsiveMobile = useMediaQuery('(max-width: 61.9375em)');
   return (
     <>
-      {responsiveTab ? (
+      {responsiveMobile ? (
+        <Mobiletopics topicsData={commonDiseases} />
+      ) : responsiveTab ? (
         <Container className={classes.topicsLayout}>
           {/**Title */}
           <Title order={2}>
@@ -36,7 +40,7 @@ export default function TopicsBox() {
             </BaseText>
           </Title>
           {/**Diseases */}
-          <Collapse in={opened} transitionDuration={800} transitionTimingFunction="linear">
+          <Collapse in={opened} transitionDuration={1000} transitionTimingFunction="linear">
             <Flex direction="column" mt={27} gap="10px">
               {commonDiseases.map((disease, index) => (
                 <BaseText

@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 
+
 //importing theme file
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { MANTINE_THEME } from '@/themes/Mantine/theme';

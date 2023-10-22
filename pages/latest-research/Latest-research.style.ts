@@ -15,16 +15,17 @@ export const createStyle = () => createStyles((theme) => ({
     heading: {
         fontWeight: 700,
         fontSize: '40px',
-        [theme.fn.smallerThan('lg')]: { fontSize: '25px'},
-        [theme.fn.smallerThan('md')]:{
+        [theme.fn.smallerThan('lg')]: { fontSize: '25px' },
+        [theme.fn.smallerThan('md')]: {
             textAlign: 'center',
         },
 
     },
     mainItems: {
-        gap:'32px',
+        gap: '32px',
         [theme.fn.smallerThan('md')]: {
-            justifyContent:'center',
+            flexDirection: 'column',
+            justifyContent: 'center',
             alignItems: 'center',
         },
     },

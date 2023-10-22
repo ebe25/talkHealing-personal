@@ -15,9 +15,6 @@ export const createStyle = () => createStyles((theme) => ({
         '&:hover': {
             cursor: 'pointer',
         },
-        [theme.fn.smallerThan('md')]:{
-            display: 'none',
-        },
     },
     topicsText: {
         '&:hover': {
@@ -25,4 +22,5 @@ export const createStyle = () => createStyles((theme) => ({
             borderRadius: '11px',
         },
     },
+
 }));
