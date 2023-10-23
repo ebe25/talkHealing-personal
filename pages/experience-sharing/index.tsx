@@ -1,6 +1,16 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import { Button, Container, Flex, Box, Card, Group, Text } from '@mantine/core';
+import {
+  Button,
+  Container,
+  Flex,
+  Box,
+  Card,
+  Group,
+  Text,
+  Image,
+  useMantineTheme,
+} from '@mantine/core';
 import { Icon } from '@iconify/react';
 import Header from '@/components/modules/Header/Header';
 import { createStyle } from './experience-sharing.styles';
@@ -8,8 +18,21 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import PageSearchBox from '@/components/modules/PageSearchbox';
 import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
+import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 
-const experienceCards = [
+interface ExperienceCard {
+  id: number;
+  title: string;
+  description: string;
+  datePosted: string;
+  likes: number;
+  comments: number;
+  userImg: string;
+  userName: string;
+  userHandle: string;
+}
+
+const experienceCards: ExperienceCard[] = [
   {
     id: 1,
     title: 'Overcoming Diabetes with a Healthy Lifestyle',
@@ -17,7 +40,11 @@ const experienceCards = [
       'I successfully managed my diabetes by adopting a healthier diet and regular exercise.',
     datePosted: 'Oct 23',
     likes: 25,
-    comments: '10k',
+    comments: 10000, // Changed to a number
+    userImg:
+      'https://img.freepik.com/premium-vector/man-avatar-portrait-man-minimalist-flat-illustration_186332-435.jpg?w=740',
+    userName: 'Alice',
+    userHandle: '@aliceInWonderland',
   },
   {
     id: 2,
@@ -27,6 +54,10 @@ const experienceCards = [
     datePosted: 'Sept 23',
     likes: 42,
     comments: 15,
+    userImg:
+      'https://img.freepik.com/free-photo/view-3d-confident-businessman_23-2150709932.jpg?t=st=1698037819~exp=1698041419~hmac=b518e7c1693e7ad21cf6154609c8b14ad7ea2338f626e573efa05b3e68d0a2fc&w=740',
+    userName: 'Bob',
+    userHandle: '@bobTheSurvivor',
   },
   {
     id: 3,
@@ -34,22 +65,46 @@ const experienceCards = [
     description:
       'Learn how I improved my mental health by reducing stress and practicing mindfulness.',
     datePosted: 'Aug 23',
-    likes: '30k',
+    likes: 30000, // Changed to a number
     comments: 5,
+    userImg: 'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375_1280.png',
+    userName: 'Charlie',
+    userHandle: '@ChillCharlie',
+  },
+  {
+    id: 4,
+    title: 'Post Covid-19 Symptoms',
+    description: 'Last quarter I had a lot of symptoms, but I managed to get through them.',
+    datePosted: 'June 2020',
+    likes: 45000, // Changed to a number
+    comments: 100,
+    userImg:
+      'https://img.freepik.com/premium-photo/man-with-glasses-black-shirt-is-circle_745528-3013.jpg?w=740',
+    userName: 'John Doe',
+    userHandle: '@TheCovidSurvivor',
   },
   // Add more experience cards as needed
+];
+
+const FORUM_ICONS = [
+  { id: 1, icon: 'zondicons:calendar', key: 'datePosted' },
+  { id: 2, icon: 'mdi:eye', key: 'likes' },
+  { id: 3, icon: 'mdi:insert-comment', key: 'comments' },
 ];
 
 export default function Experience() {
   const useStyles = createStyle();
   const { classes } = useStyles();
   const { i18nStore } = useStores();
+  const theme = useMantineTheme();
+
   return (
     <>
       <Header />
       <Container className={classes.container}>
-        <Flex justify="space-between" align="center">
-          <BaseText color="black" fontWeight_variant={700} size={40}>
+        {/**Page heading */}
+        <Flex justify="space-between" align="center" className={classes.headingFlex}>
+          <BaseText color="black" fontWeight_variant={700}>
             Experience sharing
           </BaseText>
           <Button variant="default" color="gray" radius={11}>
@@ -57,46 +112,64 @@ export default function Experience() {
           </Button>
         </Flex>
 
-        <Box mt={40} mb={25} >
+        {/** PageSearchbar */}
+        <Box className={classes.pgeSearchBox}>
           <PageSearchBox num={200} type="experiences" />
         </Box>
+
+        {/**main container */}
         <Flex direction="column" gap={16} align="center" justify="center">
-          {experienceCards.map((item) => (
-            <Card className={classes.cardContainer} key={item.id} padding="34px 32px">
-              <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
-                {item.title}
-              </BaseText>
-              <BaseText
-                style={
-                  (typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
-                  { opacity: 0.7, marginTop: '6px' })
-                }
-              >
-                {item.description}
-              </BaseText>
-              <Flex mt={24} justify="space-between" align="center">
-                <Group spacing={16}>
-                  <Box className={classes.forumIcons}>
-                    <Icon icon="zondicons:calendar" />
-                    <Text size={14} fw={400}>
-                      {item.datePosted}
-                    </Text>
-                  </Box>
-                  <Box className={classes.forumIcons}>
-                    <Icon icon="mdi:eye" />
-                    <BaseText size_variant="sm" fontWeight_variant={400}>
-                      {item.likes}
+          {experienceCards.map((item: ExperienceCard) => (
+            <Card className={classes.cardContainer} key={item.id} padding="34px 32px" shadow="lg">
+              {/**cardHead */}
+              <Box className={classes.cardHead}>
+                <Group>
+                  {' '}
+                  <Image
+                    src={item.userImg}
+                    width={55}
+                    height={55}
+                    radius="xl"
+                    style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
+                  />
+                  <Flex direction="column" align="flex-start" justify="center" gap={0}>
+                    <BaseText fontWeight_variant={600}>{item.userName}</BaseText>
+                    <BaseText c="gray" size={14}>
+                      {item.userHandle}
                     </BaseText>
-                  </Box>
-                  <Box className={classes.forumIcons}>
-                    <Icon icon="mdi:insert-comment" hFlip />
-                    <BaseText size_variant="sm" fontWeight_variant={400}>
-                      {item.comments}
-                    </BaseText>
-                  </Box>
+                  </Flex>
                 </Group>
+                <BaseButton style_variant="filled" color_variant="lime" radius={15}>
+                  <Text>Follow</Text>
+                </BaseButton>
+              </Box>
+              {/**cardContent */}
+              <Box className={classes.cardContent}>
+                <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
+                  {item.title}
+                </BaseText>
+                <BaseText
+                  className={classes.content}
+                  style={
+                    (typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
+                    { opacity: 0.7, marginTop: '6px' })
+                  }
+                >
+                  {item.description}
+                </BaseText>
+                {/**icons */}
+                <Box className={classes.Icons}>
+                  {FORUM_ICONS.map((forum) => (
+                    <Box className={classes.forumIcons} key={forum.id}>
+                      <Icon icon={forum.icon} />
+                      <BaseText size_variant="sm" fontWeight_variant={400}>
+                        {item[forum.key as keyof ExperienceCard]}
+                      </BaseText>
+                    </Box>
+                  ))}
                   <Icon icon="ic:sharp-share" />
-              </Flex>
+                </Box>
+              </Box>
             </Card>
           ))}
         </Flex>
