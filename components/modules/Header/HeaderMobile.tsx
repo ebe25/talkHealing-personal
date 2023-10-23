@@ -1,43 +1,41 @@
 /* eslint-disable import/extensions */
 import { useDisclosure } from '@mantine/hooks';
-import {
-  Drawer,
-  Burger,
-  Flex,
-  Group,
-  Text,
-  Stack,
-  Box,
-  UnstyledButton,
-  Image,
-} from '@mantine/core';
+import { Drawer, Burger, Flex, Group, Text, Stack, Box, Image } from '@mantine/core';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Images } from '@/public';
 import { createStyle } from './HeaderMobile.style';
+import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
+import { BaseText } from '@/components/elements/BaseText/BaseText';
 
 const navigationLinks = [
   { id: 1, label: 'Latest-Research', url: '/latest-research' },
   { id: 2, label: 'Experience-Sharing', url: '/experience-sharing' },
-  { id: 3, label: 'Program-for-recovery', url: '/recovery-program' },
-  { id: 4, label: 'Resources', url: '/resources' },
   { id: 5, label: 'Forum', url: '/forum' },
   { id: 6, label: 'Community', url: '/community' },
+  // { id: 4, label: 'Resources', url: '/resources' },
+  // { id: 3, label: 'Program-for-recovery', url: '/recovery-program' },
 ];
 export default function HeaderMobile() {
   const [opened, { toggle }] = useDisclosure(false);
   const useStyles = createStyle();
   const { classes } = useStyles();
+  const router = useRouter();
   return (
     <>
       <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" size="lg" />
       {/* Drawer content */}
       <Drawer
+        closeOnEscape
         opened={opened}
         onClose={toggle}
         position="left" // You can adjust the position as needed
         size="xs" // Adjust the size based on your design
         overlayProps={{ opacity: 0.5, blur: 4 }}
-        withCloseButton={false}
+        withCloseButton
+        transitionTimingFunction="linear"
+        transitionDuration={5000}
+        onClick={toggle}
       >
         {/* Mobile menu items */}
         <Flex direction="column" align="flex-start" h="90vh">
@@ -54,8 +52,29 @@ export default function HeaderMobile() {
             </Stack>
             {/* Login and Sign Up buttons */}
             <Group spacing="xl">
-              <UnstyledButton>Login</UnstyledButton>
-              <UnstyledButton>Sign Up</UnstyledButton>
+              <BaseButton style_variant="filled" color_variant="lime">
+                <BaseText
+                  size={15}
+                  fontWeight_variant={700}
+                  onClick={() => {
+                    router.push('/');
+                  }}
+                >
+                  Login
+                </BaseText>
+              </BaseButton>
+
+              <BaseButton style_variant="filled" color_variant="blue">
+                <BaseText
+                  size={15}
+                  fontWeight_variant={700}
+                  onClick={() => {
+                    router.push('/');
+                  }}
+                >
+                  Sign Up
+                </BaseText>
+              </BaseButton>
             </Group>
           </Box>
         </Flex>

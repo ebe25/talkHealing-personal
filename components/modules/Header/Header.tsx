@@ -22,11 +22,11 @@ function Header() {
   if (isMobileView) {
     return (
       <Container maw="100%" className={classes.containerMobile}>
-        <Group spacing={15} >
-        <HeaderMobile />
-        <Link href="/">
-          <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
-        </Link>
+        <Group spacing={15}>
+          <HeaderMobile />
+          <Link href="/">
+            <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
+          </Link>
         </Group>
       </Container>
     );
@@ -90,7 +90,7 @@ function Header() {
 
       {/**Navlinks subheading */}
       <Flex
-        justify="space-between"
+        justify="space-evenly"
         align="center"
         h={57}
         w="100%"
@@ -110,7 +110,7 @@ function Header() {
           </BaseText>
         </Link>
 
-        <Link href="/recovery-program">
+        {/* <Link href="/recovery-program">
           <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
             Program for recovery <Image src={Images.link_icon} width="9.333px" height="8px" />
           </BaseText>
@@ -120,7 +120,7 @@ function Header() {
           <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
             Resources <Image src={Images.link_icon} width="9.333px" height="8px" />
           </BaseText>
-        </Link>
+        </Link> */}
       </Flex>
     </Container>
   );
