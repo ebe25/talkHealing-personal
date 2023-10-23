@@ -2,10 +2,20 @@ import { createStyles } from '@mantine/core';
 
 export const createStyle = () => createStyles((theme) => ({
     container: {
-        padding: '50px 170px',
+        padding: '70px 150px',
         margin: 'auto',
         maxWidth: '100%',
         background: theme.colors.gray[9],
+        [theme.fn.smallerThan(('lg'))]: {
+            padding: '22px 45px',
+        },
+        [theme.fn.smallerThan(('sm'))]: {
+            padding: '16px 25px',
+        },
+        [theme.fn.smallerThan(('xs'))]: {
+            padding: '8px 15px',
+        },
+
     },
     badges: {
         padding: '10px 24px',
@@ -18,6 +28,11 @@ export const createStyle = () => createStyles((theme) => ({
         '&:hover': {
             background: theme.colors.gray[1],
         },
+        [theme.fn.smallerThan(('md'))]: {
+            background: theme.colors.cyan[5],
+            padding: '5px 12px',
+            borderRadius: '22px',
+        },
     },
     card: {
         width: '792px',
@@ -25,6 +40,11 @@ export const createStyle = () => createStyles((theme) => ({
         borderRadius: '16px',
         background: theme.colors.white[0],
         padding: '35px',
+        [theme.fn.smallerThan(('md'))]: {
+            padding: '16px',
+            width: '100%',
+            height: 'auto',
+        },
     },
     forumIcons: {
         display: 'flex',
@@ -39,6 +59,25 @@ export const createStyle = () => createStyles((theme) => ({
             background: theme.colors.gray[1],
             cursor: 'pointer',
         },
+        [theme.fn.smallerThan(('xs'))]: {
+            display: 'none',
+        },
+    },
+    contentBox: {
+        display: 'flex',
+        gap: '12px',
+        [theme.fn.smallerThan(('md'))]: {
+            flexDirection: 'column',
+            justifyContent: 'center',
+        },
+    },
+    userInfo: {
+        flex: '1',
+    },
+    icons: {
+        // Styles for the icons section
+        display: 'flex',
+        alignItems: 'center',
     },
 
 }));
