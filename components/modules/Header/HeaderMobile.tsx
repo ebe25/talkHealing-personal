@@ -33,8 +33,6 @@ export default function HeaderMobile() {
         size="xs" // Adjust the size based on your design
         overlayProps={{ opacity: 0.5, blur: 4 }}
         withCloseButton
-        transitionTimingFunction="linear"
-        transitionDuration={5000}
         onClick={toggle}
       >
         {/* Mobile menu items */}

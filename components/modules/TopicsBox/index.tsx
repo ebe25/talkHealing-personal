@@ -1,5 +1,6 @@
 /* eslint-disable import/extensions */
-import { Button, Collapse, Container, Flex, Title, useMantineTheme } from '@mantine/core';
+import { useState } from 'react';
+import { Collapse, Container, Flex, Title, useMantineTheme } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -19,6 +20,7 @@ const commonDiseases = [
   'Arthritis',
   'Influenza (Flu)',
 ];
+
 export default function TopicsBox() {
   const { i18nStore } = useStores();
   const theme = useMantineTheme();
@@ -27,6 +29,11 @@ export default function TopicsBox() {
   const [opened, { toggle }] = useDisclosure(false);
   const responsiveTab = useMediaQuery('(max-width: 74.25em)');
   const responsiveMobile = useMediaQuery('(max-width: 61.9375em)');
+  const [selectedDiseases, setSelectedDiseases] = useState<Array<string>>([]);
+  const handleSelectedDiseases = (disease: string) => {
+    setSelectedDiseases((prevState: any) => [...prevState, disease]);
+  };
+  console.log(selectedDiseases);
   return (
     <>
       {responsiveMobile ? (
@@ -42,14 +49,17 @@ export default function TopicsBox() {
           {/**Diseases */}
           <Collapse in={opened} transitionDuration={1000} transitionTimingFunction="linear">
             <Flex direction="column" mt={27} gap="10px">
-              {commonDiseases.map((disease, index) => (
+              {commonDiseases.map((item, index) => (
                 <BaseText
                   key={index}
                   size_variant="sm"
                   style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i1}
                   className={classes.topicsText}
+                  onClick={() => {
+                    handleSelectedDiseases(item);
+                  }}
                 >
-                  {disease}
+                  {item}
                 </BaseText>
               ))}
             </Flex>
@@ -65,14 +75,17 @@ export default function TopicsBox() {
           </Title>
           {/**Diseases */}
           <Flex direction="column" mt={27} gap="10px">
-            {commonDiseases.map((disease, index) => (
+            {commonDiseases.map((item, index) => (
               <BaseText
                 key={index}
                 size_variant="sm"
                 style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i1}
                 className={classes.topicsText}
+                onClick={() => {
+                  handleSelectedDiseases(item);
+                }}
               >
-                {disease}
+                {item}
               </BaseText>
             ))}
           </Flex>

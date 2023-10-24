@@ -14,8 +14,7 @@ const researchData = [
   {
     id: 1,
     title: 'Genes diversity curing Cancer',
-    content:
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...',
+    content: 'Coronary Artery Disease was very frightening and a life-threating experience for me.',
     datePosted: 'Sept 2021',
     author: 'Bryce Walker',
   },
@@ -23,15 +22,14 @@ const researchData = [
     id: 2,
     title: 'Research title lorem ipsum dolor sit',
     content:
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...',
+      'S Arthritis Hypertension (High Blood Pressure) magna aliqua. Arthritis ad minim veniam, Influenza (Flu) exercitation ullamco Cancer nisi ut aliquip ex ea commodo consequat...',
     datePosted: 'Mar 2019',
     author: 'Andreas Walker',
   },
   {
     id: 3,
     title: 'Title for research lorem ipsum dolor sit',
-    content:
-      'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...',
+    content: `Sed do Diabetes Stroke ut labore Alzheimer's Disease aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...`,
     datePosted: 'Mar 2023',
     author: 'John Doe',
   },
