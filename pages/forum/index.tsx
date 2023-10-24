@@ -23,6 +23,7 @@ import TopicsBox from '@/components/modules/TopicsBox';
 import { Images } from '@/public/index';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import BadgesMenu from '@/components/elements/BadgesMenu';
+import FollowBtn from '@/components/modules/FollowBtn';
 
 const userCardData = [
   {
@@ -155,9 +156,7 @@ export default function Forum() {
                           {user.comments}
                         </BaseText>
                       </Box>
-                      <BaseButton style_variant="filled" color_variant="lime">
-                        <Text>Follow</Text>
-                      </BaseButton>
+                      <FollowBtn />
                     </Group>
                   </Box>
                 </Flex>

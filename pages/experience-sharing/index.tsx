@@ -7,7 +7,6 @@ import {
   Box,
   Card,
   Group,
-  Text,
   Image,
   useMantineTheme,
 } from '@mantine/core';
@@ -18,7 +17,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import PageSearchBox from '@/components/modules/PageSearchbox';
 import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
-import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
+import FollowBtn from '@/components/modules/FollowBtn';
 
 interface ExperienceCard {
   id: number;
@@ -139,9 +138,7 @@ export default function Experience() {
                     </BaseText>
                   </Flex>
                 </Group>
-                <BaseButton style_variant="filled" color_variant="lime" radius={15}>
-                  <Text>Follow</Text>
-                </BaseButton>
+                <FollowBtn />
               </Box>
               {/**cardContent */}
               <Box className={classes.cardContent}>
