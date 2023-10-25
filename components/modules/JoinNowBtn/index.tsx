@@ -1,16 +1,16 @@
 /* eslint-disable import/extensions */
 import { IconCheck } from '@tabler/icons-react';
-import { useMantineTheme } from '@mantine/core';
+import { Text, useMantineTheme } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 
-export default function FollowBtn() {
+export default function JoinNowBtn() {
   const theme = useMantineTheme();
   const handleNotification = () => {
     notifications.show({
       loading: false,
-      message: 'User profile followed',
+      message: 'Community Joined Successfully',
       autoClose: 2000,
       withCloseButton: true,
       icon: <IconCheck size={60} strokeWidth={5} color={theme.colors.green[0]} />,
@@ -20,11 +20,12 @@ export default function FollowBtn() {
   return (
     <BaseButton
       style_variant="filled"
-      color_variant="lime"
+      color_variant="blue"
       radius={15}
+      mt={15}
       onClick={handleNotification}
     >
-      <BaseText>Follow</BaseText>
+      <Text>Join now</Text>
     </BaseButton>
   );
 }

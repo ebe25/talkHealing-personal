@@ -36,7 +36,7 @@ export default function HeaderMobile() {
         onClick={toggle}
       >
         {/* Mobile menu items */}
-        <Flex direction="column" align="flex-start" h="90vh">
+        <Flex direction="column" align="flex-start" className={classes.menuContentFlex}>
           <Link href="/">
             <Image src={Images.talkhealingLogo} width="134.008px" height="24px" mt={20} />
           </Link>

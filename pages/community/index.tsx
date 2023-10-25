@@ -17,6 +17,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import PageSearchBox from '@/components/modules/PageSearchbox';
 import { Images } from '@/public';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
+import JoinNowBtn from '@/components/modules/JoinNowBtn';
 
 const communityCardData = [
   {
@@ -123,9 +124,7 @@ export default function Community() {
               </Flex>
               <Flex justify="center" align="center" direction="column">
                 <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
-                <BaseButton style_variant="filled" color_variant="blue" mt="lg">
-                  Join now
-                </BaseButton>
+                <JoinNowBtn />
               </Flex>
             </Card>
           ))}

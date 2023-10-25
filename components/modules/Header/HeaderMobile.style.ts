@@ -12,5 +12,11 @@ export const createStyle = () => {
             flexDirection: 'column',
             justifyContent: 'space-between',
         },
+        menuContentFlex: {
+            height: '90vh',
+            [theme.fn.smallerThan('xs')]:{
+                height: '80vh',
+            },
+        },
     }));
 };
