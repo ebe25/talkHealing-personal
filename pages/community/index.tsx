@@ -90,15 +90,15 @@ export default function Community() {
     <>
       <Header />
       <Box className={classes.container}>
-      <Container maw={1250} className={classes.container}>
-        <Box className={classes.subBodyFlex}>
-          <BaseText>Patients Community</BaseText>
-          <Button className={classes.button_container} variant="default">
-            Create community
-          </Button>
-        </Box>
-        <PageSearchBox num={89} type="communities" />
-        {/* <Grid>
+        <Container maw={1250} >
+          <Box className={classes.subBodyFlex}>
+            <BaseText>Patients Community</BaseText>
+            <Button className={classes.button_container} variant="default">
+              Create community
+            </Button>
+          </Box>
+          <PageSearchBox num={89} type="communities" />
+          {/* <Grid>
           {communityCardData.map((community) => (
           <Grid.Col xs={12} sm={6} md={4} lg={4} xl={4}>
 
@@ -128,8 +128,8 @@ export default function Community() {
 
         </Grid> */}
 
-        {/**grid card centered styling */}
-        {/* {centeredCardBreakPoint ? (
+          {/**grid card centered styling */}
+          {/* {centeredCardBreakPoint ? (
 
             <SimpleGrid
               cols={mobileResponsiveBreakPoint ? 1 : tabResponsiveBreakPoint ? 2 : 3}
@@ -163,45 +163,44 @@ export default function Community() {
             </SimpleGrid>
 
         ) : ( */}
-        <SimpleGrid
-          // cols={mobileResponsiveBreakPoint ? 1 : tabResponsiveBreakPoint ? 2 : 3}
-          // mt={30}
-          // spacing={tabResponsiveBreakPoint ? 40 : 32}
-          cols={3}
-          breakpoints={[
-            { minWidth: 575, cols: 1 }, // For small screens (sm breakpoint)
-            { minWidth: 750, cols: 2 }, // For medium screens (md breakpoint)
-            { minWidth: 991, cols: 3 }, // For large screens (lg breakpoint)
-          ]}
-          className={classes.centerGridCard}
-        >
-          {communityCardData.map((community) => (
-            <Card key={community.id} className={classes.card_container}>
-              <Image
-                src={community.communityImg}
-                alt={community.communityName}
-                height="200px"
-                width="100%"
-                style={{ objectFit: 'cover' }}
-              />
-              <Flex direction="column" align="center" justify="center" gap={8} mt={32} mb={30}>
-                <BaseText fontWeight_variant={700} size={20}>
-                  {community.communityName}
-                </BaseText>
-                <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
-                  {community.timestamp}
-                </BaseText>
-              </Flex>
-              <Flex justify="center" align="center" direction="column">
-                <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
-                <JoinNowBtn />
-              </Flex>
-            </Card>
-          ))}
-        </SimpleGrid>
-      </Container>
+          <SimpleGrid
+            // cols={mobileResponsiveBreakPoint ? 1 : tabResponsiveBreakPoint ? 2 : 3}
+            // mt={30}
+            // spacing={tabResponsiveBreakPoint ? 40 : 32}
+            cols={3}
+            breakpoints={[
+              { minWidth: 575, cols: 1 }, // For small screens (sm breakpoint)
+              { minWidth: 750, cols: 2 }, // For medium screens (md breakpoint)
+              { minWidth: 1100, cols: 3 }, // For large screens (lg breakpoint)
+            ]}
+            className={classes.centerGridCard}
+          >
+            {communityCardData.map((community) => (
+              <Card key={community.id} className={classes.card_container}>
+                <Image
+                  src={community.communityImg}
+                  alt={community.communityName}
+                  height="200px"
+                  width="100%"
+                  style={{ objectFit: 'cover' }}
+                />
+                <Flex direction="column" align="center" justify="center" gap={8} mt={32} mb={30}>
+                  <BaseText fontWeight_variant={700} size={20}>
+                    {community.communityName}
+                  </BaseText>
+                  <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
+                    {community.timestamp}
+                  </BaseText>
+                </Flex>
+                <Flex justify="center" align="center" direction="column">
+                  <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
+                  <JoinNowBtn />
+                </Flex>
+              </Card>
+            ))}
+          </SimpleGrid>
+        </Container>
       </Box>
-  
     </>
   );
 }
