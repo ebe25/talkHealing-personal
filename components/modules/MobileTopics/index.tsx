@@ -10,7 +10,7 @@ export default function Mobiletopics({ topicsData }: MobiletopicsProps) {
   const useStyles = createStyle();
   const { classes } = useStyles();
   const [selectedDiseases, setSelectedDiseases] = useState<Array<String>>([]);
-  console.log(selectedDiseases);
+  // console.log(selectedDiseases);
   const handleSelectedDiseases = (disease: String) => {
     setSelectedDiseases((prevState: any) => [...prevState, disease]);
   };

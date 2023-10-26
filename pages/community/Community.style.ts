@@ -2,7 +2,7 @@ import { createStyles } from '@mantine/core';
 
 export const createStyle = () => createStyles((theme) => ({
     container: {
-        padding: "50px 150px",
+        padding: '50px 150px',
         background: theme.colors.gray[9],
         margin: 'auto',
         [theme.fn.smallerThan('lg')]: {
@@ -33,12 +33,12 @@ export const createStyle = () => createStyles((theme) => ({
         height: '440px',
         borderRadius: '16px',
         background: theme.colors.white[0],
-        [theme.fn.smallerThan('lg')]:{
+        [theme.fn.smallerThan('lg')]: {
             width: '330px',
             height: 'auto',
             borderRadius: '13px',
         },
-        [theme.fn.smallerThan('sm')]:{
+        [theme.fn.smallerThan('sm')]: {
             width: '300px',
             height: 'auto',
         },
@@ -61,6 +61,14 @@ export const createStyle = () => createStyles((theme) => ({
 
         [theme.fn.smallerThan('sm')]: {
             padding: '13px 35px',
+        },
+    },
+
+    centerGridCard: {
+        [theme.fn.smallerThan('sm')]:{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
         },
     },
 }));

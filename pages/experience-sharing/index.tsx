@@ -90,6 +90,7 @@ const Experience = observer(() => {
   const useStyles = createStyle();
   const { classes } = useStyles();
   const { i18nStore, experienceStore } = useStores();
+  const {experienceCardData} = experienceStore;
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
@@ -116,9 +117,9 @@ const Experience = observer(() => {
 
           {/**main container */}
           <Flex direction="column" gap={16} align="center" justify="center">
-            {}
-            {experienceCards.map((item: any) => (
-              <Card className={classes.cardContainer} key={item.id} padding="34px 32px" shadow="lg">
+            {/* {console.log('exp store data', experienceStore.experienceCardData)} */}
+            {experienceCardData.map((item: any) => (
+              <Card className={classes.cardContainer} key={item.id} padding="34px" shadow="lg">
                 {/**cardHead */}
                 <Box className={classes.cardHead}>
                   <Group>

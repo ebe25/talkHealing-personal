@@ -30,6 +30,7 @@ export const createStyle = () => createStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+       
     },
     forumIcons: {
         display: 'inline-flex',
@@ -65,9 +66,9 @@ export const createStyle = () => createStyles((theme) => ({
         },
     },
     cardContent: {
-        padding: '10px 50px',
+        padding: '10px 70px',
         [theme.fn.smallerThan(('sm'))]: {
-            padding: '10px 5px',
+            padding: '20px 5px',
             fontSize: '11px',
         },
 

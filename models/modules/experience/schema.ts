@@ -5,7 +5,7 @@ export const cardData = types.model({
     title: types.string,
     description: types.string,
     likes: types.maybeNull(types.number),
-    userImg: types.string,
+    userImg: types.maybeNull(types.string),
     userName: types.string,
     userHandle: types.string,
     datePosted: types.maybeNull(types.string),

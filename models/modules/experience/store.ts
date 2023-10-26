@@ -10,6 +10,7 @@ export const ExperienceStore = types
     })
     .extend(withEnvironment)
     .actions((self) => ({
+
         addExperienceCard: flow(function* (newCardData) { // Pass newCardData as a parameter
             return self.experienceCardData.push(newCardData); // Assuming newCardData is a valid object 
         }),
