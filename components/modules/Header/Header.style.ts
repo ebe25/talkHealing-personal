@@ -10,7 +10,7 @@ export const createStyle = () => {
       height: '194px',
       background: theme.colors.white,
       boxShadow: '0px 4px 34px 0px rgba(196, 196, 196, 0.25)',
-      padding: '38px 120px',
+      padding: '38px 100px',
     },
     containerMobile: {
       height: '80px',

@@ -51,6 +51,7 @@
     "localforage": "^1.10.0",
     "lodash": "^4.17.21",
     "mobx": "^6.9.0",
+    "mobx-react-lite": "^4.0.5",
     "mobx-state-tree": "^5.1.8",
     "moment": "^2.29.4",
     "next": "13.2.4",

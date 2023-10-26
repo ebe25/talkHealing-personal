@@ -33,7 +33,7 @@ export default function TopicsBox() {
   const handleSelectedDiseases = (disease: string) => {
     setSelectedDiseases((prevState: any) => [...prevState, disease]);
   };
-  console.log(selectedDiseases);
+  // console.log(selectedDiseases);
   return (
     <>
       {responsiveMobile ? (

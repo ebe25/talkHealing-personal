@@ -1,16 +1,9 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import {
-  Button,
-  Container,
-  Flex,
-  Box,
-  Card,
-  Group,
-  Image,
-  useMantineTheme,
-} from '@mantine/core';
+import { Button, Container, Flex, Box, Card, Group, Image, useMantineTheme } from '@mantine/core';
 import { Icon } from '@iconify/react';
+import { useDisclosure } from '@mantine/hooks';
+
 import Header from '@/components/modules/Header/Header';
 import { createStyle } from './experience-sharing.styles';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -18,6 +11,8 @@ import PageSearchBox from '@/components/modules/PageSearchbox';
 import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
 import FollowBtn from '@/components/modules/FollowBtn';
+import AddNewExp from '@/components/modules/Modals/ExperienceModal/addNewExp';
+import { observer } from 'mobx-react-lite';
 
 interface ExperienceCard {
   id: number;
@@ -91,86 +86,92 @@ const FORUM_ICONS = [
   { id: 3, icon: 'mdi:insert-comment', key: 'comments' },
 ];
 
-export default function Experience() {
+const Experience = observer(() => {
   const useStyles = createStyle();
   const { classes } = useStyles();
-  const { i18nStore } = useStores();
-  const theme = useMantineTheme();
+  const { i18nStore, experienceStore } = useStores();
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <>
       <Header />
-      <Container className={classes.container}>
-        {/**Page heading */}
-        <Flex justify="space-between" align="center" className={classes.headingFlex}>
-          <BaseText color="black" fontWeight_variant={700}>
-            Experience sharing
-          </BaseText>
-          <Button variant="default" color="gray" radius={11}>
-            Add new
-          </Button>
-        </Flex>
+      <Box className={classes.container}>
+        <Container maw={1250}>
+          {/**Page heading */}
+          <Flex justify="space-between" align="center" className={classes.headingFlex}>
+            <BaseText color="black" fontWeight_variant={700}>
+              Experience sharing
+            </BaseText>
+            {/**Add new button */}
+            <AddNewExp opened={opened} onClose={close} />
+            <Button variant="default" color="gray" radius={11} onClick={open}>
+              Add new
+            </Button>
+          </Flex>
 
-        {/** PageSearchbar */}
-        <Box className={classes.pgeSearchBox}>
-          <PageSearchBox num={200} type="experiences" />
-        </Box>
+          {/** PageSearchbar */}
+          <Box className={classes.pgeSearchBox}>
+            <PageSearchBox num={200} type="experiences" />
+          </Box>
 
-        {/**main container */}
-        <Flex direction="column" gap={16} align="center" justify="center">
-          {experienceCards.map((item: ExperienceCard) => (
-            <Card className={classes.cardContainer} key={item.id} padding="34px 32px" shadow="lg">
-              {/**cardHead */}
-              <Box className={classes.cardHead}>
-                <Group>
-                  {' '}
-                  <Image
-                    src={item.userImg}
-                    width={55}
-                    height={55}
-                    radius="xl"
-                    style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
-                  />
-                  <Flex direction="column" align="flex-start" justify="center" gap={0}>
-                    <BaseText fontWeight_variant={600}>{item.userName}</BaseText>
-                    <BaseText c="gray" size={14}>
-                      {item.userHandle}
-                    </BaseText>
-                  </Flex>
-                </Group>
-                <FollowBtn />
-              </Box>
-              {/**cardContent */}
-              <Box className={classes.cardContent}>
-                <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
-                  {item.title}
-                </BaseText>
-                <BaseText
-                  className={classes.content}
-                  style={
-                    (typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
-                    { opacity: 0.7, marginTop: '6px' })
-                  }
-                >
-                  {item.description}
-                </BaseText>
-                {/**icons */}
-                <Box className={classes.Icons}>
-                  {FORUM_ICONS.map((forum) => (
-                    <Box className={classes.forumIcons} key={forum.id}>
-                      <Icon icon={forum.icon} />
-                      <BaseText size_variant="sm" fontWeight_variant={400}>
-                        {item[forum.key as keyof ExperienceCard]}
+          {/**main container */}
+          <Flex direction="column" gap={16} align="center" justify="center">
+            {}
+            {experienceCards.map((item: any) => (
+              <Card className={classes.cardContainer} key={item.id} padding="34px 32px" shadow="lg">
+                {/**cardHead */}
+                <Box className={classes.cardHead}>
+                  <Group>
+                    {' '}
+                    <Image
+                      src={item.userImg}
+                      width={55}
+                      height={55}
+                      radius="xl"
+                      style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
+                    />
+                    <Flex direction="column" align="flex-start" justify="center" gap={0}>
+                      <BaseText fontWeight_variant={600}>{item.userName}</BaseText>
+                      <BaseText c="gray" size={14}>
+                        {item.userHandle}
                       </BaseText>
-                    </Box>
-                  ))}
-                  <Icon icon="ic:sharp-share" />
+                    </Flex>
+                  </Group>
+                  <FollowBtn />
                 </Box>
-              </Box>
-            </Card>
-          ))}
-        </Flex>
-      </Container>
+                {/**cardContent */}
+                <Box className={classes.cardContent}>
+                  <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
+                    {item.title}
+                  </BaseText>
+                  <BaseText
+                    className={classes.content}
+                    style={
+                      (typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
+                      { opacity: 0.7, marginTop: '6px' })
+                    }
+                  >
+                    {item.description}
+                  </BaseText>
+                  {/**icons */}
+                  <Box className={classes.Icons}>
+                    {FORUM_ICONS.map((forum) => (
+                      <Box className={classes.forumIcons} key={forum.id}>
+                        <Icon icon={forum.icon} />
+                        <BaseText size_variant="sm" fontWeight_variant={400}>
+                          {item[forum.key as keyof ExperienceCard]}
+                        </BaseText>
+                      </Box>
+                    ))}
+                    <Icon icon="ic:sharp-share" />
+                  </Box>
+                </Box>
+              </Card>
+            ))}
+          </Flex>
+        </Container>
+      </Box>
     </>
   );
-}
+});
+export default Experience;

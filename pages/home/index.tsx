@@ -128,12 +128,12 @@ export default function Home() {
   ];
 
   return (
-    <Container className={classes.container}>
+    <>
       <Header />
 
       {/**Main section */}
-      <Box maw="100%">
-        {responsiveMainSection ? (
+      <Container maw="1250px">
+        {/* {responsiveMainSection ? (
           <Flex justify="center" align="center" direction="column" gap={50}>
             <Box className={classes.responsiveSubMainText}>
               <Flex direction="column" justify="center" align="center" gap="17px">
@@ -153,31 +153,31 @@ export default function Home() {
               <Image src={Images.public_health} alt="public_health" h={350} w={350} />
             </Box>
           </Flex>
-        ) : (
-          <Flex justify="space-evenly" align="center">
-            <Box className={classes.subMainText}>
-              <Flex direction="column" justify="flex-start" align="center" gap="17px">
-                <BaseText size={60} fontWeight_variant={700}>
-                  Lorem ipsum dolor sit amet consect.
-                </BaseText>
+        ) : ( */}
+        <Flex justify="space-evenly" align="center" wrap={'wrap'}>
+          <Box className={classes.subMainText}>
+            <Flex direction="column" justify="flex-start" align="center" gap="17px">
+              <BaseText size={60} fontWeight_variant={700}>
+                Lorem ipsum dolor sit amet consect.
+              </BaseText>
 
-                <BaseText style={{ opacity: 0.7 }} fontWeight_variant={400} size={16}>
-                  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat.
-                </BaseText>
-              </Flex>
-            </Box>
+              <BaseText style={{ opacity: 0.7 }} fontWeight_variant={400} size={16}>
+                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+              </BaseText>
+            </Flex>
+          </Box>
 
-            <Image
-              className={classes.rightSide}
-              src={Images.public_health}
-              height="440px"
-              width="440px"
-            />
-          </Flex>
-        )}
-      </Box>
+          <Image
+            className={classes.rightSide}
+            src={Images.public_health}
+            height="440px"
+            width="440px"
+          />
+        </Flex>
+        {/* )} */}
+      </Container>
 
       {/* how it works */}
       <Box maw="100%">
@@ -219,10 +219,10 @@ export default function Home() {
       {responsiveCaraousel ? (
         <Box className={classes.caraouselBox}>
           <Flex direction="column" gap={10}>
-            <BaseText c="black" fontWeight_variant={700} size={40} style={{ textAlign: 'center'}}>
+            <BaseText c="black" fontWeight_variant={700} size={40} style={{ textAlign: 'center' }}>
               Testimonials
             </BaseText>
-            <TestimonialCarousal carouselData={testimonialData} orientation="vertical" />
+            <TestimonialCarousal carouselData={testimonialData} />
           </Flex>
         </Box>
       ) : (
@@ -231,10 +231,10 @@ export default function Home() {
             <BaseText c="black" fontWeight_variant={700} size={48}>
               Testimonials
             </BaseText>
-            <TestimonialCarousal carouselData={testimonialData} orientation="horizontal" />
+            <TestimonialCarousal carouselData={testimonialData} />
           </Flex>
         </Box>
       )}
-    </Container>
+    </>
   );
 }

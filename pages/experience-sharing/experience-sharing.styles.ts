@@ -4,9 +4,8 @@ export const createStyle = () => createStyles((theme) => ({
     container: {
         padding: '80px 150px',
         margin: 'auto',
-        maxWidth: '100%',
         background: theme.colors.gray[9],
-        [theme.fn.smallerThan("md")]: {
+        [theme.fn.smallerThan('md')]: {
             padding: '35px 40px',
         },
     },
@@ -100,6 +99,7 @@ export const createStyle = () => createStyles((theme) => ({
             marginBottom: '5px',
         },
     },
+
 }));
 
 export default createStyle;

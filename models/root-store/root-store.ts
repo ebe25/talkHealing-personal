@@ -7,6 +7,7 @@ import { NotificationStore } from '@/models/modules/notification/store';
 import { SettingsStore } from '@/models/modules/settings/store';
 import { GlobalsStore } from '@/models/modules/globals/store';
 import { GalleryStore } from '@/models/modules/gallery/store';
+import { ExperienceStore } from '../modules/experience/store';
 /**
  * A RootStore model.
  */
@@ -19,6 +20,8 @@ export const RootStoreModel = types.model('RootStore').props({
     i18nStore: types.optional(i18nStore, {} as any),
     notificationStore: types.optional(NotificationStore, {} as any),
     settingsStore: types.optional(SettingsStore, {} as any),
+    experienceStore: types.optional(ExperienceStore, {} as any),
+
 });
 /**
  * The RootStore instance.

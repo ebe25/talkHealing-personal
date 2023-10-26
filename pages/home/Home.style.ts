@@ -5,10 +5,10 @@ import { useStores } from '@/models';
 export const createStyle = () => {
   const { i18nStore } = useStores();
   return createStyles((theme) => ({
-    container: {
-      maxWidth: '100%',
-      padding: 0,
-    },
+    // container: {
+    //   maxWidth: '100%',
+    //   padding: 0,
+    // },
     // leftSide: {
     //   display: 'flex',
     //   flexDirection: 'column',

@@ -3,9 +3,8 @@ import { createStyles } from '@mantine/core';
 export const createStyle = () => createStyles((theme) => ({
     container: {
         padding: '70px 150px',
-        margin: 'auto',
-        maxWidth: '100%',
         background: theme.colors.gray[9],
+
         [theme.fn.smallerThan(('lg'))]: {
             padding: '22px 45px',
         },
@@ -65,7 +64,7 @@ export const createStyle = () => createStyles((theme) => ({
     },
     contentBox: {
         display: 'flex',
-        gap: '12px',
+        gap: '10px',
         [theme.fn.smallerThan(('md'))]: {
             flexDirection: 'column',
             justifyContent: 'center',

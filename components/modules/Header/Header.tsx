@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions */
 import React from 'react';
-import { Flex, Group, Container, Image, useMantineTheme } from '@mantine/core';
+import { Flex, Group, Container, Image, useMantineTheme, Box } from '@mantine/core';
 
 import { useMediaQuery } from '@mantine/hooks';
 import { useRouter } from 'next/router';
@@ -33,84 +33,85 @@ function Header() {
   }
 
   return (
-    <Container maw="100%" className={classes.containerBox}>
-      {/**Header mainHeading */}
-      <Flex w="100%" justify="space-between" align="center" mt="10px">
-        <Link href="/">
-          <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
-        </Link>
+    <Box className={classes.containerBox}>
+      <Container maw={1250}>
+        {/**Header mainHeading */}
+        <Flex w="100%" justify="space-between" align="center" mt="10px">
+          <Link href="/">
+            <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
+          </Link>
 
-        <Group spacing={25}>
-          <BaseText
-            fontWeight_variant={700}
-            color={theme.colors.black[9]}
-            onClick={() => router.push('./forum')}
-            style={{ cursor: 'pointer' }}
-          >
-            Forum
-          </BaseText>
-          <BaseText
-            fontWeight_variant={700}
-            color={theme.colors.black[9]}
-            onClick={() => router.push('./community')}
-            style={{ cursor: 'pointer' }}
-          >
-            Community
-          </BaseText>
-        </Group>
-
-        <SearchInput placeholder="Search..." />
-
-        <Group>
-          <BaseButton style_variant="filled" className={classes.loginButton} color_variant="lime">
+          <Group spacing={25}>
             <BaseText
-              size={15}
               fontWeight_variant={700}
-              onClick={() => {
-                router.push('/');
-              }}
+              color={theme.colors.black[9]}
+              onClick={() => router.push('./forum')}
+              style={{ cursor: 'pointer' }}
             >
-              Login
+              Forum
             </BaseText>
-          </BaseButton>
-
-          <BaseButton style_variant="filled" className={classes.loginButton} color_variant="blue">
             <BaseText
-              size={15}
               fontWeight_variant={700}
-              onClick={() => {
-                router.push('/');
-              }}
+              color={theme.colors.black[9]}
+              onClick={() => router.push('./community')}
+              style={{ cursor: 'pointer' }}
             >
-              Sign Up
+              Community
             </BaseText>
-          </BaseButton>
-        </Group>
-      </Flex>
+          </Group>
 
-      {/**Navlinks subheading */}
-      <Flex
-        justify="space-evenly"
-        align="center"
-        h={57}
-        w="100%"
-        className={classes.subHeadingText}
-        mt="25px"
-        wrap="wrap"
-      >
-        <Link href="/latest-research">
-          <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
-            Latest research <Image src={Images.link_icon} width="9.333px" height="8px" />
-          </BaseText>
-        </Link>
+          <SearchInput placeholder="Search..." />
 
-        <Link href="/experience-sharing">
-          <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
-            Experience sharing <Image src={Images.link_icon} width="9.333px" height="8px" />
-          </BaseText>
-        </Link>
+          <Group>
+            <BaseButton style_variant="filled" className={classes.loginButton} color_variant="lime">
+              <BaseText
+                size={15}
+                fontWeight_variant={700}
+                onClick={() => {
+                  router.push('/');
+                }}
+              >
+                Login
+              </BaseText>
+            </BaseButton>
 
-        {/* <Link href="/recovery-program">
+            <BaseButton style_variant="filled" className={classes.loginButton} color_variant="blue">
+              <BaseText
+                size={15}
+                fontWeight_variant={700}
+                onClick={() => {
+                  router.push('/');
+                }}
+              >
+                Sign Up
+              </BaseText>
+            </BaseButton>
+          </Group>
+        </Flex>
+
+        {/**Navlinks subheading */}
+        <Flex
+          justify="space-evenly"
+          align="center"
+          h={57}
+          w="100%"
+          className={classes.subHeadingText}
+          mt="25px"
+          wrap="wrap"
+        >
+          <Link href="/latest-research">
+            <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+              Latest research <Image src={Images.link_icon} width="9.333px" height="8px" />
+            </BaseText>
+          </Link>
+
+          <Link href="/experience-sharing">
+            <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+              Experience sharing <Image src={Images.link_icon} width="9.333px" height="8px" />
+            </BaseText>
+          </Link>
+
+          {/* <Link href="/recovery-program">
           <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
             Program for recovery <Image src={Images.link_icon} width="9.333px" height="8px" />
           </BaseText>
@@ -121,8 +122,9 @@ function Header() {
             Resources <Image src={Images.link_icon} width="9.333px" height="8px" />
           </BaseText>
         </Link> */}
-      </Flex>
-    </Container>
+        </Flex>
+      </Container>
+    </Box>
   );
 }
 

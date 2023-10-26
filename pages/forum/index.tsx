@@ -1,17 +1,5 @@
 /* eslint-disable import/extensions */
-import {
-  Container,
-  Flex,
-  Group,
-  Button,
-  Title,
-  Card,
-  Image,
-  Stack,
-  Box,
-  useMantineTheme,
-  Text,
-} from '@mantine/core';
+import { Container, Flex, Group, Button, Title, Card, Image, Stack, Box } from '@mantine/core';
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { useMediaQuery } from '@mantine/hooks';
@@ -21,7 +9,6 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import PageSearchBox from '@/components/modules/PageSearchbox';
 import TopicsBox from '@/components/modules/TopicsBox';
 import { Images } from '@/public/index';
-import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import BadgesMenu from '@/components/elements/BadgesMenu';
 import FollowBtn from '@/components/modules/FollowBtn';
 
@@ -91,108 +78,110 @@ export default function Forum() {
   return (
     <>
       <Header />
-      <Container className={classes.container}>
-        {/**heading */}
-        <Flex justify="space-between" align="center">
-          <Title order={3}>
-            <BaseText
-              color="black"
-              fontWeight_variant={700}
-              size={tabResponsivebreakpoint ? 25 : 40}
-              mb={tabResponsivebreakpoint ? 10 : 0}
-            >
-              Forum
-            </BaseText>
-          </Title>
-          {badgesBreakpoint ? (
-            <BadgesMenu />
-          ) : (
-            <Group spacing={tabResponsivebreakpoint ? 16 : 32}>
-              <Button className={classes.badges}>My questions</Button>
-              <Button className={classes.badges}>Ask questions</Button>
-            </Group>
-          )}
-        </Flex>
-        {/**content */}
-        <Box className={classes.contentBox}>
-          <TopicsBox />
-          <Flex direction="column" gap="sm">
-            <PageSearchBox num={312} type="forums" />
-            {userCardData.map((user) => (
-              <Card key={user.id} className={classes.card} shadow="lg">
-                {/** upper section */}
-                <Flex align="center" justify="space-between">
-                  <Box className={classes.userInfo}>
-                    <Group spacing={24}>
-                      <Image
-                        src={user.forumUserImage}
-                        alt="user"
-                        width={56}
-                        height={56}
-                        radius={56}
-                      />
-                      <Stack spacing={8}>
-                        <BaseText size_variant="md" fontWeight_variant={700}>
-                          {user.name}
-                        </BaseText>
-                        <BaseText size_variant="sm" fontWeight_variant={500}>
-                          {user.timestamp}
-                        </BaseText>
-                      </Stack>
-                    </Group>
-                  </Box>
+      <Box className={classes.container}>
+        <Container maw={1250}>
+          {/**heading */}
+          <Flex justify="space-between" align="center">
+            <Title order={3}>
+              <BaseText
+                color="black"
+                fontWeight_variant={700}
+                size={tabResponsivebreakpoint ? 25 : 40}
+                mb={tabResponsivebreakpoint ? 10 : 0}
+              >
+                Forum
+              </BaseText>
+            </Title>
+            {badgesBreakpoint ? (
+              <BadgesMenu />
+            ) : (
+              <Group spacing={tabResponsivebreakpoint ? 16 : 32}>
+                <Button className={classes.badges}>My questions</Button>
+                <Button className={classes.badges}>Ask questions</Button>
+              </Group>
+            )}
+          </Flex>
+          {/**content */}
+          <Box className={classes.contentBox}>
+            <TopicsBox />
+            <Flex direction="column" gap="sm">
+              <PageSearchBox num={312} type="forums" />
+              {userCardData.map((user) => (
+                <Card key={user.id} className={classes.card} shadow="lg">
+                  {/** upper section */}
+                  <Flex align="center" justify="space-between">
+                    <Box className={classes.userInfo}>
+                      <Group spacing={24}>
+                        <Image
+                          src={user.forumUserImage}
+                          alt="user"
+                          width={56}
+                          height={56}
+                          radius={56}
+                        />
+                        <Stack spacing={8}>
+                          <BaseText size_variant="md" fontWeight_variant={700}>
+                            {user.name}
+                          </BaseText>
+                          <BaseText size_variant="sm" fontWeight_variant={500}>
+                            {user.timestamp}
+                          </BaseText>
+                        </Stack>
+                      </Group>
+                    </Box>
 
-                  <Box className={classes.icons}>
-                    <Group spacing={mobileRespinsiveBreakPoint ? 4 : 16}>
-                      <Box className={classes.forumIcons}>
-                        <Icon icon="mdi:eye" />
-                        <BaseText size_variant="sm" fontWeight_variant={400}>
-                          {user.likes}
-                        </BaseText>
-                      </Box>
-                      <Box className={classes.forumIcons}>
-                        <Icon icon="mdi:insert-comment" hFlip />
-                        <BaseText size_variant="sm" fontWeight_variant={400}>
-                          {user.comments}
-                        </BaseText>
-                      </Box>
-                      <FollowBtn />
-                    </Group>
-                  </Box>
-                </Flex>
-
-                {/** content */}
-
-                <Box
-                  mt={mobileRespinsiveBreakPoint ? 10 : 20}
-                  pl={mobileRespinsiveBreakPoint ? 'sm ' : 'lg'}
-                >
-                  <Flex
-                    direction="column"
-                    gap={mobileRespinsiveBreakPoint ? 3 : 6}
-                    mt={mobileRespinsiveBreakPoint ? 15 : 0}
-                  >
-                    <Box style={{ textAlign: mobileRespinsiveBreakPoint ? 'center' : 'left' }}>
-                      <BaseText
-                        size={mobileRespinsiveBreakPoint ? 15 : 20}
-                        fontWeight_variant={600}
-                      >
-                        {user.title}
-                      </BaseText>
-                      <BaseText
-                        size={mobileRespinsiveBreakPoint ? 12 : 16}
-                        fontWeight_variant={400}
-                      >
-                        {user.description}
-                      </BaseText>
+                    <Box className={classes.icons}>
+                      <Group spacing={mobileRespinsiveBreakPoint ? 4 : 16}>
+                        <Box className={classes.forumIcons}>
+                          <Icon icon="mdi:eye" />
+                          <BaseText size_variant="sm" fontWeight_variant={400}>
+                            {user.likes}
+                          </BaseText>
+                        </Box>
+                        <Box className={classes.forumIcons}>
+                          <Icon icon="mdi:insert-comment" hFlip />
+                          <BaseText size_variant="sm" fontWeight_variant={400}>
+                            {user.comments}
+                          </BaseText>
+                        </Box>
+                        <FollowBtn />
+                      </Group>
                     </Box>
                   </Flex>
-                </Box>
-              </Card>
-            ))}
-          </Flex>
-        </Box>
-      </Container>
+
+                  {/** content */}
+
+                  <Box
+                    mt={mobileRespinsiveBreakPoint ? 10 : 20}
+                    pl={mobileRespinsiveBreakPoint ? 'sm ' : 'lg'}
+                  >
+                    <Flex
+                      direction="column"
+                      gap={mobileRespinsiveBreakPoint ? 3 : 6}
+                      mt={mobileRespinsiveBreakPoint ? 15 : 0}
+                    >
+                      <Box style={{ textAlign: mobileRespinsiveBreakPoint ? 'center' : 'left' }}>
+                        <BaseText
+                          size={mobileRespinsiveBreakPoint ? 15 : 20}
+                          fontWeight_variant={600}
+                        >
+                          {user.title}
+                        </BaseText>
+                        <BaseText
+                          size={mobileRespinsiveBreakPoint ? 12 : 16}
+                          fontWeight_variant={400}
+                        >
+                          {user.description}
+                        </BaseText>
+                      </Box>
+                    </Flex>
+                  </Box>
+                </Card>
+              ))}
+            </Flex>
+          </Box>
+        </Container>
+      </Box>
     </>
   );
 }

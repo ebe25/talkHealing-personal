@@ -2,19 +2,20 @@
 import { useRef } from 'react';
 import { Flex, Image, Box, useMantineTheme, Card } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
-
+import Autoplay from 'embla-carousel-autoplay';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from './TestimonialCarousal.style';
 
 interface CarouselProps {
   carouselData: Array<Object>;
-  orientation: any;
+  // orientation: any;
 }
 
-function TestimonialCarousal({ carouselData, orientation }: CarouselProps) {
+function TestimonialCarousal({ carouselData }: CarouselProps) {
   const theme = useMantineTheme();
   const useStyles = createStyle();
   const { classes } = useStyles();
+  // const autoplay = useRef(Autoplay({ delay: 200 }));
 
   return (
     <>
@@ -24,8 +25,13 @@ function TestimonialCarousal({ carouselData, orientation }: CarouselProps) {
         height={250}
         slideSize="60%"
         align="start"
-        orientation={orientation}
-        withControls={false}
+        withControls
+        withIndicators
+        // onMouseEnter={autoplay.current.stop}
+        // onMouseLeave={autoplay.current.reset}
+        // plugins={[autoplay.current]}
+        // orientation={}
+        // withControls={false}
         loop
       >
         {carouselData.map((item: any, id: any) => (
