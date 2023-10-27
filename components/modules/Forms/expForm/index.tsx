@@ -16,7 +16,7 @@ export const ExpForm = observer((props: { opened?: any; onClose?: any }) => {
   // const [loader, setLoader] = useState(false);
   // const [error, setError] = useState('');
   // const [year, date] = new Date().toDateString();
-  const dateFormatted = moment(new Date()).format('MMMM YYYY');
+  const dateFormatted = moment(new Date()).format('MMM YYYY');
   // const autoId = `'id' + ${Math.random().toString(16).slice(2)}`;
   const autoId = crypto.randomUUID();
   const [formData, setFormData] = useState<any>({

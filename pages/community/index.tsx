@@ -16,6 +16,7 @@ import { BaseText } from '@/components/elements/BaseText/BaseText';
 import PageSearchBox from '@/components/modules/PageSearchbox';
 import { Images } from '@/public';
 import JoinNowBtn from '@/components/modules/JoinNowBtn';
+import NoDataFound from '@/components/modules/NoDataFound/NoDataFound';
 
 const communityCardData = [
   {
@@ -88,8 +89,16 @@ export default function Community() {
   const handleSearchChange = (e: any) => {
     setSearchText(e.target.value);
   };
+  const filteredData = communityCardData.filter((card) => {
+    const filterCardString = [card.communityName, card.timestamp, card.communityName]
+      .join(' ')
+      .toLowerCase();
+    return filterCardString.includes(searchText.toLowerCase());
+  });
+
   // const tabResponsiveBreakPoint = useMediaQuery('(max-width: 76.8125em)');
   // const mobileResponsiveBreakPoint = useMediaQuery('(max-width: 41.9375em)');
+
   return (
     <>
       <Header />
@@ -117,49 +126,11 @@ export default function Community() {
             ]}
             className={classes.centerGridCard}
           >
-            {searchText
-              ? communityCardData
-                  .filter((card) => {
-                    const filterCardString = [
-                      card.communityName,
-                      card.timestamp,
-                      card.communityName,
-                    ]
-                      .join(' ')
-                      .toLowerCase();
-                    return filterCardString.includes(searchText.toLowerCase());
-                  })
-                  .map((community) => (
-                    <Card key={community.id} className={classes.card_container}>
-                      <Image
-                        src={community.communityImg}
-                        alt={community.communityName}
-                        height="200px"
-                        width="100%"
-                        style={{ objectFit: 'cover' }}
-                      />
-                      <Flex
-                        direction="column"
-                        align="center"
-                        justify="center"
-                        gap={8}
-                        mt={32}
-                        mb={30}
-                      >
-                        <BaseText fontWeight_variant={700} size={20}>
-                          {community.communityName}
-                        </BaseText>
-                        <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
-                          {community.timestamp}
-                        </BaseText>
-                      </Flex>
-                      <Flex justify="center" align="center" direction="column">
-                        <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
-                        <JoinNowBtn />
-                      </Flex>
-                    </Card>
-                  ))
-              : communityCardData.map((community) => (
+            {searchText ? (
+              filteredData.length === 0 ? (
+                <NoDataFound />
+              ) : (
+                filteredData.map((community) => (
                   <Card key={community.id} className={classes.card_container}>
                     <Image
                       src={community.communityImg}
@@ -188,7 +159,33 @@ export default function Community() {
                       <JoinNowBtn />
                     </Flex>
                   </Card>
-                ))}
+                ))
+              )
+            ) : (
+              communityCardData.map((community) => (
+                <Card key={community.id} className={classes.card_container}>
+                  <Image
+                    src={community.communityImg}
+                    alt={community.communityName}
+                    height="200px"
+                    width="100%"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <Flex direction="column" align="center" justify="center" gap={8} mt={32} mb={30}>
+                    <BaseText fontWeight_variant={700} size={20}>
+                      {community.communityName}
+                    </BaseText>
+                    <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
+                      {community.timestamp}
+                    </BaseText>
+                  </Flex>
+                  <Flex justify="center" align="center" direction="column">
+                    <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
+                    <JoinNowBtn />
+                  </Flex>
+                </Card>
+              ))
+            )}
           </SimpleGrid>
         </Box>
       </Container>

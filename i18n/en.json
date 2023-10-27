@@ -63,7 +63,9 @@
       "verify": "Verify",
       "deleteAccount": "Delete Account",
       "logOut": "Log Out",
-      "changeAddress": "Change address"
+      "changeAddress": "Change address",
+      "follow": "Follow",
+      "unfollow": "Unfollow"
     }
   },
   "profile": {
@@ -381,7 +383,7 @@
     "title": "Add your experience's title",
     "description": "Add description",
     "userImg": "Upload your avatar",
-    "userName": "userName", 
+    "userName": "userName",
     "userHandle": "@userHandle"
   }
 }
