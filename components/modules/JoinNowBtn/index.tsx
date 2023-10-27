@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import { useState } from 'react';
-import { IconCheck, IconPlus } from '@tabler/icons-react';
-import {  useMantineTheme } from '@mantine/core';
+import { IconPlus, IconX } from '@tabler/icons-react';
+import { useMantineTheme } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -26,10 +26,10 @@ export default function JoinNowBtn() {
         })
       : notifications.show({
           loading: false,
-          message: 'Community Already Joined',
+          message: 'Community Left !',
           autoClose: 2000,
           withCloseButton: true,
-          icon: <IconCheck size={60} strokeWidth={4} color={theme.colors.orange[4]} />,
+          icon: <IconX size={60} strokeWidth={4} color={theme.colors.red[4]} />,
           style: {
             backgroundColor: theme.colors.cyan[2],
             borderRadius: 15,
