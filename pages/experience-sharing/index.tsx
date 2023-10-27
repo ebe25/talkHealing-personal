@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Container, Flex, Box, Card, Group, Image } from '@mantine/core';
 import { Icon } from '@iconify/react';
 import { useDisclosure } from '@mantine/hooks';
@@ -13,6 +13,7 @@ import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
 import FollowBtn from '@/components/modules/FollowBtn';
 import AddNewExp from '@/components/modules/Modals/ExperienceModal/addNewExp';
+import NoDataFound from '@/components/modules/NoDataFound/NoDataFound';
 
 interface ExperienceCard {
   id: number;
@@ -99,6 +100,114 @@ const Experience = observer(() => {
     console.log(searchText);
   };
 
+  const CardExp = (props: { item: any }) => (
+    <Card className={classes.cardContainer} key={props.item.id} padding="34px" shadow="lg">
+      {/* cardHead */}
+      <Box className={classes.cardHead}>
+        <Group>
+          <Image
+            src={props.item.userImg}
+            width={55}
+            height={55}
+            radius="xl"
+            style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
+          />
+          <Flex direction="column" align="flex-start" justify="center" gap={0}>
+            <BaseText fontWeight_variant={600}>{props.item.userName}</BaseText>
+            <BaseText c="gray" size={14}>
+              {props.item.userHandle}
+            </BaseText>
+          </Flex>
+        </Group>
+        <FollowBtn />
+      </Box>
+      {/* cardContent */}
+      <Box className={classes.cardContent}>
+        <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
+          {props.item.title}
+        </BaseText>
+        <BaseText
+          className={classes.content}
+          style={{
+            ...typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
+            opacity: 0.7,
+            marginTop: '6px',
+          }}
+        >
+          {props.item.description}
+        </BaseText>
+        {/* icons */}
+        <Box className={classes.Icons}>
+          {FORUM_ICONS.map((forum) => (
+            <Box className={classes.forumIcons} key={forum.id}>
+              <Icon icon={forum.icon} />
+              <BaseText size_variant="sm" fontWeight_variant={400}>
+                {props.item[forum.key as keyof ExperienceCard]}
+              </BaseText>
+            </Box>
+          ))}
+          <Icon icon="ic:sharp-share" />
+        </Box>
+      </Box>
+    </Card>
+  );
+
+  const getFilteredData = async () => {
+    try {
+      const res = await experienceStore.getFilteredExperienceCard(searchText);
+      console.log(res);
+      return res;
+    } catch (error) {
+      console.log('Error', error);
+    }
+    return [];
+  };
+  const AsyncFilteredComponent = () => {
+    const [resolvedFilterData, SetResolvedFilterData] = useState<any>(null);
+    const fetchData = async () => {
+      try {
+        const data = await getFilteredData();
+        if (data.length === 0) {
+          SetResolvedFilterData(<NoDataFound />);
+        } else {
+          data.map((item) => <CardExp item={item} />);
+        }
+      } catch (error) {
+        console.log('Error', error);
+      }
+    };
+
+    useEffect(() => {
+      fetchData();
+    }, []);
+    return resolvedFilterData;
+  };
+
+  // interface filterDataProps {
+  //   item: any;
+  //   Text: any;
+  // }
+  // const filterData  = (item, Text) =>{
+  //   const cardString = [item.title, item.description, item.]
+  // }
+  // filterData(experienceCardData, searchText);
+
+  // const filterData = ((experienceCardData) => (
+  //   experienceCardData.filter((item) =>[item.description])
+  // ))
+  // const filteredData = ({ item, searchtext }: filterDataProps) => {})
+
+  // const data = () => {
+  //   const ans = experienceCardData.filter((item) =>
+  //     [item.datePosted, item.description, item.title].join(' ')
+  //   );
+  //   return ans;
+  // };
+  // console.log(typeof data());
+  // const ans = experienceCardData.filter((item) =>
+  //   [item.datePosted, item.description, item.title].join(' ')
+  // );
+  // console.log(ans.keys());
   return (
     <>
       <Header />
@@ -128,119 +237,21 @@ const Experience = observer(() => {
 
           {/**main container */}
           <Flex direction="column" gap={16} align="center" justify="center">
-            {/* {console.log('exp store data', experienceStore.experienceCardData)} */}
-            {/**filteredCards */}
+            {/* {searchText ? (
+               getFilteredData().then((data) => (
+                data.map((item) => (<CardExp item ={item}))
+               )))
+            ) : getFilteredData().then((data) => (return data.length===0)) ? (
+              <NoDataFound />
+            ) : (
+              <CardExp item={experienceCardData} />
+            )} */}
 
-            {searchText
-              ? experienceCardData
-                  .filter((item) => item.userName.toLowerCase().includes(searchText.toLowerCase()))
-                  .map((item) => (
-                    <Card
-                      className={classes.cardContainer}
-                      key={item.id}
-                      padding="34px"
-                      shadow="lg"
-                    >
-                      {/* cardHead */}
-                      <Box className={classes.cardHead}>
-                        <Group>
-                          <Image
-                            src={item.userImg}
-                            width={55}
-                            height={55}
-                            radius="xl"
-                            style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
-                          />
-                          <Flex direction="column" align="flex-start" justify="center" gap={0}>
-                            <BaseText fontWeight_variant={600}>{item.userName}</BaseText>
-                            <BaseText c="gray" size={14}>
-                              {item.userHandle}
-                            </BaseText>
-                          </Flex>
-                        </Group>
-                        <FollowBtn />
-                      </Box>
-                      {/* cardContent */}
-                      <Box className={classes.cardContent}>
-                        <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
-                          {item.title}
-                        </BaseText>
-                        <BaseText
-                          className={classes.content}
-                          style={{
-                            ...typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
-                            opacity: 0.7,
-                            marginTop: '6px',
-                          }}
-                        >
-                          {item.description}
-                        </BaseText>
-                        {/* icons */}
-                        <Box className={classes.Icons}>
-                          {FORUM_ICONS.map((forum) => (
-                            <Box className={classes.forumIcons} key={forum.id}>
-                              <Icon icon={forum.icon} />
-                              <BaseText size_variant="sm" fontWeight_variant={400}>
-                                {item[forum.key as keyof ExperienceCard]}
-                              </BaseText>
-                            </Box>
-                          ))}
-                          <Icon icon="ic:sharp-share" />
-                        </Box>
-                      </Box>
-                    </Card>
-                  ))
-              : experienceCardData.map((item) => (
-                  <Card className={classes.cardContainer} key={item.id} padding="34px" shadow="lg">
-                    {/* cardHead */}
-                    <Box className={classes.cardHead}>
-                      <Group>
-                        <Image
-                          src={item.userImg}
-                          width={55}
-                          height={55}
-                          radius="xl"
-                          style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
-                        />
-                        <Flex direction="column" align="flex-start" justify="center" gap={0}>
-                          <BaseText fontWeight_variant={600}>{item.userName}</BaseText>
-                          <BaseText c="gray" size={14}>
-                            {item.userHandle}
-                          </BaseText>
-                        </Flex>
-                      </Group>
-                      <FollowBtn />
-                    </Box>
-                    {/* cardContent */}
-                    <Box className={classes.cardContent}>
-                      <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
-                        {item.title}
-                      </BaseText>
-                      <BaseText
-                        className={classes.content}
-                        style={{
-                          ...typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
-                          opacity: 0.7,
-                          marginTop: '6px',
-                        }}
-                      >
-                        {item.description}
-                      </BaseText>
-                      {/* icons */}
-                      <Box className={classes.Icons}>
-                        {FORUM_ICONS.map((forum) => (
-                          <Box className={classes.forumIcons} key={forum.id}>
-                            <Icon icon={forum.icon} />
-                            <BaseText size_variant="sm" fontWeight_variant={400}>
-                              {item[forum.key as keyof ExperienceCard]}
-                            </BaseText>
-                          </Box>
-                        ))}
-                        <Icon icon="ic:sharp-share" />
-                      </Box>
-                    </Box>
-                  </Card>
-                ))}
+            {searchText ? (
+              <AsyncFilteredComponent />
+            ) : (
+              experienceCardData.map((item) => <CardExp item={item} />)
+            )}
           </Flex>
         </Box>
       </Container>

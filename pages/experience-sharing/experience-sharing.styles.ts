@@ -67,7 +67,7 @@ export const createStyle = () => createStyles((theme) => ({
         },
     },
     cardContent: {
-        padding: '10px 70px',
+        padding: '2px 70px',
         [theme.fn.smallerThan(('sm'))]: {
             padding: '20px 5px',
             fontSize: '11px',

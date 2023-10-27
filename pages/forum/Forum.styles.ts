@@ -68,6 +68,7 @@ export const createStyle = () => createStyles((theme) => ({
         [theme.fn.smallerThan(('md'))]: {
             flexDirection: 'column',
             justifyContent: 'center',
+
         },
     },
     userInfo: {

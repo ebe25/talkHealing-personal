@@ -23,14 +23,15 @@ export const ExpForm = observer((props: { opened?: any; onClose?: any }) => {
     title: '',
     description: '',
     userName: '',
-    userHandle: `@${' '}`,
     datePosted: dateFormatted,
     comments: 10,
     id: autoId,
+    userHandle: ' ',
     likes: 10,
     userImg:
       'https://img.freepik.com/premium-photo/man-with-glasses-black-shirt-is-circle_745528-3013.jpg?w=740',
   });
+
   const { experienceCardData } = experienceStore;
   const [avatar, setAvatar] = useState<File | null>(null);
 
@@ -126,7 +127,7 @@ export const ExpForm = observer((props: { opened?: any; onClose?: any }) => {
           mah="44px"
           radius="lg"
           onChange={(e: any) => {
-            setFormData((prev: any) => ({ ...prev, userHandle: e.target.value }));
+            setFormData((prev: any) => ({ ...prev, userHandle: `@${e.target.value}` }));
           }}
         />
       </Flex>

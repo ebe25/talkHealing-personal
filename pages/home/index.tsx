@@ -28,7 +28,7 @@ export default function Home() {
   const responsiveTabGridBreakpoint = useMediaQuery('(max-width:  76.0625em)'); //1217px
   const responsiveMobileGridBreakpoint = useMediaQuery('(max-width: 47.4375em)'); //759px
   const responsiveGridSmallerScreens = useMediaQuery('(max-width: 37em)'); //592px
-  // const responsiveMainSection = useMediaQuery('(max-width: 60.875em)'); //974px
+  const responsiveMainSection = useMediaQuery('(max-width: 60.875em)'); //974px
   const responsiveCaraousel = useMediaQuery('(max-width: 66em)'); //1056px
 
   interface HowItWorksItem {
@@ -133,50 +133,50 @@ export default function Home() {
       <Box className={classes.container}>
         {/**Main section */}
         <Container maw="1250px">
-          {/* {responsiveMainSection ? (
-          <Flex justify="center" align="center" direction="column" gap={50}>
-            <Box className={classes.responsiveSubMainText}>
-              <Flex direction="column" justify="center" align="center" gap="17px">
-                <BaseText fontWeight_variant={700} size={25}>
-                  Lorem ipsum dolor sit amet consect.
-                </BaseText>
+          {responsiveMainSection ? (
+            <Flex justify="center" align="center" direction="column" gap={50}>
+              <Box className={classes.responsiveSubMainText}>
+                <Flex direction="column" justify="center" align="center" gap="17px">
+                  <BaseText fontWeight_variant={700} size={25}>
+                    Lorem ipsum dolor sit amet consect.
+                  </BaseText>
 
-                <Box className={classes.responsiveSecondSubMainText}>
-                  {' '}
-                  <BaseText>
+                  <Box className={classes.responsiveSecondSubMainText}>
+                    {' '}
+                    <BaseText>
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                      commodo consequat.
+                    </BaseText>
+                  </Box>
+                </Flex>
+                <Image src={Images.public_health} alt="public_health" h={350} w={350} />
+              </Box>
+            </Flex>
+          ) : (
+            <Flex justify="space-evenly" align="center" wrap="wrap">
+              <Box className={classes.subMainText}>
+                <Flex direction="column" justify="flex-start" align="center" gap="17px">
+                  <BaseText size={60} fontWeight_variant={700}>
+                    Lorem ipsum dolor sit amet consect.
+                  </BaseText>
+
+                  <BaseText style={{ opacity: 0.7 }} fontWeight_variant={400} size={16}>
                     Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
                     minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                     commodo consequat.
                   </BaseText>
-                </Box>
-              </Flex>
-              <Image src={Images.public_health} alt="public_health" h={350} w={350} />
-            </Box>
-          </Flex>
-        ) : ( */}
-          <Flex justify="space-evenly" align="center" wrap="wrap">
-            <Box className={classes.subMainText}>
-              <Flex direction="column" justify="flex-start" align="center" gap="17px">
-                <BaseText size={60} fontWeight_variant={700}>
-                  Lorem ipsum dolor sit amet consect.
-                </BaseText>
+                </Flex>
+              </Box>
 
-                <BaseText style={{ opacity: 0.7 }} fontWeight_variant={400} size={16}>
-                  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat.
-                </BaseText>
-              </Flex>
-            </Box>
-
-            <Image
-              className={classes.rightSide}
-              src={Images.public_health}
-              height="440px"
-              width="440px"
-            />
-          </Flex>
-          {/* )} */}
+              <Image
+                className={classes.rightSide}
+                src={Images.public_health}
+                height="440px"
+                width="440px"
+              />
+            </Flex>
+          )}
         </Container>
 
         {/* how it works */}
@@ -229,7 +229,7 @@ export default function Home() {
                 >
                   Testimonials
                 </BaseText>
-                <TestimonialCarousal carouselData={testimonialData} />
+                <TestimonialCarousal carouselData={testimonialData} orientation="vertical" />
               </Flex>
             </Box>
           </Container>

@@ -1,17 +1,17 @@
 /* eslint-disable import/extensions */
-import { useRef } from 'react';
+
 import { Flex, Image, Box, useMantineTheme, Card } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
-import Autoplay from 'embla-carousel-autoplay';
+
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from './TestimonialCarousal.style';
 
 interface CarouselProps {
   carouselData: Array<Object>;
-  // orientation: any;
+  orientation?: any;
 }
 
-function TestimonialCarousal({ carouselData }: CarouselProps) {
+function TestimonialCarousal({ carouselData, orientation }: CarouselProps) {
   const theme = useMantineTheme();
   const useStyles = createStyle();
   const { classes } = useStyles();
@@ -25,12 +25,11 @@ function TestimonialCarousal({ carouselData }: CarouselProps) {
         height={250}
         slideSize="60%"
         align="start"
-        withControls
         withIndicators
         // onMouseEnter={autoplay.current.stop}
         // onMouseLeave={autoplay.current.reset}
         // plugins={[autoplay.current]}
-        // orientation={}
+        orientation={orientation}
         // withControls={false}
         loop
       >

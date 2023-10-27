@@ -12,6 +12,13 @@ export const ExperienceStore = types
     .actions((self) => ({
 
         addExperienceCard: flow(function* (newCardData) { // Pass newCardData as a parameter
-            return self.experienceCardData.push(newCardData); // Assuming newCardData is a valid object 
+            return self.experienceCardData.push(newCardData); // Assuming newCardData is a valid object
         }),
+        getFilteredExperienceCard: flow(function* (searchText) { //returning an array of filteredData
+            return self.experienceCardData.filter(card => {
+                const cardString = [card.comments, card.datePosted, card.description, card.title, card.userHandle, card.userName].join(' ');
+                return cardString.toLowerCase().includes(searchText.toLowerCase());
+            });
+        }),
+
     }));

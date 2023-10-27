@@ -1,3 +1,4 @@
+import { useState } from 'react';
 /* eslint-disable import/extensions */
 import {
   Container,
@@ -9,7 +10,6 @@ import {
   useMantineTheme,
   Box,
 } from '@mantine/core';
-
 import { createStyle } from './Community.style';
 import Header from '@/components/modules/Header/Header';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -84,6 +84,10 @@ export default function Community() {
   const useStyles = createStyle();
   const { classes } = useStyles();
   const theme = useMantineTheme();
+  const [searchText, setSearchText] = useState<any>(' ');
+  const handleSearchChange = (e: any) => {
+    setSearchText(e.target.value);
+  };
   // const tabResponsiveBreakPoint = useMediaQuery('(max-width: 76.8125em)');
   // const mobileResponsiveBreakPoint = useMediaQuery('(max-width: 41.9375em)');
   return (
@@ -97,76 +101,14 @@ export default function Community() {
               Create community
             </Button>
           </Box>
-          <PageSearchBox num={89} type="communities" />
-          {/* <Grid>
-          {communityCardData.map((community) => (
-          <Grid.Col xs={12} sm={6} md={4} lg={4} xl={4}>
+          <PageSearchBox
+            num={89}
+            type="communities"
+            searchText={searchText}
+            onSearchChange={handleSearchChange}
+          />
 
-          <Card key={community.id} className={classes.card_container}>
-              <Image
-                src={community.communityImg}
-                alt={community.communityName}
-                height="200px"
-                width="100%"
-                style={{ objectFit: 'cover' }}
-              />
-              <Flex direction="column" align="center" justify="center" gap={8} mt={32} mb={30}>
-                <BaseText fontWeight_variant={700} size={20}>
-                  {community.communityName}
-                </BaseText>
-                <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
-                  {community.timestamp}
-                </BaseText>
-              </Flex>
-              <Flex justify="center" align="center" direction="column">
-                <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
-                <JoinNowBtn />
-              </Flex>
-            </Card>
-          </Grid.Col>
-          ))}
-
-        </Grid> */}
-
-          {/**grid card centered styling */}
-          {/* {centeredCardBreakPoint ? (
-
-            <SimpleGrid
-              cols={mobileResponsiveBreakPoint ? 1 : tabResponsiveBreakPoint ? 2 : 3}
-              mt={30}
-              spacing={tabResponsiveBreakPoint ? 40 : 32}
-              variant={centeredCardBreakPoint ? 'vertical' : 'default'}
-            >
-              {communityCardData.map((community) => (
-                <Card key={community.id} className={classes.card_container}>
-                  <Image
-                    src={community.communityImg}
-                    alt={community.communityName}
-                    height="200px"
-                    width="100%"
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <Flex direction="column" align="center" justify="center" gap={8} mt={32} mb={30}>
-                    <BaseText fontWeight_variant={700} size={20}>
-                      {community.communityName}
-                    </BaseText>
-                    <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
-                      {community.timestamp}
-                    </BaseText>
-                  </Flex>
-                  <Flex justify="center" align="center" direction="column">
-                    <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
-                    <JoinNowBtn />
-                  </Flex>
-                </Card>
-              ))}
-            </SimpleGrid>
-
-        ) : ( */}
           <SimpleGrid
-            // cols={mobileResponsiveBreakPoint ? 1 : tabResponsiveBreakPoint ? 2 : 3}
-            // mt={30}
-            // spacing={tabResponsiveBreakPoint ? 40 : 32}
             cols={3}
             breakpoints={[
               { minWidth: 575, cols: 1 }, // For small screens (sm breakpoint)
@@ -175,29 +117,78 @@ export default function Community() {
             ]}
             className={classes.centerGridCard}
           >
-            {communityCardData.map((community) => (
-              <Card key={community.id} className={classes.card_container}>
-                <Image
-                  src={community.communityImg}
-                  alt={community.communityName}
-                  height="200px"
-                  width="100%"
-                  style={{ objectFit: 'cover' }}
-                />
-                <Flex direction="column" align="center" justify="center" gap={8} mt={32} mb={30}>
-                  <BaseText fontWeight_variant={700} size={20}>
-                    {community.communityName}
-                  </BaseText>
-                  <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
-                    {community.timestamp}
-                  </BaseText>
-                </Flex>
-                <Flex justify="center" align="center" direction="column">
-                  <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
-                  <JoinNowBtn />
-                </Flex>
-              </Card>
-            ))}
+            {searchText
+              ? communityCardData
+                  .filter((card) => {
+                    const filterCardString = [
+                      card.communityName,
+                      card.timestamp,
+                      card.communityName,
+                    ]
+                      .join(' ')
+                      .toLowerCase();
+                    return filterCardString.includes(searchText.toLowerCase());
+                  })
+                  .map((community) => (
+                    <Card key={community.id} className={classes.card_container}>
+                      <Image
+                        src={community.communityImg}
+                        alt={community.communityName}
+                        height="200px"
+                        width="100%"
+                        style={{ objectFit: 'cover' }}
+                      />
+                      <Flex
+                        direction="column"
+                        align="center"
+                        justify="center"
+                        gap={8}
+                        mt={32}
+                        mb={30}
+                      >
+                        <BaseText fontWeight_variant={700} size={20}>
+                          {community.communityName}
+                        </BaseText>
+                        <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
+                          {community.timestamp}
+                        </BaseText>
+                      </Flex>
+                      <Flex justify="center" align="center" direction="column">
+                        <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
+                        <JoinNowBtn />
+                      </Flex>
+                    </Card>
+                  ))
+              : communityCardData.map((community) => (
+                  <Card key={community.id} className={classes.card_container}>
+                    <Image
+                      src={community.communityImg}
+                      alt={community.communityName}
+                      height="200px"
+                      width="100%"
+                      style={{ objectFit: 'cover' }}
+                    />
+                    <Flex
+                      direction="column"
+                      align="center"
+                      justify="center"
+                      gap={8}
+                      mt={32}
+                      mb={30}
+                    >
+                      <BaseText fontWeight_variant={700} size={20}>
+                        {community.communityName}
+                      </BaseText>
+                      <BaseText fontWeight_variant={500} size={16} color={theme.colors.gray[8]}>
+                        {community.timestamp}
+                      </BaseText>
+                    </Flex>
+                    <Flex justify="center" align="center" direction="column">
+                      <Image src={Images.avatarsCommunityGroup} height={32} width={193} />
+                      <JoinNowBtn />
+                    </Flex>
+                  </Card>
+                ))}
           </SimpleGrid>
         </Box>
       </Container>

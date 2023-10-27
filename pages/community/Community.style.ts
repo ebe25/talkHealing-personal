@@ -3,7 +3,7 @@ import { createStyles } from '@mantine/core';
 export const createStyle = () => createStyles((theme) => ({
     container: {
         padding: '50px 150px',
-        background: theme.colors.red[2],
+        background: theme.colors.gray[9],
         margin: 'auto',
         [theme.fn.smallerThan('lg')]: {
             padding: '20px 70px',
