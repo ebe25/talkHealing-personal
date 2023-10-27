@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import { Flex, Container, useMantineTheme } from '@mantine/core';
+import { Flex, Container, useMantineTheme, Box } from '@mantine/core';
 import React from 'react';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { createStyle } from './Latest-research.style';
@@ -29,7 +29,7 @@ const researchData = [
   {
     id: 3,
     title: 'Title for research lorem ipsum dolor sit',
-    content: `Sed do Diabetes Stroke ut labore Alzheimer's Disease aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...`,
+    content: 'Sed do Diabetes Stroke ut labore Alzheimer\'s Disease aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...',
     datePosted: 'Mar 2023',
     author: 'John Doe',
   },
@@ -44,19 +44,21 @@ export default function LatestResearch() {
   return (
     <>
       <Header />
-      <Container maw="100%" className={classes.container}>
-        <BaseText c={theme.colors.black[9]} className={classes.heading}>
-          Lastest Research
-        </BaseText>
-        <Flex className={classes.mainItems}>
-          <TopicsBox />
-          <Flex direction="column" gap="sm">
-            <PageSearchBox num={291} type="research" />
-            {researchData.map((researchItem) => (
-              <ResearchCard research={researchItem} key={researchItem.id} />
-            ))}
+      <Container maw="1250px">
+        <Box className={classes.container}>
+          <BaseText c={theme.colors.black[9]} className={classes.heading}>
+            Lastest Research
+          </BaseText>
+          <Flex className={classes.mainItems}>
+            <TopicsBox />
+            <Flex direction="column" gap="sm">
+              <PageSearchBox num={291} type="research" />
+              {researchData.map((researchItem) => (
+                <ResearchCard research={researchItem} key={researchItem.id} />
+              ))}
+            </Flex>
           </Flex>
-        </Flex>
+        </Box>
       </Container>
     </>
   );

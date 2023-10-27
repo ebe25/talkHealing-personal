@@ -112,16 +112,16 @@ function Header() {
           </Link>
 
           {/* <Link href="/recovery-program">
-          <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
-            Program for recovery <Image src={Images.link_icon} width="9.333px" height="8px" />
-          </BaseText>
-        </Link>
+            <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+              Just for Testing <Image src={Images.link_icon} width="9.333px" height="8px" />
+            </BaseText>
+          </Link> */}
 
-        <Link href="/resources">
-          <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
-            Resources <Image src={Images.link_icon} width="9.333px" height="8px" />
-          </BaseText>
-        </Link> */}
+          <Link href="/resources">
+            <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+              Test  <Image src={Images.link_icon} width="9.333px" height="8px" />
+            </BaseText>
+          </Link>
         </Flex>
       </Container>
     </Box>

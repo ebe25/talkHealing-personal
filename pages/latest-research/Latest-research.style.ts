@@ -1,11 +1,9 @@
 import { createStyles } from '@mantine/core';
 
 export const createStyle = () => createStyles((theme) => ({
-    container: {
 
+    container: {
         padding: '50px 170px',
-        margin: 'auto',
-        maxWidth: '100%',
         background: theme.colors.gray[9],
         [theme.fn.smallerThan('lg')]: {
             padding: '25px 25px',

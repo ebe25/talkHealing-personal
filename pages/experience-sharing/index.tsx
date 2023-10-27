@@ -26,59 +26,59 @@ interface ExperienceCard {
   userHandle: string;
 }
 
-const experienceCards: ExperienceCard[] = [
-  {
-    id: 1,
-    title: 'Overcoming Diabetes with a Healthy Lifestyle',
-    description:
-      'I successfully managed my diabetes by adopting a healthier diet and regular exercise.',
-    datePosted: 'Oct 23',
-    likes: 25,
-    comments: 10000, // Changed to a number
-    userImg:
-      'https://img.freepik.com/premium-vector/man-avatar-portrait-man-minimalist-flat-illustration_186332-435.jpg?w=740',
-    userName: 'Alice',
-    userHandle: '@aliceInWonderland',
-  },
-  {
-    id: 2,
-    title: 'Beating Cancer with Determination',
-    description:
-      'My journey to defeating cancer was tough, but with determination and a strong support system, I emerged victorious.',
-    datePosted: 'Sept 23',
-    likes: 42,
-    comments: 15,
-    userImg:
-      'https://img.freepik.com/free-photo/view-3d-confident-businessman_23-2150709932.jpg?t=st=1698037819~exp=1698041419~hmac=b518e7c1693e7ad21cf6154609c8b14ad7ea2338f626e573efa05b3e68d0a2fc&w=740',
-    userName: 'Bob',
-    userHandle: '@bobTheSurvivor',
-  },
-  {
-    id: 3,
-    title: 'Managing Stress for Better Mental Health',
-    description:
-      'Learn how I improved my mental health by reducing stress and practicing mindfulness.',
-    datePosted: 'Aug 23',
-    likes: 30000, // Changed to a number
-    comments: 5,
-    userImg: 'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375_1280.png',
-    userName: 'Charlie',
-    userHandle: '@ChillCharlie',
-  },
-  {
-    id: 4,
-    title: 'Post Covid-19 Symptoms',
-    description: 'Last quarter I had a lot of symptoms, but I managed to get through them.',
-    datePosted: 'June 2020',
-    likes: 45000, // Changed to a number
-    comments: 100,
-    userImg:
-      'https://img.freepik.com/premium-photo/man-with-glasses-black-shirt-is-circle_745528-3013.jpg?w=740',
-    userName: 'John Doe',
-    userHandle: '@TheCovidSurvivor',
-  },
-  // Add more experience cards as needed
-];
+// const experienceCards: ExperienceCard[] = [
+//   {
+//     id: 1,
+//     title: 'Overcoming Diabetes with a Healthy Lifestyle',
+//     description:
+//       'I successfully managed my diabetes by adopting a healthier diet and regular exercise.',
+//     datePosted: 'Oct 23',
+//     likes: 25,
+//     comments: 10000, // Changed to a number
+//     userImg:
+//       'https://img.freepik.com/premium-vector/man-avatar-portrait-man-minimalist-flat-illustration_186332-435.jpg?w=740',
+//     userName: 'Alice',
+//     userHandle: '@aliceInWonderland',
+//   },
+//   {
+//     id: 2,
+//     title: 'Beating Cancer with Determination',
+//     description:
+//       'My journey to defeating cancer was tough, but with determination and a strong support system, I emerged victorious.',
+//     datePosted: 'Sept 23',
+//     likes: 42,
+//     comments: 15,
+//     userImg:
+//       'https://img.freepik.com/free-photo/view-3d-confident-businessman_23-2150709932.jpg?t=st=1698037819~exp=1698041419~hmac=b518e7c1693e7ad21cf6154609c8b14ad7ea2338f626e573efa05b3e68d0a2fc&w=740',
+//     userName: 'Bob',
+//     userHandle: '@bobTheSurvivor',
+//   },
+//   {
+//     id: 3,
+//     title: 'Managing Stress for Better Mental Health',
+//     description:
+//       'Learn how I improved my mental health by reducing stress and practicing mindfulness.',
+//     datePosted: 'Aug 23',
+//     likes: 30000, // Changed to a number
+//     comments: 5,
+//     userImg: 'https://cdn.pixabay.com/photo/2016/11/18/23/38/child-1837375_1280.png',
+//     userName: 'Charlie',
+//     userHandle: '@ChillCharlie',
+//   },
+//   {
+//     id: 4,
+//     title: 'Post Covid-19 Symptoms',
+//     description: 'Last quarter I had a lot of symptoms, but I managed to get through them.',
+//     datePosted: 'June 2020',
+//     likes: 45000, // Changed to a number
+//     comments: 100,
+//     userImg:
+//       'https://img.freepik.com/premium-photo/man-with-glasses-black-shirt-is-circle_745528-3013.jpg?w=740',
+//     userName: 'John Doe',
+//     userHandle: '@TheCovidSurvivor',
+//   },
+//   // Add more experience cards as needed
+// ];
 
 const FORUM_ICONS = [
   { id: 1, icon: 'zondicons:calendar', key: 'datePosted' },
@@ -90,14 +90,14 @@ const Experience = observer(() => {
   const useStyles = createStyle();
   const { classes } = useStyles();
   const { i18nStore, experienceStore } = useStores();
-  const {experienceCardData} = experienceStore;
+  const { experienceCardData } = experienceStore;
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <>
       <Header />
-      <Box className={classes.container}>
-        <Container maw={1250}>
+      <Container maw={1250}>
+        <Box className={classes.container}>
           {/**Page heading */}
           <Flex justify="space-between" align="center" className={classes.headingFlex}>
             <BaseText color="black" fontWeight_variant={700}>
@@ -170,8 +170,8 @@ const Experience = observer(() => {
               </Card>
             ))}
           </Flex>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
     </>
   );
 });

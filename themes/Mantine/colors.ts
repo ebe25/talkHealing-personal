@@ -187,5 +187,6 @@ export const COLORS = {
 
   white: [
     '#FFF',
+    '#FFFFFA',
   ],
 } as unknown as Record<string, Tuple<string, 10>>;

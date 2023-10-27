@@ -8,6 +8,7 @@ export const createStyle = () => createStyles((theme) => ({
         [theme.fn.smallerThan('md')]: {
             padding: '35px 40px',
         },
+
     },
     cardContainer: {
         width: '100%',
@@ -30,7 +31,7 @@ export const createStyle = () => createStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-       
+
     },
     forumIcons: {
         display: 'inline-flex',

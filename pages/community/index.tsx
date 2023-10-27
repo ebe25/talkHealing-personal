@@ -89,8 +89,8 @@ export default function Community() {
   return (
     <>
       <Header />
-      <Box className={classes.container}>
-        <Container maw={1250} >
+      <Container maw={1250}>
+        <Box className={classes.container}>
           <Box className={classes.subBodyFlex}>
             <BaseText>Patients Community</BaseText>
             <Button className={classes.button_container} variant="default">
@@ -199,8 +199,8 @@ export default function Community() {
               </Card>
             ))}
           </SimpleGrid>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
     </>
   );
 }

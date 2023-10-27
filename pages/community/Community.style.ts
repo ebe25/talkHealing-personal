@@ -3,7 +3,7 @@ import { createStyles } from '@mantine/core';
 export const createStyle = () => createStyles((theme) => ({
     container: {
         padding: '50px 150px',
-        background: theme.colors.gray[9],
+        background: theme.colors.red[2],
         margin: 'auto',
         [theme.fn.smallerThan('lg')]: {
             padding: '20px 70px',
@@ -65,7 +65,8 @@ export const createStyle = () => createStyles((theme) => ({
     },
 
     centerGridCard: {
-        [theme.fn.smallerThan('sm')]:{
+        marginTop: '10px',
+        [theme.fn.smallerThan('sm')]: {
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'column',

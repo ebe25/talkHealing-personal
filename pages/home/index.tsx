@@ -28,7 +28,7 @@ export default function Home() {
   const responsiveTabGridBreakpoint = useMediaQuery('(max-width:  76.0625em)'); //1217px
   const responsiveMobileGridBreakpoint = useMediaQuery('(max-width: 47.4375em)'); //759px
   const responsiveGridSmallerScreens = useMediaQuery('(max-width: 37em)'); //592px
-  const responsiveMainSection = useMediaQuery('(max-width: 60.875em)'); //974px
+  // const responsiveMainSection = useMediaQuery('(max-width: 60.875em)'); //974px
   const responsiveCaraousel = useMediaQuery('(max-width: 66em)'); //1056px
 
   interface HowItWorksItem {
@@ -130,10 +130,10 @@ export default function Home() {
   return (
     <>
       <Header />
-
-      {/**Main section */}
-      <Container maw="1250px">
-        {/* {responsiveMainSection ? (
+      <Box className={classes.container}>
+        {/**Main section */}
+        <Container maw="1250px">
+          {/* {responsiveMainSection ? (
           <Flex justify="center" align="center" direction="column" gap={50}>
             <Box className={classes.responsiveSubMainText}>
               <Flex direction="column" justify="center" align="center" gap="17px">
@@ -154,87 +154,98 @@ export default function Home() {
             </Box>
           </Flex>
         ) : ( */}
-        <Flex justify="space-evenly" align="center" wrap={'wrap'}>
-          <Box className={classes.subMainText}>
-            <Flex direction="column" justify="flex-start" align="center" gap="17px">
-              <BaseText size={60} fontWeight_variant={700}>
-                Lorem ipsum dolor sit amet consect.
-              </BaseText>
+          <Flex justify="space-evenly" align="center" wrap="wrap">
+            <Box className={classes.subMainText}>
+              <Flex direction="column" justify="flex-start" align="center" gap="17px">
+                <BaseText size={60} fontWeight_variant={700}>
+                  Lorem ipsum dolor sit amet consect.
+                </BaseText>
 
-              <BaseText style={{ opacity: 0.7 }} fontWeight_variant={400} size={16}>
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.
-              </BaseText>
-            </Flex>
-          </Box>
+                <BaseText style={{ opacity: 0.7 }} fontWeight_variant={400} size={16}>
+                  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo consequat.
+                </BaseText>
+              </Flex>
+            </Box>
 
-          <Image
-            className={classes.rightSide}
-            src={Images.public_health}
-            height="440px"
-            width="440px"
-          />
-        </Flex>
-        {/* )} */}
-      </Container>
+            <Image
+              className={classes.rightSide}
+              src={Images.public_health}
+              height="440px"
+              width="440px"
+            />
+          </Flex>
+          {/* )} */}
+        </Container>
 
-      {/* how it works */}
-      <Box maw="100%">
-        <BaseText
-          fontWeight_variant={700}
-          size={45}
-          style={
-            (typography.headings[i18nStore.getCurrentLanguage()].h3,
-            { textAlign: 'center', marginTop: '150px' })
-          }
-        >
-          How it works
-        </BaseText>
-
-        <Center>
-          <SimpleGrid
-            cols={
-              responsiveGridSmallerScreens
-                ? 1
-                : responsiveTabGridBreakpoint
-                ? 2
-                : responsiveMobileGridBreakpoint
-                ? 1
-                : 2
-            }
-            spacing={40}
-            className={
-              responsiveMobileGridBreakpoint
-                ? classes.responsiveGridContainer
-                : classes.gridContainer
+        {/* how it works */}
+        <Box maw="100%">
+          <BaseText
+            fontWeight_variant={700}
+            size={45}
+            style={
+              (typography.headings[i18nStore.getCurrentLanguage()].h3,
+              { textAlign: 'center', marginTop: '150px' })
             }
           >
-            {howItWorksData.map((item) => generateCardContent(item, responsiveTabGridBreakpoint))}
-          </SimpleGrid>
-        </Center>
-      </Box>
+            How it works
+          </BaseText>
 
-      {/**testimonials */}
-      {responsiveCaraousel ? (
-        <Box className={classes.caraouselBox}>
-          <Flex direction="column" gap={10}>
-            <BaseText c="black" fontWeight_variant={700} size={40} style={{ textAlign: 'center' }}>
-              Testimonials
-            </BaseText>
-            <TestimonialCarousal carouselData={testimonialData} />
-          </Flex>
+          <Center>
+            <SimpleGrid
+              cols={
+                responsiveGridSmallerScreens
+                  ? 1
+                  : responsiveTabGridBreakpoint
+                  ? 2
+                  : responsiveMobileGridBreakpoint
+                  ? 1
+                  : 2
+              }
+              spacing={40}
+              className={
+                responsiveMobileGridBreakpoint
+                  ? classes.responsiveGridContainer
+                  : classes.gridContainer
+              }
+            >
+              {howItWorksData.map((item) => generateCardContent(item, responsiveTabGridBreakpoint))}
+            </SimpleGrid>
+          </Center>
         </Box>
-      ) : (
-        <Box className={classes.caraouselBox}>
-          <Flex direction="column" gap={56} justify="flex-start">
-            <BaseText c="black" fontWeight_variant={700} size={48}>
-              Testimonials
-            </BaseText>
-            <TestimonialCarousal carouselData={testimonialData} />
-          </Flex>
-        </Box>
-      )}
+
+        {/**testimonials */}
+        {responsiveCaraousel ? (
+          <Container maw={1250}>
+            {' '}
+            <Box className={classes.caraouselBox}>
+              <Flex direction="column" gap={10}>
+                <BaseText
+                  c="black"
+                  fontWeight_variant={700}
+                  size={40}
+                  style={{ textAlign: 'center' }}
+                >
+                  Testimonials
+                </BaseText>
+                <TestimonialCarousal carouselData={testimonialData} />
+              </Flex>
+            </Box>
+          </Container>
+        ) : (
+          <Container maw={1250}>
+            <Box className={classes.caraouselBox}>
+              <Flex direction="column" gap={56} justify="flex-start">
+                <BaseText c="black" fontWeight_variant={700} size={48}>
+                  Testimonials
+                </BaseText>
+                <TestimonialCarousal carouselData={testimonialData} />
+              </Flex>
+            </Box>
+          </Container>
+        )}
+      </Box>
     </>
   );
 }
