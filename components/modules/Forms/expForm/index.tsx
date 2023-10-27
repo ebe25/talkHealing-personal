@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Flex, InputBase, useMantineTheme, Center, FileInput } from '@mantine/core';
 import { observer } from 'mobx-react-lite';
+// import { randomUUID } from 'crypto';
 import moment from 'moment';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 import { typography } from '@/themes/Mantine/typography';
@@ -16,12 +17,13 @@ export const ExpForm = observer((props: { opened?: any; onClose?: any }) => {
   // const [error, setError] = useState('');
   // const [year, date] = new Date().toDateString();
   const dateFormatted = moment(new Date()).format('MMMM YYYY');
-  const autoId = `'id' + ${Math.random().toString(16).slice(2)}`;
+  // const autoId = `'id' + ${Math.random().toString(16).slice(2)}`;
+  const autoId = crypto.randomUUID();
   const [formData, setFormData] = useState<any>({
     title: '',
     description: '',
     userName: '',
-    userHandle: '@ ',
+    userHandle: `@${' '}`,
     datePosted: dateFormatted,
     comments: 10,
     id: autoId,

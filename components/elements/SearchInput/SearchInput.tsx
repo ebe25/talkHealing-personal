@@ -1,4 +1,5 @@
 import { Box, Input, TextInputProps, useMantineTheme } from '@mantine/core';
+
 import { PolymorphicComponentProps } from '@mantine/utils';
 import { IconSearch } from '@tabler/icons-react';
 import { createStyle } from './SearchInput.style';
@@ -6,12 +7,15 @@ import { createStyle } from './SearchInput.style';
 interface BaseSearchInput extends PolymorphicComponentProps<'input', TextInputProps> {
   placeholder?: string;
   click?: any;
+  onChangeCallback: any;
+  search: any;
 }
 
 export const SearchInput = (props: BaseSearchInput) => {
   const theme = useMantineTheme();
   const useStyles = createStyle();
   const { classes } = useStyles();
+
   return (
     <Input
       className={classes.mainBox}
@@ -27,7 +31,8 @@ export const SearchInput = (props: BaseSearchInput) => {
       }}
       radius="lg"
       {...props}
-
+      value={props.search}
+      onChange={props.onChangeCallback}
     />
   );
 };

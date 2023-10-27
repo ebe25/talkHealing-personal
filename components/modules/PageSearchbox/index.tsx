@@ -7,12 +7,20 @@ import { createStyle } from './PageSearch.style';
 interface PageSearchBoxProps {
   num: number;
   type: string;
+  searchText: string;
+  onSearchChange: Function;
 }
 
-export default function PageSearchBox({ num, type }: PageSearchBoxProps) {
+export default function PageSearchBox({
+  num,
+  type,
+  searchText,
+  onSearchChange,
+}: PageSearchBoxProps) {
   const theme = useMantineTheme();
   const useStyles = createStyle();
   const { classes } = useStyles();
+
   return (
     <Flex
       justify="space-between"
@@ -20,13 +28,12 @@ export default function PageSearchBox({ num, type }: PageSearchBoxProps) {
       wrap="wrap"
       className={classes.searchInputContainer}
     >
-
-    {/* // <Container className={classes.searchInputContainer}> */}
+      {/* // <Container className={classes.searchInputContainer}> */}
       <BaseText color_variant={theme.colors.black[9]} fontWeight_variant={700} size_variant="lg">
         {num} {type}
       </BaseText>
-      <SearchInput />
-    {/* // </Container> */}
+      <SearchInput search={searchText} onChangeCallback={onSearchChange} />
+      {/* // </Container> */}
     </Flex>
   );
 }

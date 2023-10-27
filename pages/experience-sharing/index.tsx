@@ -1,9 +1,10 @@
 /* eslint-disable import/extensions */
-import React from 'react';
-import { Button, Container, Flex, Box, Card, Group, Image, useMantineTheme } from '@mantine/core';
+import React, { useState } from 'react';
+import { Button, Container, Flex, Box, Card, Group, Image } from '@mantine/core';
 import { Icon } from '@iconify/react';
 import { useDisclosure } from '@mantine/hooks';
 
+import { observer } from 'mobx-react-lite';
 import Header from '@/components/modules/Header/Header';
 import { createStyle } from './experience-sharing.styles';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
@@ -12,7 +13,6 @@ import { typography } from '@/themes/Mantine/typography';
 import { useStores } from '@/models';
 import FollowBtn from '@/components/modules/FollowBtn';
 import AddNewExp from '@/components/modules/Modals/ExperienceModal/addNewExp';
-import { observer } from 'mobx-react-lite';
 
 interface ExperienceCard {
   id: number;
@@ -92,6 +92,12 @@ const Experience = observer(() => {
   const { i18nStore, experienceStore } = useStores();
   const { experienceCardData } = experienceStore;
   const [opened, { open, close }] = useDisclosure(false);
+  const [searchText, setSearchText] = useState<any>('');
+
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+    console.log(searchText);
+  };
 
   return (
     <>
@@ -112,63 +118,129 @@ const Experience = observer(() => {
 
           {/** PageSearchbar */}
           <Box className={classes.pgeSearchBox}>
-            <PageSearchBox num={200} type="experiences" />
+            <PageSearchBox
+              num={200}
+              type="experiences"
+              searchText={searchText}
+              onSearchChange={handleSearchChange}
+            />
           </Box>
 
           {/**main container */}
           <Flex direction="column" gap={16} align="center" justify="center">
             {/* {console.log('exp store data', experienceStore.experienceCardData)} */}
-            {experienceCardData.map((item: any) => (
-              <Card className={classes.cardContainer} key={item.id} padding="34px" shadow="lg">
-                {/**cardHead */}
-                <Box className={classes.cardHead}>
-                  <Group>
-                    {' '}
-                    <Image
-                      src={item.userImg}
-                      width={55}
-                      height={55}
-                      radius="xl"
-                      style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
-                    />
-                    <Flex direction="column" align="flex-start" justify="center" gap={0}>
-                      <BaseText fontWeight_variant={600}>{item.userName}</BaseText>
-                      <BaseText c="gray" size={14}>
-                        {item.userHandle}
-                      </BaseText>
-                    </Flex>
-                  </Group>
-                  <FollowBtn />
-                </Box>
-                {/**cardContent */}
-                <Box className={classes.cardContent}>
-                  <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
-                    {item.title}
-                  </BaseText>
-                  <BaseText
-                    className={classes.content}
-                    style={
-                      (typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
-                      { opacity: 0.7, marginTop: '6px' })
-                    }
-                  >
-                    {item.description}
-                  </BaseText>
-                  {/**icons */}
-                  <Box className={classes.Icons}>
-                    {FORUM_ICONS.map((forum) => (
-                      <Box className={classes.forumIcons} key={forum.id}>
-                        <Icon icon={forum.icon} />
-                        <BaseText size_variant="sm" fontWeight_variant={400}>
-                          {item[forum.key as keyof ExperienceCard]}
-                        </BaseText>
+            {/**filteredCards */}
+
+            {searchText
+              ? experienceCardData
+                  .filter((item) => item.userName.toLowerCase().includes(searchText.toLowerCase()))
+                  .map((item) => (
+                    <Card
+                      className={classes.cardContainer}
+                      key={item.id}
+                      padding="34px"
+                      shadow="lg"
+                    >
+                      {/* cardHead */}
+                      <Box className={classes.cardHead}>
+                        <Group>
+                          <Image
+                            src={item.userImg}
+                            width={55}
+                            height={55}
+                            radius="xl"
+                            style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
+                          />
+                          <Flex direction="column" align="flex-start" justify="center" gap={0}>
+                            <BaseText fontWeight_variant={600}>{item.userName}</BaseText>
+                            <BaseText c="gray" size={14}>
+                              {item.userHandle}
+                            </BaseText>
+                          </Flex>
+                        </Group>
+                        <FollowBtn />
                       </Box>
-                    ))}
-                    <Icon icon="ic:sharp-share" />
-                  </Box>
-                </Box>
-              </Card>
-            ))}
+                      {/* cardContent */}
+                      <Box className={classes.cardContent}>
+                        <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
+                          {item.title}
+                        </BaseText>
+                        <BaseText
+                          className={classes.content}
+                          style={{
+                            ...typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
+                            opacity: 0.7,
+                            marginTop: '6px',
+                          }}
+                        >
+                          {item.description}
+                        </BaseText>
+                        {/* icons */}
+                        <Box className={classes.Icons}>
+                          {FORUM_ICONS.map((forum) => (
+                            <Box className={classes.forumIcons} key={forum.id}>
+                              <Icon icon={forum.icon} />
+                              <BaseText size_variant="sm" fontWeight_variant={400}>
+                                {item[forum.key as keyof ExperienceCard]}
+                              </BaseText>
+                            </Box>
+                          ))}
+                          <Icon icon="ic:sharp-share" />
+                        </Box>
+                      </Box>
+                    </Card>
+                  ))
+              : experienceCardData.map((item) => (
+                  <Card className={classes.cardContainer} key={item.id} padding="34px" shadow="lg">
+                    {/* cardHead */}
+                    <Box className={classes.cardHead}>
+                      <Group>
+                        <Image
+                          src={item.userImg}
+                          width={55}
+                          height={55}
+                          radius="xl"
+                          style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
+                        />
+                        <Flex direction="column" align="flex-start" justify="center" gap={0}>
+                          <BaseText fontWeight_variant={600}>{item.userName}</BaseText>
+                          <BaseText c="gray" size={14}>
+                            {item.userHandle}
+                          </BaseText>
+                        </Flex>
+                      </Group>
+                      <FollowBtn />
+                    </Box>
+                    {/* cardContent */}
+                    <Box className={classes.cardContent}>
+                      <BaseText style={typography.headings[i18nStore.getCurrentLanguage()].h10}>
+                        {item.title}
+                      </BaseText>
+                      <BaseText
+                        className={classes.content}
+                        style={{
+                          ...typography.paragraph[i18nStore.getCurrentLanguage()]['p1.5'],
+                          opacity: 0.7,
+                          marginTop: '6px',
+                        }}
+                      >
+                        {item.description}
+                      </BaseText>
+                      {/* icons */}
+                      <Box className={classes.Icons}>
+                        {FORUM_ICONS.map((forum) => (
+                          <Box className={classes.forumIcons} key={forum.id}>
+                            <Icon icon={forum.icon} />
+                            <BaseText size_variant="sm" fontWeight_variant={400}>
+                              {item[forum.key as keyof ExperienceCard]}
+                            </BaseText>
+                          </Box>
+                        ))}
+                        <Icon icon="ic:sharp-share" />
+                      </Box>
+                    </Box>
+                  </Card>
+                ))}
           </Flex>
         </Box>
       </Container>

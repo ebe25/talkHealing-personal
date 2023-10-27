@@ -1,5 +1,6 @@
 import { createStyles } from '@mantine/core';
 
+
 export const createStyle = () => createStyles((theme) => ({
     Header: {
         width: '100%',
@@ -14,6 +15,8 @@ export const createStyle = () => createStyles((theme) => ({
     HeroSection: {
         width: '100%',
         height: '900px',
+        display: 'flex',
+        justifyContent: 'space-between',
         backgroundColor: '#F5A05C',
 
     },
@@ -34,40 +37,46 @@ export const createStyle = () => createStyles((theme) => ({
     //     flexShrink: 0,
     //     background: '#44A1A0',
     // },
-    HeroImgBackGround: {
-        transform: 'rotate(-5.465deg)',
-        flexShrink: 0,
-        background: '#44A1A0',
-        position: 'absolute',
-        objectFit: 'cover',
-        height: '500px',
-        width: '500px',
-        // You can adjust objectFit as needed
-        // You can keep your other styles here
-    },
+    // HeroImgBackGround: {
+    //     transform: 'rotate(-5.465deg)',
+    //     flexShrink: 0,
+    //     background: '#44A1A0',
+    //     position: 'absolute',
+    //     objectFit: 'cover',
+    //     height: '500px',
+    //     width: '500px',
+    //     // You can adjust objectFit as needed
+    //     // You can keep your other styles here
+    // },
 
-    HeroSvg: {
-        postion: 'absolute',
-        top: '-258px',
-        left: '393px',
-        zIndex: -10,
-        display: 'inline-flex',
-    },
-    HeroImage: {
-        position: 'absolute',
-        transform: 'rotate(5.465deg)',
-        display: 'inline-flex',
-        // You can adjust objectFit as needed
-        zIndex: 2, // Ensure the image is on top of the background
-        // You can keep your other styles here
-    },
+    // HeroSvg: {
+    //     postion: 'absolute',
+    //     top: '-258px',
+    //     left: '393px',
+    //     zIndex: -10,
+    //     display: 'inline-flex',
+    // },
+    // HeroImage: {
+    //     position: 'absolute',
+    //     transform: 'rotate(5.465deg)',
+    //     height:"200px",
+    //     width:"200px",
+    //     // display: 'inline-flex',
+    //     // You can adjust objectFit as needed
+    //     zIndex: 2, // Ensure the image is on top of the background
+    //     // You can keep your other styles here
+    // },
     WeirdBox: {
         zIndex: 1,
-        display: 'inline-flex',
+        // display: 'inline-flex',
         justifyContent: 'space=between',
         alignItems: 'center',
         postion: 'relative',
 
+    },
+    rightSide: {
+        // backgroundImage: URL('C:/Users/vdnhb/Downloads/BG Shape@2x.png'),
+        backgroundImage: `url("./image/BG Shape@2x.png")`,
     },
 
 }));
