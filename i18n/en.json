@@ -65,7 +65,9 @@
       "logOut": "Log Out",
       "changeAddress": "Change address",
       "follow": "Follow",
-      "unfollow": "Unfollow"
+      "unfollow": "Unfollow",
+      "Join":"Join now",
+      "Joined": "Joined"
     }
   },
   "profile": {

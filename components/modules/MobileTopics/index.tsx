@@ -1,5 +1,5 @@
 import { Box, Button, Container } from '@mantine/core';
-import {useState} from 'react';
+import { useState } from 'react';
 import { createStyle } from './Mobiletopics.styles';
 
 interface MobiletopicsProps {

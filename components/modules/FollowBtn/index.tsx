@@ -1,8 +1,9 @@
 /* eslint-disable import/extensions */
 import { useState } from 'react';
-import { IconCheck } from '@tabler/icons-react';
+import { IconCheck, IconX } from '@tabler/icons-react';
 import { useMantineTheme } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
+
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
 
@@ -29,7 +30,7 @@ export default function FollowBtn() {
           message: 'User profile unfollowed',
           autoClose: 2000,
           withCloseButton: true,
-          icon: <IconCheck size={60} strokeWidth={5} color={theme.colors.green[0]} />,
+          icon: <IconX size={60} strokeWidth={5} color={theme.colors.red[8]} />,
           style: {
             backgroundColor: theme.colors.cyan[2],
             borderRadius: 15,

@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { Button, Container, Flex, Group, Text, useMantineTheme } from '@mantine/core';
 import React from 'react';
 import Image from 'next/image';
