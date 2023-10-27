@@ -92,9 +92,9 @@ const Experience = observer(() => {
   const { i18nStore, experienceStore } = useStores();
   const { experienceCardData } = experienceStore;
   const [opened, { open, close }] = useDisclosure(false);
-  const [searchText, setSearchText] = useState<any>('');
+  const [searchText, setSearchText] = useState<string>('');
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: any) => {
     setSearchText(e.target.value);
     console.log(searchText);
   };

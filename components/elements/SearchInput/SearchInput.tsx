@@ -7,8 +7,8 @@ import { createStyle } from './SearchInput.style';
 interface BaseSearchInput extends PolymorphicComponentProps<'input', TextInputProps> {
   placeholder?: string;
   click?: any;
-  onChangeCallback: any;
-  search: any;
+  onChangeCallback?: any;
+  search?: any;
 }
 
 export const SearchInput = (props: BaseSearchInput) => {

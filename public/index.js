@@ -70,6 +70,7 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   userProfileImage: "./image/userProfileImage.png",
   avatarsCommunityGroup : "./image/avatarsCommunity.png",
   forumUserImage : "./image/forumUserImg.png",
+  BGShape : "./image/BGShape.png",
   talkhealingLogo: "/icons/Talkhealing_svg.svg",
 }
 

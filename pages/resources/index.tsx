@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { Box, Button, Container, Flex, Image, Stack, Text } from '@mantine/core';
 
 import { IconSearch } from '@tabler/icons-react';
@@ -9,7 +10,7 @@ export default function Resources() {
   const { classes } = useStyles();
   return (
     <>
-      <Container maw={'100%'}>
+      <Container maw="100%">
         <Box className={classes.Header}>
           <Flex justify="space-between" align="center" wrap="wrap">
             <Text weight={800} size={64}>

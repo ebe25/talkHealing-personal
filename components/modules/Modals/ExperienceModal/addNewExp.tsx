@@ -12,8 +12,7 @@ import { BaseModal } from '@/components/elements/BaseModal/BaseModal';
 
 import { ExpForm } from '../../Forms/expForm';
 
-
-const AddNewExp = observer((props: { opened?: any; onClose?: any; }) => {
+const AddNewExp = observer((props: { opened?: any; onClose?: any }) => {
   const isPhone = useMediaQuery('(max-width: 576px)');
   return (
     <>
@@ -28,10 +27,7 @@ const AddNewExp = observer((props: { opened?: any; onClose?: any; }) => {
         withCloseButton
         title="Add new experience"
       >
-        <ExpForm
-          onClose={props.onClose}
-          opened={props.opened}
-        />
+        <ExpForm onClose={props.onClose} opened={props.opened} />
       </BaseModal>
     </>
   );

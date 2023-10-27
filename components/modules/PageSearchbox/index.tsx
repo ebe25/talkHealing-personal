@@ -5,10 +5,10 @@ import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
 import { createStyle } from './PageSearch.style';
 
 interface PageSearchBoxProps {
-  num: number;
-  type: string;
-  searchText: string;
-  onSearchChange: Function;
+  num?: number;
+  type?: string;
+  searchText?: string;
+  onSearchChange?: Function;
 }
 
 export default function PageSearchBox({
