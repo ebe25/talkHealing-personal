@@ -35,3 +35,4 @@ export const createStyle = () => createStyles((theme) => ({
 }))
 
 
+export default createStyle; 

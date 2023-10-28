@@ -5,7 +5,7 @@ import { createStyle } from './SignUp.style';
 import { EmailOtp } from '../../components/modules/SignupFragment/EmailOtp/EmailOtp';
 import { AddNumber } from '../../components/modules/SignupFragment/AddNumber/AddNumber';
 import { PhoneNumberOtp } from '../../components/modules/SignupFragment/PhoneNumberOtp/PhoneNumberOtp';
-import { SignupForm } from '../../components/modules/SignupFragment/SignupForm/SignupForm';
+import { SignupForm} from '../../components/modules/SignupFragment/SignUpForm/SignupForm';
 
 interface signUpProps {
   img?: string;

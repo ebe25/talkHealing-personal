@@ -9,7 +9,7 @@ import { useMantineTheme } from '@mantine/core';
 import { Images } from '../../../../public/index';
 import { CircularIcon } from 'components/elements/CircularIcon/CircularIcon';
 import { useStores } from '@/models';
-import { createStyle } from './SignUpForm.style';
+import { createStyle } from './SignupForm.style'
 // import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from "../../../../i18n";

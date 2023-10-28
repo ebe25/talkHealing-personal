@@ -57,3 +57,4 @@ export const createStyle = () => {
     },
 }));
 };
+export default createStyle;
