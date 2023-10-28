@@ -68,11 +68,10 @@ function Header() {
                 size={15}
                 fontWeight_variant={700}
                 onClick={() => {
-                  router.push('/');
+                  router.push('/login');
                 }}
-              >
-                Login
-              </BaseText>
+                txtkey="global.button.login"
+              />
             </BaseButton>
 
             <BaseButton style_variant="filled" className={classes.loginButton} color_variant="blue">
@@ -80,11 +79,10 @@ function Header() {
                 size={15}
                 fontWeight_variant={700}
                 onClick={() => {
-                  router.push('/');
+                  router.push('/signup');
                 }}
-              >
-                Sign Up
-              </BaseText>
+                txtkey="global.button.signup"
+              />
             </BaseButton>
           </Group>
         </Flex>
@@ -119,7 +117,7 @@ function Header() {
 
           <Link href="/resources">
             <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
-              Test  <Image src={Images.link_icon} width="9.333px" height="8px" />
+              Test <Image src={Images.link_icon} width="9.333px" height="8px" />
             </BaseText>
           </Link>
         </Flex>

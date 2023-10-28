@@ -46,16 +46,16 @@ export const COLORS = {
   ],
 
   red: [
+    '#F14336',
+    '#e03131',
+    '#c92a2a',
+    '#EF1D1D',
     '#ffa8a8',
     '#ff8787',
     '#ff6b6b',
     '#FF4D4D',
     '#fa5252',
     '#f03e3e',
-    '#F14336',
-    '#e03131',
-    '#EF1D1D',
-    '#c92a2a',
   ],
 
   pink: [

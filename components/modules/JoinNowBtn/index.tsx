@@ -29,7 +29,7 @@ export default function JoinNowBtn() {
           message: 'Community Left !',
           autoClose: 2000,
           withCloseButton: true,
-          icon: <IconX size={60} strokeWidth={4} color={theme.colors.red[4]} />,
+          icon: <IconX size={60} strokeWidth={4} color={theme.colors.red[2]} />,
           style: {
             backgroundColor: theme.colors.cyan[2],
             borderRadius: 15,
@@ -42,7 +42,7 @@ export default function JoinNowBtn() {
   return (
     <BaseButton
       style_variant="filled"
-      color_variant="blue"
+      color_variant={status ? 'blue' : 'red'}
       radius={15}
       mt={15}
       onClick={handleNotification}

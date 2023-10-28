@@ -13,6 +13,7 @@ const navigationLinks = [
   { id: 2, label: 'Experience-Sharing', url: '/experience-sharing' },
   { id: 5, label: 'Forum', url: '/forum' },
   { id: 6, label: 'Community', url: '/community' },
+
   // { id: 4, label: 'Resources', url: '/resources' },
   // { id: 3, label: 'Program-for-recovery', url: '/recovery-program' },
 ];
@@ -55,11 +56,11 @@ export default function HeaderMobile() {
                   size={15}
                   fontWeight_variant={700}
                   onClick={() => {
-                    router.push('/');
+                    router.push('/login');
                   }}
-                >
-                  Login
-                </BaseText>
+                  txtkey={'header.login'}
+                />
+             
               </BaseButton>
 
               <BaseButton style_variant="filled" color_variant="blue">
@@ -67,11 +68,11 @@ export default function HeaderMobile() {
                   size={15}
                   fontWeight_variant={700}
                   onClick={() => {
-                    router.push('/');
+                    router.push('/signup');
                   }}
-                >
-                  Sign Up
-                </BaseText>
+                  txtkey={'header.signUp'}
+                />
+             
               </BaseButton>
             </Group>
           </Box>

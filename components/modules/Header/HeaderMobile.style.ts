@@ -11,10 +11,11 @@ export const createStyle = () => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+
         },
         menuContentFlex: {
             height: '90vh',
-            [theme.fn.smallerThan('xs')]:{
+            [theme.fn.smallerThan('md')]: {
                 height: '80vh',
             },
         },

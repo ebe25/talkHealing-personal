@@ -44,7 +44,7 @@ export default function FollowBtn() {
   return (
     <BaseButton
       style_variant="filled"
-      color_variant="lime"
+      color_variant={status ? 'lime' : 'blue'}
       radius={15}
       onClick={handleNotification}
     >
