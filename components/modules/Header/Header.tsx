@@ -29,14 +29,14 @@ function Header() {
           </Link>
         </Group>
       </Container>
-    );
+    );  
   }
 
   return (
-    <Box className={classes.containerBox}>
-      <Container maw={1250}>
+    <Container maw={1250}>
+      <Box className={classes.containerBox}>
         {/**Header mainHeading */}
-        <Flex w="100%" justify="space-between" align="center" mt="10px">
+        <Flex  justify="space-between" align="center" mt="10px">
           <Link href="/">
             <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
           </Link>
@@ -121,8 +121,8 @@ function Header() {
             </BaseText>
           </Link>
         </Flex>
-      </Container>
-    </Box>
+      </Box>
+    </Container>
   );
 }
 

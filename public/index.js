@@ -1,3 +1,4 @@
+
 export const Images = {
   dark_eye_icon: "./icons/darkEyeIcon.png",
   light_eye_icon: "./icons/lightEyeIcon.png",
@@ -67,10 +68,13 @@ default_profile_avatar:"./image/default_profile_avatar.png",
   sort_icon:"./image/sort.png",
   public_health: "./image/Public health-amico 1.png",
   link_icon:"./image/link_icon.png",
-  userProfileImage: "./image/userProfileImage.png",
+  userProfileImage: "/image/userProfileImage.png",
   avatarsCommunityGroup : "./image/avatarsCommunity.png",
   forumUserImage : "./image/forumUserImg.png",
   BGShape : "./image/BGShape.png",
   talkhealingLogo: "/icons/Talkhealing_svg.svg",
+  communityCardImage: "/icons/communityCardimg.svg",
+  status_icon:'/image/online_badge.png',
 }
+
 

@@ -5,10 +5,12 @@ import { useMantineTheme } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
+import { useRouter } from 'next/router';
 
 export default function JoinNowBtn() {
   const theme = useMantineTheme();
   const [status, setStatus] = useState<Boolean>(true);
+  const router = useRouter();
   const handleNotification = () => {
     status
       ? notifications.show({
@@ -45,7 +47,10 @@ export default function JoinNowBtn() {
       color_variant={status ? 'blue' : 'red'}
       radius={15}
       mt={15}
-      onClick={handleNotification}
+      onClick={()=>{
+        handleNotification();
+        router.push('/community/join')
+      }}
     >
       {status ? (
         <BaseText txtkey="global.button.Join" />
