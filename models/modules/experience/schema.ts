@@ -1,6 +1,6 @@
 import { types } from 'mobx-state-tree';
 
-export const cardData = types.model({
+export const CardData = types.model({
     id: types.maybeNull(types.string),
     title: types.string,
     description: types.string,
