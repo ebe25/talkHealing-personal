@@ -2,27 +2,29 @@ import { useEffect, useState } from 'react';
 import NextApp, { AppProps, AppContext } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
-import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
+import { MantineProvider, ColorScheme, ColorSchemeProvider, useMantineTheme } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 
 //importing theme file
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { MANTINE_THEME } from '@/themes/Mantine/theme';
-import "@/themes/Mantine/WebFonts/stylesheet.css";
+import '@/themes/Mantine/WebFonts/stylesheet.css';
 
 //setting up store
-import { i18nx } from "../i18n";
-import { RootStore, RootStoreProvider, setupRootStore } from "@/models";
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { i18nx } from '../i18n';
+import { RootStore, RootStoreProvider, setupRootStore } from '@/models';
+
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
+  const theme = useMantineTheme();
 
   const toggleColorScheme = (value?: ColorScheme) => {
     const nextColorScheme = value || (colorScheme === 'dark' ? 'dark' : 'light');
     setColorScheme(nextColorScheme);
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
-  let currentTheme = MANTINE_THEME;
+  const currentTheme = MANTINE_THEME;
   currentTheme.colorScheme;
 
   const [rootStore, setRootStore] = useState<RootStore | undefined>(undefined);
@@ -33,44 +35,48 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     })();
   }, []);
   if (!rootStore) return null;
-  if (rootStore.i18nStore.appLanguage)
+  if (rootStore.i18nStore.appLanguage) {
     i18nx.locale = rootStore.i18nStore.appLanguage;
-  else {
+  } else {
     rootStore.i18nStore.setSystemDefault();
   }
-  if (rootStore.i18nStore.appLanguage)
+  if (rootStore.i18nStore.appLanguage) {
     i18nx.locale = rootStore.i18nStore.appLanguage;
-  else {
+  } else {
     rootStore.i18nStore.setSystemDefault();
   }
 
-  let googleOAuthProviderClientId="115727969785-dr3gd9rpagos187jq3mg8gphbe3hb0ds.apps.googleusercontent.com";
+  const googleOAuthProviderClientId =
+    '115727969785-dr3gd9rpagos187jq3mg8gphbe3hb0ds.apps.googleusercontent.com';
 
   return (
+    <div dir={rootStore.i18nStore.isRTL ? 'rtl' : 'ltr'}>
+      <GoogleOAuthProvider clientId={googleOAuthProviderClientId}>
+        <RootStoreProvider value={rootStore}>
+          <Head>
+            <title>TalkHealing</title>
+            <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+            <link rel="shortcut icon" href="/favicon.svg" />
+          </Head>
 
-   <div dir={rootStore.i18nStore.isRTL ? "rtl" : "ltr"}>
-    <GoogleOAuthProvider clientId={googleOAuthProviderClientId} >
-      <RootStoreProvider value={rootStore}>
-        <Head>
-          <title>Mantine next example</title>
-          <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-          <link rel="shortcut icon" href="/favicon.svg" />
-        </Head>
-
-        <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-          <MantineProvider
-            theme={{ ...currentTheme, colorScheme }}
-            withGlobalStyles
-            withNormalizeCSS
-            withCSSVariables
-          >
-            <Component {...pageProps} />
-            <Notifications />
-          </MantineProvider>
-        </ColorSchemeProvider>
-      </RootStoreProvider>
-    </GoogleOAuthProvider>
-   </div>
+          <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+            <MantineProvider
+              theme={{ ...currentTheme, colorScheme }}
+              withGlobalStyles
+              withNormalizeCSS
+              withCSSVariables
+            >
+              <Notifications
+                position="bottom-center"
+                containerWidth="50%"
+                transitionDuration={250}
+              />
+              <Component {...pageProps} />
+            </MantineProvider>
+          </ColorSchemeProvider>
+        </RootStoreProvider>
+      </GoogleOAuthProvider>
+    </div>
   );
 }
 

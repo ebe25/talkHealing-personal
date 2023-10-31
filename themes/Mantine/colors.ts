@@ -13,12 +13,12 @@ export const COLORS = {
     '#25262b',
     '#202420',
   ],
-  
-  black : [
-    "#E5E5E5",
+
+  black: [
+    '#E5E5E5',
     '#9F9F9F',
-    "#3B3B3B",
-    '#212529',
+    '#3B3B3B',
+    '#262626',
     '#141517',
     '#0C0C0C',
     '#101113',
@@ -39,22 +39,23 @@ export const COLORS = {
     '#adb5bd',
     '#8F918F',
     '#868e96',
-    '#495057',
-    '#212529',
+    '#6C6C6C',
+    // '#212529',
     // '#343a40',
+    '#F4F7F8',
   ],
 
   red: [
+    '#F14336',
+    '#e03131',
+    '#c92a2a',
+    '#EF1D1D',
     '#ffa8a8',
     '#ff8787',
     '#ff6b6b',
     '#FF4D4D',
     '#fa5252',
     '#f03e3e',
-    '#F14336',
-    '#e03131',
-    '#EF1D1D',
-    '#c92a2a',
   ],
 
   pink: [
@@ -108,7 +109,7 @@ export const COLORS = {
     '#2B5BD4',
     '#364fc7',
   ],
-  
+
   blue: [
     '#008DE3',
   ],
@@ -123,7 +124,7 @@ export const COLORS = {
     '#15aabf',
     '#1098ad',
     '#0c8599',
-    "#636663"
+    '#636663',
     // '#0b7285',
   ],
 
@@ -141,11 +142,12 @@ export const COLORS = {
   ],
 
   green: [
-    '#02BD4D'
+    '#02BD4D',
+    'rgba(2, 189, 77, 0.05)',
   ],
 
   lime: [
-    '#f4fce3',
+    '#02BD4D',
     '#e9fac8',
     '#d8f5a2',
     '#c0eb75',
@@ -154,7 +156,7 @@ export const COLORS = {
     '#82c91e',
     '#74b816',
     '#66a80f',
-    '#5c940d',
+    '#f4fce3',
   ],
 
   yellow: [
@@ -182,4 +184,9 @@ export const COLORS = {
     '#e8590c',
     '#d9480f',
   ],
-} as Record<string, Tuple<string, 10>>;
+
+  white: [
+    '#FFF',
+    '#FFFFFA',
+  ],
+} as unknown as Record<string, Tuple<string, 10>>;

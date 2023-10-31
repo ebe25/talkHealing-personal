@@ -23,9 +23,9 @@ export const MANTINE_THEME: MantineThemeOverride = {
   colors: COLORS,
   lineHeight: 1.55,
   fontFamily:
-    '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
+    'urbanist, sans-serif',
   fontFamilyMonospace:
-    'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
+    'Poppins, monospace',
   primaryColor: 'blue',
   respectReducedMotion: true,
   cursorType: 'default',
@@ -78,7 +78,7 @@ export const MANTINE_THEME: MantineThemeOverride = {
   headings: {
     fontFamily:
       '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
-      //'PlusJakartaSans-Bold',
+    //'PlusJakartaSans-Bold',
     fontWeight: 400,
     sizes: {
       h1: { fontSize: '2.125rem', lineHeight: 1.3, fontWeight: undefined },
@@ -90,8 +90,8 @@ export const MANTINE_THEME: MantineThemeOverride = {
     },
   },
   other: {
-    webFontFamily: webFontFamily,
-    typography:typography,
+    webFontFamily: { webFontFamily },
+    typography: { typography },
   },
   components: {},
   activeStyles: { transform: 'translateY(0.0625rem)' },
@@ -100,18 +100,17 @@ export const MANTINE_THEME: MantineThemeOverride = {
   focusRingStyles: {
     styles: (theme) => ({
       outlineOffset: '0.125rem',
-      outline: `0.125rem solid ${
-        theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 7 : 5]
-      }`,
+      outline: `0.125rem solid ${theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 7 : 5]
+        }`,
     }),
     resetStyles: () => ({ outline: 'none' }),
     inputStyles: (theme) => ({
       outline: 'none',
       borderColor:
         theme.colors[theme.primaryColor][
-          typeof theme.primaryShade === 'object'
-            ? theme.primaryShade[theme.colorScheme]
-            : theme.primaryShade
+        typeof theme.primaryShade === 'object'
+          ? theme.primaryShade[theme.colorScheme]
+          : theme.primaryShade
         ],
     }),
   },

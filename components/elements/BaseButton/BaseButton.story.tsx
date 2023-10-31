@@ -14,7 +14,7 @@ const meta: Meta<typeof BaseButton> = {
     color_variant: {
       options:Object.keys( COLOR_VARIANTS),
       control: { type: 'select' },
-    }
+    },  
   },
 };
 

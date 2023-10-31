@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '@mantine/core';
-import { createStyle } from './BaseButton.styles';
-import { BaseButtonProps } from './BaseButton.styles';
+import { BaseButtonProps, createStyle } from './BaseButton.styles';
 
 export const BaseButton = (props: BaseButtonProps) => {
   const useStyles = createStyle('en', props);
@@ -9,10 +8,9 @@ export const BaseButton = (props: BaseButtonProps) => {
   return (
     <Button
       {...props}
-      loaderPosition='center'
+      loaderPosition="center"
       className={`${classes[props.style_variant]} ${classes[props.color_variant]}`}
     >
-      
       {props.children}
     </Button>
   );

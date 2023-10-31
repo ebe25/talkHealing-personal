@@ -2,7 +2,7 @@ import { createStyles } from '@mantine/core';
 import { Images } from '../../public/index';
 // import {typography } from "@/themes/Mantine/typography";
 
-export default createStyles((theme) => ({
+export const createStyle = () => createStyles((theme) => ({
   container: {
     width: '100%',
     height: '100vh',
@@ -16,10 +16,10 @@ export default createStyles((theme) => ({
     },
   },
   link: {
-    cursor:"pointer",
+    cursor: "pointer",
     textDecoration: "none"
   },
-  loaderBox : {
+  loaderBox: {
     position: 'fixed',
     zIndex: 1,
     left: 0,
@@ -28,9 +28,11 @@ export default createStyles((theme) => ({
     height: '100vh',
     overflow: 'auto',
     backgroundColor: 'rgba(0,0,0,0.4)',
-    display:"flex",
-    alignItems:"center",
-    justifyContent:"center"
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   }
-  
-}));
+}))
+
+
+export default createStyle; 

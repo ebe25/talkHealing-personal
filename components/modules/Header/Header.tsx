@@ -1,94 +1,128 @@
-import React, { useState } from 'react';
-import { Flex, Box, Text, Group, Grid,Container } from '@mantine/core';
-import { useMantineTheme } from '@mantine/core';
+/* eslint-disable import/extensions */
+import React from 'react';
+import { Flex, Group, Container, Image, useMantineTheme, Box } from '@mantine/core';
 
-import { createStyle } from './Header.style';
-
-import { useStores } from '@/models';
-import { typography } from '@/themes/Mantine/typography';
-import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
-
-import { useDisclosure } from '@mantine/hooks';
+import { useMediaQuery } from '@mantine/hooks';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { Images } from '@/public';
+import { createStyle } from './Header.style';
+import { SearchInput } from '@/components/elements/SearchInput/SearchInput';
 import { BaseButton } from '@/components/elements/BaseButton/BaseButton';
 import { BaseText } from '@/components/elements/BaseText/BaseText';
+import HeaderMobile from './HeaderMobile';
 
 function Header() {
   const theme = useMantineTheme();
-  const { i18nStore, userStore } = useStores();
   const useStyles = createStyle();
   const { classes } = useStyles();
-  const [opened, { open, close }] = useDisclosure(false);
-  const [active, setActive] = useState(false);
-  const [searchText, setSearchText] = useState<string>('');
   const router = useRouter();
+  const isMobileView = useMediaQuery('(max-width: 69.0625em)');
 
-  const searchTextFunction = () => {
-    let name = searchText.toLowerCase();
-    if (name.length) {
-      router.push(`./product-listing?search-product=${name}`);
-    }
-  };
-  //   console.log(typography.paragraph[i18nStore.getCurrentLanguage()].p1);
+  if (isMobileView) {
+    return (
+      <Container maw="100%" className={classes.containerMobile}>
+        <Group spacing={15}>
+          <HeaderMobile />
+          <Link href="/">
+            <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
+          </Link>
+        </Group>
+      </Container>
+    );  
+  }
 
   return (
-    // <Box className={classes.containerBox}>
-    <Container maw={1070} className={classes.containerBox}>  
-        <Flex w={1040} justify={'space-between'} align={'center'} mt={'40px'}>
-          <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p1}> Talkhealing </Text>
-          <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}> Forum</Text>
-          <Text style={typography.paragraph[i18nStore.getCurrentLanguage()].p3}> Community</Text>
-          <SearchInput />
+    <Container maw={1250}>
+      <Box className={classes.containerBox}>
+        {/**Header mainHeading */}
+        <Flex  justify="space-between" align="center" mt="10px">
+          <Link href="/">
+            <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
+          </Link>
 
-          <Group gap={16}>
-            <BaseButton
-              style_variant="filled"
-              color_variant="green"
-              className={classes.loginButton}
+          <Group spacing={25}>
+            <BaseText
+              fontWeight_variant={700}
+              color={theme.colors.black[9]}
+              onClick={() => router.push('./forum')}
+              style={{ cursor: 'pointer' }}
             >
-              <Text
-                style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
+              Forum
+            </BaseText>
+            <BaseText
+              fontWeight_variant={700}
+              color={theme.colors.black[9]}
+              onClick={() => router.push('./community')}
+              style={{ cursor: 'pointer' }}
+            >
+              Community
+            </BaseText>
+          </Group>
+
+          <SearchInput placeholder="Search..." />
+
+          <Group>
+            <BaseButton style_variant="filled" className={classes.loginButton} color_variant="lime">
+              <BaseText
+                size={15}
+                fontWeight_variant={700}
                 onClick={() => {
-                  router.push('./login');
+                  router.push('/login');
                 }}
-              >
-                Login
-              </Text>
+                txtkey="global.button.login"
+              />
             </BaseButton>
 
             <BaseButton style_variant="filled" className={classes.loginButton} color_variant="blue">
-              <Text
-                style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
+              <BaseText
+                size={15}
+                fontWeight_variant={700}
                 onClick={() => {
-                  router.push('./signup');
+                  router.push('/signup');
                 }}
-              >
-                Sign Up
-              </Text>
+                txtkey="global.button.signup"
+              />
             </BaseButton>
           </Group>
         </Flex>
 
-   
-          <Flex
-          justify={'space-between'}
-          align={'center'}
+        {/**Navlinks subheading */}
+        <Flex
+          justify="space-evenly"
+          align="center"
           h={57}
-          w={1050}
-          bg={theme.colors.gray[0]}
+          w="100%"
           className={classes.subHeadingText}
-          mt={'40px'}
-            // style={typography.paragraph[i18nStore.getCurrentLanguage()].p5}
-            // color="black"
-            // fontWeight_variant={600}
-          >
-            <BaseText>Latest research</BaseText>
-            <BaseText>Experience sharing</BaseText>
-            <BaseText>Program for recovery</BaseText>
-            <BaseText>Resources</BaseText>
-          </Flex>
-          </Container>
+          mt="25px"
+          wrap="wrap"
+        >
+          <Link href="/latest-research">
+            <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+              Latest research <Image src={Images.link_icon} width="9.333px" height="8px" />
+            </BaseText>
+          </Link>
 
+          <Link href="/experience-sharing">
+            <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+              Experience sharing <Image src={Images.link_icon} width="9.333px" height="8px" />
+            </BaseText>
+          </Link>
+
+          {/* <Link href="/recovery-program">
+            <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+              Just for Testing <Image src={Images.link_icon} width="9.333px" height="8px" />
+            </BaseText>
+          </Link> */}
+
+          <Link href="/resources">
+            <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
+              Test <Image src={Images.link_icon} width="9.333px" height="8px" />
+            </BaseText>
+          </Link>
+        </Flex>
+      </Box>
+    </Container>
   );
 }
 

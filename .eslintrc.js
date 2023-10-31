@@ -17,5 +17,13 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'linebreak-style': 'off',
+    'import/extensions': ['error', 'ignorePackages', {
+      js: 'never',
+      mjs: 'never',
+      jsx: 'never',
+      tsx:'never',
+      ts:"never",
+    }],
   },
 };
