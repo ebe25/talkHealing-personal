@@ -26,6 +26,44 @@ interface ExperienceCard {
   userName: string;
   userHandle: string;
 }
+const experienceCards = [
+  {
+    id: 1,
+    title: 'First Experience',
+    description: 'This is the description of the first experience.',
+    datePosted: '2023-01-10',
+    likes: 25,
+    comments: 10,
+    userImg: 'user1.jpg',
+    userName: 'John Doe',
+    userHandle: '@johndoe',
+  },
+  {
+    id: 2,
+    title: 'Second Experience',
+    description: 'This is the description of the second experience.',
+    datePosted: '2023-02-15',
+    likes: 30,
+    comments: 15,
+    userImg: 'user2.jpg',
+    userName: 'Jane Smith',
+    userHandle: '@janesmith',
+  },
+  {
+    id: 3,
+    title: 'Third Experience',
+    description: 'This is the description of the third experience.',
+    datePosted: '2023-03-20',
+    likes: 40,
+    comments: 20,
+    userImg: 'user3.jpg',
+    userName: 'Alice Johnson',
+    userHandle: '@alicejohnson',
+  },
+  // Add more objects as needed
+];
+
+console.log('---expCardData---', JSON.stringify(experienceCards, null, 1));
 
 const FORUM_ICONS = [
   { id: 1, icon: 'zondicons:calendar', key: 'datePosted' },

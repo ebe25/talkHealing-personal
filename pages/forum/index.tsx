@@ -68,15 +68,6 @@ const userCardData = [
   // You can keep adding more user data objects here
 ];
 
-// const values: any = [];
-// userCardData.forEach((card) => {
-//   const itemArray = Object.values(card);
-//   return values.push(itemArray);
-// });
-// console.log('values', values);
-
-// const checking = values.filter((val: any) => val.find((i) => i === 'Brown'));
-// console.log('checking', checking);
 export default function Forum() {
   const useStyles = createStyle();
   const { classes } = useStyles();
@@ -85,14 +76,7 @@ export default function Forum() {
   const badgesBreakpoint = useMediaQuery('(max-width: 25.125em)');
   const [searchText, setSearchText] = useState<any>(' ');
   const handleSearchChange = (e: any) => setSearchText(e.target.value);
-  // const function filterData(card){
-  //   const filteredData = card.filter((item)=>(item.includes("Parenting")))
-  // }
-  // const cardKeywords = `${id} ${name} ${timestamp} ${likes} ${comments} ${title} ${description}`;
-  // console.log("cardKeywords",cardKeywords);
-  // const filterKeywordCards = (card: any)=>{
-  //   userCardData.filter()
-  // }
+
   return (
     <>
       <Header />

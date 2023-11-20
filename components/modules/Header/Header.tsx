@@ -115,11 +115,11 @@ function Header() {
             </BaseText>
           </Link> */}
 
-          <Link href="/resources">
+          {/* <Link href="/resources">
             <BaseText className={`${classes.navLinks} ${classes.cursor}`}>
               Test <Image src={Images.link_icon} width="9.333px" height="8px" />
             </BaseText>
-          </Link>
+          </Link> */}
         </Flex>
       </Box>
     </Container>

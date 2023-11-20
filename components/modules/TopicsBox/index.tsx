@@ -30,9 +30,18 @@ export default function TopicsBox() {
   const responsiveTab = useMediaQuery('(max-width: 74.25em)');
   const responsiveMobile = useMediaQuery('(max-width: 61.9375em)');
   const [selectedDiseases, setSelectedDiseases] = useState<Array<string>>([]);
-  const handleSelectedDiseases = (disease: string) => {
-    setSelectedDiseases((prevState: any) => [...prevState, disease]);
-  };
+  // const handleSelectedDiseases = (disease: string) => {
+  //   setSelectedDiseases((prevState: any) => [...prevState, disease]);
+  //   console.log('selected diseases', selectedDiseases);
+  // };
+  // const topicSelectingDiseases = (disease: string) => {
+  //   setSearchText((prevState:any) => (...prevState, setSearchText(prevState)))
+  // }
+
+  // const [searchText, setSearchText] = useState<Array<string>>(commonDiseases);
+  // const selectingTopicsText = (e: any) => {
+  //   return setSearchText(e.target.value);
+  // };
   // console.log(selectedDiseases);
   return (
     <>
@@ -55,9 +64,9 @@ export default function TopicsBox() {
                   size_variant="sm"
                   style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i1}
                   className={classes.topicsText}
-                  onClick={() => {
-                    handleSelectedDiseases(item);
-                  }}
+                  // onClick={() => {
+                  //   handleSelectedDiseases(item);
+                  // }}
                 >
                   {item}
                 </BaseText>
@@ -81,9 +90,11 @@ export default function TopicsBox() {
                 size_variant="sm"
                 style={typography.inputFieldText[i18nStore.getCurrentLanguage()].i1}
                 className={classes.topicsText}
-                onClick={() => {
-                  handleSelectedDiseases(item);
-                }}
+                // onClick={() => {
+                //   handleSelectedDiseases(item);
+                //   setSearchText([...searchText, item[index]]);
+                //   console.log("topics selected search text", searchText);
+                // }}
               >
                 {item}
               </BaseText>

@@ -63,8 +63,15 @@ export default function Home() {
     },
   ];
 
-  // Function to generate card content (how it works grid cards)
-  const generateCardContent = (item: HowItWorksItem, responsive: Boolean) => (
+  // // Function to generate card content (how it works grid cards)
+  // const generateCardContent = (item: HowItWorksItem, responsive: Boolean) => (
+
+  // );
+
+  const ResponsiveCardContent: React.FC<{ item: HowItWorksItem; responsive: Boolean }> = ({
+    item,
+    responsive,
+  }) => (
     <Card
       padding={responsive ? 16 : 25}
       className={responsive ? classes.innerCardResponsive : classes.innerCard}
@@ -96,6 +103,9 @@ export default function Home() {
       <Image height={60} width={60} src="/icons/know_more_icon.png" mt={responsive ? 20 : 32} />
     </Card>
   );
+  // const howItWorkCards =React.FC<howItWorksData>(({howItWorksData}))=>({
+
+  // })
 
   const testimonialData = [
     {
@@ -210,7 +220,9 @@ export default function Home() {
                   : classes.gridContainer
               }
             >
-              {howItWorksData.map((item) => generateCardContent(item, responsiveTabGridBreakpoint))}
+              {howItWorksData.map((item) => (
+                <ResponsiveCardContent item={item} responsive={responsiveTabGridBreakpoint} />
+              ))}
             </SimpleGrid>
           </Center>
         </Box>

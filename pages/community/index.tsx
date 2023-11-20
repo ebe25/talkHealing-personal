@@ -29,58 +29,58 @@ const communityCardData = [
     id: 2,
     communityName: 'Fever Community',
     timestamp: '2 days ago',
-    communityImg:Images.communityCardImage,
+    communityImg: Images.communityCardImage,
   },
   {
     id: 3,
     communityName: 'Diabetes Support Group',
     timestamp: '5 hours ago',
-    communityImg:Images.communityCardImage,
+    communityImg: Images.communityCardImage,
   },
   {
     id: 4,
     communityName: 'Heart Health Network',
     timestamp: '3 days ago',
-    communityImg:Images.communityCardImage,
+    communityImg: Images.communityCardImage,
   },
   {
     id: 5,
     communityName: 'Mental Health Alliance',
     timestamp: '12 hours ago',
-    communityImg:Images.communityCardImage,
+    communityImg: Images.communityCardImage,
   },
   {
     id: 6,
     communityName: 'Arthritis Warriors',
     timestamp: '4 days ago',
-    communityImg:Images.communityCardImage,
+    communityImg: Images.communityCardImage,
   },
   {
     id: 7,
     communityName: 'Asthma Aid Society',
     timestamp: '6 hours ago',
-    communityImg:Images.communityCardImage,
+    communityImg: Images.communityCardImage,
   },
   {
     id: 8,
     communityName: 'Allergy Care Forum',
     timestamp: '2 days ago',
-    communityImg:Images.communityCardImage,
+    communityImg: Images.communityCardImage,
   },
   {
     id: 9,
     communityName: 'Stroke Survivors',
     timestamp: '1 day ago',
-    communityImg:Images.communityCardImage,
+    communityImg: Images.communityCardImage,
   },
   {
     id: 10,
     communityName: 'COVID-19 Support Group',
     timestamp: '2 days ago',
-    communityImg:Images.communityCardImage,
+    communityImg: Images.communityCardImage,
   },
 ];
-
+console.log('----communityCardData-----', JSON.stringify(communityCardData, null, 1));
 export default function Community() {
   const useStyles = createStyle();
   const { classes } = useStyles();
