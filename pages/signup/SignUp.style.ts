@@ -9,7 +9,7 @@ export const createStyle = () => createStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     // padding:"100px",
-    backgroundImage: 'url( ' + `${Images.bg_Img}` + '  )',
+    backgroundImage: `url( ${Images.bg_Img}  )`,
     backgroundSize: '100%',
     [theme.fn.smallerThan('md')]: {
       padding: '20px 2px',

@@ -11,6 +11,7 @@ import * as yup from "yup";
 import { PinInput } from "@mantine/core";
 import { translate } from "../../../../i18n";
 import swal from "sweetalert";
+import { useRouter } from "next/router";
 
 const OTPSchema = yup.object({
   emailOtp: yup.string().length(4, "")
@@ -20,6 +21,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
   const theme = useMantineTheme();
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState<any>("");
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -35,25 +37,25 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
     resolver: yupResolver(OTPSchema)
   });
 
-  const handleEmailOtp = () => {
-    setLoader(true);
+  // const handleEmailOtp = () => {
+  //   setLoader(true);
 
-    userStore.verifyEmail(`${getValues("emailOtp")}`).then((res) => {
-      if (res.ok) {
-        reset();
-        setLoader(false);
-        props.incrementTimelineStep();
-      } else if (res.code == 404) {
-        if (res.error) {
-          setLoader(false);
-          setError(translate("profile.error.invalidOtp"));
-          setTimeout(() => {
-            setError("");
-          }, 5000);
-        }
-      }
-    });
-  };
+  //   userStore.verifyEmail(`${getValues("emailOtp")}`).then((res) => {
+  //     if (res.ok) {
+  //       reset();
+  //       setLoader(false);
+  //       props.incrementTimelineStep();
+  //     } else if (res.code == 404) {
+  //       if (res.error) {
+  //         setLoader(false);
+  //         setError(translate("profile.error.invalidOtp"));
+  //         setTimeout(() => {
+  //           setError("");
+  //         }, 5000);
+  //       }
+  //     }
+  //   });
+  // };
 
   const handleResendVerificationEmail = () => {
     setLoader(true);
@@ -72,13 +74,13 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
 
   return (
     <Flex gap={26} direction={"column"}>
-      <form onSubmit={handleSubmit(handleEmailOtp)}>
+      {/* <form onSubmit={handleSubmit(handleEmailOtp)}> */}
         <Flex justify={"center"} align={"center"} direction={"column"} gap={30}>
           <Center>
             <BaseText
               style={typography.headings[i18nStore.getCurrentLanguage()].h2}
               color={theme.colors.dark[8]}
-              txtkey={"profile.modal.verifyOtp"}
+              txtkey={"profile.modal.verifyEmail"}
             />
           </Center>
           <Flex
@@ -96,7 +98,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
               />
             </Flex>
             {/* Otp Enter */}
-            <PinInput
+            {/* <PinInput
               {...register("emailOtp")}
               onChange={(event: any) => {
                 clearErrors();
@@ -109,9 +111,9 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
               placeholder=""
               variant="filled"
               type="number"
-            />
+            /> */}
             {/* Error Message */}
-
+{/* 
             <Center>
               {error ? (
                 <BaseText
@@ -122,9 +124,9 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
               ) : (
                 <></>
               )}
-            </Center>
+            </Center> */}
           </Flex>
-          {/* Resend Otp Button */}
+          {/* Resend Verification Link */}
           <Flex justify="center" align="center" gap={5}>
             <BaseText
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -148,23 +150,22 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
             w={"80%"}
             h={"39px"}
             style_variant={
-              getValues("emailOtp")?.length == 4 ? "filled" : "disabled"
+             "filled" 
             }
-            color_variant={getValues("emailOtp")?.length == 4 ? "blue" : "gray"}
+            color_variant={"blue"}
             loading={loader}
+            onClick={()=>{
+              router.replace("/login");
+            }}
           >
             <BaseText
               style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
-              color={
-                getValues("emailOtp")?.length == 4
-                  ? theme.white
-                  : theme.colors.dark[1]
-              }
+              color="white"
               txtkey={"global.button.continue"}
             />
           </BaseButton>
         </Flex>
-      </form>
+      {/* </form> */}
     </Flex>
   );
 };

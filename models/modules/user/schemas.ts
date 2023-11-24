@@ -58,6 +58,10 @@ export const User = types.model({
   phone: types.maybeNull(types.string),
   is_terms_agreed: types.boolean,
   is_phone_verified: types.boolean,
+  is_email_verified: types.boolean,
+  date_of_birth: types.maybeNull(types.string),
+  status: types.string,
+  last_login: types.string,
   gender: types.maybeNull(types.enumeration(Object.values(GENDERS))),
 });
 export interface UserType extends Instance<typeof User> { }

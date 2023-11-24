@@ -25,7 +25,8 @@
       "label1": "Package",
       "label2": "Email",
       "label3": "Password",
-      "label4": "Confirm Password"
+      "label4": "Confirm Password",
+      "label5": "Phone Number"
     },
     "button": {
       "login": "Login",
@@ -98,8 +99,9 @@
       "changeEmail": "Change Email",
       "emailPara": "Please enter the new email address you would like to change.",
       "email": "Email",
-      "verifyOtp": "Verify Email",
-      "emailOtpPara": "We have sent the Otp in your email. Please enter the Otp for the verification.",
+      "verifyOtp": "Verify Email Otp",
+      "verifyEmail": "Verify Email",
+      "emailOtpPara": "We have sent the verification link in your email. Please click on continue and verify.",
       "resendCode": "Didn’t get the code?",
       "resendText": "Resend Code",
       "emailChanged": "Email address has successfully been changed.",
@@ -191,6 +193,7 @@
     "invalidNumber": "Invalid Number",
     "enterMobileNumber": "Enter Mobile Number",
     "required": "Required Field",
+    "invalidPhoneNumber": "Invalid Phone number",
     "strings": {
       "incChar": "Includes at least 6 characters",
       "incNum": "Includes number",

@@ -103,6 +103,7 @@ export const UserStore = types
       full_name: string,
       password1: string,
       password2: string,
+      phone: string,
       // is_terms_agreed: boolean
     ) {
       storage.clear();
@@ -114,10 +115,12 @@ export const UserStore = types
           full_name,
           password1,
           password2,
+          phone,
           // is_terms_agreed: is_terms_agreed
         }
       );
       const error = null;
+      // console.log("response.dat---123", JSON.stringify(response.data, null, 2));
       switch (response.status) {
         case 201:
           self.loggedInUserData = null;

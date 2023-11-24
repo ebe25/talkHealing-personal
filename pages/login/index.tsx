@@ -55,7 +55,7 @@ export const Login = (props: loginProps) => {
   const loginForm = useForm<FormData>({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = (data: FormData) => console.log(data); //loggin when on submit works
 
   //  Login Api Call
   const handleLogin = () => {
@@ -68,7 +68,7 @@ export const Login = (props: loginProps) => {
         .then((res) => {
           if (res.ok) {
             console.log('user logged in successfully!');
-            router.push('/home');
+            router.push('/');
             loginForm.reset();
             // setLoader(false)
           } else if (res.code === 400) {
@@ -143,7 +143,7 @@ export const Login = (props: loginProps) => {
     <Container maw="1400px">
       <Grid className={classes.container} gutter="100px" m={0}>
         <Grid.Col sm={12} xs={12} md={8} lg={7} xl={7}>
-          <Image w="100%" src={props.img ? props.img : Images.login_icon} alt="login_icon" />
+          <Image w="50%" src={props.img ? props.img : Images.public_health} alt="login_icon" />
         </Grid.Col>
         <Grid.Col sm={12} xs={12} md={4} lg={5} xl={5}>
           <form onSubmit={loginForm.handleSubmit(onSubmit)}>

@@ -9,6 +9,19 @@ export const createStyle = () => {
       cursor: "pointer",
       textDecoration: "none"
     },
+    facebookIconBox: {
+      width: "40px",
+      height: "40px",
+      borderRadius: "100%",
+      border: `1px solid ${theme.colors.gray[4]}`,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      cursor: "pointer",
+      '&:not([data-disabled]):hover': { 
+        background: theme.colors.gray[0], 
+      }
+    },
     loaderBox: {
       position: 'fixed',
       zIndex: 1,

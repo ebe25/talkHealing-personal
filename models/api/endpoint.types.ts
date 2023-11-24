@@ -9,9 +9,10 @@ export enum REQUEST_METHOD {
 }
 export const BaseModelSchemaBase = {
     id: types.identifier,
-    created_on: types.Date,
-    edited_on: types.Date,
-    _data: types.maybeNull(types.frozen()), //will need to test this heavily
+    // created_on: types.timestamp,
+    // edited_on: types.Date,
+    // edited_on: types.Date,
+    // _data: types.maybeNull(types.frozen()), //will need to test this heavily
 }
 export const PaginatedSchemaBase = {
     count: types.number,
