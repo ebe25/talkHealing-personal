@@ -257,13 +257,18 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               color={theme.colors.gray[6]}
               txtkey={'global.label.label5'}
             />
-            <BasePasswordInput
+            <Input
               w={'100%'}
               mah={'44px'}
+              radius="xl"
+              component={'input'}
+              classNames={{ input: classes.input }}
               placeholder={`${translate('authentication.formText.phoneNumber')}`}
               inputvalue={signUpForm.register(`phone_number`)}
               error={signUpForm.formState.errors.phone_number?.message}
+              style_variant={'inputText1'}
             />
+
             {/* error message */}
             <Text
               ta={'center'}
