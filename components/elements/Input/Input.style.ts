@@ -39,7 +39,7 @@ export const createStyle = (
     },
     innerInput: {
       textAlign: i18nStore.isRTL ? "right" : "left",
-      padding: " 0px 40px"
+      padding: " 0px 10px"
     }
   }
   ))
