@@ -5,7 +5,9 @@ import { createStyle } from './SignUp.style';
 import { EmailOtp } from '../../components/modules/SignupFragment/EmailOtp/EmailOtp';
 import { AddNumber } from '../../components/modules/SignupFragment/AddNumber/AddNumber';
 import { PhoneNumberOtp } from '../../components/modules/SignupFragment/PhoneNumberOtp/PhoneNumberOtp';
-import { SignupForm} from '../../components/modules/SignupFragment/SignUpForm/SignupForm';
+import { SignupForm } from '../../components/modules/SignupFragment/SignUpForm/SignupForm';
+import { useStores } from '@/models';
+import { useRouter } from 'next/router';
 
 interface signUpProps {
   img?: string;
@@ -14,9 +16,10 @@ interface signUpProps {
 export const SignUp = (props: signUpProps) => {
   const useStyles = createStyle();
   const { classes } = useStyles();
-  const MAX_TIMELINE_STEP = 3;
+  const MAX_TIMELINE_STEP = 1;
   const MIN_TIMELINE_STEP = 0;
   const [timelineStep, setTimelinestep] = useState(MIN_TIMELINE_STEP);
+  const router = useRouter();
 
   const incrementTimelineStep = () => {
     setTimelinestep((prev: any) => {
@@ -33,11 +36,11 @@ export const SignUp = (props: signUpProps) => {
     //  Email Otp Fragment
     <EmailOtp incrementTimelineStep={incrementTimelineStep} />,
 
-    // Add number Fragment
-    <AddNumber incrementTimelineStep={incrementTimelineStep} />,
+    // // Add number Fragment
+    // <AddNumber incrementTimelineStep={incrementTimelineStep} />,
 
-    // Number Otp Fragment
-    <PhoneNumberOtp />,
+    // // Number Otp Fragment
+    // <PhoneNumberOtp />,
   ];
 
   return (
@@ -48,7 +51,11 @@ export const SignUp = (props: signUpProps) => {
         </Grid.Col>
         <Grid.Col sm={12} xs={12} md={4} lg={5} xl={5}>
           {/* Signup Fragment and Email Otp Fragment and Add number Fragment and Number Otp Fragment */}
-          {timelinePages[timelineStep]}
+          {router.query.step === 'verifyEmail' ? (
+            <EmailOtp incrementTimelineStep={incrementTimelineStep} />
+          ) : (
+            timelinePages[timelineStep]
+          )}
         </Grid.Col>
       </Grid>
     </Container>

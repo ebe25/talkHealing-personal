@@ -189,6 +189,7 @@
     "invalidEmail": "Invalid email",
     "invalidPassword": "Invalid password",
     "passwordNotMatch": "Password does not match",
+    "emailNotVerified": "Email is not verified, please verify email first",
     "invalidNumber": "Invalid Number",
     "enterMobileNumber": "Enter Mobile Number",
     "required": "Required Field",

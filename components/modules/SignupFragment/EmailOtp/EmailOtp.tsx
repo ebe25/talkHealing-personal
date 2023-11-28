@@ -40,11 +40,13 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
   const handleEmailOtp = () => {
     setLoader(true);
 
-    userStore.verifyEmail(`${getValues('emailOtp')}`).then((res) => {
+    userStore. verifyEmail(`${getValues('emailOtp')}`).then((res) => {
       if (res.ok) {
         reset();
         setLoader(false);
         props.incrementTimelineStep();
+        router.replace('/login');
+      
       } else if (res.code == 404) {
         if (res.error) {
           setLoader(false);
@@ -55,6 +57,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
         }
       }
     });
+
   };
 
   const handleResendVerificationEmail = () => {
@@ -74,7 +77,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
 
   return (
     <Flex gap={26} direction={'column'}>
-      {/* <form onSubmit={handleSubmit(handleEmailOtp)}> */}
+      <form onSubmit={handleSubmit(handleEmailOtp)}>
       <Flex justify={'center'} align={'center'} direction={'column'} gap={30}>
         <Center>
           <BaseText
@@ -142,11 +145,9 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
           w={'80%'}
           h={'39px'}
           style_variant={'filled'}
-          color_variant={'blue'}
+          color_variant={'lime'}
           loading={loader}
-          onClick={() => {
-            router.replace('/login');
-          }}
+          
         >
           <BaseText
             style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
@@ -155,7 +156,7 @@ export const EmailOtp = (props: { incrementTimelineStep: Function }) => {
           />
         </BaseButton>
       </Flex>
-      {/* </form> */}
+      </form>
     </Flex>
   );
 };

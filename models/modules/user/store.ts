@@ -36,7 +36,9 @@ export const UserStore = types
           password,
         }
       );
+      console.log("---40 userstore", JSON.stringify(response.data.user, null, 2));
       switch (response.status) {
+
         case 200:
           self.loggedInUserData = null;
           yield storage.clear();
@@ -122,6 +124,8 @@ export const UserStore = types
       const error = null;
       // console.log("response.dat---123", JSON.stringify(response.data, null, 2));
       switch (response.status) {
+
+
         case 201:
           self.loggedInUserData = null;
           yield storage.clear();
@@ -151,6 +155,8 @@ export const UserStore = types
           otp,
         }
       );
+
+      // console.log("email-verification--store 155 response", JSON.stringify(response, null, 2));
       switch (response.status) {
         case 200:
           return ACTION_RESPONSES.success;
@@ -474,7 +480,7 @@ export const UserStore = types
     }),
     phoneChangeResend: flow(function* () {
       const response = yield self.environment.api.call(
-        API_ENDPOINTS.phoneChangeResend, { }
+        API_ENDPOINTS.phoneChangeResend, {}
       );
       let error = null;
       switch (response.status) {
@@ -603,7 +609,7 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    getUserAddressById: flow(function* (id:string | undefined) {
+    getUserAddressById: flow(function* (id: string | undefined) {
       const response = yield self.environment.api.call(
         API_ENDPOINTS.getAddressById, {}, { id }
       );
@@ -620,7 +626,7 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    updateAddress: flow(function* (data, id:string | undefined) {
+    updateAddress: flow(function* (data, id: string | undefined) {
       const response = yield self.environment.api.call(
         API_ENDPOINTS.updateAddress, data, { id }
       );
@@ -637,7 +643,7 @@ export const UserStore = types
       }
       return ACTION_RESPONSES.failure;
     }),
-    deleteAddress: flow(function* (id:string | undefined) {
+    deleteAddress: flow(function* (id: string | undefined) {
       const response = yield self.environment.api.call(
         API_ENDPOINTS.deleteAddress, {}, { id }
       );
@@ -697,7 +703,8 @@ export const UserStore = types
           );
           return ACTION_RESPONSES.success;
         case 400:
-          return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data,
+          return {
+            ...ACTION_RESPONSES.failure, code: response.status, error: response.data,
           };
         case 401:
           return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data };
@@ -730,7 +737,8 @@ export const UserStore = types
           );
           return ACTION_RESPONSES.success;
         case 400:
-          return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data,
+          return {
+            ...ACTION_RESPONSES.failure, code: response.status, error: response.data,
           };
         case 401:
           return { ...ACTION_RESPONSES.failure, code: response.status, error: response.data };
@@ -739,6 +747,6 @@ export const UserStore = types
         default:
           console.error('UNHANDLED ERROR');
           return ACTION_RESPONSES.success;
-        }
-      }),
+      }
+    }),
   }));

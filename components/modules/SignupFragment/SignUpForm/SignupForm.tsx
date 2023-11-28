@@ -181,17 +181,21 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               color={theme.colors.gray[6]}
               txtkey={'profile.name'}
             />
+          
             <Input
               w={'100%'}
               mah={'44px'}
               radius="xl"
               component={'input'}
-              classNames={{ input: classes.input }}
+              classNames={{ input: classes.input, }}
               placeholder={`${translate('profile.name')}`}
               style_variant={'inputText1'}
               inputvalue={signUpForm.register('full_name')}
               error={signUpForm.formState.errors.full_name?.message}
+              id={"test-fullname"}
             />
+      
+           
           </Flex>
           {/* Email Input Box */}
           <Flex direction={'column'} gap={10}>
@@ -210,6 +214,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               style_variant={'inputText1'}
               inputvalue={signUpForm.register('email')}
               error={signUpForm.formState.errors.email?.message}
+              id={"test-email"}
             />
           </Flex>
           {/* Password Input Box */}
@@ -225,6 +230,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               placeholder={`${translate('authentication.formText.writePassword')}`}
               inputvalue={signUpForm.register('password1')}
               error={signUpForm.formState.errors.password1?.message}
+              id={"test-password1"}
             />
           </Flex>
           {/* Confirm Password Input Box */}
@@ -240,6 +246,8 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               placeholder={`${translate('authentication.formText.writePassword')}`}
               inputvalue={signUpForm.register('password2')}
               error={signUpForm.formState.errors.password2?.message}
+              id={"test-password2"}
+
             />
             {/* error message */}
             <Text
@@ -267,6 +275,8 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               inputvalue={signUpForm.register(`phone_number`)}
               error={signUpForm.formState.errors.phone_number?.message}
               style_variant={'inputText1'}
+              id={"test-phone"}
+
             />
 
             {/* error message */}
@@ -290,7 +300,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
             w={'100%'}
             mah={'39px'}
             style_variant={signUpForm.formState.isValid ? 'filled' : 'disabled'}
-            color_variant={signUpForm.formState.isValid ? 'blue' : 'gray'}
+            color_variant={signUpForm.formState.isValid ? 'lime' : 'gray'}
             loading={loader}
           >
             <BaseText
