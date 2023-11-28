@@ -23,6 +23,7 @@ import { createStyle } from './Login.style';
 import { useStores } from '@/models';
 // import { useForm } from "@mantine/form";
 import { translate } from '@/i18n';
+import { EmailOtp } from '@/components/modules/SignupFragment/EmailOtp/EmailOtp';
 
 interface loginProps {
   img?: string;
@@ -67,10 +68,15 @@ export const Login = (props: loginProps) => {
         .loginUser(loginForm.getValues('email'), loginForm.getValues('password'))
         .then((res) => {
           if (res.ok) {
-            console.log('user logged in successfully!');
-            router.push('/');
-            loginForm.reset();
-            // setLoader(false)
+            if (userStore.loggedInUserData?.user.is_email_verified) {
+              console.log('user logged in successfully!');
+              router.push('/home');
+              loginForm.reset();
+            }else{
+              setLoader(false);
+              router.push('/signup?step=verifyEmail')
+
+            }
           } else if (res.code === 400) {
             if (res.error) {
               setLoader(false);
@@ -139,14 +145,9 @@ export const Login = (props: loginProps) => {
 
   const facebookLoginAppId = '542240271409221';
 
-  return (
-    <Container maw="1400px">
-      <Grid className={classes.container} gutter="100px" m={0}>
-        <Grid.Col sm={12} xs={12} md={8} lg={7} xl={7}>
-          <Image w="50%" src={props.img ? props.img : Images.public_health} alt="login_icon" />
-        </Grid.Col>
-        <Grid.Col sm={12} xs={12} md={4} lg={5} xl={5}>
-          <form onSubmit={loginForm.handleSubmit(onSubmit)}>
+  const LoginForm = ()=>{
+    return (
+      <form onSubmit={loginForm.handleSubmit(onSubmit)}>
             <Flex direction="column" gap={20} w="100%">
               <Center>
                 <BaseText
@@ -248,19 +249,32 @@ export const Login = (props: loginProps) => {
                   }
                 }}
                 w="100%"
-                mah="39px"
+                mah="40px"
                 loading={loader}
                 style_variant={loginForm.formState.isValid ? 'filled' : 'disabled'}
-                color_variant={loginForm.formState.isValid ? 'blue' : 'gray'}
+                color_variant={loginForm.formState.isValid ? 'lime' : 'gray'}
               >
                 <BaseText
-                  style={typography.buttonText[i18nStore.getCurrentLanguage()].b2}
+                  size={15}
+                  fontWeight_variant={700}
                   color={loginForm.formState.isValid ? theme.white : theme.colors.dark[1]}
                   txtkey="signUpForm.login"
                 />
               </BaseButton>
             </Flex>
           </form>
+    )
+  }
+
+  return (
+    <Container maw="1400px">
+      <Grid className={classes.container} gutter="100px" m={0}>
+        <Grid.Col sm={12} xs={12} md={8} lg={7} xl={7}>
+          <Image w="50%" src={props.img ? props.img : Images.public_health} alt="login_icon" />
+        </Grid.Col>
+        <Grid.Col sm={12} xs={12} md={4} lg={5} xl={5}>
+          {/* Login Form */}
+          <LoginForm/>
           {/* Sign Up */}
           <Center mt={theme.spacing.xl}>
             <BaseText
