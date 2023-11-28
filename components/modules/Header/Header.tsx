@@ -19,6 +19,34 @@ function Header() {
   const router = useRouter();
   const isMobileView = useMediaQuery('(max-width: 69.0625em)');
 
+  const AuthBtns = () => {
+    return (
+      <Group>
+        <BaseButton style_variant="filled" className={classes.loginButton} color_variant="lime">
+          <BaseText
+            size={15}
+            fontWeight_variant={700}
+            onClick={() => {
+              router.push('/login');
+            }}
+            txtkey="global.button.login"
+          />
+        </BaseButton>
+
+        <BaseButton style_variant="filled" className={classes.loginButton} color_variant="blue">
+          <BaseText
+            size={15}
+            fontWeight_variant={700}
+            onClick={() => {
+              router.push('/signup');
+            }}
+            txtkey="global.button.signup"
+          />
+        </BaseButton>
+      </Group>
+    );
+  };
+
   if (isMobileView) {
     return (
       <Container maw="100%" className={classes.containerMobile}>
@@ -29,14 +57,14 @@ function Header() {
           </Link>
         </Group>
       </Container>
-    );  
+    );
   }
 
   return (
     <Container maw={1250}>
       <Box className={classes.containerBox}>
         {/**Header mainHeading */}
-        <Flex  justify="space-between" align="center" mt="10px">
+        <Flex justify="space-between" align="center" mt="10px">
           <Link href="/">
             <Image src={Images.talkhealingLogo} width="134.008px" height="24px" />
           </Link>
@@ -62,7 +90,7 @@ function Header() {
 
           <SearchInput placeholder="Search..." />
 
-          <Group>
+          {/* <Group>
             <BaseButton style_variant="filled" className={classes.loginButton} color_variant="lime">
               <BaseText
                 size={15}
@@ -84,7 +112,8 @@ function Header() {
                 txtkey="global.button.signup"
               />
             </BaseButton>
-          </Group>
+          </Group> */}
+          <AuthBtns />
         </Flex>
 
         {/**Navlinks subheading */}

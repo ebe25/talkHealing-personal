@@ -12,7 +12,7 @@ export const typography: any = {
         lineHeight: '51px',
       } as React.CSSProperties,
       h2: {
-        fontFamily: webFontFamily['Urbanist-SemiBold'],
+        fontFamily: webFontFamily['Urbanist-Regular'],
         fontStyle: 'normal',
         fontWeight: 600,
         fontSize: '25px',
