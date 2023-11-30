@@ -13,15 +13,19 @@ import { createStyle } from './SignupForm.style';
 // import { useForm } from "@mantine/form";
 import Link from 'next/link';
 import { translate } from '../../../../i18n';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import FacebookLogin from '@greatsumini/react-facebook-login';
 import swal from 'sweetalert';
 import { useRouter } from 'next/router';
 import { GoogleLogin } from '@react-oauth/google';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import { UseFormRegister, FieldValues } from 'react-hook-form';
 export const SignupForm = (props: { incrementTimelineStep: Function }) => {
   const useStyles = createStyle();
+  const [phoneNumber, setPhoneNumber] = useState<any>('');
   const { classes } = useStyles();
   const { i18nStore, userStore } = useStores();
   const theme = useMantineTheme();
@@ -49,7 +53,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
       phone_number: yup
         .string()
         .required(`${translate('authentication.required')}`)
-        .matches(/^[0-9]{10}$/, { message: translate('authentication.invalidPhoneNumber') }),
+        .matches(/^\+[0-9]{1,3}[0-9]{9,}$/, { message: translate('authentication.invalidPhoneNumber') }),
     })
     .required();
   type FormData = yup.InferType<typeof schema>;
@@ -57,6 +61,8 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
   const signUpForm = useForm<FormData>({
     resolver: yupResolver(schema),
   });
+
+  const { setValue } = signUpForm;
   const onSubmit = (data: FormData) => console.log(data);
 
   // SignUp api
@@ -70,7 +76,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
           signUpForm.getValues('full_name'),
           signUpForm.getValues('password1'),
           signUpForm.getValues('password2'),
-          '+91' + signUpForm.getValues('phone_number')
+          signUpForm.getValues('phone_number')
         )
         .then((res) => {
           if (res.ok) {
@@ -81,9 +87,9 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
           } else if (res.code == 400) {
             if (res.error) {
               setLoader(false);
-              if (res.error && res.error.email) setError(res.error?.email?.toString());
-              else if (res.error.non_field_errors)
-                setError(res.error?.non_field_errors?.toString());
+              setError(res.error?.email?.toString());
+              // else if (res.error.non_field_errors)
+              // setError(res.error?.non_field_errors?.toString());
               setTimeout(() => {
                 setError('');
               }, 5000);
@@ -181,21 +187,19 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               color={theme.colors.gray[6]}
               txtkey={'profile.name'}
             />
-          
+
             <Input
               w={'100%'}
               mah={'44px'}
               radius="xl"
               component={'input'}
-              classNames={{ input: classes.input, }}
+              classNames={{ input: classes.input }}
               placeholder={`${translate('profile.name')}`}
               style_variant={'inputText1'}
               inputvalue={signUpForm.register('full_name')}
               error={signUpForm.formState.errors.full_name?.message}
-              id={"test-fullname"}
+              id={'test-fullname'}
             />
-      
-           
           </Flex>
           {/* Email Input Box */}
           <Flex direction={'column'} gap={10}>
@@ -214,7 +218,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               style_variant={'inputText1'}
               inputvalue={signUpForm.register('email')}
               error={signUpForm.formState.errors.email?.message}
-              id={"test-email"}
+              id={'test-email'}
             />
           </Flex>
           {/* Password Input Box */}
@@ -230,7 +234,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               placeholder={`${translate('authentication.formText.writePassword')}`}
               inputvalue={signUpForm.register('password1')}
               error={signUpForm.formState.errors.password1?.message}
-              id={"test-password1"}
+              id={'test-password1'}
             />
           </Flex>
           {/* Confirm Password Input Box */}
@@ -246,40 +250,53 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               placeholder={`${translate('authentication.formText.writePassword')}`}
               inputvalue={signUpForm.register('password2')}
               error={signUpForm.formState.errors.password2?.message}
-              id={"test-password2"}
-
+              id={'test-password2'}
             />
-            {/* error message */}
-            <Text
-              ta={'center'}
-              style={typography.label[i18nStore.getCurrentLanguage()].l1}
-              color={theme.colors.red[7]}
-            >
-              {error}
-            </Text>
           </Flex>
           {/* Phone number input */}
           <Flex direction={'column'} gap={10}>
-            <BaseText
-              style={typography.label[i18nStore.getCurrentLanguage()].l1}
-              color={theme.colors.gray[6]}
-              txtkey={'global.label.label5'}
-            />
-            <Input
-              w={'100%'}
-              mah={'44px'}
-              radius="xl"
-              component={'input'}
-              classNames={{ input: classes.input }}
-              placeholder={`${translate('authentication.formText.phoneNumber')}`}
-              inputvalue={signUpForm.register(`phone_number`)}
-              error={signUpForm.formState.errors.phone_number?.message}
-              style_variant={'inputText1'}
-              id={"test-phone"}
+            <>
+              <BaseText
+                style={typography.label[i18nStore.getCurrentLanguage()].l1}
+                color={theme.colors.gray[6]}
+                txtkey={'global.label.label5'}
+              />
 
-            />
+              <Controller
+                control={signUpForm.control}
+                name="phone_number"
+                defaultValue=''
+                render={({ field }) => (
+                  <PhoneInput
+                    value={field.value}
+                    onChange={(value) => {
+                      setPhoneNumber(value);
+                      field.onChange(value || ''); // Update the form value
+                      console.log("value", value);
+                    }}
+                    placeholder={`${translate('authentication.formText.phoneNumber')}`}
+                    error={signUpForm.formState.errors.phone_number?.message}
+                    id={'test-phone-number'}
+                    // inputComponent={(props) => (
+                    //   <Input
+                    //     {...props}
+                    //     w={'100%'}
+                    //     radius="xl"
+                    //     mah={'44px'}
+                    //     style_variant={'inputText1'}
+                    //     component={'input'}
+                    //     // Pass the ref callback to the input
+                    //     ref={(el: any) => {
+                    //       field.ref(el);
+                    //     }}
+                    //   />
+                    // )}
+                  />
+                )}
+              />
+            </>
 
-            {/* error message */}
+            {/* error message for the whole form */}
             <Text
               ta={'center'}
               style={typography.label[i18nStore.getCurrentLanguage()].l1}
@@ -295,6 +312,7 @@ export const SignupForm = (props: { incrementTimelineStep: Function }) => {
               if (signUpForm.formState.isValid) handleSignUp();
               else {
                 console.log('email or password is empty');
+                console.log('eerror while submitting--', signUpForm.formState.errors.phone_number);
               }
             }}
             w={'100%'}
